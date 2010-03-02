@@ -8,7 +8,11 @@
  * })
  * @codeend
  */
-DocumentJS.Pair.extend('DocumentJS.Attribute',
+DocumentJS.Pair.extend('DocumentJS.Attribute',{
+	init : function(){
+		this.serialize('plugin','full_name','shortName',['real_comment','comment'])
+	}
+},
  /* @prototype */
  {
      /**
@@ -40,14 +44,6 @@ DocumentJS.Pair.extend('DocumentJS.Attribute',
             this.name = m[1];
         }
      },
-    json : function(){
-        return {
-            plugin : this.plugin,
-            name: this.full_name(),
-			shortName : this.Class.shortName.toLowerCase(),
-            comment: this.real_comment
-        }
-    },
     toFile : function(name){
         try{
             var res = this.jsonp();

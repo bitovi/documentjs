@@ -91,21 +91,34 @@ DocumentJS.Directive.extend('DocumentJS.Directive.Param',{
      * @param {String} line
      */
     add: function(line){
-        var parts = line.match(/\s*@param\s+(?:\{(?:(optional):)?([^}]+)\})?\s+([\w\.]+) ?(.*)?/);
+        var parts = line.match(/\s*@param\s+(?:\{([^}]+)\})?\s+([^\s]+) ?(.*)?/);
         if(!parts){
             print("LINE: \n"+line+"\n does not match @params {optional:TYPE} NAME DESCRIPTION")
             return;
         }
         var description = parts.pop();
-        var n = parts.pop();
-        
+        var n = parts.pop(), optional = false, defaultVal;
+        //check if it has anything ...
+		var nameParts = n.match(/\[([\w\.]+)(?:=([^\]]*))?\]/)
+		if(nameParts){
+			optional = true;
+			defaultVal = nameParts[2]
+			n = nameParts[1]
+		}
+		
         var param = this.params[n] ? this.params[n] : this.params[n] = {order: this.ordered_params().length };
 
         param.description = description || "";
         param.name = n;
         param.type = parts.pop()|| "";
-        param.optional = parts.pop() ? true : false;
-        return this.params[n];
+        
+
+		param.optional = optional;
+        if(defaultVal){
+			param["default"] = defaultVal;
+		}
+		
+		return this.params[n];
     }
 });
 /**

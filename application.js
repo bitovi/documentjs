@@ -149,12 +149,12 @@ DocumentJS.Application = function(total, app_name){
     this.total = total;
     this.files = [];
     
-    
+    //create each Script, which will create each class/constructor, etc
     for(var s=0; s < total.length; s++){
-        //print(total[s].path+"->"+total[s].src)
-		print("calling ...")
 		this.files.push( new DocumentJS.Script(total[s]) ) 
 	}
+	//sort class and constructors so they are easy to find
+	this.all_sorted = DocumentJS.Class.listing.concat( DocumentJS.Constructor.listing ).sort( DocumentJS.Pair.sort_by_name )
 }
 
 
@@ -163,65 +163,31 @@ DocumentJS.Application.prototype =
 {
     /**
      * Creates the documentation files.
+     * @param {String} path where to put the docs
      */
-    generate : function(){
+    generate : function(path, convert){
         /* Make the needed directory structure for documentation */
         //new steal.File('docs/classes/').mkdirs();
-         this.all_sorted = DocumentJS.Class.listing.concat( DocumentJS.Constructor.listing ).sort( DocumentJS.Pair.sort_by_name )
-        var summary = this.left_side();
-        
-        //make classes
-        for(var i = 0; i < DocumentJS.Class.listing.length; i++){
-            DocumentJS.Class.listing[i].toFile(this.name);
-        }
-        //DocumentJS.Class.create_index();
-        
-        //make constructors
-        for(var i = 0; i < DocumentJS.Constructor.listing.length; i++){
-            DocumentJS.Constructor.listing[i].toFile(this.name);
-        }
-        //make functions
-        
-        for(var i = 0; i < DocumentJS.Function.listing.length; i++){
-            DocumentJS.Function.listing[i].toFile(this.name);
-        }
-        for(var i = 0; i < DocumentJS.Page.listing.length; i++){
-            DocumentJS.Page.listing[i].toFile(this.name);
-        }
-        
-        for(var i = 0; i < DocumentJS.Attribute.listing.length; i++){
-            DocumentJS.Attribute.listing[i].toFile(this.name);
-        }
-        
-        
-        this.summary_page(summary)
-    },
-    /**
-     * @return {string} The left side bar.
-     */
-    left_side: function(){
+        print("generate ...")
+		convert = convert || function(name, ob, everything, path){
+			var toJSON = DocumentJS.toJSON(ob)
+			
+			new DocumentJS.File(path+"/"+name+".json").save("C("+toJSON+")");
+		}
+		
+		var types = [ DocumentJS.Class, DocumentJS.Constructor, DocumentJS.Function, DocumentJS.Page, DocumentJS.Attribute]
+		for(var t = 0; t< types.length; t++){
+			for(var i = 0; i <  types[t].listing.length; i++){
+				var ob = types[t].listing[i];
 
-        return readFile("docs/templates/left_side.ejs") ? 
-            DocumentJS.render("docs/templates/left_side.ejs", this) : 
-            DocumentJS.render("jmvc/plugins/documentation/templates/left_side.ejs" , this)
-    },
-    get_name : function(i){
-        var me = this.all_sorted[i].name
-        if(i == 0) return me;
-        
-        //break previous and self
-        var previous = this.all_sorted[i-1].name;
-        var t = me.split(/\./)
-        var p = previous.split(/\./);
-        var left_res = [], right_res = []
-        for(var j = 0; j < t.length; j++){
-            if(p[j] && p[j] ==  t[j])
-                left_res.push(t[j])
-            else
-                right_res.push(t[j])
-        }
-        return (left_res.length > 0 ? 
-        "<span class='matches_previous'>"+left_res.join(".")+".</span>" : "")+right_res.join(".")
+				var oliteral = ob.serialize();
+
+				var name = oliteral.name
+				convert(name, oliteral, this.all_sorted, path)
+	        }
+		}
+        this.searchData(path, convert);
+        //this.summary_page(summary)
     },
     /**
      * Creates a page for all classes and constructors
@@ -285,7 +251,7 @@ DocumentJS.Application.prototype =
             
         }
 	},
-    searchData : function(){
+    searchData : function(path, convert){
         var sortedClasses = DocumentJS.Class.listing.sort( DocumentJS.Pair.sort_by_name )
         
 		//go through and create 2 level hash structure
@@ -303,7 +269,10 @@ DocumentJS.Application.prototype =
 		this.addToSearchData(DocumentJS.Page.listing, searchData)
         this.addToSearchData(DocumentJS.Attribute.listing, searchData)
         
-        new DocumentJS.File(this.name+"/docs/searchData.json").save("C("+DocumentJS.toJSON(searchData, false)+")");
+		
+		new DocumentJS.File(path+"/searchData.json").save("C("+DocumentJS.toJSON(searchData, false)+")");
+		
+        //new DocumentJS.File(this.name+"/docs/searchData.json").save("C("+DocumentJS.toJSON(searchData, false)+")");
 
     },
     /**

@@ -16,11 +16,9 @@ DocumentJS.Pair.extend('DocumentJS.Script',
      * @param {Object} inc an object that has path and text attributes
      */
     init : function(inc){
-        print(".." +typeof inc)
 		this.children = [];
 		this.name = inc.path;
         this.src=inc.src;
-        print(' -  '+this.name)
         this.generate();
     },
     generate : function(){
@@ -33,7 +31,7 @@ DocumentJS.Pair.extend('DocumentJS.Script',
             var splits = pairs[i].match(this.Class.splitter);
             var comment = splits[1].replace(/^[^\w@]*/,'').replace(/\r?\n(\s*\*+)?/g,'\n');
             var code = splits[2];
-            var pair = DocumentJS.Pair.create( comment , code, scope);
+			var pair = DocumentJS.Pair.create( comment , code, scope);
             if(pair)
                 scope = pair.scope();
         }

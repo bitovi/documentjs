@@ -62,6 +62,7 @@ DocumentJS.Pair.extend('DocumentJS.Constructor',
                 DocumentJS.Directive.Plugin, DocumentJS.Directive.Tag);
         this._super();
         this._file_view = DocumentJS.get_template("file")
+		this.serialize('name',['linker','children'],'inherits','alias',['real_comment','comment'],'shortName','ret','params','plugin')
     }
 },
 /* @Prototype */
@@ -77,7 +78,7 @@ DocumentJS.Pair.extend('DocumentJS.Constructor',
         //this.Class.listing.push(this);
     },
     add_parent : function(scope){
-        while(scope.Class.shortName.toLowerCase() != 'file'){
+		while(scope.Class.shortName.toLowerCase() != 'script'){
             scope = scope.parent;
             if(!scope)
                 print("cant find file parent of "+this.comment)
@@ -137,21 +138,5 @@ DocumentJS.Pair.extend('DocumentJS.Constructor',
         if(m){
             this.name = m[1];
         }
-    },
-	json : function(){
-
-          return {
-              name: this.name,
-              children: this.linker().sort(DocumentJS.Pair.sort_by_full_name),
-              author: this.author,
-              inherits: this.inherits,
-              alias: this.alias,
-              comment: this.real_comment,
-			  shortName : this.Class.shortName,
-              ret : this.ret,
-              params : this.ordered_params(),
-              plugin: this.plugin
-          }
-		  
     }
 });

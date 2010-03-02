@@ -34,6 +34,9 @@ DocumentJS.Pair.extend('DocumentJS.Function',
         DocumentJS.Directive.CodeEnd,DocumentJS.Directive.Plugin, DocumentJS.Directive.Hide, 
         DocumentJS.Directive.Tag)
         this._super();
+		
+		
+		this.serialize('plugin',['full_name','name'],'html','shortName','ret','params',['real_comment','comment'],'tags')
     }
 },
 /* @prototype */
@@ -82,18 +85,6 @@ DocumentJS.Pair.extend('DocumentJS.Function',
         
         var n = this.name;
         return n+"("+res.join(", ")+") -> "+this.ret.type;
-    },
-    json : function(){
-        return {
-            plugin : this.plugin,
-            name: this.full_name(),
-            html : this.toHTML(),
-			shortName : this.Class.shortName.toLowerCase(),
-            ret : this.ret,
-            params : this.ordered_params(),
-            comment: this.real_comment,
-            tags: this.tags 
-        }
     },
     toFile : function(name){
 

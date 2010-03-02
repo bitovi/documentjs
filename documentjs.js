@@ -1,5 +1,5 @@
 //steal.plugins('view','lang/class','lang/json');
-//
+//_args = ["documentjs/test/test.html"]; load('documentjs/documentjs.js')
 
 (function(){
 	//we want everything under DocumentJS
@@ -19,6 +19,29 @@
 	DocumentJS.EJS = EJS;
 	DocumentJS.JSONparse = JSONparse;
 	DocumentJS.toJSON = toJSON;
+	
+	DocumentJS.Class.serialize = function(){
+		this.serializeable =  DocumentJS.makeArray(arguments)
+	}
+	DocumentJS.Class.prototype.serialize = function(){
+		var ob = {}, serials = this.Class.serializeable;
+		for(var i=0; i < serials.length; i++){
+			var attr, asAttr;
+			if(typeof serials[i] == "object"){
+				attr = serials[i][0]
+				asAttr =serials[i][1]
+			}else{
+				attr = asAttr = serials[i]
+			}
+			if(this[attr] !== undefined){
+				ob[asAttr] =  (typeof this[attr] == 'function' ? this[attr]() : this[attr] )
+				//print(typeof ob[serials[i]])
+			}
+				
+		}
+
+		return ob;
+	}
 	delete JSONparse;
 	delete steal;
 	delete EJS;
@@ -49,7 +72,7 @@
 	}
 	var app = new DocumentJS.Application(total, "documentjs/test");
 	
-	app.generate();
+	app.generate(_args[0].replace(/[^\/]*$/, "docs") ) //"documentjs/test/docs");
 	
 })();
 

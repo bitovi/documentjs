@@ -7,11 +7,6 @@ DocumentJS.Class.extend("DocumentJS.Pair",
 {
     code_match: function(){ return null},
     classes: [],
-    extended: function(Klass){
-        if(Klass.shortName){
-            this.classes.push(Klass)
-        }
-    },
     /**
      * From the comment and code, guesses at the type of comment and creates a new
      * instance of that type.
@@ -23,12 +18,13 @@ DocumentJS.Class.extend("DocumentJS.Pair",
      */
     create: function(comment, code, scope){
         var check =  comment.match(/^@(\w+)/), type
-    
+
         if(!(type = this.has_type(check ? check[1] : null)) ){ //try code
             type = this.guess_type(code);
         }
         if(!type) return null;
-        return new type(comment, code, scope)
+        
+		return new type(comment, code, scope)
     },
     /**
      * Looks for a Doc class with a shortName for the given type
@@ -36,7 +32,7 @@ DocumentJS.Class.extend("DocumentJS.Pair",
      */
     has_type: function(type){
         if(!type) return null;
-        for(var i=0;i< this.classes.length; i++){
+		for(var i=0;i< this.classes.length; i++){
             if(this.classes[i].shortName.toLowerCase() == type.toLowerCase() ) 
                 return this.classes[i];
         }
@@ -47,7 +43,8 @@ DocumentJS.Class.extend("DocumentJS.Pair",
      * @param {Object} code
      */
     guess_type: function(code){
-        for(var i=0;i< this.classes.length; i++){
+
+		for(var i=0;i< this.classes.length; i++){
             if(this.classes[i].code_match(code) ) 
                 return this.classes[i];
         }
@@ -78,6 +75,8 @@ DocumentJS.Class.extend("DocumentJS.Pair",
     init : function(){
 		if(this.shortName){
              this._view =  DocumentJS.get_template(this.shortName)    
+			 if(DocumentJS.Pair)
+			 	DocumentJS.Pair.classes.push(this)
         }
 		this.listing = [];
     },
@@ -116,7 +115,7 @@ DocumentJS.Class.extend("DocumentJS.Pair",
      * @param {DocumentJS.Pair} scope
      */
     init : function(comment, code, scope ){
-        this.children = []
+		this.children = []
         this.comment = comment;
         this.code = code;
 
@@ -137,7 +136,6 @@ DocumentJS.Class.extend("DocumentJS.Pair",
             DocumentJS.objects[this.full_name()] = par.url()+(this.url ? "" : "#"+this.full_name() );
         }
 		this.Class.listing.push(this);
-        
     },
     add: function(child){
         this.children.push(child);
@@ -154,15 +152,17 @@ DocumentJS.Class.extend("DocumentJS.Pair",
 		return "C("+$.toJSON(this.json())+")";
 	},
     toHTML : function(){
-       return this.Class._view.render(this)
+        return this.Class._view.render(this)
     },
     full_name: function(){
         var par = ""
-        if(!this.parent){
+        //print("has parent "+this.parent)
+		if(!this.parent){
             print(this.name+" has no parent ")
         }else
             par = this.parent.full_name();
-        return (par ? par+"." : "")+this.name ;
+        //print(par+" - "+this.name)
+		return (par ? par+"." : "")+this.name ;
     },
     make : function(arr){
         var res = ["<div>"];
@@ -234,5 +234,8 @@ DocumentJS.Class.extend("DocumentJS.Pair",
             }
         }
         if(this.comment_setup_complete) this.comment_setup_complete();
-    }
+    },
+	shortName : function(){
+		return this.Class.shortName;
+	}
 })

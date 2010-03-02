@@ -50,21 +50,11 @@ DocumentJS.Pair.extend('DocumentJS.Page',
         var ejs = "jmvc/plugins/documentation/templates/file.ejs"
         
         this._file_view =  DocumentJS.get_template("file")
+		this.serialize("name",['real_comment','comment'],"shortName","title",['linker','children'])
     }
 },
 /* @Prototype */
 {
-    json : function(){
-          return {
-              name: this.name,
-              //children: this.linker(),
-              comment : this.real_comment,
-			  shortName : this.Class.shortName.toLowerCase(),
-              title: this.title,
-			  children: this.linker(),
-          }
-		  
-    },
     /**
      * Verifies the class was created successfully.
      */
@@ -109,7 +99,7 @@ DocumentJS.Pair.extend('DocumentJS.Page',
 	},
 	add_parent : function(scope){
         //always go back to the file:
-        while(scope.Class.shortName.toLowerCase() != 'file') scope = scope.parent;
+        while(scope.Class.shortName.toLowerCase() != 'script') scope = scope.parent;
         this.parent = scope.children.length ? scope.children[0] : scope;
         this.parent.add(this);
     }

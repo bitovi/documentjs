@@ -54,6 +54,9 @@ DocumentJS.Pair.extend('DocumentJS.Class',
         var ejs = "jmvc/plugins/documentation/templates/file.ejs"
         
         this._file_view =  DocumentJS.get_template("file")
+		
+		
+		this.serialize('name',['linker','children'],'author','inherits','alias',['real_comment','comment'],'shortName','tags')
     }
 },
 /* @Prototype */
@@ -67,20 +70,6 @@ DocumentJS.Pair.extend('DocumentJS.Class',
     init: function(comment, code, scope ){
         this._super(comment, code, scope);
         
-    },
-    json : function(){
-
-          return {
-              name: this.name,
-              children: this.linker(),
-              author: this.author,
-              inherits: this.inherits,
-              alias: this.alias,
-              comment: this.real_comment,
-			  shortName : this.Class.shortName.toLowerCase(),
-              tags : this.tags || []
-          }
-		  
     },
     /**
      * Verifies the class was created successfully.
@@ -98,7 +87,7 @@ DocumentJS.Pair.extend('DocumentJS.Class',
      */
     add_parent : function(scope){
         //always go back to the file:
-        while(scope.Class.shortName.toLowerCase() != 'file') scope = scope.parent;
+        while(scope.Class.shortName.toLowerCase() != 'script') scope = scope.parent;
         this.parent = scope;
         this.parent.add(this);
     },
