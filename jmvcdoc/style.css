@@ -1,0 +1,236 @@
+body {font-family: "Trebuchet MS",Verdana,Helvetica,Arial,sans-serif; margin: 20px 0px 0px 0px; background-color: black;
+                overflow: hidden;
+}
+.error {border: solid 1px red;}
+.error_text { color: red; font-size: 10px;}
+td {padding: 3px; vertical-align: top;}
+#top {
+    padding: 0px 20px;
+    
+}
+#search {width: 293px;
+    padding:2px;
+    font-size: 14px;
+    font-family: "Trebuchet MS",Verdana,Helvetica,Arial,sans-serif;
+    margin-bottom: 20px;
+    float: left;
+}
+#defaults {
+    margin-left: 320px;
+    background-color: #2D2E26;
+    height: 26px;
+}
+#defaults a {
+    color: white;
+    padding: 0px 10px;
+}
+#bottom {
+    margin: 0px 20px;
+    clear: both;
+}
+#doc_container {
+    overflow: auto;
+    background-color: white;
+    margin-right: 0px;
+}
+#doc {
+    padding: 20px;
+}
+#left {
+    width: 300px;
+    float: left;
+    background-color: #2D2E26; /*#B8B495*/
+    overflow: auto;
+    margin-right: 20px;
+}
+#left a {
+    display: block;
+	padding: 5px;
+	text-decoration: none;
+	font-size: 14px;
+    color: #F1F1C3;
+    border: none;
+    outline: none;
+}
+
+#results .highlight {
+    background-color: #3C3D32;
+}
+
+
+
+#left .selected {
+	background-color: #96A84A;
+	border-top: solid 1px #AABF54
+}
+#left .prototype, #left .static {
+	color: gray;
+}
+#left .class, #left .constructor {
+	font-weight: bold;
+}
+#left .attribute {
+	color: red;
+}
+.remove {
+	float: right;
+	
+	display: block;
+	
+    width: 18px;
+    text-align: center;
+    height: 18px;
+    background-image: url('images/close.png');
+}
+#left #results a.picked {
+	background-color: #9C6854 /*#434538*/;
+}
+#doc .type {
+    font-size: 0.8em; color: gray;
+}
+h1 {
+    margin: 0px;
+}
+.top {
+    margin-bottom: 20px;
+}
+pre {
+    background-image: url('images/pre.png');
+    border: solid 1px white;
+    margin: 13px;
+    padding: 13px;
+}
+.favorite {
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: left 16px;
+}
+.favoriteon {
+    background-image: url(images/fav-on.png);
+}
+.favoriteoff {
+    background-image: url(images/fav-off.png);
+}
+#low {
+    
+    font-size: 10px;
+    margin-top: 2px;
+    margin-right: 20px;
+    text-align: right;
+}
+#low a{
+    color: #B8B495;
+}
+#defaults a.red{
+    color: /*#9C6854*/ #96A84A;
+}
+
+            
+            
+.param label, .return label {
+    color:#808080;
+    font-size:10pt;
+    font-weight:bold;
+    margin:0;
+}
+.options {
+
+margin-left:40px;
+margin-right:40px;
+text-align:left;
+}
+.options th {
+    border-bottom:1px solid #EEEEEE;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size: 0.8em;
+}
+
+.options td {
+border-bottom:1px solid #EEEEEE;
+font-size:10pt;
+line-height:150%;
+padding:3px;
+vertical-align:top;
+}
+
+.signiture {
+    border-color: #9C6854;
+    background: none;
+    background-color: white;
+}
+.params {
+    margin-left: 13px;
+}
+
+
+
+code .comment{ color:#007000;}
+.string{ color:Gray;}
+.keyword { color:#800080;}
+code .params { color:blue; margin: 0px;}
+.magic { background-color:#FFF7D7;}
+.console { color:blue; }
+.this { color:#0000C0; }
+
+table pre {
+    margin: 0px;
+}
+.big_button{
+    color:white;
+    display:block;
+    font-size:15pt;
+    height:85px;
+    text-decoration:none;
+    float: left;
+}
+.floatLeft {
+    float: left;
+}
+h2.spaced {
+    clear:left; padding-top: 18px;
+}
+#download {
+    background-image: url(images/download.png);
+    width:405px;
+    margin-right: 10px;
+}
+#video {
+    background-image: url(images/video.png);
+    width:95px;
+}
+
+.big_button * {
+    display:block;
+    font-family: Verdana;
+    padding-left:20px;
+    padding-top:20px;
+}
+.big_button .label {
+    color:black;
+    font-size:10pt;
+    padding-top:0;
+}
+#video * {
+    padding-left: 15px;
+    
+}
+.warn {
+    margin: 13px; padding: 13px;
+    font-size: 11px;
+    border: 1px solid #9C6854;
+    background-color: #eeeeee;
+}
+.highlight {
+    background-color: #F1F1C3
+}
+.tip {
+    font-size: 0.8em;
+    font-family: verdana;
+    padding-left: 13px;
+}
+.noborder {
+    border: none;
+}
+.floatLeft .noborder {
+    padding-right: 10px;
+}

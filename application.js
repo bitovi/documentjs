@@ -84,7 +84,7 @@ DocumentJS.extend(DocumentJS,
 /* @Static */
 {    
     render_to: function(file, ejs, data){
-        new DocumentJS.File(file).save( new DocumentJS.EJS({ absolute_url : ejs }).render(data)  );
+        new DocumentJS.File(file).save( new DocumentJS.EJS({ text : readFile(ejs) }).render(data)  );
         //MVCOptions.save(file,  this.render(ejs, data) );
     },
     render : function(ejs, data){
@@ -187,26 +187,30 @@ DocumentJS.Application.prototype =
 	        }
 		}
         this.searchData(path, convert);
-        //this.summary_page(summary)
+        this.summary_page(path, convert)
     },
     /**
      * Creates a page for all classes and constructors
      * @param {String} summary the left hand side.
      */
-    summary_page : function(summary){
+    summary_page : function(path, convert){
         //find index page
-        for(var p = 0; p < DocumentJS.Page.listing.length; p++){
+        var base = path.replace(/[^\/]*$/,"");
+		for(var p = 0; p < DocumentJS.Page.listing.length; p++){
             if(DocumentJS.Page.listing[p].full_name() == 'index')
                 this.indexPage = DocumentJS.Page.listing[p];
         }
         //checks if you have a summary
-        if( readFile("apps/"+this.name+"/summary.ejs") ){
-            DocumentJS.render_to(this.name+"_doc.html","../../apps/"+this.name+"/summary.ejs" , this)
+        if( readFile(path+"/summary.ejs") ){
+            DocumentJS.render_to(base+"docs.html",path+"/summary.ejs" , this)
         }else{
-            print("Using default page layout.  Overwrite by creating: apps/"+this.name+"/summary.ejs");
-            DocumentJS.render_to(this.name+"_doc.html","../../jmvc/plugins/documentation/templates/summary.ejs" , this)
+            print("Using default page layout.  Overwrite by creating: "+path+"/summary.ejs");
+            DocumentJS.render_to(base+"docs.html","documentjs/jmvcdoc/summary.ejs" , {
+				pathToRoot: DocumentJS.File.pathToSteal(base.replace(/\/[^\/]*$/, "")),
+				path: path
+			}); //default 
         }
-        this.searchData();
+        
         
     },
     indexOf : function(array, item){

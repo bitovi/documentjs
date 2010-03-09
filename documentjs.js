@@ -65,12 +65,12 @@
 	
 	var loader = new Loader(_args[0]);
 	var total = [];
-	for(var i =0; i < loader.scripts.length; i++){
-		var script = loader.getScriptContent(loader.scripts[i]);
-		if(script)
-			total.push({src: script, path: loader.scripts[i].src})
-	}
+	loader.each(null, function(script, content, i){
+		if(content && script.src)
+			total.push({src: content, path: script.src})
+	})
 	var app = new DocumentJS.Application(total, "documentjs/test");
+
 	
 	app.generate(_args[0].replace(/[^\/]*$/, "docs") ) //"documentjs/test/docs");
 	
