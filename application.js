@@ -182,7 +182,7 @@ DocumentJS.Application.prototype =
 
 				var oliteral = ob.serialize();
 
-				var name = oliteral.name
+				var name = oliteral.name.replace(/ /g, "_").replace(/&#46;/g, ".");
 				convert(name, oliteral, this.all_sorted, path)
 	        }
 		}
