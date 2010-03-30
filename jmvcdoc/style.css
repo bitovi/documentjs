@@ -5,14 +5,13 @@ body {font-family: "Trebuchet MS",Verdana,Helvetica,Arial,sans-serif; margin: 20
 .error_text { color: red; font-size: 10px;}
 td {padding: 3px; vertical-align: top;}
 #top {
-    padding: 0px 20px;
+    padding: 0px 0px 20px 20px;
     
 }
 #search {width: 293px;
     padding:2px;
     font-size: 14px;
     font-family: "Trebuchet MS",Verdana,Helvetica,Arial,sans-serif;
-    margin-bottom: 20px;
     float: left;
 }
 #defaults {
