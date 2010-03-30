@@ -43,7 +43,8 @@ DocumentJS.Pair.extend('DocumentJS.Page',
      */
     init : function(){
         this.add(
-        DocumentJS.Directive.CodeStart, DocumentJS.Directive.CodeEnd, DocumentJS.Directive.Tag)
+        DocumentJS.Directive.CodeStart, DocumentJS.Directive.CodeEnd,
+		DocumentJS.Directive.Tag, DocumentJS.Directive.iFrame)
         
         this._super();
         

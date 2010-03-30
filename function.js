@@ -32,7 +32,7 @@ DocumentJS.Pair.extend('DocumentJS.Function',
     init : function(){
         this.add(DocumentJS.Directive.Return, DocumentJS.Directive.Param, DocumentJS.Directive.CodeStart, 
         DocumentJS.Directive.CodeEnd,DocumentJS.Directive.Plugin, DocumentJS.Directive.Hide, 
-        DocumentJS.Directive.Tag)
+        DocumentJS.Directive.Tag, DocumentJS.Directive.iFrame)
         this._super();
 		
 		
