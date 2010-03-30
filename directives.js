@@ -269,10 +269,9 @@ DocumentJS.Directive.extend('DocumentJS.Directive.iFrame',{
         
         if(m){
             var iframe_src = m[1] ? m[1].toLowerCase() : '';
-			var iframe_width = m[2] ? m[2] : '320';
-			var iframe_height = m[3] ? m[3] : '320';
+			var iframe_height = m[2] ? m[2] : '320';
 			this.real_comment += 
-            "<pre><iframe src='"+iframe_src+"' width='"+iframe_width+"' height='"+iframe_height +"' frameborder=0 style='display:block'></iframe></pre>"
+            "<pre><iframe src='"+iframe_src+"' width='100%' height='"+iframe_height +"' frameborder=0 style='display:block'></iframe></pre>"
         }
     }
 });
