@@ -271,7 +271,11 @@ DocumentJS.Directive.extend('DocumentJS.Directive.iFrame',{
             var iframe_src = m[1] ? m[1].toLowerCase() : '';
 			var iframe_height = m[2] ? m[2] : '320';
 			this.real_comment += 
-            "<pre><iframe src='"+iframe_src+"' width='100%' height='"+iframe_height +"' frameborder=0 style='display:block'></iframe></pre>"
+            "<iframe src='" + iframe_src + "' width='100%' " +
+			"height='" + iframe_height + "' " +
+			"frameborder=0 " +
+			"style='display:block;border:1px solid #cccccc;" + 
+			"padding:0 0 10px 20px;margin:10px 0 10px 0;background-color:#eeeeee;'></iframe>"
         }
     }
 });
