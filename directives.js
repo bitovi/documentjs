@@ -275,7 +275,7 @@ DocumentJS.Directive.extend('DocumentJS.Directive.iFrame',{
 			"height='" + iframe_height + "' " +
 			"frameborder=0 " +
 			"style='display:block;border:1px solid #cccccc;" + 
-			"padding:0 0 10px 20px;margin:10px 0 10px 0;background-color:#eeeeee;'></iframe>"
+			"padding:0 0 10px 10px;margin:10px 0 10px 0;background-color:#eeeeee;'></iframe>"
         }
     }
 });
