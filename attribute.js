@@ -8,35 +8,35 @@
  * })
  * @codeend
  */
-DocumentJS.Pair.extend('DocumentJS.Attribute',{
+DocumentJS.Pair.extend('DocumentJS.Attribute',
+/* @static */
+{
 	init : function(){
-		this.serialize('plugin','full_name','shortName',['real_comment','comment'])
-	}
-},
- /* @prototype */
- {
+        this.add(DocumentJS.Directive.Return, DocumentJS.Directive.Param, DocumentJS.Directive.CodeStart, 
+        DocumentJS.Directive.CodeEnd,DocumentJS.Directive.Plugin, DocumentJS.Directive.Hide, 
+        DocumentJS.Directive.Tag, DocumentJS.Directive.iFrame);
+        this._super();
+				
+		this.serialize('plugin',['full_name','name'], 'html', 'shortName', 'ret','params', ['real_comment','comment'])
+	},
+
      /**
       * Matches an attribute with code
       * @param {Object} code
       */
      code_match: function(code){
          return code.match(/(\w+)\s*[:=]\s*/) && !code.match(/(\w+)\s*[:=]\s*function\(([^\)]*)/)  
-     },
-     init : function(){
-        this.add(
-                DocumentJS.Directive.Author,
-                DocumentJS.Directive.Return,
-                DocumentJS.Directive.Hide, DocumentJS.Directive.CodeStart, DocumentJS.Directive.CodeEnd, DocumentJS.Directive.Alias,
-                DocumentJS.Directive.Plugin, DocumentJS.Directive.Tag);
-        this._super();
      }
- },{
+ },
+ /* @prototype */
+{
      /**
       * Saves the name of the attribute
       */
      code_setup: function(){
         var parts = this.code.match(/(\w+)\s*[:=]\s*/);
         this.name = parts[1];
+
      },
      attribute_add: function(line){
         var m = line.match(/^@\w+ ([\w\.]+)/)
