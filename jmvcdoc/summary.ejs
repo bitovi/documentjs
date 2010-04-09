@@ -10,22 +10,42 @@
 				list-style-image:none;
 				list-style-position:outside;
 				list-style-type:none;
+				position:absolute;
+				z-index:1000;			
 			}
 			.ui-menu-item {
 				float: left;
 				/*padding:0.5em 1em;*/
 				cursor: pointer;
 			}
+			.ui-sub-menu {
+				padding: 5px;	
+				background-color: #2D2E26;			
+			}
+			.ui-sub-menu a:link, 
+			.ui-sub-menu a:visited,
+			.ui-sub-menu a:active {
+				color: #ffffff!important;	
+			}						
+			.ui-sub-menu a:hover {
+				background-color: #dddddd;
+				color: #111111!important;
+			}
+			.ui-sub-menu>li {
+				width: 100%;
+				height: 15px;
+				padding: 5px;
+			}
 			.selected {
 				background-color: #dddddd;
 			}
-			.selected a:link, 
-			.selected a:visited,
-			.selected a:hover,
-			.selected a:active {
+			.selected>a:link, 
+			.selected>a:visited,
+			.selected>a:hover,
+			.selected>a:active {
 				color: #111111!important;
 			}			
-		</style>				
+		</style>
 	</head>
 	<body scroll="no">
 	    
@@ -46,10 +66,34 @@
 	                    	<a href="#favorites">Favorites</a>
 						</li>
 						<li class="ui-menu-item">						
-							<a href="http://groups.google.com/group/javascriptmvc" class="red" title="Google Group Discussion">Discuss</a>
+							<a href="javascript://" class="red" title="Follow">Follow&nbsp;&nbsp;&nbsp;</a>
+							<ul class="ui-menu ui-sub-menu">
+								<li><a href="http://twitter.com/javascriptmvc">Twitter</a></li>
+								<li><a href="http://blog.javascriptmvc.com/">Blog</a></li>
+								<li><a href="http://groups.google.com/group/javascriptmvc">Google Group</a></li>
+							</ul>							
 						</li>
+						<li class="ui-menu-item" class="red">						
+	                    	<a href="http://www.javascriptmvc.com/#&who=contribute" class="red" title="Contribute">Contribute</a>
+						</li>	
 						<li class="ui-menu-item">						
-                    		<a href="http://javascriptmvc.googlecode.com/" class="red" title="Google Code SVN Repository">Google Code</a>
+	                    	<a href="http://www.javascriptmvc.com/#&who=help" class="red" title="Get Help">Get Help</a>
+						</li>	
+						<li class="ui-menu-item">						
+	                    	<a href="http://1-5.javascriptmvc.com/index.html" class="red" title="Old Site">1.5</a>
+						</li>																			
+						<li class="ui-menu-item">						
+                    		<a href="javascript://" class="red" title="Code Repositories">Code Repositories&nbsp;&nbsp;&nbsp;</a>
+							<ul class="ui-menu ui-sub-menu">
+								<li><a href="http://github.com/pinhook/framework">Framework 3.0</a></li>
+								<li><a href="http://github.com/pinhook/javascriptmvc/">Javascriptmvc 3.0</a></li>
+								<li><a href="http://github.com/pinhook/steal">Steal 3.0</a></li>
+								<li><a href="http://github.com/pinhook/funcunit">Funcunit 3.0</a></li>
+								<li><a href="http://github.com/pinhook/phui">Phui 3.0</a></li>								
+								<li><a href="http://github.com/pinhook/documentjs">Documentjs 3.0</a></li>																
+								<li><a href="http://github.com/pinhook/jmvcdoc">Jmvcdoc 3.0</a></li>								
+								<li><a href="http://javascriptmvc.googlecode.com/">Javascriptmvc 2.x</a></li>								
+							</ul>								
 						</li>
 					</ul>
                     
