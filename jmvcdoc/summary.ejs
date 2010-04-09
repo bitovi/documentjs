@@ -4,6 +4,28 @@
 	<head>
 		<title>JavaScriptMVC</title>
         <link rel="stylesheet" type='text/css' href='<%= pathToRoot %>/documentjs/jmvcdoc/style.css' />
+		<style>
+			.ui-menu {
+				margin: 0px; padding: 0px;
+				list-style-image:none;
+				list-style-position:outside;
+				list-style-type:none;
+			}
+			.ui-menu-item {
+				float: left;
+				/*padding:0.5em 1em;*/
+				cursor: pointer;
+			}
+			.selected {
+				background-color: #dddddd;
+			}
+			.selected a:link, 
+			.selected a:visited,
+			.selected a:hover,
+			.selected a:active {
+				color: #111111!important;
+			}			
+		</style>				
 	</head>
 	<body scroll="no">
 	    
@@ -12,11 +34,24 @@
 	            <input id='search' type='input' disabled='true'/>
                 <div id='defaults'>
                     <div style='color:white;float: right;margin-right: 10px; position: relative; top: -3px'>JavaScript<img src='/jmvcdoc/images/logo.png' style="position: relative; top: 5px;left: 2px"/></div>
-                    <a href="#&amp;search=&#42;&amp;who=index">Home</a>
-                    <a href="#&amp;search=core">Core</a>
-                    <a href="#favorites">Favorites</a>
-					<a href="http://groups.google.com/group/javascriptmvc" class="red" title="Google Group Discussion">Discuss</a>
-                    <a href="http://javascriptmvc.googlecode.com/" class="red" title="Google Code SVN Repository">Google Code</a>
+					
+					<ul id="menu" class="ui-menu">
+						<li class="ui-menu-item">
+                    		<a href="#&amp;search=&#42;&amp;who=index">Home</a>
+						</li>
+						<li class="ui-menu-item">						
+	                    	<a href="#&amp;search=core">Core</a>
+						</li>
+						<li class="ui-menu-item">						
+	                    	<a href="#favorites">Favorites</a>
+						</li>
+						<li class="ui-menu-item">						
+							<a href="http://groups.google.com/group/javascriptmvc" class="red" title="Google Group Discussion">Discuss</a>
+						</li>
+						<li class="ui-menu-item">						
+                    		<a href="http://javascriptmvc.googlecode.com/" class="red" title="Google Code SVN Repository">Google Code</a>
+						</li>
+					</ul>
                     
                 </div>
 	        </div>
