@@ -32,8 +32,11 @@ DocumentJS.Pair.extend('DocumentJS.Script',
             var comment = splits[1].replace(/^[^\w@]*/,'').replace(/\r?\n(\s*\*+)?/g,'\n');
             var code = splits[2];
 			var pair = DocumentJS.Pair.create( comment , code, scope);
-            if(pair)
-                scope = pair.scope();
+            if(pair){
+				//get the new scope if you need it
+				scope = pair.scope();
+			}
+                
         }
     },
     /**

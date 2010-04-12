@@ -279,3 +279,14 @@ DocumentJS.Directive.extend('DocumentJS.Directive.iFrame',{
         }
     }
 });
+/**
+ * @hide
+ * Adds an iframe to some page with example code, e.g. @iframe phui/menu/menu.html 320 
+ * 320 is the iframe height. 
+ */
+DocumentJS.Directive.extend('DocumentJS.Directive.Scope',{
+    add: function(line){
+		print("Scope! "+line)
+        this.starts_scope = true;
+    }
+});
