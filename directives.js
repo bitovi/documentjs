@@ -268,14 +268,14 @@ DocumentJS.Directive.extend('DocumentJS.Directive.iFrame',{
         var m = line.match(/^\s*@iframe\s*([\w\.\/]*)\s*([\w]*)\s*(.*)/)
         
         if(m){
-            var iframe_src = m[1] ? m[1].toLowerCase() : '';
-			var iframe_height = m[2] ? m[2] : '320';
-			this.real_comment += 
-            "<iframe src='" + iframe_src + "' width='100%' " +
-			"height='" + iframe_height + "' " +
-			"frameborder=0 " +
-			"style='display:block;border:1px solid #cccccc;" + 
-			"padding:0 0 10px 10px;margin:10px 0 10px 0;background-color:#eeeeee;'></iframe>"
+            var iframeSrc = m[1] ? m[1].toLowerCase() : '';
+			var iframeHeight = m[2] ? m[2] : '320';
+			var iframeId = new Date().getTime();
+			this.real_comment += "<div class='iframe_wrapper'><iframe id='iframe_" + iframeId + "'></iframe></div>" +
+			"<script type='text/javascript'>" + 
+			"$('iframe#iframe_" + iframeId + "').attr({src:'" + iframeSrc + "',height:'" + iframeHeight + "',frameborder:0})" +
+			"</script>"; 
+			
         }
     }
 });
