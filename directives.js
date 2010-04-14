@@ -271,7 +271,9 @@ DocumentJS.Directive.extend('DocumentJS.Directive.iFrame',{
             var iframeSrc = m[1] ? m[1].toLowerCase() : '';
 			var iframeHeight = m[2] ? m[2] : '320';
 			var iframeId = new Date().getTime();
-			this.real_comment += "<div class='iframe_wrapper'><iframe id='iframe_" + iframeId + "'></iframe></div>" +
+			this.real_comment += "<div class='iframe_wrapper'>" +
+			"<a class='scripts_menu_button' href='javascript://'>Scripts Menu</a>"+
+			"<iframe id='iframe_" + iframeId + "'></iframe></div>" +
 			"<script type='text/javascript'>" + 
 			"$('iframe#iframe_" + iframeId + "').attr({src:'" + iframeSrc + "',height:'" + iframeHeight + "',frameborder:0})" +
 			"</script>"; 

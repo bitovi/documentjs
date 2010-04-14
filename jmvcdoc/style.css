@@ -235,6 +235,7 @@ h2.spaced {
 }
 iframe {
     display:block;
+	clear:right;
 	width:100%;
 	border:1px solid #cccccc;
 	padding:0 0 10px 10px;
@@ -244,29 +245,22 @@ iframe {
 .iframe_wrapper {
 	border: 1px solid #ffffff;
 }
-.scripts-menu {
+.scripts_menu_button {
+	display:block;
+	float: right;
+	width: 100px 	
+	background-color: #cccccc;
+	border-top:1px solid #999999;	
+	border-left:1px solid #999999;
+	border-right:1px solid #999999;
+}
+.scripts_menu {
 	list-style-image:none;
 	list-style-position:outside;
 	list-style-type:none;
+	font-size: 0.7em;
+	background-color: #cccccc;
+	border:1px solid #999999;
 }
-.scripts-menu-item {
-	float: right;
-    background-color:#CCCCCC;
-    border-top:1px solid #AAAAAA;	
-	border-left:1px solid #AAAAAA;
-	border-right:1px solid #AAAAAA;
-}
-.close {
-	width: 25%;
-}
-.scripts-sub-menu {
-	font-size:0.7em;
-	position: absolute;
-	z-index: 1000;		
-	background-color:#aaaaaa;		
-	color:#ffffff;
-	border: 1px solid #999999;
-}
-.scripts-sub-menu li {
-	padding:2px;	
+.scripts_menu_item {
 }
