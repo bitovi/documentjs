@@ -245,7 +245,7 @@ iframe {
 .iframe_wrapper {
 	border: 1px solid #ffffff;
 }
-.scripts_menu_button {
+.iframe_menu_button {
 	display:block;
 	float: right;
 	width: 100px 	
@@ -254,13 +254,16 @@ iframe {
 	border-left:1px solid #999999;
 	border-right:1px solid #999999;
 }
-.scripts_menu {
+.iframe_menu {
 	list-style-image:none;
 	list-style-position:outside;
 	list-style-type:none;
 	font-size: 0.7em;
-	background-color: #cccccc;
+	background-color: #ffffff;
 	border:1px solid #999999;
+	padding: 5px;
+	margin: 0;
 }
-.scripts_menu_item {
+.iframe_menu_item {
+	margin: 5px 2px 0px 2px;
 }

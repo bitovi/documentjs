@@ -265,9 +265,20 @@ DocumentJS.Directive.extend('DocumentJS.Directive.Tag',{
  */
 DocumentJS.Directive.extend('DocumentJS.Directive.iFrame',{
     add: function(line){
-        var m = line.match(/^\s*@iframe\s*([\w\.\/]*)\s*([\w]*)\s*(.*)/)
+        var parts = line.match(/^\s*@iframe\s*([\w\.\/]*)\s*([\w]*)\s*(.*)/)
+
+        if(!parts){
+            print("LINE: \n"+line+"\n does not match @iframe SRC HEIGHT")
+            return;
+        }
+
+		var iframe = {};
+        iframe.src = parts[1]
+		iframe.height = parts[2] ? parts[2] : 320;		
         
-        if(m){
+		this.iframe = iframe;
+		
+        /*if(m){
             var iframeSrc = m[1] ? m[1].toLowerCase() : '';
 			var iframeHeight = m[2] ? m[2] : '320';
 			var iframeId = new Date().getTime();
@@ -277,8 +288,7 @@ DocumentJS.Directive.extend('DocumentJS.Directive.iFrame',{
 			"<script type='text/javascript'>" + 
 			"$('iframe#iframe_" + iframeId + "').attr({src:'" + iframeSrc + "',height:'" + iframeHeight + "',frameborder:0})" +
 			"</script>"; 
-			
-        }
+        }*/
     }
 });
 /**
