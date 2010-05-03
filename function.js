@@ -36,7 +36,7 @@ DocumentJS.Pair.extend('DocumentJS.Function',
         this._super();
 		
 		
-		this.serialize('plugin',['full_name','name'],'html','shortName','ret','params',['real_comment','comment'],'tags','iframe')
+		this.serialize('plugin',['full_name','name'],'html','shortName','ret','params',['real_comment','comment'],'tags')
     }
 },
 /* @prototype */

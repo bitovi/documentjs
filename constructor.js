@@ -62,7 +62,7 @@ DocumentJS.Pair.extend('DocumentJS.Constructor',
                 DocumentJS.Directive.Plugin, DocumentJS.Directive.Tag, DocumentJS.Directive.iFrame);
         this._super();
         this._file_view = DocumentJS.get_template("file")
-		this.serialize('name',['linker','children'],'inherits','alias',['real_comment','comment'],'shortName','ret','params','plugin','tags','iframe')
+		this.serialize('name',['linker','children'],'inherits','alias',['real_comment','comment'],'shortName','ret','params','plugin','tags')
     }
 },
 /* @Prototype */

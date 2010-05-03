@@ -17,7 +17,7 @@ DocumentJS.Pair.extend('DocumentJS.Attribute',
         DocumentJS.Directive.Tag, DocumentJS.Directive.iFrame);
         this._super();
 				
-		this.serialize('plugin',['full_name','name'], 'html', 'shortName', 'ret','params', ['real_comment','comment'],'iframe')
+		this.serialize('plugin',['full_name','name'], 'html', 'shortName', 'ret','params', ['real_comment','comment'])
 	},
 
      /**

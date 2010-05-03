@@ -265,30 +265,19 @@ DocumentJS.Directive.extend('DocumentJS.Directive.Tag',{
  */
 DocumentJS.Directive.extend('DocumentJS.Directive.iFrame',{
     add: function(line){
-        var parts = line.match(/^\s*@iframe\s*([\w\.\/]*)\s*([\w]*)\s*(.*)/)
-
-        if(!parts){
-            print("LINE: \n"+line+"\n does not match @iframe SRC HEIGHT")
-            return;
-        }
-
-		var iframe = {};
-        iframe.src = parts[1]
-		iframe.height = parts[2] ? parts[2] : 320;		
-        
-		this.iframe = iframe;
+        var m = line.match(/^\s*@iframe\s*([\w\.\/]*)\s*([\w]*)\s*(.*)/)
 		
-        /*if(m){
+        if(m){
             var iframeSrc = m[1] ? m[1].toLowerCase() : '';
 			var iframeHeight = m[2] ? m[2] : '320';
 			var iframeId = new Date().getTime();
 			this.real_comment += "<div class='iframe_wrapper'>" +
-			"<a class='scripts_menu_button' href='javascript://'>Scripts Menu</a>"+
+			"<button class='iframe_menu_button ui-button ui-widget ui-state-default ui-corner-top ui-button-text-only'>Scripts</button>"+
 			"<iframe id='iframe_" + iframeId + "'></iframe></div>" +
 			"<script type='text/javascript'>" + 
 			"$('iframe#iframe_" + iframeId + "').attr({src:'" + iframeSrc + "',height:'" + iframeHeight + "',frameborder:0})" +
 			"</script>"; 
-        }*/
+        }
     }
 });
 /**

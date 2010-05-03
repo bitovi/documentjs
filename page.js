@@ -51,7 +51,7 @@ DocumentJS.Pair.extend('DocumentJS.Page',
         var ejs = "jmvc/plugins/documentation/templates/file.ejs"
         
         this._file_view =  DocumentJS.get_template("file")
-		this.serialize("name",['real_comment','comment'],"shortName","title",['linker','children'],'iframe')
+		this.serialize("name",['real_comment','comment'],"shortName","title",['linker','children'])
     }
 },
 /* @Prototype */

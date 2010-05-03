@@ -253,6 +253,7 @@ iframe {
 	border-top:1px solid #999999;	
 	border-left:1px solid #999999;
 	border-right:1px solid #999999;
+	cursor: pointer;
 }
 .iframe_menu {
 	list-style-image:none;

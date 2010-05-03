@@ -56,7 +56,7 @@ DocumentJS.Pair.extend('DocumentJS.Class',
         this._file_view =  DocumentJS.get_template("file")
 		
 		
-		this.serialize('name',['linker','children'],'author','inherits','alias',['real_comment','comment'],'shortName','tags','iframe')
+		this.serialize('name',['linker','children'],'author','inherits','alias',['real_comment','comment'],'shortName','tags')
     }
 },
 /* @Prototype */
