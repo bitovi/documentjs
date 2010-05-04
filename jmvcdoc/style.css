@@ -268,3 +268,18 @@ iframe {
 .iframe_menu_item {
 	margin: 5px 2px 0px 2px;
 }
+
+.ui-accordion .ui-accordion-content {
+    padding: 0;
+	margin: 0;
+}
+
+.ui-accordion .ui-accordion-content pre {
+	padding: 0;
+	margin: 0;
+}
+
+.ui-accordion .ui-accordion-content iframe {
+    padding: 0;
+	margin: 0;
+}
