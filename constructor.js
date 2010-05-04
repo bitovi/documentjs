@@ -59,7 +59,7 @@ DocumentJS.Pair.extend('DocumentJS.Constructor',
                 DocumentJS.Directive.Author,
                 DocumentJS.Directive.Return,
                 DocumentJS.Directive.Hide, DocumentJS.Directive.CodeStart, DocumentJS.Directive.CodeEnd, DocumentJS.Directive.Alias,
-                DocumentJS.Directive.Plugin, DocumentJS.Directive.Tag, DocumentJS.Directive.iFrame);
+                DocumentJS.Directive.Plugin, DocumentJS.Directive.Tag, DocumentJS.Directive.iFrame, DocumentJS.Directive.Demo);
         this._super();
         this._file_view = DocumentJS.get_template("file")
 		this.serialize('name',['linker','children'],'inherits','alias',['real_comment','comment'],'shortName','ret','params','plugin','tags')

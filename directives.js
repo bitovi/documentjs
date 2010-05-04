@@ -261,7 +261,7 @@ DocumentJS.Directive.extend('DocumentJS.Directive.Tag',{
 /**
  * @hide
  * Adds an iframe to some page with example code, e.g. @iframe phui/menu/menu.html 320 
- * 320 is the iframe height. 
+ * 320 is the iframe default height. 
  */
 DocumentJS.Directive.extend('DocumentJS.Directive.iFrame',{
     add: function(line){
@@ -280,6 +280,23 @@ DocumentJS.Directive.extend('DocumentJS.Directive.iFrame',{
         }
     }
 });
+
+/**
+ * @hide
+ * Placeholder for an application demo, e.g. @demo jquery/event/default/default.html 320  
+ * 320 is demo widget default height.  
+ */
+DocumentJS.Directive.extend('DocumentJS.Directive.Demo',{
+    add: function(line){
+        var m = line.match(/^\s*@demo\s*([\w\.\/]*)\s*([\w]*)\s*(.*)/)
+        if(m){			
+            var src = m[1] ? m[1].toLowerCase() : '';
+			var height = m[2] ? m[2] : '320';
+			this.real_comment += "<div class='demo_wrapper' style='height:" + height + "px'></div>";
+        }
+    }
+});
+
 /**
  * @hide
  * Adds an iframe to some page with example code, e.g. @iframe phui/menu/menu.html 320 

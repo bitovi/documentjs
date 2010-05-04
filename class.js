@@ -47,7 +47,7 @@ DocumentJS.Pair.extend('DocumentJS.Class',
         DocumentJS.Directive.Author,
         DocumentJS.Directive.Hide,
         DocumentJS.Directive.CodeStart, DocumentJS.Directive.CodeEnd, DocumentJS.Directive.Alias,
-        DocumentJS.Directive.Plugin, DocumentJS.Directive.Tag, DocumentJS.Directive.iFrame)
+        DocumentJS.Directive.Plugin, DocumentJS.Directive.Tag, DocumentJS.Directive.iFrame, DocumentJS.Directive.Demo)
         
         this._super();
         
