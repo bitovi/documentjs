@@ -283,16 +283,15 @@ DocumentJS.Directive.extend('DocumentJS.Directive.iFrame',{
 
 /**
  * @hide
- * Placeholder for an application demo, e.g. @demo jquery/event/default/default.html 320  
- * 320 is demo widget default height.  
+ * Placeholder for an application demo, e.g. @demo jquery/event/default/default.html    
  */
 DocumentJS.Directive.extend('DocumentJS.Directive.Demo',{
     add: function(line){
-        var m = line.match(/^\s*@demo\s*([\w\.\/]*)\s*([\w]*)\s*(.*)/)
+        var m = line.match(/^\s*@demo\s*([\w\.\/]*)\s*([\w]*)/)
         if(m){			
             var src = m[1] ? m[1].toLowerCase() : '';
 			var height = m[2] ? m[2] : '320';
-			this.real_comment += "<div class='demo_wrapper' style='height:" + height + "px'></div>";
+			this.real_comment += "<div class='demo_wrapper' data-demo-src='" + src + "'></div>";
         }
     }
 });
