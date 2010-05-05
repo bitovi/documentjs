@@ -286,12 +286,18 @@ iframe {
 }
 
 .ui-accordion .ui-accordion-content pre {
-	padding: 0;
+	padding: 5px;
 	margin: 0;
 	background-image: none;
 }
 
+.ui-accordion .ui-accordion-content pre code {
+	font-family: "Courier New";
+}
+
 .ui-accordion .ui-accordion-content iframe {
+	background-color: #ffffff;
+	border: none;
     padding: 0;
 	margin: 0;
 }
