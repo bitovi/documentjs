@@ -347,14 +347,14 @@ a.join(".");$.ajax({url:DOCS_LOCATION+a.replace(/ /g,"_").replace(/&#46;/g,".")+
 DocumentationController.Helpers={previousIndent:0,calculateDisplay:function(a,b){var d=b.split(/\./);a=a.split(/\./);for(var c=[],e=[],f=0;f<d.length;f++)if(a[f]&&a[f]==d[f])c.push(d[f]);else{e=d.slice(f);break}if(c.length==1&&(c[0]=="jQuery"||c[0]=="steal"))return{length:1,name:b};if(this.indentAdjust===undefined)this.indentAdjust=c.length?0:1;return{length:c.length<2?c.length+this.indentAdjust:c.length,name:e.join(".")}},linkTags:function(a){for(var b=[],d=0;d<a.length;d++)b.push("<a href='#&search="+
 a[d]+"'>"+a[d]+"</a>");return b.join(" ")},linkOpen:function(a){return"<a href='#&who="+a+"'>"+a+"</a>"},signiture:function(){var a=[],b=this._data.name;b=b.replace("jQuery.","$.");var d=b.lastIndexOf(".static."),c=b.lastIndexOf(".prototype.");if(d!=-1)b=b.substring(0,d)+"."+b.substring(d+8);else if(c!=-1)b=jQuery.String.underscore(b.substring(0,c).replace("$.",""))+"."+b.substring(c+11);if(this._data.shortName=="constructor")b="new "+b;d=orderedParams(this._data.params);for(c=0;c<d.length;c++)a.push(d[c].name);
 return b+"("+a.join(", ")+") -> "+this._data.ret.type},link:function(a,b){return a.replace(/\[\s*((?:['"][^"']*["'])|[^\|\]\s]*)\s*\|?\s*([^\]]*)\s*\]/g,function(d,c,e){if(/^["']/.test(c))c=c.substr(1,c.length-2);var f=Search._data.list[c]?c:null;if(f){e||(e=b?c:c.replace(/\.prototype|\.static/,""));return"<a href='#&who="+f+"'>"+e+"</a>"}else if(typeof c=="string"&&c.match(/^https?|www\.|#/))return"<a href='"+c+"'>"+(e||c)+"</a>";return d})},shortenUrl:function(a){a=a.href?a.href:a;var b=a.match(/(https?:\/\/|file:\/\/)[^\/]*\/(.*)/);
-return b[2]?b[2]:a},normalizeUrl:function(a){var b=(new steal.File(window.location.href)).domain();if(a.test(/^\//))a=new steal.File(a.joinFrom(new steal.File(b)));return a}};$.fn.highlight=function(){this.each(function(){hljs.highlightBlock(this)});return this};
+return b[2]?b[2]:a}};$.fn.highlight=function(){this.each(function(){hljs.highlightBlock(this)});return this};
 ;
 steal.end();;
 jQuery.Controller.extend("IframeController",{},{".iframe_menu_item a click":function(a){a=a.attr("data-src");window.open(a,a)},windowresize:function(){$(".iframe_menu_wrapper").trigger("move",$(".iframe_menu_button"))},".iframe_menu_item a mouseenter":function(a){a.css("background-color","blue");a.css("color","white")},".iframe_menu_item a mouseleave":function(a){a.css("background-color","");a.css("color","")}});
 ;
 steal.end();;
-jQuery.Controller.extend("DemoController",{},{init:function(){hljs.start();this.element.html(this.view("//jmvcdoc/views/demo/init.ejs",{demoSrc:this.element.attr("data-demo-src")}));var a=this.find("iframe");this.find(".demo_content").css({padding:"5px"});var b=this,c=320,e="",f="";a.bind("load",function(){var d=$(this.contentWindow.document.body);e=d.find("#demo-html").html();b.find(".html_content").html('<pre><code class="html"></code></pre>').find("code").text(e).highlight();f=d.find("#demo-source").text();
-b.find(".source_content").html('<pre><code class="javascript"></code></pre>').find("code").text(f).highlight();c=d.outerHeight();a.height(c+50);b.find(".demo_content").height(c+50)})},".section click":function(a){a.next().toggle("slow");a.find("span").toggleClass("ui-icon-triangle-1-s").toggleClass("ui-icon-triangle-1-e")}});
+jQuery.Controller.extend("DemoController",{},{init:function(){var a=this,b=320,e="",f="";hljs.start();this.element.html(this.view("//jmvcdoc/views/demo/init.ejs"));var g=this.element.attr("data-demo-src"),c=this.find("iframe");c.attr("src",g);c.bind("load",function(){var d=$(this.contentWindow.document.body);a.find(".demo_content").css({padding:"5px"});e=d.find("#demo-html").html();a.find(".html_content").html('<pre><code class="html"></code></pre>').find("code").text(e).highlight();f=d.find("#demo-source").html();
+a.find(".source_content").html('<pre><code class="javascript"></code></pre>').find("code").text(f).highlight();b=d.outerHeight();c.height(b+50);a.find(".demo_content").height(b+50)})},".section click":function(a){a.next().toggle("slow");a.find("span").toggleClass("ui-icon-triangle-1-s").toggleClass("ui-icon-triangle-1-e")}});
 ;
 steal.end();;
 $.View.preload('__jmvcdoc_views_attribute_ejs',jQuery.View.EJS(function(_CONTEXT,_VIEW) { try { with(_VIEW) { with (_CONTEXT) {var ___ViewO = [];; ___ViewO.push((jQuery.View.EJS.Scanner.to_text( view("//jmvcdoc/views/top.ejs",this)))); ___ViewO.push("\n");
@@ -463,7 +463,7 @@ ___ViewO.push("    <span class=\"ui-icon ui-icon-triangle-1-s\"/>\n");
 ___ViewO.push("    <a href=\"javascript://\">Demo</a>\n");
 ___ViewO.push("  </h3>\n");
 ___ViewO.push("  <div class=\"demo_content ui-accordion-content ui-helper-reset ui-widget-content ui-corner-bottom ui-accordion-content-active\">\n");
-___ViewO.push("    <iframe src=\""); ___ViewO.push((jQuery.View.EJS.Scanner.to_text( demoSrc ))); ___ViewO.push("\" height=\"100%\" frameborder=0></iframe>\n");
+___ViewO.push("    <iframe height=\"100%\" frameborder=0></iframe>\n");
 ___ViewO.push("  </div>\n");
 ___ViewO.push("  <h3 class=\"html_header section ui-accordion-header ui-helper-reset ui-state-default ui-corner-all\">\n");
 ___ViewO.push("    <span class=\"ui-icon ui-icon-triangle-1-e\"/>\n");
