@@ -46,6 +46,7 @@ DocumentJS.Pair.extend('DocumentJS.Class',
         this.add(DocumentJS.Directive.Inherits, 
         DocumentJS.Directive.Author,
         DocumentJS.Directive.Hide,
+		DocumentJS.Directive.Download,
         DocumentJS.Directive.CodeStart, DocumentJS.Directive.CodeEnd, DocumentJS.Directive.Alias,
         DocumentJS.Directive.Plugin, DocumentJS.Directive.Tag, DocumentJS.Directive.iFrame, DocumentJS.Directive.Demo)
         
@@ -56,7 +57,7 @@ DocumentJS.Pair.extend('DocumentJS.Class',
         this._file_view =  DocumentJS.get_template("file")
 		
 		
-		this.serialize('name',['linker','children'],'author','inherits','alias',['real_comment','comment'],'shortName','tags')
+		this.serialize('name',['linker','children'],'author','inherits','alias',['real_comment','comment'],'plugin','shortName','tags','download','downloadSize')
     }
 },
 /* @Prototype */

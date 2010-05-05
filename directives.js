@@ -235,10 +235,20 @@ DocumentJS.Directive.extend('DocumentJS.Directive.Alias',{
  */
 DocumentJS.Directive.extend('DocumentJS.Directive.Plugin',{
     add: function(line){
-        this.plugin = line.match(/@plugin ([^ ]+)/)[1];
+		this.plugin = line.match(/@plugin ([^ ]+)/)[1];
     }
 });
-
+/**
+ * @hide
+ * Adds a download link
+ */
+DocumentJS.Directive.extend('DocumentJS.Directive.Download',{
+    add: function(line){
+		var parts = line.match(/^\s*@download\s*([\w\.\/]*)\s*([\w]*)/)
+		this.download = parts[1];
+		this.downloadSize = parts[2] || 0
+    }
+});
 /**
  * @hide
  * Adds tags for searching

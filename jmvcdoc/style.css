@@ -283,3 +283,8 @@ iframe {
     padding: 0;
 	margin: 0;
 }
+.component {
+	margin-right: 12px;
+	height: 80px;
+	float: left;
+}
