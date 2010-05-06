@@ -210,8 +210,12 @@ DocumentJS.Directive.extend('DocumentJS.Directive.CodeEnd',{
             var joined = this.comment_code.join("\n");
 			if(this.comment_code_type == "javascript")
 				joined = joined.replace(/\*\|/g,"*/")
-			this.real_comment += 
-            "<pre><code class='"+this.comment_code_type+"'>"+joined+"</code></pre>"
+			if(this.init_description){
+				this.init_description +=  "<pre><code class='"+this.comment_code_type+"'>"+joined+"</code></pre>"
+			}else{
+				this.real_comment +=  "<pre><code class='"+this.comment_code_type+"'>"+joined+"</code></pre>"
+			}
+           
         }
         return false;
     }
@@ -315,5 +319,30 @@ DocumentJS.Directive.extend('DocumentJS.Directive.Scope',{
     add: function(line){
 		print("Scope! "+line)
         this.starts_scope = true;
+    }
+});
+
+
+/**
+ * @hide
+ * Adds an iframe to some page with example code, e.g. @iframe phui/menu/menu.html 320 
+ * 320 is the iframe height. 
+ */
+DocumentJS.Directive.extend('DocumentJS.Directive.Parent',{
+    add: function(line){
+		var m = line.match(/^\s*@parent\s*([\w\.\/]*)\s*([\w]*)/)
+		var name = m[1],
+			Class =  DocumentJS.Page,
+			inst
+        for(var l =0 ; l < Class.listing.length; l++){
+            if(Class.listing[l].name == name) {
+                inst = Class.listing[l];break;
+            }
+        }
+		if(!inst){
+			print("can't find parent "+name)	
+		}
+		inst.children.push(this);
+		this.shallowParents.push(inst)
     }
 });

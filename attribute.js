@@ -14,7 +14,8 @@ DocumentJS.Pair.extend('DocumentJS.Attribute',
 	init : function(){
         this.add(DocumentJS.Directive.Return, DocumentJS.Directive.Param, DocumentJS.Directive.CodeStart, 
         DocumentJS.Directive.CodeEnd,DocumentJS.Directive.Plugin, DocumentJS.Directive.Hide, 
-        DocumentJS.Directive.Tag, DocumentJS.Directive.iFrame, DocumentJS.Directive.Demo);
+        DocumentJS.Directive.Tag, DocumentJS.Directive.iFrame, DocumentJS.Directive.Demo,
+		DocumentJS.Directive.Parent);
         this._super();
 				
 		this.serialize('plugin',['full_name','name'], 'html', 'shortName', 'ret','params', ['real_comment','comment'])

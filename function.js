@@ -30,13 +30,22 @@ DocumentJS.Pair.extend('DocumentJS.Function',
 {
     code_match: /(?:([\w\.]+)|(["'][^"']+["']))\s*[:=]\s*function\(([^\)]*)/,
     init : function(){
-        this.add(DocumentJS.Directive.Return, DocumentJS.Directive.Param, DocumentJS.Directive.CodeStart, 
-        DocumentJS.Directive.CodeEnd,DocumentJS.Directive.Plugin, DocumentJS.Directive.Hide, 
-        DocumentJS.Directive.Tag, DocumentJS.Directive.iFrame, DocumentJS.Directive.Demo, DocumentJS.Directive.Scope)
+        this.add(DocumentJS.Directive.Return, 
+		DocumentJS.Directive.Param, 
+		DocumentJS.Directive.CodeStart, 
+        DocumentJS.Directive.CodeEnd,
+		DocumentJS.Directive.Plugin, 
+		DocumentJS.Directive.Hide, 
+        DocumentJS.Directive.Tag, 
+		DocumentJS.Directive.iFrame, 
+		DocumentJS.Directive.Demo, 
+		DocumentJS.Directive.Parent, 
+		DocumentJS.Directive.Scope,
+		DocumentJS.Directive.Download)
         this._super();
 		
 		
-		this.serialize('plugin',['full_name','name'],'html','shortName','ret','params',['real_comment','comment'],'tags')
+		this.serialize('plugin',['full_name','name'],'html','shortName','ret','params',['real_comment','comment'],'tags','download')
     }
 },
 /* @prototype */
