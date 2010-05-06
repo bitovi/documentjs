@@ -281,17 +281,13 @@ DocumentJS.Directive.extend('DocumentJS.Directive.iFrame',{
     add: function(line){
         var m = line.match(/^\s*@iframe\s*([\w\.\/]*)\s*([\w]*)\s*(.*)/)
 		
-        if(m){
-            var iframeSrc = m[1] ? m[1].toLowerCase() : '';
-			var iframeHeight = m[2] ? m[2] : '320';
-			var iframeId = new Date().getTime();
-			this.real_comment += "<div class='iframe_wrapper'>" +
-			"<button class='iframe_menu_button ui-button ui-widget ui-state-default ui-corner-top ui-button-text-only'>Scripts</button>"+
-			"<iframe id='iframe_" + iframeId + "'></iframe></div>" +
-			"<script type='text/javascript'>" + 
-			"$('iframe#iframe_" + iframeId + "').attr({src:'" + iframeSrc + "',height:'" + iframeHeight + "',frameborder:0})" +
-			"</script>"; 
-        }
+		if (m) {
+			var src = m[1] ? m[1].toLowerCase() : '';
+			var height = m[2] ? m[2] : '320';
+			this.real_comment += "<div class='iframe_wrapper' "
+			this.real_comment += "data-iframe-src='" + src + "' "
+			this.real_comment += "data-iframe-height='" + height + "'></div>";
+		}
     }
 });
 
@@ -304,7 +300,6 @@ DocumentJS.Directive.extend('DocumentJS.Directive.Demo',{
         var m = line.match(/^\s*@demo\s*([\w\.\/]*)\s*([\w]*)/)
         if(m){			
             var src = m[1] ? m[1].toLowerCase() : '';
-			var height = m[2] ? m[2] : '320';
 			this.real_comment += "<div class='demo_wrapper' data-demo-src='" + src + "'></div>";
         }
     }
