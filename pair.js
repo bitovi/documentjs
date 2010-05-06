@@ -115,7 +115,8 @@ DocumentJS.Class.extend("DocumentJS.Pair",
      * @param {DocumentJS.Pair} scope
      */
     init : function(comment, code, scope ){
-		this.children = []
+		this.children = [];
+		this.shallowParents = [];
         this.comment = comment;
         this.code = code;
 
@@ -175,11 +176,22 @@ DocumentJS.Class.extend("DocumentJS.Pair",
         res.push("</div>");
         return res.join("");
     },
-    linker : function(stealSelf){
+	/**
+	 * Checks if this child should not add its children for the given parent
+	 */
+	shallowParent : function(parent){
+		for(var i = 0; i < this.shallowParents.length;i++){
+			if(this.shallowParents[i] === parent){
+				return true;
+			}
+		}
+		return false;
+	},
+    linker : function(stealSelf, parent){
         var result = stealSelf ? [ {name: this.full_name(), shortName : this.Class.shortName.toLowerCase(), title: this.title, hide: (this.hide ? true: false) }] : [];
-        if(this.children){
+		if(this.children && ! this.shallowParent(parent)){
             for(var c=0; c<this.children.length; c++){
-                var adds = this.children[c].linker(true);
+                var adds = this.children[c].linker(true, this);
                 if(adds)
                     result = result.concat( adds );
             }

@@ -45,6 +45,14 @@ DocumentJS.Pair.extend('DocumentJS.Add',
                 }
             }
         }
+		if(!inst){
+            var Class =  DocumentJS.Page
+            for(var l =0 ; l < Class.listing.length; l++){
+                if(Class.listing[l].name == this.scope_name) {
+                    inst = Class.listing[l];break;
+                }
+            }
+        }
         if(!inst) return this;
         if(this.sub_scope){
             var children = inst.children;
