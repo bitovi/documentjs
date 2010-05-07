@@ -22,7 +22,6 @@ DocumentJS.Pair.extend('DocumentJS.Script',
         this.generate();
     },
     generate : function(){
-
         var pairs = this.src.match(this.Class.group);
         //clean comments
         var scope = this;

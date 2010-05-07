@@ -91,9 +91,9 @@ DocumentJS.Directive.extend('DocumentJS.Directive.Param',{
      * @param {String} line
      */
     add: function(line){
-        var parts = line.match(/\s*@param\s+(?:\{([^}]+)\})?\s+([^\s]+) ?(.*)?/);
+        var parts = line.match(/\s*@param\s+(?:\{?([^}]+)\}?)?\s+([^\s]+) ?(.*)?/);
         if(!parts){
-            print("LINE: \n"+line+"\n does not match @params {optional:TYPE} NAME DESCRIPTION")
+            print("LINE: \n"+line+"\n does not match @params {TYPE} NAME DESCRIPTION")
             return;
         }
         var description = parts.pop();
