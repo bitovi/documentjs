@@ -336,8 +336,9 @@ DocumentJS.Directive.extend('DocumentJS.Directive.Parent',{
         }
 		if(!inst){
 			print("can't find parent "+name)	
+		} else {
+			inst.children.push(this);
+			this.shallowParents.push(inst)
 		}
-		inst.children.push(this);
-		this.shallowParents.push(inst)
     }
 });
