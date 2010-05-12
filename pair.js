@@ -50,6 +50,26 @@ DocumentJS.Class.extend("DocumentJS.Pair",
         }
         return null;
     },
+	suggest_type : function(incorrect, line){
+		var lowest = 1000, suggest = "";
+		for(var i=0;i< this.classes.length; i++){
+            var dist = DocumentJS.distance(incorrect.toLowerCase(), this.classes[i].shortName.toLowerCase())
+			if(dist < lowest ){
+				lowest = dist
+				suggest = this.classes[i].shortName.toLowerCase()
+			} 
+        }
+		for(var i=0;i< DocumentJS.Directive.directives.length; i++){
+            var dist = DocumentJS.distance(incorrect.toLowerCase(),  DocumentJS.Directive.directives[i].toLowerCase())
+			if(dist < lowest ){
+				lowest = dist
+				suggest = DocumentJS.Directive.directives[i].toLowerCase()
+			} 
+        }
+		if(suggest){
+			print("\nWarning!!\nThere is no @"+incorrect+" directive. did you mean @"+suggest+" ?\n")
+		}
+	},
     starts_scope: false,
     /**
      * Given a and b, sorts by their full_name property.
@@ -233,7 +253,11 @@ DocumentJS.Class.extend("DocumentJS.Pair",
                 
                 var fname = (match[1]+'_add').toLowerCase();
                 if(! this[fname]) {
-                    this.real_comment+= line+"\n"
+                    if(!DocumentJS.Pair.has_type(match[1])){
+						DocumentJS.Pair.suggest_type(match[1])
+					}
+					
+					this.real_comment+= line+"\n"
                     continue;
                 }
                 last_data = this[fname](line);

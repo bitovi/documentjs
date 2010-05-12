@@ -21,7 +21,12 @@
  * 
  * 
  */
-DocumentJS.Class.extend("DocumentJS.Directive",
+DocumentJS.Class.extend("DocumentJS.Directive",{
+	init : function(){
+		this.directives.push(this.shortName)
+	},
+	directives : []
+},
 /* @prototype */
 {
     /**
@@ -206,7 +211,12 @@ DocumentJS.Directive.extend('DocumentJS.Directive.CodeEnd',{
     add: function(line){
         var m = line.match(/^\s*@codeend/)
         
+		
         if(m){
+			if(!this.comment_code){
+				print('you probably have a @codeend without a @codestart')
+			}
+			
             var joined = this.comment_code.join("\n");
 			if(this.comment_code_type == "javascript")
 				joined = joined.replace(/\*\|/g,"*/")
@@ -317,7 +327,19 @@ DocumentJS.Directive.extend('DocumentJS.Directive.Scope',{
     }
 });
 
-
+/**
+ * @hide
+ * Adds an iframe to some page with example code, e.g. @iframe phui/menu/menu.html 320 
+ * 320 is the iframe height. 
+ */
+DocumentJS.Directive.extend('DocumentJS.Directive.Type',{
+    add: function(line){
+		var m = line.match(/^\s*@type\s*([\w\.\/]*)/)
+        if(m){			
+            this.attribute_type = m[0]
+        }
+    }
+});
 /**
  * @hide
  * Adds an iframe to some page with example code, e.g. @iframe phui/menu/menu.html 320 

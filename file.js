@@ -19,7 +19,11 @@ DocumentJS.Pair.extend('DocumentJS.Script',
 		this.children = [];
 		this.name = inc.path;
         this.src=inc.src;
-        this.generate();
+		//check if the source has @documentjs-ignore
+		if(!/\@documentjs-ignore/.test(this.src)){
+			this.generate();
+		}
+        
     },
     generate : function(){
         var pairs = this.src.match(this.Class.group);
