@@ -93,8 +93,7 @@ DocumentJS.Class.extend("DocumentJS.Pair",
      * Loads a template to use to render different doc types.
      */
     init : function(){
-		if(this.shortName){
-             this._view =  DocumentJS.get_template(this.shortName)    
+		if(this.shortName){   
 			 if(DocumentJS.Pair)
 			 	DocumentJS.Pair.classes.push(this)
         }
@@ -172,9 +171,6 @@ DocumentJS.Class.extend("DocumentJS.Pair",
 	jsonp: function(){
 		return "C("+$.toJSON(this.json())+")";
 	},
-    toHTML : function(){
-        return this.Class._view.render(this)
-    },
     full_name: function(){
         var par = ""
         //print("has parent "+this.parent)

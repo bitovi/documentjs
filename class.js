@@ -60,9 +60,6 @@ DocumentJS.Pair.extend('DocumentJS.Class',
         
         var ejs = "jmvc/plugins/documentation/templates/file.ejs"
         
-        this._file_view =  DocumentJS.get_template("file")
-		
-		
 		this.serialize('name',['linker','children'],'author','inherits','alias',['real_comment','comment'],'plugin','shortName','tags','download','downloadSize')
     }
 },

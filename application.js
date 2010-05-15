@@ -2,15 +2,15 @@
 /**
  * @class DocumentJS
  * @tag core, documentation
- * JavaScriptMVC comes with powerful and easy to extend documentation functionality.
- * Include.Doc is smart enough to guess 
+ * DocumentJS provides powerful and easy to extend documentation functionality.
+ * It's smart enough to guess 
  * at things like function names and parameters, but powerful enough to generate 
  * <span class='highlight'>JavaScriptMVC's entire website</span>!
  * 
  * <br/>
  * 
- * <p>steal Doc is pure JavaScript so it is easy to modify and make improvements.  First, lets show what
- * steal Doc can document: </p>
+ * <p>DocumentJS is pure JavaScript so it is easy to modify and make improvements.  First, lets show what
+ * DocumentJS can document: </p>
  * <ul>
  *     <li>[DocumentJS.Attribute | @attribute] -  values on an object.</li>
  *     <li>[DocumentJS.Function | @function] - functions on an object.</li>
@@ -76,7 +76,7 @@
  * <pre>js apps/app_name/compress.js</pre>
  * The docs will be put in your docs folder.
  * <h3>Using without JavaScriptMVC</h3>
- * Coming soon ... maybe.
+ * Coming soon!
  * <h3>Inspiration</h3>
  * DocumentJS was inspired by the [http://api.jquery.com/ jQuery API Browser] by [http://remysharp.com/ Remy Shharp]
  */
@@ -123,15 +123,7 @@ DocumentJS.extend(DocumentJS,
      * A map of the full name of all the objects the application creates and the url to 
      * the documentation for them.
      */
-    objects : {},
-    get_template : function(template_name){
-        var temp = readFile("docs/templates/"+template_name+".ejs");
-        if(!temp)
-            temp = readFile("jmvc/plugins/documentation/templates/"+template_name+".ejs");
-        
-        var v = new DocumentJS.EJS({text: temp, name: template_name });
-        return v;
-    }
+    objects : {}
 });
 
 /**
