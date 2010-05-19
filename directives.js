@@ -346,6 +346,8 @@ DocumentJS.Directive.extend('DocumentJS.Directive.Type',{
  * 320 is the iframe height. 
  */
 DocumentJS.Directive.extend('DocumentJS.Directive.Parent',{
+	waiting : {}
+},{
     add: function(line){
 		var m = line.match(/^\s*@parent\s*([\w\.\/]*)\s*([\w]*)/)
 		var name = m[1],
@@ -357,7 +359,10 @@ DocumentJS.Directive.extend('DocumentJS.Directive.Parent',{
             }
         }
 		if(!inst){
-			print("can't find parent "+name)	
+			if(!DocumentJS.Directive.Parent.waiting[name]){
+				DocumentJS.Directive.Parent.waiting[name] = [];
+			}
+			DocumentJS.Directive.Parent.waiting[name].push(this)
 		} else {
 			inst.children.push(this);
 			this.shallowParents.push(inst)

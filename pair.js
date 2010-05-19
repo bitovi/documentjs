@@ -156,6 +156,13 @@ DocumentJS.Class.extend("DocumentJS.Pair",
             DocumentJS.objects[this.full_name()] = par.url()+(this.url ? "" : "#"+this.full_name() );
         }
 		this.Class.listing.push(this);
+		if(DocumentJS.Directive.Parent.waiting.hasOwnProperty(this.name)){
+			var addOns = DocumentJS.Directive.Parent.waiting[this.name]
+			this.children = this.children.concat(addOns)
+			for(var i=0;i< addOns.length;i++){
+				addOns[i].shallowParents.push(this);
+			}
+		}
     },
     add: function(child){
         this.children.push(child);
@@ -206,7 +213,8 @@ DocumentJS.Class.extend("DocumentJS.Pair",
     linker : function(stealSelf, parent){
         var result = stealSelf ? [ {name: this.full_name(), shortName : this.Class.shortName.toLowerCase(), title: this.title, hide: (this.hide ? true: false) }] : [];
 		if(this.children && ! this.shallowParent(parent)){
-            for(var c=0; c<this.children.length; c++){
+            //print(this.name)
+			for(var c=0; c<this.children.length; c++){
                 var adds = this.children[c].linker(true, this);
                 if(adds)
                     result = result.concat( adds );

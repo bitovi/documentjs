@@ -160,7 +160,7 @@ DocumentJS.Application.prototype =
     generate : function(path, convert){
         /* Make the needed directory structure for documentation */
         //new steal.File('docs/classes/').mkdirs();
-        print("generate ...")
+        print("generating ...")
 		convert = convert || function(name, ob, everything, path){
 			var toJSON = DocumentJS.toJSON(ob)
 			
