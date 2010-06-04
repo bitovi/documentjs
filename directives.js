@@ -252,6 +252,16 @@ DocumentJS.Directive.extend('DocumentJS.Directive.Plugin',{
 		this.plugin = line.match(/@plugin ([^ ]+)/)[1];
     }
 });
+
+/**
+ * @hide
+ * Adds to another plugin. Format: "@plugin plugin_name"
+ */
+DocumentJS.Directive.extend('DocumentJS.Directive.Test',{
+    add: function(line){
+		this.test = line.match(/@test ([^ ]+)/)[1];
+    }
+});
 /**
  * @hide
  * Adds a download link
@@ -369,3 +379,4 @@ DocumentJS.Directive.extend('DocumentJS.Directive.Parent',{
 		}
     }
 });
+

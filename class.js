@@ -54,13 +54,15 @@ DocumentJS.Pair.extend('DocumentJS.Class',
 		DocumentJS.Directive.Tag, 
 		DocumentJS.Directive.iFrame, 
 		DocumentJS.Directive.Parent, 
-		DocumentJS.Directive.Demo)
+		DocumentJS.Directive.Demo,
+		DocumentJS.Directive.Test)
         
         this._super();
         
         var ejs = "jmvc/plugins/documentation/templates/file.ejs"
         
-		this.serialize('name',['linker','children'],'author','inherits','alias',['real_comment','comment'],'plugin','shortName','tags','download','downloadSize')
+		this.serialize('name',['linker','children'],'author','inherits','alias',['real_comment','comment'],
+		'plugin','shortName','tags','download','downloadSize','test')
     }
 },
 /* @Prototype */

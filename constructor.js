@@ -61,9 +61,11 @@ DocumentJS.Pair.extend('DocumentJS.Constructor',
                 DocumentJS.Directive.Return,
 				DocumentJS.Directive.Download,
                 DocumentJS.Directive.Hide, DocumentJS.Directive.CodeStart, DocumentJS.Directive.CodeEnd, DocumentJS.Directive.Alias,
-                DocumentJS.Directive.Plugin, DocumentJS.Directive.Tag, DocumentJS.Directive.iFrame, DocumentJS.Directive.Demo);
+                DocumentJS.Directive.Plugin, DocumentJS.Directive.Tag, DocumentJS.Directive.iFrame, DocumentJS.Directive.Demo,
+				DocumentJS.Directive.Test);
         this._super();
-		this.serialize('name',['linker','children'],'inherits','alias',['real_comment','comment'],'shortName','ret','params','plugin','tags','download','downloadSize',['init_description','init'])
+		this.serialize('name',['linker','children'],'inherits','alias',['real_comment','comment'],'shortName',
+		'ret','params','plugin','tags','download','downloadSize',['init_description','init'],'test')
     }
 },
 /* @Prototype */

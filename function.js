@@ -41,11 +41,13 @@ DocumentJS.Pair.extend('DocumentJS.Function',
 		DocumentJS.Directive.Demo, 
 		DocumentJS.Directive.Parent, 
 		DocumentJS.Directive.Scope,
-		DocumentJS.Directive.Download)
+		DocumentJS.Directive.Download,
+		DocumentJS.Directive.Test)
         this._super();
 		
 		
-		this.serialize('plugin',['full_name','name'],'html','shortName','ret','params',['real_comment','comment'],'tags','download')
+		this.serialize('plugin',['full_name','name'],'html','shortName','ret','params',['real_comment','comment'],
+		'tags','download','test')
     }
 },
 /* @prototype */
