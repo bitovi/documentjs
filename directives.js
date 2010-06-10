@@ -146,7 +146,7 @@ DocumentJS.Directive.extend('DocumentJS.Directive.Inherits',{
  */
 DocumentJS.Directive.extend('DocumentJS.Directive.Return',{
     add: function(line){
-        var parts = line.match(/\s*@return\s+(?:\{([\w\.\/]+)\})?\s*(.*)?/);
+        var parts = line.match(/\s*@return\s+(?:\{([\w\|\.\/]+)\})?\s*(.*)?/);
         
         if(!parts) {
            return; 
