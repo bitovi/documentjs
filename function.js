@@ -28,7 +28,7 @@
 DocumentJS.Pair.extend('DocumentJS.Function',
 /* @static */
 {
-    code_match: /(?:([\w\.]+)|(["'][^"']+["']))\s*[:=]\s*function\s*\(([^\)]*)/,
+    code_match: /(?:([\w\.]+)|(["'][^"']+["']))\s*[:=]\s*function\s?\(([^\)]*)/,
     init : function(){
         this.add(DocumentJS.Directive.Return, 
 		DocumentJS.Directive.Param, 
