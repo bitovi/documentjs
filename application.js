@@ -174,7 +174,7 @@ DocumentJS.Application.prototype =
 
 				var oliteral = ob.serialize();
 
-				var name = oliteral.name.replace(/ /g, "_").replace(/&#46;/g, ".").replace(/&gt;/g, "_gt_");;
+				var name = oliteral.name.replace(/ /g, "_").replace(/&#46;/g, ".").replace(/&gt;/g, "_gt_").replace(/\*/g,"_star_");
 				convert(name, oliteral, this.all_sorted, path)
 	        }
 		}
