@@ -244,12 +244,17 @@ DocumentJS.Class.extend("DocumentJS.Pair",
      * This function is shared by Class and Constructor.
      */
     comment_setup: function(){
-        var i = 0;
-        var lines = this.comment.split("\n");
-        this.real_comment = '';
+        var i = 0,
+			lines = this.comment.split("\n"),
+			last, 
+			last_data; //what data we are going to be called with
+        
+		this.real_comment = '';
         if(!this.params) this.params = {};
         if(!this.ret) this.ret = {type: 'undefined',description: ""};
-        var last, last_data;
+		
+		this._last; //what we should be adding too.
+		
         for(var l=0; l < lines.length; l++){
             var line = lines[l];
             var match = line.match(DocumentJS.Pair.matchDirective)
@@ -264,13 +269,22 @@ DocumentJS.Class.extend("DocumentJS.Pair",
 					this.real_comment+= line+"\n"
                     continue;
                 }
-                last_data = this[fname](line);
-                if(last_data) last = match[1].toLowerCase(); else last = null;
+                last_data = this[fname](line, last_data);
+                //horrible ... fix
+				if (last_data && last_data.length == 2 && last_data[0] == 'keep') {
+					last_data = last_data[1]
+				}else if (last_data) {
+					this._last = match[1].toLowerCase();
+				}
+				else {
+					this._last = null;
+				}
+					
             }
-            else if(!line.match(/^constructor/i) && !last )
+            else if(!line.match(/^constructor/i) && !this._last )
                 this.real_comment+= line+"\n"
-            else if(last && this[last+'_add_more']){
-                this[last+'_add_more'](line, last_data);
+            else if(this._last && this[this._last+'_add_more']){
+                this[this._last+'_add_more'](line, last_data);
             }
         }
         if(this.comment_setup_complete) this.comment_setup_complete();
