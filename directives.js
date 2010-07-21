@@ -191,16 +191,23 @@ DocumentJS.Directive.extend('DocumentJS.Directive.Hide',{
  * multiple lines.  Must end with "@codeend".
  */
 DocumentJS.Directive.extend('DocumentJS.Directive.CodeStart',{
-    add: function(line){
+    add: function(line, last){
         var m = line.match(/^\s*@codestart\s*([\w-]*)\s*(.*)/)
-        if(m){
-            this.comment_code_type = m[1] ? m[1].toLowerCase() : 'javascript';
-            this.comment_code = [];
+        
+		
+		if(m){
+			this.comment_code = {
+				type: m[1] ? m[1].toLowerCase() : 'javascript',
+				lines : [],
+				last: last,
+				_last: this._last
+			}
             return true;
         }
+		
     },
     add_more : function(line){
-        this.comment_code.push(line);
+        this.comment_code.lines.push(line);
     }
 });
 /**
@@ -217,13 +224,18 @@ DocumentJS.Directive.extend('DocumentJS.Directive.CodeEnd',{
 				print('you probably have a @codeend without a @codestart')
 			}
 			
-            var joined = this.comment_code.join("\n");
-			if(this.comment_code_type == "javascript")
+            var joined = this.comment_code.lines.join("\n");
+			
+			if(this.comment_code.type == "javascript"){ //convert comments
 				joined = joined.replace(/\*\|/g,"*/")
-			if(this.init_description){
-				this.init_description +=  "<pre><code class='"+this.comment_code_type+"'>"+joined+"</code></pre>"
+			}
+			var out = "<pre><code class='"+this.comment_code.type+"'>"+joined+"</code></pre>"
+			if(this.comment_code.last){
+				this[this.comment_code._last+'_add_more'](out, this.comment_code.last);
+				this._last = this.comment_code._last;
+				return ['keep',this.comment_code.last]
 			}else{
-				this.real_comment +=  "<pre><code class='"+this.comment_code_type+"'>"+joined+"</code></pre>"
+				this.real_comment +=  out;
 			}
            
         }

@@ -28,7 +28,7 @@
 DocumentJS.Pair.extend('DocumentJS.Function',
 /* @static */
 {
-    code_match: /(?:([\w\.]+)|(["'][^"']+["']))\s*[:=]\s*function\(([^\)]*)/,
+    code_match: /(?:([\w\.]+)|(["'][^"']+["']))\s*[:=]\s*function\s?\(([^\)]*)/,
     init : function(){
         this.add(DocumentJS.Directive.Return, 
 		DocumentJS.Directive.Param, 
@@ -62,7 +62,7 @@ DocumentJS.Pair.extend('DocumentJS.Function',
         this.name = parts[1] ? parts[1].replace(/^this\./,"") : parts[2];
         //clean up name if it has ""
         if(/^["']/.test(this.name)){
-            this.name = this.name.substr(1, this.name.length-2).replace(/\./g,"&#46;");
+            this.name = this.name.substr(1, this.name.length-2).replace(/\./g,"&#46;").replace(/>/g,"&gt;");
         }
         this.params = {};
         this.ret = {type: 'undefined',description: ""}
