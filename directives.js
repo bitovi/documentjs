@@ -280,7 +280,7 @@ DocumentJS.Directive.extend('DocumentJS.Directive.Test',{
  */
 DocumentJS.Directive.extend('DocumentJS.Directive.Download',{
     add: function(line){
-		var parts = line.match(/^\s*@download\s*([\w\.\/]*)\s*([\w]*)/)
+		var parts = line.match(/^\s*@download\s*([^ ]*)\s*([\w]*)/)
 		this.download = parts[1];
 		this.downloadSize = parts[2] || 0
     }
