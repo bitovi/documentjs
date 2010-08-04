@@ -9,16 +9,16 @@ if(steal.overwrite){
 }else{
 	steal.send = steal;
 }
-steal('//steal/file/file',
-	  '//steal/ejs/ejs',
-	  '//steal/json/json',
-	  '//steal/class/class',
+steal( // '//steal/file/file',
+	  '//steal/generate/ejs', //this is gone too now TODO FIX
+	  '//documentjs/json',
+	  '//documentjs/baseclass',
 
 function($){
 	
 	var extend = steal.extend;
 	extend(DocumentJS, steal)
-	DocumentJS.EJS = EJS;
+	DocumentJS.EJS = steal.EJS;
 	DocumentJS.JSONparse = JSONparse;
 	DocumentJS.toJSON = toJSON;
 	
@@ -46,7 +46,7 @@ function($){
 		return ob;
 	}
 	delete JSONparse;
-	delete EJS;
+
     delete toJSON;
 	
 },

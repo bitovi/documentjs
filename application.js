@@ -198,7 +198,7 @@ DocumentJS.Application.prototype =
         }else{
             print("Using default page layout.  Overwrite by creating: "+path+"/summary.ejs");
             DocumentJS.render_to(base+"docs.html","documentjs/jmvcdoc/summary.ejs" , {
-				pathToRoot: DocumentJS.File.pathToSteal(base.replace(/\/[^\/]*$/, "")),
+				pathToRoot: new DocumentJS.File(base.replace(/\/[^\/]*$/, "")).pathToRoot(),
 				path: path
 			}); //default 
         }
