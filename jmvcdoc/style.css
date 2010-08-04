@@ -14,6 +14,9 @@ td {padding: 3px; vertical-align: top;}
     font-family: "Trebuchet MS",Verdana,Helvetica,Arial,sans-serif;
     float: left;
 }
+h5 {
+	margin-bottom: 0px;padding-bottom: 0px;
+}
 #defaults {
     margin-left: 320px;
     background-color: #2D2E26;
@@ -124,7 +127,9 @@ pre {
     color: /*#9C6854*/ #96A84A;
 }
 
-            
+.param {
+	margin-top: 10px;
+}       
             
 .param label, .return label {
     color:#808080;
