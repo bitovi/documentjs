@@ -72,13 +72,13 @@
  * </ul>
  * 
  * <h3>Using with a JavaScritpMVC application</h3>
- * By default, compression will automatically document your code.  Simply compress your application with:
- * <pre>js apps/app_name/compress.js</pre>
- * The docs will be put in your docs folder.
+ * You just have to run the docs script in your apps scripts folder:
+ * <pre>js <i>APPNAME</i>/scripts/docs.js</pre>
+ * Open <i>APPNAME</i>/docs.html to see your documentation.
  * <h3>Using without JavaScriptMVC</h3>
  * Coming soon!
  * <h3>Inspiration</h3>
- * DocumentJS was inspired by the [http://api.jquery.com/ jQuery API Browser] by [http://remysharp.com/ Remy Shharp]
+ * DocumentJS was inspired by the [http://api.jquery.com/ jQuery API Browser] by [http://remysharp.com/ Remy Sharp]
  */
 DocumentJS.extend(DocumentJS,
 /* @Static */
