@@ -256,36 +256,43 @@ DocumentJS.Class.extend("DocumentJS.Pair",
 		this._last; //what we should be adding too.
 		
         for(var l=0; l < lines.length; l++){
-            var line = lines[l];
-            var match = line.match(DocumentJS.Pair.matchDirective)
-            if(match){
-                
-                var fname = (match[1]+'_add').toLowerCase();
-                if(! this[fname]) {
-                    if(!DocumentJS.Pair.has_type(match[1])){
+            var line = lines[l],
+				match = line.match(DocumentJS.Pair.matchDirective)
+            
+			if (match) {
+			
+				var fname = (match[1] + '_add').toLowerCase();
+				if (!this[fname]) {
+					if (!DocumentJS.Pair.has_type(match[1])) {
 						DocumentJS.Pair.suggest_type(match[1])
 					}
 					
-					this.real_comment+= line+"\n"
-                    continue;
-                }
-                last_data = this[fname](line, last_data);
-                //horrible ... fix
+					this.real_comment += line + "\n"
+					continue;
+				}
+				last_data = this[fname](line, last_data);
+				//horrible ... fix
 				if (last_data && last_data.length == 2 && last_data[0] == 'keep') {
 					last_data = last_data[1]
-				}else if (last_data) {
-					this._last = match[1].toLowerCase();
 				}
-				else {
-					this._last = null;
+				else 
+					if (last_data) {
+						this._last = match[1].toLowerCase();
+					}
+					else {
+						this._last = null;
+					}
+				
+			}
+			else {
+				line = line.replace(/@@/g,"@")
+				if (!line.match(/^constructor/i) && !this._last) {
+					this.real_comment += line + "\n"
 				}
-					
-            }
-            else if(!line.match(/^constructor/i) && !this._last )
-                this.real_comment+= line+"\n"
-            else if(this._last && this[this._last+'_add_more']){
-                this[this._last+'_add_more'](line, last_data);
-            }
+				else if (this._last && this[this._last + '_add_more']) {
+					this[this._last + '_add_more'](line, last_data);
+				}
+			}
         }
         if(this.comment_setup_complete) this.comment_setup_complete();
     },
