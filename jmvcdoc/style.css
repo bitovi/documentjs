@@ -1,6 +1,9 @@
 body {font-family: "Trebuchet MS",Verdana,Helvetica,Arial,sans-serif; margin: 20px 0px 0px 0px; background-color: black;
                 overflow: hidden;
 }
+dl {
+	margin: 13px;
+}
 .error {border: solid 1px red;}
 .error_text { color: red; font-size: 10px;}
 td {padding: 3px; vertical-align: top;}
@@ -13,6 +16,9 @@ td {padding: 3px; vertical-align: top;}
     font-size: 14px;
     font-family: "Trebuchet MS",Verdana,Helvetica,Arial,sans-serif;
     float: left;
+}
+h5 {
+	margin-bottom: 0px;padding-bottom: 0px;
 }
 #defaults {
     margin-left: 320px;
