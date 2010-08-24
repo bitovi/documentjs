@@ -130,7 +130,10 @@ pre {
     color: /*#9C6854*/ #96A84A;
 }
 
-            
+.param {
+	text-indent: -48px;
+	margin-left: 48px;
+}    
             
 .param label, .return label {
     color:#808080;
