@@ -42,7 +42,8 @@ DocumentJS.Pair.extend('DocumentJS.Function',
 		DocumentJS.Directive.Parent, 
 		DocumentJS.Directive.Scope,
 		DocumentJS.Directive.Download,
-		DocumentJS.Directive.Test)
+		DocumentJS.Directive.Test,
+		DocumentJS.Directive.Author)
         this._super();
 		
 		
