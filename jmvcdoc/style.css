@@ -67,7 +67,7 @@ h5 {
     outline: none;
 }
 
-#results .highlight {
+#results .highlight, #page_results .highlight {
     /*background-color: #3C3D32;*/
 	background-color:#E5ECF3;
 }
@@ -97,7 +97,7 @@ h5 {
     height: 18px;
     background-image: url('images/close.png');
 }
-#left #results a.picked {
+#left #results a.picked, #left #page_results a.picked {
 	background-color: #9C6854 /*#434538*/;
 }
 #doc .type {
