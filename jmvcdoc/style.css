@@ -1,5 +1,7 @@
-body {font-family: "Trebuchet MS",Verdana,Helvetica,Arial,sans-serif; margin: 20px 0px 0px 0px; background-color: black;
-                overflow: hidden;
+body {
+	font-family: "Trebuchet MS",Verdana,Helvetica,Arial,sans-serif; margin: 20px 0px 0px 0px;
+	/*background-color: black;*/
+    overflow: hidden;
 }
 dl {
 	margin: 13px;
@@ -8,7 +10,7 @@ dl {
 .error_text { color: red; font-size: 10px;}
 td {padding: 3px; vertical-align: top;}
 #top {
-    padding: 0px 0px 20px 20px;
+    padding: 0px 20px 20px 20px;
     
 }
 #search {width: 293px;
@@ -26,7 +28,9 @@ h5 {
     height: 26px;
 }
 #defaults a {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: white;
+	text-decoration: none;
     padding: 0px 10px;
 }
 #bottom {
@@ -34,6 +38,8 @@ h5 {
     clear: both;
 }
 #doc_container {
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size:16px;
     overflow: auto;
     background-color: white;
     margin-right: 0px;
@@ -44,22 +50,26 @@ h5 {
 #left {
     width: 300px;
     float: left;
-    background-color: #2D2E26; /*#B8B495*/
+    /*background-color: #2D2E26;*/
     overflow: auto;
     margin-right: 20px;
 }
 #left a {
     display: block;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-size:12px;
 	padding: 5px;
 	text-decoration: none;
 	font-size: 14px;
-    color: #F1F1C3;
+    /*color: #F1F1C3;*/
+	color: #000000;
     border: none;
     outline: none;
 }
 
 #results .highlight {
-    background-color: #3C3D32;
+    /*background-color: #3C3D32;*/
+	background-color:#E5ECF3;
 }
 
 
