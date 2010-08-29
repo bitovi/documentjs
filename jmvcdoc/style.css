@@ -1,5 +1,6 @@
 body {
 	font-family: "Trebuchet MS",Verdana,Helvetica,Arial,sans-serif; margin: 20px 0px 0px 0px;
+	margin:0px;
 	/*background-color: black;*/
     /*overflow: hidden;*/
 }
@@ -10,22 +11,25 @@ dl {
 .error_text { color: red; font-size: 10px;}
 td {padding: 3px; vertical-align: top;}
 #top {
-    padding: 0px 20px 20px 20px;
+    /*padding: 5px 20px;*/
     
 }
-#search {width: 293px;
+#search {
+	float:right;
+	width: 293px;
     padding:2px;
     font-size: 14px;
     font-family: "Trebuchet MS",Verdana,Helvetica,Arial,sans-serif;
-    float: left;
+	margin-top:5px;
+	margin-right:20px;
 }
 h5 {
 	margin-bottom: 0px;padding-bottom: 0px;
 }
 #defaults {
-    margin-left: 320px;
     background-color: #2D2E26;
     height: 26px;
+	padding:5px 10px 5px 10px;
 }
 #defaults a {
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -34,7 +38,7 @@ h5 {
     padding: 0px 10px;
 }
 #bottom {
-    margin: 0px 20px;
+    margin: 20px;
     clear: both;
 }
 #doc_container {
@@ -45,7 +49,7 @@ h5 {
     margin-right: 0px;
 }
 #doc, #disqus_thread {
-    padding: 20px;
+    /*padding: 20px;*/
 }
 #left {
     width: 300px;
