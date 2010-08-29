@@ -2,7 +2,7 @@ body {
 	font-family: "Trebuchet MS",Verdana,Helvetica,Arial,sans-serif; margin: 20px 0px 0px 0px;
 	margin:0px;
 	/*background-color: black;*/
-    /*overflow: hidden;*/
+    overflow-x: hidden;
 }
 dl {
 	margin: 13px;
@@ -16,11 +16,11 @@ td {padding: 3px; vertical-align: top;}
 }
 #search {
 	float:right;
-	width: 293px;
+	width: 260px;
     padding:2px;
     font-size: 14px;
     font-family: "Trebuchet MS",Verdana,Helvetica,Arial,sans-serif;
-	margin-right:20px;
+	margin-right:20px;		
 }
 h5 {
 	margin-bottom: 0px;padding-bottom: 0px;
