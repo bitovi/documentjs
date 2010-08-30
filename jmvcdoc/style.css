@@ -1,8 +1,5 @@
-body {
-	font-family: "Trebuchet MS",Verdana,Helvetica,Arial,sans-serif; margin: 20px 0px 0px 0px;
-	margin:0px;
-	/*background-color: black;*/
-    overflow-x: hidden;
+body {font-family: "Trebuchet MS",Verdana,Helvetica,Arial,sans-serif; margin: 20px 0px 0px 0px; background-color: black;
+                overflow: hidden;
 }
 dl {
 	margin: 13px;
@@ -11,80 +8,65 @@ dl {
 .error_text { color: red; font-size: 10px;}
 td {padding: 3px; vertical-align: top;}
 #top {
-    /*padding: 5px 20px;*/
+    padding: 0px 0px 20px 20px;
     
 }
-#search {
-	float:right;
-	width: 260px;
+#search {width: 293px;
     padding:2px;
     font-size: 14px;
     font-family: "Trebuchet MS",Verdana,Helvetica,Arial,sans-serif;
-	margin-right:20px;		
+    float: left;
 }
 h5 {
 	margin-bottom: 0px;padding-bottom: 0px;
 }
 #defaults {
+    margin-left: 320px;
     background-color: #2D2E26;
     height: 26px;
-	padding:5px 10px 5px 10px;
 }
 #defaults a {
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     color: white;
-	text-decoration: none;
     padding: 0px 10px;
 }
 #bottom {
-    margin: 20px;
+    margin: 0px 20px;
     clear: both;
 }
 #doc_container {
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	font-size:16px;
     overflow: auto;
     background-color: white;
     margin-right: 0px;
 }
 #doc, #disqus_thread {
-    /*padding: 20px;*/
+    padding: 20px;
 }
 #left {
     width: 300px;
     float: left;
-    /*background-color: #2D2E26;*/
+    background-color: #2D2E26; /*#B8B495*/
     overflow: auto;
     margin-right: 20px;
 }
 #left a {
     display: block;
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	font-size:12px;
 	padding: 5px;
 	text-decoration: none;
 	font-size: 14px;
-    /*color: #F1F1C3;*/
-	color: #000000;
+    color: #F1F1C3;
     border: none;
     outline: none;
 }
 
 #results .highlight, #page_results .highlight {
-    /*background-color: #3C3D32;*/
-	background-color:#E5ECF3;
-	-moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -khtml-border-radius: 5px;
-    border-radius: 5px;	
+    background-color: #3C3D32;
 }
 
 
 
 #left .selected {
 	background-color: #96A84A;
-	color:#FFFFFF;
-	border-top: solid 1px #AABF54;
+	border-top: solid 1px #AABF54
 }
 #left .prototype, #left .static {
 	color: gray;
@@ -107,11 +89,6 @@ h5 {
 }
 #left #results a.picked, #left #page_results a.picked {
 	background-color: #9C6854 /*#434538*/;
-	color:#FFFFFF;
-	-moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -khtml-border-radius: 5px;
-    border-radius: 5px;
 }
 #doc .type {
     font-size: 0.8em; color: gray;
@@ -374,53 +351,4 @@ iframe {
 .whisper {
 	color: #96A84A;
 	
-}
-.ui-menu {
-	left:160px;
-	margin: 0px; padding: 0px;
-	list-style-image:none;
-	list-style-position:outside;
-	list-style-type:none;
-	position:relative;
-	top:2px;			
-}
-.ui-menu a:hover {
-	color:#FFFFFF !important;
-	background-color: #96A84A !important;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    -khtml-border-radius: 5px;
-    border-radius: 5px;
-}					
-.ui-menu-item {
-	float: left;
-	/*padding:0.5em 1em;*/
-	cursor: pointer;
-}
-.ui-sub-menu {
-	padding: 5px;	
-	background-color: #2D2E26;			
-}
-.ui-sub-menu a:link, 
-.ui-sub-menu a:visited,
-.ui-sub-menu a:active {
-	color: #ffffff!important;	
-}						
-.ui-sub-menu a:hover {
-	background-color: #dddddd;
-	color: #111111!important;
-}
-.ui-sub-menu>li {
-	width: 100%;
-	height: 15px;
-	padding: 5px;
-}
-.selected {
-	background-color: #dddddd;
-}
-.selected>a:link, 
-.selected>a:visited,
-.selected>a:hover,
-.selected>a:active {
-	color: #111111!important;
 }
