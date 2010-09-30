@@ -1,3 +1,8 @@
+html { /* ie7 hack */
+	overflow:auto;
+}
+ 
+
 body {font-family: sans-serif,"Trebuchet MS",Verdana,Helvetica,Arial; 
 	  margin: 20px 0px 0px 0px; 
 	  /*background-color: black;*/
@@ -45,7 +50,12 @@ td {padding: 3px; vertical-align: top;}
 	padding:8px;
 	background:  url("images/search_round_corners.png") no-repeat;
 	padding: 8px;
+	/* ie7 hacks */
+	zoom:1;
+	*display:inline;
 }
+/* webkit hack */
+body:nth-of-type(1) #searchRoundCorners {padding:7px;} 
 #search {
 	width: 243px;
 	/*margin:0 0 0 20px;*/
@@ -67,6 +77,9 @@ h5 {
     background-color: #2D2E26;
     height:29px;
 	/*padding-top:10px;*/
+	/* ie7 hacks */
+	zoom:1;
+	*display:inline;
 }
 .logo-text {
 	font-family:"Trebuchet MS",Verdana,Helvetica,Arial,sans-serif;
@@ -76,13 +89,15 @@ h5 {
 	float: right;
 	/*margin-right: 20px;*/
 	position: relative; 
-	top: -4px
+	top: -4px;
+	/* ie7 hack */
+	*top: -40px;
 }
 .logo-image {
 	position: relative;
  	top: 5px;
 	left: 2px;	
-	height:28px;
+	height:28px;	
 }
 #defaults a {
     color: white;
@@ -230,6 +245,7 @@ h5 {
 	padding:0 10px 0 5px;
 }
 h1 {
+	position:relative;
     margin: 0 0 10px;
 }
 .top {
@@ -270,6 +286,10 @@ pre {
     cursor: pointer;
     background-repeat: no-repeat;
     /*background-position: left 16px;*/
+	/* ie7 hacks */
+	*position:absolute;
+	top:5px;
+	right:0;
 }
 .favoriteon {
     background-image: url(images/fav-on.png);
