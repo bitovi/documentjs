@@ -65,6 +65,7 @@ body:nth-of-type(1) #searchRoundCorners {padding:7px;}
     float: left;
 	border:none;
 	background:#FFFFFF;
+	outline:none;
 }
 h5 {
 	margin-bottom: 0px;padding-bottom: 0px;
