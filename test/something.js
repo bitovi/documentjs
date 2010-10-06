@@ -1,5 +1,11 @@
 /**
  * @class Something
+ * 
+ * ## boom
+ * 
+ * [Bar]
+ * 
+ * goes
  * blah
  * @constructor foo bar
  * man

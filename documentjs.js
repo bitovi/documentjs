@@ -13,6 +13,7 @@ steal( // '//steal/file/file',
 	  '//steal/generate/ejs', //this is gone too now TODO FIX
 	  '//documentjs/json',
 	  '//documentjs/baseclass',
+	  '//documentjs/showdown',
 
 function($){
 	
@@ -22,6 +23,8 @@ function($){
 	DocumentJS.JSONparse = JSONparse;
 	DocumentJS.toJSON = toJSON;
 	DocumentJS.extend=  extend;
+	DocumentJS.converter = new Showdown.converter();
+	delete Showdown;
 	
 	DocumentJS.Class.serialize = function(){
 		this.serializeable =  DocumentJS.makeArray(arguments)

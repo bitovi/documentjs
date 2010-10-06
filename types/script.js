@@ -34,8 +34,32 @@ DocumentJS.Script =
         if(!pairs) return;
         for(var i = 0; i < pairs.length ; i ++){
             var splits = pairs[i].match(this.splitter),
-				comment = splits[1].replace(/^[^\w@]*/,'').replace(/\r?\n(\s*\*+)?/g,'\n'),
-				code = splits[2];
+				comment = splits[1].replace(/\r?\n(\s*\*+)?/g,'\n');
+			
+			//print(splits[1].replace(/^[^\w@]*/,''))
+				
+			var	code = splits[2],
+				removeSpace = Infinity;
+				
+			var lines = comment.split("\n"),
+				noSpace = /\S/g,
+				match
+			for(var l=0; l < lines.length; l++){
+				match = noSpace.exec(lines[l]);
+				if(match && lines[l] && noSpace.lastIndex < removeSpace){
+					removeSpace = noSpace.lastIndex;
+				}
+				noSpace.lastIndex = 0;
+			}
+			print(removeSpace)
+			if(isFinite(removeSpace)){
+				for(var l=0; l < lines.length; l++){
+					
+					lines[l] = 	lines[l].substr(removeSpace-1)
+				}
+			}
+			comment = lines.join("\n")
+			
 			var type = DocumentJS.Type.create( comment , code, scope, objects);
 			
             if(type){

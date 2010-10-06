@@ -183,9 +183,18 @@ DocumentJS.extend(DocumentJS.Type,{
 				}
 			}
 		}
-		if(messages.length)
+		if(messages.length){
 			print("  >"+messages.join())
+		}
+			
 		//if(this.comment_setup_complete) this.comment_setup_complete();
+
+		try{
+			props.comment = DocumentJS.converter.makeHtml(props.comment);
+		}catch(e){
+			print("Error with converting to markdown")
+		}
+
 	}
 });
 
