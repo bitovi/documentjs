@@ -139,14 +139,16 @@ DocumentJS.Application = function(total, app_name){
     
     this.name = app_name;
     this.total = total;
-    this.files = [];
-    
-    //create each Script, which will create each class/constructor, etc
+    //this.files = [];
+	
+    this.objects = {}; //all the objects live here, have a unique name
+    DocumentJS.Application.objects = this.objects;
+	//create each Script, which will create each class/constructor, etc
     for(var s=0; s < total.length; s++){
-		this.files.push( new DocumentJS.Script(total[s]) ) 
+		DocumentJS.Script.process(total[s], this.objects) 
 	}
 	//sort class and constructors so they are easy to find
-	this.all_sorted = DocumentJS.Class.listing.concat( DocumentJS.Constructor.listing ).sort( DocumentJS.Pair.sort_by_name )
+	//this.all_sorted = DocumentJS.Class.listing.concat( DocumentJS.Constructor.listing ).sort( DocumentJS.Pair.sort_by_name )
 }
 
 
@@ -161,25 +163,58 @@ DocumentJS.Application.prototype =
         /* Make the needed directory structure for documentation */
         //new steal.File('docs/classes/').mkdirs();
         print("generating ...")
-		convert = convert || function(name, ob, everything, path){
-			var toJSON = DocumentJS.toJSON(ob)
+
+		
+		//go through all the objects
+		
+		for(var name in DocumentJS.Application.objects){
 			
-			new DocumentJS.File(path+"/"+name+".json").save("C("+toJSON+")");
+			var obj = DocumentJS.extend({},DocumentJS.Application.objects[name]),
+				toJSON;
+			
+			if(obj.type == 'script' || typeof obj != "object"){
+				continue;
+			}
+			//get all children
+			var children = this.linker(obj);
+			obj.children = children;
+			
+			var converted = name.replace(/ /g, "_").replace(/&#46;/g, ".").replace(/&gt;/g, "_gt_").replace(/\*/g,"_star_")
+			print("  "+name)
+			toJSON = this.toJSON(obj);
+			new DocumentJS.File(path+"/"+converted+".json").save(toJSON);
+			
+
 		}
 		
-		var types = [ DocumentJS.Class, DocumentJS.Constructor, DocumentJS.Function, DocumentJS.Page, DocumentJS.Attribute]
-		for(var t = 0; t< types.length; t++){
-			for(var i = 0; i <  types[t].listing.length; i++){
-				var ob = types[t].listing[i];
-
-				var oliteral = ob.serialize();
-
-				var name = oliteral.name.replace(/ /g, "_").replace(/&#46;/g, ".").replace(/&gt;/g, "_gt_").replace(/\*/g,"_star_");
-				convert(name, oliteral, this.all_sorted, path)
-	        }
-		}
+		
         this.searchData(path, convert);
         this.summary_page(path, convert)
+    },
+	shallowParent : function(item, parent){
+		if(item.parents){
+			for(var i = 0; i < item.parents.length;i++){
+				if(item.parents[i] === parent){
+					return true;
+				}
+			}
+		}
+		return false;
+	},
+	linker : function(item, stealSelf, parent){
+        var result = stealSelf ? [item.name] : [];
+		if(item.children && ! this.shallowParent(item, parent)){
+            //print(this.name)
+			for(var c=0; c<item.children.length; c++){
+				var child = DocumentJS.Application.objects[item.children[c]];
+                var adds = this.linker(child,true, item);
+                if(adds){
+					result = result.concat( adds );
+				}
+                    
+            }
+        }
+        return result;
     },
     /**
      * Creates a page for all classes and constructors
@@ -188,10 +223,8 @@ DocumentJS.Application.prototype =
     summary_page : function(path, convert){
         //find index page
         var base = path.replace(/[^\/]*$/,"");
-		for(var p = 0; p < DocumentJS.Page.listing.length; p++){
-            if(DocumentJS.Page.listing[p].full_name() == 'index')
-                this.indexPage = DocumentJS.Page.listing[p];
-        }
+		this.indexPage = DocumentJS.Application.objects.index
+
         //checks if you have a summary
         if( readFile(path+"/summary.ejs") ){
             DocumentJS.render_to(base+"docs.html",path+"/summary.ejs" , this)
@@ -228,11 +261,14 @@ DocumentJS.Application.prototype =
     },
 	addToSearchData : function(list, searchData){
 		var c, parts, part,  p,  fullName;
-		for(var i =0; i < list.length; i++){
-            c = list[i];
+		for(var name in list){
+            c = list[name];
+			if(c.type == 'script'){
+				continue;
+			}
             //break up into parts
-            fullName = c.full_name();
-            searchData.list[fullName] = {name: fullName, shortName: c.Class.shortName.toLowerCase(), title: c.title, tags: c.tags};
+            fullName = c.name;
+            searchData.list[fullName] = {name: c.name, title: c.title || null, tags: c.tags|| null, type: c.type};
 			parts = fullName.split(".");
             for(p=0; p< parts.length; p++){
                 part = parts[p].toLowerCase();
@@ -248,13 +284,15 @@ DocumentJS.Application.prototype =
         }
 	},
     searchData : function(path, convert){
-        var sortedClasses = DocumentJS.Class.listing.sort( DocumentJS.Pair.sort_by_name )
+        //var sortedClasses = DocumentJS.Class.listing.sort( DocumentJS.Pair.sort_by_name )
         
 		//go through and create 2 level hash structure
         var searchData = {list: {}};
         
-        var docData = {};
-        
+		
+        this.addToSearchData(DocumentJS.Application.objects, searchData) 
+			
+		/*
         
         
         this.addToSearchData(sortedClasses, searchData)
@@ -263,14 +301,17 @@ DocumentJS.Application.prototype =
 		this.addToSearchData(DocumentJS.Static.listing, searchData)
 		this.addToSearchData(DocumentJS.Prototype.listing, searchData)
 		this.addToSearchData(DocumentJS.Page.listing, searchData)
-        this.addToSearchData(DocumentJS.Attribute.listing, searchData)
+        this.addToSearchData(DocumentJS.Attribute.listing, searchData)*/
         
 		
-		new DocumentJS.File(path+"/searchData.json").save("C("+DocumentJS.toJSON(searchData, false)+")");
+		new DocumentJS.File(path+"/searchData.json").save(this.toJSON(searchData, false) );
 		
         //new DocumentJS.File(this.name+"/docs/searchData.json").save("C("+DocumentJS.toJSON(searchData, false)+")");
 
     },
+	toJSON : function(){
+		return "C("+DocumentJS.toJSON.apply(DocumentJS.toJSON, arguments)+")"
+	},
     /**
      * Only shows five folders in a path.
      * @param {String} path a file path to convert

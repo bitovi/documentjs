@@ -21,7 +21,7 @@ function($){
 	DocumentJS.EJS = steal.EJS;
 	DocumentJS.JSONparse = JSONparse;
 	DocumentJS.toJSON = toJSON;
-	
+	DocumentJS.extend=  extend;
 	
 	DocumentJS.Class.serialize = function(){
 		this.serializeable =  DocumentJS.makeArray(arguments)
@@ -49,20 +49,23 @@ function($){
 
     delete toJSON;
 	
+
 },
 '//documentjs/distance',	
 '//documentjs/application',
-'//documentjs/pair' ,
-'//documentjs/directives',
-'//documentjs/function',
+
+'//documentjs/tags/tags',
+'//documentjs/types/types'
+
+/*'//documentjs/function',
 '//documentjs/class',
 '//documentjs/constructor',
-'//documentjs/file',
+'//documentjs/script',
 '//documentjs/add',
 '//documentjs/static',
 '//documentjs/prototype',
 '//documentjs/attribute',
-'//documentjs/page')
+'//documentjs/page'*/)
 
 	
 

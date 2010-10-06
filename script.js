@@ -31,9 +31,9 @@ DocumentJS.Pair.extend('DocumentJS.Script',
         var scope = this;
         if(!pairs) return;
         for(var i = 0; i < pairs.length ; i ++){
-            var splits = pairs[i].match(this.Class.splitter);
-            var comment = splits[1].replace(/^[^\w@]*/,'').replace(/\r?\n(\s*\*+)?/g,'\n');
-            var code = splits[2];
+            var splits = pairs[i].match(this.Class.splitter),
+				comment = splits[1].replace(/^[^\w@]*/,'').replace(/\r?\n(\s*\*+)?/g,'\n'),
+				code = splits[2];
 			var pair = DocumentJS.Pair.create( comment , code, scope);
             if(pair){
 				//get the new scope if you need it
