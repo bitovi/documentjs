@@ -37,7 +37,7 @@ DocumentJS.extend(DocumentJS.Type,{
 		if(type.init){
 			return type.init(props, comment)
 		}
-		print(props.name + " "+type.type);
+		//print(props.name + " "+type.type);
 		if(DocumentJS.Application.objects[props.name]){
 			var oldProps = props;
 			props = DocumentJS.Application.objects[props.name];
@@ -184,7 +184,7 @@ DocumentJS.extend(DocumentJS.Type,{
 			}
 		}
 		if(messages.length){
-			print("  >"+messages.join())
+			//print("  >"+messages.join())
 		}
 			
 		//if(this.comment_setup_complete) this.comment_setup_complete();

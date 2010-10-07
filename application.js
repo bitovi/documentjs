@@ -160,7 +160,6 @@ DocumentJS.Application.prototype =
      * @param {String} path where to put the docs
      */
     generate : function(path, convert){
-        /* Make the needed directory structure for documentation */
         //new steal.File('docs/classes/').mkdirs();
         print("generating ...")
 
@@ -180,7 +179,7 @@ DocumentJS.Application.prototype =
 			obj.children = children;
 			
 			var converted = name.replace(/ /g, "_").replace(/&#46;/g, ".").replace(/&gt;/g, "_gt_").replace(/\*/g,"_star_")
-			print("  "+name)
+			//print("  "+name)
 			toJSON = this.toJSON(obj);
 			new DocumentJS.File(path+"/"+converted+".json").save(toJSON);
 			
@@ -268,7 +267,17 @@ DocumentJS.Application.prototype =
 			}
             //break up into parts
             fullName = c.name;
-            searchData.list[fullName] = {name: c.name, title: c.title || null, tags: c.tags|| null, type: c.type};
+            searchData.list[fullName] = {name: c.name, 
+										 type: c.type};
+			if(c.title){
+				searchData.list[fullName].title = c.title
+			}
+			if(c.tags){
+				searchData.list[fullName].tags = c.tags
+			}
+			if(c.hide){
+				searchData.list[fullName].hide = c.hide
+			}
 			parts = fullName.split(".");
             for(p=0; p< parts.length; p++){
                 part = parts[p].toLowerCase();

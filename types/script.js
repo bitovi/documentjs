@@ -27,6 +27,7 @@ DocumentJS.Script =
 			type: "script",
 			name: inc.path
 		}
+		print("  "+script.name);
 		objects[script.name] = script;
 		var pairs = source.match(this.group);
         //clean comments
@@ -51,7 +52,7 @@ DocumentJS.Script =
 				}
 				noSpace.lastIndex = 0;
 			}
-			print(removeSpace)
+			//print(removeSpace)
 			if(isFinite(removeSpace)){
 				for(var l=0; l < lines.length; l++){
 					
