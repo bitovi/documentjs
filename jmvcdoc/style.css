@@ -211,8 +211,8 @@ h5 {
     background-image: url('images/sidebar_top_close.png');
 }
 #left #results a.picked, #left #page_results a.picked {
-	/*background-color: #9C6854;*/
-	background-color:rgb(182,220,235);
+	background-color: #AAD1E1;
+	/*background-color:rgb(182,220,235);*/
 }
 #doc .type,
 #doc .typeEnd {
