@@ -191,9 +191,9 @@ DocumentJS.Application.prototype =
         this.summary_page(path, convert)
     },
 	shallowParent : function(item, parent){
-		if(item.parents){
+		if(item.parents && parent){
 			for(var i = 0; i < item.parents.length;i++){
-				if(item.parents[i] === parent){
+				if(item.parents[i] == parent.name){
 					return true;
 				}
 			}
