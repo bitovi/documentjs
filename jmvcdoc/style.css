@@ -82,7 +82,7 @@ h5 {
 	position: relative;
  	top: 5px;
 	left: 2px;	
-	height:28px;	
+	/*height:28px;*/	
 }
 #defaults a {
     color: white;
@@ -221,10 +221,11 @@ h5 {
 	color: #FFFFFF;
 	background:url("images/type.png") no-repeat;
 	background-position:0 0;
-	overflow:auto;
+	vertical-align:middle;
 }
 #doc .typeEnd {
 	display:block;
+	line-height:21px;
 	background-position:100% 0;
 	margin-left:15px;
 	padding:0 10px 0 5px;
