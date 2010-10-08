@@ -163,6 +163,10 @@ h5 {
 	background-color:rgb(210,217,136);
 	/*border-top: solid 1px #AABF54*/
 }
+#left #selected .spacer {
+	height:10px;
+	background:white;
+}
 #left #selected {
 	margin:0 0 10px 0;
 	background-color:rgb(210,217,136);
@@ -222,12 +226,13 @@ h5 {
 	background:url("images/type.png") no-repeat;
 	background-position:0 0;
 	vertical-align:middle;
+	margin-left:-9px;
 }
 #doc .typeEnd {
 	display:block;
 	line-height:21px;
 	background-position:100% 0;
-	margin-left:15px;
+	margin-left:11px;
 	padding:0 10px 0 5px;
 }
 h1 {
