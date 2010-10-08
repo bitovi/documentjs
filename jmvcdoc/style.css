@@ -5,7 +5,6 @@ html { /* ie7 hack */
 
 body {font-family: sans-serif,"Trebuchet MS",Verdana,Helvetica,Arial; 
 	  margin: 20px 0px 0px 0px; 
-	  /*background-color: black;*/
       overflow: auto;
 }
 dl {
@@ -16,8 +15,6 @@ dl {
 td {padding: 3px; vertical-align: top;}
 #top {
 	margin:0 20px 20px 20px;
-    /*padding: 0px 0px 20px 20px;*/
-	/*background-color:#2D2E26;*/
 	background-color:rgb(39,49,39);
     
 }
@@ -44,22 +41,14 @@ td {padding: 3px; vertical-align: top;}
 	margin:0 10px;
 }
 #searchRoundCorners {
-	display:inline-block;
+	float:left;
 	width:273px;
-	/*height:13px;*/
 	padding:8px;
 	background:  url("images/search_round_corners.png") no-repeat;
-	padding: 8px;
-	/* ie7 hacks */
-	zoom:1;
-	*display:inline;
-}
-/* webkit hack */
-body:nth-of-type(1) #searchRoundCorners {padding:7px;} 
+	padding: 7px;
+} 
 #search {
 	width: 243px;
-	/*margin:0 0 0 20px;*/
-    /*padding:2px;*/
     font-size: 14px;
     font-family: "Trebuchet MS",Verdana,Helvetica,Arial,sans-serif;
     float: left;
@@ -71,16 +60,14 @@ h5 {
 	margin-bottom: 0px;padding-bottom: 0px;
 }
 #defaults {
-	display:inline-block;
+	float:left;
 	font-weight:bold;
 	width:400px;
     margin-left: 10px;
+	margin-bottom:1px;
     background-color: #2D2E26;
-    height:29px;
-	/*padding-top:10px;*/
-	/* ie7 hacks */
-	zoom:1;
-	*display:inline;
+	height:35px;
+	line-height:35px;
 }
 .logo-text {
 	font-family:"Trebuchet MS",Verdana,Helvetica,Arial,sans-serif;
@@ -88,11 +75,8 @@ h5 {
 	font-weight:bold;
 	color:white;
 	float: right;
-	/*margin-right: 20px;*/
 	position: relative; 
 	top: -4px;
-	/* ie7 hack */
-	*top: -40px;
 }
 .logo-image {
 	position: relative;
@@ -540,7 +524,10 @@ iframe {
 
 /* menu items */
 #defaults .ui-menu {
-	margin: 0px; padding: 0px;
+	height:25px;
+	line-height:25px;
+	margin: 5px 0px; 
+	padding: 0px;
 	list-style-image:none;
 	list-style-position:outside;
 	list-style-type:none;
