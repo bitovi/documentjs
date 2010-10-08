@@ -227,6 +227,8 @@ h5 {
 	background-position:0 0;
 	vertical-align:middle;
 	margin-left:-9px;
+	margin-bottom:3px;
+	*margin-bottom:0px; /* ie7 */
 }
 #doc .typeEnd {
 	display:block;
