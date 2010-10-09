@@ -220,7 +220,11 @@ h5 {
 	background-color: #AAD1E1;
 	/*background-color:rgb(182,220,235);*/
 }
-#doc .type,
+#doc .type {
+	color:gray;
+	font-size:0.8em;
+}
+#doc .content .type,
 #doc .typeEnd {
 	display:inline-block;
     font-size: 0.7em; 
