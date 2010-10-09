@@ -10,7 +10,7 @@
  * <br/>
  * 
  * <p>DocumentJS is pure JavaScript so it is easy to modify and make improvements.  First, lets show what
- * DocumentJS can document: </p>
+ * types [DocumentJS.Type | types] DocumentJS can document: </p>
  * <ul>
  *     <li>[DocumentJS.Attribute | @attribute] -  values on an object.</li>
  *     <li>[DocumentJS.Function | @function] - functions on an object.</li>

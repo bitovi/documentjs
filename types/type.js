@@ -1,5 +1,5 @@
 /**
- * @class DocumentJS.Type
+ * @class
  * @tag documentation
  * Keeps track of types of directives in DocumentJS.  
  * Each type is added to the types array.
@@ -10,15 +10,24 @@ DocumentJS.Type = function(type, props){
 	DocumentJS.Type.types[type] = props;
 	props.type = type;
 }
+
+DocumentJS.extend(DocumentJS.Type,
 /**
  * @Static
  */
-DocumentJS.extend(DocumentJS.Type,{
+{
 	/**
 	 * Keeps track of the directive types
 	 */
 	types: {},
-	//must get type and name
+	/**
+	 * Must get type and name
+	 * @param {String} comment
+	 * @param {String} code
+	 * @param {Object} scope
+	 * @param {Object} objects List of parsed types
+	 * @return {Object} type
+	 */
 	create: function(comment, code, scope, objects){
 
 		var check =  comment.match(/^\s*@(\w+)/), 
@@ -77,7 +86,13 @@ DocumentJS.extend(DocumentJS.Type,{
 			return props
 		}
 	},
-	getParent : function(type, scope){
+	/**
+	 * Get the type's parent
+	 * @param {Object} type
+	 * @param {Object} scope
+	 * @return {Object} parent
+	 */
+	getParent: function(type, scope){
 		if(!type.parent){
 			return scope;
 		}
@@ -92,11 +107,21 @@ DocumentJS.extend(DocumentJS.Type,{
 		}
 		return scope;
 	},
+	/**
+	 * Checks if type processor is loaded
+	 * @param {Object} type
+	 * @return {Object} type
+	 */	
 	hasType: function(type){
 		if(!type) return null;
 		
 		return this.types.hasOwnProperty(type.toLowerCase()) ? this.types[type.toLowerCase()] : null;
 	},
+	/**
+	 * Guess type from code
+	 * @param {String} code
+	 * @return {Object} type
+	 */		
 	guessType: function(code){
 		for(var type in this.types){
 			if(this.types[type].codeMatch && this.types[type].codeMatch(code) ) {
@@ -107,7 +132,13 @@ DocumentJS.extend(DocumentJS.Type,{
 		return null;
 	},
 	matchTag: /^\s*@(\w+)/,
-	process : function(props, comment, type){
+	/**
+	 * Process comments
+	 * @param {Object} props
+	 * @param {String} comment
+	 * @param {Object} type
+	 */	
+	process: function(props, comment, type){
 		var i = 0,
 			lines = comment.split("\n"),
 			typeDataStack = [],
