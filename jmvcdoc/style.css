@@ -45,6 +45,7 @@ td {padding: 3px; vertical-align: top;}
 	width:273px;
 	padding:8px;
 	background:  url("images/search_round_corners.png") no-repeat;
+	background-position:0 2px;
 	padding: 7px;
 } 
 #search {
@@ -55,6 +56,7 @@ td {padding: 3px; vertical-align: top;}
 	border:none;
 	background:#FFFFFF;
 	outline:none;
+	margin-left:10px;
 }
 h5 {
 	margin-bottom: 0px;padding-bottom: 0px;
@@ -76,7 +78,7 @@ h5 {
 	color:white;
 	float: right;
 	position: relative; 
-	top: -4px;
+	top: -3px;
 }
 .logo-image {
 	position: relative;
