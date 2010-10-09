@@ -108,6 +108,7 @@ h5 {
 }
 #left {
     width: 300px;
+	min-height:10px;
     float: left;
     /*background-color: #2D2E26;*/ /*#B8B495*/
 	/*background-color:rgb(239,242,213);*/
