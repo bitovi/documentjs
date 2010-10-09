@@ -1,8 +1,22 @@
+/**
+ * @class DocumentJS.Type
+ * @tag documentation
+ * Keeps track of types of directives in DocumentJS.  
+ * Each type is added to the types array.
+ * @param {Object} type
+ * @param {Object} props
+ */
 DocumentJS.Type = function(type, props){
 	DocumentJS.Type.types[type] = props;
 	props.type = type;
 }
+/**
+ * @Static
+ */
 DocumentJS.extend(DocumentJS.Type,{
+	/**
+	 * Keeps track of the directive types
+	 */
 	types: {},
 	//must get type and name
 	create: function(comment, code, scope, objects){

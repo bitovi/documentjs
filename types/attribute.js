@@ -1,3 +1,9 @@
+/**
+ * @class DocumentJS.Type.types.attribute
+ * @parent DocumentJS.Type
+ * @tag documentation
+ * The attribute directive
+ */
 DocumentJS.Type("attribute",{
 	codeMatch: function(code){
 		return code.match(/(\w+)\s*[:=]\s*/) && !code.match(/(\w+)\s*[:=]\s*function\(([^\)]*)/)  
