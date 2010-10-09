@@ -72,19 +72,19 @@ h5 {
 	line-height:35px;
 }
 .logo-text {
-	font-family:"Trebuchet MS",Verdana,Helvetica,Arial,sans-serif;
-	font-size:30px;
-	font-weight:bold;
 	color:white;
-	float: right;
-	position: relative; 
-	top: -3px;
+	float:right;
+	font-family:arial;
+	font-size:26px;
+	font-weight:bold;
+	left:-8px;
+	position:relative;
+	top:-4px;
 }
 .logo-image {
-	position: relative;
- 	top: 5px;
-	left: 2px;	
-	/*height:28px;*/	
+	left:4px;
+	position:relative;
+	top:6px;
 }
 #defaults a {
     color: white;
