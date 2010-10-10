@@ -24,16 +24,20 @@
  * 
  * Finally, you have [DocumentJS.Tags|tags] that provide addtional info about the comment:
  * 
- * * [DocumentJS.Directive.Alias|@alias] - another commonly used name for Class or Constructor</li>
- * * [DocumentJS.Directive.Author|@author] - author of class</li>
- * * [DocumentJS.Directive.CodeStart|@codestart] -> [DocumentJS.Directive.CodeEnd|@codeend] - insert highlighted code block</li>
- * * [DocumentJS.Directive.Hide|@hide] - hide in Class view</li>
- * * [DocumentJS.Directive.Inherits|@inherits] - what the Class or Constructor inherits</li>
- * * [DocumentJS.Directive.Init|@init] - constructor function</li>
- * * [DocumentJS.Directive.Param|@param] - A function's parameter</li>
- * * [DocumentJS.Directive.Plugin|@plugin] - by which plugin this object gets steald</li>
- * * [DocumentJS.Directive.Return|@return] - what a function returns</li>
- * * [DocumentJS.Directive.Tag|@tag] - tags for searching</li>
+ * * [DocumentJS.Tags.alias|@alias] - another commonly used name for Class or Constructor
+ * * [DocumentJS.Tags.author|@author] - author of class
+ * * [DocumentJS.Tags.codestart|@codestart] -> [DocumentJS.Tags.codeend|@codeend] - insert highlighted code block
+ * * [DocumentJS.Tags.demo|@demo] - placeholder for an application demo
+ * * [DocumentJS.Tags.download|@download] - adds a download link
+ * * [DocumentJS.Tags.iframe|@iframe] - adds an iframe to some page with example code
+ * * [DocumentJS.Tags.hide|@hide] - hide in Class view
+ * * [DocumentJS.Tags.inherits|@inherits] - what the Class or Constructor inherits
+ * * [DocumentJS.Tags.parent|@parent] - says under which parent the current type should be located 
+ * * [DocumentJS.Tags.init|@init] - constructor function
+ * * [DocumentJS.Tags.param|@param] - A function's parameter
+ * * [DocumentJS.Tags.plugin|@plugin] - by which plugin this object gets steald
+ * * [DocumentJS.Tags.return|@return] - what a function returns
+ * * [DocumentJS.Tags.tag|@tag] - tags for searching
  * 
  * ###Example
  * 

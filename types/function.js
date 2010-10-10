@@ -1,8 +1,36 @@
 /**
- * @class DocumentJS.Function
+ * @class DocumentJS.Type.types.function
  * @tag documentation
  * @parent DocumentJS.Type
- * Properties of a function.
+ * Documents a function. Doc can guess at a functions name and params if the source following a comment matches something like:
+ * 
+ * @codestart
+ * myFuncOne : function(param1, param2){}  //or
+ * myFuncTwo = function(param1, param2){}  
+ * @codeend
+ * 
+ * ###Directives
+ *
+ * Use the following directives to document a function.
+ * 
+ * @codestart
+ * [ DocumentJS.Type.types.function | @function ] function_name                       -&gt; Forces a function
+ * [ DocumentJS.Tags.param | @param ] {optional:type} param_name Description -&gt; Describes a parameter
+ * [ DocumentJS.Tags.return | @return ] {type} Description                    -&gt; Describes the return value
+ * @codeend
+ * 
+ * Add optional: for optional params. Other available directives: [ DocumentJS.Tags.plugin | @plugin ], [ DocumentJS.Tags.codestart | @codestart ]
+ *
+ * ###Example
+ * 
+ * @codestart
+ * /* Adds, Mr. or Ms. before someone's name
+ * [ DocumentJS.Tags.param | @param ] {String} name the persons name
+ * [ DocumentJS.Tags.param | @param ] {optional:Boolean} gender true if a man, false if female.  Defaults to true.
+ * [ DocumentJS.Tags.return | @return ] {String} returns the appropriate honorific before the person's name.
+ * *|  
+ * honorific = function(name, gender){
+ * @codeend 
  */
 DocumentJS.Type("function",
 /**
@@ -10,7 +38,12 @@ DocumentJS.Type("function",
  */
 {
 	codeMatch: /(?:([\w\.]+)|(["'][^"']+["']))\s*[:=]\s*function\s?\(([^\)]*)/,
-	//must return the name if from the code
+	/*
+	 * Parses the code to get the function data.
+	 * Must return the name if from the code.
+	 * @param {String} code
+	 * @return {Object} function data
+	 */	
 	code : function(code){
 		var parts = this.codeMatch(code);
 
@@ -39,6 +72,9 @@ DocumentJS.Type("function",
 		
 		return data;
 	},
+	/*
+	 * Possible scopes for @function.
+	 */	
 	parent : /script|static|proto|class/,
 	useName : false
 })

@@ -1,3 +1,14 @@
+/**
+ * @class DocumentJS.Tags.iframe
+ * @tag documentation
+ * @parent DocumentJS.Tags 
+ * 
+ * Adds an iframe to some page with example code, e.g. @iframe phui/menu/menu.html 320.
+ * 
+ * ###Example:
+ * 
+ * @iframe jquery/view/view.html 700
+ */
 DocumentJS.Tags.iframe = {
     add: function(line){
         var m = line.match(/^\s*@iframe\s*([\w\.\/]*)\s*([\w]*)\s*(.*)/)

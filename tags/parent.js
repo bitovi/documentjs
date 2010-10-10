@@ -1,6 +1,13 @@
 (function(){
 	var waiting = {}
-	
+
+	/**
+	 * @class DocumentJS.Tags.parent
+	 * @tag documentation
+	 * @parent DocumentJS.Tags 
+	 * 
+	 * Says under which parent the current type should be located. 
+	 */	
 	DocumentJS.Tags.parent = {
 	    add: function(line){
 			var m = line.match(/^\s*@parent\s*([\w\.\/]*)\s*([\w]*)/)

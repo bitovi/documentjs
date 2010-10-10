@@ -1,3 +1,12 @@
+/**
+ * @class DocumentJS.Tags.return
+ * @tag documentation
+ * @parent DocumentJS.Tags 
+ * 
+ * Describes return data in the format "@return {type} description".
+ * 
+ * Matches multiple lines. 
+ */
 DocumentJS.Tags["return"] = {
     add: function(line){
 		if(!this.ret){

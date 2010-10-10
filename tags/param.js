@@ -10,7 +10,15 @@ var ordered = function(params){
 }
 
 
-
+/**
+ * @class DocumentJS.Tags.param
+ * @tag documentation
+ * @parent DocumentJS.Tags 
+ * 
+ * Adds parameter information of the format: "@param {_optional:_type} name description" .
+ *
+ * Matches multiple lines. 
+ */
 DocumentJS.Tags.param = {
 	
 	addMore : function(line, last){

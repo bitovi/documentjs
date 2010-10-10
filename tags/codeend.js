@@ -1,3 +1,46 @@
+/**
+ * @class DocumentJS.Tags.codeend
+ * @tag documentation
+ * @parent DocumentJS.Tags 
+ * 
+ * Stops a code block.
+ * 
+ * ###Example:
+ * 
+ * @codestart
+ *
+ *  /* 
+ *   * @codestart
+ *   *  /* @constructor
+ *   *   *  * Person represents a human with a name.  Read about the 
+ *   *   *  * animal class [Animal | here].
+ *   *   * @init 
+ *   *   * You must pass in a name.
+ *   *   * @params {String} name A person's name
+ *   *   *|
+ *   *   Person = function(name){
+ *   *      this.name = name
+ *   *      Person.count ++;
+ *   *   }
+ *   *  /* @Static *|
+ *   *  steal.Object.extend(Person, {
+ *   *      /* Number of People *|
+ *   *      count: 0
+ *   *  })
+ *   *  /* @Prototype *|
+ *   *  Person.prototype = {
+ *   *     /* Returns a formal name 
+ *   *      * @return {String} the name with "Mrs." added
+ *   *      *|
+ *   *      fancy_name : function(){
+ *   *         return "Mrs. "+this.name;
+ *   *      }
+ *   *}
+ *   * @codeend
+ *   *|
+ *
+ * @codeend 
+ */
 DocumentJS.Tags.codeend = {
     add: function(line, data){
 
