@@ -44,4 +44,5 @@ steal(function(){
 '//documentjs/tags/scope',
 '//documentjs/tags/tag',
 '//documentjs/tags/test',
-'//documentjs/tags/type')
+'//documentjs/tags/type',
+'//documentjs/tags/image')
