@@ -1,5 +1,9 @@
 
 steal(function(){
+	/**
+	 * @class DocumentJS.Tags
+	 * Keeps track of tags for DocumentJS
+	 */
 	DocumentJS.Tags = {
 		
 	}
