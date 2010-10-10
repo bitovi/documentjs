@@ -33,11 +33,13 @@
  * * [DocumentJS.Tags.hide|@hide] - hide in Class view
  * * [DocumentJS.Tags.inherits|@inherits] - what the Class or Constructor inherits
  * * [DocumentJS.Tags.parent|@parent] - says under which parent the current type should be located 
- * * [DocumentJS.Tags.init|@init] - constructor function
  * * [DocumentJS.Tags.param|@param] - A function's parameter
  * * [DocumentJS.Tags.plugin|@plugin] - by which plugin this object gets steald
  * * [DocumentJS.Tags.return|@return] - what a function returns
+ * * [DocumentJS.Tags.scope|@scope] - forces the current type to start scope
  * * [DocumentJS.Tags.tag|@tag] - tags for searching
+ * * [DocumentJS.Tags.test|@test] - link for test cases
+ * * [DocumentJS.Tags.type|@type] - sets the type for the current commented code
  * 
  * ###Example
  * 

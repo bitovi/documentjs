@@ -1,3 +1,10 @@
+/**
+ * @class DocumentJS.Tags.tag
+ * @tag documentation
+ * @parent DocumentJS.Tags 
+ * 
+ * Tags for searching.
+ */
 DocumentJS.Tags.tag = {
     add: function(line){
         var parts = line.match(/^\s*@tag\s*(.+)/);
