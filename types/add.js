@@ -1,8 +1,15 @@
 /**
- * @class DocumentJS.Add
+ * @class DocumentJS.Type.types.add
  * @tag documentation
  * @parent DocumentJS.Type
- * Add docs to a class or construtor described in another file.
+ * Used to set scope to add to classes or methods in another file. Examples:
+ * 
+ * @codestart
+ * /* @add steal.String Static *|         adds to steal.String's static methods
+ * /* @add steal.Controller Prototype *|  adds to steal.Controller's prototype methods
+ * @codeend
+ * 
+ * It's important to note that add must be in its own comment block. 
  */
 DocumentJS.Type("add",
 /**

@@ -1,8 +1,15 @@
 /**
- * @class DocumentJS.Attribute
+ * @class DocumentJS.Type.types.attribute
  * @tag documentation
  * @parent DocumentJS.Type
- * Properties of an object.
+ * Documents an attribute. Example:
+ * 
+ * @codestart
+ *  steal.Object.extend(Person, {
+ *   /* Number of People *|
+ *   count: 0
+ *  })
+ * @codeend
  */
 DocumentJS.Type("attribute",
 /**

@@ -7,36 +7,36 @@
  * at things like function names and parameters, but powerful enough to generate 
  * <span class='highlight'>JavaScriptMVC's entire website</span>!
  * 
- * <br/>
+ * DocumentJS is pure JavaScript so it is easy to modify and make improvements.  First, lets show what
+ * [DocumentJS.Type | types] DocumentJS can document:
  * 
- * <p>DocumentJS is pure JavaScript so it is easy to modify and make improvements.  First, lets show what
- * types [DocumentJS.Type | types] DocumentJS can document: </p>
- * <ul>
- *     <li>[DocumentJS.Attribute | @attribute] -  values on an object.</li>
- *     <li>[DocumentJS.Function | @function] - functions on an object.</li>
- *     <li>[DocumentJS.Constructor | @constructor] - functions you call like: new Thing()</li>
- *     <li>[DocumentJS.Class| @class] - normal JS Objects and source that uses [jQuery.Class]</li>
- * </ul>
- * <p>You can also specifify where your functions and attributes are being added with: </p>
- * <ul>
- *     <li>[DocumentJS.Prototype | @prototype] - add to the previous class or constructor's prototype functions</li>
- *     <li>[DocumentJS.Static | @static] - add to the previous class or constructor's static functions</li>
- *     <li>[DocumentJS.Add |@add] - add docs to a class or construtor described in another file</li>
- * </ul>    
- * <p>Finally, you have [DocumentJS.Directive|directives] that provide addtional info about the comment:</p>
- * <ul>
- *     <li>[DocumentJS.Directive.Alias|@alias] - another commonly used name for Class or Constructor</li>
- *     <li>[DocumentJS.Directive.Author|@author] - author of class</li>
- *     <li>[DocumentJS.Directive.CodeStart|@codestart] -> [DocumentJS.Directive.CodeEnd|@codeend] - insert highlighted code block</li>
- *     <li>[DocumentJS.Directive.Hide|@hide] - hide in Class view</li>
- *     <li>[DocumentJS.Directive.Inherits|@inherits] - what the Class or Constructor inherits</li>
- *     <li>[DocumentJS.Directive.Init|@init] - constructor function</li>
- *     <li>[DocumentJS.Directive.Param|@param] - A function's parameter</li>
- *     <li>[DocumentJS.Directive.Plugin|@plugin] - by which plugin this object gets steald</li>
- *     <li>[DocumentJS.Directive.Return|@return] - what a function returns</li>
- *     <li>[DocumentJS.Directive.Tag|@tag] - tags for searching</li>
- * </ul>
- * <h3>Example</h3>
+ * * [DocumentJS.Type.types.page | @page] -  a standalone page.
+ * * [DocumentJS.Type.types.attribute | @attribute] -  values on an object.
+ * * [DocumentJS.Type.types.function | @function] - functions on an object.
+ * * [DocumentJS.Tags.constructor | @constructor] - functions you call like: new Thing()
+ * * [DocumentJS.Type.types.class| @class] - normal JS Objects and source that uses [jQuery.Class]
+ *
+ * You can also specifify where your functions and attributes are being added with:
+ * 
+ * * [DocumentJS.Type.types.prototype | @prototype] - add to the previous class or constructor's prototype functions
+ * * [DocumentJS.Type.types.static | @static] - add to the previous class or constructor's static functions
+ * * [DocumentJS.Type.types.add |@add] - add docs to a class or construtor described in another file
+ * 
+ * Finally, you have [DocumentJS.Tags|tags] that provide addtional info about the comment:
+ * 
+ * * [DocumentJS.Directive.Alias|@alias] - another commonly used name for Class or Constructor</li>
+ * * [DocumentJS.Directive.Author|@author] - author of class</li>
+ * * [DocumentJS.Directive.CodeStart|@codestart] -> [DocumentJS.Directive.CodeEnd|@codeend] - insert highlighted code block</li>
+ * * [DocumentJS.Directive.Hide|@hide] - hide in Class view</li>
+ * * [DocumentJS.Directive.Inherits|@inherits] - what the Class or Constructor inherits</li>
+ * * [DocumentJS.Directive.Init|@init] - constructor function</li>
+ * * [DocumentJS.Directive.Param|@param] - A function's parameter</li>
+ * * [DocumentJS.Directive.Plugin|@plugin] - by which plugin this object gets steald</li>
+ * * [DocumentJS.Directive.Return|@return] - what a function returns</li>
+ * * [DocumentJS.Directive.Tag|@tag] - tags for searching</li>
+ * 
+ * ###Example
+ * 
  * The following documents a Person constructor.
  * @codestart
  * /* @constructor
@@ -65,19 +65,28 @@
  *   }
  * }
  * @codeend
- * There are a few things to notice:
- * <ul>
- *     <li>The example closes comments with <i>*|</i>.  You should close them with / instead of |.</li>
- *     <li>We create a link to another class with <i>[Animal | here]</i>.</li>
- * </ul>
  * 
- * <h3>Using with a JavaScritpMVC application</h3>
+ * There are a few things to notice:
+ * 
+ * * The example closes comments with _*|_.  You should close them with / instead of |.
+ * * We create a link to another class with _[Animal | here]_.
+ * 
+ * ###Using with a JavaScritpMVC application
+ * 
  * You just have to run the docs script in your apps scripts folder:
- * <pre>js <i>APPNAME</i>/scripts/docs.js</pre>
- * Open <i>APPNAME</i>/docs.html to see your documentation.
- * <h3>Using without JavaScriptMVC</h3>
+ * 
+ * @codestart
+ *     js _APPNAME_/scripts/docs.js
+ * @codeend
+ * 
+ * Open _APPNAME_/docs.html to see your documentation.
+ * 
+ * ###Using without JavaScriptMVC
+ * 
  * Coming soon!
- * <h3>Inspiration</h3>
+ * 
+ * ###Inspiration
+ * 
  * DocumentJS was inspired by the [http://api.jquery.com/ jQuery API Browser] by [http://remysharp.com/ Remy Sharp]
  */
 DocumentJS.extend(DocumentJS,

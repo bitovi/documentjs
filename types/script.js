@@ -1,4 +1,3 @@
-
 /**
  * Represents a file.
  * Breaks up file into comment and code parts.
