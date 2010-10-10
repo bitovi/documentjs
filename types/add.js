@@ -1,7 +1,7 @@
 /**
  * @class DocumentJS.Add
  * @tag documentation
- * @add DocumentJS.Type
+ * @parent DocumentJS.Type
  * Add docs to a class or construtor described in another file.
  */
 DocumentJS.Type("add",

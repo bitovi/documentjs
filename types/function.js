@@ -1,4 +1,14 @@
-DocumentJS.Type("function",{
+/**
+ * @class DocumentJS.Function
+ * @tag documentation
+ * @parent DocumentJS.Type
+ * Properties of a function.
+ */
+DocumentJS.Type("function",
+/**
+ * @Static
+ */
+{
 	codeMatch: /(?:([\w\.]+)|(["'][^"']+["']))\s*[:=]\s*function\s?\(([^\)]*)/,
 	//must return the name if from the code
 	code : function(code){

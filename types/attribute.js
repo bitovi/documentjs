@@ -1,7 +1,7 @@
 /**
  * @class DocumentJS.Attribute
  * @tag documentation
- * @add DocumentJS.Type
+ * @parent DocumentJS.Type
  * Properties of an object.
  */
 DocumentJS.Type("attribute",
