@@ -6,6 +6,14 @@
  * Placeholder for an application demo, e.g. @demo jquery/event/default/default.html.
  * 
  * ###Demo Example:
+ * 
+ * @codestart
+ * /*
+ *  * @demo jquery/controller/controller.html
+ *  *|
+ * @codeend
+ * 
+ * ###End Result:
  *   
  * @demo jquery/controller/controller.html
  */

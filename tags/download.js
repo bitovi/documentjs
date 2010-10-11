@@ -4,6 +4,21 @@
  * @parent DocumentJS.Tags 
  * 
  * Adds a download link.
+ * 
+ * ###Example:
+ * 
+ * @codestart
+ * /**
+ *  * @constructor jQuery.Drag
+ *  * @parent specialevents
+ *  * @plugin jquery/event/drag
+ *  * @download jquery/dist/jquery.event.drag.js
+ *  * @test jquery/event/drag/qunit.html
+ * @codeend
+ * 
+ * ###End Result:
+ * 
+ * @image jmvc/images/download_tag_example.png 970
  */
 DocumentJS.Tags.download ={
     add: function(line){

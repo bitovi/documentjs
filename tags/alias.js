@@ -2,8 +2,17 @@
  * @class DocumentJS.Tags.alias
  * @tag documentation
  * @parent DocumentJS.Tags 
- * The Class or Constructor is known by another name. 
- * Format: "@alias other_name" 
+ * The Class or Constructor is known by another name.
+ * 
+ * ###Example:
+ *  
+ * @codestart
+ * /*
+ *  * @alias WidgetFactory
+ *  *|
+ *  $.Class.extend("jQuery.Controller",
+ *  ...
+ * @codeend 
  */
 DocumentJS.Tags.alias= {
     add: function(line){
