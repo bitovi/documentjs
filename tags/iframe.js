@@ -3,9 +3,17 @@
  * @tag documentation
  * @parent DocumentJS.Tags 
  * 
- * Adds an iframe to some page with example code, e.g. @iframe phui/menu/menu.html 320.
+ * Adds an iframe to some page with example code.
  * 
  * ###Example:
+ * 
+ * @codestart
+ * /*
+ *  * @iframe jquery/view/view.html 700
+ *  *|
+ * @codeend
+ * 
+ * ###End Result:
  * 
  * @iframe jquery/view/view.html 700
  */
