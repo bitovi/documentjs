@@ -7,7 +7,20 @@ steal.then(function(){
 	 * @tag documentation
 	 * @parent DocumentJS.Tags 
 	 * 
-	 * Says under which parent the current type should be located. 
+	 * Says under which parent the current type should be located.
+	 * 
+	 * ###Example:
+	 * 
+	 * @codestart
+	 * /**
+	 *  * @constructor jQuery.Drag
+	 *  * @parent specialevents
+	 *  * ...
+	 *  *|
+	 *  $.Drag = function(){}
+	 * @codeend
+	 * 
+	 * @image jmvc/images/parent_tag_example.png
 	 */	
 	DocumentJS.Tags.parent = {
 	    add: function(line){
