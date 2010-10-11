@@ -2,11 +2,23 @@
  * @class DocumentJS.Type.types.add
  * @tag documentation
  * @parent DocumentJS.Type
- * Used to set scope to add to classes or methods in another file. Examples:
+ * Used to set scope to add to classes or methods in another file. 
+ * 
+ * ###Example:
  * 
  * @codestart
- * /* @add steal.String Static *|         adds to steal.String's static methods
- * /* @add steal.Controller Prototype *|  adds to steal.Controller's prototype methods
+ *  /**
+ *   * @add jQuery.Controller.prototype
+ *   *|
+ *   //breaker
+ *  /**
+ *   * Publishes a message to OpenAjax.hub.
+ *   * @param {String} message Message name, ex: "Something.Happened".
+ *   * @param {Object} data The data sent.
+ *   *|
+ *   jQuery.Controller.prototype.publish = function() {
+ *      OpenAjax.hub.publish.apply(OpenAjax.hub, arguments);
+ *   }
  * @codeend
  * 
  * It's important to note that add must be in its own comment block. 

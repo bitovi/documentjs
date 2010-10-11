@@ -38,7 +38,7 @@
  * 
  * ###End Result:
  * 
- * @image documentjs/jmvcdoc/images/page_type_example.png 970
+ * @image jmvc/images/page_type_example.png 970
  */
 DocumentJS.Type("page",{
 	code : function(){

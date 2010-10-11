@@ -40,6 +40,7 @@
  * * [DocumentJS.Tags.tag|@tag] - tags for searching
  * * [DocumentJS.Tags.test|@test] - link for test cases
  * * [DocumentJS.Tags.type|@type] - sets the type for the current commented code
+ * * [DocumentJS.Tags.image|@image] - adds an image
  * 
  * ###Example
  * 

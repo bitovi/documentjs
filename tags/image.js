@@ -3,13 +3,13 @@
  * @tag documentation
  * @parent DocumentJS.Tags 
  * 
- * Adds an image to some page, e.g. "@image documentjs/jmvcdoc/images/page_type_example.png 640 480".
+ * Adds an image.
  * 
  * ###Example:
  * 
  * @codestart
  * /* 
- *  * @image jmvcdoc/images/page_type_example.png 640 480
+ *  * @image jmvc/images/page_type_example.png 640 480
  *  *|
  * @codeend
  */
