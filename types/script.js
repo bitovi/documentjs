@@ -1,3 +1,4 @@
+steal.then(function(){
 /**
  * Represents a file.
  * Breaks up file into comment and code parts.
@@ -78,4 +79,5 @@ DocumentJS.Script =
 DocumentJS.Type("script",{
 	useName : false,
 	hasChildren : true
+})
 })

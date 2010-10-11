@@ -1,3 +1,4 @@
+steal.then(function(){
 /**
  * @class DocumentJS.Tags.download
  * @tag documentation
@@ -27,3 +28,4 @@ DocumentJS.Tags.download ={
 		this.downloadSize = parts[2] || 0
     }
 };
+})

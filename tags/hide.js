@@ -1,3 +1,4 @@
+steal.then(function(){
 /**
  * @class DocumentJS.Tags.hide
  * @tag documentation
@@ -26,3 +27,4 @@ DocumentJS.Tags.hide ={
         }
     }
 };
+})

@@ -1,3 +1,4 @@
+steal.then(function(){
 /**
  * @class DocumentJS.Tags.plugin
  * @tag documentation
@@ -12,3 +13,4 @@ DocumentJS.Tags.plugin = {
 		this.plugin = line.match(/@plugin ([^ ]+)/)[1];
     }
 }
+})

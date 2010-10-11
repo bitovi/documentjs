@@ -1,3 +1,4 @@
+steal.then(function(){
 /**
  * @class DocumentJS.Tags.image
  * @tag documentation
@@ -27,3 +28,4 @@ DocumentJS.Tags.image = {
 		}
     }
 };
+})

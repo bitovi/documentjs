@@ -1,3 +1,4 @@
+steal.then(function(){
 /**
  * @class DocumentJS.Tags.type
  * @tag documentation
@@ -13,3 +14,4 @@ DocumentJS.Tags.type = {
         }
     }
 };
+})

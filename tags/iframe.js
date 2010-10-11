@@ -1,3 +1,4 @@
+steal.then(function(){
 /**
  * @class DocumentJS.Tags.iframe
  * @tag documentation
@@ -30,3 +31,4 @@ DocumentJS.Tags.iframe = {
 		}
     }
 };
+})

@@ -1,3 +1,4 @@
+steal.then(function(){
 /**
  * @class DocumentJS.Tags.tag
  * @tag documentation
@@ -19,3 +20,4 @@ DocumentJS.Tags.tag = {
     //    this.tags.concat(line.split(/\s*,\s*/g))
     //}
 };
+})

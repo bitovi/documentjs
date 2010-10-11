@@ -1,3 +1,4 @@
+steal.then(function(){
 /**
  * @class DocumentJS.Tags.author
  * @tag documentation
@@ -21,3 +22,4 @@ DocumentJS.Tags.author={
         }
     }
 };
+})

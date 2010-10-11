@@ -1,3 +1,4 @@
+steal.then(function(){
 /**
  * @class DocumentJS.Tags.codeend
  * @tag documentation
@@ -58,3 +59,4 @@ DocumentJS.Tags.codeend = {
         return ["pop",out];
     }
 };
+})

@@ -1,3 +1,4 @@
+steal.then(function(){
 /**
  * @class DocumentJS.Tags.codestart
  * @tag documentation
@@ -66,3 +67,4 @@ DocumentJS.Tags.codestart = {
         data.lines.push(line);
     }
 };
+})

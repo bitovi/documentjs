@@ -1,3 +1,4 @@
+steal.then(function(){
 (function(){
 	var waiting = {}
 
@@ -33,4 +34,4 @@
 	};
 	
 })();
-
+})

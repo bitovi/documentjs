@@ -1,3 +1,4 @@
+steal.then(function(){
 /**
  * @class DocumentJS.Tags.alias
  * @tag documentation
@@ -22,3 +23,4 @@ DocumentJS.Tags.alias= {
         }
     }
 };
+})

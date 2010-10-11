@@ -1,3 +1,4 @@
+steal.then(function(){
 //
 // showdown.js -- A javascript port of Markdown.
 //
@@ -1294,3 +1295,5 @@ var escapeCharacters_callback = function(wholeMatch,m1) {
 }
 
 } // end of Showdown.converter
+window.Showdown = Showdown;
+})

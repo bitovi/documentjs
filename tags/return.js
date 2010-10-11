@@ -1,3 +1,4 @@
+steal.then(function(){
 /**
  * @class DocumentJS.Tags.return
  * @tag documentation
@@ -28,3 +29,4 @@ DocumentJS.Tags["return"] = {
         this.ret.description += "\n"+line;
     }
 };
+})

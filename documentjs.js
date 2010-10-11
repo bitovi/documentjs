@@ -1,21 +1,18 @@
+
 //Lets define documentjs ... then get what we need
-
-
-//We'll document this later
-DocumentJS = function(){};
 
 if(steal.overwrite){
 	load('steal/rhino/steal.js');
 }else{
 	steal.send = steal;
 }
-steal( // '//steal/file/file',
-	  '//steal/generate/ejs', //this is gone too now TODO FIX
+steal( '//steal/generate/ejs', //this is gone too now TODO FIX
 	  '//documentjs/json',
 	  '//documentjs/baseclass',
-	  '//documentjs/showdown',
-
-function($){
+	  '//documentjs/showdown')
+  .then(function($){
+	//We'll document this later
+	DocumentJS = function(){};
 	
 	var extend = steal.extend;
 	extend(DocumentJS, steal)
@@ -53,30 +50,8 @@ function($){
     delete toJSON;
 	
 
-},
-'//documentjs/distance',	
-'//documentjs/application',
-
-'//documentjs/tags/tags',
-'//documentjs/types/types'
-
-/*'//documentjs/function',
-'//documentjs/class',
-'//documentjs/constructor',
-'//documentjs/script',
-'//documentjs/add',
-'//documentjs/static',
-'//documentjs/prototype',
-'//documentjs/attribute',
-'//documentjs/page'*/)
-
-	
-
-
-
-
-
-
-
-
-
+})
+.then(	'//documentjs/distance',	
+		'//documentjs/application',
+		'//documentjs/tags/tags',
+		'//documentjs/types/types')

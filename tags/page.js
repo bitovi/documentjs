@@ -1,3 +1,4 @@
+steal.then(function(){
 DocumentJS.Tags.page = {
     add: function(line){
         var m = line.match(/^\s*@\w+\s+([^\s]+)\s+(.+)/)
@@ -7,3 +8,4 @@ DocumentJS.Tags.page = {
         }
     }
 };
+})

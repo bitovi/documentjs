@@ -1,3 +1,4 @@
+steal.then(function(){
 DocumentJS.distance =function  (s1, s2) {
 	    if (s1 == s2) {
 	        return 0;
@@ -47,3 +48,4 @@ DocumentJS.distance =function  (s1, s2) {
 	    }
 	    return v0[s1_len];
 }
+})

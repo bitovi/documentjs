@@ -1,3 +1,4 @@
+steal.then(function(){
 /**
  * @class DocumentJS.Tags.inherits
  * @tag documentation
@@ -15,3 +16,4 @@ DocumentJS.Tags.inherits = {
         }
     }
 };
+})

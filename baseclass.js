@@ -2,7 +2,7 @@
 // This is a modified version of John Resig's class
 // It provides class level inheritence and callbacks.
 
-steal(function($){
+steal.then(function($){
 
   var isArray = function(arr){
 	  	  return Object.prototype.toString.call(arr) === "[object Array]"

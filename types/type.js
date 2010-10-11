@@ -1,3 +1,4 @@
+steal.then(function(){
 /**
  * @class
  * @tag documentation
@@ -242,4 +243,4 @@ DocumentJS.extend(DocumentJS.Type,
 
 	}
 });
-
+})

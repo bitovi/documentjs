@@ -1,4 +1,4 @@
-
+steal.then(function(){
 /**
  * @class DocumentJS
  * @tag core, documentation
@@ -349,3 +349,4 @@ DocumentJS.Application.prototype =
          return parts.join("/");
     }
 }
+})

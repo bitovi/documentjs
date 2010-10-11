@@ -1,3 +1,4 @@
+steal.then(function(){
 /**
  * @class DocumentJS.Type.types.class
  * @tag documentation
@@ -69,4 +70,5 @@ DocumentJS.Type("class",
 	parent : /script/,
 	useName : true,
 	hasChildren : true
+})
 })

@@ -1,3 +1,4 @@
+steal.then(function(){
 /**
  * @class DocumentJS.Tags.constructor
  * @tag documentation
@@ -45,3 +46,4 @@ DocumentJS.Tags.constructor =
 		return ["default",'construct'];
     }
 };
+})

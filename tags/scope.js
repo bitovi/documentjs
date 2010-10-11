@@ -1,3 +1,4 @@
+steal.then(function(){
 /**
  * @class DocumentJS.Tags.scope
  * @tag documentation
@@ -11,3 +12,4 @@ DocumentJS.Tags.scope = {
         this.starts_scope = true;
     }
 };
+})

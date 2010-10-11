@@ -1,3 +1,4 @@
+steal.then(function(){
 (function(){
 	
 var ordered = function(params){
@@ -65,3 +66,4 @@ DocumentJS.Tags.param = {
 };
 
 })()
+})

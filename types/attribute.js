@@ -1,3 +1,4 @@
+steal.then(function(){
 /**
  * @class DocumentJS.Type.types.attribute
  * @tag documentation
@@ -43,3 +44,4 @@ DocumentJS.Type("attribute",
 	parent : /script|static|proto|class/,
 	useName : false
 });
+})
