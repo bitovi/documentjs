@@ -213,7 +213,6 @@ Envjs.version = "1.6"; //?
 	 * Interval to wait on event loop when nothing is happening
 	 */
 	Envjs.WAIT_INTERVAL = 20; //milliseconds
-
 	/**
 	 * resolves location relative to base or window location
 	 * @param {Object} path
@@ -350,7 +349,6 @@ Envjs.revision = "1.7.0.rc2";
 	 * @author john resig
 	 */
 	// Helper method for extending one object with another.  
-
 
 	function __extend__(a, b) {
 		for ( var i in b ) {
@@ -1095,7 +1093,6 @@ Envjs.revision = "1.7.0.rc2";
 	 */
 	// Helper method for extending one object with another.  
 
-
 	function __extend__(a, b) {
 		for ( var i in b ) {
 			var g = b.__lookupGetter__(i),
@@ -1111,7 +1108,6 @@ Envjs.revision = "1.7.0.rc2";
 	 * @author john resig
 	 */
 	//from jQuery
-
 
 	function __setArray__(target, array) {
 		// Resetting the length to 0, then using the native Array push
@@ -4180,7 +4176,6 @@ function __escapeHTML5Atribute__(str) {
 	 */
 	// Helper method for extending one object with another.  
 
-
 	function __extend__(a, b) {
 		for ( var i in b ) {
 			var g = b.__lookupGetter__(i),
@@ -4196,7 +4191,6 @@ function __escapeHTML5Atribute__(str) {
 	 * @author john resig
 	 */
 	//from jQuery
-
 
 	function __setArray__(target, array) {
 		// Resetting the length to 0, then using the native Array push
@@ -5328,7 +5322,6 @@ function __escapeHTML5Atribute__(str) {
 	 */
 	// Helper method for extending one object with another.  
 
-
 	function __extend__(a, b) {
 		for ( var i in b ) {
 			var g = b.__lookupGetter__(i),
@@ -5344,7 +5337,6 @@ function __escapeHTML5Atribute__(str) {
 	 * @author john resig
 	 */
 	//from jQuery
-
 
 	function __setArray__(target, array) {
 		// Resetting the length to 0, then using the native Array push
@@ -8198,7 +8190,6 @@ function __escapeHTML5Atribute__(str) {
 	 */
 	// Helper method for extending one object with another.  
 
-
 	function __extend__(a, b) {
 		for ( var i in b ) {
 			var g = b.__lookupGetter__(i),
@@ -8214,7 +8205,6 @@ function __escapeHTML5Atribute__(str) {
 	 * @author john resig
 	 */
 	//from jQuery
-
 
 	function __setArray__(target, array) {
 		// Resetting the length to 0, then using the native Array push
@@ -8673,7 +8663,6 @@ HTMLParser = {};
 	 */
 	// Helper method for extending one object with another.  
 
-
 	function __extend__(a, b) {
 		for ( var i in b ) {
 			var g = b.__lookupGetter__(i),
@@ -8689,7 +8678,6 @@ HTMLParser = {};
 	 * @author john resig
 	 */
 	//from jQuery
-
 
 	function __setArray__(target, array) {
 		// Resetting the length to 0, then using the native Array push
@@ -22858,7 +22846,6 @@ __extend__(DOMParser.prototype,{
 	 */
 	// Helper method for extending one object with another.  
 
-
 	function __extend__(a, b) {
 		for ( var i in b ) {
 			var g = b.__lookupGetter__(i),
@@ -22874,7 +22861,6 @@ __extend__(DOMParser.prototype,{
 	 * @author john resig
 	 */
 	//from jQuery
-
 
 	function __setArray__(target, array) {
 		// Resetting the length to 0, then using the native Array push
@@ -23578,7 +23564,6 @@ __extend__(DOMParser.prototype,{
 	 * @author john resig
 	 */
 	// Helper method for extending one object with another.  
-
 
 	function __extend__(a, b) {
 		for ( var i in b ) {

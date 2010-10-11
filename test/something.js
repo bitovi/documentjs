@@ -10,8 +10,8 @@
  * @constructor foo bar
  * man
  */
-Something = function(){
-	
+Something = function() {
+
 }
 /**
  * @prototype
@@ -24,14 +24,14 @@ Something.prototype = {
 	 * foo = {}
 	 * @codeend
 	 */
-	myMethod : function(foo){
-		
+	myMethod: function( foo ) {
+
 	},
 	/**
 	 * @attribute
 	 * this is my comment
 	 */
-	foo : 2
+	foo: 2
 }
 
 /**
@@ -41,8 +41,8 @@ Something.
 /**
  * holler
  */
-staticSomething = function(){
-	
+staticSomething = function() {
+
 }
 
 
@@ -50,8 +50,8 @@ staticSomething = function(){
  * @class
  * this is a comment
  */
-Bar = function(){
-	
+Bar = function() {
+
 }
 
 /**
@@ -61,8 +61,8 @@ Something.
 /**
  * holler
  */
-foobar = function(){
-	
+foobar = function() {
+
 }
 
 
