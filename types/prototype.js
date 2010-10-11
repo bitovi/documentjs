@@ -7,7 +7,22 @@
  * ###Example
  * 
  * @codestart
- * /* prototype *|
+ * $.Controller.extend('Cookbook.Controllers.Recipe',
+ * /* @Static *|
+ * {
+ *    onDocument: true
+ * },
+ * /* @Prototype *|
+ * {
+ *  /**
+ *   * When the page loads, gets all recipes to be displayed.
+ *   *|
+ *   load: function(){
+ *      if(!$("#recipe").length) 
+ *          $(document.body).append($('&lt;div/&gt;').attr('id','recipe'))
+ *      Cookbook.Models.Recipe.findAll({}, this.callback('list'));
+ *    },
+ *    ...
  * @codeend
  */
 DocumentJS.Type("prototype",
