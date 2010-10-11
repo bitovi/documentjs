@@ -12,24 +12,25 @@
  * @codestart
  * /**
  *  * @page follow Follow JavaScriptMVC
- *  * &lt;h1 class='addFavorite'&gt;Following JavaScriptMVC&lt;/h1&gt;
- *  * &lt;h2&gt;Twitter&lt;/h1&gt;
- *  * &lt;a href='http://twitter.com/javascriptmvc' class='floatLeft'&gt;
- *  *     &lt;img src='http://wiki.javascriptmvc.com/wiki/images/f/f7/Twitter.png' class='noborder'/&gt;
- *  * &lt;/a&gt;
+ *  * #Following JavaScriptMVC
+ *  * ##Twitter
+ *  * [![twitter][2]][1]
+ *  * [1]: http://twitter.com/javascriptmvc
+ *  * [2]: http://wiki.javascriptmvc.com/wiki/images/f/f7/Twitter.png
  *  *
  *  * Follow [http://twitter.com/javascriptmvc @javascriptmvc] on twitter for daily useful tips.
- *  * &lt;h2 class='spaced'&gt;Blog</h2&gt;
- *  * &lt;a href='http://jupiterit.com/' class='floatLeft'&gt;
- *  *     &lt;img src='http://wiki.javascriptmvc.com/wiki/images/e/e5/Blog.png' class='noborder'/&gt;
- *  * &lt;a&gt;
+ *  * ##Blog
+ *  * [![blog][2]][1]
+ *  * [1]: http://jupiterit.com/
+ *  * [2]: http://wiki.javascriptmvc.com/wiki/images/e/e5/Blog.png  
  *  *
  *  * Read [http://jupiterit.com/ JavaScriptMVC's Blog] for articles, techniques and ideas
  *  * on maintainable JavaScript.
- *  * &lt;h2 class='spaced'&gt;Email List</h2&gt;
- *  * &lt;a href='http://forum.javascriptmvc.com/' class='floatLeft'&gt;
- *  *     &lt;img src='http://wiki.javascriptmvc.com/wiki/images/8/84/Discuss.png' class='noborder'/&gt;
- *  * &lt;/a&gt;
+ *  * ##Email List
+ *  * [![email list][2]][1]
+ *  * [1]: http://forum.javascriptmvc.com/
+ *  * [2]: http://wiki.javascriptmvc.com/wiki/images/8/84/Discuss.png  
+ *  
  *  * Discuss ideas to make the framework better or problems you are having on  [http://forum.javascriptmvc.com/ JavaScriptMVC's Forum] 
  * .*
  *  *|
@@ -37,7 +38,7 @@
  * 
  * ###End Result:
  * 
- * @image documentjs/jmvcdoc/images/page_type_example.png 420
+ * @image documentjs/jmvcdoc/images/page_type_example.png 970
  */
 DocumentJS.Type("page",{
 	code : function(){
