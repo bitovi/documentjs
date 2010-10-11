@@ -1,6 +1,3 @@
-
-//Lets define documentjs ... then get what we need
-
 if(steal.overwrite){
 	load('steal/rhino/steal.js');
 }else{
@@ -22,7 +19,7 @@ steal( '//steal/generate/ejs', //this is gone too now TODO FIX
 	DocumentJS.extend=  extend;
 	DocumentJS.converter = new Showdown.converter();
 	delete Showdown;
-	
+	DocumentJS.Class = $.Class;
 	DocumentJS.Class.serialize = function(){
 		this.serializeable =  DocumentJS.makeArray(arguments)
 	}

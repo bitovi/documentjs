@@ -1,4 +1,10 @@
-//load app w/ envjs
+var file = _args[0], 
+	basePath = _args[1] || "",
+	oldLoad = load;
+	
+load = function(path){
+	oldLoad(basePath+path)
+}
 load('steal/rhino/steal.js');
 steal.plugins('steal/build', function(steal){
 	var total = [];
@@ -17,5 +23,3 @@ steal.plugins('steal/build', function(steal){
 	app.generate(_args[0].replace(/[^\/]*$/, "docs") )
   
 });
-
-
