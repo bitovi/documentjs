@@ -5,6 +5,24 @@ steal.then(function() {
 	 * @parent DocumentJS.Tags 
 	 * 
 	 * Link to test cases.
+	 * 
+	 * #Example
+	 * 
+	 * @codestart
+	 * /*
+	 *  * @constructor jQuery.Drag
+	 *  * @parent specialevents
+	 *  * @plugin jquery/event/drag
+	 *  * @download jquery/dist/jquery.event.drag.js
+	 *  * @test jquery/event/drag/qunit.html
+	 *  * ...
+	 *  *|
+	 *  $.Drag = function(){}
+	 * @codeend
+	 * 
+	 * ###End Result:
+	 * @image jmvc/images/test_tag_example.png
+	 * @image jmvc/images/test_tag_test_example.png
 	 */
 	DocumentJS.Tags.test = {
 		add: function( line ) {

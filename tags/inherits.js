@@ -6,7 +6,17 @@ steal.then(function() {
 	 * 
 	 * Says current class or constructor inherits from another class or contructor.
 	 *
-	 * Looks for "@inherits _constructor or class name_".
+	 * ###Example:
+	 * 
+	 * @codestart
+	 * /*
+	 *  * @class Client
+	 *  * @inherits Person
+	 *  * ...
+	 *  *|
+	 *  var client = new Client() {
+	 *  ...
+	 * @codeend
 	 */
 	DocumentJS.Tags.inherits = {
 		add: function( line ) {
