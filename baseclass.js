@@ -25,7 +25,6 @@ steal.then(function( $ ) {
 			}
 
 			var key;
-			for ( key in obj ) {}
 
 			return key === undefined || hasOwnProperty.call(obj, key);
 		},
@@ -137,12 +136,14 @@ steal.then(function( $ ) {
 		},
 		id = 1,
 		getObject = function( objectName, current ) {
-			var current = current || win,
-				parts = objectName.split(/\./)
-				for ( var i = 0; i < parts.length; i++ ) {
-					current = current[parts[i]] || (current[parts[i]] = {})
-				}
-				return current;
+			
+			var parts = objectName.split(/\./);
+			current = current || win;
+				
+			for ( var i = 0; i < parts.length; i++ ) {
+				current = current[parts[i]] || (current[parts[i]] = {})
+			}
+			return current;
 		},
 		win = (function() {
 			return this
@@ -396,7 +397,7 @@ steal.then(function( $ ) {
 					return ret;
 				};
 			})(name, klass[name]) : klass[name];
-		};
+		}
 		var shortName, fullName, namespace;
 
 		if ( className ) {
