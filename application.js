@@ -185,20 +185,21 @@ steal.then(function() {
 
 			//go through all the objects
 			for ( var name in DocumentJS.Application.objects ) {
-				var obj = DocumentJS.extend({}, DocumentJS.Application.objects[name]),
-					toJSON;
+				if (DocumentJS.Application.objects.hasOwnProperty(name)){
+					var obj = DocumentJS.extend({}, DocumentJS.Application.objects[name]),
+						toJSON;
 
-				if ( obj.type == 'script' || typeof obj != "object" ) {
-					continue;
+					if ( obj.type == 'script' || typeof obj != "object" ) {
+						continue;
+					}
+					//get all children
+					var children = this.linker(obj);
+					obj.children = children;
+
+					var converted = name.replace(/ /g, "_").replace(/&#46;/g, ".").replace(/&gt;/g, "_gt_").replace(/\*/g, "_star_")
+					toJSON = this.toJSON(obj);
+					new DocumentJS.File(path + "/" + converted + ".json").save(toJSON);
 				}
-				//get all children
-				var children = this.linker(obj);
-				obj.children = children;
-
-				var converted = name.replace(/ /g, "_").replace(/&#46;/g, ".").replace(/&gt;/g, "_gt_").replace(/\*/g, "_star_")
-				toJSON = this.toJSON(obj);
-				new DocumentJS.File(path + "/" + converted + ".json").save(toJSON);
-
 
 			}
 
@@ -255,8 +256,11 @@ steal.then(function() {
 		indexOf: function( array, item ) {
 			var i = 0,
 				length = array.length;
-			for (; i < length; i++ )
-			if ( array[i] === item ) return i;
+			for (; i < length; i++ ){
+				if ( array[i] === item ){
+					return i;
+				}
+			}
 			return -1;
 		},
 		addTagToSearchData: function( data, tag, searchData ) {
@@ -270,44 +274,50 @@ steal.then(function() {
 					current[letter] = {};
 					current[letter].list = [];
 				}
-				if ( this.indexOf(current[letter].list, data) == -1 ) current[letter].list.push(data);
+				if ( this.indexOf(current[letter].list, data) == -1 ) {
+					current[letter].list.push(data);
+				}
 				current = current[letter];
 			}
 		},
 		addToSearchData: function( list, searchData ) {
 			var c, parts, part, p, fullName;
 			for ( var name in list ) {
-				c = list[name];
-				if ( c.type == 'script' ) {
-					continue;
+				if (list.hasOwnProperty(name)){
+					c = list[name];
+					if ( c.type == 'script' ) {
+						continue;
+					}
+					//break up into parts
+					fullName = c.name;
+					searchData.list[fullName] = {
+						name: c.name,
+						type: c.type
+					};
+					if ( c.title ) {
+						searchData.list[fullName].title = c.title
+					}
+					if ( c.tags ) {
+						searchData.list[fullName].tags = c.tags
+					}
+					if ( c.hide ) {
+						searchData.list[fullName].hide = c.hide
+					}
+					parts = fullName.split(".");
+					for ( p = 0; p < parts.length; p++ ) {
+						part = parts[p].toLowerCase();
+						if ( part == "jquery" ){
+							continue;
+						}
+						this.addTagToSearchData(fullName, part, searchData)
+					}
+					//now add tags if there are tags
+					if ( c.tags ) {
+						for ( var t = 0; t < c.tags.length; t++ ){
+							this.addTagToSearchData(fullName, c.tags[t], searchData);
+						}
+					}
 				}
-				//break up into parts
-				fullName = c.name;
-				searchData.list[fullName] = {
-					name: c.name,
-					type: c.type
-				};
-				if ( c.title ) {
-					searchData.list[fullName].title = c.title
-				}
-				if ( c.tags ) {
-					searchData.list[fullName].tags = c.tags
-				}
-				if ( c.hide ) {
-					searchData.list[fullName].hide = c.hide
-				}
-				parts = fullName.split(".");
-				for ( p = 0; p < parts.length; p++ ) {
-					part = parts[p].toLowerCase();
-					if ( part == "jquery" ) continue;
-					this.addTagToSearchData(fullName, part, searchData)
-				}
-				//now add tags if there are tags
-				if ( c.tags ) {
-					for ( var t = 0; t < c.tags.length; t++ )
-					this.addTagToSearchData(fullName, c.tags[t], searchData);
-				}
-
 			}
 		},
 		searchData: function( path, convert ) {
@@ -321,7 +331,7 @@ steal.then(function() {
 			this.addToSearchData(DocumentJS.Application.objects, searchData)
 
 
-			new DocumentJS.File(path + "/searchData.json").save(this.toJSON(searchData, false));
+			return new DocumentJS.File(path + "/searchData.json").save(this.toJSON(searchData, false));
 		},
 		toJSON: function() {
 			return "C(" + DocumentJS.toJSON.apply(DocumentJS.toJSON, arguments) + ")"
@@ -334,7 +344,9 @@ steal.then(function() {
 		clean_path: function( path ) {
 			return path;
 			var parts = path.split("/")
-			if ( parts.length > 5 ) parts = parts.slice(parts.length - 5);
+			if ( parts.length > 5 ){ 
+				parts = parts.slice(parts.length - 5);
+			}
 			return parts.join("/");
 		}
 	}
