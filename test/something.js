@@ -9,6 +9,7 @@
  * blah
  * @constructor foo bar
  * man
+ * @tag home
  */
 Something = function() {
 
@@ -49,6 +50,7 @@ staticSomething = function() {
 /**
  * @class
  * this is a comment
+ * @tag home
  */
 Bar = function() {
 
@@ -69,5 +71,6 @@ foobar = function() {
 /**
  * @page overview My Overview
  * <h1>Hello</h1>
+ * @tag home
  */
 //comment?

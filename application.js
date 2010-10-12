@@ -103,7 +103,6 @@ steal.then(function() {
 			new DocumentJS.File(file).save(new DocumentJS.EJS({
 				text: readFile(ejs)
 			}).render(data));
-			//MVCOptions.save(file,  this.render(ejs, data) );
 		},
 		render: function( ejs, data ) {
 			var v = new DocumentJS.EJS({
@@ -186,7 +185,6 @@ steal.then(function() {
 
 			//go through all the objects
 			for ( var name in DocumentJS.Application.objects ) {
-
 				var obj = DocumentJS.extend({}, DocumentJS.Application.objects[name]),
 					toJSON;
 
@@ -198,7 +196,6 @@ steal.then(function() {
 				obj.children = children;
 
 				var converted = name.replace(/ /g, "_").replace(/&#46;/g, ".").replace(/&gt;/g, "_gt_").replace(/\*/g, "_star_")
-				//print("  "+name)
 				toJSON = this.toJSON(obj);
 				new DocumentJS.File(path + "/" + converted + ".json").save(toJSON);
 
@@ -222,7 +219,6 @@ steal.then(function() {
 		linker: function( item, stealSelf, parent ) {
 			var result = stealSelf ? [item.name] : [];
 			if ( item.children && !this.shallowParent(item, parent) ) {
-				//print(this.name)
 				for ( var c = 0; c < item.children.length; c++ ) {
 					var child = DocumentJS.Application.objects[item.children[c]];
 					var adds = this.linker(child, true, item);
@@ -324,21 +320,8 @@ steal.then(function() {
 
 			this.addToSearchData(DocumentJS.Application.objects, searchData)
 
-/*
-        
-        
-        this.addToSearchData(sortedClasses, searchData)
-        this.addToSearchData(DocumentJS.Function.listing, searchData)
-        this.addToSearchData(DocumentJS.Constructor.listing, searchData)
-		this.addToSearchData(DocumentJS.Static.listing, searchData)
-		this.addToSearchData(DocumentJS.Prototype.listing, searchData)
-		this.addToSearchData(DocumentJS.Page.listing, searchData)
-        this.addToSearchData(DocumentJS.Attribute.listing, searchData)*/
-
 
 			new DocumentJS.File(path + "/searchData.json").save(this.toJSON(searchData, false));
-
-			//new DocumentJS.File(this.name+"/docs/searchData.json").save("C("+DocumentJS.toJSON(searchData, false)+")");
 		},
 		toJSON: function() {
 			return "C(" + DocumentJS.toJSON.apply(DocumentJS.toJSON, arguments) + ")"

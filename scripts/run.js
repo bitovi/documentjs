@@ -1,9 +1,17 @@
-var file = _args[0],
-	basePath = _args[1] || "",
-	oldLoad = load;
+var basePath = java.lang.System.getProperty("basepath"),
+	cmd = java.lang.System.getProperty("cmd"),
+	file = _args[0],
+	oldLoad = load,
+	oldReadFile = readFile;
 
 load = function( path ) {
 	oldLoad(basePath + "../" + path)
+}
+readFile = function( path ) {
+	if (!/^\/\//.test(path)) {
+		path = basePath + "../" + path
+	}
+	return oldReadFile(path)
 }
 load('steal/rhino/steal.js');
 steal.plugins('steal/build', function( steal ) {

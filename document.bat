@@ -4,6 +4,7 @@
 
 :: relative path to this script
 set BASE=%~dps0
+set CMD=%0
 
 :: classpath
 SET CP=%BASE%../steal/rhino/js.jar

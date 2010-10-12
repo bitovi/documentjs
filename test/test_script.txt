@@ -1,0 +1,19 @@
+This is a manual test script.
+
+Basic test
+1. documentjs\document.bat documentjs\test\test.html
+
+Calling from another dir
+2. framework\documentjs\document.bat framework\documentjs\test\test.html
+
+Output to the current dir
+3. documentjs\document.bat documentjs\test\test.html -o .
+
+Output to another dir
+4. documentjs\document.bat documentjs\test\test.html -o docsdir
+
+Use a directory
+5. documentjs\document.bat documentjs\test
+
+Use a script
+5. documentjs\document.bat documentjs\test\something.js
