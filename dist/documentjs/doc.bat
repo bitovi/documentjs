@@ -4,12 +4,13 @@
 
 :: relative path to this script
 set BASE=%~dps0
+set CMD=%0
 
 :: classpath
-SET CP=%BASE%steal/rhino/js.jar
+SET CP=%BASE%../steal/rhino/js.jar
 
 :: load the run.js file
-SET LOADPATH=%BASE%documentjs/run.js
+SET LOADPATH=%BASE%scripts/run.js
 
 :: call js.bat
-CALL %BASE%steal/rhino/loader.bat %1 %2 %3 %4 %5 %6
+CALL %BASE%../steal/rhino/loader.bat %1 %2 %3 %4 %5 %6

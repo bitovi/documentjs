@@ -1,5 +1,6 @@
 // steal/generate/ejs.js
-(function( $ ) {
+
+(function($){
 
 
 
@@ -35,68 +36,68 @@
 			}
 		};
 
-	steal.EJS = function( options ) {
-		options = typeof options === "string" ? {
-			view: options
-		} : options;
-
-		this.set_options(options);
-		if ( options.precompiled ) {
-			this.template = {};
-			this.template.process = options.precompiled;
-			vEJS.update(this.name, this);
-			return;
-		}
-		if ( options.element ) {
-			if ( typeof options.element === 'string' ) {
-				var name = options.element;
-				options.element = document.getElementById(options.element);
-
-				if ( options.element == null ) {
-					throw name + 'does not exist!';
+		steal.EJS = function( options ) {
+			options = typeof options === "string" ? {
+				view: options
+			} : options;
+			
+			this.set_options(options);
+			if ( options.precompiled ) {
+				this.template = {};
+				this.template.process = options.precompiled;
+				vEJS.update(this.name, this);
+				return;
+			}
+			if ( options.element ) {
+				if ( typeof options.element === 'string' ) {
+					var name = options.element;
+					options.element = document.getElementById(options.element);
+					
+					if ( options.element == null ){
+						throw name + 'does not exist!';
+					}
 				}
+				if ( options.element.value ) {
+					this.text = options.element.value;
+				} else {
+					this.text = options.element.innerHTML;
+				}
+				this.name = options.element.id;
+				this.type = '[';
+			} else if ( options.url ) {
+				options.url = vEJS.endExt(options.url, this.extMatch);
+				this.name = this.name ? this.name : options.url;
+				var url = options.url;
+				//options.view = options.absolute_url || options.view || options.;
+				var template = vEJS.get(this.name
+				/*url*/
+				, this.cache);
+				
+				if ( template ){
+					return template;
+				}
+				
+				if ( template === vEJS.INVALID_PATH ){
+					return null;
+				}
+				
+				try {
+					this.text = vEJS.request(url + (this.cache ? '' : '?' + Math.random()));
+				} catch (e) {}
+
+				if ( this.text == null ) {
+					throw ('There is no template at ' + url);
+				}
+				//this.name = url;
 			}
-			if ( options.element.value ) {
-				this.text = options.element.value;
-			} else {
-				this.text = options.element.innerHTML;
-			}
-			this.name = options.element.id;
-			this.type = '[';
-		} else if ( options.url ) {
-			options.url = vEJS.endExt(options.url, this.extMatch);
-			this.name = this.name ? this.name : options.url;
-			var url = options.url;
-			//options.view = options.absolute_url || options.view || options.;
-			var template = vEJS.get(this.name
-			/*url*/
-			, this.cache);
+			
+			var template = new vEJS.Compiler(this.text, this.type);
 
-			if ( template ) {
-				return template;
-			}
+			template.compile(options, this.name);
 
-			if ( template === vEJS.INVALID_PATH ) {
-				return null;
-			}
-
-			try {
-				this.text = vEJS.request(url + (this.cache ? '' : '?' + Math.random()));
-			} catch (e) {}
-
-			if ( this.text == null ) {
-				throw ('There is no template at ' + url);
-			}
-			//this.name = url;
-		}
-
-		var template = new vEJS.Compiler(this.text, this.type);
-
-		template.compile(options, this.name);
-
-		vEJS.update(this.name, this);
-		this.template = template;
-	};
+			vEJS.update(this.name, this);
+			this.template = template;
+		};
 	var vEJS = steal.EJS;
 	/* @Prototype*/
 	vEJS.prototype = {
@@ -126,12 +127,12 @@
 				params = {};
 				params.url = options;
 				_template = this;
-
+				
 				params.onComplete = function( request ) {
 					var object = eval(request.responseText);
 					vEJS.prototype.update.call(_template, element, object);
 				};
-
+				
 				vEJS.ajax_request(params);
 			} else {
 				element.innerHTML = this.render(options);
@@ -154,7 +155,7 @@
 		}
 	};
 	vEJS.endExt = function( path, match ) {
-		if (!path ) {
+		if (!path ){
 			return null;
 		}
 		match.lastIndex = 0;
@@ -173,7 +174,9 @@
 			left_comment: left + '%#'
 		});
 
-		this.SplitRegexp = left === '[' ? /(\[%%)|(%%\])|(\[%=)|(\[%#)|(\[%)|(%\]\n)|(%\])|(\n)/ : new RegExp('(' + this.double_left + ')|(%%' + this.double_right + ')|(' + this.left_equal + ')|(' + this.left_comment + ')|(' + this.left_delimiter + ')|(' + this.right_delimiter + '\n)|(' + this.right_delimiter + ')|(\n)');
+		this.SplitRegexp = left === '[' 
+							? /(\[%%)|(%%\])|(\[%=)|(\[%#)|(\[%)|(%\]\n)|(%\])|(\n)/ 
+							: new RegExp('(' + this.double_left + ')|(%%' + this.double_right + ')|(' + this.left_equal + ')|(' + this.left_comment + ')|(' + this.left_delimiter + ')|(' + this.right_delimiter + '\n)|(' + this.right_delimiter + ')|(\n)');
 
 		this.source = source;
 		this.stag = null;
@@ -181,18 +184,18 @@
 	};
 
 	vEJS.Scanner.to_text = function( input ) {
-		if ( input == null || input === undefined ) {
+		if ( input == null || input === undefined ){
 			return '';
 		}
-
+		
 		if ( input instanceof Date ) {
 			return input.toDateString();
 		}
-
+		
 		if ( input.toString ) {
 			return input.toString();
 		}
-
+		
 		return '';
 	};
 
@@ -200,7 +203,7 @@
 		scan: function( block ) {
 			scanline = this.scanline;
 			regex = this.SplitRegexp;
-			if (!this.source == '' ) {
+			if ( !this.source == '' ) {
 				var source_split = rsplit(this.source, /\n/);
 				for ( var i = 0; i < source_split.length; i++ ) {
 					var item = source_split[i];
@@ -383,7 +386,7 @@
 							e = new Error();
 							e.lineNumber = error.line;
 							e.message = error.reason;
-							if ( options.view ) {
+							if ( options.view ){
 								e.fileName = options.view;
 							}
 							throw e;
@@ -406,14 +409,14 @@
 		var templates_directory = vEJS.templates_directory || {}; //nice and private container
 		vEJS.templates_directory = templates_directory;
 		vEJS.get = function( path, cache ) {
-			if ( cache == false ) {
+			if ( cache == false ){
 				return null;
 			}
-
-			if ( templates_directory[path] ) {
+			
+			if ( templates_directory[path] ){ 
 				return templates_directory[path];
 			}
-
+			
 			return null;
 		};
 
@@ -421,7 +424,7 @@
 			if ( path == null ) {
 				return;
 			}
-
+			
 			templates_directory[path] = template;
 		};
 
@@ -444,28 +447,28 @@
 	/* @prototype*/
 	vEJS.Helpers.prototype = {
 		view: function( options, data, helpers ) {
-			if (!helpers ) {
+			if ( !helpers ){
 				helpers = this._extras;
 			}
-			if (!data ) {
+			if ( !data ){
 				data = this._data;
 			}
-
+			
 			return new vEJS(options).render(data, helpers);
 		},
 		to_text: function( input, null_text ) {
 			if ( input == null || input === undefined ) {
 				return null_text || '';
 			}
-
+			
 			if ( input instanceof Date ) {
 				return input.toDateString();
 			}
-
+			
 			if ( input.toString ) {
 				return input.toString().replace(/\n/g, '<br />').replace(/''/g, "'");
 			}
-
+			
 			return '';
 		}
 	};
@@ -482,7 +485,7 @@
 				var request = factories[i]();
 				if ( request != null ) {
 					return request;
-				}
+				} 
 			}
 			catch (e) {
 				continue;
@@ -492,7 +495,7 @@
 
 	vEJS.request = function( path ) {
 		var request = new vEJS.newRequest();
-
+		
 		request.open("GET", path, false);
 
 		try {
@@ -502,18 +505,18 @@
 			return null;
 		}
 
-		if ( request.status == 404 || request.status == 2 || (request.status == 0 && request.responseText == '') ) {
+		if ( request.status == 404 || request.status == 2 || (request.status == 0 && request.responseText == '') ){
 			return null;
-		}
+		} 
 
 		return request.responseText;
 	};
-
+	
 	vEJS.ajax_request = function( params ) {
 		params.method = (params.method ? params.method : 'GET');
 
 		var request = new vEJS.newRequest();
-
+		
 		request.onreadystatechange = function() {
 			if ( request.readyState == 4 ) {
 				if ( request.status == 200 ) {
@@ -523,15 +526,16 @@
 				}
 			}
 		};
-
+		
 		request.open(params.method, params.url);
 		request.send(null);
 	};
 
-})(jQuery);
+})(steal);
 
 // documentjs/json.js
-(function( $ ) {
+
+(function($){
 
 	(function() {
 		var cx = /[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
@@ -687,10 +691,11 @@
 
 	})();
 
-})(jQuery);
+})(steal);
 
 // documentjs/baseclass.js
-(function( $ ) {
+
+(function($){
 
 
 	var isArray = function( arr ) {
@@ -1215,10 +1220,11 @@
 	}
 
 
-})(jQuery);
+})(steal);
 
 // documentjs/showdown.js
-(function( $ ) {
+
+(function($){
 
 	//
 	// showdown.js -- A javascript port of Markdown.
@@ -1283,7 +1289,7 @@
 	//
 	// Showdown namespace
 	//
-	var Showdown = {};
+	Showdown = {};
 
 	//
 	// converter
@@ -2451,12 +2457,12 @@
 		}
 
 	} // end of Showdown.converter
-	window.Showdown = Showdown;
 
-})(jQuery);
+})(steal);
 
 // documentjs/documentjs.js
-(function( $ ) {
+
+(function($){
 
 	//We'll document this later
 	DocumentJS = function() {};
@@ -2499,10 +2505,11 @@
 
 
 
-})(jQuery);
+})(steal);
 
 // documentjs/distance.js
-(function( $ ) {
+
+(function($){
 
 	DocumentJS.distance = function( s1, s2 ) {
 		if ( s1 == s2 ) {
@@ -2556,10 +2563,11 @@
 		return v0[s1_len];
 	}
 
-})(jQuery);
+})(steal);
 
 // documentjs/application.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class DocumentJS
@@ -2665,7 +2673,6 @@
 			new DocumentJS.File(file).save(new DocumentJS.EJS({
 				text: readFile(ejs)
 			}).render(data));
-			//MVCOptions.save(file,  this.render(ejs, data) );
 		},
 		render: function( ejs, data ) {
 			var v = new DocumentJS.EJS({
@@ -2748,7 +2755,6 @@
 
 			//go through all the objects
 			for ( var name in DocumentJS.Application.objects ) {
-
 				var obj = DocumentJS.extend({}, DocumentJS.Application.objects[name]),
 					toJSON;
 
@@ -2760,7 +2766,6 @@
 				obj.children = children;
 
 				var converted = name.replace(/ /g, "_").replace(/&#46;/g, ".").replace(/&gt;/g, "_gt_").replace(/\*/g, "_star_")
-				//print("  "+name)
 				toJSON = this.toJSON(obj);
 				new DocumentJS.File(path + "/" + converted + ".json").save(toJSON);
 
@@ -2784,7 +2789,6 @@
 		linker: function( item, stealSelf, parent ) {
 			var result = stealSelf ? [item.name] : [];
 			if ( item.children && !this.shallowParent(item, parent) ) {
-				//print(this.name)
 				for ( var c = 0; c < item.children.length; c++ ) {
 					var child = DocumentJS.Application.objects[item.children[c]];
 					var adds = this.linker(child, true, item);
@@ -2886,21 +2890,8 @@
 
 			this.addToSearchData(DocumentJS.Application.objects, searchData)
 
-/*
-        
-        
-        this.addToSearchData(sortedClasses, searchData)
-        this.addToSearchData(DocumentJS.Function.listing, searchData)
-        this.addToSearchData(DocumentJS.Constructor.listing, searchData)
-		this.addToSearchData(DocumentJS.Static.listing, searchData)
-		this.addToSearchData(DocumentJS.Prototype.listing, searchData)
-		this.addToSearchData(DocumentJS.Page.listing, searchData)
-        this.addToSearchData(DocumentJS.Attribute.listing, searchData)*/
-
 
 			new DocumentJS.File(path + "/searchData.json").save(this.toJSON(searchData, false));
-
-			//new DocumentJS.File(this.name+"/docs/searchData.json").save("C("+DocumentJS.toJSON(searchData, false)+")");
 		},
 		toJSON: function() {
 			return "C(" + DocumentJS.toJSON.apply(DocumentJS.toJSON, arguments) + ")"
@@ -2918,10 +2909,11 @@
 		}
 	}
 
-})(jQuery);
+})(steal);
 
 // documentjs/tags/tags.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class DocumentJS.Tags
@@ -2951,10 +2943,11 @@
 
 	}
 
-})(jQuery);
+})(steal);
 
 // documentjs/tags/alias.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class DocumentJS.Tags.alias
@@ -2981,10 +2974,11 @@
 		}
 	};
 
-})(jQuery);
+})(steal);
 
 // documentjs/tags/author.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class DocumentJS.Tags.author
@@ -3010,10 +3004,11 @@
 		}
 	};
 
-})(jQuery);
+})(steal);
 
 // documentjs/tags/codeend.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class DocumentJS.Tags.codeend
@@ -3076,10 +3071,11 @@
 		}
 	};
 
-})(jQuery);
+})(steal);
 
 // documentjs/tags/codestart.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class DocumentJS.Tags.codestart
@@ -3150,10 +3146,11 @@
 		}
 	};
 
-})(jQuery);
+})(steal);
 
 // documentjs/tags/constructor.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class DocumentJS.Tags.constructor
@@ -3203,10 +3200,11 @@
 		}
 	};
 
-})(jQuery);
+})(steal);
 
 // documentjs/tags/demo.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class DocumentJS.Tags.demo
@@ -3237,10 +3235,11 @@
 		}
 	};
 
-})(jQuery);
+})(steal);
 
 // documentjs/tags/download.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class DocumentJS.Tags.download
@@ -3272,10 +3271,11 @@
 		}
 	};
 
-})(jQuery);
+})(steal);
 
 // documentjs/tags/hide.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class DocumentJS.Tags.hide
@@ -3306,10 +3306,11 @@
 		}
 	};
 
-})(jQuery);
+})(steal);
 
 // documentjs/tags/iframe.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class DocumentJS.Tags.iframe
@@ -3344,10 +3345,11 @@
 		}
 	};
 
-})(jQuery);
+})(steal);
 
 // documentjs/tags/inherits.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class DocumentJS.Tags.inherits
@@ -3367,10 +3369,11 @@
 		}
 	};
 
-})(jQuery);
+})(steal);
 
 // documentjs/tags/page.js
-(function( $ ) {
+
+(function($){
 
 	DocumentJS.Tags.page = {
 		add: function( line ) {
@@ -3382,10 +3385,11 @@
 		}
 	};
 
-})(jQuery);
+})(steal);
 
 // documentjs/tags/param.js
-(function( $ ) {
+
+(function($){
 
 	(function() {
 
@@ -3404,9 +3408,22 @@
 		 * @tag documentation
 		 * @parent DocumentJS.Tags 
 		 * 
-		 * Adds parameter information of the format: "@param {_optional:_type} name description" .
+		 * Adds parameter information.
 		 *
-		 * Matches multiple lines. 
+		 * ###Example:
+		 * 
+		 * @codestart
+		 * /**
+     	 *  * Responds to the create form being submitted by creating a new Cookbook.Models.Recipe.
+         *  * @param {jQuery} el A jQuery wrapped element.
+         *  * @param {Event} ev A jQuery event whose default action is prevented.
+         *  *|
+    	 *  "form submit" : function(el, ev){
+    	 *  @codeend
+    	 *  
+    	 * ###End Result:
+    	 *  
+    	 * @image jmvc/images/param_tag_example.png
 		 */
 		DocumentJS.Tags.param = {
 
@@ -3458,10 +3475,11 @@
 
 	})()
 
-})(jQuery);
+})(steal);
 
 // documentjs/tags/parent.js
-(function( $ ) {
+
+(function($){
 
 	(function() {
 		var waiting = {}
@@ -3471,7 +3489,20 @@
 		 * @tag documentation
 		 * @parent DocumentJS.Tags 
 		 * 
-		 * Says under which parent the current type should be located. 
+		 * Says under which parent the current type should be located.
+		 * 
+		 * ###Example:
+		 * 
+		 * @codestart
+		 * /**
+		 *  * @constructor jQuery.Drag
+		 *  * @parent specialevents
+		 *  * ...
+		 *  *|
+		 *  $.Drag = function(){}
+		 * @codeend
+		 * 
+		 * @image jmvc/images/parent_tag_example.png
 		 */
 		DocumentJS.Tags.parent = {
 			add: function( line ) {
@@ -3499,10 +3530,11 @@
 
 	})();
 
-})(jQuery);
+})(steal);
 
 // documentjs/tags/plugin.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class DocumentJS.Tags.plugin
@@ -3511,7 +3543,22 @@
 	 * 
 	 * Adds to another plugin. 
 	 * 
-	 * Format: "@plugin plugin_name". 
+	 * ###Example:
+	 * 
+	 * @codestart
+	 * /**
+	 *  * @tag core
+	 *  * @plugin jquery/controller
+	 *  * @download jquery/dist/jquery.controller.js
+	 *  * @test jquery/controller/qunit.html
+	 *  * ...
+	 *  *|
+	 *  $.Class.extend("jQuery.Controller",
+	 * @codeend
+	 * 
+	 * ###End Result:
+	 * 
+	 * @image jmvc/images/plugin_tag_example.png
 	 */
 	DocumentJS.Tags.plugin = {
 		add: function( line ) {
@@ -3519,19 +3566,35 @@
 		}
 	}
 
-})(jQuery);
+})(steal);
 
 // documentjs/tags/return.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class DocumentJS.Tags.return
 	 * @tag documentation
 	 * @parent DocumentJS.Tags 
 	 * 
-	 * Describes return data in the format "@return {type} description".
+	 * Describes return data in the format.
 	 * 
-	 * Matches multiple lines. 
+	 * ###Example:
+	 * 
+	 * @codestart
+	 *  /**
+	 *   * Capitalizes a string
+	 *   * @param {String} s the string to be lowercased.
+	 *   * @return {String} a string with the first character capitalized, and everything else lowercased
+	 *   *|
+	 *   capitalize: function( s, cache ) {
+	 *       return s.charAt(0).toUpperCase() + s.substr(1);
+	 *   }
+	 * @codeend
+	 * 
+	 * ###End Result:
+	 * 
+	 * @image jmvc/images/return_tag_example.png
 	 */
 	DocumentJS.Tags["return"] = {
 		add: function( line ) {
@@ -3561,10 +3624,11 @@
 		}
 	};
 
-})(jQuery);
+})(steal);
 
 // documentjs/tags/scope.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class DocumentJS.Tags.scope
@@ -3580,10 +3644,11 @@
 		}
 	};
 
-})(jQuery);
+})(steal);
 
 // documentjs/tags/tag.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class DocumentJS.Tags.tag
@@ -3591,6 +3656,23 @@
 	 * @parent DocumentJS.Tags 
 	 * 
 	 * Tags for searching.
+	 * 
+	 * ###Example:
+	 * 
+	 * @codestart
+	 * /**
+	 *  * @tag core
+	 *  * @plugin jquery/controller
+	 *  * @download jquery/dist/jquery.controller.js
+	 *  *`@test jquery/controller/qunit.html
+	 *  * ...
+	 *  *|
+	 *  $.Class.extend("jQuery.Controller", 
+	 * @codeend
+	 * 
+	 * ###End Result:
+	 * 
+	 * @image jmvc/images/tag_tag_example.png
 	 */
 	DocumentJS.Tags.tag = {
 		add: function( line ) {
@@ -3607,10 +3689,11 @@
 		//}
 	};
 
-})(jQuery);
+})(steal);
 
 // documentjs/tags/test.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class DocumentJS.Tags.test
@@ -3625,10 +3708,11 @@
 		}
 	};
 
-})(jQuery);
+})(steal);
 
 // documentjs/tags/type.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class DocumentJS.Tags.type
@@ -3646,10 +3730,11 @@
 		}
 	};
 
-})(jQuery);
+})(steal);
 
 // documentjs/tags/image.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class DocumentJS.Tags.image
@@ -3681,10 +3766,11 @@
 		}
 	};
 
-})(jQuery);
+})(steal);
 
 // documentjs/types/type.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class
@@ -3918,10 +4004,11 @@
 		}
 	});
 
-})(jQuery);
+})(steal);
 
 // documentjs/types/add.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class DocumentJS.Type.types.add
@@ -3977,10 +4064,11 @@
 		hasChildren: true
 	})
 
-})(jQuery);
+})(steal);
 
 // documentjs/types/attribute.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class DocumentJS.Type.types.attribute
@@ -4028,10 +4116,11 @@
 		useName: false
 	});
 
-})(jQuery);
+})(steal);
 
 // documentjs/types/class.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class DocumentJS.Type.types.class
@@ -4107,10 +4196,11 @@
 		hasChildren: true
 	})
 
-})(jQuery);
+})(steal);
 
 // documentjs/types/function.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class DocumentJS.Type.types.function
@@ -4202,10 +4292,11 @@
 		useName: false
 	})
 
-})(jQuery);
+})(steal);
 
 // documentjs/types/page.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class DocumentJS.Type.types.page
@@ -4261,10 +4352,11 @@
 		hasChildren: true
 	})
 
-})(jQuery);
+})(steal);
 
 // documentjs/types/prototype.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class DocumentJS.Type.types.prototype
@@ -4314,10 +4406,11 @@
 		hasChildren: true
 	})
 
-})(jQuery);
+})(steal);
 
 // documentjs/types/script.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * Represents a file.
@@ -4399,10 +4492,11 @@
 		hasChildren: true
 	})
 
-})(jQuery);
+})(steal);
 
 // documentjs/types/static.js
-(function( $ ) {
+
+(function($){
 
 	/**
 	 * @class DocumentJS.Type.types.static
@@ -4457,4 +4551,5 @@
 		hasChildren: true
 	})
 
-})(jQuery);
+})(steal);
+
