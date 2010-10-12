@@ -92,8 +92,10 @@
 		 * @return {String} 
 		 */
 		joinFrom: function( url, expand ) {
+			var u;
+		
 			if ( this.isDomainAbsolute() ) {
-				var u = new File(url);
+				u = new File(url);
 				if ( this.domain() && this.domain() == u.domain() ) return this.afterDomain();
 				else if ( this.domain() == u.domain() ) { // we are from a file
 					return this.toReferenceFromSameDomain(url);
@@ -101,7 +103,7 @@
 			} else if ( url == steal.pageDir && !expand ) {
 				return this.path;
 			} else if ( this.isLocalAbsolute() ) {
-				var u = new File(url);
+				u = new File(url);
 				if (!u.domain() ) return this.path;
 				return u.protocol() + "//" + u.domain() + this.path;
 			}
@@ -270,9 +272,9 @@
 		pathToRoot: function( isFile ) {
 			var root = steal.File.getRoot(),
 				rootFolders = root.split(/\/|\\/),
-				targetDir = rootFolders[rootFolders.length-1]
+				targetDir = rootFolders[rootFolders.length-1],
 				i = 0,
-				adjustedPath = (targetDir? this.path.replace(new RegExp(".*"+targetDir+"\/?"),""): 
+				adjustedPath = (targetDir ? this.path.replace(new RegExp(".*" + targetDir + "\/?"),"") : 
 					this.path),
 				myFolders = adjustedPath.split(/\/|\\/);
 
