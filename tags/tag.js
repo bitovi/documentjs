@@ -5,6 +5,23 @@ steal.then(function() {
 	 * @parent DocumentJS.Tags 
 	 * 
 	 * Tags for searching.
+	 * 
+	 * ###Example:
+	 * 
+	 * @codestart
+	 * /**
+	 *  * @tag core
+	 *  * @plugin jquery/controller
+	 *  * @download jquery/dist/jquery.controller.js
+	 *  *`@test jquery/controller/qunit.html
+	 *  * ...
+	 *  *|
+	 *  $.Class.extend("jQuery.Controller", 
+	 * @codeend
+	 * 
+	 * ###End Result:
+	 * 
+	 * @image jmvc/images/tag_tag_example.png
 	 */
 	DocumentJS.Tags.tag = {
 		add: function( line ) {
