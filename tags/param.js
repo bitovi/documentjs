@@ -16,9 +16,22 @@ steal.then(function() {
 		 * @tag documentation
 		 * @parent DocumentJS.Tags 
 		 * 
-		 * Adds parameter information of the format: "@param {_optional:_type} name description" .
+		 * Adds parameter information.
 		 *
-		 * Matches multiple lines. 
+		 * ###Example:
+		 * 
+		 * @codestart
+		 * /**
+     	 *  * Responds to the create form being submitted by creating a new Cookbook.Models.Recipe.
+         *  * @param {jQuery} el A jQuery wrapped element.
+         *  * @param {Event} ev A jQuery event whose default action is prevented.
+         *  *|
+    	 *  "form submit" : function(el, ev){
+    	 *  @codeend
+    	 *  
+    	 * ###End Result:
+    	 *  
+    	 * @image jmvc/images/param_tag_example.png
 		 */
 		DocumentJS.Tags.param = {
 

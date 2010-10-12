@@ -4,9 +4,24 @@ steal.then(function() {
 	 * @tag documentation
 	 * @parent DocumentJS.Tags 
 	 * 
-	 * Describes return data in the format "@return {type} description".
+	 * Describes return data in the format.
 	 * 
-	 * Matches multiple lines. 
+	 * ###Example:
+	 * 
+	 * @codestart
+	 *  /**
+	 *   * Capitalizes a string
+	 *   * @param {String} s the string to be lowercased.
+	 *   * @return {String} a string with the first character capitalized, and everything else lowercased
+	 *   *|
+	 *   capitalize: function( s, cache ) {
+	 *       return s.charAt(0).toUpperCase() + s.substr(1);
+	 *   }
+	 * @codeend
+	 * 
+	 * ###End Result:
+	 * 
+	 * @image jmvc/images/return_tag_example.png
 	 */
 	DocumentJS.Tags["return"] = {
 		add: function( line ) {

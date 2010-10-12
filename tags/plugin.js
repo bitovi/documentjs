@@ -6,7 +6,22 @@ steal.then(function() {
 	 * 
 	 * Adds to another plugin. 
 	 * 
-	 * Format: "@plugin plugin_name". 
+	 * ###Example:
+	 * 
+	 * @codestart
+	 * /**
+	 *  * @tag core
+	 *  * @plugin jquery/controller
+	 *  * @download jquery/dist/jquery.controller.js
+	 *  * @test jquery/controller/qunit.html
+	 *  * ...
+	 *  *|
+	 *  $.Class.extend("jQuery.Controller",
+	 * @codeend
+	 * 
+	 * ###End Result:
+	 * 
+	 * @image jmvc/images/plugin_tag_example.png
 	 */
 	DocumentJS.Tags.plugin = {
 		add: function( line ) {
