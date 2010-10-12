@@ -62,7 +62,7 @@ steal.then(function() {
 	//
 	// Showdown namespace
 	//
-	var Showdown = {};
+	Showdown = {};
 
 	//
 	// converter
@@ -1230,5 +1230,4 @@ steal.then(function() {
 		}
 
 	} // end of Showdown.converter
-	window.Showdown = Showdown;
 })
