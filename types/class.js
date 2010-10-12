@@ -45,7 +45,7 @@ steal.then(function() {
 		// /([\w\.]*)\s*=\s*([\w\.]+?).extend\(/,
 		//must return the name if from the code
 		funcMatch: /(?:([\w\.]+)|(["'][^"']+["']))\s*[:=]\s*function\s?\(([^\)]*)/,
-/*
+	/*
 	 * Parses the code to get the class data.
 	 * @param {String} code
 	 * @return {Object} class data
@@ -57,7 +57,7 @@ steal.then(function() {
 					name: parts[2],
 					inherits: parts[1].replace("$.", "jQuery.")
 				}
-			};
+			}
 			parts = code.match(this.funcMatch)
 			if ( parts ) {
 				return {
@@ -65,7 +65,7 @@ steal.then(function() {
 				}
 			}
 		},
-/*
+	/*
 	 * Possible scopes for @class.
 	 */
 		parent: /script/,

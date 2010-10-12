@@ -42,8 +42,10 @@ steal.then(function() {
 
 				var lines = comment.split("\n"),
 					noSpace = /\S/g,
-					match
-					for ( var l = 0; l < lines.length; l++ ) {
+					match,
+					l;
+					
+					for ( l = 0; l < lines.length; l++ ) {
 						match = noSpace.exec(lines[l]);
 						if ( match && lines[l] && noSpace.lastIndex < removeSpace ) {
 							removeSpace = noSpace.lastIndex;
@@ -52,7 +54,7 @@ steal.then(function() {
 					}
 					//print(removeSpace)
 					if ( isFinite(removeSpace) ) {
-						for ( var l = 0; l < lines.length; l++ ) {
+						for ( l = 0; l < lines.length; l++ ) {
 
 							lines[l] = lines[l].substr(removeSpace - 1)
 						}

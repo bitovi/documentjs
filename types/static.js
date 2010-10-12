@@ -36,7 +36,7 @@ steal.then(function() {
  * @Static
  */
 	{
-/*
+	/*
 	 * @return {Object} prototype data.
 	 */
 		code: function() {
@@ -44,7 +44,7 @@ steal.then(function() {
 				name: "static"
 			}
 		},
-/*
+	/*
 	 * Possible scopes for @static.
 	 */
 		parent: /script|class/,

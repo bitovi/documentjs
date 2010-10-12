@@ -45,7 +45,7 @@ steal.then(function() {
 			}
 			return DocumentJS.Application.objects[props.name];
 		},
-/*
+	/*
 	 * Possible scopes for @add.
 	 */
 		parent: /script/,

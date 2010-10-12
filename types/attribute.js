@@ -17,7 +17,7 @@ steal.then(function() {
 	 * @Static
 	 */
 	{
-/*
+	/*
 	 * Checks if code matches the attribute type.
 	 * @param {String} code
 	 * @return {Boolean} true if code matches an attribute
@@ -25,7 +25,7 @@ steal.then(function() {
 		codeMatch: function( code ) {
 			return code.match(/(\w+)\s*[:=]\s*/) && !code.match(/(\w+)\s*[:=]\s*function\(([^\)]*)/)
 		},
-/*
+	/*
 	 * Must return the name if from the code.
 	 * @param {String} code
 	 * @return {Object} type data 
@@ -38,7 +38,7 @@ steal.then(function() {
 				}
 			}
 		},
-/*
+	/*
 	 * Possible scopes for @attribute.
 	 */
 		parent: /script|static|proto|class/,
