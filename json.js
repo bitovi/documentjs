@@ -99,7 +99,7 @@ steal.then(function() {
 		var vtoJSON = null;
 		var steal = steal;
 		vtoJSON = function( o, compact ) {
-			var type = typeof(o);
+			var type = typeof(o), ret;
 
 			if ( type == "undefined" ) return "undefined";
 			else if ( type == "number" || type == "boolean" ) return o + "";
@@ -115,7 +115,7 @@ steal.then(function() {
 
 			// Is it an array?
 			if ( isArray(o) ) {
-				var ret = [];
+				ret = [];
 				for ( var i = 0; i < o.length; i++ ) {
 					ret.push(vtoJSON(o[i], compact));
 				}
@@ -129,7 +129,7 @@ steal.then(function() {
 			}
 
 			// It's probably an object, then.
-			var ret = [];
+			ret = [];
 			for ( var k in o ) {
 				var name;
 				type = typeof(k);
