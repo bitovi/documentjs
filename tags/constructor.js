@@ -4,8 +4,10 @@ steal.then(function() {
 	 * @tag documentation
 	 * @parent DocumentJS.Tags
 	 * Documents javascript constructor classes typically created like: new MyContructor(args). 
+	 * 
 	 * A constructor can be described by putting @constructor as the first declaritive. 
-	 * To describe the construction function, write that after init. Example:
+	 * 
+	 * ###Example:
 	 * 
 	 * @codestart
 	 *  /* @constructor
