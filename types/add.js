@@ -22,6 +22,8 @@ steal.then(function() {
 	 * 
 	 * It's important to note that add must be in its own comment block.
 	 * 
+	 * ###End Result:
+	 * 
 	 * @image jmvc/images/add_tag_example.png 970
 	 */
 	DocumentJS.Type("add",

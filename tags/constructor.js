@@ -3,36 +3,19 @@ steal.then(function() {
 	 * @class DocumentJS.Tags.constructor
 	 * @tag documentation
 	 * @parent DocumentJS.Tags
-	 * Documents javascript constructor classes typically created like: new MyContructor(args). 
-	 * 
-	 * A constructor can be described by putting @constructor as the first declaritive. 
+	 *   
+	 * Documents the class initialization function (constructor). 
 	 * 
 	 * ###Example:
 	 * 
 	 * @codestart
-	 *  /* @constructor
-	 *   * Person represents a human with a name  
-	 *   * You must pass in a name.
-	 *   * @params {String} name A person's name
-	 *   *|
-	 *  Person = function(name){
-	 *     this.name = name
-	 *     Person.count ++;
-	 *  }
-	 *  /* @Static *|
-	 *  steal.Object.extend(Person, {
-	 *    /* Number of People *|
-	 *    count: 0
-	 *  })
-	 *  /* @Prototype *|
-	 *  Person.prototype = {
-	 *    /* Returns a formal name 
-	 *     * [DocumentJS.Tags.return | @return] {String} the name with "Mrs." added
-	 *     *|
-	 *    fancy_name : function(){
-	 *       return "Mrs. "+this.name;
-	 *    }
-	 *  }
+	 * /**
+     *  * @class jQuery.Hover
+     *  * ...
+     *  * @constructor Creates a new hover.  This is never
+     *  * called directly.
+     *  *|
+     *  jQuery.Hover = function(){
 	 * @codeend
 	 */
 	DocumentJS.Tags.constructor =
