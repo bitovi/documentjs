@@ -3,11 +3,16 @@ steal.then(function() {
 	 * @class DocumentJS.Type.types.attribute
 	 * @tag documentation
 	 * @parent DocumentJS.Type
-	 * Documents an attribute. Example:
+	 * Documents an attribute.
+	 * 
+	 * ###Example:
 	 * 
 	 * @codestart
 	 *  steal.Object.extend(Person, {
-	 *   /* Number of People *|
+	 *   /* 
+	 *    * Number of People
+	 *    * @attribute 
+	 *    *|
 	 *   count: 0
 	 *  })
 	 * @codeend

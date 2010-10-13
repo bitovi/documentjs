@@ -9,8 +9,7 @@ steal.then(function() {
 	 * 
 	 * @codestart
 	 *  /* @constructor
-	 *   * Person represents a human with a name 
-	 *   * [DocumentJS.Tags.init | @init] 
+	 *   * Person represents a human with a name  
 	 *   * You must pass in a name.
 	 *   * @params {String} name A person's name
 	 *   *|

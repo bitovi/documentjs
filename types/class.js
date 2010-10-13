@@ -3,17 +3,21 @@ steal.then(function() {
 	 * @class DocumentJS.Type.types.class
 	 * @tag documentation
 	 * @parent DocumentJS.Type
-	 * Documents a 'Class'. A class is typically a collection of static and prototype functions. 
-	 * steal Doc can automatically detect classes created with jQuery.Class. 
+	 * Documents a 'Class'.
+	 *  
+	 * A class is typically a collection of static and prototype functions.
+	 *  
+	 * DocumentJS can automatically detect classes created with jQuery.Class.
+	 *  
 	 * However, you can make anything a class with the __@class__ _ClassName_ directive.
+	 * 
+	 * ###Example:
 	 * 
 	 * @codestart
 	 * /**
 	 *  * Person represents a human with a name.  Read about the 
 	 *  * animal class [Animal | here].
-	 *  * @init 
-	 *  * You must pass in a name.
-	 *  * @params {String} name A person's name
+	 *  * @class 
 	 *  *|
 	 * Person = Animal.extend(
 	 * /* @Static *|
