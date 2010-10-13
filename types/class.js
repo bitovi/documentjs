@@ -15,9 +15,9 @@ steal.then(function() {
 	 * 
 	 * @codestart
 	 * /**
-	 *  * Person represents a human with a name.  Read about the 
-	 *  * animal class [Animal | here].
 	 *  * @class 
+	 *  * Person represents a human with a name.  Read about the 
+	 *  * animal class [Animal | here]. 
 	 *  *|
 	 * Person = Animal.extend(
 	 * /* @Static *|
@@ -34,7 +34,7 @@ steal.then(function() {
 	 *    /* Returns a formal name 
 	 *     * @return {String} the name with "Mrs." added
 	 *     *|
-	 *   fancy_name : function(){
+	 *   fancyName : function(){
 	 *      return "Mrs. "+this.name;
 	 *   }
 	 * })
