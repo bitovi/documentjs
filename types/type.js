@@ -65,8 +65,10 @@ steal.then(function() {
 				props = DocumentJS.Application.objects[props.name];
 				DocumentJS.extend(props, oldProps);
 			}
-
-			props.type = type.type;
+			
+			if ( !props.type ) {
+				props.type = type.type;
+			}
 			if ( props.name ) {
 				var parent = this.getParent(type, scope)
 
