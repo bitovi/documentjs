@@ -184,10 +184,11 @@ steal(	'//steal/generate/ejs',
 			else { // assume its a directory
 				var getJSFiles = function(dir){
 				  new steal.File(dir).contents(function(f, type){
-				    if(type == 'directory'){
-				       getJSFiles(f)
+					if(type == 'directory'){
+				       getJSFiles(dir+"/"+f)
 				    }else if(/\.js$/.test(f)){
-				      scripts.push(f.replace('\\', '/'))
+
+					  scripts.push( (dir+"/"+f).replace('\\', '/') )
 				    }
 				  })
 				};

@@ -257,7 +257,7 @@
 				listOfFiles = me.listFiles();
 
 			if ( listOfFiles == null ) {
-				print("there is nothing in " + this.path)
+				//print("there is nothing in " + this.path)
 			}
 			for ( var i = 0; i < listOfFiles.length; i++ ) {
 				func(listOfFiles[i].getName(), listOfFiles[i].isFile() ? "file" : "directory", current)
