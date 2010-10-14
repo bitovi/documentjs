@@ -1,8 +1,8 @@
 steal.then(function() {
 	/**
-	 * @class DocumentJS.Type.types.prototype
+	 * @class DocumentJS.types.prototype
 	 * @tag documentation
-	 * @parent DocumentJS.Type
+	 * @parent DocumentJS.types
 	 * Sets the following functions and attributes to be added to Class or Constructor prototype (instance) functions.
 	 * 
 	 * ###Example

@@ -3,9 +3,9 @@ steal.then(function() {
 		var waiting = {}
 
 		/**
-		 * @class DocumentJS.Tags.parent
+		 * @class DocumentJS.tags.parent
 		 * @tag documentation
-		 * @parent DocumentJS.Tags 
+		 * @parent DocumentJS.tags 
 		 * 
 		 * Says under which parent the current type should be located.
 		 * 
@@ -24,15 +24,15 @@ steal.then(function() {
 		 * 
 		 * @image jmvc/images/parent_tag_example.png
 		 */
-		DocumentJS.Tags.parent = {
+		DocumentJS.tags.parent = {
 			add: function( line ) {
 				var m = line.match(/^\s*@parent\s*([\w\.\/]*)\s*([\w]*)/)
 				var name = m[1],
 					Class = DocumentJS.Page,
-					inst = DocumentJS.Application.objects[name]
+					inst = DocumentJS.objects[name]
 
 					if (!inst ) {
-						inst = DocumentJS.Application.objects[name] = {
+						inst = DocumentJS.objects[name] = {
 							name: name
 						}
 					}

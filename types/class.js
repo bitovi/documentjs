@@ -1,8 +1,8 @@
 steal.then(function() {
 	/**
-	 * @class DocumentJS.Type.types.class
+	 * @class DocumentJS.types.class
 	 * @tag documentation
-	 * @parent DocumentJS.Type
+	 * @parent DocumentJS.types
 	 * Documents a 'Class'.
 	 *  
 	 * A class is typically a collection of static and prototype functions.
@@ -15,17 +15,17 @@ steal.then(function() {
 	 * 
 	 * @codestart
 	 * /**
-	 *  * @class 
+	 *  * @@class 
 	 *  * Person represents a human with a name.  Read about the 
 	 *  * animal class [Animal | here]. 
 	 *  *|
 	 * Person = Animal.extend(
-	 * /* @Static *|
+	 * /* @@Static *|
 	 * {
 	 *    /* Number of People *|
 	 *    count: 0
 	 * },
-	 * /* @Prototype *|
+	 * /* @@Prototype *|
 	 * {
 	 *    init : function(name){
 	 *      this.name = name

@@ -1,8 +1,8 @@
 steal.then(function() {
 	/**
-	 * @class DocumentJS.Tags.author
+	 * @class DocumentJS.tags.author
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * Describes who the author of a class is.
 	 * 
 	 * ###Example:
@@ -14,7 +14,7 @@ steal.then(function() {
 	 *  *|
 	 * @codeend
 	 */
-	DocumentJS.Tags.author = {
+	DocumentJS.tags.author = {
 		add: function( line ) {
 			var m = line.match(/^\s*@author\s*(.*)/)
 			if ( m ) {

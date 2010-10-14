@@ -12,9 +12,9 @@ steal.then(function() {
 
 
 		/**
-		 * @class DocumentJS.Tags.param
+		 * @class DocumentJS.tags.param
 		 * @tag documentation
-		 * @parent DocumentJS.Tags 
+		 * @parent DocumentJS.tags 
 		 * 
 		 * Adds parameter information.
 		 *
@@ -33,7 +33,7 @@ steal.then(function() {
     	 *  
     	 * @image jmvc/images/param_tag_example.png
 		 */
-		DocumentJS.Tags.param = {
+		DocumentJS.tags.param = {
 
 			addMore: function( line, last ) {
 				if ( last ) last.description += "\n" + line;
@@ -78,6 +78,18 @@ steal.then(function() {
 				}
 
 				return this.params[n];
+			},
+			done : function(){
+				if(this.ret && this.ret.description && this.ret.description ){
+					this.ret.description = DocumentJS.converter.makeHtml(this.ret.description)
+				}
+				if(this.params){
+					for(var paramName in this.params){
+						if(this.params[paramName].description  ){
+							this.params[paramName].description = DocumentJS.converter.makeHtml(this.params[paramName].description)
+						}
+					}
+				}
 			}
 		};
 

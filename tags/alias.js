@@ -1,8 +1,8 @@
 steal.then(function() {
 	/**
-	 * @class DocumentJS.Tags.alias
+	 * @class DocumentJS.tags.alias
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * The Class or Constructor is known by another name.
 	 * 
 	 * ###Example:
@@ -15,7 +15,7 @@ steal.then(function() {
 	 *  ...
 	 * @codeend 
 	 */
-	DocumentJS.Tags.alias = {
+	DocumentJS.tags.alias = {
 		add: function( line ) {
 			var m = line.match(/^\s*@alias\s*([\w\-\.]*)/)
 			if ( m ) {

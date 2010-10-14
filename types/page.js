@@ -1,8 +1,8 @@
 steal.then(function() {
 	/**
-	 * @class DocumentJS.Type.types.page
+	 * @class DocumentJS.types.page
 	 * @tag documentation
-	 * @parent DocumentJS.Type
+	 * @parent DocumentJS.types
 	 * 
 	 * Defines a standalone documentation page.
 	 * 

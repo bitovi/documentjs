@@ -1,8 +1,8 @@
 steal.then(function() {
 	/**
-	 * @class DocumentJS.Tags.type
+	 * @class DocumentJS.tags.type
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Sets the type for the current commented code.
 	 * 
@@ -30,7 +30,7 @@ steal.then(function() {
 	 *  }
 	 * @codeend 
 	 */
-	DocumentJS.Tags.type = {
+	DocumentJS.tags.type = {
 		add: function( line ) {
 			var m = line.match(/^\s*@type\s*([\w\.\/]*)/)
 			if ( m ) {

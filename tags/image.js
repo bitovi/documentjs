@@ -1,8 +1,8 @@
 steal.then(function() {
 	/**
-	 * @class DocumentJS.Tags.image
+	 * @class DocumentJS.tags.image
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Adds an image.
 	 * 
@@ -14,7 +14,7 @@ steal.then(function() {
 	 *  *|
 	 * @codeend
 	 */
-	DocumentJS.Tags.image = {
+	DocumentJS.tags.image = {
 		add: function( line ) {
 			var m = line.match(/^\s*@image\s*([\w\.\/]*)\s*([\w]*)\s*([\w]*)\s*(.*)/)
 

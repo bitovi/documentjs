@@ -37,7 +37,6 @@
 		};
 
 		steal.EJS = function( options ) {
-			var template;
 			options = typeof options === "string" ? {
 				view: options
 			} : options;
@@ -70,7 +69,7 @@
 				this.name = this.name ? this.name : options.url;
 				var url = options.url;
 				//options.view = options.absolute_url || options.view || options.;
-				template = vEJS.get(this.name
+				var template = vEJS.get(this.name
 				/*url*/
 				, this.cache);
 				
@@ -92,7 +91,7 @@
 				//this.name = url;
 			}
 			
-			template = new vEJS.Compiler(this.text, this.type);
+			var template = new vEJS.Compiler(this.text, this.type);
 
 			template.compile(options, this.name);
 
@@ -532,7 +531,7 @@
 		request.send(null);
 	};
 
-})(steal);
+})();
 
 // documentjs/json.js
 
@@ -638,7 +637,7 @@
 		var vtoJSON = null;
 		var steal = steal;
 		vtoJSON = function( o, compact ) {
-			var type = typeof(o);
+			var type = typeof(o), ret;
 
 			if ( type == "undefined" ) return "undefined";
 			else if ( type == "number" || type == "boolean" ) return o + "";
@@ -654,7 +653,7 @@
 
 			// Is it an array?
 			if ( isArray(o) ) {
-				var ret = [];
+				ret = [];
 				for ( var i = 0; i < o.length; i++ ) {
 					ret.push(vtoJSON(o[i], compact));
 				}
@@ -668,7 +667,7 @@
 			}
 
 			// It's probably an object, then.
-			var ret = [];
+			ret = [];
 			for ( var k in o ) {
 				var name;
 				type = typeof(k);
@@ -692,536 +691,7 @@
 
 	})();
 
-})(steal);
-
-// documentjs/baseclass.js
-
-(function($){
-
-
-	var isArray = function( arr ) {
-		return Object.prototype.toString.call(arr) === "[object Array]"
-	},
-		makeArray = function( arr ) {
-			var res = [],
-				l = arr.length;
-			for ( var i = 0; i < l; i++ ) {
-				res[i] = arr[i]
-			}
-			return res;
-		},
-		isObjectLiteral = function( obj ) {
-			if ( toString.call(obj) !== "[object Object]" ) {
-				return false;
-			}
-
-			// not own constructor property must be Object
-			if ( obj.constructor && !hasOwnProperty.call(obj, "constructor") && !hasOwnProperty.call(obj.constructor.prototype, "isPrototypeOf") ) {
-				return false;
-			}
-
-			var key;
-			for ( key in obj ) {}
-
-			return key === undefined || hasOwnProperty.call(obj, key);
-		},
-		deepExtend = function( target ) {
-			var i = 1,
-				length = arguments.length,
-				options;
-			for (; i < length; i++ ) {
-				if ((options = arguments[i]) != null ) {
-					// Extend the base object
-					for ( name in options ) {
-						src = d[name];
-						copy = options[name];
-
-						// Prevent never-ending loop
-						if ( target === copy ) {
-							continue;
-						}
-
-						// Recurse if we're merging object literal values
-						if ( copy && isObjectLiteral(copy) ) {
-							// Don't extend not object literals
-							var clone = src && isObjectLiteral(src) ? src : {};
-
-							// Never move original objects, clone them
-							target[name] = deepExtend(clone, copy);
-
-							// Don't bring in undefined values
-						}
-						else if ( copy !== undefined ) {
-							target[name] = copy;
-						}
-					}
-				}
-			}
-			return target;
-		},
-
-		initializing = false,
-		fnTest = /xyz/.test(function() {
-			xyz;
-		}) ? /\b_super\b/ : /.*/,
-		callback = function( f_names ) {
-			//process args
-			var args = makeArray(arguments),
-				f, self;
-			f_names = args.shift();
-			if (!isArray(f_names) ) f_names = [f_names];
-
-			//check names ... should only be in development
-			//for(f =0; f < f_names.length; f++ )
-			//	if(typeof f_names[f] == "string" &&  typeof this[f_names[f]] != 'function')
-			//		 throw 'There is no function named '+f_names[f]+'. ';
-			self = this;
-			return function() {
-				var cur = args.concat(makeArray(arguments)),
-					isString
-					for ( f = 0; f < f_names.length; f++ ) {
-						if (!f_names[f] ) continue;
-						isString = typeof f_names[f] == "string";
-						if ( isString && self._set_called ) self.called = f_names[f];
-						cur = (isString ? self[f_names[f]] : f_names[f]).apply(self, cur);
-						if (!cur ) cur = [];
-						else if (!isArray(cur) || cur._use_call ) cur = [cur]
-					}
-					return cur;
-			}
-		},
-		newInstance = function() {
-			initializing = true;
-			var inst = new this();
-			initializing = false;
-			if ( inst.setup ) inst.setup.apply(inst, arguments);
-			if ( inst.init ) inst.init.apply(inst, arguments);
-			return inst;
-		},
-		rawInstance = function() {
-			initializing = true;
-			var inst = new this();
-			initializing = false;
-			return inst;
-		},
-		/**
-		 * Copy and overwrite options from old class
-		 * @param {Object} oldClass
-		 * @param {Object} options
-		 */
-		setup = function( oldClass, options ) {
-			//clone current args and add
-			var oldOptions = oldClass.OPTIONS || {};
-			var newOptions = deepExtend({}, oldOptions, this.defaults, options);
-			//for each newOption, write on class:
-			this.OPTIONS = newOptions;
-			for ( var name in this.OPTIONS ) {
-				this[name] = this.OPTIONS[name]
-			}
-/*var args = [];
-		var current = this.args || [];
-		for(var i =0; i  < current.length; i++){
-			args[i] = current[i];
-		}
-		for(var i =0; i  < arguments.length; i++){
-			args.push(arguments[i])
-		}
-		this.ARGS = args;*/
-		},
-		toString = function() {
-			return this.className || Object.prototype.toString.call(this)
-		},
-		id = 1,
-		getObject = function( objectName, current ) {
-			var current = current || win,
-				parts = objectName.split(/\./)
-				for ( var i = 0; i < parts.length; i++ ) {
-					current = current[parts[i]] || (current[parts[i]] = {})
-				}
-				return current;
-		},
-		win = (function() {
-			return this
-		}).call(null);
-
-	if (!$.isArray ) $.isArray = isArray;
-	if (!$.makeArray ) $.makeArray = makeArray;
-	// The base Class implementation (does nothing)
-	/**
-	 * @constructor jQuery.Class
-	 * @plugin lang/class
-	 * @tag core
-	 * Class provides simple simulated inheritance in JavaScript. 
-	 * It is based off John Resig's [http://ejohn.org/blog/simple-javascript-inheritance/|Simple Class] 
-	 * Inheritance library.  Besides prototypal inheritance, it adds a few important features:
-	 * <ul>
-	 *     <li>Static inheritance</li>
-	 *     <li>Class initialization callbacks</li>
-	 *     <li>Introspection</li>
-	 *     <li>Easy callback function creation</li>
-	 * </ul>
-	 * <h2>Examples</h2>
-	 * <h3>Basic example</h3>
-	 * Creates a class with a className (used for introspection), static, and prototype members:
-	 * @codestart
-	 * jQuery.Class.extend('Monster',
-	 * /* @static *|
-	 * {
-	 *   count: 0
-	 * },
-	 * /* @prototype *|
-	 * {
-	 *   init : function(name){
-	 *     this.name = name;
-	 *     this.Class.count++
-	 *   }
-	 * })
-	 * hydra = new Monster('hydra')
-	 * dragon = new Monster('dragon')
-	 * hydra.name        // -> hydra
-	 * Monster.count     // -> 2
-	 * Monster.className // -> 'Monster'
-	 * @codeend
-	 * Notice that the prototype init function is called when a new instance of Monster is created.
-	 * <h3>Static property inheritance</h3>
-	 * Demonstrates inheriting a class property.
-	 * @codestart
-	 * jQuery.Class.extend("First",
-	 * {
-	 *     staticMethod : function(){ return 1;}
-	 * },{})
-	 * First.extend("Second",{
-	 *     staticMethod : function(){ return this._super()+1;}
-	 * },{})
-	 * Second.staticMethod() // -> 2
-	 * @codeend
-	 * <h3 id='introspection'>Introspection</h3>
-	 * Often, it's nice to create classes whose name helps determine functionality.  Ruby on
-	 * Rails's [http://api.rubyonrails.org/classes/ActiveRecord/Base.html|ActiveRecord] ORM class 
-	 * is a great example of this.  Unfortunately, JavaScript doesn't have a way of determining
-	 * an object's name, so the developer must provide a name.  Class fixes this by taking a String name for the class.
-	 * @codestart
-	 * $.Class.extend("MyOrg.MyClass",{},{})
-	 * MyOrg.MyClass.className //-> 'MyClass'
-	 * MyOrg.MyClass.fullName //->  'MyOrg.MyClass'
-	 * @codeend
-	 * <h3>Construtors</h3>
-	 * Class uses static and class initialization constructor functions.  
-	 * @codestart
-	 * $.Class.extend("MyClass",
-	 * {
-	 *   init: function(){} //static constructor
-	 * },
-	 * {
-	 *   init: function(){} //prototype constructor
-	 * })
-	 * @codeend
-	 * The static constructor is called after
-	 * a class has been created, but before [jQuery.Class.static.extended|extended] is called on its base class.  
-	 * This is a good place to add introspection and similar class setup code.
-	 * 
-	 * The prototype constructor is called whenever a new instance of the class is created.
-	 * 
-	 * 
-	 * @init Creating a new instance of an object that has extended jQuery.Class 
-	 calls the init prototype function and returns a new instance of the class.
-	 * 
-	 */
-
-	$.Class =
-	/* @Static*/
-
-	function() {
-		if ( arguments.length ) this.extend.apply(this, arguments)
-	};
-
-	/**
-	 * @function callback
-	 * Returns a callback function for a function on this Class.
-	 * The callback function ensures that 'this' is set appropriately.  
-	 * @codestart
-	 * $.Class.extend("MyClass",{
-	 *     getData : function(){
-	 *         this.showing = null;
-	 *         $.get("data.json",this.callback('gotData'),'json')
-	 *     },
-	 *     gotData : function(data){
-	 *         this.showing = data;
-	 *     }
-	 * },{});
-	 * MyClass.showData();
-	 * @codeend
-	 * <h2>Currying Arguments</h2>
-	 * Additional arguments to callback will fill in arguments on the returning function.
-	 * @codestart
-	 * $.Class.extend("MyClass",{
-	 *    getData : function(<b>callback</b>){
-	 *      $.get("data.json",this.callback('process',<b>callback</b>),'json');
-	 *    },
-	 *    process : function(<b>callback</b>, jsonData){ //callback is added as first argument
-	 *        jsonData.processed = true;
-	 *        callback(jsonData);
-	 *    }
-	 * },{});
-	 * MyClass.getData(showDataFunc)
-	 * @codeend
-	 * <h2>Nesting Functions</h2>
-	 * Callback can take an array of functions to call as the first argument.  When the returned callback function
-	 * is called each function in the array is passed the return value of the prior function.  This is often used
-	 * to eliminate currying initial arguments.
-	 * @codestart
-	 * $.Class.extend("MyClass",{
-	 *    getData : function(callback){
-	 *      //calls process, then callback with value from process
-	 *      $.get("data.json",this.callback(['process2',callback]),'json') 
-	 *    },
-	 *    process2 : function(type,jsonData){
-	 *        jsonData.processed = true;
-	 *        return [jsonData];
-	 *    }
-	 * },{});
-	 * MyClass.getData(showDataFunc);
-	 * @codeend
-	 * @param {String|Array} fname If a string, it represents the function to be called.  
-	 * If it is an array, it will call each function in order and pass the return value of the prior function to the
-	 * next function.
-	 * @return {Function} the callback function.
-	 */
-	$.Class.callback = callback;
-
-
-	$.Class.getObject = getObject;
-
-	// Create a new Class that inherits from the current class.
-	$.Class.
-	/**
-	 * Extends a class with new static and prototype functions.  There are a variety of ways
-	 * to use extend:
-	 * @codestart
-	 * //with className, static and prototype functions
-	 * $.Class.extend('Task',{ STATIC },{ PROTOTYPE })
-	 * //with just classname and prototype functions
-	 * $.Class.extend('Task',{ PROTOTYPE })
-	 * //With just a className
-	 * $.Class.extend('Task')
-	 * @codeend
-	 * @param {String} [optional1] className the classes name (used for classes w/ introspection)
-	 * @param {Object} [optional2] klass the new classes static/class functions
-	 * @param {Object} [optional3] proto the new classes prototype functions
-	 * @return {jQuery.Class} returns the new class
-	 */
-	extend = function( className, types, klass, proto ) {
-		if ( typeof className != 'string' ) {
-			proto = klass;
-			klass = types;
-			types = className;
-			className = null;
-		}
-		if (!$.isArray(types) ) {
-			proto = klass;
-			klass = types;
-		}
-		if (!proto ) {
-			proto = klass;
-			klass = null;
-		}
-
-
-
-		proto = proto || {};
-		var _super_class = this;
-		var _super = this.prototype;
-		// Instantiate a base class (but only create the instance,
-		// don't run the init constructor)
-		initializing = true;
-		var prototype = new this();
-		initializing = false;
-		// Copy the properties over onto the new prototype
-		for ( var name in proto ) {
-			// Check if we're overwriting an existing function
-			prototype[name] = typeof proto[name] == "function" && typeof _super[name] == "function" && fnTest.test(proto[name]) ? (function( name, fn ) {
-				return function() {
-					var tmp = this._super;
-
-					// Add a new ._super() method that is the same method
-					// but on the super-class
-					this._super = _super[name];
-
-					// The method only need to be bound temporarily, so we
-					// remove it when we're done executing
-					var ret = fn.apply(this, arguments);
-					this._super = tmp;
-
-					return ret;
-				};
-			})(name, proto[name]) : proto[name];
-		}
-
-		//calculate class properties once:
-		var staticProps = {
-			/**
-			 * @function newInstance
-			 * Creates a new instance of the class.  This method is useful for creating new instances
-			 * with arbitrary parameters.
-			 * <h3>Example</h3>
-			 * @codestart
-			 * $.Class.extend("MyClass",{},{})
-			 * var mc = MyClass.newInstance.apply(null, new Array(parseInt(Math.random()*10,10))
-			 * @codeend
-			 */
-			newInstance: newInstance,
-			rawInstance: rawInstance,
-			extend: arguments.callee,
-			setup: setup
-		};
-
-		//copy properties from current class to static
-		for ( var name in this ) {
-			if ( this.hasOwnProperty(name) && name != 'prototype' && name != 'OPTIONS' && name != 'defaults' && name != 'getObject' ) {
-				staticProps[name] = this[name];
-			}
-		}
-		//do inheritence
-		for ( var name in klass ) {
-			staticProps[name] = typeof klass[name] == "function" && typeof staticProps[name] == "function" && fnTest.test(klass[name]) ? (function( name, fn ) {
-				return function() {
-					var tmp = this._super;
-					this._super = _super_class[name];
-					var ret = fn.apply(this, arguments);
-					this._super = tmp;
-					return ret;
-				};
-			})(name, klass[name]) : klass[name];
-		};
-		var shortName, fullName, namespace;
-
-		if ( className ) {
-			var current = win
-			var parts = className.split(/\./)
-			for ( var i = 0; i < parts.length - 1; i++ ) {
-				current = current[parts[i]] || (current[parts[i]] = {})
-			}
-			namespace = current;
-			shortName = parts[parts.length - 1];
-			fullName = className;
-		}
-
-		var makeClass;
-		makeClass = function( options ) {
-			// The dummy class constructor
-
-
-			function Class() {
-				// All construction is actually done in the init method
-				if ( initializing ) return;
-
-				if ( this.constructor !== Class && arguments.length ) { //we are being called w/o new
-					return makeClass.apply(null, arguments)
-				} else { //we are being called w/ new
-					//this.id = (++id);
-					if ( this.setup ) this.setup.apply(this, arguments);
-					if ( this.init ) this.init.apply(this, arguments);
-				}
-			}
-			// A buffer class to protect 'Global' prototype functions.  
-			// Add to this for one-off specific functionality
-
-
-			function Buffer() {};
-			Buffer.prototype = prototype;
-			var buff = new Buffer();
-
-			// Populate with prototype object ... however, I change it!!
-			Class.prototype = buff; //need another version of this ...
-			// Add static methods
-			for ( var name in staticProps ) {
-				if ( staticProps.hasOwnProperty(name) && name != 'prototype' && name != 'constructor' ) {
-					Class[name] = staticProps[name];
-				}
-			}
-
-			//Provide a reference to this class
-			Class.prototype.Class = Class; //only changing buff prototype
-			Class.prototype.constructor = Class; //only buff prototype
-			// Enforce the constructor to be what we expect
-			Class.constructor = Class;
-			//Class.id = (++id);
-
-			Class.namespace = namespace;
-			Class.shortName = shortName
-			/**
-			 * @attribute fullName 
-			 * The full name of the class, including namespace, provided for introspection purposes.
-			 * @codestart
-			 * $.Class.extend("MyOrg.MyClass",{},{})
-			 * MyOrg.MyClass.className //-> 'MyClass'
-			 * MyOrg.MyClass.fullName //->  'MyOrg.MyClass'
-			 * @codeend
-			 */
-			Class.fullName = fullName;
-
-
-			Class.setup.apply(Class, [_super_class].concat(makeArray(arguments)));
-
-			if ( Class.init ) Class.init(Class);
-
-			return Class;
-		}
-
-
-		var initClass = makeClass();
-		if ( current && shortName ) current[shortName] = initClass;
-
-		/* @Prototype*/
-
-
-
-
-
-		return initClass;
-/* @function init
-     * Called with the same arguments as new Class(arguments ...) when a new instance is created.
-     * @codestart
-     * $.Class.extend("MyClass",
-     * {
-     *    init: function(val){
-     *       this.val = val;
-     *    }
-     * })
-     * var mc = new MyClass("Check Check")
-     * mc.val //-> 'Check Check'
-     * @codeend
-     */
-		//Breaks up code
-		/**
-		 * @attribute Class
-		 * Access to the static properties of the instance's class.
-		 * @codestart
-		 * $.Class.extend("MyClass", {classProperty : true}, {});
-		 * var mc2 = new MyClass();
-		 * mc.Class.classProperty = true;
-		 * var mc2 = new mc.Class(); //creates a new MyClass
-		 * @codeend
-		 */
-	};
-
-
-	$.Class.prototype = {
-		/**
-		 * @function callback
-		 * Returns a callback function.  This does the same thing as and is described better in [jQuery.Class.static.callback].
-		 * The only difference is this callback works
-		 * on a instance instead of a class.
-		 * @param {String|Array} fname If a string, it represents the function to be called.  
-		 * If it is an array, it will call each function in order and pass the return value of the prior function to the
-		 * next function.
-		 * @return {Function} the callback function
-		 */
-		callback: callback
-	}
-
-
-})(steal);
+})();
 
 // documentjs/showdown.js
 
@@ -1940,7 +1410,7 @@
 
 					// Turn double returns into triple returns, so that we can make a
 					// paragraph for the last item in a list, if necessary:
-					list = list.replace(/\n{2,}/g, "\n\n\n");;
+					list = list.replace(/\n{2,}/g, "\n\n\n");
 					var result = _ProcessListItems(list);
 
 					// Trim any trailing whitespace, to put the closing `</$list_type>`
@@ -2459,7 +1929,7 @@
 
 	} // end of Showdown.converter
 
-})(steal);
+})();
 
 // documentjs/documentjs.js
 
@@ -2475,38 +1945,14 @@
 	DocumentJS.toJSON = toJSON;
 	DocumentJS.extend = extend;
 	DocumentJS.converter = new Showdown.converter();
+	
 	delete Showdown;
-	DocumentJS.Class = $.Class;
-	DocumentJS.Class.serialize = function() {
-		this.serializeable = DocumentJS.makeArray(arguments)
-	}
-	DocumentJS.Class.prototype.serialize = function() {
-		var ob = {},
-			serials = this.Class.serializeable;
-		for ( var i = 0; i < serials.length; i++ ) {
-			var attr, asAttr;
-			if ( typeof serials[i] == "object" ) {
-				attr = serials[i][0]
-				asAttr = serials[i][1]
-			} else {
-				attr = asAttr = serials[i]
-			}
-			if ( this[attr] !== undefined ) {
-				ob[asAttr] = (typeof this[attr] == 'function' ? this[attr]() : this[attr])
-				//print(typeof ob[serials[i]])
-			}
-
-		}
-
-		return ob;
-	}
 	delete JSONparse;
-
 	delete toJSON;
 
 
 
-})(steal);
+})();
 
 // documentjs/distance.js
 
@@ -2564,7 +2010,7 @@
 		return v0[s1_len];
 	}
 
-})(steal);
+})();
 
 // documentjs/application.js
 
@@ -2584,7 +2030,7 @@
 	 * * [DocumentJS.Type.types.page | @page] -  a standalone page.
 	 * * [DocumentJS.Type.types.attribute | @attribute] -  values on an object.
 	 * * [DocumentJS.Type.types.function | @function] - functions on an object.
-	 * * [DocumentJS.Tags.constructor | @constructor] - functions you call like: new Thing()
+	 * * [DocumentJS.tags.constructor | @constructor] - functions you call like: new Thing()
 	 * * [DocumentJS.Type.types.class| @class] - normal JS Objects and source that uses [jQuery.Class]
 	 *
 	 * You can also specifify where your functions and attributes are being added with:
@@ -2593,25 +2039,25 @@
 	 * * [DocumentJS.Type.types.static | @static] - add to the previous class or constructor's static functions
 	 * * [DocumentJS.Type.types.add |@add] - add docs to a class or construtor described in another file
 	 * 
-	 * Finally, you have [DocumentJS.Tags|tags] that provide addtional info about the comment:
+	 * Finally, you have [DocumentJS.tags|tags] that provide addtional info about the comment:
 	 * 
-	 * * [DocumentJS.Tags.alias|@alias] - another commonly used name for Class or Constructor
-	 * * [DocumentJS.Tags.author|@author] - author of class
-	 * * [DocumentJS.Tags.codestart|@codestart] -> [DocumentJS.Tags.codeend|@codeend] - insert highlighted code block
-	 * * [DocumentJS.Tags.demo|@demo] - placeholder for an application demo
-	 * * [DocumentJS.Tags.download|@download] - adds a download link
-	 * * [DocumentJS.Tags.iframe|@iframe] - adds an iframe to some page with example code
-	 * * [DocumentJS.Tags.hide|@hide] - hide in Class view
-	 * * [DocumentJS.Tags.inherits|@inherits] - what the Class or Constructor inherits
-	 * * [DocumentJS.Tags.parent|@parent] - says under which parent the current type should be located 
-	 * * [DocumentJS.Tags.param|@param] - A function's parameter
-	 * * [DocumentJS.Tags.plugin|@plugin] - by which plugin this object gets steald
-	 * * [DocumentJS.Tags.return|@return] - what a function returns
-	 * * [DocumentJS.Tags.scope|@scope] - forces the current type to start scope
-	 * * [DocumentJS.Tags.tag|@tag] - tags for searching
-	 * * [DocumentJS.Tags.test|@test] - link for test cases
-	 * * [DocumentJS.Tags.type|@type] - sets the type for the current commented code
-	 * * [DocumentJS.Tags.image|@image] - adds an image
+	 * * [DocumentJS.tags.alias|@alias] - another commonly used name for Class or Constructor
+	 * * [DocumentJS.tags.author|@author] - author of class
+	 * * [DocumentJS.tags.codestart|@codestart] -> [DocumentJS.tags.codeend|@codeend] - insert highlighted code block
+	 * * [DocumentJS.tags.demo|@demo] - placeholder for an application demo
+	 * * [DocumentJS.tags.download|@download] - adds a download link
+	 * * [DocumentJS.tags.iframe|@iframe] - adds an iframe to some page with example code
+	 * * [DocumentJS.tags.hide|@hide] - hide in Class view
+	 * * [DocumentJS.tags.inherits|@inherits] - what the Class or Constructor inherits
+	 * * [DocumentJS.tags.parent|@parent] - says under which parent the current type should be located 
+	 * * [DocumentJS.tags.param|@param] - A function's parameter
+	 * * [DocumentJS.tags.plugin|@plugin] - by which plugin this object gets steald
+	 * * [DocumentJS.tags.return|@return] - what a function returns
+	 * * [DocumentJS.tags.scope|@scope] - forces the current type to start scope
+	 * * [DocumentJS.tags.tag|@tag] - tags for searching
+	 * * [DocumentJS.tags.test|@test] - link for test cases
+	 * * [DocumentJS.tags.type|@type] - sets the type for the current commented code
+	 * * [DocumentJS.tags.image|@image] - adds an image
 	 * 
 	 * ###Example
 	 * 
@@ -2750,32 +2196,32 @@
 		 * @param {String} path where to put the docs
 		 */
 		generate: function( path, convert ) {
-			//new steal.File('docs/classes/').mkdirs();
 			print("generating ...")
 
 
 			//go through all the objects
 			for ( var name in DocumentJS.Application.objects ) {
-				var obj = DocumentJS.extend({}, DocumentJS.Application.objects[name]),
-					toJSON;
+				if (DocumentJS.Application.objects.hasOwnProperty(name)){
+					var obj = DocumentJS.extend({}, DocumentJS.Application.objects[name]),
+						toJSON;
 
-				if ( obj.type == 'script' || typeof obj != "object" ) {
-					continue;
+					if ( obj.type == 'script' || typeof obj != "object" ) {
+						continue;
+					}
+					//get all children
+					var children = this.linker(obj);
+					obj.children = children;
+
+					var converted = name.replace(/ /g, "_").replace(/&#46;/g, ".").replace(/&gt;/g, "_gt_").replace(/\*/g, "_star_")
+					toJSON = this.toJSON(obj);
+					new DocumentJS.File(path + "/" + converted + ".json").save(toJSON);
 				}
-				//get all children
-				var children = this.linker(obj);
-				obj.children = children;
-
-				var converted = name.replace(/ /g, "_").replace(/&#46;/g, ".").replace(/&gt;/g, "_gt_").replace(/\*/g, "_star_")
-				toJSON = this.toJSON(obj);
-				new DocumentJS.File(path + "/" + converted + ".json").save(toJSON);
-
 
 			}
 
 
 			this.searchData(path, convert);
-			this.summary_page(path, convert)
+			this.summaryPage(path, convert)
 		},
 		shallowParent: function( item, parent ) {
 			if ( item.parents && parent ) {
@@ -2805,16 +2251,19 @@
 		 * Creates a page for all classes and constructors
 		 * @param {String} summary the left hand side.
 		 */
-		summary_page: function( path, convert ) {
+		summaryPage: function( path, convert ) {
 			//find index page
 			var base = path.replace(/[^\/]*$/, "");
 			this.indexPage = DocumentJS.Application.objects.index
 
 			//checks if you have a summary
-			if ( readFile(path + "/summary.ejs") ) {
-				DocumentJS.render_to(base + "docs.html", path + "/summary.ejs", this)
+			if ( readFile(base + "summary.ejs") ) {
+				DocumentJS.render_to(base + "docs.html", base + "summary.ejs", {
+					pathToRoot: new DocumentJS.File(base.replace(/\/[^\/]*$/, "")).pathToRoot(),
+					path: path
+				})
 			} else {
-				print("Using default page layout.  Overwrite by creating: " + path + "/summary.ejs");
+				print("Using default page layout.  Overwrite by creating: " + base + "summary.ejs");
 				DocumentJS.render_to(base + "docs.html", "documentjs/jmvcdoc/summary.ejs", {
 					pathToRoot: new DocumentJS.File(base.replace(/\/[^\/]*$/, "")).pathToRoot(),
 					path: path
@@ -2826,8 +2275,11 @@
 		indexOf: function( array, item ) {
 			var i = 0,
 				length = array.length;
-			for (; i < length; i++ )
-			if ( array[i] === item ) return i;
+			for (; i < length; i++ ){
+				if ( array[i] === item ){
+					return i;
+				}
+			}
 			return -1;
 		},
 		addTagToSearchData: function( data, tag, searchData ) {
@@ -2841,44 +2293,50 @@
 					current[letter] = {};
 					current[letter].list = [];
 				}
-				if ( this.indexOf(current[letter].list, data) == -1 ) current[letter].list.push(data);
+				if ( this.indexOf(current[letter].list, data) == -1 ) {
+					current[letter].list.push(data);
+				}
 				current = current[letter];
 			}
 		},
 		addToSearchData: function( list, searchData ) {
 			var c, parts, part, p, fullName;
 			for ( var name in list ) {
-				c = list[name];
-				if ( c.type == 'script' ) {
-					continue;
+				if (list.hasOwnProperty(name)){
+					c = list[name];
+					if ( c.type == 'script' ) {
+						continue;
+					}
+					//break up into parts
+					fullName = c.name;
+					searchData.list[fullName] = {
+						name: c.name,
+						type: c.type
+					};
+					if ( c.title ) {
+						searchData.list[fullName].title = c.title
+					}
+					if ( c.tags ) {
+						searchData.list[fullName].tags = c.tags
+					}
+					if ( c.hide ) {
+						searchData.list[fullName].hide = c.hide
+					}
+					parts = fullName.split(".");
+					for ( p = 0; p < parts.length; p++ ) {
+						part = parts[p].toLowerCase();
+						if ( part == "jquery" ){
+							continue;
+						}
+						this.addTagToSearchData(fullName, part, searchData)
+					}
+					//now add tags if there are tags
+					if ( c.tags ) {
+						for ( var t = 0; t < c.tags.length; t++ ){
+							this.addTagToSearchData(fullName, c.tags[t], searchData);
+						}
+					}
 				}
-				//break up into parts
-				fullName = c.name;
-				searchData.list[fullName] = {
-					name: c.name,
-					type: c.type
-				};
-				if ( c.title ) {
-					searchData.list[fullName].title = c.title
-				}
-				if ( c.tags ) {
-					searchData.list[fullName].tags = c.tags
-				}
-				if ( c.hide ) {
-					searchData.list[fullName].hide = c.hide
-				}
-				parts = fullName.split(".");
-				for ( p = 0; p < parts.length; p++ ) {
-					part = parts[p].toLowerCase();
-					if ( part == "jquery" ) continue;
-					this.addTagToSearchData(fullName, part, searchData)
-				}
-				//now add tags if there are tags
-				if ( c.tags ) {
-					for ( var t = 0; t < c.tags.length; t++ )
-					this.addTagToSearchData(fullName, c.tags[t], searchData);
-				}
-
 			}
 		},
 		searchData: function( path, convert ) {
@@ -2892,7 +2350,7 @@
 			this.addToSearchData(DocumentJS.Application.objects, searchData)
 
 
-			new DocumentJS.File(path + "/searchData.json").save(this.toJSON(searchData, false));
+			return new DocumentJS.File(path + "/searchData.json").save(this.toJSON(searchData, false));
 		},
 		toJSON: function() {
 			return "C(" + DocumentJS.toJSON.apply(DocumentJS.toJSON, arguments) + ")"
@@ -2905,55 +2363,57 @@
 		clean_path: function( path ) {
 			return path;
 			var parts = path.split("/")
-			if ( parts.length > 5 ) parts = parts.slice(parts.length - 5);
+			if ( parts.length > 5 ){ 
+				parts = parts.slice(parts.length - 5);
+			}
 			return parts.join("/");
 		}
 	}
 
-})(steal);
+})();
 
 // documentjs/tags/tags.js
 
 (function($){
 
 	/**
-	 * @class DocumentJS.Tags
+	 * @class DocumentJS.tags
 	 * Keeps track of tags for DocumentJS.
 	 * 
 	 * The available tags are:
 	 * 
-	 * * [DocumentJS.Tags.alias|@alias] - another commonly used name for Class or Constructor
-	 * * [DocumentJS.Tags.author|@author] - author of class
-	 * * [DocumentJS.Tags.codestart|@codestart] -> [DocumentJS.Tags.codeend|@codeend] - insert highlighted code block
-	 * * [DocumentJS.Tags.demo|@demo] - placeholder for an application demo 
-	 * * [DocumentJS.Tags.download|@download] - adds a download link
-	 * * [DocumentJS.Tags.iframe|@iframe] - adds an iframe to some page with example code
-	 * * [DocumentJS.Tags.hide|@hide] - hide in Class view 
-	 * * [DocumentJS.Tags.inherits|@inherits] - what the Class or Constructor inherits
-	 * * [DocumentJS.Tags.parent|@parent] - says under which parent the current type should be located 
-	 * * [DocumentJS.Tags.param|@param] - A function's parameter
-	 * * [DocumentJS.Tags.plugin|@plugin] - by which plugin this object gets steald
-	 * * [DocumentJS.Tags.return|@return] - what a function returns
-	 * * [DocumentJS.Tags.scope|@scope] - forces the current type to start scope 
-	 * * [DocumentJS.Tags.tag|@tag] - tags for searching
-	 * * [DocumentJS.Tags.test|@test] - link for test cases 
-	 * * [DocumentJS.Tags.type|@type] - sets the type for the current commented code
-	 * * [DocumentJS.Tags.image|@image] - adds an image  
+	 * * [DocumentJS.tags.alias|@alias] - another commonly used name for Class or Constructor
+	 * * [DocumentJS.tags.author|@author] - author of class
+	 * * [DocumentJS.tags.codestart|@codestart] -> [DocumentJS.tags.codeend|@codeend] - insert highlighted code block
+	 * * [DocumentJS.tags.demo|@demo] - placeholder for an application demo 
+	 * * [DocumentJS.tags.download|@download] - adds a download link
+	 * * [DocumentJS.tags.iframe|@iframe] - adds an iframe to some page with example code
+	 * * [DocumentJS.tags.hide|@hide] - hide in Class view 
+	 * * [DocumentJS.tags.inherits|@inherits] - what the Class or Constructor inherits
+	 * * [DocumentJS.tags.parent|@parent] - says under which parent the current type should be located 
+	 * * [DocumentJS.tags.param|@param] - A function's parameter
+	 * * [DocumentJS.tags.plugin|@plugin] - by which plugin this object gets steald
+	 * * [DocumentJS.tags.return|@return] - what a function returns
+	 * * [DocumentJS.tags.scope|@scope] - forces the current type to start scope 
+	 * * [DocumentJS.tags.tag|@tag] - tags for searching
+	 * * [DocumentJS.tags.test|@test] - link for test cases 
+	 * * [DocumentJS.tags.type|@type] - sets the type for the current commented code
+	 * * [DocumentJS.tags.image|@image] - adds an image  
 	 */
-	DocumentJS.Tags = {
+	DocumentJS.tags = {
 
 	}
 
-})(steal);
+})();
 
 // documentjs/tags/alias.js
 
 (function($){
 
 	/**
-	 * @class DocumentJS.Tags.alias
+	 * @class DocumentJS.tags.alias
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * The Class or Constructor is known by another name.
 	 * 
 	 * ###Example:
@@ -2966,7 +2426,7 @@
 	 *  ...
 	 * @codeend 
 	 */
-	DocumentJS.Tags.alias = {
+	DocumentJS.tags.alias = {
 		add: function( line ) {
 			var m = line.match(/^\s*@alias\s*([\w\-\.]*)/)
 			if ( m ) {
@@ -2975,16 +2435,16 @@
 		}
 	};
 
-})(steal);
+})();
 
 // documentjs/tags/author.js
 
 (function($){
 
 	/**
-	 * @class DocumentJS.Tags.author
+	 * @class DocumentJS.tags.author
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * Describes who the author of a class is.
 	 * 
 	 * ###Example:
@@ -2996,7 +2456,7 @@
 	 *  *|
 	 * @codeend
 	 */
-	DocumentJS.Tags.author = {
+	DocumentJS.tags.author = {
 		add: function( line ) {
 			var m = line.match(/^\s*@author\s*(.*)/)
 			if ( m ) {
@@ -3005,16 +2465,16 @@
 		}
 	};
 
-})(steal);
+})();
 
 // documentjs/tags/codeend.js
 
 (function($){
 
 	/**
-	 * @class DocumentJS.Tags.codeend
+	 * @class DocumentJS.tags.codeend
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Stops a code block.
 	 * 
@@ -3054,7 +2514,7 @@
 	 *
 	 * @codeend 
 	 */
-	DocumentJS.Tags.codeend = {
+	DocumentJS.tags.codeend = {
 		add: function( line, data ) {
 
 			if (!data.lines ) {
@@ -3072,16 +2532,16 @@
 		}
 	};
 
-})(steal);
+})();
 
 // documentjs/tags/codestart.js
 
 (function($){
 
 	/**
-	 * @class DocumentJS.Tags.codestart
+	 * @class DocumentJS.tags.codestart
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Starts a code block.  
 	 * 
@@ -3127,7 +2587,7 @@
 	 *
 	 * @codeend 
 	 */
-	DocumentJS.Tags.codestart = {
+	DocumentJS.tags.codestart = {
 		add: function( line, last ) {
 			var m = line.match(/^\s*@codestart\s*([\w-]*)\s*(.*)/)
 
@@ -3147,48 +2607,32 @@
 		}
 	};
 
-})(steal);
+})();
 
 // documentjs/tags/constructor.js
 
 (function($){
 
 	/**
-	 * @class DocumentJS.Tags.constructor
+	 * @class DocumentJS.tags.constructor
 	 * @tag documentation
-	 * @parent DocumentJS.Tags
-	 * Documents javascript constructor classes typically created like: new MyContructor(args). 
-	 * A constructor can be described by putting @constructor as the first declaritive. 
-	 * To describe the construction function, write that after init. Example:
+	 * @parent DocumentJS.tags
+	 *   
+	 * Documents the class initialization function (constructor). 
+	 * 
+	 * ###Example:
 	 * 
 	 * @codestart
-	 *  /* @constructor
-	 *   * Person represents a human with a name 
-	 *   * [DocumentJS.Tags.init | @init] 
-	 *   * You must pass in a name.
-	 *   * @params {String} name A person's name
-	 *   *|
-	 *  Person = function(name){
-	 *     this.name = name
-	 *     Person.count ++;
-	 *  }
-	 *  /* @Static *|
-	 *  steal.Object.extend(Person, {
-	 *    /* Number of People *|
-	 *    count: 0
-	 *  })
-	 *  /* @Prototype *|
-	 *  Person.prototype = {
-	 *    /* Returns a formal name 
-	 *     * [DocumentJS.Tags.return | @return] {String} the name with "Mrs." added
-	 *     *|
-	 *    fancy_name : function(){
-	 *       return "Mrs. "+this.name;
-	 *    }
-	 *  }
+	 * /**
+     *  * @class jQuery.Hover
+     *  * ...
+     *  * @constructor Creates a new hover.  This is never
+     *  * called directly.
+     *  *|
+     *  jQuery.Hover = function(){
 	 * @codeend
 	 */
-	DocumentJS.Tags.constructor =
+	DocumentJS.tags.constructor =
 /*
  * @Static
  */
@@ -3197,20 +2641,24 @@
 			var parts = line.match(/\s?@constructor(.*)?/);
 
 			this.construct = parts && parts[1] ? " " + parts[1] + "\n" : ""
+			this.ret = {
+				type: this.alias ? this.alias.toLowerCase() : this.name.toLowerCase(),
+				description: ""
+			}
 			return ["default", 'construct'];
 		}
 	};
 
-})(steal);
+})();
 
 // documentjs/tags/demo.js
 
 (function($){
 
 	/**
-	 * @class DocumentJS.Tags.demo
+	 * @class DocumentJS.tags.demo
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Placeholder for an application demo, e.g. @demo jquery/event/default/default.html.
 	 * 
@@ -3226,7 +2674,7 @@
 	 *   
 	 * @demo jquery/controller/controller.html
 	 */
-	DocumentJS.Tags.demo = {
+	DocumentJS.tags.demo = {
 		add: function( line ) {
 			var m = line.match(/^\s*@demo\s*([\w\.\/\-]*)\s*([\w]*)/)
 			if ( m ) {
@@ -3236,16 +2684,16 @@
 		}
 	};
 
-})(steal);
+})();
 
 // documentjs/tags/download.js
 
 (function($){
 
 	/**
-	 * @class DocumentJS.Tags.download
+	 * @class DocumentJS.tags.download
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Adds a download link.
 	 * 
@@ -3264,7 +2712,7 @@
 	 * 
 	 * @image jmvc/images/download_tag_example.png 970
 	 */
-	DocumentJS.Tags.download = {
+	DocumentJS.tags.download = {
 		add: function( line ) {
 			var parts = line.match(/^\s*@download\s*([^ ]*)\s*([\w]*)/)
 			this.download = parts[1];
@@ -3272,16 +2720,16 @@
 		}
 	};
 
-})(steal);
+})();
 
 // documentjs/tags/hide.js
 
 (function($){
 
 	/**
-	 * @class DocumentJS.Tags.hide
+	 * @class DocumentJS.tags.hide
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Hides this class or constructor from the left hand side bar.
 	 * 
@@ -3298,7 +2746,7 @@
 	 _setProperty: function( property, value, success, error, capitalized ) {
 	 * @codeend
 	 */
-	DocumentJS.Tags.hide = {
+	DocumentJS.tags.hide = {
 		add: function( line ) {
 			var m = line.match(/^\s*@hide/)
 			if ( m ) {
@@ -3307,16 +2755,16 @@
 		}
 	};
 
-})(steal);
+})();
 
 // documentjs/tags/iframe.js
 
 (function($){
 
 	/**
-	 * @class DocumentJS.Tags.iframe
+	 * @class DocumentJS.tags.iframe
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Adds an iframe to some page with example code.
 	 * 
@@ -3332,7 +2780,7 @@
 	 * 
 	 * @iframe jquery/view/view.html 700
 	 */
-	DocumentJS.Tags.iframe = {
+	DocumentJS.tags.iframe = {
 		add: function( line ) {
 			var m = line.match(/^\s*@iframe\s*([\w\.\/]*)\s*([\w]*)\s*(.*)/)
 
@@ -3346,22 +2794,32 @@
 		}
 	};
 
-})(steal);
+})();
 
 // documentjs/tags/inherits.js
 
 (function($){
 
 	/**
-	 * @class DocumentJS.Tags.inherits
+	 * @class DocumentJS.tags.inherits
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Says current class or constructor inherits from another class or contructor.
 	 *
-	 * Looks for "@inherits _constructor or class name_".
+	 * ###Example:
+	 * 
+	 * @codestart
+	 * /*
+	 *  * @class Client
+	 *  * @inherits Person
+	 *  * ...
+	 *  *|
+	 *  var client = new Client() {
+	 *  ...
+	 * @codeend
 	 */
-	DocumentJS.Tags.inherits = {
+	DocumentJS.tags.inherits = {
 		add: function( line ) {
 			var m = line.match(/^\s*@\w+ ([\w\.]+)/)
 			if ( m ) {
@@ -3370,13 +2828,13 @@
 		}
 	};
 
-})(steal);
+})();
 
 // documentjs/tags/page.js
 
 (function($){
 
-	DocumentJS.Tags.page = {
+	DocumentJS.tags.page = {
 		add: function( line ) {
 			var m = line.match(/^\s*@\w+\s+([^\s]+)\s+(.+)/)
 			if ( m ) {
@@ -3386,7 +2844,7 @@
 		}
 	};
 
-})(steal);
+})();
 
 // documentjs/tags/param.js
 
@@ -3405,9 +2863,9 @@
 
 
 		/**
-		 * @class DocumentJS.Tags.param
+		 * @class DocumentJS.tags.param
 		 * @tag documentation
-		 * @parent DocumentJS.Tags 
+		 * @parent DocumentJS.tags 
 		 * 
 		 * Adds parameter information.
 		 *
@@ -3426,7 +2884,7 @@
     	 *  
     	 * @image jmvc/images/param_tag_example.png
 		 */
-		DocumentJS.Tags.param = {
+		DocumentJS.tags.param = {
 
 			addMore: function( line, last ) {
 				if ( last ) last.description += "\n" + line;
@@ -3476,7 +2934,7 @@
 
 	})()
 
-})(steal);
+})();
 
 // documentjs/tags/parent.js
 
@@ -3486,9 +2944,9 @@
 		var waiting = {}
 
 		/**
-		 * @class DocumentJS.Tags.parent
+		 * @class DocumentJS.tags.parent
 		 * @tag documentation
-		 * @parent DocumentJS.Tags 
+		 * @parent DocumentJS.tags 
 		 * 
 		 * Says under which parent the current type should be located.
 		 * 
@@ -3503,9 +2961,11 @@
 		 *  $.Drag = function(){}
 		 * @codeend
 		 * 
+		 * ###End Result:
+		 * 
 		 * @image jmvc/images/parent_tag_example.png
 		 */
-		DocumentJS.Tags.parent = {
+		DocumentJS.tags.parent = {
 			add: function( line ) {
 				var m = line.match(/^\s*@parent\s*([\w\.\/]*)\s*([\w]*)/)
 				var name = m[1],
@@ -3531,16 +2991,16 @@
 
 	})();
 
-})(steal);
+})();
 
 // documentjs/tags/plugin.js
 
 (function($){
 
 	/**
-	 * @class DocumentJS.Tags.plugin
+	 * @class DocumentJS.tags.plugin
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Adds to another plugin. 
 	 * 
@@ -3561,22 +3021,22 @@
 	 * 
 	 * @image jmvc/images/plugin_tag_example.png
 	 */
-	DocumentJS.Tags.plugin = {
+	DocumentJS.tags.plugin = {
 		add: function( line ) {
 			this.plugin = line.match(/@plugin ([^ ]+)/)[1];
 		}
 	}
 
-})(steal);
+})();
 
 // documentjs/tags/return.js
 
 (function($){
 
 	/**
-	 * @class DocumentJS.Tags.return
+	 * @class DocumentJS.tags.return
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Describes return data in the format.
 	 * 
@@ -3597,7 +3057,7 @@
 	 * 
 	 * @image jmvc/images/return_tag_example.png
 	 */
-	DocumentJS.Tags["return"] = {
+	DocumentJS.tags["return"] = {
 		add: function( line ) {
 			if (!this.ret ) {
 				this.ret = {
@@ -3625,36 +3085,59 @@
 		}
 	};
 
-})(steal);
+})();
 
 // documentjs/tags/scope.js
 
 (function($){
 
 	/**
-	 * @class DocumentJS.Tags.scope
+	 * @class DocumentJS.tags.scope
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Forces the current type to start scope. 
+	 * 
+	 * ###Example:
+	 * 
+	 * @codestart
+	 * /**
+     *  * @attribute convert
+     *  * @scope
+	 *  * An object of name-function pairs that are used to convert attributes.
+	 *  * Check out [jQuery.Model.static.attributes]
+	 *  * for examples.
+	 *  *|
+	 *  convert: {
+	 *      "date": function( str ) {
+	 *          return typeof str == "string" ? (Date.parse(str) == NaN ? null : Date.parse(str)) : str
+	 *      },
+	 *      "number": function( val ) {
+	 *          return parseFloat(val)
+	 *      },
+	 *      "boolean": function( val ) {
+	 *          return Boolean(val)
+	 *      }
+	 *  }
+	 * @codeend 
 	 */
-	DocumentJS.Tags.scope = {
+	DocumentJS.tags.scope = {
 		add: function( line ) {
 			print("Scope! " + line)
 			this.starts_scope = true;
 		}
 	};
 
-})(steal);
+})();
 
 // documentjs/tags/tag.js
 
 (function($){
 
 	/**
-	 * @class DocumentJS.Tags.tag
+	 * @class DocumentJS.tags.tag
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Tags for searching.
 	 * 
@@ -3675,7 +3158,7 @@
 	 * 
 	 * @image jmvc/images/tag_tag_example.png
 	 */
-	DocumentJS.Tags.tag = {
+	DocumentJS.tags.tag = {
 		add: function( line ) {
 			var parts = line.match(/^\s*@tag\s*(.+)/);
 
@@ -3690,39 +3173,81 @@
 		//}
 	};
 
-})(steal);
+})();
 
 // documentjs/tags/test.js
 
 (function($){
 
 	/**
-	 * @class DocumentJS.Tags.test
+	 * @class DocumentJS.tags.test
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Link to test cases.
+	 * 
+	 * #Example
+	 * 
+	 * @codestart
+	 * /*
+	 *  * @constructor jQuery.Drag
+	 *  * @parent specialevents
+	 *  * @plugin jquery/event/drag
+	 *  * @download jquery/dist/jquery.event.drag.js
+	 *  * @test jquery/event/drag/qunit.html
+	 *  * ...
+	 *  *|
+	 *  $.Drag = function(){}
+	 * @codeend
+	 * 
+	 * ###End Result:
+	 * @image jmvc/images/test_tag_example.png
+	 * @image jmvc/images/test_tag_test_example.png
 	 */
-	DocumentJS.Tags.test = {
+	DocumentJS.tags.test = {
 		add: function( line ) {
 			this.test = line.match(/@test ([^ ]+)/)[1];
 		}
 	};
 
-})(steal);
+})();
 
 // documentjs/tags/type.js
 
 (function($){
 
 	/**
-	 * @class DocumentJS.Tags.type
+	 * @class DocumentJS.tags.type
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Sets the type for the current commented code.
+	 * 
+	 * ###Example:
+	 * 
+	 * @codestart
+	 * /**
+	 *  *
+     *  * @attribute convert
+     *  * @type Object
+	 *  * An object of name-function pairs that are used to convert attributes.
+	 *  * Check out [jQuery.Model.static.attributes]
+	 *  * for examples.
+	 *  *|
+	 *  convert: {
+	 *      "date": function( str ) {
+	 *          return typeof str == "string" ? (Date.parse(str) == NaN ? null : Date.parse(str)) : str
+	 *      },
+	 *      "number": function( val ) {
+	 *          return parseFloat(val)
+	 *      },
+	 *      "boolean": function( val ) {
+	 *          return Boolean(val)
+	 *      }
+	 *  }
+	 * @codeend 
 	 */
-	DocumentJS.Tags.type = {
+	DocumentJS.tags.type = {
 		add: function( line ) {
 			var m = line.match(/^\s*@type\s*([\w\.\/]*)/)
 			if ( m ) {
@@ -3731,16 +3256,16 @@
 		}
 	};
 
-})(steal);
+})();
 
 // documentjs/tags/image.js
 
 (function($){
 
 	/**
-	 * @class DocumentJS.Tags.image
+	 * @class DocumentJS.tags.image
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Adds an image.
 	 * 
@@ -3752,7 +3277,7 @@
 	 *  *|
 	 * @codeend
 	 */
-	DocumentJS.Tags.image = {
+	DocumentJS.tags.image = {
 		add: function( line ) {
 			var m = line.match(/^\s*@image\s*([\w\.\/]*)\s*([\w]*)\s*([\w]*)\s*(.*)/)
 
@@ -3767,7 +3292,7 @@
 		}
 	};
 
-})(steal);
+})();
 
 // documentjs/types/type.js
 
@@ -3839,8 +3364,10 @@
 				props = DocumentJS.Application.objects[props.name];
 				DocumentJS.extend(props, oldProps);
 			}
-
-			props.type = type.type;
+			
+			if ( !props.type ) {
+				props.type = type.type;
+			}
 			if ( props.name ) {
 				var parent = this.getParent(type, scope)
 
@@ -3925,7 +3452,7 @@
 					match = line.match(this.matchTag)
 
 					if ( match ) {
-						var curType = DocumentJS.Tags[match[1]];
+						var curType = DocumentJS.tags[match[1]];
 
 
 
@@ -3998,6 +3525,17 @@
 			//if(this.comment_setup_complete) this.comment_setup_complete();
 			try {
 				props.comment = DocumentJS.converter.makeHtml(props.comment);
+				if(props.ret && props.ret.description && props.ret.description ){
+					props.ret.description = DocumentJS.converter.makeHtml(props.ret.description)
+				}
+				if(props.params){
+					for(var paramName in props.params){
+						if(props.params[paramName].description  ){
+							props.params[paramName].description = DocumentJS.converter.makeHtml(props.params[paramName].description)
+						}
+					}
+				}
+				
 			} catch (e) {
 				print("Error with converting to markdown")
 			}
@@ -4005,7 +3543,7 @@
 		}
 	});
 
-})(steal);
+})();
 
 // documentjs/types/add.js
 
@@ -4020,21 +3558,23 @@
 	 * ###Example:
 	 * 
 	 * @codestart
-	 *  /**
-	 *   * @add jQuery.Controller.prototype
-	 *   *|
-	 *   //breaker
-	 *  /**
-	 *   * Publishes a message to OpenAjax.hub.
-	 *   * @param {String} message Message name, ex: "Something.Happened".
-	 *   * @param {Object} data The data sent.
-	 *   *|
-	 *   jQuery.Controller.prototype.publish = function() {
-	 *      OpenAjax.hub.publish.apply(OpenAjax.hub, arguments);
-	 *   }
+	 * /**
+	 * * @add jQuery.String.static
+	 * *|
+	 * $.String.
+	 * /**
+	 * * Splits a string with a regex correctly cross browser
+	 * * @param {Object} string
+	 * * @param {Object} regex
+	 * *|
+	 * rsplit = function( string, regex ) {
 	 * @codeend
 	 * 
-	 * It's important to note that add must be in its own comment block. 
+	 * It's important to note that add must be in its own comment block.
+	 * 
+	 * ###End Result:
+	 * 
+	 * @image jmvc/images/add_tag_example.png 970
 	 */
 	DocumentJS.Type("add",
 	/**
@@ -4057,7 +3597,7 @@
 			}
 			return DocumentJS.Application.objects[props.name];
 		},
-/*
+	/*
 	 * Possible scopes for @add.
 	 */
 		parent: /script/,
@@ -4065,7 +3605,7 @@
 		hasChildren: true
 	})
 
-})(steal);
+})();
 
 // documentjs/types/attribute.js
 
@@ -4075,11 +3615,16 @@
 	 * @class DocumentJS.Type.types.attribute
 	 * @tag documentation
 	 * @parent DocumentJS.Type
-	 * Documents an attribute. Example:
+	 * Documents an attribute.
+	 * 
+	 * ###Example:
 	 * 
 	 * @codestart
 	 *  steal.Object.extend(Person, {
-	 *   /* Number of People *|
+	 *   /* 
+	 *    * Number of People
+	 *    * @attribute 
+	 *    *|
 	 *   count: 0
 	 *  })
 	 * @codeend
@@ -4089,7 +3634,7 @@
 	 * @Static
 	 */
 	{
-/*
+	/*
 	 * Checks if code matches the attribute type.
 	 * @param {String} code
 	 * @return {Boolean} true if code matches an attribute
@@ -4097,7 +3642,7 @@
 		codeMatch: function( code ) {
 			return code.match(/(\w+)\s*[:=]\s*/) && !code.match(/(\w+)\s*[:=]\s*function\(([^\)]*)/)
 		},
-/*
+	/*
 	 * Must return the name if from the code.
 	 * @param {String} code
 	 * @return {Object} type data 
@@ -4110,14 +3655,14 @@
 				}
 			}
 		},
-/*
+	/*
 	 * Possible scopes for @attribute.
 	 */
 		parent: /script|static|proto|class/,
 		useName: false
 	});
 
-})(steal);
+})();
 
 // documentjs/types/class.js
 
@@ -4127,17 +3672,21 @@
 	 * @class DocumentJS.Type.types.class
 	 * @tag documentation
 	 * @parent DocumentJS.Type
-	 * Documents a 'Class'. A class is typically a collection of static and prototype functions. 
-	 * steal Doc can automatically detect classes created with jQuery.Class. 
+	 * Documents a 'Class'.
+	 *  
+	 * A class is typically a collection of static and prototype functions.
+	 *  
+	 * DocumentJS can automatically detect classes created with jQuery.Class.
+	 *  
 	 * However, you can make anything a class with the __@class__ _ClassName_ directive.
+	 * 
+	 * ###Example:
 	 * 
 	 * @codestart
 	 * /**
+	 *  * @class 
 	 *  * Person represents a human with a name.  Read about the 
-	 *  * animal class [Animal | here].
-	 *  * @init 
-	 *  * You must pass in a name.
-	 *  * @params {String} name A person's name
+	 *  * animal class [Animal | here]. 
 	 *  *|
 	 * Person = Animal.extend(
 	 * /* @Static *|
@@ -4154,7 +3703,7 @@
 	 *    /* Returns a formal name 
 	 *     * @return {String} the name with "Mrs." added
 	 *     *|
-	 *   fancy_name : function(){
+	 *   fancyName : function(){
 	 *      return "Mrs. "+this.name;
 	 *   }
 	 * })
@@ -4169,7 +3718,7 @@
 		// /([\w\.]*)\s*=\s*([\w\.]+?).extend\(/,
 		//must return the name if from the code
 		funcMatch: /(?:([\w\.]+)|(["'][^"']+["']))\s*[:=]\s*function\s?\(([^\)]*)/,
-/*
+	/*
 	 * Parses the code to get the class data.
 	 * @param {String} code
 	 * @return {Object} class data
@@ -4181,7 +3730,7 @@
 					name: parts[2],
 					inherits: parts[1].replace("$.", "jQuery.")
 				}
-			};
+			}
 			parts = code.match(this.funcMatch)
 			if ( parts ) {
 				return {
@@ -4189,7 +3738,7 @@
 				}
 			}
 		},
-/*
+	/*
 	 * Possible scopes for @class.
 	 */
 		parent: /script/,
@@ -4197,7 +3746,7 @@
 		hasChildren: true
 	})
 
-})(steal);
+})();
 
 // documentjs/types/function.js
 
@@ -4220,19 +3769,19 @@
 	 * 
 	 * @codestart
 	 * [ DocumentJS.Type.types.function | @function ] function_name                       -&gt; Forces a function
-	 * [ DocumentJS.Tags.param | @param ] {optional:type} param_name Description -&gt; Describes a parameter
-	 * [ DocumentJS.Tags.return | @return ] {type} Description                    -&gt; Describes the return value
+	 * [ DocumentJS.tags.param | @param ] {optional:type} param_name Description -&gt; Describes a parameter
+	 * [ DocumentJS.tags.return | @return ] {type} Description                    -&gt; Describes the return value
 	 * @codeend
 	 * 
-	 * Add optional: for optional params. Other available directives: [ DocumentJS.Tags.plugin | @plugin ], [ DocumentJS.Tags.codestart | @codestart ]
+	 * Add optional: for optional params. Other available directives: [ DocumentJS.tags.plugin | @plugin ], [ DocumentJS.tags.codestart | @codestart ]
 	 *
 	 * ###Example
 	 * 
 	 * @codestart
 	 * /* Adds, Mr. or Ms. before someone's name
-	 * [ DocumentJS.Tags.param | @param ] {String} name the persons name
-	 * [ DocumentJS.Tags.param | @param ] {optional:Boolean} gender true if a man, false if female.  Defaults to true.
-	 * [ DocumentJS.Tags.return | @return ] {String} returns the appropriate honorific before the person's name.
+	 * [ DocumentJS.tags.param | @param ] {String} name the persons name
+	 * [ DocumentJS.tags.param | @param ] {optional:Boolean} gender true if a man, false if female.  Defaults to true.
+	 * [ DocumentJS.tags.return | @return ] {String} returns the appropriate honorific before the person's name.
 	 * *|  
 	 * honorific = function(name, gender){
 	 * @codeend 
@@ -4243,7 +3792,7 @@
 	 */
 	{
 		codeMatch: /(?:([\w\.]+)|(["'][^"']+["']))\s*[:=]\s*function\s?\(([^\)]*)/,
-/*
+	/*
 	 * Parses the code to get the function data.
 	 * Must return the name if from the code.
 	 * @param {String} code
@@ -4286,14 +3835,14 @@
 
 			return data;
 		},
-/*
+	/*
 	 * Possible scopes for @function.
 	 */
 		parent: /script|static|proto|class/,
 		useName: false
 	})
 
-})(steal);
+})();
 
 // documentjs/types/page.js
 
@@ -4345,7 +3894,7 @@
 		code: function() {
 
 		},
-/*
+	/*
 	 * Possible scopes for @page.
 	 */
 		parent: /script|page/,
@@ -4353,7 +3902,7 @@
 		hasChildren: true
 	})
 
-})(steal);
+})();
 
 // documentjs/types/prototype.js
 
@@ -4407,7 +3956,7 @@
 		hasChildren: true
 	})
 
-})(steal);
+})();
 
 // documentjs/types/script.js
 
@@ -4456,8 +4005,10 @@
 
 				var lines = comment.split("\n"),
 					noSpace = /\S/g,
-					match
-					for ( var l = 0; l < lines.length; l++ ) {
+					match,
+					l;
+					
+					for ( l = 0; l < lines.length; l++ ) {
 						match = noSpace.exec(lines[l]);
 						if ( match && lines[l] && noSpace.lastIndex < removeSpace ) {
 							removeSpace = noSpace.lastIndex;
@@ -4466,7 +4017,7 @@
 					}
 					//print(removeSpace)
 					if ( isFinite(removeSpace) ) {
-						for ( var l = 0; l < lines.length; l++ ) {
+						for ( l = 0; l < lines.length; l++ ) {
 
 							lines[l] = lines[l].substr(removeSpace - 1)
 						}
@@ -4493,7 +4044,7 @@
 		hasChildren: true
 	})
 
-})(steal);
+})();
 
 // documentjs/types/static.js
 
@@ -4536,7 +4087,7 @@
  * @Static
  */
 	{
-/*
+	/*
 	 * @return {Object} prototype data.
 	 */
 		code: function() {
@@ -4544,7 +4095,7 @@
 				name: "static"
 			}
 		},
-/*
+	/*
 	 * Possible scopes for @static.
 	 */
 		parent: /script|class/,
@@ -4552,5 +4103,5 @@
 		hasChildren: true
 	})
 
-})(steal);
+})();
 

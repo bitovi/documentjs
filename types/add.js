@@ -1,8 +1,8 @@
 steal.then(function() {
 	/**
-	 * @class DocumentJS.Type.types.add
+	 * @class DocumentJS.types.add
 	 * @tag documentation
-	 * @parent DocumentJS.Type
+	 * @parent DocumentJS.types
 	 * Used to set scope to add to classes or methods in another file. 
 	 * 
 	 * ###Example:
@@ -42,10 +42,10 @@ steal.then(function() {
 		 * @param {Object} type data
 		 */
 		init: function( props ) {
-			if (!DocumentJS.Application.objects[props.name] ) {
-				DocumentJS.Application.objects[props.name] = props;
+			if (!DocumentJS.objects[props.name] ) {
+				DocumentJS.objects[props.name] = props;
 			}
-			return DocumentJS.Application.objects[props.name];
+			return DocumentJS.objects[props.name];
 		},
 	/*
 	 * Possible scopes for @add.

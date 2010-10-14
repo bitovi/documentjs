@@ -1,8 +1,8 @@
 steal.then(function() {
 	/**
-	 * @class DocumentJS.Tags.download
+	 * @class DocumentJS.tags.download
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Adds a download link.
 	 * 
@@ -21,7 +21,7 @@ steal.then(function() {
 	 * 
 	 * @image jmvc/images/download_tag_example.png 970
 	 */
-	DocumentJS.Tags.download = {
+	DocumentJS.tags.download = {
 		add: function( line ) {
 			var parts = line.match(/^\s*@download\s*([^ ]*)\s*([\w]*)/)
 			this.download = parts[1];

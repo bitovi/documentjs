@@ -1,8 +1,8 @@
 steal.then(function() {
 	/**
-	 * @class DocumentJS.Tags.demo
+	 * @class DocumentJS.tags.demo
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Placeholder for an application demo, e.g. @demo jquery/event/default/default.html.
 	 * 
@@ -18,7 +18,7 @@ steal.then(function() {
 	 *   
 	 * @demo jquery/controller/controller.html
 	 */
-	DocumentJS.Tags.demo = {
+	DocumentJS.tags.demo = {
 		add: function( line ) {
 			var m = line.match(/^\s*@demo\s*([\w\.\/\-]*)\s*([\w]*)/)
 			if ( m ) {

@@ -12,22 +12,26 @@ steal.then(function() {
 
 		/**
 		 * Generates docs for a file.
-		 * @param {Object} inc an object that has path and text attributes
+		 * @param {Object} docScript an object that has src and text attributes.  It can also just be 
+		 * the path of a file.
 		 */
-		process: function( inc, objects ) {
+		process: function( docScript ) {
+			if(typeof docScript == 'string'){
+				docScript = {src: docScript}
+			}
 
-
-			var source = inc.src
+			var source = docScript.text || readFile(docScript.src);
+			
 			//check if the source has @documentjs-ignore
 			if (/\@documentjs-ignore/.test(source) ) {
 				return;
 			}
 			var script = {
 				type: "script",
-				name: inc.path
+				name: docScript.src
 			}
 			print("  " + script.name);
-			objects[script.name] = script;
+			DocumentJS.objects[script.name] = script;
 			var pairs = source.match(this.group);
 			//clean comments
 			var scope = script;
@@ -61,14 +65,14 @@ steal.then(function() {
 					}
 					comment = lines.join("\n")
 
-					var type = DocumentJS.Type.create(comment, code, scope, objects);
+					var type = DocumentJS.Type.create(comment, code, scope, DocumentJS.objects);
 
 				if ( type ) {
 
-					objects[type.name] = type;
+					DocumentJS.objects[type.name] = type;
 					//get the new scope if you need it
 					// if we don't have a type, assume we can have children
-					scope = !type.type || DocumentJS.Type.types[type.type].hasChildren ? type : scope;
+					scope = !type.type || DocumentJS.types[type.type].hasChildren ? type : scope;
 				}
 
 			}

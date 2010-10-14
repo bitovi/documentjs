@@ -1,8 +1,8 @@
 steal.then(function() {
 	/**
-	 * @class DocumentJS.Tags.hide
+	 * @class DocumentJS.tags.hide
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Hides this class or constructor from the left hand side bar.
 	 * 
@@ -19,7 +19,7 @@ steal.then(function() {
 	 _setProperty: function( property, value, success, error, capitalized ) {
 	 * @codeend
 	 */
-	DocumentJS.Tags.hide = {
+	DocumentJS.tags.hide = {
 		add: function( line ) {
 			var m = line.match(/^\s*@hide/)
 			if ( m ) {

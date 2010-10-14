@@ -1,8 +1,8 @@
 steal.then(function() {
 	/**
-	 * @class DocumentJS.Type.types.static
+	 * @class DocumentJS.types.static
 	 * @tag documentation
-	 * @parent DocumentJS.Type
+	 * @parent DocumentJS.types
 	 * Sets the following functions and attributes to be added to Class or Constructor static (class) functions.
 	 * 
 	 * ###Example

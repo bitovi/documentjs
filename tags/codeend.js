@@ -1,8 +1,8 @@
 steal.then(function() {
 	/**
-	 * @class DocumentJS.Tags.codeend
+	 * @class DocumentJS.tags.codeend
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Stops a code block.
 	 * 
@@ -42,7 +42,7 @@ steal.then(function() {
 	 *
 	 * @codeend 
 	 */
-	DocumentJS.Tags.codeend = {
+	DocumentJS.tags.codeend = {
 		add: function( line, data ) {
 
 			if (!data.lines ) {

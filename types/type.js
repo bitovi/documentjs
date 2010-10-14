@@ -8,7 +8,7 @@ steal.then(function() {
 	 * @param {Object} props
 	 */
 	DocumentJS.Type = function( type, props ) {
-		DocumentJS.Type.types[type] = props;
+		DocumentJS.types[type] = props;
 		props.type = type;
 	}
 
@@ -18,19 +18,13 @@ steal.then(function() {
 	 */
 	{
 		/**
-		 * Keeps track of the directive types
-		 */
-		types: {},
-		/**
 		 * Must get type and name
 		 * @param {String} comment
 		 * @param {String} code
 		 * @param {Object} scope
-		 * @param {Object} objects List of parsed types
 		 * @return {Object} type
 		 */
-		create: function( comment, code, scope, objects ) {
-
+		create: function( comment, code, scope ) {
 			var check = comment.match(/^\s*@(\w+)/),
 				type, props
 
@@ -45,7 +39,7 @@ steal.then(function() {
 				var nameCheck = comment.match(/^\s*@(\w+)[ \t]+([\w\.]+)/m)
 
 			props = type.code(code)
-
+			
 			if (!props && !nameCheck ) {
 				return null;
 			}
@@ -59,10 +53,10 @@ steal.then(function() {
 			if ( type.init ) {
 				return type.init(props, comment)
 			}
-			//print(props.name + " "+type.type);
-			if ( DocumentJS.Application.objects[props.name] ) {
+			//print("    "+props.name + " "+type.type);
+			if ( DocumentJS.objects[props.name] ) {
 				var oldProps = props;
-				props = DocumentJS.Application.objects[props.name];
+				props = DocumentJS.objects[props.name];
 				DocumentJS.extend(props, oldProps);
 			}
 			
@@ -71,9 +65,9 @@ steal.then(function() {
 			}
 			if ( props.name ) {
 				var parent = this.getParent(type, scope)
-
+				//print("    p="+(parent ? parent.name+":"+parent.type : ""))
 				//if we are adding to an unlinked parent, add parent's name
-				if (!parent.type || DocumentJS.Type.types[parent.type].useName ) {
+				if (!parent.type || DocumentJS.types[parent.type].useName ) {
 					props.name = parent.name + "." + props.name
 				}
 				props.parent = parent.name;
@@ -101,7 +95,7 @@ steal.then(function() {
 
 			while ( scope && scope.type && !type.parent.test(scope.type) ) {
 
-				scope = DocumentJS.Application.objects[scope.parent];
+				scope = DocumentJS.objects[scope.parent];
 
 			}
 			return scope;
@@ -114,7 +108,7 @@ steal.then(function() {
 		hasType: function( type ) {
 			if (!type ) return null;
 
-			return this.types.hasOwnProperty(type.toLowerCase()) ? this.types[type.toLowerCase()] : null;
+			return DocumentJS.types.hasOwnProperty(type.toLowerCase()) ? DocumentJS.types[type.toLowerCase()] : null;
 		},
 		/**
 		 * Guess type from code
@@ -122,9 +116,9 @@ steal.then(function() {
 		 * @return {Object} type
 		 */
 		guessType: function( code ) {
-			for ( var type in this.types ) {
-				if ( this.types[type].codeMatch && this.types[type].codeMatch(code) ) {
-					return this.types[type];
+			for ( var type in DocumentJS.types ) {
+				if ( DocumentJS.types[type].codeMatch && DocumentJS.types[type].codeMatch(code) ) {
+					return DocumentJS.types[type];
 				}
 
 			}
@@ -153,7 +147,7 @@ steal.then(function() {
 					match = line.match(this.matchTag)
 
 					if ( match ) {
-						var curType = DocumentJS.Tags[match[1]];
+						var curType = DocumentJS.tags[match[1]];
 
 
 
@@ -161,7 +155,7 @@ steal.then(function() {
 							//if (!DocumentJS.Pair.hasType(match[1])) {
 							//	DocumentJS.Pair.suggest_type(match[1])
 							//}
-							if (!DocumentJS.Type.types[match[1]] ) {
+							if (!DocumentJS.types[match[1]] ) {
 								props.comment += line + "\n"
 							}
 
@@ -219,21 +213,15 @@ steal.then(function() {
 						}
 					}
 			}
-			if ( messages.length ) {
-				//print("  >"+messages.join())
-			}
+			
 
 			//if(this.comment_setup_complete) this.comment_setup_complete();
 			try {
 				props.comment = DocumentJS.converter.makeHtml(props.comment);
-				if(props.ret && props.ret.description && props.ret.description ){
-					props.ret.description = DocumentJS.converter.makeHtml(props.ret.description)
-				}
-				if(props.params){
-					for(var paramName in props.params){
-						if(props.params[paramName].description  ){
-							props.params[paramName].description = DocumentJS.converter.makeHtml(props.params[paramName].description)
-						}
+				//allow post processing
+				for(var tag in DocumentJS.tags){
+					if(DocumentJS.tags[tag].done){
+						DocumentJS.tags[tag].done.call(props);
 					}
 				}
 				

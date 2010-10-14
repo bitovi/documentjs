@@ -316,11 +316,11 @@ pre {
 	font-weight:bold;
 }
 
-.param {
+.param, .return {
 	text-indent: -48px;
 	margin-left: 48px;
 }        
-.param * {
+.param *, .return * {
 	text-indent: 0px;
 }       
 .param label, .return label {

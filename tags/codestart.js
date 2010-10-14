@@ -1,8 +1,8 @@
 steal.then(function() {
 	/**
-	 * @class DocumentJS.Tags.codestart
+	 * @class DocumentJS.tags.codestart
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Starts a code block.  
 	 * 
@@ -48,7 +48,7 @@ steal.then(function() {
 	 *
 	 * @codeend 
 	 */
-	DocumentJS.Tags.codestart = {
+	DocumentJS.tags.codestart = {
 		add: function( line, last ) {
 			var m = line.match(/^\s*@codestart\s*([\w-]*)\s*(.*)/)
 

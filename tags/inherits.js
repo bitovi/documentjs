@@ -1,8 +1,8 @@
 steal.then(function() {
 	/**
-	 * @class DocumentJS.Tags.inherits
+	 * @class DocumentJS.tags.inherits
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Says current class or constructor inherits from another class or contructor.
 	 *
@@ -18,7 +18,7 @@ steal.then(function() {
 	 *  ...
 	 * @codeend
 	 */
-	DocumentJS.Tags.inherits = {
+	DocumentJS.tags.inherits = {
 		add: function( line ) {
 			var m = line.match(/^\s*@\w+ ([\w\.]+)/)
 			if ( m ) {

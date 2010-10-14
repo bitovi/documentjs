@@ -1,147 +1,16 @@
 steal.then(function() {
-	/**
-	 * @class DocumentJS
-	 * @tag core, documentation
-	 * DocumentJS provides powerful and easy to extend documentation functionality.
-	 * It's smart enough to guess 
-	 * at things like function names and parameters, but powerful enough to generate 
-	 * <span class='highlight'>JavaScriptMVC's entire website</span>!
-	 * 
-	 * DocumentJS is pure JavaScript so it is easy to modify and make improvements.  First, lets show what
-	 * [DocumentJS.Type | types] DocumentJS can document:
-	 * 
-	 * * [DocumentJS.Type.types.page | @page] -  a standalone page.
-	 * * [DocumentJS.Type.types.attribute | @attribute] -  values on an object.
-	 * * [DocumentJS.Type.types.function | @function] - functions on an object.
-	 * * [DocumentJS.Tags.constructor | @constructor] - functions you call like: new Thing()
-	 * * [DocumentJS.Type.types.class| @class] - normal JS Objects and source that uses [jQuery.Class]
-	 *
-	 * You can also specifify where your functions and attributes are being added with:
-	 * 
-	 * * [DocumentJS.Type.types.prototype | @prototype] - add to the previous class or constructor's prototype functions
-	 * * [DocumentJS.Type.types.static | @static] - add to the previous class or constructor's static functions
-	 * * [DocumentJS.Type.types.add |@add] - add docs to a class or construtor described in another file
-	 * 
-	 * Finally, you have [DocumentJS.Tags|tags] that provide addtional info about the comment:
-	 * 
-	 * * [DocumentJS.Tags.alias|@alias] - another commonly used name for Class or Constructor
-	 * * [DocumentJS.Tags.author|@author] - author of class
-	 * * [DocumentJS.Tags.codestart|@codestart] -> [DocumentJS.Tags.codeend|@codeend] - insert highlighted code block
-	 * * [DocumentJS.Tags.demo|@demo] - placeholder for an application demo
-	 * * [DocumentJS.Tags.download|@download] - adds a download link
-	 * * [DocumentJS.Tags.iframe|@iframe] - adds an iframe to some page with example code
-	 * * [DocumentJS.Tags.hide|@hide] - hide in Class view
-	 * * [DocumentJS.Tags.inherits|@inherits] - what the Class or Constructor inherits
-	 * * [DocumentJS.Tags.parent|@parent] - says under which parent the current type should be located 
-	 * * [DocumentJS.Tags.param|@param] - A function's parameter
-	 * * [DocumentJS.Tags.plugin|@plugin] - by which plugin this object gets steald
-	 * * [DocumentJS.Tags.return|@return] - what a function returns
-	 * * [DocumentJS.Tags.scope|@scope] - forces the current type to start scope
-	 * * [DocumentJS.Tags.tag|@tag] - tags for searching
-	 * * [DocumentJS.Tags.test|@test] - link for test cases
-	 * * [DocumentJS.Tags.type|@type] - sets the type for the current commented code
-	 * * [DocumentJS.Tags.image|@image] - adds an image
-	 * 
-	 * ###Example
-	 * 
-	 * The following documents a Person constructor.
-	 * @codestart
-	 * /* @constructor
-	 *  * Person represents a human with a name.  Read about the 
-	 *  * animal class [Animal | here].
-	 *  * @init 
-	 *  * You must pass in a name.
-	 *  * @params {String} name A person's name
-	 *  *|
-	 * Person = function(name){
-	 *    this.name = name
-	 *    Person.count ++;
-	 * }
-	 * /* @Static *|
-	 * steal.Object.extend(Person, {
-	 *    /* Number of People *|
-	 *    count: 0
-	 * })
-	 * /* @Prototype *|
-	 * Person.prototype = {
-	 *   /* Returns a formal name 
-	 *    * @return {String} the name with "Mrs." added
-	 *    *|
-	 *   fancy_name : function(){
-	 *      return "Mrs. "+this.name;
-	 *   }
-	 * }
-	 * @codeend
-	 * 
-	 * There are a few things to notice:
-	 * 
-	 * * The example closes comments with _*|_.  You should close them with / instead of |.
-	 * * We create a link to another class with _[Animal | here]_.
-	 * 
-	 * ###Using with a JavaScritpMVC application
-	 * 
-	 * You just have to run the docs script in your apps scripts folder:
-	 * 
-	 * @codestart
-	 *     js _APPNAME_/scripts/docs.js
-	 * @codeend
-	 * 
-	 * Open _APPNAME_/docs.html to see your documentation.
-	 * 
-	 * ###Using without JavaScriptMVC
-	 * 
-	 * Coming soon!
-	 * 
-	 * ###Inspiration
-	 * 
-	 * DocumentJS was inspired by the [http://api.jquery.com/ jQuery API Browser] by [http://remysharp.com/ Remy Sharp]
-	 */
+	
 	DocumentJS.extend(DocumentJS,
 	/* @Static */
 	{
-		render_to: function( file, ejs, data ) {
+		renderTo: function( file, ejs, data ) {
 			new DocumentJS.File(file).save(new DocumentJS.EJS({
 				text: readFile(ejs)
 			}).render(data));
 		},
-		render: function( ejs, data ) {
-			var v = new DocumentJS.EJS({
-				text: readFile(ejs),
-				name: ejs
-			});
-			return v.render(data)
-		},
-		/**
-		 * Replaces content in brackets [] with a link to source.
-		 * @param {String} content Any text, usually a commment.
-		 */
-		link_content: function( content ) {
-			return content.replace(/\[\s*([^\|\]\s]*)\s*\|?\s*([^\]]*)\s*\]/g, function( match, first, n ) {
-				//need to get last
-				//need to remove trailing whitespace
-				var url = DocumentJS.objects[first];
-				if ( url ) {
-					if (!n ) {
-						n = first.replace(/\.prototype|\.static/, "")
-					}
-					return "<a href='" + url + "'>" + n + "</a>"
-				} else if ( typeof first == 'string' && first.match(/^https?|www\.|#/) ) {
-					return "<a href='" + first + "'>" + (n || first) + "</a>"
-				}
-				return match;
-			})
-		},
 		/**
 		 * Will replace with a link to a class or function if appropriate.
 		 * @param {Object} content
-		 */
-		link: function( content ) {
-			var url = DocumentJS.objects[content];
-			return url ? "<a href='#&who=" + content + "'>" + content + "</a>" : content;
-		},
-		/**
-		 * A map of the full name of all the objects the application creates and the url to 
-		 * the documentation for them.
 		 */
 		objects: {}
 	});
@@ -179,7 +48,6 @@ steal.then(function() {
 		 * @param {String} path where to put the docs
 		 */
 		generate: function( path, convert ) {
-			//new steal.File('docs/classes/').mkdirs();
 			print("generating ...")
 
 
@@ -205,7 +73,7 @@ steal.then(function() {
 
 
 			this.searchData(path, convert);
-			this.summary_page(path, convert)
+			this.summaryPage(path, convert)
 		},
 		shallowParent: function( item, parent ) {
 			if ( item.parents && parent ) {
@@ -235,17 +103,20 @@ steal.then(function() {
 		 * Creates a page for all classes and constructors
 		 * @param {String} summary the left hand side.
 		 */
-		summary_page: function( path, convert ) {
+		summaryPage: function( path, convert ) {
 			//find index page
 			var base = path.replace(/[^\/]*$/, "");
 			this.indexPage = DocumentJS.Application.objects.index
 
 			//checks if you have a summary
-			if ( readFile(path + "/summary.ejs") ) {
-				DocumentJS.render_to(base + "docs.html", path + "/summary.ejs", this)
+			if ( readFile(base + "summary.ejs") ) {
+				DocumentJS.renderTo(base + "docs.html", base + "summary.ejs", {
+					pathToRoot: new DocumentJS.File(base.replace(/\/[^\/]*$/, "")).pathToRoot(),
+					path: path
+				})
 			} else {
-				print("Using default page layout.  Overwrite by creating: " + path + "/summary.ejs");
-				DocumentJS.render_to(base + "docs.html", "documentjs/jmvcdoc/summary.ejs", {
+				print("Using default page layout.  Overwrite by creating: " + base + "summary.ejs");
+				DocumentJS.renderTo(base + "docs.html", "documentjs/jmvcdoc/summary.ejs", {
 					pathToRoot: new DocumentJS.File(base.replace(/\/[^\/]*$/, "")).pathToRoot(),
 					path: path
 				}); //default 
@@ -335,19 +206,6 @@ steal.then(function() {
 		},
 		toJSON: function() {
 			return "C(" + DocumentJS.toJSON.apply(DocumentJS.toJSON, arguments) + ")"
-		},
-		/**
-		 * Only shows five folders in a path.
-		 * @param {String} path a file path to convert
-		 * @return {String}
-		 */
-		clean_path: function( path ) {
-			return path;
-			var parts = path.split("/")
-			if ( parts.length > 5 ){ 
-				parts = parts.slice(parts.length - 5);
-			}
-			return parts.join("/");
 		}
 	}
 })

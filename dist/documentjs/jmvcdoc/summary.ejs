@@ -6,7 +6,7 @@
         <link rel="stylesheet" type='text/css' href='<%= pathToRoot %>/documentjs/jmvcdoc/style.css' />
         <link rel="shortcut icon" href="<%= pathToRoot %>/documentjs/jmvcdoc/images/favicon.ico" />
 	</head>
-	<body scroll="no">
+	<body>
 	    
         <div id='documentation'>
 	        <div id='top'>
@@ -60,7 +60,7 @@
             DOCS_LOCATION = "docs/" //adds searchData to this
         </script>
         <script type='text/javascript' 
-                src='<%= pathToRoot %>/steal/steal.production.js?documentjs/jmvcdoc'>   
+                src='<%= pathToRoot %>/steal/steal.js?steal[app]=documentjs/jmvcdoc&steal[env]=production'>   
         </script>
 	</body>
 </html>

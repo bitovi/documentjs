@@ -1,8 +1,8 @@
 steal.then(function() {
 	/**
-	 * @class DocumentJS.Tags.scope
+	 * @class DocumentJS.tags.scope
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Forces the current type to start scope. 
 	 * 
@@ -29,7 +29,7 @@ steal.then(function() {
 	 *  }
 	 * @codeend 
 	 */
-	DocumentJS.Tags.scope = {
+	DocumentJS.tags.scope = {
 		add: function( line ) {
 			print("Scope! " + line)
 			this.starts_scope = true;

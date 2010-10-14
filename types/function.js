@@ -1,8 +1,8 @@
 steal.then(function() {
 	/**
-	 * @class DocumentJS.Type.types.function
+	 * @class DocumentJS.types.function
 	 * @tag documentation
-	 * @parent DocumentJS.Type
+	 * @parent DocumentJS.types
 	 * Documents a function. Doc can guess at a functions name and params if the source following a comment matches something like:
 	 * 
 	 * @codestart
@@ -16,19 +16,19 @@ steal.then(function() {
 	 * 
 	 * @codestart
 	 * [ DocumentJS.Type.types.function | @function ] function_name                       -&gt; Forces a function
-	 * [ DocumentJS.Tags.param | @param ] {optional:type} param_name Description -&gt; Describes a parameter
-	 * [ DocumentJS.Tags.return | @return ] {type} Description                    -&gt; Describes the return value
+	 * [ DocumentJS.tags.param | @param ] {optional:type} param_name Description -&gt; Describes a parameter
+	 * [ DocumentJS.tags.return | @return ] {type} Description                    -&gt; Describes the return value
 	 * @codeend
 	 * 
-	 * Add optional: for optional params. Other available directives: [ DocumentJS.Tags.plugin | @plugin ], [ DocumentJS.Tags.codestart | @codestart ]
+	 * Add optional: for optional params. Other available directives: [ DocumentJS.tags.plugin | @plugin ], [ DocumentJS.tags.codestart | @codestart ]
 	 *
 	 * ###Example
 	 * 
 	 * @codestart
 	 * /* Adds, Mr. or Ms. before someone's name
-	 * [ DocumentJS.Tags.param | @param ] {String} name the persons name
-	 * [ DocumentJS.Tags.param | @param ] {optional:Boolean} gender true if a man, false if female.  Defaults to true.
-	 * [ DocumentJS.Tags.return | @return ] {String} returns the appropriate honorific before the person's name.
+	 * [ DocumentJS.tags.param | @param ] {String} name the persons name
+	 * [ DocumentJS.tags.param | @param ] {optional:Boolean} gender true if a man, false if female.  Defaults to true.
+	 * [ DocumentJS.tags.return | @return ] {String} returns the appropriate honorific before the person's name.
 	 * *|  
 	 * honorific = function(name, gender){
 	 * @codeend 

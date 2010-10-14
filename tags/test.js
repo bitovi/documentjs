@@ -1,8 +1,8 @@
 steal.then(function() {
 	/**
-	 * @class DocumentJS.Tags.test
+	 * @class DocumentJS.tags.test
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Link to test cases.
 	 * 
@@ -24,7 +24,7 @@ steal.then(function() {
 	 * @image jmvc/images/test_tag_example.png
 	 * @image jmvc/images/test_tag_test_example.png
 	 */
-	DocumentJS.Tags.test = {
+	DocumentJS.tags.test = {
 		add: function( line ) {
 			this.test = line.match(/@test ([^ ]+)/)[1];
 		}

@@ -1,5 +1,9 @@
 steal.then(function() {
-	DocumentJS.Tags.page = {
+	/**
+	 * @class DocumentJS.tags.page
+	 * @parent DocumentJS.tags
+	 */
+	DocumentJS.tags.page = {
 		add: function( line ) {
 			var m = line.match(/^\s*@\w+\s+([^\s]+)\s+(.+)/)
 			if ( m ) {

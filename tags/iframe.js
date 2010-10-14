@@ -1,8 +1,8 @@
 steal.then(function() {
 	/**
-	 * @class DocumentJS.Tags.iframe
+	 * @class DocumentJS.tags.iframe
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Adds an iframe to some page with example code.
 	 * 
@@ -18,7 +18,7 @@ steal.then(function() {
 	 * 
 	 * @iframe jquery/view/view.html 700
 	 */
-	DocumentJS.Tags.iframe = {
+	DocumentJS.tags.iframe = {
 		add: function( line ) {
 			var m = line.match(/^\s*@iframe\s*([\w\.\/]*)\s*([\w]*)\s*(.*)/)
 

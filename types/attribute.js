@@ -1,8 +1,8 @@
 steal.then(function() {
 	/**
-	 * @class DocumentJS.Type.types.attribute
+	 * @class DocumentJS.types.attribute
 	 * @tag documentation
-	 * @parent DocumentJS.Type
+	 * @parent DocumentJS.types
 	 * Documents an attribute.
 	 * 
 	 * ###Example:

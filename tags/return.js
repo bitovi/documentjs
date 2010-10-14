@@ -1,8 +1,8 @@
 steal.then(function() {
 	/**
-	 * @class DocumentJS.Tags.return
+	 * @class DocumentJS.tags.return
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Describes return data in the format.
 	 * 
@@ -23,7 +23,7 @@ steal.then(function() {
 	 * 
 	 * @image jmvc/images/return_tag_example.png
 	 */
-	DocumentJS.Tags["return"] = {
+	DocumentJS.tags["return"] = {
 		add: function( line ) {
 			if (!this.ret ) {
 				this.ret = {

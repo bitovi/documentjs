@@ -1,8 +1,8 @@
 steal.then(function() {
 	/**
-	 * @class DocumentJS.Tags.plugin
+	 * @class DocumentJS.tags.plugin
 	 * @tag documentation
-	 * @parent DocumentJS.Tags 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Adds to another plugin. 
 	 * 
@@ -23,7 +23,7 @@ steal.then(function() {
 	 * 
 	 * @image jmvc/images/plugin_tag_example.png
 	 */
-	DocumentJS.Tags.plugin = {
+	DocumentJS.tags.plugin = {
 		add: function( line ) {
 			this.plugin = line.match(/@plugin ([^ ]+)/)[1];
 		}
