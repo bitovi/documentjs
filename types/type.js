@@ -224,6 +224,17 @@ steal.then(function() {
 			//if(this.comment_setup_complete) this.comment_setup_complete();
 			try {
 				props.comment = DocumentJS.converter.makeHtml(props.comment);
+				if(props.ret && props.ret.description && props.ret.description ){
+					props.ret.description = DocumentJS.converter.makeHtml(props.ret.description)
+				}
+				if(props.params){
+					for(var paramName in props.params){
+						if(props.params[paramName].description  ){
+							props.params[paramName].description = DocumentJS.converter.makeHtml(props.params[paramName].description)
+						}
+					}
+				}
+				
 			} catch (e) {
 				print("Error with converting to markdown")
 			}

@@ -43,6 +43,10 @@ steal.then(function() {
 			var parts = line.match(/\s?@constructor(.*)?/);
 
 			this.construct = parts && parts[1] ? " " + parts[1] + "\n" : ""
+			this.ret = {
+				type: this.alias ? this.alias.toLowerCase() : this.name.toLowerCase(),
+				description: ""
+			}
 			return ["default", 'construct'];
 		}
 	};
