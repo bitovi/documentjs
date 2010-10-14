@@ -37,6 +37,7 @@
 		};
 
 		steal.EJS = function( options ) {
+			var template;
 			options = typeof options === "string" ? {
 				view: options
 			} : options;
@@ -69,7 +70,7 @@
 				this.name = this.name ? this.name : options.url;
 				var url = options.url;
 				//options.view = options.absolute_url || options.view || options.;
-				var template = vEJS.get(this.name
+				template = vEJS.get(this.name
 				/*url*/
 				, this.cache);
 				
@@ -91,7 +92,7 @@
 				//this.name = url;
 			}
 			
-			var template = new vEJS.Compiler(this.text, this.type);
+			template = new vEJS.Compiler(this.text, this.type);
 
 			template.compile(options, this.name);
 

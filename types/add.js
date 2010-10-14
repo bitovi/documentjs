@@ -8,21 +8,23 @@ steal.then(function() {
 	 * ###Example:
 	 * 
 	 * @codestart
-	 *  /**
-	 *   * @add jQuery.Controller.prototype
-	 *   *|
-	 *   //breaker
-	 *  /**
-	 *   * Publishes a message to OpenAjax.hub.
-	 *   * @param {String} message Message name, ex: "Something.Happened".
-	 *   * @param {Object} data The data sent.
-	 *   *|
-	 *   jQuery.Controller.prototype.publish = function() {
-	 *      OpenAjax.hub.publish.apply(OpenAjax.hub, arguments);
-	 *   }
+	 * /**
+	 * * @add jQuery.String.static
+	 * *|
+	 * $.String.
+	 * /**
+	 * * Splits a string with a regex correctly cross browser
+	 * * @param {Object} string
+	 * * @param {Object} regex
+	 * *|
+	 * rsplit = function( string, regex ) {
 	 * @codeend
 	 * 
-	 * It's important to note that add must be in its own comment block. 
+	 * It's important to note that add must be in its own comment block.
+	 * 
+	 * ###End Result:
+	 * 
+	 * @image jmvc/images/add_tag_example.png 970
 	 */
 	DocumentJS.Type("add",
 	/**
@@ -45,7 +47,7 @@ steal.then(function() {
 			}
 			return DocumentJS.Application.objects[props.name];
 		},
-/*
+	/*
 	 * Possible scopes for @add.
 	 */
 		parent: /script/,

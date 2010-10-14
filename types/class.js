@@ -3,17 +3,21 @@ steal.then(function() {
 	 * @class DocumentJS.Type.types.class
 	 * @tag documentation
 	 * @parent DocumentJS.Type
-	 * Documents a 'Class'. A class is typically a collection of static and prototype functions. 
-	 * steal Doc can automatically detect classes created with jQuery.Class. 
+	 * Documents a 'Class'.
+	 *  
+	 * A class is typically a collection of static and prototype functions.
+	 *  
+	 * DocumentJS can automatically detect classes created with jQuery.Class.
+	 *  
 	 * However, you can make anything a class with the __@class__ _ClassName_ directive.
+	 * 
+	 * ###Example:
 	 * 
 	 * @codestart
 	 * /**
+	 *  * @class 
 	 *  * Person represents a human with a name.  Read about the 
-	 *  * animal class [Animal | here].
-	 *  * @init 
-	 *  * You must pass in a name.
-	 *  * @params {String} name A person's name
+	 *  * animal class [Animal | here]. 
 	 *  *|
 	 * Person = Animal.extend(
 	 * /* @Static *|
@@ -30,7 +34,7 @@ steal.then(function() {
 	 *    /* Returns a formal name 
 	 *     * @return {String} the name with "Mrs." added
 	 *     *|
-	 *   fancy_name : function(){
+	 *   fancyName : function(){
 	 *      return "Mrs. "+this.name;
 	 *   }
 	 * })
@@ -45,7 +49,7 @@ steal.then(function() {
 		// /([\w\.]*)\s*=\s*([\w\.]+?).extend\(/,
 		//must return the name if from the code
 		funcMatch: /(?:([\w\.]+)|(["'][^"']+["']))\s*[:=]\s*function\s?\(([^\)]*)/,
-/*
+	/*
 	 * Parses the code to get the class data.
 	 * @param {String} code
 	 * @return {Object} class data
@@ -57,7 +61,7 @@ steal.then(function() {
 					name: parts[2],
 					inherits: parts[1].replace("$.", "jQuery.")
 				}
-			};
+			}
 			parts = code.match(this.funcMatch)
 			if ( parts ) {
 				return {
@@ -65,7 +69,7 @@ steal.then(function() {
 				}
 			}
 		},
-/*
+	/*
 	 * Possible scopes for @class.
 	 */
 		parent: /script/,

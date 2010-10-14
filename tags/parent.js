@@ -20,6 +20,8 @@ steal.then(function() {
 		 *  $.Drag = function(){}
 		 * @codeend
 		 * 
+		 * ###End Result:
+		 * 
 		 * @image jmvc/images/parent_tag_example.png
 		 */
 		DocumentJS.Tags.parent = {

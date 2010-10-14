@@ -39,7 +39,7 @@ steal.then(function() {
 	 */
 	{
 		codeMatch: /(?:([\w\.]+)|(["'][^"']+["']))\s*[:=]\s*function\s?\(([^\)]*)/,
-/*
+	/*
 	 * Parses the code to get the function data.
 	 * Must return the name if from the code.
 	 * @param {String} code
@@ -82,7 +82,7 @@ steal.then(function() {
 
 			return data;
 		},
-/*
+	/*
 	 * Possible scopes for @function.
 	 */
 		parent: /script|static|proto|class/,

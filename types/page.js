@@ -45,7 +45,7 @@ steal.then(function() {
 		code: function() {
 
 		},
-/*
+	/*
 	 * Possible scopes for @page.
 	 */
 		parent: /script|page/,

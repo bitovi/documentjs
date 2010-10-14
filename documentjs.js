@@ -39,7 +39,7 @@ steal('//steal/generate/ejs', //this is gone too now TODO FIX
 		}
 
 		return ob;
-	}
+	};
 	delete JSONparse;
 
 	delete toJSON;
