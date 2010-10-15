@@ -124,6 +124,25 @@ steal.then(function() {
 			}
 			return null;
 		},
+		suggestType : function(incorrect, line){
+			var lowest = 1000, 
+				suggest = "",
+				check = function(things){
+					for(var name in things){
+						var dist = DocumentJS.distance(incorrect.toLowerCase(),name.toLowerCase())
+						if(dist < lowest ){
+							lowest = dist
+							suggest = name.toLowerCase()
+						} 
+					}
+				}
+			check(DocumentJS.types);
+			check(DocumentJS.tags);
+			
+			if(suggest){
+				print("\nWarning!!\nThere is no @"+incorrect+" directive. did you mean @"+suggest+" ?\n")
+			}
+		},
 		matchTag: /^\s*@(\w+)/,
 		/**
 		 * Process comments
@@ -144,14 +163,19 @@ steal.then(function() {
 			//this._last; //what we should be adding too.
 			for ( var l = 0; l < lines.length; l++ ) {
 				var line = lines[l],
-					match = line.match(this.matchTag)
+					match = line.match(this.matchTag);
 
 					if ( match ) {
+						match[1] = match[1].toLowerCase();
 						var curType = DocumentJS.tags[match[1]];
 
 
 
 						if (!curType ) {
+							if(!DocumentJS.types[match[1].toLowerCase()]){
+								this.suggestType(match[1])
+							}
+							
 							//if (!DocumentJS.Pair.hasType(match[1])) {
 							//	DocumentJS.Pair.suggest_type(match[1])
 							//}

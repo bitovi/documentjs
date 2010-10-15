@@ -42,9 +42,8 @@ steal.then(function() {
 
 				//print(splits[1].replace(/^[^\w@]*/,''))
 				var code = splits[2],
-					removeSpace = Infinity;
-
-				var lines = comment.split("\n"),
+					removeSpace = Infinity,
+					lines = comment.split("\n"),
 					noSpace = /\S/g,
 					match,
 					l;
