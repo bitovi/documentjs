@@ -6,7 +6,7 @@ steal.then(function() {
 	 * 
 	 * Defines a standalone documentation page.
 	 * 
-	 * Can be used to build generic html content for your documentation site.
+	 * Used to organize your documentation in a flexible manner.
 	 * 
 	 * ###Example:
 	 * 

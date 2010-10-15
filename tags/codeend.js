@@ -12,12 +12,12 @@ steal.then(function() {
 	 *
 	 *  /* 
 	 *   * @codestart
-	 *   *  /* @constructor
-	 *   *   *  * Person represents a human with a name.  Read about the 
-	 *   *   *  * animal class [Animal | here].
-	 *   *   * @init 
+	 *   *  /* @class
+	 *   *   * Person represents a human with a name.  Read about the 
+	 *   *   * animal class [Animal | here].
+	 *   *   * @constructor
 	 *   *   * You must pass in a name.
-	 *   *   * @params {String} name A person's name
+	 *   *   * @param {String} name A person's name
 	 *   *   *|
 	 *   *   Person = function(name){
 	 *   *      this.name = name
@@ -33,10 +33,10 @@ steal.then(function() {
 	 *   *     /* Returns a formal name 
 	 *   *      * @return {String} the name with "Mrs." added
 	 *   *      *|
-	 *   *      fancy_name : function(){
+	 *   *      fancyName : function(){
 	 *   *         return "Mrs. "+this.name;
 	 *   *      }
-	 *   *}
+	 *   *  }
 	 *   * @codeend
 	 *   *|
 	 *
