@@ -22,11 +22,11 @@ steal.then(function() {
 	 * @init
 	 * Generates documentation from the passed in files.
 	 * @param {Array} total An array of path names or objects with a path and text.
-	 * @param {Object} app_name The application name.
+	 * @param {Object} appName The application name.
 	 */
-	DocumentJS.Application = function( total, app_name ) {
+	DocumentJS.Application = function( total, appName ) {
 
-		this.name = app_name;
+		this.name = appName;
 		this.total = total;
 		//this.files = [];
 		this.objects = {}; //all the objects live here, have a unique name
