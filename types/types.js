@@ -30,7 +30,7 @@ steal.then(function() {
      * @codeend
      *  
      * Documentjs is flexible enough to let you do this with minimal effort. 
-     * All you have to do is to add a new type to the existing types list (documentjs/types/types.js).  Let's name it __make_class.js__:
+     * All you have to do is to add a new type to the existing types folder (__documentjs/types__).  Let's name it __make_class.js__:
      *
      * @codestart
 	 * DocumentJS.Type("MakeClass",
