@@ -8,14 +8,16 @@ steal.then(function() {
 	 * ###Example:
 	 * 
 	 * @codestart
-	 *  steal.Object.extend(Person, {
-	 *   /* 
-	 *    * Number of People
-	 *    * @attribute 
-	 *    *|
-	 *   count: 0
-	 *  })
+	 * /**
+	 * * @@attribute delay
+	 * * Sets the delay in milliseconds between an ajax request is made and
+	 * * the success and complete handlers are called.  This only sets
+	 * * functional fixtures.  By default, the delay is 200ms.
+	 * *|
+	 * $.fixture.delay = 200
 	 * @codeend
+	 * 
+	 * You can see the end result [jQuery.fixture.delay | here].
 	 */
 	DocumentJS.Type("attribute",
 	/**
