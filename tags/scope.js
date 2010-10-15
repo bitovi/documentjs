@@ -27,7 +27,9 @@ steal.then(function() {
 	 *          return Boolean(val)
 	 *      }
 	 *  }
-	 * @codeend 
+	 * @codeend
+	 * 
+	 * In the example above the use of @@scope forces __date__, __number__ and __boolean__ methods to be __convert's__ children.
 	 */
 	DocumentJS.tags.scope = {
 		add: function( line ) {

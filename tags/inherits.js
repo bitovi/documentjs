@@ -4,7 +4,7 @@ steal.then(function() {
 	 * @tag documentation
 	 * @parent DocumentJS.tags 
 	 * 
-	 * Says current class or constructor inherits from another class or contructor.
+	 * Says current class inherits from another class.
 	 *
 	 * ###Example:
 	 * 
