@@ -176,6 +176,17 @@ steal(	'//steal/generate/ejs',
 	 * 
 	 * As you see DocumentJS makes it super easy and fun to organize your documentation!
 	 * 
+	 * ###How DocumentJS works
+	 * 
+	 * DocumentJS architecture is organized around the concepts of [DocumentJS.types | types] and [DocumentJS.tags | tags]. Types are meant to represent every javascript construct 
+	 * you might want to comment like classes, functions and attributes. Tags change the way those constructs' documentation is rendered.
+	 * 
+	 * DocumentJS works by loading a set of javascript files, then by spliting each file into type/comments pairs 
+	 * and finally parsing each type's comments tag directives to produce a set of jsonp files (one per type) 
+	 * that are used by the document viewer (jmvcdoc) to render the documentation.
+	 * 
+	 * DocumentJS was written thinking of extensibility and it's very easy to add custom type/tag directives to handle your specific documentation needs.   
+	 * 
 	 * ###Type directives
 	 * 
 	 * * [DocumentJS.types.page | @page] -  add a standalone page.
