@@ -17,21 +17,35 @@ steal.then(function() {
 		 * @parent DocumentJS.tags 
 		 * 
 		 * Adds parameter information.
+		 * 
+		 * ###Use cases:
+		 * 
+		 * 1. Common use:
+		 * 
+		 *      __@@params {TYPE} name description__
+		 * 
+		 * 2. Optional parameters use case:
+		 * 
+         *     __@@params {TYPE} [name] description__
+         * 
+         * 3. Default value use case:
+         * 
+         *     __@@params {TYPE} [name=default] description__
 		 *
 		 * ###Example:
 		 * 
 		 * @codestart
-		 * /**
-     	 *  * Responds to the create form being submitted by creating a new Cookbook.Models.Recipe.
-         *  * @param {jQuery} el A jQuery wrapped element.
-         *  * @param {Event} ev A jQuery event whose default action is prevented.
-         *  *|
-    	 *  "form submit" : function(el, ev){
+	     * /*
+	     *  * Finds an order by id.
+	     *  * @@param {String} id Order identification number.
+	     *  * @@param {Date} [date] Filter order search by this date.
+	     *  *|
+	     *  findById: function(id, date) {
+         *      // looks for an order by id
+	     *  }   
     	 *  @codeend
     	 *  
-    	 * ###End Result:
-    	 *  
-    	 * @image jmvc/images/param_tag_example.png
+    	 * 
 		 */
 		DocumentJS.tags.param = {
 

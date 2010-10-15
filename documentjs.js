@@ -83,7 +83,7 @@ steal(	'//steal/generate/ejs',
      *  * @@parent crm 
      *  * @@constructor
      *  * Creates a new customer.
-     *  * @param {String} name
+     *  * @@param {String} name
      *  *|
      *  var Customer = function(name) {
 	 *     this.name = name;
@@ -98,7 +98,7 @@ steal(	'//steal/generate/ejs',
      *  * @@parent crm 
      *  * @@constructor
      *  * Creates a new order.
-     *  * @param {String} id
+     *  * @@param {String} id
      *  *|
      *  var Order = function(id) {
 	 *     this.id = id;
@@ -121,7 +121,7 @@ steal(	'//steal/generate/ejs',
      *  * @parent crm 
      *  * @@constructor
      *  * Creates a new order.
-     *  * @param {String} id
+     *  * @@param {String} id
      *  *|
      * var Order = function(id) {
      *     this.id = id;

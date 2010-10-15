@@ -3,18 +3,20 @@ steal.then(function() {
 	 * @class DocumentJS.tags.constructor
 	 * @parent DocumentJS.tags
 	 *   
-	 * Documents the class initialization function (constructor). 
+	 * Documents a constructor function and its parameters. 
 	 * 
 	 * ###Example:
 	 * 
 	 * @codestart
-	 * /**
-	 *  * @@class jQuery.Hover
-	 *  * ...
-	 *  * @@constructor Creates a new hover.  This is never
-	 *  * called directly.
-	 *  *|
-	 *  jQuery.Hover = function(){
+     * /*
+     *  * @@class Customer 
+     *  * @@constructor
+     *  * Creates a new customer.
+     *  * @param {String} name
+     *  *|
+     *  var Customer = function(name) {
+	 *     this.name = name;
+     *  }
 	 * @codeend
 	 */
 	DocumentJS.tags.constructor =
