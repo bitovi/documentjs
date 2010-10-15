@@ -15,8 +15,8 @@ steal.then(function() {
 	 * Use the following directives to document a function.
 	 * 
 	 * @codestart
-	 * [ DocumentJS.types.function | @function ] function_name                       -&gt; Forces a function
-	 * [ DocumentJS.tags.param | @param ] {optional:type} param_name Description -&gt; Describes a parameter
+	 * [ DocumentJS.types.function | @function ] functionName                       -&gt; Forces a function
+	 * [ DocumentJS.tags.param | @param ] {optional:type} paramName Description -&gt; Describes a parameter
 	 * [ DocumentJS.tags.return | @return ] {type} Description                    -&gt; Describes the return value
 	 * @codeend
 	 *
