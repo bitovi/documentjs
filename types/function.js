@@ -15,21 +15,19 @@ steal.then(function() {
 	 * Use the following directives to document a function.
 	 * 
 	 * @codestart
-	 * [ DocumentJS.Type.types.function | @function ] function_name                       -&gt; Forces a function
+	 * [ DocumentJS.types.function | @function ] function_name                       -&gt; Forces a function
 	 * [ DocumentJS.tags.param | @param ] {optional:type} param_name Description -&gt; Describes a parameter
 	 * [ DocumentJS.tags.return | @return ] {type} Description                    -&gt; Describes the return value
 	 * @codeend
-	 * 
-	 * Add optional: for optional params. Other available directives: [ DocumentJS.tags.plugin | @plugin ], [ DocumentJS.tags.codestart | @codestart ]
 	 *
 	 * ###Example
 	 * 
 	 * @codestart
 	 * /* Adds, Mr. or Ms. before someone's name
-	 * [ DocumentJS.tags.param | @param ] {String} name the persons name
-	 * [ DocumentJS.tags.param | @param ] {optional:Boolean} gender true if a man, false if female.  Defaults to true.
-	 * [ DocumentJS.tags.return | @return ] {String} returns the appropriate honorific before the person's name.
-	 * *|  
+	 *  * [ DocumentJS.tags.param | @param ] {String} name the persons name
+	 *  * [ DocumentJS.tags.param | @param ] {optional:Boolean} gender true if a man, false if female.  Defaults to true.
+	 *  * [ DocumentJS.tags.return | @return ] {String} returns the appropriate honorific before the person's name.
+	 *  *|  
 	 * honorific = function(name, gender){
 	 * @codeend 
 	 */
