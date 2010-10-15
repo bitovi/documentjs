@@ -19,9 +19,7 @@ steal.then(function() {
 	 *   add : function(line){ ... },
 	 *   addMore : function(line, last){ ... }
 	 * }
-	 * @codeend
-	 * 
-	 * You can add 
+	 * @codeend 
 	 */
 	
 	
