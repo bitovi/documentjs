@@ -179,7 +179,7 @@ steal(	'//steal/generate/ejs',
 	 * ###How DocumentJS works
 	 * 
 	 * DocumentJS architecture is organized around the concepts of [DocumentJS.types | types] and [DocumentJS.tags | tags]. Types are meant to represent every javascript construct 
-	 * you might want to comment like classes, functions and attributes. Tags change the way those constructs' documentation is rendered.
+	 * you might want to comment like classes, functions and attributes. Tags add aditional information to the comments of the type being processed.
 	 * 
 	 * DocumentJS works by loading a set of javascript files, then by spliting each file into type/comments pairs 
 	 * and finally parsing each type's comments tag directives to produce a set of jsonp files (one per type) 
