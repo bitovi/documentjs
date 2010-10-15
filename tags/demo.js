@@ -4,7 +4,7 @@ steal.then(function() {
 	 * @tag documentation
 	 * @parent DocumentJS.tags 
 	 * 
-	 * Placeholder for an application demo, e.g. @demo jquery/event/default/default.html.
+	 * Placeholder for an application demo.
 	 * 
 	 * ###Demo Example:
 	 * 

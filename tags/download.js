@@ -11,15 +11,17 @@ steal.then(function() {
 	 * @codestart
 	 * /**
 	 *  * @constructor jQuery.Drag
-	 *  * @parent specialevents
+	 *  * ...
 	 *  * @plugin jquery/event/drag
 	 *  * @download jquery/dist/jquery.event.drag.js
 	 *  * @test jquery/event/drag/qunit.html
+	 *  * ...
+	 *  *|
+	 *  $.Drag = function(){}
 	 * @codeend
 	 * 
-	 * ###End Result:
-	 * 
-	 * @image jmvc/images/download_tag_example.png 970
+	 * You can click the example download link on this [jQuery.Drag | page]
+     *
 	 */
 	DocumentJS.tags.download = {
 		add: function( line ) {
