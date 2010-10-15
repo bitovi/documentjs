@@ -252,10 +252,13 @@ h1 {
 	position:relative;
     margin: 0 0 10px;
 }
+h1 span.subtitle {
+	color:#888888;
+	font-style:italic;
+}
 .top {
     margin: 0 0 20px;
 	line-height:24px;
-	/*padding:20px;*/
 	background-color:rgb(195,226,239);
 }
 .top .topCorner div {
@@ -302,20 +305,23 @@ pre {
     background-image: url(images/fav-off.png);
 }
 #low {
-    
-    font-size: 10px;
-    margin-top: 2px;
-    margin-right: 20px;
-    text-align: right;
+	font-size:14px;
+	margin-bottom:4px;
+	margin-right:20px;
+	margin-top:4px;
+	text-align:right;
 }
 #low a{
-    color: #B8B495;
+    color: #999999;
 }
 #defaults span.red{
     color: /*#9C6854*/ #96A84A;
 	font-weight:bold;
 }
-
+a.logo img{
+	border:none;
+	
+}
 .param, .return {
 	text-indent: -48px;
 	margin-left: 48px;
