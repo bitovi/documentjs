@@ -4,19 +4,19 @@ steal.then(function() {
 	 * @tag documentation
 	 * @parent DocumentJS.tags 
 	 * 
-	 * Hides this class or constructor from the left hand side bar.
+	 * Hides this construct from the left hand side bar.
 	 * 
 	 * ###Example:
 	 * 
 	 * @codestart
 	 * /*
-	 *  * Checks if there is a set_<i>property</i> value.  If it returns true, lets it handle; otherwise
-	 *  * saves it.
-	 *  * @hide
-	 *  * @param {Object} property
-	 *  * @param {Object} value
+	 *  * Checks if there is a set_<i>property</i> value.  
+	 *  * If it returns true, lets it handle; otherwise saves it.
+	 *  * @@hide
+	 *  * @@param {Object} property
+	 *  * @@param {Object} value
 	 *  *|
-	 _setProperty: function( property, value, success, error, capitalized ) {
+	 *  _setProperty: function( property, value, success, error, capitalized ) {
 	 * @codeend
 	 */
 	DocumentJS.tags.hide = {
