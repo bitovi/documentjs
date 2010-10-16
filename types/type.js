@@ -38,6 +38,7 @@ steal.then(function() {
 
 				var nameCheck = comment.match(/^\s*@(\w+)[ \t]+([\w\.]+)/m)
 
+			
 			props = type.code(code)
 			
 			if (!props && !nameCheck ) {
@@ -53,11 +54,10 @@ steal.then(function() {
 			if ( type.init ) {
 				return type.init(props, comment)
 			}
-			//print("    "+props.name + " "+type.type);
 			if ( DocumentJS.objects[props.name] ) {
-				var oldProps = props;
+				var newProps = props;
 				props = DocumentJS.objects[props.name];
-				DocumentJS.extend(props, oldProps);
+				DocumentJS.extend(props, newProps);
 			}
 			
 			if ( !props.type ) {
@@ -156,11 +156,9 @@ steal.then(function() {
 				typeDataStack = [],
 				curType, lastType, curData, lastData, defaultWrite = 'comment',
 				messages = []; //what data we are going to be called with
-			props[defaultWrite] = '';
-
-			//if(!this.params) this.params = {};
-			//if(!this.ret) this.ret = {type: 'undefined',description: ""};
-			//this._last; //what we should be adding too.
+			if ( !props.comment ) {
+				props[defaultWrite] = '';
+			}
 			for ( var l = 0; l < lines.length; l++ ) {
 				var line = lines[l],
 					match = line.match(this.matchTag);
@@ -176,9 +174,6 @@ steal.then(function() {
 								this.suggestType(match[1])
 							}
 							
-							//if (!DocumentJS.Pair.hasType(match[1])) {
-							//	DocumentJS.Pair.suggest_type(match[1])
-							//}
 							if (!DocumentJS.types[match[1]] ) {
 								props.comment += line + "\n"
 							}
@@ -190,7 +185,6 @@ steal.then(function() {
 						messages.push(match[1])
 						curData = curType.add.call(props, line, curData);
 
-						//last_data = this[fname](line, last_data);
 						//horrible ... fix
 						if ( curData && curData.length == 2 && curData[0] == 'push' ) { //
 							typeDataStack.push({
@@ -239,7 +233,6 @@ steal.then(function() {
 			}
 			
 
-			//if(this.comment_setup_complete) this.comment_setup_complete();
 			try {
 				props.comment = DocumentJS.converter.makeHtml(props.comment);
 				//allow post processing
