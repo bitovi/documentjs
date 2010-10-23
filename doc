@@ -1,0 +1,18 @@
+#!/bin/sh
+# This file is a batch script that invokes loader
+# ex: documentjs/doc cookbook/cookbook.html
+
+# Absolute path to this script. /home/user/bin/foo.sh
+SCRIPT=$(readlink -f $0)
+# Absolute path this script is in. /home/user/bin
+BASE=`dirname $SCRIPT`/
+CMD=$0/
+
+# classpath
+CP=$BASE../steal/rhino/js.jar
+
+# load the run.js file
+LOADPATH=${BASE}scripts/run.js
+
+# call js.bat
+. $BASE../steal/rhino/loader $1 $2 $3 $4 $5 $6
