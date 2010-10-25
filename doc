@@ -3,10 +3,20 @@
 # ex: documentjs/doc cookbook/cookbook.html
 
 # Absolute path to this script. /home/user/bin/foo.sh
-SCRIPT=$(readlink -f $0)
+
+TARGET_FILE=$0
+
+cd `dirname $TARGET_FILE`
+TARGET_FILE=`basename $TARGET_FILE`
+
+PHYS_DIR=`pwd -P`
+SCRIPT=$PHYS_DIR/$TARGET_FILE
+
 # Absolute path this script is in. /home/user/bin
 BASE=`dirname $SCRIPT`/
-CMD=$0/
+
+# Keeps the executing directory as the JMVC root.
+cd $BASE..
 
 # classpath
 CP=$BASE../steal/rhino/js.jar
