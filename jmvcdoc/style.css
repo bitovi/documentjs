@@ -6,6 +6,7 @@ html { /* ie7 hack */
 body {font-family: sans-serif,"Trebuchet MS",Verdana,Helvetica,Arial; 
 	  margin: 20px 0px 0px 0px; 
       overflow: auto;
+	  *overflow:visible;
 }
 dl {
 	margin: 13px;
@@ -104,7 +105,11 @@ h5 {
     overflow: auto;
     background-color: white;
     margin-right: 0px;
+	*overflow:visible;
+	*height:100%;
 }
+
+
 #doc, #disqus_thread {
 	/*line-height:24px;*/
     /*padding: 0 20px 0 0;*/
