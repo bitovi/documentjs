@@ -38,8 +38,9 @@ td {padding: 3px; vertical-align: top;}
     font-size: 1px;
 }
 #top .content {
-	height:34px;
+	/*height:34px;*/
 	margin:0 10px;
+	overflow: auto;
 }
 #searchRoundCorners {
 	float:left;
