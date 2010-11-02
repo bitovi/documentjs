@@ -381,6 +381,7 @@ steal(	'//steal/generate/ejs',
 
 			//checks if you have a summary
 			if ( readFile(base + "summary.ejs") ) {
+				print("Using summary at " + base + "summary.ejs");
 				docJS.renderTo(base + "docs.html", base + "summary.ejs", renderData)
 			} else {
 				print("Using default page layout.  Overwrite by creating: " + base + "summary.ejs");
