@@ -11,13 +11,6 @@ body {font-family: sans-serif,"Trebuchet MS",Verdana,Helvetica,Arial;
 dl {
 	margin: 13px;
 }
-cite {
-	display: block;
-	text-align: right;
-	margin-right: 40px;
-	color: gray;
-}
-
 .error {border: solid 1px red;}
 .error_text { color: red; font-size: 10px;}
 td {padding: 3px; vertical-align: top;}
