@@ -64,7 +64,7 @@ td {padding: 3px; vertical-align: top;}
 .topCorner div, .bottomCorner div {
 	width:10px;
 	height:10px;
-	background-image: url("images/top_corners.png");
+	background-image: url("images/main_sprite.png");
 	background-repeat: no-repeat;
 }
 .topCorner,
@@ -83,8 +83,8 @@ td {padding: 3px; vertical-align: top;}
 	float:left;
 	width:273px;
 	padding:8px;
-	background:  url("images/search_round_corners.png") no-repeat;
-	background-position:0 2px;
+	background:  url("images/main_sprite.png") no-repeat;
+	background-position:0 -20px;
 	padding: 7px;
 	[padding:7px;
 	padding:5px;] /* chrome hack */
@@ -402,13 +402,15 @@ h2.spaced {
     clear:left; padding-top: 18px;
 }
 #download {
-    background-image: url(images/download.png);
+    background-image: url(images/main_sprite.png);
     width:405px;
     margin-right: 10px;
+	background-position:0 -54px;
 }
 #video {
-    background-image: url(images/video.png);
+    background-image: url(images/main_sprite.png);
     width:95px;
+	background-position:-405px -53px;
 }
 
 .big_button * {
