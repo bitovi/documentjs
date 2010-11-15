@@ -11,13 +11,6 @@ body {font-family: sans-serif,"Trebuchet MS",Verdana,Helvetica,Arial;
 dl {
 	margin: 13px;
 }
-cite {
-	display: block;
-	text-align: right;
-	margin-right: 40px;
-	color: gray;
-}
-
 .error {border: solid 1px red;}
 .error_text { color: red; font-size: 10px;}
 td {padding: 3px; vertical-align: top;}
@@ -26,20 +19,33 @@ td {padding: 3px; vertical-align: top;}
 	background-color:rgb(39,49,39);
     
 }
-#top .topCorner div {
-	background: url("images/top_topLeft.png") no-repeat top left;
+#top .topCorner .left {
+	background-position: 0px 0px;
+	float:left;
 }
-#top .topCorner {
-	background: url("images/top_topRight.png") no-repeat top right;
+#top .topCorner .right {
+	background-position: -11px 0px;
+	float:right;
 }
-#top .bottomCorner div {
-	background: url("images/top_bottomLeft.png") no-repeat top left;
+#top .bottomCorner .left {
+	background-position: -11px -11px;
+	float:left;
 }
-#top .bottomCorner {
-	background: url("images/top_bottomRight.png") no-repeat top right;
+#top .bottomCorner .right {
+	background-position: 0px -11px;
+	float:right;
 }
-#top .topCorner, #top .topCorner div,
-#top .bottomCorner, #top .bottomCorner div {
+#top .topCorner div, #top .bottomCorner div,
+#results .topCorner div, #results .bottomCorner div {
+	width:10px;
+	height:10px;
+	background-image: url("images/top_corners.png");
+	background-repeat: no-repeat;
+}
+#top .topCorner,
+#top .bottomCorner,
+#results .topCorner,
+#results .bottomCorner {
 	width: 100%;
     height: 10px;
     font-size: 1px;
@@ -48,6 +54,7 @@ td {padding: 3px; vertical-align: top;}
 	/*height:34px;*/
 	margin:0 10px;
 	overflow: auto;
+	clear:both;
 }
 #searchRoundCorners {
 	float:left;
@@ -153,34 +160,30 @@ h5 {
 	/*margin:10px 0 0 0;*/
 	background-color:rgb(239,242,213);
 }
-#results .topCorner div {
-	background: url("images/results_topLeft.png") no-repeat top left;
+#results .topCorner .left {
+	background-position:-21px -1px;
+	float:left;
 }
-#results .topCorner {
-	background: url("images/results_topRight.png") no-repeat top right;
+#results .topCorner .right {
+	background-position: -31px -1px;
+	float:right;
 }
-#results .bottomCorner div {
-	background: url("images/results_bottomLeft.png") no-repeat top left;
+#results .bottomCorner .left {
+	background-position: -31px -11px;
+	float:left;
 }
-#results .bottomCorner {
-	background: url("images/results_bottomRight.png") no-repeat top right;
-}
-#results .topCorner, #results .topCorner div,
-#results .bottomCorner, #results .bottomCorner div {
-	width: 100%;
-    height: 10px;
-    font-size: 1px;
+#results .bottomCorner .right {
+	background-position: -21px -11px;
+	float:right;
 }
 #results .content {
 	/*margin:0 10px;*/
+	clear:both;
 }
 #results .highlight, #page_results .highlight {
     /*background-color: #3C3D32;*/
 	background-color:rgb(182,220,235);
 }
-
-
-
 #left .selected {
 	font-size:17px;
 	font-weight:bold;
