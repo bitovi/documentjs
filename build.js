@@ -13,7 +13,7 @@ load('steal/rhino/steal.js');
 steal('//steal/build/pluginify', function( s ) {
 	steal.pluginify("documentjs", {
 		destination: "documentjs/dist/documentjs/documentjs.js",
-		nojquery: "steal"
+		global: "steal"
 	});
 });
 
