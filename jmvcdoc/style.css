@@ -19,33 +19,56 @@ td {padding: 3px; vertical-align: top;}
 	background-color:rgb(39,49,39);
     
 }
+.topCorner .left, .bottomCorner .left {
+	float: left;
+}
+.topCorner .right, .bottomCorner .right {
+	float: right;
+}
+.top .topCorner .left {
+	background-position: -40px 0px;
+}
+.top .topCorner .right {
+	background-position: -50px 0px;
+}
+.top .bottomCorner .left {
+	background-position: -50px -10px;
+}
+.top .bottomCorner .right {
+	background-position: -40px -10px;
+}
+#selected .topCorner .left {
+	background-position: -60px 0px;
+}
+#selected .topCorner .right {
+	background-position: -70px 0px;
+}
+#selected .bottomCorner .left {
+	background-position: -70px -10px;
+}
+#selected .bottomCorner .right {
+	background-position: -60px -10px;
+}
 #top .topCorner .left {
 	background-position: 0px 0px;
-	float:left;
 }
 #top .topCorner .right {
-	background-position: -11px 0px;
-	float:right;
+	background-position: -10px 0px;
 }
 #top .bottomCorner .left {
-	background-position: -11px -11px;
-	float:left;
+	background-position: -10px -10px;
 }
 #top .bottomCorner .right {
-	background-position: 0px -11px;
-	float:right;
+	background-position: 0px -10px;
 }
-#top .topCorner div, #top .bottomCorner div,
-#results .topCorner div, #results .bottomCorner div {
+.topCorner div, .bottomCorner div {
 	width:10px;
 	height:10px;
 	background-image: url("images/top_corners.png");
 	background-repeat: no-repeat;
 }
-#top .topCorner,
-#top .bottomCorner,
-#results .topCorner,
-#results .bottomCorner {
+.topCorner,
+.bottomCorner {
 	width: 100%;
     height: 10px;
     font-size: 1px;
@@ -161,19 +184,19 @@ h5 {
 	background-color:rgb(239,242,213);
 }
 #results .topCorner .left {
-	background-position:-21px -1px;
+	background-position:-20px 0px;
 	float:left;
 }
 #results .topCorner .right {
-	background-position: -31px -1px;
+	background-position: -30px 0px;
 	float:right;
 }
 #results .bottomCorner .left {
-	background-position: -31px -11px;
+	background-position: -30px -10px;
 	float:left;
 }
 #results .bottomCorner .right {
-	background-position: -21px -11px;
+	background-position: -20px -10px;
 	float:right;
 }
 #results .content {
@@ -199,26 +222,9 @@ h5 {
 	margin:0 0 10px 0;
 	background-color:rgb(210,217,136);
 }
-#left #selected .topCorner div {
-	background: url("images/selected_topLeft.png") no-repeat top left;
-}
-#left #selected .topCorner {
-	background: url("images/selected_topRight.png") no-repeat top right;
-}
-#left #selected .bottomCorner div {
-	background: url("images/selected_bottomLeft.png") no-repeat top left;
-}
-#left #selected .bottomCorner {
-	background: url("images/selected_bottomRight.png") no-repeat top right;
-}
-#left #selected .topCorner, #left #selected .topCorner div,
-#left #selected .bottomCorner, #left #selected .bottomCorner div {
-	width: 100%;
-    height: 10px;
-    font-size: 1px;
-}
 #left #selected .content {
 	margin:0 10px;
+	clear:both;
 }
 #left #selected .content a {
 	padding:0;
@@ -282,26 +288,9 @@ h1 span.subtitle {
 	line-height:24px;
 	background-color:rgb(195,226,239);
 }
-.top .topCorner div {
-	background: url("images/content_top_topLeft.png") no-repeat top left;
-}
-.top .topCorner {
-	background: url("images/content_top_topRight.png") no-repeat top right;
-}
-.top .bottomCorner div {
-	background: url("images/content_top_bottomLeft.png") no-repeat top left;
-}
-.top .bottomCorner {
-	background: url("images/content_top_bottomRight.png") no-repeat top right;
-}
-.top .topCorner, .top .topCorner div,
-.top .bottomCorner, .top .bottomCorner div {
-	width: 100%;
-    height: 10px;
-    font-size: 1px;
-}
 .top .content {
 	margin:5px 20px 5px 20px;
+	clear:both;
 }
 pre {
     background-image: url('images/pre.png');
