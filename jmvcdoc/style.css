@@ -624,3 +624,12 @@ iframe {
 #defaults .selected>a:active {
 	color: #111111!important;
 }	
+
+iframe.pluginify{
+	border: none;
+	background: none;
+	margin: 0px;
+	height: 3065px;
+	padding: 0px;
+	width: 600px;
+}
