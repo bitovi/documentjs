@@ -1,6 +1,6 @@
 steal.loadedProductionCSS=true;
-steal.plugins("jquery/controller","jquery/controller/history","jquery/view/ejs","jquery/model","jquery/lang/json","jquery/dom/cookie","mxui/positionable","mxui/menuable").resources("helpers","highlight","languages/javascript","languages/www").models("favorites","search").controllers("documentation","iframe","demo").views("//jmvcdoc/views/attribute.ejs","//jmvcdoc/views/class.ejs","//jmvcdoc/views/constructor.ejs","//jmvcdoc/views/favorite.ejs","//jmvcdoc/views/function.ejs","//jmvcdoc/views/page.ejs",
-"//jmvcdoc/views/results.ejs","//jmvcdoc/views/top.ejs","//jmvcdoc/views/iframe/init.ejs","//jmvcdoc/views/iframe/menu.ejs","//jmvcdoc/views/demo/init.ejs").then(function(){var a=window.location.href.match(/docs\/(.*)\.html/);if((a=a&&a[1])&&location.hash=="")window.location.hash="&who="+a});
+steal.plugins("jquery/controller","jquery/controller/history","jquery/view/ejs","jquery/lang/json","jquery/dom/cookie","mxui/positionable","mxui/menuable").resources("helpers","highlight","languages/javascript","languages/www").models("favorites","search").controllers("documentation","iframe","demo").views("//jmvcdoc/views/attribute.ejs","//jmvcdoc/views/class.ejs","//jmvcdoc/views/constructor.ejs","//jmvcdoc/views/favorite.ejs","//jmvcdoc/views/function.ejs","//jmvcdoc/views/page.ejs","//jmvcdoc/views/results.ejs",
+"//jmvcdoc/views/top.ejs","//jmvcdoc/views/iframe/init.ejs","//jmvcdoc/views/iframe/menu.ejs","//jmvcdoc/views/demo/init.ejs").then(function(){var a=window.location.href.match(/docs\/(.*)\.html/);if((a=a&&a[1])&&location.hash=="")window.location.hash="&who="+a});
 if(typeof COMMENTS_LOCATION!="undefined"){steal.css("http://mediacdn.disqus.com/1066/build/themes/narcissus.css?1281560657&","http://mediacdn.disqus.com/1066/styles/embed/thread.css?");if(window.location.protocol=="file:"||window.location.hostname=="localhost")window.disqus_developer=1};
 ;
 steal.end();
@@ -231,18 +231,6 @@ steal.end();
 steal.plugins("jquery/lang").then(function(f){f.String.rsplit=function(a,e){for(var b=e.exec(a),c=[],d;b!==null;){d=b.index;if(d!==0){c.push(a.substring(0,d));a=a.slice(d)}c.push(b[0]);a=a.slice(b[0].length);b=e.exec(a)}a!==""&&c.push(a);return c}});
 ;
 steal.end();
-steal.plugins("jquery/class","jquery/lang").then(function(){var j=$.String.underscore,k=$.String.classize;jQuery.Class.extend("jQuery.Model",{setup:function(a){if(!this.attributes||a.attributes===this.attributes)this.attributes={};if(!this.associations||a.associations===this.associations)this.associations={};if(!this.validations||a.validations===this.validations)this.validations={};if(a.convert!=this.convert)this.convert=$.extend(a.convert,this.convert);this._fullName=j(this.fullName.replace(/\./g,
-"_"));if(this.fullName.substr(0,7)!="jQuery."){jQuery.Model.models[this._fullName]=this;if(this.listType)this.list=new this.listType([])}},attributes:{},defaults:{},wrap:function(a){if(!a)return null;return new this(a[this.singularName]||a.data||a.attributes||a)},wrapMany:function(a){if(!a)return null;var b=new (this.List||$.Model.List||Array),c=$.isArray(a),g=c?a:a.data,f=g.length,d=0;for(b._use_call=true;d<f;d++)b.push(this.wrap(g[d]));if(!c)for(var e in a)if(e!=="data")b[e]=a[e];return b},id:"id",
-addAttr:function(a,b){if(!this.associations[a]){this.attributes[a]||(this.attributes[a]=b);return b}},models:{},publish:function(a,b){window.OpenAjax&&OpenAjax.hub.publish(j(this.shortName)+"."+a,b)},guessType:function(a){if(typeof a!="string"){if(a===null)return typeof a;if(a.constructor==Date)return"date";if($.isArray(a))return"array";return typeof a}if(a==="")return"string";if(a=="true"||a=="false")return"boolean";if(!isNaN(a)&&isFinite(+a))return"number";return typeof a},convert:{date:function(a){return typeof a===
-"string"?isNaN(Date.parse(a))?null:Date.parse(a):a},number:function(a){return parseFloat(a)},"boolean":function(a){return Boolean(a)}},create:function(){throw"Model: Implement Create";},update:function(){throw"Model: Implement "+this.fullName+'\'s "update"!';},destroy:function(){throw"Model: Implement "+this.fullName+'\'s "destroy"!';},findAll:function(){},findOne:function(){}},{setup:function(a){this._initializing=true;this.Class.defaults&&this.attrs(this.Class.defaults);this.attrs(a);delete this._initializing},
-update:function(a,b,c){this.attrs(a);return this.save(b,c)},errors:function(a){if(a)a=$.isArray(a)?a:$.makeArray(arguments);var b={},c=this,g=function(d,e){$.each(e,function(h,i){if(h=i.call(c)){b.hasOwnProperty(d)||(b[d]=[]);b[d].push(h)}})};$.each(a||this.Class.validations||{},function(d,e){if(typeof d=="number"){d=e;e=c.Class.validations[d]}g(d,e||[])});for(var f in b)if(b.hasOwnProperty(f))return b;return null},attr:function(a,b,c,g){var f=k(a),d="get"+f;if(b!==undefined){this._setProperty(a,
-b,c,g,f);return this}return this[d]?this[d]():this[a]},bind:function(){var a=$(this);a.bind.apply(a,arguments);return this},unbind:function(){var a=$(this);a.unbind.apply(a,arguments);return this},_setProperty:function(a,b,c,g,f){f="set"+f;var d=this[a],e=this,h=function(i){g&&g.call(e,i);$(e).triggerHandler("error."+a,i)};this[f]&&(b=this[f](b,this.callback("_updateProperty",a,b,d,c,h),h))===undefined||this._updateProperty(a,b,d,c,h)},_updateProperty:function(a,b,c,g,f){var d=this.Class,e=d.attributes[a]||
-d.addAttr(a,d.guessType(b)),h=d.convert[e];e=null;b=this[a]=b===null?null:h?h.call(d,b):b;this._initializing||(e=this.errors(a));if(e)f(e);else{c!==b&&!this._initializing&&$(this).triggerHandler(a,b);g&&g(this)}if(a==d.id&&b!==null&&d.list)if(c){if(c!=b){d.list.remove(c);d.list.push(this)}}else d.list.push(this)},attrs:function(a){var b;if(a){var c=this.Class.id;for(b in a)b!=c&&this.attr(b,a[b]);c in a&&this.attr(c,a[c])}else{a={};for(b in this.Class.attributes)if(this.Class.attributes.hasOwnProperty(b))a[b]=
-this.attr(b)}return a},isNew:function(){return this[this.Class.id]===undefined},save:function(a,b){if(this.errors())return false;this.isNew()?this.Class.create(this.attrs(),this.callback(["created",a]),b):this.Class.update(this[this.Class.id],this.attrs(),this.callback(["updated",a]),b);return true},destroy:function(a,b){this.Class.destroy(this[this.Class.id],this.callback(["destroyed",a]),b)},identity:function(){var a=this[this.Class.id];return this.Class._fullName+"_"+(this.Class.escapeIdentity?
-encodeURIComponent(a):a)},elements:function(a){return $("."+this.identity(),a)},publish:function(a,b){this.Class.publish(a,b||this)},hookup:function(a){var b=j(this.Class.shortName),c=$.data(a,"models")||$.data(a,"models",{});$(a).addClass(b+" "+this.identity());c[b]=this}});$.each(["created","updated","destroyed"],function(a,b){$.Model.prototype[b]=function(c){b==="destroyed"&&this.Class.list&&this.Class.list.remove(this[this.Class.id]);$(this).triggerHandler(b);c&&typeof c=="object"&&this.attrs(c.attrs?
-c.attrs():c);this.publish(b,this);return[this].concat($.makeArray(arguments))}});$.fn.models=function(){var a=[],b,c;this.each(function(){$.each($.data(this,"models")||{},function(g,f){b=b===undefined?f.Class.List||null:f.Class.List===b?b:null;a.push(f)})});c=new (b||$.Model.List||Array);c.push.apply(c,$.unique(a));return c};$.fn.model=function(a){if(a&&a instanceof $.Model){a.hookup(this[0]);return this}else return this.models.apply(this,arguments)[0]}});
-;
-steal.end();
 steal.plugins("jquery").then(function(){(function(e){e.toJSON=function(a,c,b,h){if(typeof JSON=="object"&&JSON.stringify)return JSON.stringify(a,c,b);if(!h&&e.isFunction(c))a=c("",a);if(typeof b=="number")b="          ".substring(0,b);b=typeof b=="string"?b.substring(0,10):"";var f=typeof a;if(a===null)return"null";if(!(f=="undefined"||f=="function")){if(f=="number"||f=="boolean")return a+"";if(f=="string")return e.quoteString(a);if(f=="object"){if(typeof a.toJSON=="function")return e.toJSON(a.toJSON(),
 c,b,true);if(a.constructor===Date){b=a.getUTCMonth()+1;if(b<10)b="0"+b;h=a.getUTCDate();if(h<10)h="0"+h;var i=a.getUTCFullYear(),g=a.getUTCHours();if(g<10)g="0"+g;var d=a.getUTCMinutes();if(d<10)d="0"+d;var j=a.getUTCSeconds();if(j<10)j="0"+j;a=a.getUTCMilliseconds();if(a<100)a="0"+a;if(a<10)a="0"+a;return'"'+i+"-"+b+"-"+h+"T"+g+":"+d+":"+j+"."+a+'Z"'}h=e.isFunction(c)?function(k,l){return c(k,l)}:function(k,l){return l};i=b?"\n":"";j=b?" ":"";if(a.constructor===Array){g=[];for(d=0;d<a.length;d++)g.push((e.toJSON(h(d,
 a[d]),c,b,true)||"null").replace(/^/gm,b));return"["+i+g.join(","+i)+i+"]"}var n=[];if(e.isArray(c))g=e.map(c,function(k){return typeof k=="string"||typeof k=="number"?k+"":null});for(d in a){var m;f=typeof d;if(!(g&&e.inArray(d+"",g)==-1)){if(f=="number")f='"'+d+'"';else if(f=="string")f=e.quoteString(d);else continue;m=e.toJSON(h(d,a[d]),c,b,true);typeof m!="undefined"&&n.push((f+":"+j+m).replace(/^/gm,b))}}return"{"+i+n.join(","+i)+i+"}"}}};e.evalJSON=function(a){if(typeof JSON=="object"&&JSON.parse)return JSON.parse(a);
@@ -466,7 +454,10 @@ ___v1ew.push("				");  current = selected[i];
 		 			title = (current.title ? current.title: current.name);
 					res = calculateDisplay(previous, title);
 					name = normalizeName(current.name) ;___v1ew.push("\n");
-___v1ew.push("		<div class=\"topCorner\"><div>&nbsp;</div></div>\n");
+___v1ew.push("		<div class=\"topCorner\">\n");
+___v1ew.push("			<div class=\"right\"></div>\n");
+___v1ew.push("			<div class=\"left\"></div>\n");
+___v1ew.push("		</div>\n");
 ___v1ew.push("		<div class=\"content\">\n");
 ___v1ew.push("			    <a href=\"#&who=");___v1ew.push((jQuery.EJS.text(name)));___v1ew.push("\" class='selected choice ");___v1ew.push((jQuery.EJS.text(current.type)));___v1ew.push("' style=\"padding-left: ");___v1ew.push((jQuery.EJS.text( res.length * 20)));___v1ew.push("px\">\n");
 ___v1ew.push("			    	<span class='remove' title=\"close\"></span>\n");
@@ -475,7 +466,10 @@ ___v1ew.push("					\n");
 ___v1ew.push("				</a>\n");
 ___v1ew.push("				"); previous = title;___v1ew.push("\n");
 ___v1ew.push("		</div>\n");
-___v1ew.push("		<div class=\"bottomCorner\"><div>&nbsp;</div></div>\n");
+___v1ew.push("		<div class=\"bottomCorner\">\n");
+___v1ew.push("			<div class=\"right\"></div>\n");
+___v1ew.push("			<div class=\"left\"></div>\n");
+___v1ew.push("		</div>\n");
 ___v1ew.push("			"); if(i<(selected.length-1)){ ;___v1ew.push("\n");
 ___v1ew.push("		<div class=\"spacer\"><div>&nbsp;</div></div>\n");
 ___v1ew.push("			");};___v1ew.push("\n");
@@ -483,7 +477,10 @@ ___v1ew.push("			");};___v1ew.push("\n");
 ___v1ew.push("	</div>\n");
 };___v1ew.push("\n");
 ___v1ew.push("<div id='results' style=\"display: ");___v1ew.push((jQuery.EJS.text( hide? 'none' : 'block')));___v1ew.push("\">\n");
-___v1ew.push("	<div class=\"topCorner\"><div>&nbsp;</div></div>\n");
+___v1ew.push("	<div class=\"topCorner\">\n");
+___v1ew.push("		<div class=\"right\"></div>\n");
+___v1ew.push("		<div class=\"left\"></div>\n");
+___v1ew.push("	</div>\n");
 ___v1ew.push("	<div class=\"content\">\n");
 ___v1ew.push("	    "); for(var i =0; i < list.length; i++){;___v1ew.push("\n");
 ___v1ew.push("			"); current = list[i];
@@ -497,14 +494,20 @@ ___v1ew.push("			</a>\n");
 ___v1ew.push("			"); previous = title;___v1ew.push("\n");
 ___v1ew.push("		");};___v1ew.push("\n");
 ___v1ew.push("	</div>\n");
-___v1ew.push("	<div class=\"bottomCorner\"><div>&nbsp;</div></div>\n");
+___v1ew.push("	<div class=\"bottomCorner\">\n");
+___v1ew.push("		<div class=\"right\"></div>\n");
+___v1ew.push("		<div class=\"left\"></div>\n");
+___v1ew.push("	</div>\n");
 ___v1ew.push("</div>\n");
 ___v1ew.push("\n");
 ___v1ew.push("\n");
 ; return ___v1ew.join('');}}}catch(e){e.lineNumber=null;throw e;} }));;
 steal.end();
 $.View.preload('jmvcdoc_views_top_ejs',jQuery.EJS(function(_CONTEXT,_VIEW) { /*undefined*/  try { with(_VIEW) { with (_CONTEXT) {var ___v1ew = [];___v1ew.push("<div class='top'>\n");
-___v1ew.push("	<div class=\"topCorner\"><div>&nbsp;</div></div>\n");
+___v1ew.push("	<div class=\"topCorner\">\n");
+___v1ew.push("		<div class=\"right\"></div>\n");
+___v1ew.push("		<div class=\"left\"></div>\n");
+___v1ew.push("	</div>\n");
 ___v1ew.push("	<div class=\"content\">\n");
 ___v1ew.push("	    <h1>");___v1ew.push((jQuery.EJS.text(this.title || name.replace(/~/g,".") )));___v1ew.push("&nbsp;\n");
 ___v1ew.push("	    	<span class='");___v1ew.push((jQuery.EJS.text( type)));___v1ew.push(" type'><span class=\"typeEnd\">");___v1ew.push((jQuery.EJS.text( type )));___v1ew.push("</span></span>&nbsp;\n");
@@ -535,7 +538,10 @@ ___v1ew.push("	        test: <a href='");___v1ew.push((jQuery.EJS.text( steal.ro
 ___v1ew.push("	    </div>\n");
 ___v1ew.push("	    "); } ;___v1ew.push("\n");
 ___v1ew.push("	</div>\n");
-___v1ew.push("	<div class=\"bottomCorner\"><div>&nbsp;</div></div>	 	\n");
+___v1ew.push("	<div class=\"bottomCorner\">\n");
+___v1ew.push("		<div class=\"right\"></div>\n");
+___v1ew.push("		<div class=\"left\"></div>\n");
+___v1ew.push("	</div>	\n");
 ___v1ew.push("</div>\n");
 ; return ___v1ew.join('');}}}catch(e){e.lineNumber=null;throw e;} }));;
 steal.end();
