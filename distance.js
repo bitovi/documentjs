@@ -1,4 +1,5 @@
 steal.then(function() {
+	// the distance between 2 strings
 	DocumentJS.distance = function( s1, s2 ) {
 		if ( s1 == s2 ) {
 			return 0;
