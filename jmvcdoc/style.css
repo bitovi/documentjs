@@ -390,14 +390,7 @@ code .params { color:blue; margin: 0px;}
 table pre {
     margin: 0px;
 }
-.big_button{
-    color:white;
-    display:block;
-    font-size:15pt;
-    height:85px;
-    text-decoration:none;
-    float: left;
-}
+
 .floatLeft {
     float: left;
 }
@@ -415,7 +408,14 @@ h2.spaced {
     width:95px;
 	background-position:-405px -53px;
 }
-
+.big_button{
+    color:white;
+    display:block;
+    font-size:15pt;
+    height:85px;
+    text-decoration:none;
+    float: left;
+}
 .big_button * {
     display:block;
     font-family: Verdana;
@@ -631,7 +631,90 @@ iframe.pluginify{
 	border: none;
 	background: none;
 	margin: 0px;
-	height: 2440px;
+	height: 2060px;
 	padding: 0px;
-	width: 600px;
+}
+.hrule {
+	border-bottom: solid 1px #273127;
+	clear: both;
+	text-align: center;
+	margin: 30px 0px;
+	font-size: 1.5em;
+}
+.hrule span {
+	padding: 8px;
+	background-color: white;
+	position: relative;
+	top: 13px;
+}
+.downloadbutton {
+	-moz-border-radius: 5px;
+  	-webkit-border-radius: 5px;
+  	border-radius: 5px;
+	width:370px;
+    margin-right: 20px;
+	border: solid 2px black;
+	 color:white;
+    display:block;
+    font-size:15pt;
+	height: 60px;
+	float: left;
+	clear: left;
+	text-decoration : none;
+	
+}
+.spaceabove {
+	margin-top: 20px;
+}
+p.spaceabove {
+	margin-top: 0px;
+	position: relative;
+	top: 20px;
+	float: right;
+	width: 185px;
+}
+.downloadbutton *, .leftmx * {
+    display:block;
+    font-family: Verdana;
+    padding-left:20px;
+    padding-top:10px;
+	font-size:15pt;
+}
+.downloadbutton .label, .leftmx .label {
+    color:black;
+    font-size:10pt;
+    padding-top:0;
+	text-decoration: none;
+}
+
+.funcunit {
+	background-color: violet;
+}
+.steal {
+	background-color: gray;
+}
+.documentjs {
+	background-color: blue;
+}
+#jquerymxouter {
+	-moz-border-radius: 5px;
+  	-webkit-border-radius: 5px;
+  	border-radius: 5px;
+	background-color: yellow;
+	border: solid 2px black;
+	margin-top: 39px;
+	padding: 0px;
+}
+.rightmx {
+	float: right;
+	width: 200px;
+	margin-right: 10px;
+	margin-top: 10px;
+}
+#jquerymxouter a.down{
+	padding: 0px;
+	border: none;
+	background-color: transparent;
+	display: inline;
+	font-size:10pt;
 }
