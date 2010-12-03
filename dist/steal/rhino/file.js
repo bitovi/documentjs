@@ -35,7 +35,7 @@
 			}
 			var inarr = new java.io.FileInputStream(files[i].getAbsolutePath());
 			var zipPath = files[i].getPath().replace(replacePath, "").replace("\\", "/")
-			if (/^\.git/.test(zipPath) ) continue;
+			if (/\.git|\.zip/.test(zipPath) ) continue;
 			print(zipPath)
 			out.putNextEntry(new java.util.zip.ZipEntry(zipPath));
 			var len;
@@ -253,11 +253,13 @@
 			out.close();
 		},
 		contents: function( func, current ) {
+			
 			var me = new java.io.File(this.path),
 				listOfFiles = me.listFiles();
-
+				
 			if ( listOfFiles == null ) {
 				//print("there is nothing in " + this.path)
+				return;
 			}
 			for ( var i = 0; i < listOfFiles.length; i++ ) {
 				func(listOfFiles[i].getName(), listOfFiles[i].isFile() ? "file" : "directory", current)

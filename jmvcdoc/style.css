@@ -115,6 +115,9 @@ h5 {
 	height:35px;
 	line-height:35px;
 }
+.inside td {
+	vertical-align: middle
+}
 .logo-text a {
 	color:white;
 	float:right;
@@ -624,7 +627,6 @@ iframe {
 #defaults .selected>a:active {
 	color: #111111!important;
 }	
-
 iframe.pluginify{
 	border: none;
 	background: none;

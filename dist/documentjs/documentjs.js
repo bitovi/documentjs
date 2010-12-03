@@ -1,542 +1,4 @@
-// steal/generate/ejs.js
-
-(function($){
-
-
-
-	var rsplit = function( string, regex ) {
-		var result = regex.exec(string),
-			retArr = [],
-			first_idx, last_idx, first_bit;
-		while ( result !== null ) {
-			first_idx = result.index;
-			last_idx = regex.lastIndex;
-			if ((first_idx) !== 0 ) {
-				first_bit = string.substring(0, first_idx);
-				retArr.push(string.substring(0, first_idx));
-				string = string.slice(first_idx);
-			}
-			retArr.push(result[0]);
-			string = string.slice(result[0].length);
-			result = regex.exec(string);
-		}
-		if (!string == '' ) {
-			retArr.push(string);
-		}
-		return retArr;
-	},
-		chop = function( string ) {
-			return string.substr(0, string.length - 1);
-		},
-		extend = function( d, s ) {
-			for ( var n in s ) {
-				if ( s.hasOwnProperty(n) ) {
-					d[n] = s[n];
-				}
-			}
-		};
-
-		steal.EJS = function( options ) {
-			options = typeof options === "string" ? {
-				view: options
-			} : options;
-			
-			this.set_options(options);
-			if ( options.precompiled ) {
-				this.template = {};
-				this.template.process = options.precompiled;
-				vEJS.update(this.name, this);
-				return;
-			}
-			if ( options.element ) {
-				if ( typeof options.element === 'string' ) {
-					var name = options.element;
-					options.element = document.getElementById(options.element);
-					
-					if ( options.element == null ){
-						throw name + 'does not exist!';
-					}
-				}
-				if ( options.element.value ) {
-					this.text = options.element.value;
-				} else {
-					this.text = options.element.innerHTML;
-				}
-				this.name = options.element.id;
-				this.type = '[';
-			} else if ( options.url ) {
-				options.url = vEJS.endExt(options.url, this.extMatch);
-				this.name = this.name ? this.name : options.url;
-				var url = options.url;
-				//options.view = options.absolute_url || options.view || options.;
-				var template = vEJS.get(this.name
-				/*url*/
-				, this.cache);
-				
-				if ( template ){
-					return template;
-				}
-				
-				if ( template === vEJS.INVALID_PATH ){
-					return null;
-				}
-				
-				try {
-					this.text = vEJS.request(url + (this.cache ? '' : '?' + Math.random()));
-				} catch (e) {}
-
-				if ( this.text == null ) {
-					throw ('There is no template at ' + url);
-				}
-				//this.name = url;
-			}
-			
-			var template = new vEJS.Compiler(this.text, this.type);
-
-			template.compile(options, this.name);
-
-			vEJS.update(this.name, this);
-			this.template = template;
-		};
-	var vEJS = steal.EJS;
-	/* @Prototype*/
-	vEJS.prototype = {
-		/**
-		 * Renders an object with extra view helpers attached to the view.
-		 * @param {Object} object data to be rendered
-		 * @param {Object} extra_helpers an object with additonal view helpers
-		 * @return {String} returns the result of the string
-		 */
-		render: function( object, extra_helpers ) {
-			object = object || {};
-			this._extra_helpers = extra_helpers;
-			var v = new vEJS.Helpers(object, extra_helpers || {});
-			return this.template.process.call(object, object, v);
-		},
-		update: function( element, options ) {
-			if ( typeof element === 'string' ) {
-				element = document.getElementById(element);
-			}
-			if ( options == null ) {
-				_template = this;
-				return function( object ) {
-					vEJS.prototype.update.call(_template, element, object);
-				};
-			}
-			if ( typeof options === 'string' ) {
-				params = {};
-				params.url = options;
-				_template = this;
-				
-				params.onComplete = function( request ) {
-					var object = eval(request.responseText);
-					vEJS.prototype.update.call(_template, element, object);
-				};
-				
-				vEJS.ajax_request(params);
-			} else {
-				element.innerHTML = this.render(options);
-			}
-		},
-		out: function() {
-			return this.template.out;
-		},
-		/**
-		 * Sets options on this view to be rendered with.
-		 * @param {Object} options
-		 */
-		set_options: function( options ) {
-			this.type = options.type || vEJS.type;
-			this.cache = options.cache != null ? options.cache : vEJS.cache;
-			this.text = options.text || null;
-			this.name = options.name || null;
-			this.ext = options.ext || vEJS.ext;
-			this.extMatch = new RegExp(this.ext.replace(/\./, '\.'));
-		}
-	};
-	vEJS.endExt = function( path, match ) {
-		if (!path ){
-			return null;
-		}
-		match.lastIndex = 0;
-		return path + (match.test(path) ? '' : this.ext);
-	};
-
-	/* @Static*/
-	vEJS.Scanner = function( source, left, right ) {
-
-		extend(this, {
-			left_delimiter: left + '%',
-			right_delimiter: '%' + right,
-			double_left: left + '%%',
-			double_right: '%%' + right,
-			left_equal: left + '%=',
-			left_comment: left + '%#'
-		});
-
-		this.SplitRegexp = left === '[' 
-							? /(\[%%)|(%%\])|(\[%=)|(\[%#)|(\[%)|(%\]\n)|(%\])|(\n)/ 
-							: new RegExp('(' + this.double_left + ')|(%%' + this.double_right + ')|(' + this.left_equal + ')|(' + this.left_comment + ')|(' + this.left_delimiter + ')|(' + this.right_delimiter + '\n)|(' + this.right_delimiter + ')|(\n)');
-
-		this.source = source;
-		this.stag = null;
-		this.lines = 0;
-	};
-
-	vEJS.Scanner.to_text = function( input ) {
-		if ( input == null || input === undefined ){
-			return '';
-		}
-		
-		if ( input instanceof Date ) {
-			return input.toDateString();
-		}
-		
-		if ( input.toString ) {
-			return input.toString();
-		}
-		
-		return '';
-	};
-
-	vEJS.Scanner.prototype = {
-		scan: function( block ) {
-			scanline = this.scanline;
-			regex = this.SplitRegexp;
-			if ( !this.source == '' ) {
-				var source_split = rsplit(this.source, /\n/);
-				for ( var i = 0; i < source_split.length; i++ ) {
-					var item = source_split[i];
-					this.scanline(item, regex, block);
-				}
-			}
-		},
-		scanline: function( line, regex, block ) {
-			this.lines++;
-			var line_split = rsplit(line, regex);
-			for ( var i = 0; i < line_split.length; i++ ) {
-				var token = line_split[i];
-				if ( token != null ) {
-					try {
-						block(token, this);
-					} catch (e) {
-						throw {
-							type: 'vEJS.Scanner',
-							line: this.lines
-						};
-					}
-				}
-			}
-		}
-	};
-
-
-	vEJS.Buffer = function( pre_cmd, post_cmd ) {
-		this.line = [];
-		this.script = "";
-		this.pre_cmd = pre_cmd;
-		this.post_cmd = post_cmd;
-		for ( var i = 0; i < this.pre_cmd.length; i++ ) {
-			this.push(pre_cmd[i]);
-		}
-	};
-	vEJS.Buffer.prototype = {
-
-		push: function( cmd ) {
-			this.line.push(cmd);
-		},
-
-		cr: function() {
-			this.script = this.script + this.line.join('; ');
-			this.line = [];
-			this.script = this.script + "\n";
-		},
-
-		close: function() {
-			if ( this.line.length > 0 ) {
-				for ( var i = 0; i < this.post_cmd.length; i++ ) {
-					this.push(pre_cmd[i]);
-				}
-				this.script = this.script + this.line.join('; ');
-				line = null;
-			}
-		}
-
-	};
-
-
-	vEJS.Compiler = function( source, left ) {
-		this.pre_cmd = ['var ___ViewO = [];'];
-		this.post_cmd = [];
-		this.source = ' ';
-		if ( source != null ) {
-			if ( typeof source === 'string' ) {
-				source = source.replace(/\r\n/g, "\n");
-				source = source.replace(/\r/g, "\n");
-				this.source = source;
-			} else if ( source.innerHTML ) {
-				this.source = source.innerHTML;
-			}
-			if ( typeof this.source !== 'string' ) {
-				this.source = "";
-			}
-		}
-		left = left || '<';
-		var right = '>';
-		switch ( left ) {
-		case '[':
-			right = ']';
-			break;
-		case '<':
-			break;
-		default:
-			throw left + ' is not a supported deliminator';
-			//break;
-		}
-		this.scanner = new vEJS.Scanner(this.source, left, right);
-		this.out = '';
-	};
-	vEJS.Compiler.prototype = {
-		compile: function( options, name ) {
-			options = options || {};
-			this.out = '';
-			var put_cmd = "___ViewO.push(";
-			var insert_cmd = put_cmd;
-			var buff = new vEJS.Buffer(this.pre_cmd, this.post_cmd);
-			var content = '';
-			var clean = function( content ) {
-				content = content.replace(/\\/g, '\\\\');
-				content = content.replace(/\n/g, '\\n');
-				content = content.replace(/"/g, '\\"');
-				return content;
-			};
-			this.scanner.scan(function( token, scanner ) {
-				if ( scanner.stag == null ) {
-					switch ( token ) {
-					case '\n':
-						content = content + "\n";
-						buff.push(put_cmd + '"' + clean(content) + '");');
-						buff.cr();
-						content = '';
-						break;
-					case scanner.left_delimiter:
-					case scanner.left_equal:
-					case scanner.left_comment:
-						scanner.stag = token;
-						if ( content.length > 0 ) {
-							buff.push(put_cmd + '"' + clean(content) + '")');
-						}
-						content = '';
-						break;
-					case scanner.double_left:
-						content = content + scanner.left_delimiter;
-						break;
-					default:
-						content = content + token;
-						break;
-					}
-				}
-				else {
-					switch ( token ) {
-					case scanner.right_delimiter:
-						switch ( scanner.stag ) {
-						case scanner.left_delimiter:
-							if ( content[content.length - 1] === '\n' ) {
-								content = chop(content);
-								buff.push(content);
-								buff.cr();
-							}
-							else {
-								buff.push(content);
-							}
-							break;
-						case scanner.left_equal:
-							buff.push(insert_cmd + "(vEJS.Scanner.to_text(" + content + ")))");
-							break;
-						}
-						scanner.stag = null;
-						content = '';
-						break;
-					case scanner.double_right:
-						content = content + scanner.right_delimiter;
-						break;
-					default:
-						content = content + token;
-						break;
-					}
-				}
-			});
-			if ( content.length > 0 ) {
-				// Chould be content.dump in Ruby
-				buff.push(put_cmd + '"' + clean(content) + '")');
-			}
-			buff.close();
-			this.out = buff.script + ";";
-			var to_be_evaled = '/*' + name + '*/this.process = function(_CONTEXT,_VIEW) { try { with(_VIEW) { with (_CONTEXT) {' + this.out + " return ___ViewO.join('');}}}catch(e){e.lineNumber=null;throw e;}};";
-
-			try {
-				eval(to_be_evaled);
-			} catch (e) {
-				if ( typeof JSLINT !== 'undefined' ) {
-					JSLINT(this.out);
-					for ( var i = 0; i < JSLINT.errors.length; i++ ) {
-						var error = JSLINT.errors[i];
-						if ( error.reason !== "Unnecessary semicolon." ) {
-							error.line++;
-							e = new Error();
-							e.lineNumber = error.line;
-							e.message = error.reason;
-							if ( options.view ){
-								e.fileName = options.view;
-							}
-							throw e;
-						}
-					}
-				} else {
-					throw e;
-				}
-			}
-		}
-	};
-
-
-	//type, cache, folder
-	vEJS.config = function( options ) {
-		vEJS.cache = options.cache != null ? options.cache : vEJS.cache;
-		vEJS.type = options.type != null ? options.type : vEJS.type;
-		vEJS.ext = options.ext != null ? options.ext : vEJS.ext;
-
-		var templates_directory = vEJS.templates_directory || {}; //nice and private container
-		vEJS.templates_directory = templates_directory;
-		vEJS.get = function( path, cache ) {
-			if ( cache == false ){
-				return null;
-			}
-			
-			if ( templates_directory[path] ){ 
-				return templates_directory[path];
-			}
-			
-			return null;
-		};
-
-		vEJS.update = function( path, template ) {
-			if ( path == null ) {
-				return;
-			}
-			
-			templates_directory[path] = template;
-		};
-
-		vEJS.INVALID_PATH = -1;
-	};
-	vEJS.config({
-		cache: true,
-		type: '<',
-		ext: '.ejs'
-	});
-
-
-
-
-	vEJS.Helpers = function( data, extras ) {
-		this._data = data;
-		this._extras = extras;
-		extend(this, extras);
-	};
-	/* @prototype*/
-	vEJS.Helpers.prototype = {
-		view: function( options, data, helpers ) {
-			if ( !helpers ){
-				helpers = this._extras;
-			}
-			if ( !data ){
-				data = this._data;
-			}
-			
-			return new vEJS(options).render(data, helpers);
-		},
-		to_text: function( input, null_text ) {
-			if ( input == null || input === undefined ) {
-				return null_text || '';
-			}
-			
-			if ( input instanceof Date ) {
-				return input.toDateString();
-			}
-			
-			if ( input.toString ) {
-				return input.toString().replace(/\n/g, '<br />').replace(/''/g, "'");
-			}
-			
-			return '';
-		}
-	};
-	vEJS.newRequest = function() {
-		var factories = [function() {
-			return new ActiveXObject("Msxml2.XMLHTTP");
-		}, function() {
-			return new XMLHttpRequest();
-		}, function() {
-			return new ActiveXObject("Microsoft.XMLHTTP");
-		}];
-		for ( var i = 0; i < factories.length; i++ ) {
-			try {
-				var request = factories[i]();
-				if ( request != null ) {
-					return request;
-				} 
-			}
-			catch (e) {
-				continue;
-			}
-		}
-	};
-
-	vEJS.request = function( path ) {
-		var request = new vEJS.newRequest();
-		
-		request.open("GET", path, false);
-
-		try {
-			request.send(null);
-		}
-		catch (e) {
-			return null;
-		}
-
-		if ( request.status == 404 || request.status == 2 || (request.status == 0 && request.responseText == '') ){
-			return null;
-		} 
-
-		return request.responseText;
-	};
-	
-	vEJS.ajax_request = function( params ) {
-		params.method = (params.method ? params.method : 'GET');
-
-		var request = new vEJS.newRequest();
-		
-		request.onreadystatechange = function() {
-			if ( request.readyState == 4 ) {
-				if ( request.status == 200 ) {
-					params.onComplete(request);
-				} else {
-					params.onComplete(request);
-				}
-			}
-		};
-		
-		request.open(params.method, params.url);
-		request.send(null);
-	};
-
-})();
-
-// documentjs/json.js
-
-(function($){
-
+(function() {
 	(function() {
 		var cx = /[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
 			isArray = function( arr ) {
@@ -690,13 +152,8 @@
 
 
 	})();
-
-})();
-
-// documentjs/showdown.js
-
-(function($){
-
+})(steal);
+(function() {
 	//
 	// showdown.js -- A javascript port of Markdown.
 	//
@@ -1740,7 +1197,7 @@
 			// Smart processing for ampersands and angle brackets that need to be encoded.
 			// Ampersand-encoding based entirely on Nat Irons's Amputator MT plugin:
 			//   http://bumppo.net/projects/amputator/
-			text = text.replace(/&(?!#?[xX]?(?:[0-9a-fA-F]+|\w+);)/g, "&amp;");
+			text = text.replace(new RegExp("&(?!#?[xX]?(?:[0-9a-fA-F]+|\w+);)","g"), "&amp;");
 
 			// Encode naked <'s
 			text = text.replace(/<(?![a-z\/?\$!])/gi, "&lt;");
@@ -1928,36 +1385,410 @@
 		}
 
 	} // end of Showdown.converter
+})(steal);
+(function( $ ) {
+	//if we already have DocumentJS, don't create another, this is so we can document documentjs
+	if(typeof DocumentJS != 'undefined'){
+		return;
+	}
+	
+	/**
+	 * @class DocumentJS
+	 * @tag core, documentation
+     * There are several reasons why documentation is important:
+     * 
+     * * As apps grow, source code becomes complex and difficult to maintain.
+     * * It's beneficial for customers because it helps to educate them on a product.
+     * * Perhaps most importantly, it keeps a project going by bringing new developers up to speed - while also keeping the whole team on the same page.
+	 * 
+	 * DocumentJS is a new documentation solution for JavaScript applications. It makes creating, viewing, and maintaining documentation easy and fun. Out of the box, it features:
+	 * 
+     * * Fexible organization of your documentation
+     * * An integrated documentation viewer where you can search your API
+     * * Markdown support
+     * * An extensible architecture
+     * 
+	 * DocumentJS provides powerful and easy to extend documentation functionality.
+	 * It's smart enough to guess 
+	 * at things like function names and parameters, but powerful enough to generate 
+	 * <span class='highlight'>JavaScriptMVC's entire website</span>!
+	 * 
+	 * ###Organizing your documentation
+	 *
+	 * Let's use an hypothetical little CRM system as an example of how easy it is to organize your documentation with DocumentJS. 
+	 * 
+	 * First let's create our CRM documentation home page by creating a folder name __crm__. Paste this code into a file named __crm.js__ inside __crm__ folder.
+	 * 
+	 * @codestart
+	 * /*
+     *  * @@page crm CRM
+     *  * @@tag home
+     *  *
+     *  * ###Little CRM
+     *  *  
+     *  * Our little CRM only has two classes:
+     *  *  
+     *  * * Customer 
+     *  * * Order 
+     *  *|
+	 * @codeend
+	 * 
+	 * Run the documentjs script to generate the docs:
+	 * 
+	 * @codestart
+	 * documentjs/doc.bat crm
+	 * @codeend
+	 * 
+	 * This is what you should see when you open __crm\docs.html__:
+	 * 
+	 * @image jmvc/images/crm_doc_demo_1.png
+	 * 
+	 * 
+	 * There are a few things to notice:
+	 * 
+	 * * The example closes comments with _*|_.  You should close them with / instead of |.
+	 * * We create a link to another class with _[Animal | here]_. 
+	 * * We used the @@page directive to create the crm documentation home page. Don't worry about the @@tag directive for now, we'll get back to it later. 
+	 * * In all the examples in this walkthrough we use markdown markup instead of html to make the documentation more maintainable and easier to read .
+	 * 
+	 * Next we document the two classes that make our little crm system. Paste each snippet of code into two files with names __customer.js__ and __order.js__:
+	 * 
+	 * __customer.js__
+	 * 
+	 * @codestart
+     * /*
+     *  * @@class Customer
+     *  * @@parent crm 
+     *  * @@constructor
+     *  * Creates a new customer.
+     *  * @@param {String} name
+     *  *|
+     *  var Customer = function(name) {
+	 *     this.name = name;
+     *  }
+	 * @codeend 
+	 * 
+	 * __order.js__
+	 * 
+	 * @codestart
+     * /*
+     *  * @@class Order
+     *  * @@parent crm 
+     *  * @@constructor
+     *  * Creates a new order.
+     *  * @@param {String} id
+     *  *|
+     *  var Order = function(id) {
+	 *     this.id = id;
+     *  }
+	 * @codeend 
+	 * 
+	 * After runnig the documentjs script once again you should be able to see this:
+	 * 
+	 * @image jmvc/images/crm_doc_demo_2.png
+	 * 
+	 * 
+	 * We want to be able to both look for our customer's orders and dispatch them so let's add a _findById_ method to our Order class
+	 * and a _dispatch_ method to our Order's prototype:
+	 * 
+	 * __order.js__
+	 * 
+	 * @codestart
+	 * /*  
+     *  * @class Order 
+     *  * @parent crm 
+     *  * @@constructor
+     *  * Creates a new order.
+     *  * @@param {String} id
+     *  *|
+     * var Order = function(id) {
+     *     this.id = id;
+     * }
+     *
+     * $.extend(Order,
+     * /*
+     * * @@static
+     * *|
+     * {
+	 *    /*
+	 *     * Finds an order by id.
+	 *     * @@param {String} id Order identification number.
+	 *     * @@param {Date} [date] Filter order search by this date.
+	 *     *|
+	 *     findById: function(id, date) {
+     *
+	 *     }
+     *  });
+     *
+     * $.extend(Order.prototype,
+     * /*
+     *  * @@prototype
+     *  *|
+     *  {
+	 *     /*
+	 *      * Dispatch an order.
+	 *      * @@return {Boolean} Returns true if order dispatched successfully.
+	 *      *|
+	 *      dispatch: function() {
+	 *     
+	 *      }
+     * });
+	 * @codeend
+	 * 
+	 * Go ahead and produce the docs by running the documentjs script. You should see your Order methods organized by static and protoype categories.
+	 * 
+	 * There's one last thing we need to cover - customizing the document viewer template. The default viewer template file name is __summary.ejs__ and it's
+	 * located in __documentjs/jmvcdoc/summary.ejs__. You can use a customized template by copying __summary__.ejs into the __crm__ folder and changing it 
+	 * according to your needs. Let's try changing the navigation menu __core__ item to __crm__:
+	 * 
+	 * @codestart
+	 * &lt;li class="ui-menu-item"&gt;
+	 *     &lt;a class="menuLink" href="#&amp;search=crm"&gt;&lt;span class="menuSpan"&gt;CRM&lt;/span&gt;&lt;/a&gt;
+     * &lt;/li&gt;
+	 * @codeend
+	 *
+	 * Remember the @@tag directive? We can now change it in our examples from _core_ to _crm_. You will notice that our crm page will show up
+	 * every time you click the CRM menu item or type _crm_ in the documentation viewer search box.
+	 * 
+	 * If you need for DocumentJS not to document a particular script you can do that by adding the @document-ignore directive to the top of the file. 
+	 * 
+	 * As you see DocumentJS makes it super easy and fun to organize your documentation!
+	 * 
+	 * ###How DocumentJS works
+	 * 
+	 * DocumentJS architecture is organized around the concepts of [DocumentJS.types | types] and [DocumentJS.tags | tags]. Types are meant to represent every javascript construct 
+	 * you might want to comment like classes, functions and attributes. Tags add aditional information to the comments of the type being processed.
+	 * 
+	 * DocumentJS works by loading a set of javascript files, then by spliting each file into type/comments pairs 
+	 * and finally parsing each type's comments tag directives to produce a set of jsonp files (one per type) 
+	 * that are used by the document viewer (jmvcdoc) to render the documentation.
+	 * 
+	 * DocumentJS was written thinking of extensibility and it's very easy to add custom type/tag directives to handle your specific documentation needs.   
+	 * 
+	 * ###Type directives
+	 * 
+	 * * [DocumentJS.types.page | @page] -  add a standalone page.
+	 * * [DocumentJS.types.attribute | @attribute] -  document values on an object.
+	 * * [DocumentJS.types.function | @function] - document functions.
+	 * * [DocumentJS.types.class| @class] - document a class. 
+	 * * [DocumentJS.types.prototype | @prototype] - add to the previous class or constructor's prototype functions.
+	 * * [DocumentJS.types.static | @static] - add to the previous class or constructor's static functions.
+	 * * [DocumentJS.types.add |@add] - add docs to a class or construtor described in another file.
+	 * 
+	 * ###Tag directives
+	 * 
+	 * * [DocumentJS.tags.alias|@alias] - another commonly used name for Class or Constructor.
+	 * * [DocumentJS.tags.author|@author] - author of class.
+	 * * [DocumentJS.tags.codestart|@codestart] -> [DocumentJS.tags.codeend|@codeend] - insert highlighted code block.
+	 * * [DocumentJS.tags.constructor | @constructor] - documents a contructor function and its parameters.
+	 * * [DocumentJS.tags.demo|@demo] - placeholder for an application demo.
+	 * * [DocumentJS.tags.download|@download] - adds a download link.
+	 * * [DocumentJS.tags.iframe|@iframe] - adds an iframe with example code.
+	 * * [DocumentJS.tags.hide|@hide] - hide in Class view.
+	 * * [DocumentJS.tags.inherits|@inherits] - what the Class or Constructor inherits.
+	 * * [DocumentJS.tags.parent|@parent] - says under which parent the current type should be located. 
+	 * * [DocumentJS.tags.param|@param] - A function's parameter.
+	 * * [DocumentJS.tags.plugin|@plugin] - by which plugin this object gets steald.
+	 * * [DocumentJS.tags.return|@return] - what a function returns.
+	 * * [DocumentJS.tags.scope|@scope] - forces the current type to start scope.
+	 * * [DocumentJS.tags.tag|@tag] - tags for searching.
+	 * * [DocumentJS.tags.test|@test] - link for test cases.
+	 * * [DocumentJS.tags.type|@type] - sets the type for the current commented code.
+	 * * [DocumentJS.tags.image|@image] - adds an image.
+	 * 
+	 * 
+	 * ###Inspiration
+	 * 
+	 * DocumentJS was inspired by the [http://api.jquery.com/ jQuery API Browser] by [http://remysharp.com/ Remy Sharp]
+	 * 
+	 * 
+	 * @param {Array|String} scripts an array of script objects that have src and text properties like:
+	 * @codestart
+	 * [{src: "path/to/file.js", text: "var a= 1;"}, { ... }]
+	 * @codeend
+	 * @param {Object} options an options hash including
+	 * 
+	 *   . name - the name of the application
+	 *   . out - where to generate the documentation files
+	 */
+	DocumentJS = function(scripts, options) {
+		// an html file, a js file or a directory
+		options = options || {};
+		if(typeof scripts == 'string'){
+			if(!options.out){
+				if(/\.html?$|\.js$/.test(scripts)){
+					options.out = scripts.replace(/[^\/]*$/, 'docs')
+				}else{ //folder
+					options.out = scripts+"/docs";
+				}
+			}
 
-})();
+			scripts = DocumentJS.getScripts(scripts)
+		}
+		
+ 		//all the objects live here, have a unique name
+		DocumentJS.objects = {};
+		
+		//create each Script, which will create each class/constructor, etc
+		print("PROCESSING SCRIPTS\n")
+		for ( var s = 0; s < scripts.length; s++ ) {
+			DocumentJS.Script.process(scripts[s])
+		}
+		print('\nGENERATING DOCS -> '+options.out+'\n')
+		
+		// generate individual JSONP forms of individual comments
+		DocumentJS.generate(options)
 
-// documentjs/documentjs.js
+		// make combined search data
+		DocumentJS.searchData(options )
 
-(function($){
+		//make summary page (html page to load it all)
+		DocumentJS.summaryPage(options);
+		
+	};
+	
+	var extend = steal.extend,
+		build = steal.build,
+		docJS = DocumentJS;
+	
+	extend(docJS, {
+		// gets scripts from a path
+		getScripts : function(file){
+			var scripts = [];
+			if (/\.html?$/.test(file)) { // load all the page's scripts
 
-	//We'll document this later
-	DocumentJS = function() {};
+				steal.plugins('steal/build', function(steal){
 
-	var extend = steal.extend;
-	extend(DocumentJS, steal)
+					steal.build.open(file).each(function(script, text, i){
+						if (text && script.src) {
+							scripts.push({
+								src: script.src,
+								text:  text
+							})
+						}
+					});
+				});
+			}
+			else if (/\.js$/.test(file)) { // load just this file
+				scripts.push(file)
+			}
+			else { // assume its a directory
+				var getJSFiles = function(dir){
+				  new steal.File(dir).contents(function(f, type){
+					if(type == 'directory'){
+				       getJSFiles(dir+"/"+f)
+				    }else if(/\.js$/.test(f)){
+
+					  scripts.push( (dir+"/"+f).replace('\\', '/') )
+				    }
+				  })
+				};
+				getJSFiles(file);
+			}
+					
+			return scripts;
+		},
+		generate : function(options){
+
+			// go through all the objects and generate their docs
+			var output = options.out ? options.out+ "/" : "";
+
+			for ( var name in docJS.objects ) {
+				if (docJS.objects.hasOwnProperty(name)){
+					//get a copy of the object (we will modify it with children)
+					var obj = docJS.extend({}, docJS.objects[name]),
+						toJSON;
+					
+					// eventually have an option allow scripts
+					if ( obj.type == 'script' || typeof obj != "object" ) {
+						continue;
+					}
+					
+					//get all children					
+					obj.children = this.listedChildren(obj);
+	
+					var converted = name.replace(/ /g, "_")
+										.replace(/&#46;/g, ".")
+										.replace(/&gt;/g, "_gt_")
+										.replace(/\*/g, "_star_")
+					toJSON = this.out(obj);
+					new docJS.File(output + converted + ".json").save(toJSON);
+				}
+	
+			}
+		},
+		// takes an object and returns how DocumentJS likes to save data
+		out: function() {
+			return "C(" + docJS.toJSON.apply(docJS.toJSON, arguments) + ")"
+		},
+		// tests if item is a shallow child of parent
+		shallowParent: function( item, parent ) {
+			if ( item.parents && parent ) {
+				for ( var i = 0; i < item.parents.length; i++ ) {
+					if ( item.parents[i] == parent.name ) {
+						return true;
+					}
+				}
+			}
+			return false;
+		},
+		// returns all recustive 'hard' children and one level of 'soft' children.
+		listedChildren: function( item, stealSelf, parent ) {
+			var result = stealSelf ? [item.name] : [];
+			if ( item.children && !this.shallowParent(item, parent) ) {
+				for ( var c = 0; c < item.children.length; c++ ) {
+					var child = docJS.objects[item.children[c]];
+					var adds = this.listedChildren(child, true, item);
+					if ( adds ) {
+						result = result.concat(adds);
+					}
+
+				}
+			}
+			return result;
+		},
+		summaryPage: function( options ) {
+			//find index page
+			var path = options.out,
+				base = path.replace(/[^\/]*$/, ""),
+				renderData = {
+					pathToRoot: new docJS.File(base.replace(/\/[^\/]*$/, "")).pathToRoot(),
+					path: path,
+					indexPage: docJS.objects.index
+				}
+
+			//checks if you have a summary
+			if ( readFile(base + "summary.ejs") ) {
+				print("Using summary at " + base + "summary.ejs");
+				docJS.renderTo(base + "docs.html", base + "summary.ejs", renderData)
+			} else {
+				print("Using default page layout.  Overwrite by creating: " + base + "summary.ejs");
+				docJS.renderTo(base + "docs.html", "documentjs/jmvcdoc/summary.ejs", renderData);
+			}
+		},
+		renderTo: function( file, ejs, data ) {
+			new docJS.File(file).save(new docJS.EJS({
+				text: readFile(ejs)
+			}).render(data));
+		}
+	})
+	//Add things to StealJS we like, then remove them from the global namespace
+	
+	
+	extend(docJS, steal); //even if we delete steal, we still have it's goodness
 	DocumentJS.EJS = steal.EJS;
 	DocumentJS.JSONparse = JSONparse;
 	DocumentJS.toJSON = toJSON;
 	DocumentJS.extend = extend;
+	
 	DocumentJS.converter = new Showdown.converter();
 	
 	delete Showdown;
 	delete JSONparse;
-	delete toJSON;
 
 
-
-})();
-
-// documentjs/distance.js
-
-(function($){
-
+})(steal);
+(function() {
 	DocumentJS.distance = function( s1, s2 ) {
 		if ( s1 == s2 ) {
 			return 0;
@@ -2009,280 +1840,64 @@
 		}
 		return v0[s1_len];
 	}
+})(steal);
+(function(){
+	
+	// Makes a JSON object for search data
+	DocumentJS.searchData = function(options){
+		
+		var searchData = {
+				list: {}
+		};
 
-})();
-
-// documentjs/application.js
-
-(function($){
-
-	/**
-	 * @class DocumentJS
-	 * @tag core, documentation
-	 * DocumentJS provides powerful and easy to extend documentation functionality.
-	 * It's smart enough to guess 
-	 * at things like function names and parameters, but powerful enough to generate 
-	 * <span class='highlight'>JavaScriptMVC's entire website</span>!
-	 * 
-	 * DocumentJS is pure JavaScript so it is easy to modify and make improvements.  First, lets show what
-	 * [DocumentJS.Type | types] DocumentJS can document:
-	 * 
-	 * * [DocumentJS.Type.types.page | @page] -  a standalone page.
-	 * * [DocumentJS.Type.types.attribute | @attribute] -  values on an object.
-	 * * [DocumentJS.Type.types.function | @function] - functions on an object.
-	 * * [DocumentJS.tags.constructor | @constructor] - functions you call like: new Thing()
-	 * * [DocumentJS.Type.types.class| @class] - normal JS Objects and source that uses [jQuery.Class]
-	 *
-	 * You can also specifify where your functions and attributes are being added with:
-	 * 
-	 * * [DocumentJS.Type.types.prototype | @prototype] - add to the previous class or constructor's prototype functions
-	 * * [DocumentJS.Type.types.static | @static] - add to the previous class or constructor's static functions
-	 * * [DocumentJS.Type.types.add |@add] - add docs to a class or construtor described in another file
-	 * 
-	 * Finally, you have [DocumentJS.tags|tags] that provide addtional info about the comment:
-	 * 
-	 * * [DocumentJS.tags.alias|@alias] - another commonly used name for Class or Constructor
-	 * * [DocumentJS.tags.author|@author] - author of class
-	 * * [DocumentJS.tags.codestart|@codestart] -> [DocumentJS.tags.codeend|@codeend] - insert highlighted code block
-	 * * [DocumentJS.tags.demo|@demo] - placeholder for an application demo
-	 * * [DocumentJS.tags.download|@download] - adds a download link
-	 * * [DocumentJS.tags.iframe|@iframe] - adds an iframe to some page with example code
-	 * * [DocumentJS.tags.hide|@hide] - hide in Class view
-	 * * [DocumentJS.tags.inherits|@inherits] - what the Class or Constructor inherits
-	 * * [DocumentJS.tags.parent|@parent] - says under which parent the current type should be located 
-	 * * [DocumentJS.tags.param|@param] - A function's parameter
-	 * * [DocumentJS.tags.plugin|@plugin] - by which plugin this object gets steald
-	 * * [DocumentJS.tags.return|@return] - what a function returns
-	 * * [DocumentJS.tags.scope|@scope] - forces the current type to start scope
-	 * * [DocumentJS.tags.tag|@tag] - tags for searching
-	 * * [DocumentJS.tags.test|@test] - link for test cases
-	 * * [DocumentJS.tags.type|@type] - sets the type for the current commented code
-	 * * [DocumentJS.tags.image|@image] - adds an image
-	 * 
-	 * ###Example
-	 * 
-	 * The following documents a Person constructor.
-	 * @codestart
-	 * /* @constructor
-	 *  * Person represents a human with a name.  Read about the 
-	 *  * animal class [Animal | here].
-	 *  * @init 
-	 *  * You must pass in a name.
-	 *  * @params {String} name A person's name
-	 *  *|
-	 * Person = function(name){
-	 *    this.name = name
-	 *    Person.count ++;
-	 * }
-	 * /* @Static *|
-	 * steal.Object.extend(Person, {
-	 *    /* Number of People *|
-	 *    count: 0
-	 * })
-	 * /* @Prototype *|
-	 * Person.prototype = {
-	 *   /* Returns a formal name 
-	 *    * @return {String} the name with "Mrs." added
-	 *    *|
-	 *   fancy_name : function(){
-	 *      return "Mrs. "+this.name;
-	 *   }
-	 * }
-	 * @codeend
-	 * 
-	 * There are a few things to notice:
-	 * 
-	 * * The example closes comments with _*|_.  You should close them with / instead of |.
-	 * * We create a link to another class with _[Animal | here]_.
-	 * 
-	 * ###Using with a JavaScritpMVC application
-	 * 
-	 * You just have to run the docs script in your apps scripts folder:
-	 * 
-	 * @codestart
-	 *     js _APPNAME_/scripts/docs.js
-	 * @codeend
-	 * 
-	 * Open _APPNAME_/docs.html to see your documentation.
-	 * 
-	 * ###Using without JavaScriptMVC
-	 * 
-	 * Coming soon!
-	 * 
-	 * ###Inspiration
-	 * 
-	 * DocumentJS was inspired by the [http://api.jquery.com/ jQuery API Browser] by [http://remysharp.com/ Remy Sharp]
-	 */
-	DocumentJS.extend(DocumentJS,
-	/* @Static */
-	{
-		render_to: function( file, ejs, data ) {
-			new DocumentJS.File(file).save(new DocumentJS.EJS({
-				text: readFile(ejs)
-			}).render(data));
-		},
-		render: function( ejs, data ) {
-			var v = new DocumentJS.EJS({
-				text: readFile(ejs),
-				name: ejs
-			});
-			return v.render(data)
-		},
-		/**
-		 * Replaces content in brackets [] with a link to source.
-		 * @param {String} content Any text, usually a commment.
-		 */
-		link_content: function( content ) {
-			return content.replace(/\[\s*([^\|\]\s]*)\s*\|?\s*([^\]]*)\s*\]/g, function( match, first, n ) {
-				//need to get last
-				//need to remove trailing whitespace
-				var url = DocumentJS.objects[first];
-				if ( url ) {
-					if (!n ) {
-						n = first.replace(/\.prototype|\.static/, "")
-					}
-					return "<a href='" + url + "'>" + n + "</a>"
-				} else if ( typeof first == 'string' && first.match(/^https?|www\.|#/) ) {
-					return "<a href='" + first + "'>" + (n || first) + "</a>"
-				}
-				return match;
-			})
-		},
-		/**
-		 * Will replace with a link to a class or function if appropriate.
-		 * @param {Object} content
-		 */
-		link: function( content ) {
-			var url = DocumentJS.objects[content];
-			return url ? "<a href='#&who=" + content + "'>" + content + "</a>" : content;
-		},
-		/**
-		 * A map of the full name of all the objects the application creates and the url to 
-		 * the documentation for them.
-		 */
-		objects: {}
-	});
-
-	/**
-	 * @constructor
-	 * @hide
-	 * Creates documentation for an application
-	 * @init
-	 * Generates documentation from the passed in files.
-	 * @param {Array} total An array of path names or objects with a path and text.
-	 * @param {Object} app_name The application name.
-	 */
-	DocumentJS.Application = function( total, app_name ) {
-
-		this.name = app_name;
-		this.total = total;
-		//this.files = [];
-		this.objects = {}; //all the objects live here, have a unique name
-		DocumentJS.Application.objects = this.objects;
-		//create each Script, which will create each class/constructor, etc
-		for ( var s = 0; s < total.length; s++ ) {
-			DocumentJS.Script.process(total[s], this.objects)
-		}
-		//sort class and constructors so they are easy to find
-		//this.all_sorted = DocumentJS.Class.listing.concat( DocumentJS.Constructor.listing ).sort( DocumentJS.Pair.sort_by_name )
+		addToSearchData(DocumentJS.objects, searchData)
+		
+		return new DocumentJS.File(options.out + "/searchData.json").save(DocumentJS.out(searchData, false));
 	}
-
-
-	DocumentJS.Application.prototype =
-	/* @prototype */
-	{
-		/**
-		 * Creates the documentation files.
-		 * @param {String} path where to put the docs
-		 */
-		generate: function( path, convert ) {
-			print("generating ...")
-
-
-			//go through all the objects
-			for ( var name in DocumentJS.Application.objects ) {
-				if (DocumentJS.Application.objects.hasOwnProperty(name)){
-					var obj = DocumentJS.extend({}, DocumentJS.Application.objects[name]),
-						toJSON;
-
-					if ( obj.type == 'script' || typeof obj != "object" ) {
+	
+	// goes through list and adds to search data
+	var addToSearchData = function( list, searchData ) {
+		var c, parts, part, p, fullName;
+		for ( var name in list ) {
+			if (list.hasOwnProperty(name)){
+				c = list[name];
+				if ( c.type == 'script' ) {
+					continue;
+				}
+				//break up into parts
+				fullName = c.name;
+				searchData.list[fullName] = {
+					name: c.name,
+					type: c.type
+				};
+				if ( c.title ) {
+					searchData.list[fullName].title = c.title
+				}
+				if ( c.tags ) {
+					searchData.list[fullName].tags = c.tags
+				}
+				if ( c.hide ) {
+					searchData.list[fullName].hide = c.hide
+				}
+				parts = fullName.split(".");
+				for ( p = 0; p < parts.length; p++ ) {
+					part = parts[p].toLowerCase();
+					if ( part == "jquery" ){
 						continue;
 					}
-					//get all children
-					var children = this.linker(obj);
-					obj.children = children;
-
-					var converted = name.replace(/ /g, "_").replace(/&#46;/g, ".").replace(/&gt;/g, "_gt_").replace(/\*/g, "_star_")
-					toJSON = this.toJSON(obj);
-					new DocumentJS.File(path + "/" + converted + ".json").save(toJSON);
+					addTagToSearchData(fullName, part, searchData)
 				}
-
-			}
-
-
-			this.searchData(path, convert);
-			this.summaryPage(path, convert)
-		},
-		shallowParent: function( item, parent ) {
-			if ( item.parents && parent ) {
-				for ( var i = 0; i < item.parents.length; i++ ) {
-					if ( item.parents[i] == parent.name ) {
-						return true;
+				//now add tags if there are tags
+				if ( c.tags ) {
+					for ( var t = 0; t < c.tags.length; t++ ){
+						addTagToSearchData(fullName, c.tags[t], searchData);
 					}
 				}
 			}
-			return false;
-		},
-		linker: function( item, stealSelf, parent ) {
-			var result = stealSelf ? [item.name] : [];
-			if ( item.children && !this.shallowParent(item, parent) ) {
-				for ( var c = 0; c < item.children.length; c++ ) {
-					var child = DocumentJS.Application.objects[item.children[c]];
-					var adds = this.linker(child, true, item);
-					if ( adds ) {
-						result = result.concat(adds);
-					}
-
-				}
-			}
-			return result;
-		},
-		/**
-		 * Creates a page for all classes and constructors
-		 * @param {String} summary the left hand side.
-		 */
-		summaryPage: function( path, convert ) {
-			//find index page
-			var base = path.replace(/[^\/]*$/, "");
-			this.indexPage = DocumentJS.Application.objects.index
-
-			//checks if you have a summary
-			if ( readFile(base + "summary.ejs") ) {
-				DocumentJS.render_to(base + "docs.html", base + "summary.ejs", {
-					pathToRoot: new DocumentJS.File(base.replace(/\/[^\/]*$/, "")).pathToRoot(),
-					path: path
-				})
-			} else {
-				print("Using default page layout.  Overwrite by creating: " + base + "summary.ejs");
-				DocumentJS.render_to(base + "docs.html", "documentjs/jmvcdoc/summary.ejs", {
-					pathToRoot: new DocumentJS.File(base.replace(/\/[^\/]*$/, "")).pathToRoot(),
-					path: path
-				}); //default 
-			}
-
-
-		},
-		indexOf: function( array, item ) {
-			var i = 0,
-				length = array.length;
-			for (; i < length; i++ ){
-				if ( array[i] === item ){
-					return i;
-				}
-			}
-			return -1;
-		},
-		addTagToSearchData: function( data, tag, searchData ) {
+		}
+	},
+		//adds a component to the search data
+		addTagToSearchData = function( data, tag, searchData ) {
 
 			var letter, l, depth = 2,
 				current = searchData;
@@ -2293,123 +1908,55 @@
 					current[letter] = {};
 					current[letter].list = [];
 				}
-				if ( this.indexOf(current[letter].list, data) == -1 ) {
+				if ( indexOf(current[letter].list, data) == -1 ) {
 					current[letter].list.push(data);
 				}
 				current = current[letter];
 			}
 		},
-		addToSearchData: function( list, searchData ) {
-			var c, parts, part, p, fullName;
-			for ( var name in list ) {
-				if (list.hasOwnProperty(name)){
-					c = list[name];
-					if ( c.type == 'script' ) {
-						continue;
-					}
-					//break up into parts
-					fullName = c.name;
-					searchData.list[fullName] = {
-						name: c.name,
-						type: c.type
-					};
-					if ( c.title ) {
-						searchData.list[fullName].title = c.title
-					}
-					if ( c.tags ) {
-						searchData.list[fullName].tags = c.tags
-					}
-					if ( c.hide ) {
-						searchData.list[fullName].hide = c.hide
-					}
-					parts = fullName.split(".");
-					for ( p = 0; p < parts.length; p++ ) {
-						part = parts[p].toLowerCase();
-						if ( part == "jquery" ){
-							continue;
-						}
-						this.addTagToSearchData(fullName, part, searchData)
-					}
-					//now add tags if there are tags
-					if ( c.tags ) {
-						for ( var t = 0; t < c.tags.length; t++ ){
-							this.addTagToSearchData(fullName, c.tags[t], searchData);
-						}
-					}
+		indexOf = function( array, item ) {
+			var i = 0,
+				length = array.length;
+			for (; i < length; i++ ){
+				if ( array[i] === item ){
+					return i;
 				}
 			}
-		},
-		searchData: function( path, convert ) {
-			//var sortedClasses = DocumentJS.Class.listing.sort( DocumentJS.Pair.sort_by_name )
-			//go through and create 2 level hash structure
-			var searchData = {
-				list: {}
-			};
-
-
-			this.addToSearchData(DocumentJS.Application.objects, searchData)
-
-
-			return new DocumentJS.File(path + "/searchData.json").save(this.toJSON(searchData, false));
-		},
-		toJSON: function() {
-			return "C(" + DocumentJS.toJSON.apply(DocumentJS.toJSON, arguments) + ")"
-		},
-		/**
-		 * Only shows five folders in a path.
-		 * @param {String} path a file path to convert
-		 * @return {String}
-		 */
-		clean_path: function( path ) {
-			return path;
-			var parts = path.split("/")
-			if ( parts.length > 5 ){ 
-				parts = parts.slice(parts.length - 5);
-			}
-			return parts.join("/");
+			return -1;
 		}
-	}
+	
 
-})();
-
-// documentjs/tags/tags.js
-
-(function($){
-
+	
+	
+})(steal);
+(function() {
+	
+	
 	/**
-	 * @class DocumentJS.tags
-	 * Keeps track of tags for DocumentJS.
+	 * @attribute DocumentJS.tags
+	 * @parent DocumentJS
+	 * A tag adds additional information to the comment being processed.
+	 * For example, if you want the current comment to include the author,
+	 * include an @@author tag.
 	 * 
-	 * The available tags are:
+	 * ## Creating your own tag
 	 * 
-	 * * [DocumentJS.tags.alias|@alias] - another commonly used name for Class or Constructor
-	 * * [DocumentJS.tags.author|@author] - author of class
-	 * * [DocumentJS.tags.codestart|@codestart] -> [DocumentJS.tags.codeend|@codeend] - insert highlighted code block
-	 * * [DocumentJS.tags.demo|@demo] - placeholder for an application demo 
-	 * * [DocumentJS.tags.download|@download] - adds a download link
-	 * * [DocumentJS.tags.iframe|@iframe] - adds an iframe to some page with example code
-	 * * [DocumentJS.tags.hide|@hide] - hide in Class view 
-	 * * [DocumentJS.tags.inherits|@inherits] - what the Class or Constructor inherits
-	 * * [DocumentJS.tags.parent|@parent] - says under which parent the current type should be located 
-	 * * [DocumentJS.tags.param|@param] - A function's parameter
-	 * * [DocumentJS.tags.plugin|@plugin] - by which plugin this object gets steald
-	 * * [DocumentJS.tags.return|@return] - what a function returns
-	 * * [DocumentJS.tags.scope|@scope] - forces the current type to start scope 
-	 * * [DocumentJS.tags.tag|@tag] - tags for searching
-	 * * [DocumentJS.tags.test|@test] - link for test cases 
-	 * * [DocumentJS.tags.type|@type] - sets the type for the current commented code
-	 * * [DocumentJS.tags.image|@image] - adds an image  
+	 * To create a tag, you need to add to DocumentJS.tags an object with an add and an optional
+	 * addMore method like:
+	 * 
+	 * @codestart
+	 * DocumentJS.tags.mytag = {
+	 *   add : function(line){ ... },
+	 *   addMore : function(line, last){ ... }
+	 * }
+	 * @codeend 
 	 */
-	DocumentJS.tags = {
+	
+	
+	DocumentJS.tags = {};
 
-	}
-
-})();
-
-// documentjs/tags/alias.js
-
-(function($){
-
+})(steal);
+(function() {
 	/**
 	 * @class DocumentJS.tags.alias
 	 * @tag documentation
@@ -2434,13 +1981,8 @@
 			}
 		}
 	};
-
-})();
-
-// documentjs/tags/author.js
-
-(function($){
-
+})(steal);
+(function() {
 	/**
 	 * @class DocumentJS.tags.author
 	 * @tag documentation
@@ -2464,13 +2006,8 @@
 			}
 		}
 	};
-
-})();
-
-// documentjs/tags/codeend.js
-
-(function($){
-
+})(steal);
+(function() {
 	/**
 	 * @class DocumentJS.tags.codeend
 	 * @tag documentation
@@ -2484,12 +2021,12 @@
 	 *
 	 *  /* 
 	 *   * @codestart
-	 *   *  /* @constructor
-	 *   *   *  * Person represents a human with a name.  Read about the 
-	 *   *   *  * animal class [Animal | here].
-	 *   *   * @init 
+	 *   *  /* @class
+	 *   *   * Person represents a human with a name.  Read about the 
+	 *   *   * animal class [Animal | here].
+	 *   *   * @constructor
 	 *   *   * You must pass in a name.
-	 *   *   * @params {String} name A person's name
+	 *   *   * @param {String} name A person's name
 	 *   *   *|
 	 *   *   Person = function(name){
 	 *   *      this.name = name
@@ -2505,10 +2042,10 @@
 	 *   *     /* Returns a formal name 
 	 *   *      * @return {String} the name with "Mrs." added
 	 *   *      *|
-	 *   *      fancy_name : function(){
+	 *   *      fancyName : function(){
 	 *   *         return "Mrs. "+this.name;
 	 *   *      }
-	 *   *}
+	 *   *  }
 	 *   * @codeend
 	 *   *|
 	 *
@@ -2531,13 +2068,8 @@
 			return ["pop", out];
 		}
 	};
-
-})();
-
-// documentjs/tags/codestart.js
-
-(function($){
-
+})(steal);
+(function() {
 	/**
 	 * @class DocumentJS.tags.codestart
 	 * @tag documentation
@@ -2545,7 +2077,7 @@
 	 * 
 	 * Starts a code block.  
 	 * 
-	 * Looks for "@codestart code_type".
+	 * Looks for "@codestart codeType".
 	 *   
 	 * Matches multiple lines.
 	 *   
@@ -2557,12 +2089,12 @@
 	 *
 	 *  /* 
 	 *   * @codestart
-	 *   *  /* @constructor
-	 *   *   *  * Person represents a human with a name.  Read about the 
-	 *   *   *  * animal class [Animal | here].
-	 *   *   * @init 
+	 *   *  /* @class
+	 *   *   * Person represents a human with a name.  Read about the 
+	 *   *   * animal class [Animal | here].
+	 *   *   * @constructor
 	 *   *   * You must pass in a name.
-	 *   *   * @params {String} name A person's name
+	 *   *   * @param {String} name A person's name
 	 *   *   *|
 	 *   *   Person = function(name){
 	 *   *      this.name = name
@@ -2578,10 +2110,10 @@
 	 *   *     /* Returns a formal name 
 	 *   *      * @return {String} the name with "Mrs." added
 	 *   *      *|
-	 *   *      fancy_name : function(){
+	 *   *      fancyName : function(){
 	 *   *         return "Mrs. "+this.name;
 	 *   *      }
-	 *   *}
+	 *   *  }
 	 *   * @codeend
 	 *   *|
 	 *
@@ -2606,36 +2138,29 @@
 			data.lines.push(line);
 		}
 	};
-
-})();
-
-// documentjs/tags/constructor.js
-
-(function($){
-
+})(steal);
+(function() {
 	/**
 	 * @class DocumentJS.tags.constructor
-	 * @tag documentation
 	 * @parent DocumentJS.tags
 	 *   
-	 * Documents the class initialization function (constructor). 
+	 * Documents a constructor function and its parameters. 
 	 * 
 	 * ###Example:
 	 * 
 	 * @codestart
-	 * /**
-     *  * @class jQuery.Hover
-     *  * ...
-     *  * @constructor Creates a new hover.  This is never
-     *  * called directly.
+     * /*
+     *  * @@class Customer 
+     *  * @@constructor
+     *  * Creates a new customer.
+     *  * @param {String} name
      *  *|
-     *  jQuery.Hover = function(){
+     *  var Customer = function(name) {
+	 *     this.name = name;
+     *  }
 	 * @codeend
 	 */
 	DocumentJS.tags.constructor =
-/*
- * @Static
- */
 	{
 		add: function( line ) {
 			var parts = line.match(/\s?@constructor(.*)?/);
@@ -2648,19 +2173,14 @@
 			return ["default", 'construct'];
 		}
 	};
-
-})();
-
-// documentjs/tags/demo.js
-
-(function($){
-
+})(steal);
+(function() {
 	/**
 	 * @class DocumentJS.tags.demo
 	 * @tag documentation
 	 * @parent DocumentJS.tags 
 	 * 
-	 * Placeholder for an application demo, e.g. @demo jquery/event/default/default.html.
+	 * Placeholder for an application demo.
 	 * 
 	 * ###Demo Example:
 	 * 
@@ -2683,13 +2203,8 @@
 			}
 		}
 	};
-
-})();
-
-// documentjs/tags/download.js
-
-(function($){
-
+})(steal);
+(function() {
 	/**
 	 * @class DocumentJS.tags.download
 	 * @tag documentation
@@ -2702,15 +2217,17 @@
 	 * @codestart
 	 * /**
 	 *  * @constructor jQuery.Drag
-	 *  * @parent specialevents
+	 *  * ...
 	 *  * @plugin jquery/event/drag
 	 *  * @download jquery/dist/jquery.event.drag.js
 	 *  * @test jquery/event/drag/qunit.html
+	 *  * ...
+	 *  *|
+	 *  $.Drag = function(){}
 	 * @codeend
 	 * 
-	 * ###End Result:
-	 * 
-	 * @image jmvc/images/download_tag_example.png 970
+	 * You can click the example download link on this [jQuery.Drag | page]
+     *
 	 */
 	DocumentJS.tags.download = {
 		add: function( line ) {
@@ -2719,31 +2236,26 @@
 			this.downloadSize = parts[2] || 0
 		}
 	};
-
-})();
-
-// documentjs/tags/hide.js
-
-(function($){
-
+})(steal);
+(function() {
 	/**
 	 * @class DocumentJS.tags.hide
 	 * @tag documentation
 	 * @parent DocumentJS.tags 
 	 * 
-	 * Hides this class or constructor from the left hand side bar.
+	 * Hides this construct from the left hand side bar.
 	 * 
 	 * ###Example:
 	 * 
 	 * @codestart
 	 * /*
-	 *  * Checks if there is a set_<i>property</i> value.  If it returns true, lets it handle; otherwise
-	 *  * saves it.
-	 *  * @hide
-	 *  * @param {Object} property
-	 *  * @param {Object} value
+	 *  * Checks if there is a set_<i>property</i> value.  
+	 *  * If it returns true, lets it handle; otherwise saves it.
+	 *  * @@hide
+	 *  * @@param {Object} property
+	 *  * @@param {Object} value
 	 *  *|
-	 _setProperty: function( property, value, success, error, capitalized ) {
+	 *  _setProperty: function( property, value, success, error, capitalized ) {
 	 * @codeend
 	 */
 	DocumentJS.tags.hide = {
@@ -2754,13 +2266,8 @@
 			}
 		}
 	};
-
-})();
-
-// documentjs/tags/iframe.js
-
-(function($){
-
+})(steal);
+(function() {
 	/**
 	 * @class DocumentJS.tags.iframe
 	 * @tag documentation
@@ -2793,19 +2300,14 @@
 			}
 		}
 	};
-
-})();
-
-// documentjs/tags/inherits.js
-
-(function($){
-
+})(steal);
+(function() {
 	/**
 	 * @class DocumentJS.tags.inherits
 	 * @tag documentation
 	 * @parent DocumentJS.tags 
 	 * 
-	 * Says current class or constructor inherits from another class or contructor.
+	 * Says current class inherits from another class.
 	 *
 	 * ###Example:
 	 * 
@@ -2827,13 +2329,12 @@
 			}
 		}
 	};
-
-})();
-
-// documentjs/tags/page.js
-
-(function($){
-
+})(steal);
+(function() {
+	/**
+	 * @class DocumentJS.tags.page
+	 * @parent DocumentJS.tags
+	 */
 	DocumentJS.tags.page = {
 		add: function( line ) {
 			var m = line.match(/^\s*@\w+\s+([^\s]+)\s+(.+)/)
@@ -2843,13 +2344,8 @@
 			}
 		}
 	};
-
-})();
-
-// documentjs/tags/param.js
-
-(function($){
-
+})(steal);
+(function() {
 	(function() {
 
 		var ordered = function( params ) {
@@ -2868,21 +2364,35 @@
 		 * @parent DocumentJS.tags 
 		 * 
 		 * Adds parameter information.
+		 * 
+		 * ###Use cases:
+		 * 
+		 * 1. Common use:
+		 * 
+		 *      __@@params {TYPE} name description__
+		 * 
+		 * 2. Optional parameters use case:
+		 * 
+         *     __@@params {TYPE} [name] description__
+         * 
+         * 3. Default value use case:
+         * 
+         *     __@@params {TYPE} [name=default] description__
 		 *
 		 * ###Example:
 		 * 
 		 * @codestart
-		 * /**
-     	 *  * Responds to the create form being submitted by creating a new Cookbook.Models.Recipe.
-         *  * @param {jQuery} el A jQuery wrapped element.
-         *  * @param {Event} ev A jQuery event whose default action is prevented.
-         *  *|
-    	 *  "form submit" : function(el, ev){
+	     * /*
+	     *  * Finds an order by id.
+	     *  * @@param {String} id Order identification number.
+	     *  * @@param {Date} [date] Filter order search by this date.
+	     *  *|
+	     *  findById: function(id, date) {
+         *      // looks for an order by id
+	     *  }   
     	 *  @codeend
     	 *  
-    	 * ###End Result:
-    	 *  
-    	 * @image jmvc/images/param_tag_example.png
+    	 * 
 		 */
 		DocumentJS.tags.param = {
 
@@ -2929,17 +2439,24 @@
 				}
 
 				return this.params[n];
+			},
+			done : function(){
+				if(this.ret && this.ret.description && this.ret.description ){
+					this.ret.description = DocumentJS.converter.makeHtml(this.ret.description)
+				}
+				if(this.params){
+					for(var paramName in this.params){
+						if(this.params[paramName].description  ){
+							this.params[paramName].description = DocumentJS.converter.makeHtml(this.params[paramName].description)
+						}
+					}
+				}
 			}
 		};
 
 	})()
-
-})();
-
-// documentjs/tags/parent.js
-
-(function($){
-
+})(steal);
+(function() {
 	(function() {
 		var waiting = {}
 
@@ -2970,10 +2487,10 @@
 				var m = line.match(/^\s*@parent\s*([\w\.\/]*)\s*([\w]*)/)
 				var name = m[1],
 					Class = DocumentJS.Page,
-					inst = DocumentJS.Application.objects[name]
+					inst = DocumentJS.objects[name]
 
 					if (!inst ) {
-						inst = DocumentJS.Application.objects[name] = {
+						inst = DocumentJS.objects[name] = {
 							name: name
 						}
 					}
@@ -2990,13 +2507,8 @@
 		};
 
 	})();
-
-})();
-
-// documentjs/tags/plugin.js
-
-(function($){
-
+})(steal);
+(function() {
 	/**
 	 * @class DocumentJS.tags.plugin
 	 * @tag documentation
@@ -3026,13 +2538,8 @@
 			this.plugin = line.match(/@plugin ([^ ]+)/)[1];
 		}
 	}
-
-})();
-
-// documentjs/tags/return.js
-
-(function($){
-
+})(steal);
+(function() {
 	/**
 	 * @class DocumentJS.tags.return
 	 * @tag documentation
@@ -3084,13 +2591,8 @@
 			this.ret.description += "\n" + line;
 		}
 	};
-
-})();
-
-// documentjs/tags/scope.js
-
-(function($){
-
+})(steal);
+(function() {
 	/**
 	 * @class DocumentJS.tags.scope
 	 * @tag documentation
@@ -3119,7 +2621,9 @@
 	 *          return Boolean(val)
 	 *      }
 	 *  }
-	 * @codeend 
+	 * @codeend
+	 * 
+	 * In the example above the use of @@scope forces __date__, __number__ and __boolean__ methods to be __convert's__ children.
 	 */
 	DocumentJS.tags.scope = {
 		add: function( line ) {
@@ -3127,13 +2631,8 @@
 			this.starts_scope = true;
 		}
 	};
-
-})();
-
-// documentjs/tags/tag.js
-
-(function($){
-
+})(steal);
+(function() {
 	/**
 	 * @class DocumentJS.tags.tag
 	 * @tag documentation
@@ -3172,13 +2671,8 @@
 		//    this.tags.concat(line.split(/\s*,\s*/g))
 		//}
 	};
-
-})();
-
-// documentjs/tags/test.js
-
-(function($){
-
+})(steal);
+(function() {
 	/**
 	 * @class DocumentJS.tags.test
 	 * @tag documentation
@@ -3209,13 +2703,8 @@
 			this.test = line.match(/@test ([^ ]+)/)[1];
 		}
 	};
-
-})();
-
-// documentjs/tags/type.js
-
-(function($){
-
+})(steal);
+(function() {
 	/**
 	 * @class DocumentJS.tags.type
 	 * @tag documentation
@@ -3255,13 +2744,8 @@
 			}
 		}
 	};
-
-})();
-
-// documentjs/tags/image.js
-
-(function($){
-
+})(steal);
+(function() {
 	/**
 	 * @class DocumentJS.tags.image
 	 * @tag documentation
@@ -3291,13 +2775,82 @@
 			}
 		}
 	};
-
-})();
-
-// documentjs/types/type.js
-
-(function($){
-
+})(steal);
+(function() {
+	/**
+	 * @attribute DocumentJS.types
+	 * @parent DocumentJS
+	 * Type directives represent every possible javascript construct 
+	 * you might want to document.
+	 * 
+	 * ## How to create your own type directive
+	 * 
+     * All you have to do is create a file describing what your new directive tag looks like and does, 
+     * and just drop it into the "tags/types" directory - it's that easy.
+     *
+     * A common documentation need in JavaScript projects is to document classes with non-standard syntax. 
+     * Popular frameworks handle class creation using the following pattern:
+     * 
+     * @codestart
+     * /* 
+     *  * we want to document this as being a class 
+     *  *|
+     * var Person = makeClass(
+     * {
+     *   initialize: function(name) {
+     *       this.name = name;
+     *   },
+     *   say: function(message) {
+     *       return this.name + " says: " + message;
+     *   }
+     * });
+     * @codeend
+     *  
+     * Documentjs is flexible enough to let you do this with minimal effort. 
+     * All you have to do is to add a new type to the existing types folder (__documentjs/types__).  Let's name it __make_class.js__:
+     *
+     * @codestart
+	 * DocumentJS.Type("MakeClass",
+	 * /**
+	 *  * @@Static
+	 *  *|
+	 * {
+	 *     codeMatch: /(\w+)\s*[:=]\s*makeClass\(([^\)]*)/),
+	 *     /*
+	 *      * Parses the code to get the class data.
+	 *      * @@param {String} code
+	 *      * @@return {Object} class data
+	 *      *|
+	 *      code: function( code ) {
+	 *          var parts = code.match(this.codeMatch);
+	 *              if ( parts ) {
+	 *                  return {
+	 *                      name: parts[2],
+	 *                      inherits: parts[1].replace("$.", "jQuery.")
+     *                      type: "class"
+	 *                  }
+     *              }
+	 *      }
+     * }
+     * @codeend
+     * 
+     * There's one final step you must follow to make your custom type work: add it to the list of 
+     * loaded types in __documentjs/types/types.js__.
+     * 
+     * @codestart
+     *  ...
+     * '//documentjs/types/function', '//documentjs/types/page', '//documentjs/types/prototype',
+     * '//documentjs/types/script', '//documentjs/types/static', '//documentjs/types/make_class');
+     * @codeend
+     * 
+     * And that's it! Now you can write your code using your favorite framework 
+     * and know that all your classes will be documented correctly for you.
+     * 
+     * 
+	 */
+	DocumentJS.types = {};
+})(steal);
+(function() {
 	/**
 	 * @class
 	 * @tag documentation
@@ -3307,7 +2860,7 @@
 	 * @param {Object} props
 	 */
 	DocumentJS.Type = function( type, props ) {
-		DocumentJS.Type.types[type] = props;
+		DocumentJS.types[type] = props;
 		props.type = type;
 	}
 
@@ -3317,19 +2870,13 @@
 	 */
 	{
 		/**
-		 * Keeps track of the directive types
-		 */
-		types: {},
-		/**
 		 * Must get type and name
 		 * @param {String} comment
 		 * @param {String} code
 		 * @param {Object} scope
-		 * @param {Object} objects List of parsed types
 		 * @return {Object} type
 		 */
-		create: function( comment, code, scope, objects ) {
-
+		create: function( comment, code, scope ) {
 			var check = comment.match(/^\s*@(\w+)/),
 				type, props
 
@@ -3343,8 +2890,9 @@
 
 				var nameCheck = comment.match(/^\s*@(\w+)[ \t]+([\w\.]+)/m)
 
+			
 			props = type.code(code)
-
+			
 			if (!props && !nameCheck ) {
 				return null;
 			}
@@ -3358,11 +2906,10 @@
 			if ( type.init ) {
 				return type.init(props, comment)
 			}
-			//print(props.name + " "+type.type);
-			if ( DocumentJS.Application.objects[props.name] ) {
-				var oldProps = props;
-				props = DocumentJS.Application.objects[props.name];
-				DocumentJS.extend(props, oldProps);
+			if ( DocumentJS.objects[props.name] ) {
+				var newProps = props;
+				props = DocumentJS.objects[props.name];
+				DocumentJS.extend(props, newProps);
 			}
 			
 			if ( !props.type ) {
@@ -3370,9 +2917,9 @@
 			}
 			if ( props.name ) {
 				var parent = this.getParent(type, scope)
-
+				//print("    p="+(parent ? parent.name+":"+parent.type : ""))
 				//if we are adding to an unlinked parent, add parent's name
-				if (!parent.type || DocumentJS.Type.types[parent.type].useName ) {
+				if (!parent.type || DocumentJS.types[parent.type].useName ) {
 					props.name = parent.name + "." + props.name
 				}
 				props.parent = parent.name;
@@ -3400,7 +2947,7 @@
 
 			while ( scope && scope.type && !type.parent.test(scope.type) ) {
 
-				scope = DocumentJS.Application.objects[scope.parent];
+				scope = DocumentJS.objects[scope.parent];
 
 			}
 			return scope;
@@ -3413,7 +2960,7 @@
 		hasType: function( type ) {
 			if (!type ) return null;
 
-			return this.types.hasOwnProperty(type.toLowerCase()) ? this.types[type.toLowerCase()] : null;
+			return DocumentJS.types.hasOwnProperty(type.toLowerCase()) ? DocumentJS.types[type.toLowerCase()] : null;
 		},
 		/**
 		 * Guess type from code
@@ -3421,13 +2968,32 @@
 		 * @return {Object} type
 		 */
 		guessType: function( code ) {
-			for ( var type in this.types ) {
-				if ( this.types[type].codeMatch && this.types[type].codeMatch(code) ) {
-					return this.types[type];
+			for ( var type in DocumentJS.types ) {
+				if ( DocumentJS.types[type].codeMatch && DocumentJS.types[type].codeMatch(code) ) {
+					return DocumentJS.types[type];
 				}
 
 			}
 			return null;
+		},
+		suggestType : function(incorrect, line){
+			var lowest = 1000, 
+				suggest = "",
+				check = function(things){
+					for(var name in things){
+						var dist = DocumentJS.distance(incorrect.toLowerCase(),name.toLowerCase())
+						if(dist < lowest ){
+							lowest = dist
+							suggest = name.toLowerCase()
+						} 
+					}
+				}
+			check(DocumentJS.types);
+			check(DocumentJS.tags);
+			
+			if(suggest){
+				print("\nWarning!!\nThere is no @"+incorrect+" directive. did you mean @"+suggest+" ?\n")
+			}
 		},
 		matchTag: /^\s*@(\w+)/,
 		/**
@@ -3442,25 +3008,25 @@
 				typeDataStack = [],
 				curType, lastType, curData, lastData, defaultWrite = 'comment',
 				messages = []; //what data we are going to be called with
-			props[defaultWrite] = '';
-
-			//if(!this.params) this.params = {};
-			//if(!this.ret) this.ret = {type: 'undefined',description: ""};
-			//this._last; //what we should be adding too.
+			if ( !props.comment ) {
+				props[defaultWrite] = '';
+			}
 			for ( var l = 0; l < lines.length; l++ ) {
 				var line = lines[l],
-					match = line.match(this.matchTag)
+					match = line.match(this.matchTag);
 
 					if ( match ) {
+						match[1] = match[1].toLowerCase();
 						var curType = DocumentJS.tags[match[1]];
 
 
 
 						if (!curType ) {
-							//if (!DocumentJS.Pair.hasType(match[1])) {
-							//	DocumentJS.Pair.suggest_type(match[1])
-							//}
-							if (!DocumentJS.Type.types[match[1]] ) {
+							if(!DocumentJS.types[match[1].toLowerCase()]){
+								this.suggestType(match[1])
+							}
+							
+							if (!DocumentJS.types[match[1]] ) {
 								props.comment += line + "\n"
 							}
 
@@ -3471,7 +3037,6 @@
 						messages.push(match[1])
 						curData = curType.add.call(props, line, curData);
 
-						//last_data = this[fname](line, last_data);
 						//horrible ... fix
 						if ( curData && curData.length == 2 && curData[0] == 'push' ) { //
 							typeDataStack.push({
@@ -3518,21 +3083,14 @@
 						}
 					}
 			}
-			if ( messages.length ) {
-				//print("  >"+messages.join())
-			}
+			
 
-			//if(this.comment_setup_complete) this.comment_setup_complete();
 			try {
 				props.comment = DocumentJS.converter.makeHtml(props.comment);
-				if(props.ret && props.ret.description && props.ret.description ){
-					props.ret.description = DocumentJS.converter.makeHtml(props.ret.description)
-				}
-				if(props.params){
-					for(var paramName in props.params){
-						if(props.params[paramName].description  ){
-							props.params[paramName].description = DocumentJS.converter.makeHtml(props.params[paramName].description)
-						}
+				//allow post processing
+				for(var tag in DocumentJS.tags){
+					if(DocumentJS.tags[tag].done){
+						DocumentJS.tags[tag].done.call(props);
 					}
 				}
 				
@@ -3542,17 +3100,12 @@
 
 		}
 	});
-
-})();
-
-// documentjs/types/add.js
-
-(function($){
-
+})(steal);
+(function() {
 	/**
-	 * @class DocumentJS.Type.types.add
+	 * @class DocumentJS.types.add
 	 * @tag documentation
-	 * @parent DocumentJS.Type
+	 * @parent DocumentJS.types
 	 * Used to set scope to add to classes or methods in another file. 
 	 * 
 	 * ###Example:
@@ -3592,10 +3145,10 @@
 		 * @param {Object} type data
 		 */
 		init: function( props ) {
-			if (!DocumentJS.Application.objects[props.name] ) {
-				DocumentJS.Application.objects[props.name] = props;
+			if (!DocumentJS.objects[props.name] ) {
+				DocumentJS.objects[props.name] = props;
 			}
-			return DocumentJS.Application.objects[props.name];
+			return DocumentJS.objects[props.name];
 		},
 	/*
 	 * Possible scopes for @add.
@@ -3604,30 +3157,27 @@
 		useName: true,
 		hasChildren: true
 	})
-
-})();
-
-// documentjs/types/attribute.js
-
-(function($){
-
+})(steal);
+(function() {
 	/**
-	 * @class DocumentJS.Type.types.attribute
+	 * @class DocumentJS.types.attribute
 	 * @tag documentation
-	 * @parent DocumentJS.Type
+	 * @parent DocumentJS.types
 	 * Documents an attribute.
 	 * 
 	 * ###Example:
 	 * 
 	 * @codestart
-	 *  steal.Object.extend(Person, {
-	 *   /* 
-	 *    * Number of People
-	 *    * @attribute 
-	 *    *|
-	 *   count: 0
-	 *  })
+	 * /**
+	 * * @@attribute delay
+	 * * Sets the delay in milliseconds between an ajax request is made and
+	 * * the success and complete handlers are called.  This only sets
+	 * * functional fixtures.  By default, the delay is 200ms.
+	 * *|
+	 * $.fixture.delay = 200
 	 * @codeend
+	 * 
+	 * You can see the end result [jQuery.fixture.delay | here].
 	 */
 	DocumentJS.Type("attribute",
 	/**
@@ -3661,17 +3211,12 @@
 		parent: /script|static|proto|class/,
 		useName: false
 	});
-
-})();
-
-// documentjs/types/class.js
-
-(function($){
-
+})(steal);
+(function() {
 	/**
-	 * @class DocumentJS.Type.types.class
+	 * @class DocumentJS.types.class
 	 * @tag documentation
-	 * @parent DocumentJS.Type
+	 * @parent DocumentJS.types
 	 * Documents a 'Class'.
 	 *  
 	 * A class is typically a collection of static and prototype functions.
@@ -3684,17 +3229,17 @@
 	 * 
 	 * @codestart
 	 * /**
-	 *  * @class 
+	 *  * @@class 
 	 *  * Person represents a human with a name.  Read about the 
 	 *  * animal class [Animal | here]. 
 	 *  *|
 	 * Person = Animal.extend(
-	 * /* @Static *|
+	 * /* @@Static *|
 	 * {
 	 *    /* Number of People *|
 	 *    count: 0
 	 * },
-	 * /* @Prototype *|
+	 * /* @@Prototype *|
 	 * {
 	 *    init : function(name){
 	 *      this.name = name
@@ -3745,17 +3290,12 @@
 		useName: true,
 		hasChildren: true
 	})
-
-})();
-
-// documentjs/types/function.js
-
-(function($){
-
+})(steal);
+(function() {
 	/**
-	 * @class DocumentJS.Type.types.function
+	 * @class DocumentJS.types.function
 	 * @tag documentation
-	 * @parent DocumentJS.Type
+	 * @parent DocumentJS.types
 	 * Documents a function. Doc can guess at a functions name and params if the source following a comment matches something like:
 	 * 
 	 * @codestart
@@ -3768,21 +3308,19 @@
 	 * Use the following directives to document a function.
 	 * 
 	 * @codestart
-	 * [ DocumentJS.Type.types.function | @function ] function_name                       -&gt; Forces a function
-	 * [ DocumentJS.tags.param | @param ] {optional:type} param_name Description -&gt; Describes a parameter
+	 * [ DocumentJS.types.function | @function ] functionName                       -&gt; Forces a function
+	 * [ DocumentJS.tags.param | @param ] {optional:type} paramName Description -&gt; Describes a parameter
 	 * [ DocumentJS.tags.return | @return ] {type} Description                    -&gt; Describes the return value
 	 * @codeend
-	 * 
-	 * Add optional: for optional params. Other available directives: [ DocumentJS.tags.plugin | @plugin ], [ DocumentJS.tags.codestart | @codestart ]
 	 *
 	 * ###Example
 	 * 
 	 * @codestart
 	 * /* Adds, Mr. or Ms. before someone's name
-	 * [ DocumentJS.tags.param | @param ] {String} name the persons name
-	 * [ DocumentJS.tags.param | @param ] {optional:Boolean} gender true if a man, false if female.  Defaults to true.
-	 * [ DocumentJS.tags.return | @return ] {String} returns the appropriate honorific before the person's name.
-	 * *|  
+	 *  * [ DocumentJS.tags.param | @param ] {String} name the persons name
+	 *  * [ DocumentJS.tags.param | @param ] {optional:Boolean} gender true if a man, false if female.  Defaults to true.
+	 *  * [ DocumentJS.tags.return | @return ] {String} returns the appropriate honorific before the person's name.
+	 *  *|  
 	 * honorific = function(name, gender){
 	 * @codeend 
 	 */
@@ -3841,21 +3379,16 @@
 		parent: /script|static|proto|class/,
 		useName: false
 	})
-
-})();
-
-// documentjs/types/page.js
-
-(function($){
-
+})(steal);
+(function() {
 	/**
-	 * @class DocumentJS.Type.types.page
+	 * @class DocumentJS.types.page
 	 * @tag documentation
-	 * @parent DocumentJS.Type
+	 * @parent DocumentJS.types
 	 * 
 	 * Defines a standalone documentation page.
 	 * 
-	 * Can be used to build generic html content for your documentation site.
+	 * Used to organize your documentation in a flexible manner.
 	 * 
 	 * ###Example:
 	 * 
@@ -3901,17 +3434,12 @@
 		useName: false,
 		hasChildren: true
 	})
-
-})();
-
-// documentjs/types/prototype.js
-
-(function($){
-
+})(steal);
+(function() {
 	/**
-	 * @class DocumentJS.Type.types.prototype
+	 * @class DocumentJS.types.prototype
 	 * @tag documentation
-	 * @parent DocumentJS.Type
+	 * @parent DocumentJS.types
 	 * Sets the following functions and attributes to be added to Class or Constructor prototype (instance) functions.
 	 * 
 	 * ###Example
@@ -3955,13 +3483,8 @@
 		useName: true,
 		hasChildren: true
 	})
-
-})();
-
-// documentjs/types/script.js
-
-(function($){
-
+})(steal);
+(function() {
 	/**
 	 * Represents a file.
 	 * Breaks up file into comment and code parts.
@@ -3975,22 +3498,26 @@
 
 		/**
 		 * Generates docs for a file.
-		 * @param {Object} inc an object that has path and text attributes
+		 * @param {Object} docScript an object that has src and text attributes.  It can also just be 
+		 * the path of a file.
 		 */
-		process: function( inc, objects ) {
+		process: function( docScript ) {
+			if(typeof docScript == 'string'){
+				docScript = {src: docScript}
+			}
 
-
-			var source = inc.src
+			var source = docScript.text || readFile(docScript.src);
+			
 			//check if the source has @documentjs-ignore
 			if (/\@documentjs-ignore/.test(source) ) {
 				return;
 			}
 			var script = {
 				type: "script",
-				name: inc.path
+				name: docScript.src
 			}
 			print("  " + script.name);
-			objects[script.name] = script;
+			DocumentJS.objects[script.name] = script;
 			var pairs = source.match(this.group);
 			//clean comments
 			var scope = script;
@@ -4001,9 +3528,8 @@
 
 				//print(splits[1].replace(/^[^\w@]*/,''))
 				var code = splits[2],
-					removeSpace = Infinity;
-
-				var lines = comment.split("\n"),
+					removeSpace = Infinity,
+					lines = comment.split("\n"),
 					noSpace = /\S/g,
 					match,
 					l;
@@ -4024,14 +3550,14 @@
 					}
 					comment = lines.join("\n")
 
-					var type = DocumentJS.Type.create(comment, code, scope, objects);
+					var type = DocumentJS.Type.create(comment, code, scope, DocumentJS.objects);
 
 				if ( type ) {
 
-					objects[type.name] = type;
+					DocumentJS.objects[type.name] = type;
 					//get the new scope if you need it
 					// if we don't have a type, assume we can have children
-					scope = !type.type || DocumentJS.Type.types[type.type].hasChildren ? type : scope;
+					scope = !type.type || DocumentJS.types[type.type].hasChildren ? type : scope;
 				}
 
 			}
@@ -4043,17 +3569,12 @@
 		useName: false,
 		hasChildren: true
 	})
-
-})();
-
-// documentjs/types/static.js
-
-(function($){
-
+})(steal);
+(function() {
 	/**
-	 * @class DocumentJS.Type.types.static
+	 * @class DocumentJS.types.static
 	 * @tag documentation
-	 * @parent DocumentJS.Type
+	 * @parent DocumentJS.types
 	 * Sets the following functions and attributes to be added to Class or Constructor static (class) functions.
 	 * 
 	 * ###Example
@@ -4102,6 +3623,4 @@
 		useName: true,
 		hasChildren: true
 	})
-
-})();
-
+})(steal)

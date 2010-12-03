@@ -28,7 +28,6 @@ if "%LOADPATH%"=="" (
 
 :: need to use forward slashes for paths
 set LOADPATH=%LOADPATH:\=/%
-
 :: invoke Rhino
 java -Xmx170m -Xss1024k -cp %CP% -Dbasepath="%BASE%" -Dcmd="%CMD%" org.mozilla.javascript.tools.shell.Main -opt -1 -e _args=%ARGS% -e load('%LOADPATH%')
 

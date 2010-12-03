@@ -6,6 +6,7 @@ html { /* ie7 hack */
 body {font-family: sans-serif,"Trebuchet MS",Verdana,Helvetica,Arial; 
 	  margin: 20px 0px 0px 0px; 
       overflow: auto;
+	  *overflow:visible;
 }
 dl {
 	margin: 13px;
@@ -18,34 +19,72 @@ td {padding: 3px; vertical-align: top;}
 	background-color:rgb(39,49,39);
     
 }
-#top .topCorner div {
-	background: url("images/top_topLeft.png") no-repeat top left;
+.topCorner .left, .bottomCorner .left {
+	float: left;
 }
-#top .topCorner {
-	background: url("images/top_topRight.png") no-repeat top right;
+.topCorner .right, .bottomCorner .right {
+	float: right;
 }
-#top .bottomCorner div {
-	background: url("images/top_bottomLeft.png") no-repeat top left;
+.top .topCorner .left {
+	background-position: -40px 0px;
 }
-#top .bottomCorner {
-	background: url("images/top_bottomRight.png") no-repeat top right;
+.top .topCorner .right {
+	background-position: -50px 0px;
 }
-#top .topCorner, #top .topCorner div,
-#top .bottomCorner, #top .bottomCorner div {
+.top .bottomCorner .left {
+	background-position: -50px -10px;
+}
+.top .bottomCorner .right {
+	background-position: -40px -10px;
+}
+#selected .topCorner .left {
+	background-position: -60px 0px;
+}
+#selected .topCorner .right {
+	background-position: -70px 0px;
+}
+#selected .bottomCorner .left {
+	background-position: -70px -10px;
+}
+#selected .bottomCorner .right {
+	background-position: -60px -10px;
+}
+#top .topCorner .left {
+	background-position: 0px 0px;
+}
+#top .topCorner .right {
+	background-position: -10px 0px;
+}
+#top .bottomCorner .left {
+	background-position: -10px -10px;
+}
+#top .bottomCorner .right {
+	background-position: 0px -10px;
+}
+.topCorner div, .bottomCorner div {
+	width:10px;
+	height:10px;
+	background-image: url("images/main_sprite.jpg");
+	background-repeat: no-repeat;
+}
+.topCorner,
+.bottomCorner {
 	width: 100%;
     height: 10px;
     font-size: 1px;
 }
 #top .content {
-	height:34px;
+	/*height:34px;*/
 	margin:0 10px;
+	overflow: auto;
+	clear:both;
 }
 #searchRoundCorners {
 	float:left;
 	width:273px;
 	padding:8px;
-	background:  url("images/search_round_corners.png") no-repeat;
-	background-position:0 2px;
+	background:  url("images/main_sprite.jpg") no-repeat;
+	background-position:0 -20px;
 	padding: 7px;
 	[padding:7px;
 	padding:5px;] /* chrome hack */
@@ -76,7 +115,10 @@ h5 {
 	height:35px;
 	line-height:35px;
 }
-.logo-text {
+.inside td {
+	vertical-align: middle
+}
+.logo-text a {
 	color:white;
 	float:right;
 	font-family:arial;
@@ -84,6 +126,11 @@ h5 {
 	left:-8px;
 	position:relative;
 	top:-4px;
+	text-decoration: none;
+	border: none;
+}
+.logo-text a img {
+	border: none;
 }
 .logo-image {
 	left:4px;
@@ -104,7 +151,11 @@ h5 {
     overflow: auto;
     background-color: white;
     margin-right: 0px;
+	*overflow:visible;
+	*height:100%;
 }
+
+
 #doc, #disqus_thread {
 	/*line-height:24px;*/
     /*padding: 0 20px 0 0;*/
@@ -135,34 +186,30 @@ h5 {
 	/*margin:10px 0 0 0;*/
 	background-color:rgb(239,242,213);
 }
-#results .topCorner div {
-	background: url("images/results_topLeft.png") no-repeat top left;
+#results .topCorner .left {
+	background-position:-20px 0px;
+	float:left;
 }
-#results .topCorner {
-	background: url("images/results_topRight.png") no-repeat top right;
+#results .topCorner .right {
+	background-position: -30px 0px;
+	float:right;
 }
-#results .bottomCorner div {
-	background: url("images/results_bottomLeft.png") no-repeat top left;
+#results .bottomCorner .left {
+	background-position: -30px -10px;
+	float:left;
 }
-#results .bottomCorner {
-	background: url("images/results_bottomRight.png") no-repeat top right;
-}
-#results .topCorner, #results .topCorner div,
-#results .bottomCorner, #results .bottomCorner div {
-	width: 100%;
-    height: 10px;
-    font-size: 1px;
+#results .bottomCorner .right {
+	background-position: -20px -10px;
+	float:right;
 }
 #results .content {
 	/*margin:0 10px;*/
+	clear:both;
 }
 #results .highlight, #page_results .highlight {
     /*background-color: #3C3D32;*/
 	background-color:rgb(182,220,235);
 }
-
-
-
 #left .selected {
 	font-size:17px;
 	font-weight:bold;
@@ -178,26 +225,9 @@ h5 {
 	margin:0 0 10px 0;
 	background-color:rgb(210,217,136);
 }
-#left #selected .topCorner div {
-	background: url("images/selected_topLeft.png") no-repeat top left;
-}
-#left #selected .topCorner {
-	background: url("images/selected_topRight.png") no-repeat top right;
-}
-#left #selected .bottomCorner div {
-	background: url("images/selected_bottomLeft.png") no-repeat top left;
-}
-#left #selected .bottomCorner {
-	background: url("images/selected_bottomRight.png") no-repeat top right;
-}
-#left #selected .topCorner, #left #selected .topCorner div,
-#left #selected .bottomCorner, #left #selected .bottomCorner div {
-	width: 100%;
-    height: 10px;
-    font-size: 1px;
-}
 #left #selected .content {
 	margin:0 10px;
+	clear:both;
 }
 #left #selected .content a {
 	padding:0;
@@ -252,32 +282,18 @@ h1 {
 	position:relative;
     margin: 0 0 10px;
 }
+h1 span.subtitle {
+	color:#888888;
+	font-style:italic;
+}
 .top {
     margin: 0 0 20px;
 	line-height:24px;
-	/*padding:20px;*/
 	background-color:rgb(195,226,239);
-}
-.top .topCorner div {
-	background: url("images/content_top_topLeft.png") no-repeat top left;
-}
-.top .topCorner {
-	background: url("images/content_top_topRight.png") no-repeat top right;
-}
-.top .bottomCorner div {
-	background: url("images/content_top_bottomLeft.png") no-repeat top left;
-}
-.top .bottomCorner {
-	background: url("images/content_top_bottomRight.png") no-repeat top right;
-}
-.top .topCorner, .top .topCorner div,
-.top .bottomCorner, .top .bottomCorner div {
-	width: 100%;
-    height: 10px;
-    font-size: 1px;
 }
 .top .content {
 	margin:5px 20px 5px 20px;
+	clear:both;
 }
 pre {
     background-image: url('images/pre.png');
@@ -302,20 +318,23 @@ pre {
     background-image: url(images/fav-off.png);
 }
 #low {
-    
-    font-size: 10px;
-    margin-top: 2px;
-    margin-right: 20px;
-    text-align: right;
+	font-size:14px;
+	margin-bottom:4px;
+	margin-right:20px;
+	margin-top:4px;
+	text-align:right;
 }
 #low a{
-    color: #B8B495;
+    color: #999999;
 }
 #defaults span.red{
     color: /*#9C6854*/ #96A84A;
 	font-weight:bold;
 }
-
+a.logo img{
+	border:none;
+	
+}
 .param, .return {
 	text-indent: -48px;
 	margin-left: 48px;
@@ -386,13 +405,15 @@ h2.spaced {
     clear:left; padding-top: 18px;
 }
 #download {
-    background-image: url(images/download.png);
+    background-image: url(images/main_sprite.jpg);
     width:405px;
     margin-right: 10px;
+	background-position:0 -54px;
 }
 #video {
-    background-image: url(images/video.png);
+    background-image: url(images/main_sprite.jpg);
     width:95px;
+	background-position:-405px -53px;
 }
 
 .big_button * {
@@ -606,3 +627,11 @@ iframe {
 #defaults .selected>a:active {
 	color: #111111!important;
 }	
+iframe.pluginify{
+	border: none;
+	background: none;
+	margin: 0px;
+	height: 3065px;
+	padding: 0px;
+	width: 600px;
+}
