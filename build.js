@@ -26,6 +26,8 @@ steal.File("steal/rhino/env.js").copyTo("documentjs/dist/steal/rhino/env.js");
 steal.File("steal/rhino/file.js").copyTo("documentjs/dist/steal/rhino/file.js");
 steal.File("steal/rhino/js.jar").copyTo("documentjs/dist/steal/rhino/js.jar");
 steal.File("steal/rhino/loader.bat").copyTo("documentjs/dist/steal/rhino/loader.bat");
+steal.File("steal/rhino/loader").copyTo("documentjs/dist/steal/rhino/loader");
+steal.File("steal/rhino/utils.js").copyTo("documentjs/dist/steal/rhino/utils.js");
 steal.File("steal/rhino/steal.js").copyTo("documentjs/dist/steal/rhino/steal.js");
 steal.File("steal/steal.production.js").copyTo("documentjs/dist/steal/steal.production.js");
 
