@@ -25,9 +25,11 @@ steal.then(function() {
 	 */
 	DocumentJS.tags.download = {
 		add: function( line ) {
-			var parts = line.match(/^\s*@download\s*([^ ]*)\s*([\w]*)/)
+			var parts = line.match(/^\s*@download\s*([^ ]*)\s*([.]*)/)
 			this.download = parts[1];
-			this.downloadSize = parts[2] || 0
+			if(parts[2]){
+				this.downloadName = parts[2]
+			}
 		}
 	};
 })
