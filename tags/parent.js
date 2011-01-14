@@ -26,7 +26,7 @@ steal.then(function() {
 		 */
 		DocumentJS.tags.parent = {
 			add: function( line ) {
-				var m = line.match(/^\s*@parent\s*([\w\.\/]*)\s*([\w]*)/)
+				var m = line.match(/^\s*@parent\s*([\w\.\/\$]*)\s*([\w]*)/)
 				var name = m[1],
 					Class = DocumentJS.Page,
 					inst = DocumentJS.objects[name]

@@ -70,7 +70,7 @@ steal.then(function() {
 					optional = false,
 					defaultVal;
 				//check if it has anything ...
-				var nameParts = n.match(/\[([\w\.]+)(?:=([^\]]*))?\]/)
+				var nameParts = n.match(/\[([\w\.\$]+)(?:=([^\]]*))?\]/)
 				if ( nameParts ) {
 					optional = true;
 					defaultVal = nameParts[2]

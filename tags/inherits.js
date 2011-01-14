@@ -20,7 +20,7 @@ steal.then(function() {
 	 */
 	DocumentJS.tags.inherits = {
 		add: function( line ) {
-			var m = line.match(/^\s*@\w+ ([\w\.]+)/)
+			var m = line.match(/^\s*@\w+ ([\w\.\$]+)/)
 			if ( m ) {
 				this.inherits = m[1];
 			}
