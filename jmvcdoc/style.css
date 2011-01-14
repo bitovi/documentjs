@@ -282,6 +282,7 @@ h5 {
 	background-position:100% 0;
 	margin-left:11px;
 	padding:0 10px 0 5px;
+	float: left;
 }
 h1 {
 	position:relative;
