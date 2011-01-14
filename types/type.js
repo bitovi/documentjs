@@ -36,7 +36,7 @@ steal.then(function() {
 					return null;
 				}
 
-				var nameCheck = comment.match(/^\s*@(\w+)[ \t]+([\w\.]+)/m)
+				var nameCheck = comment.match(/^\s*@(\w+)[ \t]+([\w\.\$]+)/m)
 
 			
 			props = type.code(code)
@@ -54,11 +54,7 @@ steal.then(function() {
 			if ( type.init ) {
 				return type.init(props, comment)
 			}
-			if ( DocumentJS.objects[props.name] ) {
-				var newProps = props;
-				props = DocumentJS.objects[props.name];
-				DocumentJS.extend(props, newProps);
-			}
+			
 			
 			if ( !props.type ) {
 				props.type = type.type;
@@ -71,6 +67,11 @@ steal.then(function() {
 					props.name = parent.name + "." + props.name
 				}
 				props.parent = parent.name;
+				if ( DocumentJS.objects[props.name] ) {
+					var newProps = props;
+					props = DocumentJS.objects[props.name];
+					DocumentJS.extend(props, newProps);
+				}
 				if (!parent.children ) {
 					parent.children = [];
 				}

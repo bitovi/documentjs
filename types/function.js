@@ -36,7 +36,7 @@ steal.then(function() {
 	 * @Static
 	 */
 	{
-		codeMatch: /(?:([\w\.]+)|(["'][^"']+["']))\s*[:=]\s*function\s?\(([^\)]*)/,
+		codeMatch: /(?:([\w\.\$]+)|(["'][^"']+["']))\s*[:=]\s*function\s?\(([^\)]*)/,
 	/*
 	 * Parses the code to get the function data.
 	 * Must return the name if from the code.
@@ -53,12 +53,13 @@ steal.then(function() {
 			if (!parts ) {
 				return;
 			}
-			data.name = parts[1] ? parts[1].replace(/^this\./, "") : parts[2];
+			data.name = parts[1] ? parts[1].replace(/^this\./, "").replace(/^\$./, "jQuery.") : parts[2];
 
 			//clean up name if it has ""
 			if (/^["']/.test(data.name) ) {
 				data.name = data.name.substr(1, data.name.length - 2).replace(/\./g, "&#46;").replace(/>/g, "&gt;");
 			}
+
 			data.params = {};
 			data.ret = {
 				type: 'undefined',

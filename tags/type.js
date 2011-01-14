@@ -32,7 +32,7 @@ steal.then(function() {
 	 */
 	DocumentJS.tags.type = {
 		add: function( line ) {
-			var m = line.match(/^\s*@type\s*([\w\.\/]*)/)
+			var m = line.match(/^\s*@type\s*([\w\.\/\$]*)/)
 			if ( m ) {
 				this.attribute_type = m[0]
 			}

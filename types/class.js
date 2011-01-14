@@ -48,7 +48,7 @@ steal.then(function() {
 		codeMatch: /([\w\.\$]+?).extend\(\s*["']([^"']*)["']/,
 		// /([\w\.]*)\s*=\s*([\w\.]+?).extend\(/,
 		//must return the name if from the code
-		funcMatch: /(?:([\w\.]+)|(["'][^"']+["']))\s*[:=]\s*function\s?\(([^\)]*)/,
+		funcMatch: /(?:([\w\.\$]+)|(["'][^"']+["']))\s*[:=]\s*function\s?\(([^\)]*)/,
 	/*
 	 * Parses the code to get the class data.
 	 * @param {String} code
@@ -59,7 +59,7 @@ steal.then(function() {
 			if ( parts ) {
 				return {
 					name: parts[2],
-					inherits: parts[1].replace("$.", "jQuery.")
+					inherits: parts[1].replace(/^\$./, "jQuery.")
 				}
 			}
 			parts = code.match(this.funcMatch)
