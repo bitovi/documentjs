@@ -82,7 +82,11 @@ td {padding: 3px; vertical-align: top;}
 #searchRoundCorners {
 	float:left;
 	width:273px;
-	padding:8px;
+	height:15px;
+	padding:0px;
+	margin:0px;
+	zoom:1;
+	display:inline;
 	background:  url("images/main_sprite.jpg") no-repeat;
 	background-position:0 -20px;
 	padding: 7px;
@@ -101,6 +105,7 @@ html*#searchRoundCorners { /* ie7 hack */
 	background:#FFFFFF;
 	outline:none;
 	margin-left:10px;
+	position:absolute;
 }
 h5 {
 	margin-bottom: 0px;padding-bottom: 0px;
@@ -327,8 +332,8 @@ pre {
 #low a{
     color: #999999;
 }
-#defaults span.red{
-    color: /*#9C6854*/ #96A84A;
+#defaults a .red{
+    color: #96A84A;
 	font-weight:bold;
 }
 a.logo img{
@@ -583,8 +588,11 @@ iframe {
 }
 #defaults .menuLink,
 #defaults .menuSpan {
-	display:block;
+	display:inline;
 	height:25px; 	
+	float:left;
+	cursor:pointer;
+	font-size:16px;
 }
 #defaults .menuSpan {
 	margin-left:10px;
