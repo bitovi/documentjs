@@ -90,8 +90,6 @@ td {padding: 3px; vertical-align: top;}
 	background:  url("images/main_sprite.jpg") no-repeat;
 	background-position:0 -20px;
 	padding: 7px;
-	[padding:7px;
-	padding:5px;] /* chrome hack */
 } 
 html*#searchRoundCorners { /* ie7 hack */
 	padding: 7px;
@@ -106,6 +104,8 @@ html*#searchRoundCorners { /* ie7 hack */
 	outline:none;
 	margin-left:10px;
 	position:absolute;
+	margin: 0 0 0 10px;
+	padding: 1px 0;
 }
 h5 {
 	margin-bottom: 0px;padding-bottom: 0px;
