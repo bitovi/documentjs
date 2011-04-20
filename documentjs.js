@@ -1,5 +1,5 @@
 if ( steal.overwrite ) {
-	load('steal/rhino/steal.js');
+	load('steal/rhino/rhino.js');
 } else {
 	//what steal should send to functions.  This says send steal instead of jQuery.
 	steal.send = steal;
