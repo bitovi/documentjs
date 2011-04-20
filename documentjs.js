@@ -281,14 +281,16 @@ steal(	'//steal/generate/ejs',
 
 				steal.plugins('steal/build', function(steal){
 
-					steal.build.open(file).each(function(script, text, i){
-						if (text && script.src) {
-							scripts.push({
-								src: script.src,
-								text:  text
-							})
-						}
-					});
+					steal.build.open(file, {}, function(opener){
+						opener.each(function(script, text, i){
+							if (text && script.path) {
+								scripts.push({
+									src: script.path,
+									text:  text
+								})
+							}
+						});
+					})
 				});
 			}
 			else if (/\.js$/.test(file)) { // load just this file
