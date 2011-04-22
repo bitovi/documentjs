@@ -403,6 +403,15 @@ table pre {
 h2.spaced {
     clear:left; padding-top: 18px;
 }
+h2 {
+	border-bottom: solid 1px	#C3E2EF;
+	padding-bottom: 3px;
+}
+h3 {
+	color: /*	rgb(83,135,189)*/ #96A84A;
+	font-size: 1.3em;
+	margin-bottom: 10px;
+}
 #download {
     background-image: url(images/main_sprite.jpg);
     width:405px;

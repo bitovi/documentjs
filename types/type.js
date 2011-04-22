@@ -66,6 +66,10 @@ steal.then(function() {
 				if (!parent.type || DocumentJS.types[parent.type].useName ) {
 					props.name = parent.name + "." + props.name
 				}
+				if(props.name === 'toString'){
+					// can't have an empty toString
+					return null;
+				}
 				props.parent = parent.name;
 				if ( DocumentJS.objects[props.name] ) {
 					var newProps = props;
