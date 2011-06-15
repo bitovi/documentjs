@@ -276,16 +276,16 @@ steal(	'//steal/generate/ejs',
 	extend(docJS, {
 		// gets scripts from a path
 		getScripts : function(file){
-			var scripts = [];
+			var collection = [];
 			if (/\.html?$/.test(file)) { // load all the page's scripts
 
 				steal.plugins('steal/build', function(steal){
 
-					steal.build.open(file, {}, function(opener){
-						opener.each(function(script, text, i){
-							if (text && script.path) {
-								scripts.push({
-									src: script.path,
+					steal.build.open(file, function(scripts){
+						scripts.each(function(script, text){
+							if (text && script.src) {
+								collection.push({
+									src: script.src,
 									text:  text
 								})
 							}
@@ -294,7 +294,7 @@ steal(	'//steal/generate/ejs',
 				});
 			}
 			else if (/\.js$/.test(file)) { // load just this file
-				scripts.push(file)
+				collection.push(file)
 			}
 			else { // assume its a directory
 				var getJSFiles = function(dir){
@@ -303,14 +303,14 @@ steal(	'//steal/generate/ejs',
 				       getJSFiles(dir+"/"+f)
 				    }else if(/\.js$/.test(f)){
 
-					  scripts.push( (dir+"/"+f).replace('\\', '/') )
+					  collection.push( (dir+"/"+f).replace('\\', '/') )
 				    }
 				  })
 				};
 				getJSFiles(file);
 			}
 					
-			return scripts;
+			return collection;
 		},
 		generate : function(options){
 
