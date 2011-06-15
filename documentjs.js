@@ -8,6 +8,7 @@ if ( steal.overwrite ) {
 steal(	'//steal/generate/ejs',
 		'//documentjs/json', 
 		'//documentjs/showdown')
+	.plugins('steal/build')
 .then( function( $ ) {
 	//if we already have DocumentJS, don't create another, this is so we can document documentjs
 	if(typeof DocumentJS != 'undefined'){
@@ -269,7 +270,10 @@ steal(	'//steal/generate/ejs',
 		
 	};
 	
-	var extend = steal.extend,
+	var extend = function( d, s ) {
+			for ( var p in s ) d[p] = s[p];
+			return d;
+		},
 		build = steal.build,
 		docJS = DocumentJS;
 	
@@ -278,20 +282,16 @@ steal(	'//steal/generate/ejs',
 		getScripts : function(file){
 			var collection = [];
 			if (/\.html?$/.test(file)) { // load all the page's scripts
-
-				steal.plugins('steal/build', function(steal){
-
-					steal.build.open(file, function(scripts){
-						scripts.each(function(script, text){
-							if (text && script.src) {
-								collection.push({
-									src: script.src,
-									text:  text
-								})
-							}
-						});
-					})
-				});
+				steal.build.open(file, function(scripts){
+					scripts.each(function(script, text){
+						if (text && script.src) {
+							collection.push({
+								src: script.src,
+								text:  text
+							})
+						}
+					});
+				})
 			}
 			else if (/\.js$/.test(file)) { // load just this file
 				collection.push(file)
@@ -309,7 +309,6 @@ steal(	'//steal/generate/ejs',
 				};
 				getJSFiles(file);
 			}
-					
 			return collection;
 		},
 		generate : function(options){
@@ -411,7 +410,7 @@ steal(	'//steal/generate/ejs',
 	delete JSONparse;
 
 
-}).then('//documentjs/distance', 
-		'//documentjs/searchdata',
-		'//documentjs/tags/tags', 
-		'//documentjs/types/types');
+}).then('//documentjs/distance')
+	.then('//documentjs/searchdata')
+	.then('//documentjs/tags/tags')
+	.then('//documentjs/types/types');
