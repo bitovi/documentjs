@@ -10,6 +10,7 @@ steal(	'//steal/generate/ejs',
 		'//documentjs/showdown')
 	.plugins('steal/build')
 .then( function( $ ) {
+	
 	//if we already have DocumentJS, don't create another, this is so we can document documentjs
 	if(typeof DocumentJS != 'undefined'){
 		return;
@@ -413,4 +414,6 @@ steal(	'//steal/generate/ejs',
 }).then('//documentjs/distance')
 	.then('//documentjs/searchdata')
 	.then('//documentjs/tags/tags')
-	.then('//documentjs/types/types');
+	.then('//documentjs/types/types').then(function(){
+		steal.send = undefined;
+	});
