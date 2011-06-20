@@ -6,8 +6,40 @@ steal.then(function() {
 	 * @hide
 	 */
 	DocumentJS.Script = {
+		
+		// returns the min intented amount for these lines.
+		minSpace : function(lines){
+			var removeSpace = Infinity,
+				noSpace = /\S/g,
+				match;
+				
+			for ( l = 0; l < lines.length; l++ ) {
+				match = noSpace.exec(lines[l]);
+				if ( match && lines[l] && noSpace.lastIndex < removeSpace ) {
+					removeSpace = noSpace.lastIndex;
+				}
+				noSpace.lastIndex = 0;
+			}
+			return removeSpace - 1;
+		},
+		// removes Indent inline
+		removeIndent : function(lines){
+			var removeSpace = this.minSpace(lines);
+			
+			if ( isFinite(removeSpace) ) {
+				for ( l = 0; l < lines.length; l++ ) {
+
+					lines[l] = lines[l].substr(removeSpace)
+				}
+			}
+			return lines;
+		},
+		getCommentCodePairs : function(){
+			
+		},
 		group: new RegExp("(?:/\\*(?:[^*]|(?:\\*+[^*/]))*\\*+/\[^\\w\\{\\(\\[/]*[^\\n]*)", "g"),
 
+		// (?:/\*+((?:[^*]|(?:\*+[^*/]))*)\*+/[^\w\{\(\[\"'\$]*([^\r\n]*))
 		splitter: new RegExp("(?:/\\*+((?:[^*]|(?:\\*+[^*/]))*)\\*+/\[^\\w\\{\\(\\[\"'\$]*([^\\r\\n]*))"),
 
 		/**
@@ -42,26 +74,9 @@ steal.then(function() {
 
 				//print(splits[1].replace(/^[^\w@]*/,''))
 				var code = splits[2],
-					removeSpace = Infinity,
-					lines = comment.split("\n"),
-					noSpace = /\S/g,
-					match,
-					l;
-					
-					for ( l = 0; l < lines.length; l++ ) {
-						match = noSpace.exec(lines[l]);
-						if ( match && lines[l] && noSpace.lastIndex < removeSpace ) {
-							removeSpace = noSpace.lastIndex;
-						}
-						noSpace.lastIndex = 0;
-					}
+					lines = comment.split("\n");
+					this.removeIndent(lines);
 					//print(removeSpace)
-					if ( isFinite(removeSpace) ) {
-						for ( l = 0; l < lines.length; l++ ) {
-
-							lines[l] = lines[l].substr(removeSpace - 1)
-						}
-					}
 					comment = lines.join("\n")
 
 					var type = DocumentJS.Type.create(comment, code, scope, DocumentJS.objects);
