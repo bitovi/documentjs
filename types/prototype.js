@@ -42,7 +42,7 @@ steal.then(function() {
 /*
 	 * Possible scopes for @prototype.
 	 */
-		parent: /script|class/,
+		parent: /class/,
 		useName: true,
 		hasChildren: true
 	})

@@ -18,7 +18,7 @@ steal(	'//steal/generate/ejs',
 	
 	/**
 	 * @class DocumentJS
-	 * @tag core, documentation
+	 * @parent index 3
      * There are several reasons why documentation is important:
      * 
      * * As apps grow, source code becomes complex and difficult to maintain.
@@ -238,6 +238,7 @@ steal(	'//steal/generate/ejs',
 	DocumentJS = function(scripts, options) {
 		// an html file, a js file or a directory
 		options = options || {};
+		
 		if(typeof scripts == 'string'){
 			if(!options.out){
 				if(/\.html?$|\.js$/.test(scripts)){
@@ -249,6 +250,21 @@ steal(	'//steal/generate/ejs',
 
 			scripts = DocumentJS.getScripts(scripts)
 		}
+		// an array of folders
+		if(options.markdown){
+			for(var i =0 ; i < options.markdown.length; i++){
+				DocumentJS.files(options.markdown[i], function(path, f){
+					if(/\.md$/.test(f)){
+					  scripts.push( path )
+				    }
+				})
+			}
+			
+			
+			
+		}
+		// if options, get .md files ...
+		
 		
  		//all the objects live here, have a unique name
 		DocumentJS.objects = {};
@@ -256,15 +272,17 @@ steal(	'//steal/generate/ejs',
 		//create each Script, which will create each class/constructor, etc
 		print("PROCESSING SCRIPTS\n")
 		for ( var s = 0; s < scripts.length; s++ ) {
-			DocumentJS.Script.process(scripts[s])
+			DocumentJS.Script.process(scripts[s], DocumentJS.objects)
 		}
+		
+		
 		print('\nGENERATING DOCS -> '+options.out+'\n')
 		
 		// generate individual JSONP forms of individual comments
 		DocumentJS.generate(options)
 
 		// make combined search data
-		DocumentJS.searchData(options )
+		DocumentJS.searchData(DocumentJS.objects,options )
 
 		//make summary page (html page to load it all)
 		DocumentJS.summaryPage(options);
@@ -279,8 +297,21 @@ steal(	'//steal/generate/ejs',
 		docJS = DocumentJS;
 	
 	extend(docJS, {
+		files : function(path, cb){
+			var getJSFiles = function(dir){
+			  new steal.File(dir).contents(function(f, type){
+				if(type == 'directory'){
+			       getJSFiles(dir+"/"+f)
+			    }else {
+				  cb((dir+"/"+f).replace('\\', '/'), f)
+			    }
+			  })
+			};
+			getJSFiles(path);
+		},
 		// gets scripts from a path
 		getScripts : function(file){
+			
 			var collection = [];
 			if (/\.html?$/.test(file)) { // load all the page's scripts
 				steal.build.open(file, function(scripts){
@@ -298,17 +329,13 @@ steal(	'//steal/generate/ejs',
 				collection.push(file)
 			}
 			else { // assume its a directory
-				var getJSFiles = function(dir){
-				  new steal.File(dir).contents(function(f, type){
-					if(type == 'directory'){
-				       getJSFiles(dir+"/"+f)
-				    }else if(/\.js$/.test(f)){
-
-					  collection.push( (dir+"/"+f).replace('\\', '/') )
+				this.files(file, function(path, f){
+					if(/\.js$/.test(f)){
+					  collection.push( path )
 				    }
-				  })
-				};
-				getJSFiles(file);
+				})
+				
+				
 			}
 			return collection;
 		},

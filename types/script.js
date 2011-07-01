@@ -47,7 +47,7 @@ steal.then(function() {
 		 * @param {Object} docScript an object that has src and text attributes.  It can also just be 
 		 * the path of a file.
 		 */
-		process: function( docScript ) {
+		process: function( docScript, objects ) {
 			if(typeof docScript == 'string'){
 				docScript = {src: docScript}
 			}
@@ -59,15 +59,55 @@ steal.then(function() {
 				return;
 			}
 			var script = {
-				type: "script",
-				name: docScript.src
-			}
+					type: "script",
+					name: docScript.src
+				},
+				scope = script,
+				comments,
+				type;
+			
 			print("  " + script.name);
-			DocumentJS.objects[script.name] = script;
-			var pairs = source.match(this.group);
+			objects[script.name] = script;
+			
+			// handle markdown docs
+			if(/\.md$/.test(docScript.src)){
+				type = DocumentJS.Type.create(source, "", scope, objects, 'page', docScript.src.match(/([^\/]+)\.md$/)[1]  );
+				if ( type ) {
+
+					objects[type.name] = type;
+					//get the new scope if you need it
+					// if we don't have a type, assume we can have children
+					scope = !type.type || DocumentJS.types[type.type].hasChildren ? type : scope;
+					type.src = docScript.src;
+				}
+				return;
+			}
+			
+			comments = this.getComments(source);
+			
 			//clean comments
-			var scope = script;
-			if (!pairs ) return;
+			for(var i =0 ; i < comments.length; i++){
+				var comment = comments[i];
+				
+				type = DocumentJS.Type.create(comment.comment, 
+							comment.code, scope, objects);
+				if ( type ) {
+					objects[type.name] = type;
+					//get the new scope if you need it
+					// if we don't have a type, assume we can have children
+					scope = !type.type || DocumentJS.types[type.type].hasChildren ? type : scope;
+					
+					type.src = docScript.src;
+				}
+			}
+			
+
+		},
+		// 
+		getComments : function(source){
+			var pairs = source.match(this.group) || [],
+				comments = [];
+			//clean comments
 			for ( var i = 0; i < pairs.length; i++ ) {
 				var splits = pairs[i].match(this.splitter),
 					comment = splits[1].replace(/\r?\n(\s*\*+)?/g, '\n');
@@ -75,22 +115,17 @@ steal.then(function() {
 				//print(splits[1].replace(/^[^\w@]*/,''))
 				var code = splits[2],
 					lines = comment.split("\n");
-					this.removeIndent(lines);
-					//print(removeSpace)
-					comment = lines.join("\n")
+				
+				this.removeIndent(lines);
+				comment = lines.join("\n");
 
-					var type = DocumentJS.Type.create(comment, code, scope, DocumentJS.objects);
-
-				if ( type ) {
-
-					DocumentJS.objects[type.name] = type;
-					//get the new scope if you need it
-					// if we don't have a type, assume we can have children
-					scope = !type.type || DocumentJS.types[type.type].hasChildren ? type : scope;
-				}
-
+				// probably want line numbers and such
+				comments.push({
+					comment: comment,
+					code: code
+				})
 			}
-
+			return comments;
 		}
 	};
 

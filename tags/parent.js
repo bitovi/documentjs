@@ -26,10 +26,11 @@ steal.then(function() {
 		 */
 		DocumentJS.tags.parent = {
 			add: function( line ) {
-				var m = line.match(/^\s*@parent\s*([\w\.\/\$]*)\s*([\w]*)/)
+				var m = line.match(/^\s*@parent\s*([\w\.\/\$]*)\s*([\d]*)/)
 				var name = m[1],
 					Class = DocumentJS.Page,
-					inst = DocumentJS.objects[name]
+					inst = DocumentJS.objects[name],
+					pos = m[2] ? parseInt(m[2]) : null
 
 					if (!inst ) {
 						inst = DocumentJS.objects[name] = {
@@ -39,7 +40,11 @@ steal.then(function() {
 					if (!this.parents ) {
 						this.parents = [];
 					}
-					this.parents.push(inst.name);
+					this.parents.unshift(inst.name);
+					if(pos != null){
+						this.order = pos;
+					}
+					//this.parents.push(inst.name);
 
 				if (!inst.children ) {
 					inst.children = [];
