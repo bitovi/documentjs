@@ -72,12 +72,12 @@ steal.then(function() {
      * 
 	 */
 	DocumentJS.types = {};
-},'//documentjs/types/type')
-.then('//documentjs/types/add')
-.then('//documentjs/types/attribute')
-.then('//documentjs/types/class')
-.then('//documentjs/types/function')
-.then('//documentjs/types/page')
-.then('//documentjs/types/prototype')
-.then('//documentjs/types/script')
-.then('//documentjs/types/static');
+},'documentjs/types/type.js')
+.then('documentjs/types/add.js')
+.then('documentjs/types/attribute.js')
+.then('documentjs/types/class.js')
+.then('documentjs/types/function.js')
+.then('documentjs/types/page.js')
+.then('documentjs/types/prototype.js')
+.then('documentjs/types/script.js')
+.then('documentjs/types/static.js');

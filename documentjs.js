@@ -5,10 +5,10 @@ if ( steal.overwrite ) {
 	steal.send = steal;
 }
 
-steal(	'//steal/generate/ejs',
-		'//documentjs/json', 
-		'//documentjs/showdown')
-	.plugins('steal/build')
+steal(	'steal/generate/ejs.js',
+		'documentjs/json.js', 
+		'documentjs/showdown.js')
+	.then('steal/build')
 .then( function( $ ) {
 	
 	//if we already have DocumentJS, don't create another, this is so we can document documentjs
@@ -438,9 +438,9 @@ steal(	'//steal/generate/ejs',
 	delete JSONparse;
 
 
-}).then('//documentjs/distance')
-	.then('//documentjs/searchdata')
-	.then('//documentjs/tags/tags')
-	.then('//documentjs/types/types').then(function(){
+}).then('documentjs/distance.js')
+	.then('documentjs/searchdata.js')
+	.then('documentjs/tags')
+	.then('documentjs/types').then(function(){
 		steal.send = undefined;
 	});
