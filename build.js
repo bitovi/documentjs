@@ -8,7 +8,7 @@ steal.File("jmvcdoc/summary.ejs").copyTo("documentjs/jmvcdoc/summary.ejs");
 steal.File("jmvcdoc/images").copyTo("documentjs/jmvcdoc/images");
 
 // now pluginify, and move everything to work
-load('steal/rhino/steal.js');
+load('steal/rhino/rhino.js');
 
 steal('//steal/build/pluginify/pluginify', function(s){
 	steal.build.pluginify("documentjs", {
@@ -28,7 +28,7 @@ steal.File("steal/rhino/js.jar").copyTo("documentjs/dist/steal/rhino/js.jar");
 steal.File("steal/rhino/loader.bat").copyTo("documentjs/dist/steal/rhino/loader.bat");
 steal.File("steal/rhino/loader").copyTo("documentjs/dist/steal/rhino/loader");
 steal.File("steal/rhino/utils.js").copyTo("documentjs/dist/steal/rhino/utils.js");
-steal.File("steal/rhino/steal.js").copyTo("documentjs/dist/steal/rhino/steal.js");
+steal.File("steal/rhino/rhino.js").copyTo("documentjs/dist/steal/rhino/rhino.js");
 steal.File("steal/steal.production.js").copyTo("documentjs/dist/steal/steal.production.js");
 
 // copy jmvcdoc stuff
