@@ -2,7 +2,7 @@
 
 load('steal/rhino/rhino.js');
 
-steal.plugins( 'steal/test','documentjs' ).then( function( s ) {
+steal.then( 'steal/test','documentjs' ).then( function( s ) {
 	var createStuff = function(){
 		var objects = {};
 		var fooBar = DocumentJS.Type.create("@class Foo.Bar","",null, objects);
