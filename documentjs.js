@@ -323,6 +323,10 @@ steal(	'steal/generate/ejs.js',
 							})
 						}
 					});
+				});
+				collection.unshift({
+					src: 'steal/steal.js',
+					text:  readFile('steal/steal.js')  // this might need to change
 				})
 			}
 			else if (/\.js$/.test(file)) { // load just this file
