@@ -30,6 +30,12 @@ steal.then(function() {
 				description: ""
 			}
 			return ["default", 'construct'];
+		},
+
+		done : function(){
+			if(this.construct ){
+				this.construct = DocumentJS.converter.makeHtml(this.construct)
+			}
 		}
 	};
 })
