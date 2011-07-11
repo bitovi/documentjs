@@ -50,7 +50,6 @@ steal.then(function() {
 	/*
 	 * Possible scopes for @add.
 	 */
-		parent: /script/,
 		useName: true,
 		hasChildren: true
 	})

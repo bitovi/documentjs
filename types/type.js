@@ -24,24 +24,30 @@ steal.then(function() {
 		 * @param {Object} scope
 		 * @return {Object} type
 		 */
-		create: function( comment, code, scope ) {
+		create: function( comment, code, scope , objects,  type, name) {
 			var check = comment.match(/^\s*@(\w+)/),
-				type, props
+				props;
 
+			if(! type ) {
 				if (!(type = this.hasType(check ? check[1] : null))) { //try code
 					type = this.guessType(code);
 				}
-
+	
 				if (!type ) {
 					return null;
 				}
+			} else if(typeof type === 'string'){
+				type = DocumentJS.types[type.toLowerCase()]
+			}
 
-				var nameCheck = comment.match(/^\s*@(\w+)[ \t]+([\w\.\$]+)/m)
+			
+
+			var nameCheck = comment.match(/^\s*@(\w+)[ \t]+([\w\.\$]+)/m)
 
 			
 			props = type.code(code)
 			
-			if (!props && !nameCheck ) {
+			if (!props && !nameCheck && !name) {
 				return null;
 			}
 
@@ -50,6 +56,9 @@ steal.then(function() {
 			}
 			if ( nameCheck && nameCheck[2] && nameCheck[1].toLowerCase() == type.type ) {
 				props.name = nameCheck[2]
+			}
+			if(name){
+				props.name = name;
 			}
 			if ( type.init ) {
 				return type.init(props, comment)
@@ -60,29 +69,42 @@ steal.then(function() {
 				props.type = type.type;
 			}
 			if ( props.name ) {
-				var parent = this.getParent(type, scope)
+				
+				var parent = this.getParent(type, scope, objects)
 				//print("    p="+(parent ? parent.name+":"+parent.type : ""))
 				//if we are adding to an unlinked parent, add parent's name
-				if (!parent.type || DocumentJS.types[parent.type].useName ) {
-					props.name = parent.name + "." + props.name
+				
+				// if we have a parent ...
+				if(parent){
+					
+					if (!parent.type || DocumentJS.types[parent.type].useName ) {
+						props.name = parent.name + "." + props.name
+					}
+					if(props.name === 'toString'){
+						// can't have an empty toString
+						return null;
+					}
+					
+					// only assign if parent isn't 
+					
+					if(!props.parents){
+						props.parents = [];
+					}
+					props.parents.unshift(parent.name);
+					
+					if ( objects[props.name] ) {
+						var newProps = props;
+						props = objects[props.name];
+						DocumentJS.extend(props, newProps);
+					}
+					if (!parent.children ) {
+						parent.children = [];
+					}
+					parent.children.push(props.name)
 				}
-				if(props.name === 'toString'){
-					// can't have an empty toString
-					return null;
-				}
-				props.parent = parent.name;
-				if ( DocumentJS.objects[props.name] ) {
-					var newProps = props;
-					props = DocumentJS.objects[props.name];
-					DocumentJS.extend(props, newProps);
-				}
-				if (!parent.children ) {
-					parent.children = [];
-				}
-				parent.children.push(props.name)
-
-				//objects[props.name] = props;
+				
 				this.process(props, comment, type)
+				
 				return props
 			}
 		},
@@ -92,15 +114,15 @@ steal.then(function() {
 		 * @param {Object} scope
 		 * @return {Object} parent
 		 */
-		getParent: function( type, scope ) {
+		getParent: function( type, scope, objects ) {
 			if (!type.parent ) {
-				return scope;
+				return;
 			}
 
 
 			while ( scope && scope.type && !type.parent.test(scope.type) ) {
 
-				scope = DocumentJS.objects[scope.parent];
+				scope = objects[scope.parents ? scope.parents[0] : ""];
 
 			}
 			return scope;

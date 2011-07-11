@@ -1,14 +1,16 @@
 if ( steal.overwrite ) {
-	load('steal/rhino/steal.js');
+	load('steal/rhino/rhino.js');
 } else {
 	//what steal should send to functions.  This says send steal instead of jQuery.
 	steal.send = steal;
 }
 
-steal(	'//steal/generate/ejs',
-		'//documentjs/json', 
-		'//documentjs/showdown')
+steal(	'steal/generate/ejs.js',
+		'documentjs/json.js', 
+		'documentjs/showdown.js')
+	.then('steal/build')
 .then( function( $ ) {
+	
 	//if we already have DocumentJS, don't create another, this is so we can document documentjs
 	if(typeof DocumentJS != 'undefined'){
 		return;
@@ -16,7 +18,7 @@ steal(	'//steal/generate/ejs',
 	
 	/**
 	 * @class DocumentJS
-	 * @tag core, documentation
+	 * @parent index 3
      * There are several reasons why documentation is important:
      * 
      * * As apps grow, source code becomes complex and difficult to maintain.
@@ -236,6 +238,7 @@ steal(	'//steal/generate/ejs',
 	DocumentJS = function(scripts, options) {
 		// an html file, a js file or a directory
 		options = options || {};
+		
 		if(typeof scripts == 'string'){
 			if(!options.out){
 				if(/\.html?$|\.js$/.test(scripts)){
@@ -247,6 +250,21 @@ steal(	'//steal/generate/ejs',
 
 			scripts = DocumentJS.getScripts(scripts)
 		}
+		// an array of folders
+		if(options.markdown){
+			for(var i =0 ; i < options.markdown.length; i++){
+				DocumentJS.files(options.markdown[i], function(path, f){
+					if(/\.md$/.test(f)){
+					  scripts.push( path )
+				    }
+				})
+			}
+			
+			
+			
+		}
+		// if options, get .md files ...
+		
 		
  		//all the objects live here, have a unique name
 		DocumentJS.objects = {};
@@ -254,61 +272,72 @@ steal(	'//steal/generate/ejs',
 		//create each Script, which will create each class/constructor, etc
 		print("PROCESSING SCRIPTS\n")
 		for ( var s = 0; s < scripts.length; s++ ) {
-			DocumentJS.Script.process(scripts[s])
+			DocumentJS.Script.process(scripts[s], DocumentJS.objects)
 		}
+		
+		
 		print('\nGENERATING DOCS -> '+options.out+'\n')
 		
 		// generate individual JSONP forms of individual comments
 		DocumentJS.generate(options)
 
 		// make combined search data
-		DocumentJS.searchData(options )
+		DocumentJS.searchData(DocumentJS.objects,options )
 
 		//make summary page (html page to load it all)
 		DocumentJS.summaryPage(options);
 		
 	};
 	
-	var extend = steal.extend,
+	var extend = function( d, s ) {
+			for ( var p in s ) d[p] = s[p];
+			return d;
+		},
 		build = steal.build,
 		docJS = DocumentJS;
 	
 	extend(docJS, {
+		files : function(path, cb){
+			var getJSFiles = function(dir){
+			  new steal.File(dir).contents(function(f, type){
+				if(type == 'directory'){
+			       getJSFiles(dir+"/"+f)
+			    }else {
+				  cb((dir+"/"+f).replace('\\', '/'), f)
+			    }
+			  })
+			};
+			getJSFiles(path);
+		},
 		// gets scripts from a path
 		getScripts : function(file){
-			var scripts = [];
+			
+			var collection = [];
 			if (/\.html?$/.test(file)) { // load all the page's scripts
-
-				steal.plugins('steal/build', function(steal){
-
-					steal.build.open(file).each(function(script, text, i){
+				steal.build.open(file, function(scripts){
+					scripts.each(function(script, text){
 						if (text && script.src) {
-							scripts.push({
+							collection.push({
 								src: script.src,
 								text:  text
 							})
 						}
 					});
-				});
+				})
 			}
 			else if (/\.js$/.test(file)) { // load just this file
-				scripts.push(file)
+				collection.push(file)
 			}
 			else { // assume its a directory
-				var getJSFiles = function(dir){
-				  new steal.File(dir).contents(function(f, type){
-					if(type == 'directory'){
-				       getJSFiles(dir+"/"+f)
-				    }else if(/\.js$/.test(f)){
-
-					  scripts.push( (dir+"/"+f).replace('\\', '/') )
+				this.files(file, function(path, f){
+					if(/\.js$/.test(f)){
+					  collection.push( path )
 				    }
-				  })
-				};
-				getJSFiles(file);
+				})
+				
+				
 			}
-					
-			return scripts;
+			return collection;
 		},
 		generate : function(options){
 
@@ -409,7 +438,9 @@ steal(	'//steal/generate/ejs',
 	delete JSONparse;
 
 
-}).then('//documentjs/distance', 
-		'//documentjs/searchdata',
-		'//documentjs/tags/tags', 
-		'//documentjs/types/types');
+}).then('documentjs/distance.js')
+	.then('documentjs/searchdata.js')
+	.then('documentjs/tags')
+	.then('documentjs/types').then(function(){
+		steal.send = undefined;
+	});

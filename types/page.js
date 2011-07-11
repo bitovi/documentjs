@@ -48,7 +48,7 @@ steal.then(function() {
 	/*
 	 * Possible scopes for @page.
 	 */
-		parent: /script|page/,
+		parent: /page/,
 		useName: false,
 		hasChildren: true
 	})

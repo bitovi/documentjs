@@ -25,4 +25,16 @@ steal.then(function() {
 	
 	DocumentJS.tags = {};
 
-}).then('//documentjs/tags/alias', '//documentjs/tags/author', '//documentjs/tags/codeend', '//documentjs/tags/codestart', '//documentjs/tags/constructor', '//documentjs/tags/demo', '//documentjs/tags/download', '//documentjs/tags/hide', '//documentjs/tags/iframe', '//documentjs/tags/inherits', '//documentjs/tags/page', '//documentjs/tags/param', '//documentjs/tags/parent', '//documentjs/tags/plugin', '//documentjs/tags/return', '//documentjs/tags/scope', '//documentjs/tags/tag', '//documentjs/tags/test', '//documentjs/tags/type', '//documentjs/tags/image')
+}).then('documentjs/tags/alias.js', 
+'documentjs/tags/author.js', 
+'documentjs/tags/codeend.js', 
+'documentjs/tags/codestart.js', 
+'documentjs/tags/constructor.js', 
+'documentjs/tags/demo.js', 'documentjs/tags/download.js',
+ 'documentjs/tags/hide.js', 
+ //'//documentjs/tags/iframe.js', 
+ 'documentjs/tags/inherits.js', 'documentjs/tags/page.js', 
+ 'documentjs/tags/param.js', 'documentjs/tags/parent.js',
+  'documentjs/tags/plugin.js', 'documentjs/tags/return.js', 
+  'documentjs/tags/scope.js', 'documentjs/tags/tag.js', 'documentjs/tags/test.js', 
+  'documentjs/tags/type.js', 'documentjs/tags/image.js')

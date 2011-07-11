@@ -47,7 +47,7 @@ steal.then(function() {
 	/*
 	 * Possible scopes for @static.
 	 */
-		parent: /script|class/,
+		parent: /class/,
 		useName: true,
 		hasChildren: true
 	})
