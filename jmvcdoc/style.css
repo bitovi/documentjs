@@ -166,7 +166,7 @@ h5 {
     /*padding: 0 20px 0 0;*/
 	margin:0;
 }
-#left {
+#nav {
     width: 300px;
 	min-height:10px;
     float: left;
@@ -175,7 +175,7 @@ h5 {
     overflow: auto;
     margin-right: 20px;
 }
-#left a {
+#nav a {
     display: block;
 	padding: 5px;
 	text-decoration: none;
@@ -215,35 +215,35 @@ h5 {
     /*background-color: #3C3D32;*/
 	background-color:rgb(182,220,235);
 }
-#left .selected {
+#nav .selected {
 	font-size:17px;
 	font-weight:bold;
 	/*background-color: #96A84A;*/
 	background-color:rgb(210,217,136);
 	/*border-top: solid 1px #AABF54*/
 }
-#left #selected .spacer {
+#nav #selected .spacer {
 	height:10px;
 	background:white;
 }
-#left #selected {
+#nav #selected {
 	margin:0 0 10px 0;
 	background-color:rgb(210,217,136);
 }
-#left #selected .content {
+#nav #selected .content {
 	margin:0 10px;
 	clear:both;
 }
-#left #selected .content a {
+#nav #selected .content a {
 	padding:0;
 }
-#left .prototype, #left .static {
+#nav .prototype, #nav .static {
 	color: gray;
 }
-#left .class, #left .constructor {
+#nav .class, #nav .constructor {
 	font-weight: bold;
 }
-#left .attribute {
+#nav .attribute {
 	color: red;
 }
 .remove {
@@ -256,7 +256,7 @@ h5 {
     height: 18px;
     background-image: url('images/sidebar_top_close.png');
 }
-#left #results a.picked, #left #page_results a.picked {
+#nav #results a.picked, #nav #page_results a.picked {
 	background-color: #AAD1E1;
 	/*background-color:rgb(182,220,235);*/
 }
