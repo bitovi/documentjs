@@ -1,4 +1,7 @@
 steal.then(function() {
+	var typeCheckReg = /^\s*@(\w+)/,
+		nameCheckReg = /^\s*@(\w+)[ \t]+([\w\.\$]+)/m,
+		doubleAt = /@@/g;
 	/**
 	 * @class
 	 * @tag documentation
@@ -25,7 +28,7 @@ steal.then(function() {
 		 * @return {Object} type
 		 */
 		create: function( comment, code, scope , objects,  type, name) {
-			var check = comment.match(/^\s*@(\w+)/),
+			var check = comment.match(typeCheckReg),
 				props;
 
 			if(! type ) {
@@ -42,7 +45,7 @@ steal.then(function() {
 
 			
 
-			var nameCheck = comment.match(/^\s*@(\w+)[ \t]+([\w\.\$]+)/m)
+			var nameCheck = comment.match(nameCheckReg)
 
 			
 			props = type.code(code)
@@ -249,7 +252,7 @@ steal.then(function() {
 					else {
 
 						//clean up @@abc becomes @abc
-						line = line.replace(/@@/g, "@");
+						line = line.replace(doubleAt, "@");
 
 						if ( lastType ) {
 							lastType.addMore.call(props, line, curData)

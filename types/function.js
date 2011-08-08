@@ -84,7 +84,7 @@ steal.then(function() {
 	/*
 	 * Possible scopes for @function.
 	 */
-		parent: /static|proto|class/,
+		parent: /static|proto|class|page/,
 		useName: false
 	})
 })

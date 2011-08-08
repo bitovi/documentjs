@@ -1,4 +1,8 @@
 steal.then(function() {
+	var ignoreCheck = /\@documentjs-ignore/,
+		commentReg = /\r?\n(\s*\*+)?/g,
+		spaceReg = /\S/g;
+	
 	/**
 	 * Represents a file.
 	 * Breaks up file into comment and code parts.
@@ -10,7 +14,7 @@ steal.then(function() {
 		// returns the min intented amount for these lines.
 		minSpace : function(lines){
 			var removeSpace = Infinity,
-				noSpace = /\S/g,
+				noSpace = spaceReg,
 				match;
 				
 			for ( l = 0; l < lines.length; l++ ) {
@@ -55,7 +59,7 @@ steal.then(function() {
 			var source = docScript.text || readFile(docScript.src);
 			
 			//check if the source has @documentjs-ignore
-			if (/\@documentjs-ignore/.test(source) ) {
+			if (ignoreCheck.test(source) ) {
 				return;
 			}
 			var script = {
@@ -106,11 +110,12 @@ steal.then(function() {
 		// 
 		getComments : function(source){
 			var pairs = source.match(this.group) || [],
-				comments = [];
+				comments = [],
+				len = pairs.length;
 			//clean comments
-			for ( var i = 0; i < pairs.length; i++ ) {
+			for ( var i = 0; i < len; i++ ) {
 				var splits = pairs[i].match(this.splitter),
-					comment = splits[1].replace(/\r?\n(\s*\*+)?/g, '\n');
+					comment = splits[1].replace(commentReg, '\n');
 
 				//print(splits[1].replace(/^[^\w@]*/,''))
 				var code = splits[2],
