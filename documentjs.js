@@ -45,7 +45,7 @@ steal(	'steal/generate/ejs.js',
 	 * 
 	 * @codestart
 	 * /*
-     *  * @@page crm CRM
+     *  * @@page index CRM
      *  * @@tag home
      *  *
      *  * ###Little CRM
