@@ -45,7 +45,7 @@ steal(	'steal/generate/ejs.js',
 	 * 
 	 * @codestart
 	 * /*
-     *  * @@page crm CRM
+     *  * @@page index CRM
      *  * @@tag home
      *  *
      *  * ###Little CRM
@@ -247,7 +247,7 @@ steal(	'steal/generate/ejs.js',
 					options.out = scripts+"/docs";
 				}
 			}
-			new java.io.File(options.out).mkdir();
+			steal.File(options.out).mkdir();
 			scripts = DocumentJS.getScripts(scripts)
 		}
 		// an array of folders
