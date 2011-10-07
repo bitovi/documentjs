@@ -16,7 +16,7 @@ steal.then(function() {
 	 */
 	DocumentJS.tags.image = {
 		add: function( line ) {
-			var m = line.match(/^\s*@image\s*([\w\.\/]*)\s*([\w]*)\s*([\w]*)\s*(.*)/)
+			var m = line.match(/^\s*@image\s*([^\s]+)\s*([\w]*)\s*([\w]*)\s*(.*)/)
 
 			if ( m ) {
 				var src = m[1] ? m[1].toLowerCase() : '';
