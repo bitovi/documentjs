@@ -288,15 +288,22 @@ h5 {
 }
 .remove {
 	float: right;
-	
-	display: block;
-	
+	display: block;	
     width: 16px;
     text-align: center;
     height: 16px;
     background-image: url('images/sidebar_top_close.png');
     margin: 1px -4px 0 0;
     opacity: 0.5;
+}
+.jmvcdoc_search {
+	position:relative;
+}
+.jmvcdoc_search .remove{
+	display:none;
+	position:absolute;
+	top:4px;
+	right:11px;
 }
 .remove:hover {
   opacity: 1;
@@ -354,7 +361,7 @@ h1 span.subtitle {
 	clear:both;
 }
 pre {
-    background-color: #F9F7DF;
+	background-color: #F9F7DF;
     border: solid 1px white;
     margin: 13px 0;
     padding: 13px;
