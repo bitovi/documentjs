@@ -19,7 +19,7 @@ steal.then(function() {
 			var m = line.match(/^\s*@image\s*([^\s]+)\s*([\w]*)\s*([\w]*)\s*(.*)/)
 
 			if ( m ) {
-				var src = m[1] ? m[1].toLowerCase() : '';
+				var src = m[1] ? m[1] : '';
 				this.comment += "<img class='image_tag' ";
 				this.comment += "src='" + src + "' ";
 				m[2] ? this.comment += "width='" + m[2] + "' " : true;
