@@ -27,8 +27,10 @@ $.Controller('Jmvcdoc.Search',
 		this.input.attr('disabled', false)
 	},
 	"input keyup" : function(el, ev){
-		if(ev.keyCode != 9){
-			clearTimeout(this.searchTimer);
+		clearTimeout(this.searchTimer);
+		if((el.val() == "" && typeof $.route.attr('who') == 'undefined') || ev.keyCode == 27){
+			$.route.attrs({search: ""}, true);
+		} else if(el.val() != ""){
 			this.searchTimer = setTimeout(this.callback('search'),200)
 		}
 	},

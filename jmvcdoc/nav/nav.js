@@ -83,7 +83,7 @@ $.Controller('Jmvcdoc.Nav',
 		var res = Doc.findAll({
 			search: val
 		});
-		this.element.html("//jmvcdoc/nav/views/results.ejs", {
+		this.element.html("//documentjs/jmvcdoc/nav/views/results.ejs", {
 			list: res,
 			selected: [],
 			hide: false

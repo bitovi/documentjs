@@ -1,6 +1,7 @@
-steal('jquery','documentjs/jmvcdoc/demo',function($){
+steal('jquery','documentjs/jmvcdoc/demo', function($){
 	
-	
+	var disqusIsLoaded = false,
+	    commentsTimeout;
 	$(document).bind('docUpdated', function(ev, docData){
 		var target = $(ev.target);
 		
@@ -45,15 +46,26 @@ steal('jquery','documentjs/jmvcdoc/demo',function($){
 			imageTagEl.attr("src", absolutePath);
 		});
 		
-		// add disqus comments
-		// $("#disqus_thread").children().remove();
-		// if ( docData.name != "index" && typeof(COMMENTS_LOCATION) != "undefined" && $("#disqus_thread").length ) {
-			// window.disqus_title = docData.name;
-			// window.disqus_url = "http://" + location.host + "/docs/" + docData.name + ".html";
-			// window.disqus_identifier = docData.name;
-			// steal.insertHead(COMMENTS_LOCATION);
-		// }
-		
+		if ( docData.name != "index" && typeof(COMMENTS_LOCATION) != "undefined" && $("#disqus_thread").length ){
+			if(!disqusIsLoaded){
+				//window.disqus_developer = 1;
+	      window.disqus_identifier = window.location.hash;
+	      window.disqus_url = window.location.toString();
+				$.getScript(COMMENTS_LOCATION);
+				disqusIsLoaded = true;
+			}else{
+				clearTimeout(commentsTimeout);
+				commentsTimeout = setTimeout(function(){
+					DISQUS.reset({
+		        reload: true,
+		        config: function () {  
+		          this.page.identifier = window.location.hash;  
+		          this.page.url = window.location.toString();
+		        }
+		      });
+				}, 3000);
+			}
+		}
 	})
 	
 	

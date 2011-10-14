@@ -302,7 +302,7 @@ h5 {
 .jmvcdoc_search .remove{
 	display:none;
 	position:absolute;
-	top:4px;
+	top:3px;
 	right:11px;
 }
 .remove:hover {
