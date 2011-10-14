@@ -51,13 +51,19 @@ jQuery.Controller('DemoController',
 
 				self.find(".source_content").html("<pre><code class=\"javascript\"></code></pre>").find("code").text($.trim(standbySource)).highlight();
 			}
-
-
-			setTimeout(function() {
-				height = $body.outerHeight();
-				$iframe.height(height + 50);
-				self.find(".demo_content").height(height + 55);
-			}, 200)
+			var run = function(){
+				setTimeout(function() {
+					height = $body.outerHeight();
+					$iframe.height(height + 50);
+					self.find(".demo_content").height(height + 55);
+				}, 200)
+			}
+			if(this.contentWindow.jQuery){
+				this.contentWindow.jQuery(run)
+			} else {
+				run()
+			}
+			
 
 		})
 		$iframe.attr("src", demoSrc);
