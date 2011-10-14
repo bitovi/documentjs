@@ -158,6 +158,7 @@ h5 {
 	left:4px;
 	position:relative;
 	top:8px;
+	border:none;
 }
 #defaults a {
     color: white;
