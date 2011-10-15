@@ -187,7 +187,9 @@ steal(	'steal/generate/ejs.js',
 	 * and finally parsing each type's comments tag directives to produce a set of jsonp files (one per type) 
 	 * that are used by the document viewer (jmvcdoc) to render the documentation.
 	 * 
-	 * DocumentJS was written thinking of extensibility and it's very easy to add custom type/tag directives to handle your specific documentation needs.   
+	 * DocumentJS was written thinking of extensibility and it's very easy to add custom type/tag directives to handle your specific documentation needs.
+	 *
+	 * DocumentJS currently requires [stealjs Steal] to be included on the pages you are documenting.   
 	 * 
 	 * ###Type directives
 	 * 
