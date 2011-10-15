@@ -336,7 +336,7 @@ steal(	'steal/generate/ejs.js',
 			}
 			else { // assume its a directory
 				this.files(file, function(path, f){
-					if(/\.js$/.test(f)){
+					if(/\.(js|md)$/.test(f)){
 					  collection.push( path )
 				    }
 				})

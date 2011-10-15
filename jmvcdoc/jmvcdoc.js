@@ -23,8 +23,11 @@ steal(
 	//Doc.location = steal.root.join("jmvc/docs/")
 	
 	$.route.ready(false);
-	Doc.load(function(){
-		$.route.ready(true);
-	});
+	if(! steal.isRhino ){
+		Doc.load(function(){
+			$.route.ready(true);
+		});
+	}
+	
 	
   })
