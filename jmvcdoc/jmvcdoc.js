@@ -4,7 +4,7 @@ steal(
 	'documentjs/jmvcdoc/nav',
 	'documentjs/jmvcdoc/search',
 	'jquery/dom/route',
-	'steal/html/client.js'
+	'steal/html'
 	).then(function() {
 	var pageNameArr = window.location.href.match(/docs\/(.*)\.html/),
 		pageName = pageNameArr && pageNameArr[1];
