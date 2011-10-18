@@ -44,6 +44,7 @@ $.Controller('Jmvcdoc.Content',
 		
 	},
 	show : function(docData){
+		document.title = docData.title || docData.name.replace(/~/g,".");
 		this.element.html("//documentjs/jmvcdoc/content/views/" + docData.type.toLowerCase() + ".ejs", docData, DocumentationHelpers)
 			.trigger("docUpdated",[docData]);
 		$('#results a.open').removeClass('open')
