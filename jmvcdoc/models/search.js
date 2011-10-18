@@ -240,26 +240,26 @@ steal('jquery/class').then('./favorites.js',function(){
 
 $.Class('Search', {
 	sortFn: function( a, b ) {
-		var aHasOrder = a.order !== undefined,
-			bHasOrder = b.order !== undefined
-		if(aHasOrder && bHasOrder){
-			return a.order - b.order;
-		} 
-		if( aHasOrder ){
-			return -1;
-		}
-		if(bHasOrder){
-			return 1;
-		}
-		
-		
-		//if equal, then prototype, prototype properties go first
-		var aname = (a.title && a.name.indexOf(".") == -1 ? a.title : a.name).replace(".prototype", ".zzzaprototype").replace(".static", ".zzzbstatic").toLowerCase();
-		var bname = (b.title && b.name.indexOf(".") == -1 ? b.title : b.name).replace(".prototype", ".zzzaprototype").replace(".static", ".zzzbstatic").toLowerCase();
-
-
-		if ( aname < bname ) return -1
-		else aname > bname
+//		var aHasOrder = a.order !== undefined,
+//			bHasOrder = b.order !== undefined
+//		if(aHasOrder && bHasOrder){
+//			return a.order - b.order;
+//		} 
+//		if( aHasOrder ){
+//			return -1;
+//		}
+//		if(bHasOrder){
+//			return 1;
+//		}
+//		
+//		
+//		//if equal, then prototype, prototype properties go first
+//		var aname = (a.title && a.name.indexOf(".") == -1 ? a.title : a.name).replace(".prototype", ".zzzaprototype").replace(".static", ".zzzbstatic").toLowerCase();
+//		var bname = (b.title && b.name.indexOf(".") == -1 ? b.title : b.name).replace(".prototype", ".zzzaprototype").replace(".static", ".zzzbstatic").toLowerCase();
+//
+//
+//		if ( aname < bname ) return -1
+//		else aname > bname
 		return 1
 		return 0;
 	},
