@@ -49,6 +49,10 @@ $.Controller('Jmvcdoc.Content',
 			.trigger("docUpdated",[docData]);
 		$('#results a.open').removeClass('open')
 		$('#results a[href="'+location.hash+'"]').addClass('open');
+		
+		if(_gaq){
+			_gaq.push(['_trackPageview', document.title]);
+		}
 	}
 })
 
