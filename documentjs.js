@@ -301,13 +301,18 @@ steal(	'steal/generate/ejs.js',
 	extend(docJS, {
 		files : function(path, cb){
 			var getJSFiles = function(dir){
-			  new steal.File(dir).contents(function(f, type){
-				if(type == 'directory'){
-			       getJSFiles(dir+"/"+f)
-			    }else {
-				  cb((dir+"/"+f).replace('\\', '/'), f)
-			    }
-			  })
+			  var file = new steal.File(dir);
+			  if(file.isFile()) {
+				  cb(dir.replace('\\', '/'), dir);
+			  } else {
+				  file.contents(function(f, type){
+					if(type == 'directory'){
+				       getJSFiles(dir+"/"+f)
+				    }else {
+					  cb((dir+"/"+f).replace('\\', '/'), f);
+				    }
+				  });
+			  }
 			};
 			getJSFiles(path);
 		},
