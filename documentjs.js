@@ -320,7 +320,7 @@ steal(	'steal/generate/ejs.js',
 					scripts.each(function(script, text){
 						if (text && script.src) {
 							collection.push({
-								src: script.src,
+								src: script.rootSrc,
 								text:  text
 							})
 						}
@@ -373,6 +373,8 @@ steal(	'steal/generate/ejs.js',
 				}
 	
 			}
+			//print(commentTime);
+			//print(processTime)
 		},
 		// takes an object and returns how DocumentJS likes to save data
 		out: function() {
