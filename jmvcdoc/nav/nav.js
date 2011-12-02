@@ -3,6 +3,7 @@ steal('jquery/controller',
 	'jquery/view/ejs',
 	'documentjs/jmvcdoc/models/search.js',
 		'documentjs/jmvcdoc/resources/helpers.js',
+		'documentjs/jmvcdoc/tooltip.js',
 		'../style.css',function($){
 
 /**
@@ -97,8 +98,28 @@ $.Controller('Jmvcdoc.Nav',
 	"a mouseover": function( el ) {
 		this._highlight(el)
 	},
+	"#results a mouseover" : function(el){
+		var name = el.attr('data-name');
+		// track which tooltip we should be showing
+		this.showTooltip = name;
+		
+		Doc.findOne({
+			name: name
+		}, this.proxy(function(data){
+			
+			if(data.description && this.showTooltip == name){
+				$("#tooltip").show().tooltip({message: data.description, of:  el})
+			}
+			
+			
+			//console.log(data.description)
+		}))
+		
+	},
 	"a mouseout": function( el ) {
 		el.removeClass("highlight")
+		this.showTooltip = null;
+		$("#tooltip").hide()
 	},
 	_highlight: function( el ) {
 		if (!this._isInvalidMenuItem(el) ) {

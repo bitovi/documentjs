@@ -814,3 +814,11 @@ p.spaceabove {
 	display: inline;
 	font-size:10pt;
 }
+#tooltip {
+	background-color: rgb(182,220,235);
+	height: 16px;
+	padding: 5px;
+	border-top: solid 5px white;
+	border-bottom: solid 5px white;
+	border-right: solid 5px white;
+}

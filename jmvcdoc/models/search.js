@@ -1,5 +1,7 @@
 steal('jquery/class').then('./favorites.js',function(){
-	var data;
+	var data,
+		// a map of names to deferreds
+		findOneDeferreds = {};
 	
 	$.ajaxSetup({
 		converters: {
@@ -86,27 +88,38 @@ steal('jquery/class').then('./favorites.js',function(){
 						}
 					} 
 					
-				}				
-				
-				return $.ajax({
-					url: ( this.location || DOCS_LOCATION) + params.name.replace(/ /g, "_").replace(/&#46;/g, ".") + ".json",
-					success: function(data){
-						success(data);
-						
+				}
+				var def = findOneDeferreds[params.name]
+				// check if we are already requesting
+				if(def) {
+					def.done(success);
+					def.fail(error);
+					return def;
+				} else {
+					def = findOneDeferreds[params.name] = $.Deferred();
+					def.done(success);
+					def.fail(error);
+					def.done(function(data){
 						if(window.localStorage && window.JMVCDOC_TIMESTAMP){
 							data.timestamp = JMVCDOC_TIMESTAMP;
 							setTimeout(function(){
 								window.localStorage["jmvcDoc"+params.name] = $.toJSON(data)
-							},1000)
+								delete findOneDeferreds[params.name];
+							},10)
 							
 						}
-						
-						
-					},
-					error: error,
-					jsonpCallback: "C",
-					dataType: "jsonp addFavorites"
-				});
+					});
+					$.ajax({
+						url: ( this.location || DOCS_LOCATION) + params.name.replace(/ /g, "_")
+							.replace(/&#46;/g, ".") + ".json",
+						error: function(){
+							def.reject.apply(def, arguments)
+						},
+						dataType: "script"
+					});
+					
+					return def;
+				}
 			}
 			
 			var res;
@@ -116,6 +129,13 @@ steal('jquery/class').then('./favorites.js',function(){
 			if( res ) {
 				return new this(res);
 			}
+		},
+		foundOne : function(data){
+			data.isFavorite = Favorites.isFavorite(data)
+			
+			// look up and resolve deferred ...
+			var def = findOneDeferreds[data.name];
+			def.resolve(data);
 		},
 		/**
 		 * Used for search
@@ -280,5 +300,5 @@ $.Class('Search', {
 	}
 }, {})
 	
-	
-})
+	window.c = Doc.foundOne;
+});

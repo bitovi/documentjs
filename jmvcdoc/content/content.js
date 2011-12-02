@@ -54,6 +54,6 @@ $.Controller('Jmvcdoc.Content',
 			_gaq.push(['_trackPageview', document.title]);
 		}
 	}
-})
+});
 
 });
