@@ -99,7 +99,6 @@ DocumentationHelpers = {
 	},
 	source : function(comment){
 		var matches = comment.src.match(/([^\/]+)\/(.+)/);
-		console.log(matches)
 		return DOCS_SRC_MAP[matches[1]]+"/blob/master/"+matches[2]+"#L"+comment.line
 	}
 }
