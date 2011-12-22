@@ -14,7 +14,7 @@ steal('jquery/controller', 'mxui/layout/positionable', function(){
 		}
 	})
 	
-	$('<div id="tooltip"/>').appendTo(document.body).tooltip();
+	//$('<div id="tooltip"/>').appendTo(document.body).tooltip();
 	
 	
 })

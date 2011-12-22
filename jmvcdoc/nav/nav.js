@@ -108,7 +108,7 @@ $.Controller('Jmvcdoc.Nav',
 		}, this.proxy(function(data){
 			
 			if(data.description && this.showTooltip == name){
-				$("#tooltip").show().tooltip({message: data.description, of:  el})
+				//$("#tooltip").show().tooltip({message: data.description, of:  el})
 			}
 			
 			
@@ -119,7 +119,7 @@ $.Controller('Jmvcdoc.Nav',
 	"a mouseout": function( el ) {
 		el.removeClass("highlight")
 		this.showTooltip = null;
-		$("#tooltip").hide()
+		//$("#tooltip").hide()
 	},
 	_highlight: function( el ) {
 		if (!this._isInvalidMenuItem(el) ) {
