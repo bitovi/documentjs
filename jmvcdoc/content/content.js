@@ -5,7 +5,6 @@ steal('jquery/controller',
 	
 	'documentjs/jmvcdoc/resources/helpers.js',
 	'documentjs/jmvcdoc/models/search.js',
-	'../style.css',
 	'./doc_updated.js').then(
 
 	'./views/attribute.ejs',

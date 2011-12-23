@@ -4,7 +4,7 @@ steal('jquery/controller',
 	'documentjs/jmvcdoc/models/search.js',
 		'documentjs/jmvcdoc/resources/helpers.js',
 		'documentjs/jmvcdoc/tooltip.js',
-		'../style.css',function($){
+		function($){
 
 /**
  * @class Jmvcdoc.Nav
@@ -92,7 +92,8 @@ $.Controller('Jmvcdoc.Nav',
 		this.element.html("//documentjs/jmvcdoc/nav/views/results.ejs", {
 			list: res,
 			selected: [],
-			hide: false
+			hide: false,
+			hasStaticOrPrototype : true
 		}, DocumentationHelpers);
 	},
 	"a mouseover": function( el ) {
