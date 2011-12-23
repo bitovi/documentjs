@@ -21,6 +21,13 @@ $.Controller('Jmvcdoc.Nav',
 /* @Prototype */
 {
 	"{$.route} who set" : function(clientState, ev, val){
+		if(Doc.dataDeferred.isResolved()){
+			this.navFor(val)
+		} else {
+			Doc.dataDeferred.then(this.proxy('navFor',val))
+		}
+	},
+	navFor : function(val){
 		// write out who this is
 		var item = Doc.findOne({
 			name: val
@@ -74,7 +81,6 @@ $.Controller('Jmvcdoc.Nav',
 		
 		// highlight selected guy ...
 		steal.html.ready();
-		
 	},
 	".remove click" : function(el, ev){
 		ev.preventDefault();
@@ -86,6 +92,13 @@ $.Controller('Jmvcdoc.Nav',
 		}
 	},
 	"{$.route} search set" : function(clientState, ev, val){
+		if(Doc.dataDeferred.isResolved()){
+			this.searchFor(val)
+		} else {
+			Doc.dataDeferred.then(this.proxy('searchFor',val))
+		}
+	},
+	searchFor : function(val){
 		var res = Doc.findAll({
 			search: val
 		});

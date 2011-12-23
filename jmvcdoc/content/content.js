@@ -29,9 +29,6 @@ $.Controller('Jmvcdoc.Content',
 },
 /* @Prototype */
 {
-	init : function(){
-		
-	},
 	"{clientState} who set" : function(clientState, ev, val){
 		this._currentPage = val;
 		// write out who this is
@@ -39,7 +36,13 @@ $.Controller('Jmvcdoc.Content',
 			.scrollTop(0);
 		Doc.findOne({
 			name: val
-		}, this.callback('show'));
+		}, this.proxy(function(docData){
+			if(Doc.dataDeferred.isResolved()){
+				this.show(docData)
+			} else {
+				Doc.dataDeferred.then(this.proxy('show',docData))
+			}
+		}));
 		
 	},
 	show : function(docData){

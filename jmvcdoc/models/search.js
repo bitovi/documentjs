@@ -12,8 +12,11 @@ steal('jquery/class').then('./favorites.js',function(){
 		}
 	});
 	
+	
+	
 	$.Class("Doc",{
 		location : null,
+		dataDeferred : $.Deferred(),
 		load: function( success ) {
 			// see if we have latest in localStorage
 			
@@ -22,8 +25,11 @@ steal('jquery/class').then('./favorites.js',function(){
 				if(json){
 					var data = $.parseJSON(json);
 					this._data = data;
-					success(data)
-					return;
+					success(data);
+					var d =$.Deferred();
+					d.resolve(data);
+					Doc.dataDeferred.resolve()
+					return d;
 				} else {
 					//clear everything that starts with jmvcDoc, try to remove the old data ...
 					i = 0;
@@ -39,13 +45,17 @@ steal('jquery/class').then('./favorites.js',function(){
 				}
 				
 			}
-			return $.ajax({
+			var d = $.ajax({
 				url:  ( this.location || DOCS_LOCATION) + "searchData.json" ,
 				success: this.callback(['setData', success]),
 				jsonpCallback: "C",
 				dataType: "jsonp",
 				cache: true
-			});
+			})
+			d.then(function(){
+				Doc.dataDeferred.resolve()
+			})
+			return d;;
 	
 		},
 		setData: function( data ) {
@@ -261,7 +271,9 @@ steal('jquery/class').then('./favorites.js',function(){
 			}).sort(Search.sortFn)
 		}
 	});
-	
+	if(! steal.isRhino ){
+		Doc.load(function(){});
+	}
 
 $.Class('Search', {
 	sortFn: function( a, b ) {
