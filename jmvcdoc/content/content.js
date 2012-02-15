@@ -52,8 +52,8 @@ $.Controller('Jmvcdoc.Content',
 		$('#results a.open').removeClass('open')
 		$('#results a[href="'+location.hash+'"]').addClass('open');
 		
-		if(_gaq){
-			_gaq.push(['_trackPageview', document.title]);
+		if(window._gaq){
+			window._gaq.push(['_trackPageview', document.title]);
 		}
 	}
 });
