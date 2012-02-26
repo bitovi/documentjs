@@ -27,24 +27,29 @@ steal.then(function() {
 		 * @param {Object} scope
 		 * @return {Object} type
 		 */
-		create: function( comment, code, scope, objects, type, name ) {
+		create: function( comment, code, scope, objects, defaultType, name ) {
 			
 			var firstLine = typeof comment == 'string' ? comment : comment[0],
 				check = firstLine.match(typeCheckReg),
-				props;
+				props,
+				type;
 
 			if (!type ) {
 				if (!(type = this.hasType(check ? check[1] : null))) { //try code
 					type = this.guessType(code);
 				}
-
+				if(!type){
+					type = defaultType;
+				}
 				if (!type ) {
 					return null;
 				}
-			} else if ( typeof type === 'string' ) {
+			}
+			
+			if ( typeof type === 'string' ) {
 				type = DocumentJS.types[type.toLowerCase()]
 			}
-
+			
 
 
 			var nameCheck = firstLine.match(nameCheckReg)
@@ -62,7 +67,7 @@ steal.then(function() {
 			if ( nameCheck && nameCheck[2] && nameCheck[1].toLowerCase() == type.type ) {
 				props.name = nameCheck[2]
 			}
-			if ( name ) {
+			if ( name && !props.name ) {
 				props.name = name;
 			}
 			// you are not going to process the comment tye typical way
