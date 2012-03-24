@@ -60,7 +60,7 @@ steal.then(function() {
 				if (!this.params ) {
 					this.params = {};
 				}
-				var parts = line.match(/\s*@param\s+(?:\{?([^}]+)\}?)?\s+([^\(\s]+(?:\([^\)]+\))?) ?(.*)?/);
+				var parts = line.match(/\s*@param\s+(?:\{?([^}]+)\}?)?\s+([^\(\s]+(?:\([^\)]+\)\]?)?) ?(.*)?/);
 				if (!parts ) {
 					print("LINE: \n" + line + "\n does not match @params {TYPE} NAME DESCRIPTION")
 					return;
@@ -69,19 +69,18 @@ steal.then(function() {
 				var n = parts.pop(),
 					optional = false,
 					defaultVal;
-				
 				//check if it has anything ...
-				var nameParts = n.match(/\[([\w\.\$]+)(?:=([^\]]*))?\]/)
+				var nameParts = n.match(/\[([\w\.\$\(\),]+)(?:=([^\]]*))?\]/)
 				if ( nameParts ) {
 					optional = true;
 					defaultVal = nameParts[2]
 					n = nameParts[1]
 				}
 				// check if parens 
-
-				var nameParts = n.match(/([^\(\s]+)(\([^\)]+\))/) 
-
+					
+				var nameParts = n.match(/([^\[\(\s]+)(\([^\)]+\))/) 
 				if ( nameParts && this.params[nameParts[1]]) {
+					
 					var order = this.params[nameParts[1]].order;
 					delete this.params[nameParts[1]];
 				}
