@@ -85,7 +85,7 @@ steal(	'steal/generate/ejs.js',
 	 * @codestart
      * /*
      *  * @@class Customer
-     *  * @@parent crm 
+     *  * @@parent index
      *  * @@constructor
      *  * Creates a new customer.
      *  * @@param {String} name
@@ -100,7 +100,7 @@ steal(	'steal/generate/ejs.js',
 	 * @codestart
      * /*
      *  * @@class Order
-     *  * @@parent crm 
+     *  * @@parent index
      *  * @@constructor
      *  * Creates a new order.
      *  * @@param {String} id
