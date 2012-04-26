@@ -20,7 +20,7 @@ steal.then(function() {
 	 */
 	DocumentJS.tags.iframe = {
 		add: function( line ) {
-			var m = line.match(/^\s*@iframe\s*([\w\.\/]*)\s*([\w]*)\s*(.*)/)
+			var m = line.match(/^\s*@iframe\s*([\-\w\.\/]*)\s*([\w]*)\s*(.*)/)
 
 			if ( m ) {
 				var src = m[1] ? m[1].toLowerCase() : '';

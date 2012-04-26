@@ -1,4 +1,4 @@
-steal('jquery','documentjs/jmvcdoc/demo', function($){
+steal('jquery','documentjs/jmvcdoc/demo', 'documentjs/jmvcdoc/iframe',function($){
 	
 	var disqusIsLoaded = false,
 	    commentsTimeout;
@@ -36,7 +36,7 @@ steal('jquery','documentjs/jmvcdoc/demo', function($){
 		
 
 		// hookup iframe ui
-		//$(".iframe_wrapper").iframe();
+		$(".iframe_wrapper").iframe();
 
 		// hookup demo ui
 		$(".demo_wrapper").demo();
