@@ -31,7 +31,7 @@ $.Controller('Jmvcdoc.Search',
 		if((el.val() == "" && typeof $.route.attr('who') == 'undefined') || ev.keyCode == 27){
 			$.route.attrs({ who : "index"}, true);
 		} else if(el.val() != ""){
-			this.searchTimer = setTimeout(this.callback('search'),200)
+			this.searchTimer = setTimeout(this.proxy('search'),200)
 		}
 	},
 	search : function(){

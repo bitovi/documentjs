@@ -39,7 +39,9 @@ steal('jquery','documentjs/jmvcdoc/demo', 'documentjs/jmvcdoc/iframe',function($
 		$(".iframe_wrapper").iframe();
 
 		// hookup demo ui
-		$(".demo_wrapper").demo();
+		$(".demo_wrapper").each(function(){
+			new candoc.tags.Demo(this)
+		});
 
 		// add absolute paths to image tags
 		$(".image_tag").each(function() {

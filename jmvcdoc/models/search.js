@@ -47,7 +47,7 @@ steal('jquery/class').then('./favorites.js',function(){
 			}
 			var d = $.ajax({
 				url:  ( this.location || DOCS_LOCATION) + "searchData.json" ,
-				success: this.callback(['setData', success]),
+				success: this.proxy(['setData', success]),
 				jsonpCallback: "C",
 				dataType: "jsonp",
 				cache: true
