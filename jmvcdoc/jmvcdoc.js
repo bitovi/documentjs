@@ -16,7 +16,7 @@ steal('documentjs/jmvcdoc/models/search.js',
 	$.route(":who", {who : "index"})("/search/:search");
 
 
-	$('#nav').jmvcdoc_nav();
-	$("#doc").jmvcdoc_content({clientState : $.route.data});
-	$("#search").jmvcdoc_search({clientState : $.route.data});
+	new Jmvcdoc.Nav('#nav');
+	new Jmvcdoc.Content("#doc",{clientState : $.route.data});
+	new Jmvcdoc.Search("#search",{clientState : $.route.data});
 });

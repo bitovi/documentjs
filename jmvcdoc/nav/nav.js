@@ -1,6 +1,6 @@
-steal('jquery/controller',
-	'jquery/lang/observe/delegate',
-	'jquery/view/ejs',
+steal('can/control',
+	'can/observe/delegate',
+	'can/view/ejs',
 	'documentjs/jmvcdoc/models/search.js',
 	'documentjs/jmvcdoc/resources/helpers.js',
 	function ($) {
@@ -10,7 +10,7 @@ steal('jquery/controller',
 		 *
 		 * listens for a history change, gets object it represents, and draws it ....
 		 */
-		$.Controller('Jmvcdoc.Nav',
+		can.Control('Jmvcdoc.Nav',
 			/* @Static */
 			{
 				defaults : {

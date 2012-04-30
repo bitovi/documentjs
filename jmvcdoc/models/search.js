@@ -1,4 +1,4 @@
-steal('jquery/class').then('./favorites.js',function(){
+steal('can/construct').then('./favorites.js',function(){
 	var data,
 		// a map of names to deferreds
 		findOneDeferreds = {};
@@ -14,7 +14,7 @@ steal('jquery/class').then('./favorites.js',function(){
 	
 	
 	
-	$.Class("Doc",{
+	can.Construct("Doc",{
 		location : null,
 		dataDeferred : $.Deferred(),
 		load: function( success ) {
@@ -47,7 +47,10 @@ steal('jquery/class').then('./favorites.js',function(){
 			}
 			var d = $.ajax({
 				url:  ( this.location || DOCS_LOCATION) + "searchData.json" ,
-				success: this.proxy(['setData', success]),
+				success: $.proxy(function(data){
+					this.setData(data)
+					success && success.apply(this, arguments)
+				}, this),
 				jsonpCallback: "C",
 				dataType: "jsonp",
 				cache: true
@@ -264,7 +267,7 @@ steal('jquery/class').then('./favorites.js',function(){
 		},
 		
 		children : function(){
-			var data = this.Class._data;
+			var data = this.constructor._data;
 			//get the child docs and their order ...
 			return $.map(this.childDocs || [], function(docName){
 				return new Doc( data[docName] );
@@ -275,7 +278,7 @@ steal('jquery/class').then('./favorites.js',function(){
 		Doc.load(function(){});
 	}
 
-$.Class('Search', {
+can.Construct('Search', {
 	sortFn: function( a, b ) {
 		var aHasOrder = a.order !== undefined,
 			bHasOrder = b.order !== undefined

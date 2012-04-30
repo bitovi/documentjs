@@ -18,7 +18,7 @@ steal(	'steal/generate/ejs.js',
 	
 	/**
 	 * @class DocumentJS
-	 * @parent index 3
+	 * @parent index 5
 	 * 
 	 * @description A documentation framework.
 	 * 
