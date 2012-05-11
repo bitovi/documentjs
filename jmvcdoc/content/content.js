@@ -1,6 +1,7 @@
-steal('jquery/controller',
-	'jquery/lang/observe/delegate',
-	'jquery/view/ejs',
+steal('can/construct/proxy',
+	'can/control',
+	'can/observe/delegate',
+	'can/view/ejs',
 	'documentjs/jmvcdoc/highlight',
 	
 	'documentjs/jmvcdoc/resources/helpers.js',
@@ -20,7 +21,7 @@ steal('jquery/controller',
 /**
  * @class Jmvcdoc.Content
  */
-$.Controller('Jmvcdoc.Content',
+can.Control('Jmvcdoc.Content',
 /* @Static */
 {
 	defaults : {

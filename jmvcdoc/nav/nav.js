@@ -1,6 +1,7 @@
-steal('jquery/controller',
-	'jquery/lang/observe/delegate',
-	'jquery/view/ejs',
+steal('can/control',
+	'can/observe/delegate',
+	'can/view/ejs',
+	'can/route',
 	'documentjs/jmvcdoc/models/search.js',
 		'documentjs/jmvcdoc/resources/helpers.js',
 		'documentjs/jmvcdoc/tooltip.js',
@@ -11,7 +12,7 @@ steal('jquery/controller',
  * 
  * listens for a history change, gets object it represents, and draws it ....
  */
-$.Controller('Jmvcdoc.Nav',
+can.Control('Jmvcdoc.Nav',
 /* @Static */
 {
 	defaults : {
@@ -20,7 +21,7 @@ $.Controller('Jmvcdoc.Nav',
 },
 /* @Prototype */
 {
-	"{$.route} who set" : function(clientState, ev, val){
+	"{can.route} who set" : function(clientState, ev, val){
 		if(Doc.dataDeferred.isResolved()){
 			this.navFor(val)
 		} else {
@@ -91,7 +92,7 @@ $.Controller('Jmvcdoc.Nav',
 			window.location.hash = ""
 		}
 	},
-	"{$.route} search set" : function(clientState, ev, val){
+	"{can.route} search set" : function(clientState, ev, val){
 		if(Doc.dataDeferred.isResolved()){
 			this.searchFor(val)
 		} else {
@@ -121,19 +122,12 @@ $.Controller('Jmvcdoc.Nav',
 			name: name
 		}, this.proxy(function(data){
 			
-			if(data.description && this.showTooltip == name){
-				//$("#tooltip").show().tooltip({message: data.description, of:  el})
-			}
-			
-			
-			//console.log(data.description)
 		}))
 		
 	},
 	"a mouseout": function( el ) {
 		el.removeClass("highlight")
 		this.showTooltip = null;
-		//$("#tooltip").hide()
 	},
 	_highlight: function( el ) {
 		if (!this._isInvalidMenuItem(el) ) {

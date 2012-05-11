@@ -1,11 +1,10 @@
-steal('jquery/controller',
-	'jquery/lang/observe/delegate',
-	'documentjs/jmvcdoc/models/search.js',function($){
+steal('can/construct/super', 'can/control', 'can/route',
+	'can/observe/delegate', 'documentjs/jmvcdoc/models/search.js',function($){
 
 /**
  * @class Jmvcdoc.Search
  */
-$.Controller('Jmvcdoc.Search',
+can.Control('Jmvcdoc.Search',
 /* @Static */
 {
 	defaults : {
@@ -28,14 +27,14 @@ $.Controller('Jmvcdoc.Search',
 	},
 	"input keyup" : function(el, ev){
 		clearTimeout(this.searchTimer);
-		if((el.val() == "" && typeof $.route.attr('who') == 'undefined') || ev.keyCode == 27){
-			$.route.attrs({ who : "index" }, true);
+		if((el.val() == "" && typeof can.route.attr('who') == 'undefined') || ev.keyCode == 27){
+			can.route.attrs({ who : "index" }, true);
 		} else if(el.val() != ""){
 			this.searchTimer = setTimeout(this.callback('search'),200)
 		}
 	},
 	search : function(){
-		$.route.attrs({
+		can.route.attrs({
 			search: this.input.val()
 		}, true);
 	},
@@ -49,7 +48,7 @@ $.Controller('Jmvcdoc.Search',
 		}
 	},
 	".remove click":function(el, events){
-		$.route.attrs({
+		can.route.attrs({
 			search: ""
 		}, true);
 	},

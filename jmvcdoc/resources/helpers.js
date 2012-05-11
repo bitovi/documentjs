@@ -58,7 +58,7 @@ DocumentationHelpers = {
 		if ( stat != -1 ) {
 			name = name.substring(0, stat) + "." + name.substring(stat + 8);
 		} else if ( prto != -1 ) {
-			name = jQuery.String.underscore(name.substring(0, prto).replace("$.", "")) + "." + name.substring(prto + 11);
+			name = can.underscore(name.substring(0, prto).replace("$.", "")) + "." + name.substring(prto + 11);
 		}
 
 		if (this._data.construct) {
@@ -106,7 +106,7 @@ DocumentationHelpers = {
 				if (!n ) {
 					n = dontReplace ? first : first.replace(/\\.static/, "")
 				}
-				return  "<a href='" +$.route.url({who:  url.name }) + "'>" + n + "</a>"
+				return  "<a href='" +can.route.url({who:  url.name }) + "'>" + n + "</a>"
 			} else if ( typeof first == 'string' && first.match(/^https?|www\.|#/) ) {
 				return "<a href='" + first + "'>" + (n || first) + "</a>"
 			}

@@ -1,11 +1,11 @@
-steal('jquery/controller',function(){
+steal('can/control',function(){
 
 /**
  * @tag home
  * 
  * Handles iframe menu events
  */
-jQuery.Controller('Iframe',
+can.Control('Iframe',
 /* @Static */
 {},
 /* @Prototype */
@@ -22,7 +22,7 @@ jQuery.Controller('Iframe',
 
 		var src = steal.root.join(this.element.attr("data-iframe-src"));
 		height = !this.element.attr("data-iframe-height") ? height : this.element.attr("data-iframe-height");
-		var $iframe = this.find("iframe");
+		var $iframe = this.element.find("iframe");
 		$iframe.attr("src", src);
 		$iframe.attr("height", height);
 
