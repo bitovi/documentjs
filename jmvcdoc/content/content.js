@@ -5,8 +5,8 @@ steal('can/construct/proxy',
 	'documentjs/jmvcdoc/highlight',
 	
 	'documentjs/jmvcdoc/resources/helpers.js',
-	'documentjs/jmvcdoc/models/search.js',
-	'./doc_updated.js').then(
+	'documentjs/jmvcdoc/models/search.js'
+	).then(
 
 	'./views/attribute.ejs',
 	'./views/class.ejs',
@@ -16,6 +16,7 @@ steal('can/construct/proxy',
 	'./views/page.ejs', 
 	'./views/results.ejs', 
 	'./views/top.ejs', 
+	'./helpers/helpers.js',
 		function($){
 
 /**
@@ -30,6 +31,11 @@ can.Control('Jmvcdoc.Content',
 },
 /* @Prototype */
 {
+	init : function(){
+		for(var name in candoc.content.helpers){
+			new candoc.content.helpers[name](this.element)
+		}
+	},
 	"{clientState} who set" : function(clientState, ev, val){
 		this._currentPage = val;
 		// write out who this is
@@ -37,13 +43,13 @@ can.Control('Jmvcdoc.Content',
 			.scrollTop(0);
 		Doc.findOne({
 			name: val
-		}, this.proxy(function(docData){
+		}, $.proxy(function(docData){
 			if(Doc.dataDeferred.isResolved()){
 				this.show(docData)
 			} else {
 				Doc.dataDeferred.then(this.proxy('show',docData))
 			}
-		}));
+		}, this));
 		
 	},
 	show : function(docData){

@@ -47,7 +47,10 @@ steal('can/construct', 'can/util/json.js').then('./favorites.js',function(){
 			}
 			var d = can.ajax({
 				url:  ( this.location || DOCS_LOCATION) + "searchData.json" ,
-				success: this.callback(['setData', success]),
+				success: $.proxy(function(data){
+					this.setData(data)
+					success && success.apply(this, arguments)
+				}, this),
 				jsonpCallback: "C",
 				dataType: "jsonp",
 				cache: true
