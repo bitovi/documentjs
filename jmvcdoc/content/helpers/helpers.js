@@ -74,6 +74,10 @@ can.Control('candoc.content.helpers.Demo',
 			
 			.attr("src", demoSrc);
 		});
+	},
+
+	".header click": function( el, ev ) {
+		el.next().toggle("slow")
 	}
 });
 

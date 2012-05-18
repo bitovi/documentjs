@@ -49,7 +49,9 @@ can.Control('Jmvcdoc.Content',
 			} else {
 				Doc.dataDeferred.then(this.proxy('show',docData))
 			}
-		}, this));
+		}, this), function() {
+			can.route.attr({ who : 'index' });
+		});
 		
 	},
 	show : function(docData){

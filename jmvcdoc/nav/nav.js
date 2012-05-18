@@ -34,7 +34,9 @@ steal('can/control',
 						}),
 						focus = item;
 
-					// get parent ...
+					if(!item) {
+						return;
+					}
 
 					while (focus.parents &&
 						( !focus.childDocs || !focus.childDocs.length || /static|prototype/i.test(focus.type) )) {
@@ -91,7 +93,7 @@ steal('can/control',
 						window.location.hash = ""
 					}
 				},
-				"{$.route} search set" : function (clientState, ev, val) {
+				"{can.route} search set" : function (clientState, ev, val) {
 					if (Doc.dataDeferred.isResolved()) {
 						this.searchFor(val)
 					} else {

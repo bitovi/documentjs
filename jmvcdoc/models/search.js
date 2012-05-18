@@ -90,7 +90,7 @@ steal('can/construct', 'can/util/json.js').then('./favorites.js',function(){
 		},
 		findOne: function(params, success, error){
 			if(success){
-				
+
 				if(window.localStorage && window.JMVCDOC_TIMESTAMP){
 					var json = window.localStorage["jmvcDoc"+params.name]
 					if(json){
@@ -99,8 +99,8 @@ steal('can/construct', 'can/util/json.js').then('./favorites.js',function(){
 							success(data)
 							return;
 						}
-					} 
-					
+					}
+
 				}
 				var def = findOneDeferreds[params.name]
 				// check if we are already requesting
@@ -138,7 +138,8 @@ steal('can/construct', 'can/util/json.js').then('./favorites.js',function(){
 			var res;
 			if(params.name){
 				res = this._data[params.name]
-			} 
+			}
+
 			if( res ) {
 				return new this(res);
 			}
