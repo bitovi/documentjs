@@ -32,7 +32,7 @@ steal.then(function() {
 				}
 			}
 
-			var parts = line.match(/\s*@return\s+(?:\{([\w\|\.\/]+)\})?\s*(.*)?/);
+			var parts = line.match(/\s*@return\s+(?:\{([^\}]+)\})?\s*(.*)?/);
 
 			if (!parts ) {
 				return;
