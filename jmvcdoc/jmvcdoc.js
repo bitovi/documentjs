@@ -21,5 +21,5 @@ steal('can/util/string',
 
 	new Jmvcdoc.Nav('#nav');
 	new Jmvcdoc.Content("#doc",{clientState : can.route.data});
-	new Jmvcdoc.Search("#search",{clientState : can.route.data});
+	new Jmvcdoc.Search("#search");
 });
