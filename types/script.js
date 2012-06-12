@@ -101,7 +101,7 @@ steal.then(function() {
 				}
 			}
 
-			var source = docScript.text || readFile(docScript.src);
+			var source = readFile(docScript.src);
 
 			//check if the source has @documentjs-ignore
 			if ( ignoreCheck.test(source) ) {

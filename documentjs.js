@@ -328,7 +328,7 @@ steal(	'steal/generate/ejs.js',
 					scripts.each(function(script, text){
 						if (text && script.src) {
 							collection.push({
-								src: script.rootSrc,
+								src: script.rootSrc.toString ? script.rootSrc.toString() : script.rootSrc,
 								text:  text
 							})
 						}
