@@ -80,7 +80,7 @@ DocumentationHelpers = {
 				first = first.substr(1, first.length - 2)
 			}
 			if ( /^\/\//.test(first) ) {
-				first = steal.root.join(first.substr(2))
+				first = steal.config().root.join(first.substr(2))
 			}
 			var url = Doc.findOne({name: first}) || null;
 			if(!url){

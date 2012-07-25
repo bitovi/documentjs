@@ -26,7 +26,7 @@ can.Control('candoc.content.helpers.Demo',
 	
 			$el.html("//documentjs/jmvcdoc/content/helpers/demo.ejs",{});
 	
-			var demoSrc = steal.root.join( $el.attr("data-demo-src") ),
+			var demoSrc = steal.config().root.join( $el.attr("data-demo-src") ),
 				$iframe = $el.find("iframe");
 	
 			// when the iframe has loaded
@@ -97,7 +97,7 @@ can.Control('candoc.content.helpers.Iframe',
 			$el.append("<iframe></iframe>")
 			//this.element.html("//documentjs/jmvcdoc/views/iframe/init.ejs", {});
 	
-			var src = steal.root.join($el.attr("data-iframe-src"));
+			var src = steal.config().root.join($el.attr("data-iframe-src"));
 			height = !$el.attr("data-iframe-height") ? height : $el.attr("data-iframe-height");
 			var $iframe = $el.find("iframe");
 			$iframe.attr("src", src);
@@ -139,7 +139,7 @@ can.Control('candoc.content.helpers.Image', {
 		this.element.find(".image_tag").each(function() {
 			var imageTagEl = $(this),
 				relativePath = imageTagEl.attr("src"),
-				absolutePath = steal.root.join(relativePath);
+				absolutePath = steal.config().root.join(relativePath);
 			imageTagEl.attr("src", absolutePath);
 		});
 	}
