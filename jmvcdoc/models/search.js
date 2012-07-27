@@ -1,7 +1,5 @@
 steal('can/util/exports.js', 'can/construct', 'can/util/json.js').then('./favorites.js',function(){
 
-	console.log(can)
-
 	var data,
 		// a map of names to deferreds
 		findOneDeferreds = {};
