@@ -1,7 +1,6 @@
 steal('can/control',
 	'can/observe/delegate',
-	'documentjs/jmvcdoc/models/search.js',function($){
-
+	'documentjs/jmvcdoc/models/search.js',function(){
 /**
  * @class Jmvcdoc.Search
  */

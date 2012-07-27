@@ -102,7 +102,6 @@ steal.then(function() {
 			}
 
 			var source = readFile(docScript.src);
-
 			//check if the source has @documentjs-ignore
 			if ( ignoreCheck.test(source) ) {
 				return;
@@ -132,7 +131,6 @@ steal.then(function() {
 			}
 
 			comments = this.getComments(source);
-
 			//clean comments
 			for ( var i = 0; i < comments.length; i++ ) {
 				var comment = comments[i];
