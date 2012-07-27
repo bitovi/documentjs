@@ -324,13 +324,12 @@ steal(	'steal/generate/ejs.js',
 			if (/\.html?$/.test(file)) { // load all the page's scripts
 				steal.build.open(file, function(scripts){
 					scripts.each(function(script, text){
-						if(script.id && script.text){
+						if(script.id && text){
 							collection.push({
 								src: script.id,
-								text: script.text
+								text: text
 							})
 						}
-						
 					});
 				});
 				collection.unshift({
