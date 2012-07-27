@@ -100,7 +100,6 @@ steal.then(function() {
 					src: docScript
 				}
 			}
-
 			var source = readFile(docScript.src);
 			//check if the source has @documentjs-ignore
 			if ( ignoreCheck.test(source) ) {

@@ -7,7 +7,8 @@ if ( steal.overwrite ) {
 
 steal(	'steal/generate/ejs.js',
 		'documentjs/json.js', 
-		'documentjs/showdown.js', function(){
+		'documentjs/showdown.js',
+		'stealconfig.js', function(){
 			steal.EJS = arguments[0]
 		})
 	.then('steal/build', 'steal/rhino/file.js')
@@ -320,13 +321,15 @@ steal(	'steal/generate/ejs.js',
 		},
 		// gets scripts from a path
 		getScripts : function(file){
-			var collection = [];
+			var collection = [], scriptUrl;
 			if (/\.html?$/.test(file)) { // load all the page's scripts
 				steal.build.open(file, function(scripts){
+					var paths = steal.config().paths;
 					scripts.each(function(script, text){
 						if(script.id && text){
+							scriptUrl = paths[script.id] || script.id;
 							collection.push({
-								src: script.id,
+								src: scriptUrl,
 								text: text
 							})
 						}
