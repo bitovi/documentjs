@@ -121,7 +121,7 @@ DocumentationHelpers = {
 		return url = parts[2] ? parts[2] : url;
 	},
 	source : function(comment){
-		var matches = comment.src.match(/([^\/]+)\/(.+)/);
+		var matches = comment.src.path.match(/([^\/]+)\/(.+)/);
 		return DOCS_SRC_MAP[matches[1]]+"/blob/master/"+matches[2]+"#L"+comment.line
 	}
 }
