@@ -12,8 +12,7 @@
  * @param {Object} options
  */
 
-steal(function(){
-	
+steal('steal', function(steal){
 	// Makes a JSON object for search data
 	DocumentJS.searchData = function(objects, options){
 		

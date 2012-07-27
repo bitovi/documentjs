@@ -125,7 +125,8 @@ steal.then(function() {
 
 			// If it's a function, we have to warn somebody!
 			if ( type == "function" ) {
-				throw new TypeError("Unable to convert object of type 'function' to json.");
+				// We want to process functions too, so this is disabled.
+				//throw new TypeError("Unable to convert object of type 'function' to json.");
 			}
 
 			// It's probably an object, then.

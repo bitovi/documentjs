@@ -7,10 +7,11 @@ if ( steal.overwrite ) {
 
 steal(	'steal/generate/ejs.js',
 		'documentjs/json.js', 
-		'documentjs/showdown.js')
-	.then('steal/build')
+		'documentjs/showdown.js', function(){
+			steal.EJS = arguments[0]
+		})
+	.then('steal/build', 'steal/rhino/file.js')
 .then( function( $ ) {
-	
 	//if we already have DocumentJS, don't create another, this is so we can document documentjs
 	if(typeof DocumentJS != 'undefined'){
 		return;
@@ -280,12 +281,10 @@ steal(	'steal/generate/ejs.js',
 			DocumentJS.Script.process(scripts[s], DocumentJS.objects)
 		}
 		
-		
 		print('\nGENERATING DOCS -> '+options.out+'\n')
 		
 		// generate individual JSONP forms of individual comments
-		DocumentJS.generate(options)
-
+		DocumentJS.generateDocs(options)
 		// make combined search data
 		DocumentJS.searchData(DocumentJS.objects,options )
 
@@ -301,7 +300,7 @@ steal(	'steal/generate/ejs.js',
 		build = steal.build,
 		docJS = DocumentJS;
 	
-	extend(docJS, {
+	extend(DocumentJS, {
 		files : function(path, cb){
 			var getJSFiles = function(dir){
 			  var file = new steal.File(dir);
@@ -321,17 +320,17 @@ steal(	'steal/generate/ejs.js',
 		},
 		// gets scripts from a path
 		getScripts : function(file){
-			
 			var collection = [];
 			if (/\.html?$/.test(file)) { // load all the page's scripts
 				steal.build.open(file, function(scripts){
 					scripts.each(function(script, text){
-						if (text && script.src) {
+						if(script.id && script.text){
 							collection.push({
-								src: script.rootSrc.toString ? script.rootSrc.toString() : script.rootSrc,
-								text:  text
+								src: script.id,
+								text: script.text
 							})
 						}
+						
 					});
 				});
 				collection.unshift({
@@ -353,13 +352,12 @@ steal(	'steal/generate/ejs.js',
 			}
 			return collection;
 		},
-		generate : function(options){
-
+		generateDocs : function(options){
 			// go through all the objects and generate their docs
 			var output = options.out ? options.out+ "/" : "";
-
 			for ( var name in docJS.objects ) {
 				if (docJS.objects.hasOwnProperty(name)){
+
 					//get a copy of the object (we will modify it with children)
 					var obj = docJS.extend({}, docJS.objects[name]),
 						toJSON;
@@ -376,7 +374,7 @@ steal(	'steal/generate/ejs.js',
 										.replace(/&#46;/g, ".")
 										.replace(/&gt;/g, "_gt_")
 										.replace(/\*/g, "_star_")
-					toJSON = this.out(obj, undefined, "c");
+					toJSON = this.out(obj, undefined, "c", obj.src);
 					new docJS.File(output + converted + ".json").save(toJSON);
 				}
 	
@@ -385,8 +383,14 @@ steal(	'steal/generate/ejs.js',
 			//print(processTime)
 		},
 		// takes an object and returns how DocumentJS likes to save data
-		out: function(data, how, Char) {
-			return (Char|| "C")+"(" + docJS.toJSON(data, how) + ")"
+		out: function(data, how, Char, filename) {
+			try {
+				var converted =  docJS.toJSON(data, how);
+				return (Char|| "C")+"(" + converted + ")"
+			} catch(e) {
+				print(e + ' (' + filename + ')')
+			}
+			
 		},
 		// tests if item is a shallow child of parent
 		shallowParent: function( item, parent ) {
@@ -439,8 +443,10 @@ steal(	'steal/generate/ejs.js',
 			}).render(data));
 		}
 	})
+
+
+
 	//Add things to StealJS we like, then remove them from the global namespace
-	
 	
 	extend(docJS, steal); //even if we delete steal, we still have it's goodness
 	DocumentJS.EJS = steal.EJS;
