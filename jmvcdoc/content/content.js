@@ -17,7 +17,7 @@ steal('can/construct/proxy',
 	'./views/results.ejs', 
 	'./views/top.ejs', 
 	'./helpers/helpers.js',
-		function($){
+		function(){
 
 /**
  * @class Jmvcdoc.Content
