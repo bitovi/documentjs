@@ -1,9 +1,53 @@
 
-steal.then(function() {
-	
+steal("./alias",
+"./author",
+"./codeend",
+"./codestart",
+"./constructor",
+"./demo",
+"./description",
+"./download",
+"./hide",
+"./iframe",
+"./inherits",
+"./page",
+"./param",
+"./parent",
+"./plugin",
+"./return",
+"./scope",
+"./tag",
+"./test",
+"./type",
+"./image",
+function(alias, author, codeend, codestart, constructor, demo, description, download,
+	hide, iframe, inherits, page, param, parent, plugin, ret, scope, tag, test, type, image) {
+	return {
+		alias: alias,
+		author: author,
+		codeend: codeend,
+		codestart: codestart,
+		constructor: constructor,
+		demo: demo,
+		description: description,
+		download: download,
+		hide: hide,
+		iframe: iframe,
+		inherits: inherits,
+		page: page,
+		param: param,
+		parent: parent,
+		plugin: plugin,
+		"return": ret,
+		scope: scope,
+		tag: tag,
+		test: test,
+		type: type,
+		image: image
+	}
 	
 	/**
-	 * @attribute DocumentJS.tags
+	 * @attribute documentjs/tags
 	 * @parent DocumentJS
 	 * A tag adds additional information to the comment being processed.
 	 * For example, if you want the current comment to include the author,
@@ -23,20 +67,6 @@ steal.then(function() {
 	 */
 	
 	
-	DocumentJS.tags = {};
+	
 
-}).then('documentjs/tags/alias.js', 
-'documentjs/tags/author.js', 
-'documentjs/tags/codeend.js', 
-'documentjs/tags/codestart.js', 
-'documentjs/tags/constructor.js', 
-'documentjs/tags/demo.js', 
-'documentjs/tags/description.js',
-'documentjs/tags/download.js',
- 'documentjs/tags/hide.js', 
- '//documentjs/tags/iframe.js', 
- 'documentjs/tags/inherits.js', 'documentjs/tags/page.js', 
- 'documentjs/tags/param.js', 'documentjs/tags/parent.js',
-  'documentjs/tags/plugin.js', 'documentjs/tags/return.js', 
-  'documentjs/tags/scope.js', 'documentjs/tags/tag.js', 'documentjs/tags/test.js', 
-  'documentjs/tags/type.js', 'documentjs/tags/image.js')
+})
