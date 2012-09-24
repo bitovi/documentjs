@@ -219,7 +219,7 @@ steal('can/util/exports.js', 'can/construct', 'can/util/json.js').then('./favori
 							current[letter] = {};
 							current[letter].list = [];
 						}
-						if ( can.inArray(current[letter].list, data) == -1 ) {
+						if ( can.inArray(data, current[letter].list) == -1 ) {
 							current[letter].list.push(data);
 						}
 						current = current[letter];
