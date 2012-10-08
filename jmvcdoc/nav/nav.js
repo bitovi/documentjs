@@ -21,7 +21,7 @@ steal('can/control',
 			/* @Prototype */
 			{
 				"{can.route} who set" : function (clientState, ev, val) {
-					if (Doc.dataDeferred.isResolved()) {
+					if (Doc.dataDeferred.state() === 'resolved') {
 						this.navFor(val)
 					} else {
 						Doc.dataDeferred.then(this.proxy('navFor', val))
