@@ -44,7 +44,7 @@ can.Control('Jmvcdoc.Content',
 		Doc.findOne({
 			name: val
 		}, $.proxy(function(docData){
-			if(Doc.dataDeferred.isResolved()){
+			if(Doc.dataDeferred.state() === 'resolved'){
 				this.show(docData)
 			} else {
 				Doc.dataDeferred.then(this.proxy('show',docData))
@@ -52,11 +52,9 @@ can.Control('Jmvcdoc.Content',
 		}, this), function() {
 			can.route.attr({ who : 'index' });
 		});
-		
 	},
-	show : function(docData){
+	show : function(docData) {
 		document.title = docData.title || docData.name.replace(/~/g,".");
-		console.log(docData)
 		this.element.html("//documentjs/jmvcdoc/content/views/" + docData.type.toLowerCase() + ".ejs", docData, DocumentationHelpers)
 			.trigger("docUpdated",[docData]);
 		$('#results a.open').removeClass('open')

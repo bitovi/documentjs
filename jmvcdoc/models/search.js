@@ -91,7 +91,6 @@ steal('can/util/exports.js', 'can/construct', 'can/util/json.js').then('./favori
 		},
 		findOne: function(params, success, error){
 			if(success){
-
 				if(window.localStorage && window.JMVCDOC_TIMESTAMP){
 					var json = window.localStorage["jmvcDoc"+params.name]
 					if(json){

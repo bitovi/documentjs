@@ -94,7 +94,7 @@ steal('can/control',
 					}
 				},
 				"{can.route} search set" : function (clientState, ev, val) {
-					if (Doc.dataDeferred.isResolved()) {
+					if (Doc.dataDeferred.state() === 'resolved') {
 						this.searchFor(val)
 					} else {
 						Doc.dataDeferred.then(this.proxy('searchFor', val))
@@ -104,7 +104,6 @@ steal('can/control',
 					var res = Doc.findAll({
 						search : val
 					});
-					console.log('Searching for', val);
 					this.element.html("//documentjs/jmvcdoc/nav/views/results.ejs", {
 						list : res,
 						selected : [],
