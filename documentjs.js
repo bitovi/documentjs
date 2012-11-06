@@ -4,7 +4,7 @@ steal('steal',
       'documentjs/types/script.js',
 	  'documentjs/searchdata.js',
 	  'steal/generate/ejs.js',
-	  './out',
+	  'documentjs/out.js',
 	  'steal/build', 
 	  function( s, Type, tags, Script, searchData, EJS, out ) {
 	//if we already have DocumentJS, don't create another, this is so we can document documentjs
