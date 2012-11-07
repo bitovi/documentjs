@@ -1,4 +1,4 @@
-steal('can/util/exports.js', 'can/construct', 'can/util/json.js').then('./favorites.js',function(){
+steal('can/construct', 'can/util/json.js').then('./favorites.js',function(){
 
 	var data,
 		// a map of names to deferreds
@@ -109,6 +109,7 @@ steal('can/util/exports.js', 'can/construct', 'can/util/json.js').then('./favori
 					def.done(success);
 					def.fail(error);
 					def.done(function(data){
+						console.log('SETDATA', data)
 						if(window.localStorage && window.JMVCDOC_TIMESTAMP){
 							data.timestamp = JMVCDOC_TIMESTAMP;
 							setTimeout(function(){
