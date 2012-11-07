@@ -13,8 +13,6 @@ steal('can/util/exports.js', 'can/construct', 'can/util/json.js').then('./favori
 		}
 	});
 	
-	
-	
 	can.Construct("Doc",{
 		location : null,
 		dataDeferred : can.Deferred(),
@@ -86,7 +84,6 @@ steal('can/util/exports.js', 'can/construct', 'can/util/json.js').then('./favori
 				},1000)
 				
 			}
-			
 			return arguments;
 		},
 		findOne: function(params, success, error){
@@ -100,7 +97,6 @@ steal('can/util/exports.js', 'can/construct', 'can/util/json.js').then('./favori
 							return;
 						}
 					}
-
 				}
 				var def = findOneDeferreds[params.name]
 				// check if we are already requesting
@@ -198,7 +194,7 @@ steal('can/util/exports.js', 'can/construct', 'can/util/json.js').then('./favori
 			}
 			
 			if(window.localStorage && window.JMVCDOC_TIMESTAMP){
-				var json = window.localStorage["jmvcDocSearch"+window.JMVCDOC_TIMESTAMP]
+				var json = window.localStorage["jmvcDoc"+window.JMVCDOC_TIMESTAMP]
 				if(json){
 					return this._searchData = can.parseJSON(json);
 				}

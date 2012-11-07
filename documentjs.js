@@ -252,7 +252,7 @@ steal('steal',
 		if(options.markdown){
 			for(var i =0 ; i < options.markdown.length; i++){
 				DocumentJS.files(options.markdown[i], function(path, f){
-					if(/\.md$/.test(f)){
+					if(/\.(md|markdown)$/.test(f)){
 					  scripts.push( path )
 				    }
 				})
@@ -261,7 +261,7 @@ steal('steal',
 			
 			
 		}
-		// if options, get .md files ...
+		// if options, get .md and .markdown files ...
 		
 		
  		//all the objects live here, have a unique name
@@ -330,7 +330,7 @@ steal('steal',
 			}
 			else { // assume its a directory
 				this.files(file, function(path, f){
-					if(/\.(js|md)$/.test(f)){
+					if(/\.(js|md|markdown)$/.test(f)){
 					  collection.push( path )
 				    }
 				})
