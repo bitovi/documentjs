@@ -247,6 +247,14 @@ steal('steal',
 			}
 			steal.File(options.out).mkdir();
 			scripts = DocumentJS.getScripts(scripts)
+		} else if(scripts instanceof Array){
+			steal.File(options.out).mkdir();
+			trueScriptsArr = [];
+			for(idx in scripts) {
+				files = DocumentJS.getScripts(scripts[idx]);
+				trueScriptsArr = trueScriptsArr.concat(files);
+			}
+			scripts = trueScriptsArr;
 		}
 		// an array of folders
 		if(options.markdown){
