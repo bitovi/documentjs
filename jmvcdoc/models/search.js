@@ -106,18 +106,16 @@ steal('can/construct', 'can/util/json.js').then('./favorites.js',function(){
 					return def;
 				} else {
 					def = findOneDeferreds[params.name] = can.Deferred();
-					def.done(success);
 					def.fail(error);
 					def.done(function(data){
-						console.log('SETDATA', data)
 						if(window.localStorage && window.JMVCDOC_TIMESTAMP){
 							data.timestamp = JMVCDOC_TIMESTAMP;
 							setTimeout(function(){
 								window.localStorage["jmvcDoc"+params.name] = can.toJSON(data)
 								delete findOneDeferreds[params.name];
 							},10)
-							
 						}
+						success(data)
 					});
 					can.ajax({
 						url: ( this.location || DOCS_LOCATION) + params.name.replace(/ /g, "_")

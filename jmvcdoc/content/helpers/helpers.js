@@ -163,7 +163,7 @@ can.Control('candoc.content.helpers.Disqus', {
 		target.find("h1.addFavorite").
 				append('&nbsp;<span class="favorite favorite' + (docData.isFavorite ? 'on' : 'off') + '">&nbsp;&nbsp;&nbsp;</span>');
 		
-		if ( steal.options.env == 'production' && docData.name != "index" && typeof(COMMENTS_LOCATION) != "undefined" && $("#disqus_thread").length ){
+		if ( steal.config().env == 'production' && docData.name != "index" && typeof(COMMENTS_LOCATION) != "undefined" && $("#disqus_thread").length ){
 			
 			if(!this.disqusIsLoaded){
 				//window.disqus_developer = 1;
