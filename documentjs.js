@@ -116,7 +116,7 @@ steal('steal',
 	 * @codestart
 	 * /*  
      *  * @class Order 
-     *  * @parent crm 
+     *  * @parent index 
      *  * @@constructor
      *  * Creates a new order.
      *  * @@param {String} id
