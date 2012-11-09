@@ -119,7 +119,6 @@ steal('./type',function(Type) {
 			if (/\.md$/.test(docScript.src) ) {
 				type = Type.create(source, "", scope, objects, 'page', docScript.src.match(/([^\/]+)\.md$/)[1]);
 				if ( type ) {
-
 					objects[type.name] = type;
 					//get the new scope if you need it
 					// if we don't have a type, assume we can have children

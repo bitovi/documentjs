@@ -43,7 +43,6 @@ steal('./type',function(Type) {
 	 */
 	Type("page", {
 		code: function() {
-
 		},
 	/*
 	 * Possible scopes for @page.
