@@ -71,7 +71,7 @@ steal('steal','../distance','../showdown','documentjs/tags',function(s, distance
 			if ( name && !props.name ) {
 				props.name = name;
 			}
-			// you are not going to process the comment tye typical way
+			// you are not going to process the comment the typical way
 			// this is mostly for @add
 			if ( type.init ) {
 				return type.init(props, comment, objects)
@@ -103,6 +103,8 @@ steal('steal','../distance','../showdown','documentjs/tags',function(s, distance
 					}
 					props.parents.unshift(parent.name);
 
+					if (props.name === "index") {
+					}
 					if ( objects[props.name] ) {
 						var newProps = props;
 						props = objects[props.name];
@@ -112,6 +114,13 @@ steal('steal','../distance','../showdown','documentjs/tags',function(s, distance
 						parent.children = [];
 					}
 					parent.children.push(props.name)
+
+				} else { // in the case that it doesn't have a parent 
+					if ( objects[props.name] ) {
+						var newProps = props;
+						props = objects[props.name];
+						s.extend(props, newProps);
+					}
 				}
 
 				this.process(props, comment, type, objects)
