@@ -47,7 +47,7 @@ function(alias, author, codeend, codestart, constructor, demo, description, down
 	}
 	
 	/**
-	 * @attribute documentjs/tags
+	 * @attribute DocumentJS.tags
 	 * @parent DocumentJS
 	 * A tag adds additional information to the comment being processed.
 	 * For example, if you want the current comment to include the author,
