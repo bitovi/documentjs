@@ -10,8 +10,8 @@ steal('steal',
 	//if we already have DocumentJS, don't create another, this is so we can document documentjs
 	var objects = {};
 	/**
-	 * @class documentjs DocumentJS
-	 * @parent index 6
+	 * @class DocumentJS
+	 * @parent index 4
 	 * 
 	 * @description A documentation framework.
 	 * 
