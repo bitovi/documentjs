@@ -217,6 +217,7 @@ steal('steal',
 	 * * [DocumentJS.tags.test|@test] - link for test cases.
 	 * * [DocumentJS.tags.type|@type] - sets the type for the current commented code.
 	 * * [DocumentJS.tags.image|@image] - adds an image.
+	 * * [DocumentJS.tags.release|@release] - specifies the release.
 	 * 
 	 * 
 	 * ###Inspiration

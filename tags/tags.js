@@ -14,6 +14,7 @@ steal("./alias",
 "./param",
 "./parent",
 "./plugin",
+"./release",
 "./return",
 "./scope",
 "./tag",
@@ -21,7 +22,8 @@ steal("./alias",
 "./type",
 "./image",
 function(alias, author, codeend, codestart, constructor, demo, description, download,
-	hide, iframe, inherits, page, param, parent, plugin, ret, scope, tag, test, type, image) {
+	hide, iframe, inherits, page, param, parent, plugin, ret, scope, tag, test, type,
+	release, image) {
 	return {
 		alias: alias,
 		author: author,
@@ -38,6 +40,7 @@ function(alias, author, codeend, codestart, constructor, demo, description, down
 		param: param,
 		parent: parent,
 		plugin: plugin,
+		release: release,
 		"return": ret,
 		scope: scope,
 		tag: tag,
@@ -65,8 +68,5 @@ function(alias, author, codeend, codestart, constructor, demo, description, down
 	 * }
 	 * @codeend 
 	 */
-	
-	
-	
 
 })
