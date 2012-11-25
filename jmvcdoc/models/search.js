@@ -79,6 +79,7 @@ steal('can/construct', 'can/util/json.js').then('./favorites.js',function(){
 				}
 			}
 			if(window.localStorage && window.JMVCDOC_TIMESTAMP){
+			    console.log("Writing to localStorage: " + "jmvcDoc" + window.JMVCDOC_TIMESTAMP)
 				setTimeout(function(){
 					window.localStorage["jmvcDoc"+JMVCDOC_TIMESTAMP] = can.toJSON(data)
 				},1000)
@@ -189,15 +190,24 @@ steal('can/construct', 'can/util/json.js').then('./favorites.js',function(){
 			//returns the search data ...
 			
 			if(this._searchData){
+				console.log("Getting _searchData from memory")
 				return this._searchData;
 			}
 			
-			if(window.localStorage && window.JMVCDOC_TIMESTAMP){
-				var json = window.localStorage["jmvcDoc"+window.JMVCDOC_TIMESTAMP]
-				if(json){
-					return this._searchData = can.parseJSON(json);
-				}
-			}
+			// **************************************************************************************
+			// The following is causing search to not work
+			// because the stuff in localStorage (pretty much the complete contents of site/docs/)
+			// is different from stuff that get's buit further down (an index of letters).
+			// **************************************************************************************
+			// 
+			//
+			// if(window.localStorage && window.JMVCDOC_TIMESTAMP){
+			// 	var json = window.localStorage["jmvcDoc"+window.JMVCDOC_TIMESTAMP]
+			// 	if(json){
+			// 		console.log("Getting _searchData from localStorage: " + "jmvcDoc" + window.JMVCDOC_TIMESTAMP)
+			// 		return this._searchData = can.parseJSON(json);
+			// 	}
+			// }
 			
 			//create searchData
 			var searchData = this._searchData = {};
@@ -238,7 +248,7 @@ steal('can/construct', 'can/util/json.js').then('./favorites.js',function(){
 					}
 				}
 			}	
-			
+			console.log('Recreated _searchData');
 			return this._searchData;
 		},
 		matches: function( who, val, valWasEmpty ) {
