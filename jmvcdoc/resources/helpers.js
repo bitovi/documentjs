@@ -76,31 +76,34 @@ DocumentationHelpers = {
 		return content.replace(/\[\s*((?:['"][^"']*["'])|[^\|\]\s]*)\s*\|?\s*([^\]]*)\s*\]/g, function( match, first, n ) {
 			//need to get last
 			//need to remove trailing whitespace
-
+			
 			if (/^["']/.test(first) ) {
 				first = first.substr(1, first.length - 2)
 			}
 			if ( /^\/\//.test(first) ) {
-				first = steal.config().root.join(first.substr(2)).path
-			}
-			var url = Doc.findOne({name: first}) || null;
-			if(!url){
-				//try again ...
-				// might start w/ jQuery
-				var convert = first;
-				if(first.indexOf('$.') == 0){
-					convert = "jQuery."+convert.substr(2);
-					url = Doc.findOne({name: convert}) || null;
-				}
-				if(!url && first.indexOf('::')){
-					url = Doc.findOne({name: convert.replace('::',".prototype.")}) || null;
-				}
+				var url = steal.config().root.join(first.substr(2)).path
+				return  "<a href='"+url+"'>"+(n || first.substr(2))+"</a>"
+			} else {
+				var url = Doc.findOne({name: first}) || null;
 				if(!url){
-					var parts = convert.split('.')
-					parts.splice(parts.length-1,0,"static");
-					url = Doc.findOne({name: parts.join('.')}) || null;
+					//try again ...
+					// might start w/ jQuery
+					var convert = first;
+					if(first.indexOf('$.') == 0){
+						convert = "jQuery."+convert.substr(2);
+						url = Doc.findOne({name: convert}) || null;
+					}
+					if(!url &&  first.indexOf('::') > 0){
+						url = Doc.findOne({name: convert.replace('::',".prototype.")}) || null;
+					}
+					if(!url){
+						var parts = convert.split('.')
+						parts.splice(parts.length-1,0,"static");
+						url = Doc.findOne({name: parts.join('.')}) || null;
+					}
 				}
 			}
+			
 			
 			
 			if ( url ) {
