@@ -1,6 +1,6 @@
 steal('steal','../distance','../showdown','documentjs/tags',function(s, distance, converter ,tags) {
 	var typeCheckReg = /^\s*@(\w+)/,
-		nameCheckReg = /^\s*@(\w+)[ \t]+([\w\.\$]+)/m,
+		nameCheckReg = /^\s*@(\w+)[ \t]+([\w\.\$\/]+)/m,
 		doubleAt = /@@/g;
 	/**
 	 * @class DocumentJS.Type

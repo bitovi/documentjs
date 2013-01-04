@@ -27,30 +27,27 @@
 			<%}%>
 	</div>
 <%}%>
+<% if( list.length ) { %>
 <div id='results' style="display: <%= hide? 'none' : 'block'%>">
 	<div class="content">
 	    <% for(var i =0; i < list.length; i++){%>
 			<% current = list[i];
-			   if(current.hide){ continue; }
-			   title = (current.title ? current.title: current.name);
-	           res = calculateDisplay(previous, title);
-			   name = normalizeName(current.name) ;
-				resName = res.name.replace("jQuery.","$.")
-				titleCleaned = title.replace("jQuery.","$.");
+				if(current.hide){ continue; }
+				
+				var dis = display(previous, current, hasStaticOrPrototype)
 			%>
-		    <a href="<%=current.type == 'prototype' || current.type == 'static' ? 'javascript://': can.route.url({who: name}) %>"
+		    <a href="<%= dis.href %>"
 			   class='result choice <%=current.type%>'
-			   style="padding-left: <%= hasStaticOrPrototype ? res.length * 20 : 20%>px"
+			   style="padding-left: <%= dis.padding %>"
 			   data-name="<%= current.name %>">
-		    	<%if(hasStaticOrPrototype) {%>
-					<%= resName %>
+		    		<%if(hasStaticOrPrototype) {%>
+					<%= dis.right %>
 				<% } else  { %>
-					<span class='faded'><%= titleCleaned.replace(resName, "") %></span><%=  resName %>
+					<span class='faded'><%= dis.left %></span><%=  dis.right %>
 				<% } %>
 			</a>
-			<% previous = title %>
+			<% previous = dis.title %>
 		<%}%>
 	</div>
 </div>
-
-
+<%}%>

@@ -118,8 +118,15 @@ steal('can/construct', 'can/util/json.js').then('./favorites.js',function(){
 						success(data)
 					});
 					can.ajax({
-						url: ( this.location || DOCS_LOCATION) + params.name.replace(/ /g, "_")
-							.replace(/&#46;/g, ".") + ".json",
+						url: ( this.location || DOCS_LOCATION) + 
+							params.name
+										.replace(/ /g, "_")
+										.replace(/&#46;/g, ".")
+										.replace(/&gt;/g, "_gt_")
+										.replace(/\*/g, "_star_")
+										.replace(/\//g,"|") + 
+									
+									".json",
 						error: function(){
 							def.reject.apply(def, arguments)
 						},
