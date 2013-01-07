@@ -24,7 +24,7 @@ steal('./type',function(Type) {
 	 * 
 	 * ###End Result:
 	 * 
-	 * @image jmvc/images/add_tag_example.png 970
+	 * @image site/images/add_tag_example.png 970
 	 */
 	Type("add",
 	/**

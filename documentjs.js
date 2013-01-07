@@ -61,7 +61,7 @@ steal('steal',
 	 * 
 	 * This is what you should see when you open __crm\docs.html__:
 	 * 
-	 * @image jmvc/images/crm_doc_demo_1.png
+	 * @image site/images/crm_doc_demo_1.png
 	 * 
 	 * 
 	 * There are a few things to notice:
@@ -105,7 +105,7 @@ steal('steal',
 	 * 
 	 * After runnig the documentjs script once again you should be able to see this:
 	 * 
-	 * @image jmvc/images/crm_doc_demo_2.png
+	 * @image site/images/crm_doc_demo_2.png
 	 * 
 	 * 
 	 * We want to be able to both look for our customer's orders and dispatch them so let's add a _findById_ method to our Order class
