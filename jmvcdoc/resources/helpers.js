@@ -8,14 +8,55 @@ var orderedParams = function( params ) {
 
 DocumentationHelpers = {
 	previousIndent: 0,
+	display: function( previous,  current, hasStaticOrPrototype){
+		var title = current.title ? current.title: current.name,
+			splitter = /([\.\/])/g,
+			currentParts = title.split(splitter),
+			previousParts = previous.split(splitter),
+			left = [],
+			right=[],
+			part,
+			prev;
+			
+		for ( var j = 0; j < currentParts.length; j++ ) {
+			part = currentParts[j];
+			if(splitter.test(part)){
+				prev = part;
+			} else if ( currentParts[j] && currentParts[j] == previousParts[j] ) {
+				if(prev){
+					left.push(prev);
+				}
+				prev = undefined
+				left.push(currentParts[j]);
+			} else {
+				//put everything else in right res
+				right = currentParts.slice(j);
+				if(prev && !hasStaticOrPrototype){
+					right.unshift(prev)
+				}
+				break;
+			}
+		}
+		console.log(title, left,right)
+		return {
+			padding: ( hasStaticOrPrototype ? (Math.floor(left.length/2) * 20) : 20 ) + "px",
+			left: left.join(""),
+			right: right.join(""),
+			href: current.type == 'prototype' || current.type == 'static' ? 
+				'javascript://' : can.route.url({who: this.normalizeName( current.name ) }),
+			title: title 
+		}
+	},
 	calculateDisplay: function( previous, current ) {
 
-		var t = current.split(/\./)
-		var p = previous.split(/\./);
-		var left_res = [],
-			right_res = []
+		var t = current.split(/\./),
+			p = previous.split(/\./),
+			left_res = [],
+			right_res = [];
+			
 			for ( var j = 0; j < t.length; j++ ) {
-				if ( p[j] && p[j] == t[j] ) left_res.push(t[j])
+				if ( p[j] && p[j] == t[j] ) 
+					left_res.push(t[j])
 				else {
 					//put everything else in right res
 					right_res = t.slice(j);
@@ -28,6 +69,7 @@ DocumentationHelpers = {
 			}
 
 			if ( this.indentAdjust === undefined ) this.indentAdjust = !! (left_res.length) ? 0 : 1;
+		
 		var newIndent = left_res.length < 2 ? left_res.length + this.indentAdjust : left_res.length;
 
 		return {

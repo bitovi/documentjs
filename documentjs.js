@@ -365,11 +365,12 @@ steal('steal',
 					
 					//get all children					
 					obj.children = this.listedChildren(obj);
-	
+					// update the search model with all of these
 					var converted = name.replace(/ /g, "_")
 										.replace(/&#46;/g, ".")
 										.replace(/&gt;/g, "_gt_")
 										.replace(/\*/g, "_star_")
+										.replace(/\//g,"|")
 					toJSON = out(obj, undefined, "c", obj.src);
 					new s.URI(output + converted + ".json").save(toJSON);
 				}
