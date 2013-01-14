@@ -22,7 +22,7 @@ steal(function() {
 		 * 
 		 * ###End Result:
 		 * 
-		 * @image jmvc/images/parent_tag_example.png
+		 * @image site/images/parent_tag_example.png
 		 */
 		return {
 			add: function( line , curData, objects) {

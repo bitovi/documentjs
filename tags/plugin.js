@@ -21,7 +21,7 @@ steal(function() {
 	 * 
 	 * ###End Result:
 	 * 
-	 * @image jmvc/images/plugin_tag_example.png
+	 * @image site/images/plugin_tag_example.png
 	 */
 	return {
 		add: function( line ) {

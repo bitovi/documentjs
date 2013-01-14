@@ -10,7 +10,7 @@ steal(function() {
 	 * 
 	 * @codestart
 	 * /* 
-	 *  * @image jmvc/images/page_type_example.png 640 480
+	 *  * @image site/images/page_type_example.png 640 480
 	 *  *|
 	 * @codeend
 	 */

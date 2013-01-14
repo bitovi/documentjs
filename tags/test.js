@@ -21,8 +21,8 @@ steal(function() {
 	 * @codeend
 	 * 
 	 * ###End Result:
-	 * @image jmvc/images/test_tag_example.png
-	 * @image jmvc/images/test_tag_test_example.png
+	 * @image site/images/test_tag_example.png
+	 * @image site/images/test_tag_test_example.png
 	 */
 	return {
 		add: function( line ) {

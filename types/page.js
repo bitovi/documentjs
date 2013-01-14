@@ -39,7 +39,7 @@ steal('./type',function(Type) {
 	 * 
 	 * ###End Result:
 	 * 
-	 * @image jmvc/images/page_type_example.png 970
+	 * @image site/images/page_type_example.png 970
 	 */
 	Type("page", {
 		code: function() {
