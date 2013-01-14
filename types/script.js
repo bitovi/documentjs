@@ -110,43 +110,57 @@ steal('./type',function(Type) {
 				name: docScript.src
 			},
 				scope = script,
-				comments, type;
+				comments, 
+				type,
+				comment,
+				typeCreateHandler = function(type, newScope ){
+					//processTime = processTime + (new Date - start)
+					if ( type ) {
+						objects[type.name] = type;				
+						// get the new scope if you need it
+						// if we don't have a type, assume we can have children
+						if(newScope){
+							scope = newScope;
+						} else {
+							scope = !type.type || Type.types[type.type].hasChildren ? type : scope;
+						}
+						type.src = docScript.src;
+						if(comment){
+							type.line = comment.line;
+						}
+						
+					}
+				}
 
 			print("  " + script.name);
 			objects[script.name] = script;
 
 			// handle markdown docs
 			if (/\.md$/.test(docScript.src) ) {
-				type = Type.create(source, "", scope, objects, 'page', docScript.src.match(/([^\/]+)\.md$/)[1]);
-				if ( type ) {
-					objects[type.name] = type;
-					//get the new scope if you need it
-					// if we don't have a type, assume we can have children
-					scope = !type.type || Type.types[type.type].hasChildren ? type : scope;
-					type.src = docScript.src;
-				}
+				Type.create(source, 
+					"", 
+					scope, 
+					objects, 
+					'page', 
+					docScript.src.match(/([^\/]+)\.md$/)[1],
+					typeCreateHandler);
 				return;
 			}
 
 			comments = this.getComments(source);
 			//clean comments
 			for ( var i = 0; i < comments.length; i++ ) {
-				var comment = comments[i];
+				comment = comments[i];
 
 				//var start = new Date;
 
-				type = Type.create(comment.comment, comment.code, scope, objects);
-
-				//processTime = processTime + (new Date - start)
-				if ( type ) {
-					objects[type.name] = type;
-					//get the new scope if you need it
-					// if we don't have a type, assume we can have children
-					scope = !type.type || Type.types[type.type].hasChildren ? type : scope;
-
-					type.src = docScript.src;
-					type.line = comment.line;
-				}
+				Type.create(comment.comment, 
+					comment.code, 
+					scope, 
+					objects, 
+					undefined, 
+					undefined,
+					typeCreateHandler);
 			}
 
 

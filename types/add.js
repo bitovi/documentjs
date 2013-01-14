@@ -45,7 +45,9 @@ steal('./type',function(Type) {
 			if (!objects[props.name] ) {
 				objects[props.name] = props;
 			}
-			return objects[props.name];
+			// force this to have children even if it sometimes doesn't
+			objects[props.name].hasChildren = true;
+			return [objects[props.name],objects[props.name]];
 		},
 	/*
 	 * Possible scopes for @add.

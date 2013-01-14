@@ -26,9 +26,9 @@ steal('steal','../distance','../showdown','documentjs/tags',function(s, distance
 		 * @param {String|Array} comment
 		 * @param {String} code
 		 * @param {Object} scope
-		 * @return {Object} type
+		 * @param {Function} hanlder(type, scope)
 		 */
-		create: function( comment, code, scope, objects, defaultType, name ) {
+		create: function( comment, code, scope, objects, defaultType, name, handler ) {
 			
 			var firstLine = typeof comment == 'string' ? comment : comment[0],
 				check = firstLine.match(typeCheckReg),
@@ -43,7 +43,7 @@ steal('steal','../distance','../showdown','documentjs/tags',function(s, distance
 					type = defaultType;
 				}
 				if (!type ) {
-					return null;
+					return handler();
 				}
 			}
 			
@@ -59,7 +59,7 @@ steal('steal','../distance','../showdown','documentjs/tags',function(s, distance
 			props = type.code(code)
 
 			if (!props && !nameCheck && !name ) {
-				return null;
+				return handler();
 			}
 
 			if (!props ) {
@@ -74,7 +74,7 @@ steal('steal','../distance','../showdown','documentjs/tags',function(s, distance
 			// you are not going to process the comment the typical way
 			// this is mostly for @add
 			if ( type.init ) {
-				return type.init(props, comment, objects)
+				return handler.apply(null, type.init(props, comment, objects) ) 
 			}
 
 
@@ -94,7 +94,7 @@ steal('steal','../distance','../showdown','documentjs/tags',function(s, distance
 					}
 					if ( props.name === 'toString' ) {
 						// can't have an empty toString
-						return null;
+						return handler();
 					}
 
 					// only assign if parent isn't 
@@ -125,7 +125,7 @@ steal('steal','../distance','../showdown','documentjs/tags',function(s, distance
 
 				this.process(props, comment, type, objects)
 
-				return props
+				return handler(props)
 			}
 		},
 		/**
@@ -138,7 +138,9 @@ steal('steal','../distance','../showdown','documentjs/tags',function(s, distance
 			if (!type.parent ) {
 				return;
 			}
-
+			if(scope.hasChildren){
+				return scope;
+			}
 
 			while ( scope && scope.type && !type.parent.test(scope.type) ) {
 
