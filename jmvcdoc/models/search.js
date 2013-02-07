@@ -158,7 +158,7 @@ steal('can/construct', 'can/util/json.js').then('./favorites.js',function(){
 		 * @param {Object} params
 		 */
 		findAll: function(params){
-			var valWasEmpty, level = 2;
+			var valWasEmpty, level = 0;
 			var val = params.search.toLowerCase();
 	
 			if (!val || val === "*" ) {
@@ -179,7 +179,12 @@ steal('can/construct', 'can/util/json.js').then('./favorites.js',function(){
 			}
 			
 			var list = [];
-			if ( current && val.length > level ) {
+			for(var name in current){
+				if (this.matches(current[name], val, valWasEmpty)) {
+					list.push(current[name])
+				}
+			}
+			/*if ( current && val.length > level ) {
 				//make sure everything in current is ok
 				var lookedup = this.lookup(current.list);
 				for ( var i = 0; i < lookedup.length; i++ ) {
@@ -189,7 +194,7 @@ steal('can/construct', 'can/util/json.js').then('./favorites.js',function(){
 				}
 			} else if ( current ) {
 				list = this.lookup(current.list);
-			}
+			}*/
 			return list.sort(Search.sortFn);
 		},
 		searchData : function(){

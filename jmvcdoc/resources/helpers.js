@@ -36,8 +36,7 @@ DocumentationHelpers = {
 				}
 				break;
 			}
-		}
-		console.log(title, left,right)
+		};
 		return {
 			padding: ( hasStaticOrPrototype ? (Math.floor(left.length/2) * 20) : 20 ) + "px",
 			left: left.join(""),
