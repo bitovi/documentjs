@@ -136,13 +136,13 @@ steal('./type',function(Type) {
 			objects[script.name] = script;
 
 			// handle markdown docs
-			if (/\.md$/.test(docScript.src) ) {
+			if (/\.(md|markdown)$/.test(docScript.src) ) {
 				Type.create(source, 
 					"", 
 					scope, 
 					objects, 
 					'page', 
-					docScript.src.match(/([^\/]+)\.md$/)[1],
+					docScript.src.match(/([^\/]+)\.(md|markdown)$/)[1],
 					typeCreateHandler);
 				return;
 			}
