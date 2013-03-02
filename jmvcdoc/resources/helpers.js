@@ -88,7 +88,7 @@ DocumentationHelpers = {
 	linkOpen: function( addr ) {
 		return "<a href='#&who=" + addr + "'>" + addr + "</a>"
 	},
-	signiture: function() {
+	makeSigniture: function() {
 		var res = [],
 			name = this._data.name;
 		//we should check if prototype or static is available
@@ -112,6 +112,17 @@ DocumentationHelpers = {
 
 
 		return name + "(" + res.join(", ") + ")" + (this._data.ret ? " -> " + this._data.ret.type : "");
+	},
+	typesHTML: function(types){
+		var typeHTML = [];
+		types.forEach(function(type){
+			if(Doc.findOne({name: type.type})){
+				typeHTML.push( can.route.link(type.type,{who: type.type}) );
+			} else {
+				typeHTML.push( type.type )
+			}
+		});
+		return typeHTML.join(" or ");
 	},
 	link: function( content, dontReplace ) {
 		return content.replace(/\[\s*((?:['"][^"']*["'])|[^\|\]\s]*)\s*\|?\s*([^\]]*)\s*\]/g, function( match, first, n ) {

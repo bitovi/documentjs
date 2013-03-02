@@ -1,0 +1,5 @@
+<div class='param <%= param.optional ? "optional" : ""%>'>
+      <label><%= param.name%></label>
+      <code>{<%=(param.optional ? 'optional:' : '') +""+(param.types && param.types[0].type) %>}<%= param["defaultValue"] ? " defaults to "+param["defaultValue"].type :""%></code> 
+	   <%== link(param.description) %>
+  </div>

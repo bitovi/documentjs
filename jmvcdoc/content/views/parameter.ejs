@@ -1,0 +1,30 @@
+<li class='parameter'>
+	<h4><%= param.name %> <code class='types'><%== typesHTML(param.types) %></code></h4>
+	<div class='description'>
+		<%== param.description %>
+	</div>
+	<%if(param.params){ %>
+		<ol class='options'>
+			<% can.each(param.params || [],function(param){%>
+				<li class='option'>
+					<h5><%= param.name %> <code class='types'><%== typesHTML(param.types) %></code></h5>
+					<div class='description'>
+						<%== param.description %>
+					</div>
+				</li>
+			<%})%>
+		</ol>
+	<%}%>
+	<%if(param.options){ %>
+		<ul class='options'>
+			<% can.each(param.options || [],function(option){%>
+				<li class='option'>
+					<h5><%= option.name %> <code class='types'><%== typesHTML(option.types) %></code></h5>
+					<div class='description'>
+						<%== option.description %>
+					</div>
+				</li>
+			<%})%>
+		</ul>
+	<%}%>
+</li>

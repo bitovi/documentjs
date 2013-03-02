@@ -1,4 +1,5 @@
-steal('documentjs/showdown.js',function(converter) {
+steal('documentjs/showdown.js','./helpers/typer.js',
+	'./helpers/namer.js',function(converter, typer,namer) {
 
 
 	var ordered = function( params ) {
@@ -9,7 +10,10 @@ steal('documentjs/showdown.js',function(converter) {
 		}
 		return arr;
 	}
-
+	var indexOf = function(arr, name){
+		return arr.map(function(item){return item.name}).indexOf(name);
+	}
+	
 
 	/**
 	 * @class DocumentJS.tags.param
@@ -57,51 +61,66 @@ steal('documentjs/showdown.js',function(converter) {
 		 * @param {String} line
 		 */
 		add: function( line ) {
-			if (!this.params ) {
-				this.params = {};
+			var printError = function(){
+				print("LINE: \n" + line + "\n does not match @param {TYPE} NAME DESCRIPTION");
 			}
-			var parts = line.match(/\s*@param\s+(?:\{?([^}]+)\}?)?\s+([^\(\s]+(?:\([^\)]+\)\]?)?) ?(.*)?/);
-			if (!parts ) {
-				print("LINE: \n" + line + "\n does not match @params {TYPE} NAME DESCRIPTION")
+			
+			// start processing
+			var children = typer.tree(line);
+			
+			// check the format
+			if(!children.length >= 3) {
+				printError();
 				return;
 			}
-			var description = parts.pop();
-			var n = parts.pop(),
-				optional = false,
-				defaultVal;
-			//check if it has anything ...
-			var nameParts = n.match(/\[([\w\.\$\(\),]+)(?:=([^\]]*))?\]/)
-			if ( nameParts ) {
-				optional = true;
-				defaultVal = nameParts[2]
-				n = nameParts[1]
+			if(!children[1].type == "{") {
+				printError();
+				return;
 			}
-			// check if parens 
-				
-			var nameParts = n.match(/([^\[\(\s]+)(\([^\)]+\))/) 
-			if ( nameParts && this.params[nameParts[1]]) {
-				
-				var order = this.params[nameParts[1]].order;
-				delete this.params[nameParts[1]];
-			}
-			var param = this.params[n] ? 
-				this.params[n] : 
-				this.params[n] = {
-						order: order === undefined ? ordered(this.params).length : order
-					};
-
 			
-			param.description = description || "";
-			param.name = n;
-			param.type = parts.pop() || "";
-
-
-			param.optional = optional;
-			if ( defaultVal ) {
-				param["default"] = defaultVal;
+			var param = {},
+				description;
+			
+			typer.process(children[1].children, param);
+			var nameChildren = [children[2]];
+			
+			// include for function naming
+			if(children[3] && children[3].type == "("){
+				nameChildren.push( children[3] );
 			}
-
-			return this.params[n];
+			
+			namer.process( nameChildren, param);
+			
+			if(nameChildren.length > 1 ){
+				param.description = line.substr(children[3].end)
+			} else if(typeof children[2] == "string"){
+				param.description = line.substr(children[1].end).replace(children[2],"")
+			} else {
+				param.description = line.substr(children[2].end)
+			}
+			param.description = param.description.replace(/^\s+/,"")
+			
+			// if we have a signiture, add this param to the last 
+			// signiture
+			if(this.signatures){
+				this.signatures[this.signatures.length-1].params.push(param)
+			} else {
+				if (!this.params ) {
+					this.params = [];
+				}
+				// we are the _body's_ param
+				// check if one by the same name hasn't already been created
+				if ( indexOf(this.params, param.name) != -1) {
+					// probably needs to swap
+					this.params.splice(indexOf(this.params, param.name),1, param)
+				} else {
+					// add to params
+					
+					this.params.push(param)
+				}
+			}
+			this._curParam = param;
+			return param;
 		},
 		done : function(){
 			if(this.ret && this.ret.description && this.ret.description ){
@@ -114,6 +133,7 @@ steal('documentjs/showdown.js',function(converter) {
 					}
 				}
 			}
+			delete this._curParam;
 		}
 	};
 

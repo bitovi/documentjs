@@ -60,7 +60,7 @@ steal('./type',function(Type) {
 				data.name = data.name.substr(1, data.name.length - 2).replace(/\./g, "&#46;").replace(/>/g, "&gt;");
 			}
 
-			data.params = {};
+			data.params = [];
 			data.ret = {
 				type: 'undefined',
 				description: ""
@@ -70,13 +70,13 @@ steal('./type',function(Type) {
 			if (!params ) return data;
 
 			for ( var i = 0; i < params.length; i++ ) {
-				data.params[params[i]] = {
+				data.params.push({
 					description: "",
 					type: "",
 					optional: false,
 					order: i,
 					name: params[i]
-				};
+				});
 			}
 
 			return data;

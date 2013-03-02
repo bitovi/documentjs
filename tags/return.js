@@ -1,4 +1,5 @@
-steal(function() {
+steal('documentjs/showdown.js','./helpers/typer.js',
+	function(converter, typer) {
 	/**
 	 * @class DocumentJS.tags.return
 	 * @tag documentation
@@ -25,29 +26,39 @@ steal(function() {
 	 */
 	return {
 		add: function( line ) {
-			if (!this.ret ) {
-				this.ret = {
-					type: 'undefined',
-					description: ""
-				}
+			var printError = function(){
+				print("LINE: \n" + line + "\n does not match @return {TYPE} DESCRIPTION");
 			}
+			
+			// start processing
+			var children = typer.tree(line);
+			
+			// check the format
+			if(!children.length >= 2 || !children[1].children) {
+				printError();
+				return;
+			}
+			
+			var returns = typer.process(children[1].children, {});
+			returns.description = line.substr(children[1].end).replace(/^\s+/,"");
+			
 
 			var parts = line.match(/\s*@return\s+(?:\{([^\}]+)\})?\s*(.*)?/);
 
 			if (!parts ) {
 				return;
 			}
+			var ret;
+			if(this.signitures){
+				this.signatures[this.signatures.length-1].returns = returns;
+			} else {
+				this.returns = returns;
+			} 
 
-			var description = parts.pop() || "";
-			var type = parts.pop();
-			this.ret = {
-				description: description,
-				type: type
-			};
-			return this.ret;
+			return returns;
 		},
-		addMore: function( line ) {
-			this.ret.description += "\n" + line;
+		addMore: function( line, ret ) {
+			ret.description += "\n" + line;
 		}
 	};
 })
