@@ -11,16 +11,14 @@
 		<div id='documentation'>
 			<div id='top'>
 				<div class="content">
-					<div id="searchRoundCorners">
-						<input id='search' type='input' disabled='true'>
-					</div>
-					<div id='defaults'>
-						<ul id="menu" class="ui-menu">
-							<li class="ui-menu-item">
-								<a class="menuLink" href="#!"><span class="menuSpan">Home</span></a>
-							</li>
-						</ul>
-					</div>
+					<input id='search' type='input' disabled='true'>
+					
+					<ul class="menu">
+						<li>
+							<a href="#!">API</a>
+						</li>
+					</ul>
+					
 				</div>
 			</div>
 			<div id='bottom'>
@@ -39,6 +37,7 @@
 			<a href="http://bitovi.com" target="_blank">Generated with DocumentJS by Bitovi</a>
 		</div>
 		<script type='text/javascript'>
+			DOCS_INDEX = "<%= this.index || 'index'%>";
 			DOCS_LOCATION = "docs/" //adds searchData to this
 		</script>
 		<script type='text/javascript' src='<%= pathToRoot %>/steal/steal.js?documentjs/jmvcdoc'></script>

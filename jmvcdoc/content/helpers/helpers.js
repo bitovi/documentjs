@@ -44,7 +44,8 @@ can.Control('candoc.content.helpers.Demo',
 				html = this.contentWindow.DEMO_HTML || $body.find("#demo-html").html();
 				
 				// set and highlight the html content
-				$el.find(".html_content").html("<pre><code class=\"html\"></code></pre>").find("code").text($.trim(html)).highlight();
+				$el.find(".html_content").html("<pre class='prettyprint'><code></code></pre>").find("code").text($.trim(html))
+				
 				
 				// hide the instructions
 				$body.find("#demo-instructions").hide();
@@ -53,7 +54,9 @@ can.Control('candoc.content.helpers.Demo',
 				source = $body.find("#demo-source").html();
 				
 				// set and highlight source code
-				$el.find(".source_content").html("<pre><code class=\"javascript\"></code></pre>").find("code").text($.trim(source)).highlight();
+				$el.find(".source_content").html("<pre class='prettyprint'><code></code></pre>").find("code").text($.trim(source));
+	
+				prettyPrint()
 	
 				// keep trying to find a height
 				var run = function(){
@@ -127,7 +130,8 @@ can.Control('candoc.content.helpers.API', {
 can.Control('candoc.content.helpers.Highlight', {
 	"{document.body} docUpdated" : function(){
 		// API
-		this.element.find("code").highlight();
+		this.element.find("pre").addClass('prettyprint linenums');
+		prettyPrint();
 	}
 });
 

@@ -33,7 +33,7 @@ steal('./tree.js','./typer',function(tree, typer){
 				case "=": 
 					obj.optional = true;
 					if(children[1]){
-						obj.defaultValue = typer.process([children[1]],{}).types[0];
+						obj.defaultValue = children[1];
 					}
 					process(children.slice(2), obj);
 					break;

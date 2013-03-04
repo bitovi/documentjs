@@ -61,10 +61,6 @@ steal('./type',function(Type) {
 			}
 
 			data.params = [];
-			data.ret = {
-				type: 'undefined',
-				description: ""
-			}
 			var params = parts[3].match(/\w+/g);
 
 			if (!params ) return data;
@@ -72,10 +68,8 @@ steal('./type',function(Type) {
 			for ( var i = 0; i < params.length; i++ ) {
 				data.params.push({
 					description: "",
-					type: "",
-					optional: false,
-					order: i,
-					name: params[i]
+					name: params[i],
+					types: [{type: "*"}]
 				});
 			}
 

@@ -122,7 +122,7 @@ DocumentationHelpers = {
 				typeHTML.push( type.type )
 			}
 		});
-		return typeHTML.join(" or ");
+		return "{"+typeHTML.join("|")+"}";
 	},
 	link: function( content, dontReplace ) {
 		return content.replace(/\[\s*((?:['"][^"']*["'])|[^\|\]\s]*)\s*\|?\s*([^\]]*)\s*\]/g, function( match, first, n ) {

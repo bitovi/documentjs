@@ -1,6 +1,6 @@
 steal(function() {
 	/**
-	 * @class DocumentJS.tags.description
+	 * @class DocumentJS.tags.body
 	 * @tag documentation
 	 * @parent DocumentJS.tags 
 	 * 
@@ -10,11 +10,13 @@ steal(function() {
 	 */
 	return  {
 		add: function( line ) {
-			var m = line.match(/^\s*@description\s*(.*)/)
+			
+			var m = line.match(/^\s*@body\s*(.*)/)
 			if ( m ) {
-				this.description = m[1]+" ";
-				return ["default","description"]
+				this.comment = m[1]+" ";
+				
 			}
+			return ["default","comment"]
 		}
 	};
 })

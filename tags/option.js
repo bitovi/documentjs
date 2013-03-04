@@ -89,13 +89,23 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 			}
 			var name,
 				typeToken,
-				description;
+				description,
+				props = {};
 			
+			// if there's a type
 			if( children[1].type == "{" ) {
 				typeToken = children[1];
-				name = children[2];
-				description = line.substr(typeToken.end).replace(name,"").replace(/^\s+/,"");
+				
+				if(typeof children[2] == "string"){
+					name = children[2];
+					description = line.substr(typeToken.end).replace(name,"").replace(/^\s+/,"");
+				} else {
+					name = namer.process( [children[2]], props).name;
+					description = line.substr(children[2].end).replace(/^\s+/,"")
+				}
+				
 			} else {
+				// there's only a name
 				var parts = line.match(/\s*@option\s+([^\(\s]+(?:\([^\)]+\)\]?)?) ?(.*)?/);
 				description = parts.pop().replace(/^\s+/,"");
 				name = parts.pop();
@@ -112,7 +122,9 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 				// merge
 				typer.process(typeToken.children, option);
 			}
-			
+			for(var prop in props){
+				option[prop] =  props[prop];
+			}
 
 			return option;
 		},

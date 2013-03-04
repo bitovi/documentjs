@@ -49,7 +49,7 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 				return;
 			}
 			var ret;
-			if(this.signitures){
+			if(this.signatures){
 				this.signatures[this.signatures.length-1].returns = returns;
 			} else {
 				this.returns = returns;

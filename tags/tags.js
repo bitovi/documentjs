@@ -1,6 +1,7 @@
 
 steal("./alias",
 "./author",
+"./body.js",
 "./codeend",
 "./codestart",
 "./constructor",
@@ -23,13 +24,14 @@ steal("./alias",
 "./type",
 "./release",
 "./image",
-function(alias, author, codeend, codestart, constructor, demo, description, download,
+function(alias, author, body, codeend, codestart, constructor, demo, description, download,
 	hide, iframe, inherits, page, param, parent, plugin, ret, scope, 
 	signature, tag, option, test, type,
 	release, image) {
 	return {
 		alias: alias,
 		author: author,
+		body: body,
 		codeend: codeend,
 		codestart: codestart,
 		constructor: constructor,

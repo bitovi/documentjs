@@ -67,19 +67,17 @@ steal(function() {
 				var signature = {
 					code: code,
 					description: description,
-					params: [],
-					ret: {
-						type: 'undefined',
-						description: ""
-					}
+					params: []
 				}
+				// remove code params
+				delete this.params;
 				this.signatures.push(signature)
 				return signature;
 			}
-
+			
 		},
 		addMore: function( line, data ) {
-			data.description += line;
+			data.description += "\n"+line;
 		}
 	};
 })

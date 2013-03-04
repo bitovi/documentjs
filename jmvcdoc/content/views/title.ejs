@@ -25,12 +25,10 @@
     </div>
     <h1><%= this.title || name.replace(/~/g,".") %></h1>
     
-    <% if( this["module"] || this.plugin){ %>
-		<span class='module'> <%= this["module"] || this.plugin %></span>
+    <% if( this["module"] || this.plugin || this.alias){ %>
+		<span class='module'> <%= this["module"] || this.plugin || this.alias %></span>
     <%} %>
-	<% if( this.alias ){ %>
-		<span class='alias'> <%= this.alias %></span>
-    <%} %>
+
     
     <% if(this.inherits){ %>
     <span class='inherits'> inherits:<%== linkOpen(this.inherits) %></span>

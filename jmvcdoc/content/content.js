@@ -50,19 +50,29 @@ can.Control('Jmvcdoc.Content',
 				Doc.dataDeferred.then(this.proxy('show',docData))
 			}
 		}, this), function() {
-			can.route.attr({ who : 'index' });
+			can.route.attr({ who : window.DOCS_INDEX ||'index' });
 		});
 	},
 	show : function(docData) {
 		document.title = docData.title || docData.name.replace(/~/g,".");
 		this.element.html("//documentjs/jmvcdoc/content/views/article.ejs", docData, DocumentationHelpers)
 			.trigger("docUpdated",[docData]);
-		$('#results a.open').removeClass('open')
-		$('#results a[href="'+location.hash+'"]').addClass('open');
+		
+		// generate contents
+		this.element.find("h2").each(function(){
+			$("<li>").html(can.route.link($(this).text(), {where: $(this).text()})).appendTo("#outline")
+		})
+		
+		
 		
 		if(window._gaq){
 			window._gaq.push(['_trackPageview', document.title]);
 		}
+	},
+	"{clientState} where": function(cs,ev, newVal){
+		$('html, body').animate({
+         scrollTop: $("h2:contains("+newVal+")").offset().top
+     	}, 200);
 	}
 });
 

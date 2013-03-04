@@ -238,7 +238,7 @@ steal('./tags',
 		same(namer.name("[foo=bar]",{}),{
 			name: "foo",
 			optional: true,
-			defaultValue: {type: "bar"},
+			defaultValue: "bar",
 		});
 	});
 	
@@ -347,7 +347,7 @@ steal('./tags',
 		var obj = {}
 		tags.param.add.call(obj,"@param {{name: String, foo}=} thing a description");
 		tags.option.add.call(obj, "@option name name description");
-		tags.option.add.call(obj, "@option {Bar} foo foo description");
+		tags.option.add.call(obj, "@option {Bar} [foo=thing] foo description");
 		tags.option.add.call(obj, "@option {Extra} extra extra description");
 		
 		deepEqual(obj.params[0],
@@ -358,7 +358,13 @@ steal('./tags',
 				type: "Object",
 				options: [
 					{types: [{type: "String"}], name: "name", description: "name description" },
-					{types: [{type: "Bar"}], name: "foo", description: "foo description" },
+					{
+						types: [{type: "Bar"}], 
+						name: "foo", 
+						description: "foo description",
+						defaultValue: "thing",
+						optional: true
+					},
 					{types: [{type: "Extra"}], name: "extra", description: "extra description" }
 				]
 			}]
@@ -383,7 +389,11 @@ steal('./tags',
 				context: undefined,
 				params: [
 					{types: [{type: "String"}], name: "first", description: "first description" },
-					{types: [{type: "Bar"}], name: "second", description: "second description" }
+					{
+						types: [{type: "Bar"}], 
+						name: "second", 
+						description: "second description",
+					}
 				],
 				returns : {types: [{type: "undefined"}]}
 			}]

@@ -107,7 +107,7 @@ steal('./type',function(Type) {
 			}
 			var script = {
 				type: "script",
-				name: docScript.src
+				name: docScript.src+""
 			},
 				scope = script,
 				comments, 
@@ -124,7 +124,7 @@ steal('./type',function(Type) {
 						} else {
 							scope = !type.type || Type.types[type.type].hasChildren ? type : scope;
 						}
-						type.src = docScript.src;
+						type.src = docScript.src+"";
 						if(comment){
 							type.line = comment.line;
 						}

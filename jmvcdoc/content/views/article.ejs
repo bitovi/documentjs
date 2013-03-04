@@ -1,18 +1,20 @@
 <article class='content docs'>
 	<%== can.view.render("//documentjs/jmvcdoc/content/views/title.ejs",this,DocumentationHelpers)%>
 	<section class='description'>
-		<%== this.description %>
+		<%== link(this.description||"") %>
+		<ul id='outline'></ul>
 	</section>
-	<%can.each(this.signitures || [],function(signiture){%>
-		<%== can.view.render("//documentjs/jmvcdoc/content/views/signiture.ejs",signiture,DocumentationHelpers)%>
+	<%can.each(this.signatures || [],function(signature){%>
+		<%== can.view.render("//documentjs/jmvcdoc/content/views/signature.ejs",signature,DocumentationHelpers)%>
 	<%})%>
-	<%if(this.params || this.returns){%>
-		<%== can.view.render("//documentjs/jmvcdoc/content/views/signiture.ejs",{
+	
+	<%console.log(this);if(this.params || this.returns){%>
+		<%== can.view.render("//documentjs/jmvcdoc/content/views/signature.ejs",{
 			params: this.params,
 			returns: this.returns,
 			code: makeSigniture()
 		},DocumentationHelpers)%>
 	<%}%>
-	<section class='comment'><%== link(this.comment)%></section>
+	<section class='comment'><%== link(this.comment||"")%></section>
 </article>
 

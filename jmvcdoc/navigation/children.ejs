@@ -1,0 +1,16 @@
+<ul style="<%= isDisplayed(this) ? '' : 'display:none'%>">
+	<%can.each(children,function(item){%>
+		<li class="<%= this.displayOnly ? 'heading' : ''%> <%= isActive(item) ? 'active' : ''%>">
+			<% if(item.displayOnly){ %>
+				<span><%= item.name %></span>
+			<%} else {%>
+				<%== can.route.link(item.name,{who: item.id})%>
+			<% } %>
+			<%== item.children.length ? childRender(
+			                     item,
+			                     {childRender: childRender,
+			                      isDisplayed: isDisplayed,
+			                      isActive: isActive}) : ""%>
+		</li>
+	<%})%>
+</ul>

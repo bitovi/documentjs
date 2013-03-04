@@ -10,30 +10,56 @@ steal('steal',
 	//if we already have DocumentJS, don't create another, this is so we can document documentjs
 	var objects = {};
 	/**
-	 * @page DocumentJS
-	 * @parent index 4
+	 * @function DocumentJS
+	 * @module documentjs
 	 * 
-	 * @description A documentation framework.
+	 * @description DocumentJS makes it easy to produce beautiful
+	 * and useful documentation for your JavaScript project.
 	 * 
-     * There are several reasons why documentation is important:
+	 * @signature `DocumentJS(path,[options])` Documents
+	 * everything in folder path. Example:
+	 * 
+	 *     DocumentJS("myproject",{});
+	 * 
+	 * Generates "myproject/docs.html" and resources in
+	 * "myproject/docs/".
+	 * 
+	 * @param {String} folder The folder location to search for files ending with
+	 * `.js`.
+	 * @param {{}} options Optional options that configure the behavior of DocumentJS.
+	 * @option {Array.<String>} markdown An array folders
+	 * to look for markdown files within. Defaults 
+	 * to `[folder]`.
+	 * @option {String} [out=folder] Where to place the output content. Defaults to 
+	 * the folder.
+	 * @option {String} [index=folder] The name of the object that is documented.
+	 * 
+	 * @signature `DocumentJS(files,[options])` Documents
+	 * the files in files.
+	 * @param {Array.<{src:String,text:String}>} files The files
+	 * to document.  Each file should have a src and text property like:
+	 * 
+	 *     [{src: "path/to/file.js", text: "var a= 1;"}, { ... }]
+	 * 
+	 * @param {{}} options The same options available in the other 
+	 * signature.
+	 * 
+	 * @body
+	 * 
+     * ## Features
      * 
-     * * As apps grow, source code becomes complex and difficult to maintain.
-     * * It's beneficial for customers because it helps to educate them on a product.
-     * * Perhaps most importantly, it keeps a project going by bringing new developers up to speed - while also keeping the whole team on the same page.
 	 * 
-	 * DocumentJS is a new documentation solution for JavaScript applications. It makes creating, viewing, and maintaining documentation easy and fun. Out of the box, it features:
-	 * 
-     * * Fexible organization of your documentation
-     * * An integrated documentation viewer where you can search your API
-     * * Markdown support
-     * * An extensible architecture
+     * - Fexible organization of your documentation
+     * - An integrated documentation viewer where you can search your API
+     * - Markdown support
+     * - An extensible architecture
      * 
 	 * DocumentJS provides powerful and easy to extend documentation functionality.
 	 * It's smart enough to guess 
 	 * at things like function names and parameters, but powerful enough to generate 
 	 * <span class='highlight'>JavaScriptMVC's entire website</span>!
 	 * 
-	 * ###Organizing your documentation
+	 * ## Organizing your documentation
 	 *
 	 * Let's use an hypothetical little CRM system as an example of how easy it is to organize your documentation with DocumentJS. 
 	 * 
@@ -55,9 +81,9 @@ steal('steal',
 	 * 
 	 * Run the documentjs script to generate the docs:
 	 * 
-	 * @codestart
-	 * documentjs/doc.bat crm
-	 * @codeend
+	 *
+	 *     documentjs/doc.bat crm
+	 * 
 	 * 
 	 * This is what you should see when you open __crm\docs.html__:
 	 * 
@@ -174,7 +200,7 @@ steal('steal',
 	 * 
 	 * As you see DocumentJS makes it super easy and fun to organize your documentation!
 	 * 
-	 * ###How DocumentJS works
+	 * ## How DocumentJS works
 	 * 
 	 * DocumentJS architecture is organized around the concepts of [DocumentJS.types | types] and [DocumentJS.tags | tags]. Types are meant to represent every javascript construct 
 	 * you might want to comment like classes, functions and attributes. Tags add aditional information to the comments of the type being processed.
@@ -220,19 +246,11 @@ steal('steal',
 	 * * [DocumentJS.tags.release|@release] - specifies the release.
 	 * 
 	 * 
-	 * ###Inspiration
+	 * ## Inspiration
 	 * 
 	 * DocumentJS was inspired by the [http://api.jquery.com/ jQuery API Browser] by [http://remysharp.com/ Remy Sharp]
 	 * 
 	 * 
-	 * @param {Array|String} scripts an array of script objects that have src and text properties like:
-	 * @codestart
-	 * [{src: "path/to/file.js", text: "var a= 1;"}, { ... }]
-	 * @codeend
-	 * @param {Object} options an options hash including
-	 * 
-	 *   . name - the name of the application
-	 *   . out - where to generate the documentation files
 	 */
 	var DocumentJS = function(scripts, options) {
 		// an html file, a js file or a directory
@@ -412,7 +430,8 @@ steal('steal',
 				renderData = {
 					pathToRoot: s.URI(base.replace(/\/[^\/]*$/, "")).pathToRoot(),
 					path: path,
-					indexPage: objects.index
+					indexPage: objects[options.index || 'index'],
+					index: options.index
 				}
 
 			//checks if you have a summary

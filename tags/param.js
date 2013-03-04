@@ -123,8 +123,8 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 			return param;
 		},
 		done : function(){
-			if(this.ret && this.ret.description && this.ret.description ){
-				this.ret.description = converter.makeHtml(this.ret.description)
+			if(this.returns && this.returns.description && this.returns.description ){
+				this.returns.description = converter.makeHtml(this.returns.description)
 			}
 			if(this.params){
 				for(var paramName in this.params){
@@ -133,6 +133,17 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 					}
 				}
 			}
+			(this.signatures || []).forEach(function(signature){
+				signature.description = converter.makeHtml( signature.description );
+				
+				(signature.params || []).forEach(function(param){
+					param.description = converter.makeHtml(param.description);
+					
+				})
+				if(signature.returns && signature.returns.description){
+					signature.returns.description = converter.makeHtml(signature.returns.description)
+				}
+			})
 			delete this._curParam;
 		}
 	};
