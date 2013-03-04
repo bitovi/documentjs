@@ -70,9 +70,12 @@ can.Control('Jmvcdoc.Content',
 		}
 	},
 	"{clientState} where": function(cs,ev, newVal){
-		$('html, body').animate({
-         scrollTop: $("h2:contains("+newVal+")").offset().top
-     	}, 200);
+		if(newVal){
+			$('html, body').animate({
+	         scrollTop: $("h2:contains("+newVal+")").offset().top
+	     	}, 200);
+		}
+		
 	}
 });
 
