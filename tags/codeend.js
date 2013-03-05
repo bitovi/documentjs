@@ -1,6 +1,6 @@
 steal(function() {
 	/**
-	 * @class DocumentJS.tags.codeend
+	 * @constructor DocumentJS.tags.codeend
 	 * @tag documentation
 	 * @parent DocumentJS.tags 
 	 * 

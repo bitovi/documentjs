@@ -65,18 +65,20 @@ steal('can/construct', 'can/util/json.js').then('./favorites.js',function(){
 			var prop, doc, parents, i, len, parent;
 			// go through and add children ...
 			for(prop in this._data){
+				// this should take order into account ...
+				
 				doc = this._data[prop];
-				parents = doc.parents || [];
-				len = parents.length;
-				for(var i =0; i < len; i++){
-					parent = data[parents[i]];
-					
+				if(doc.parent){
+					parent = data[doc.parent];
 					if(!parent.childDocs){
 						parent.childDocs = []
 					}
 					// this 'should' take up less mem (but not in what's saved)
 					parent.childDocs.push(doc.name);
 				}
+				
+				
+				
 			}
 			if(window.localStorage && window.JMVCDOC_TIMESTAMP){
 				setTimeout(function(){

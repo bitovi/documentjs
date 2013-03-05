@@ -3,12 +3,20 @@ steal('steal','../distance','../showdown','documentjs/tags',function(s, distance
 		nameCheckReg = /^\s*@(\w+)[ \t]+([\w\.\$\/]+)/m,
 		doubleAt = /@@/g;
 	/**
-	 * @class DocumentJS.Type
-	 * @tag documentation
+	 * @function type
+	 * @module documentjs/type
+	 * @parent DocumentJS
+	 * 
 	 * Keeps track of types of directives in DocumentJS.  
 	 * Each type is added to the types array.
-	 * @param {Object} type
-	 * @param {Object} props
+	 * 
+	 * @param {String} type The name of the type
+	 * @param {{}} props
+	 * 
+	 * @option {RegExp} codeMatch
+	 * @option {function(String):Object} code(codeLine) Takes
+	 * @option {RegExp} parent
+	 * @option {Boolean} useName
 	 */
 	var Type = function( type, props ) {
 		Type.types[type] = props;
@@ -16,10 +24,10 @@ steal('steal','../distance','../showdown','documentjs/tags',function(s, distance
 	}
 
 	s.extend(Type,
-	/**
-	 * @Static
-	 */
 	{
+		/**
+		 * @property {Object}
+		 */
 		types : {},
 		/**
 		 * Must get type and name

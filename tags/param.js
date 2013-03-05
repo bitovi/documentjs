@@ -16,9 +16,8 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 	
 
 	/**
-	 * @class DocumentJS.tags.param
-	 * @tag documentation
-	 * @parent DocumentJS.tags 
+	 * @constructor documentjs/tags/param @param
+	 * @parent DocumentJS
 	 * 
 	 * Adds parameter information.
 	 * 
@@ -76,6 +75,9 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 			if(!children[1].type == "{") {
 				printError();
 				return;
+			}
+			if(!children[2]){
+				print("LINE: \n" + line + "\n does not match @param {TYPE} NAME DESCRIPTION");
 			}
 			
 			var param = {},

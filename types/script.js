@@ -1,4 +1,7 @@
-steal('./type',function(Type) {
+steal('documentjs/tags/process.js','documentjs/tags',function(process, tags) {
+	
+	process.tags = tags;
+	
 	var ignoreCheck = /\@documentjs-ignore/,
 		commentReg = /\r?\n(?:\s*\*+)?/g,
 		spaceReg = /\S/g,
@@ -113,22 +116,36 @@ steal('./type',function(Type) {
 				comments, 
 				type,
 				comment,
-				typeCreateHandler = function(type, newScope ){
+				typeCreateHandler = function(docObject, newScope ){
 					//processTime = processTime + (new Date - start)
-					if ( type ) {
-						objects[type.name] = type;				
-						// get the new scope if you need it
-						// if we don't have a type, assume we can have children
-						if(newScope){
-							scope = newScope;
+					print(typeof docObject+" "+docObject.type+":"+docObject.name+" < "+docObject.parent)
+					
+					
+					if ( docObject && docObject.name) {
+						if(objects[docObject.name]){
+							// merge props
+							for(var prop in docObject){
+								objects[docObject.name][prop] = docObject[prop];
+							}
 						} else {
-							scope = !type.type || Type.types[type.type].hasChildren ? type : scope;
-						}
-						type.src = docScript.src+"";
-						if(comment){
-							type.line = comment.line;
+							objects[docObject.name] = docObject;	
 						}
 						
+						docObject.src = docScript.src+"";
+						if(comment){
+							docObject.line = comment.line;
+						}
+						/*if(docObject.parent){
+							var parent = objects[docObject.parent] ?
+								objects[docObject.parent] : objects[docObject.parent] = {}
+							if(!parent.children){
+								parent.children = [];
+							}
+							parent.children.push(docObject.name)
+						}*/
+					}
+					if(newScope){
+						scope = newScope
 					}
 				}
 
@@ -137,13 +154,17 @@ steal('./type',function(Type) {
 
 			// handle markdown docs
 			if (/\.(md|markdown)$/.test(docScript.src) ) {
-				Type.create(source, 
-					"", 
-					scope, 
-					objects, 
-					'page', 
-					docScript.src.match(/([^\/]+)\.(md|markdown)$/)[1],
-					typeCreateHandler);
+				
+				process.comment({
+					comment: source,
+					docMap: objects,
+					scope: scope,
+					props: {
+						type: 'page',
+						name: docScript.src.match(/([^\/]+)\.(md|markdown)$/)[1]
+					},
+				}, typeCreateHandler);
+				
 				return;
 			}
 
@@ -153,14 +174,12 @@ steal('./type',function(Type) {
 				comment = comments[i];
 
 				//var start = new Date;
-
-				Type.create(comment.comment, 
-					comment.code, 
-					scope, 
-					objects, 
-					undefined, 
-					undefined,
-					typeCreateHandler);
+				process.codeAndComment({
+					code: comment.code,
+					comment: comment.comment,
+					docMap: objects,
+					scope: scope
+				}, typeCreateHandler)
 			}
 
 
@@ -212,11 +231,6 @@ steal('./type',function(Type) {
 			return comments;
 		}
 	};
-
-	Type("script", {
-		useName: false,
-		hasChildren: true
-	});
 	
 	return Script;
 })

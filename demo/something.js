@@ -1,5 +1,5 @@
 /**
- * @class Something
+ * @constructor Something
  * @parent index
  * ## boom
  * 
@@ -7,7 +7,6 @@
  * 
  * goes
  * blah
- * @constructor foo bar
  * man
  * @tag home
  */
@@ -29,7 +28,7 @@ Something.prototype = {
 
 	},
 	/**
-	 * @attribute
+	 * @property
 	 * this is my comment
 	 */
 	foo: 2
@@ -48,7 +47,7 @@ staticSomething = function() {
 
 
 /**
- * @class
+ * @constructor
  * this is a comment
  * @parent index
  */

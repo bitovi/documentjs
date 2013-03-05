@@ -1,8 +1,7 @@
 steal(function() {
 	/**
-	 * @class DocumentJS.tags.test
-	 * @tag documentation
-	 * @parent DocumentJS.tags 
+	 * @constructor documentjs/tags/test @test
+	 * @parent DocumentJS
 	 * 
 	 * Link to test cases.
 	 * 

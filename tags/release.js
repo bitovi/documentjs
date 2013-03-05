@@ -1,9 +1,8 @@
 steal(function() {
 	/**
-	 * @class DocumentJS.tags.release
-	 * @tag documentation
+	 * @constructor documentjs/tags/release @release
 	 * @release 3.3
-	 * @parent DocumentJS.tags 
+	 * @parent DocumentJS
 	 * Specifies the relase
 	 *
 	 */

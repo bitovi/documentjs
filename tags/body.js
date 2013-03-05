@@ -1,6 +1,6 @@
-steal(function() {
+steal('../showdown.js',function(converter) {
 	/**
-	 * @class DocumentJS.tags.body
+	 * @constructor DocumentJS.tags.body
 	 * @tag documentation
 	 * @parent DocumentJS.tags 
 	 * 
@@ -17,6 +17,11 @@ steal(function() {
 				
 			}
 			return ["default","comment"]
+		},
+		done: function(){
+			if(this.body){
+				this.body = converter.makeHtml(this.body)
+			}
 		}
 	};
 })

@@ -1,11 +1,14 @@
 steal('documentjs/showdown.js','./helpers/typer.js',
 	function(converter, typer) {
 	/**
-	 * @class DocumentJS.tags.return
-	 * @tag documentation
-	 * @parent DocumentJS.tags 
+	 * @constructor documentjs/tags/return @return
+	 * @parent DocumentJS
 	 * 
 	 * Describes return data in the format.
+	 * 
+	 * @signature `@return {TYPE} DESCRIPTION`
+	 * 
+	 * 
 	 * 
 	 * ###Example:
 	 * 

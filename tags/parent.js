@@ -3,9 +3,8 @@ steal(function() {
 		var waiting = {}
 
 		/**
-		 * @class DocumentJS.tags.parent
-		 * @tag documentation
-		 * @parent DocumentJS.tags 
+		 * @constructor documentjs/tags/parent @parent
+		 * @parent DocumentJS
 		 * 
 		 * Says under which parent the current type should be located.
 		 * 
@@ -26,29 +25,11 @@ steal(function() {
 		 */
 		return {
 			add: function( line , curData, objects) {
-				var m = line.match(/^\s*@parent\s*([\w\.\/\$]*)\s*([\d]*)/)
-				var name = m[1],
-					inst = objects[name],
-					pos = m[2] ? parseInt(m[2]) : null
-
-					if (!inst ) {
-						inst = objects[name] = {
-							name: name
-						}
-					}
-					if (!this.parents ) {
-						this.parents = [];
-					}
-					this.parents.unshift(inst.name);
-					if(pos != null){
-						this.order = pos;
-					}
-					//this.parents.push(inst.name);
-
-				if (!inst.children ) {
-					inst.children = [];
+				var m = line.match(/^\s*@parent\s*([\w\.\/\$]*)\s*([\d]*)/);
+				this.parent = m[1];
+				if(m[2]){
+					this.order =  parseInt(m[2]) || 0;
 				}
-				inst.children.push(this.name)
 			}
 		};
 

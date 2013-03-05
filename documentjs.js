@@ -1,12 +1,10 @@
 steal('steal',
-	  'documentjs/types',
-	  'documentjs/tags',
       'documentjs/types/script.js',
 	  'documentjs/searchdata.js',
 	  'steal/generate/ejs.js',
 	  'documentjs/out.js',
 	  'steal/build', 
-	  function( s, Type, tags, Script, searchData, EJS, out ) {
+	  function( s, Script, searchData, EJS, out ) {
 	//if we already have DocumentJS, don't create another, this is so we can document documentjs
 	var objects = {};
 	/**
@@ -26,7 +24,8 @@ steal('steal',
 	 * 
 	 * @param {String} folder The folder location to search for files ending with
 	 * `.js`.
-	 * @param {{}} options Optional options that configure the behavior of DocumentJS.
+	 * @param {{}} [options] Optional options that configure the behavior of DocumentJS.
+	 * 
 	 * @option {Array.<String>} markdown An array folders
 	 * to look for markdown files within. Defaults 
 	 * to `[folder]`.
@@ -382,7 +381,7 @@ steal('steal',
 					}
 					
 					//get all children					
-					obj.children = this.listedChildren(obj);
+					//obj.children = this.listedChildren(obj);
 					// update the search model with all of these
 					var converted = name.replace(/ /g, "_")
 										.replace(/&#46;/g, ".")
@@ -398,7 +397,7 @@ steal('steal',
 			//print(processTime)
 		},
 		// tests if item is a shallow child of parent
-		shallowParent: function( item, parent ) {
+		/*shallowParent: function( item, parent ) {
 			if ( item.parents && parent ) {
 				for ( var i = 0; i < item.parents.length; i++ ) {
 					if ( item.parents[i] == parent.name ) {
@@ -422,7 +421,7 @@ steal('steal',
 				}
 			}
 			return result;
-		},
+		},*/
 		summaryPage: function( options ) {
 			//find index page
 			var path = options.out,

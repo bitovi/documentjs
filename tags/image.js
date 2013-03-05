@@ -1,8 +1,7 @@
 steal(function() {
 	/**
-	 * @class DocumentJS.tags.image
-	 * @tag documentation
-	 * @parent DocumentJS.tags 
+	 * @constructor documentjs/tags/image @image
+	 * @parent DocumentJS
 	 * 
 	 * Adds an image.
 	 * 

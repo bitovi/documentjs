@@ -104,10 +104,10 @@ steal('can',
 				
 				cur.children.push(child);
 				
-				if( /static$/.test( child.name ) ) {
+				if( /static$/.test( child.name ) && child.type == "static") {
 					staticItem = child
 					staticItem.displayOnly = true;
-				} else if ( /prototype$/.test( child.name ) ) {
+				} else if ( /prototype$/.test( child.name ) && child.type == "prototype" ) {
 					protoItem = child;
 					protoItem.displayOnly = true;
 				} else if( child.type == "plugin"){

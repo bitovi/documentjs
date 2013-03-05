@@ -7,7 +7,7 @@ steal('can/control',
 	function ($) {
 
 		/**
-		 * @class Jmvcdoc.Nav
+		 * @constructor Jmvcdoc.Nav
 		 *
 		 * listens for a history change, gets object it represents, and draws it ....
 		 */

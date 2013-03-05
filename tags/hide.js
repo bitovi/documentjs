@@ -1,8 +1,7 @@
 steal(function() {
 	/**
-	 * @class DocumentJS.tags.hide
-	 * @tag documentation
-	 * @parent DocumentJS.tags 
+	 * @constructor documentjs/tags/hide @hide
+	 * @parent DocumentJS
 	 * 
 	 * Hides this construct from the left hand side bar.
 	 * 

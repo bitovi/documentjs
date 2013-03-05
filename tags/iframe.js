@@ -1,8 +1,7 @@
 steal(function() {
 	/**
-	 * @class DocumentJS.tags.iframe
-	 * @tag documentation
-	 * @parent DocumentJS.tags 
+	 * @constructor documentjs/tags/iframe @iframe
+	 * @parent DocumentJS
 	 * 
 	 * Adds an iframe to some page with example code.
 	 * 

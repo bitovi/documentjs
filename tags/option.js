@@ -1,5 +1,8 @@
 steal('documentjs/showdown.js','./helpers/typer.js',
-	'./helpers/tree.js','./helpers/namer.js',function(converter, typer, tree,namer) {
+	'./helpers/tree.js',
+	'./helpers/namer.js',
+	'./helpers/typeNameDescription.js',
+	function(converter, typer, tree,namer, tnd) {
 
 	var getOptions = function(param){
 		for(var i =0; i < param.types.length; i++) {
@@ -30,9 +33,9 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 	
 
 	/**
-	 * @class DocumentJS.tags.param
+	 * @constructor documentjs/tags/option @option
 	 * @tag documentation
-	 * @parent DocumentJS.tags 
+	 * @parent DocumentJS 
 	 * 
 	 * Adds parameter information.
 	 * 
@@ -75,40 +78,16 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 		 * @param {String} line
 		 */
 		add: function( line ) {
-			var printError = function(){
-				print("LINE: \n" + line + "\n does not match @params {TYPE} NAME DESCRIPTION");
-			}
-			var prevParam = this._curParam || this.params[this.params.length - 1];
+			var prevParam = this._curParam || (this.params && this.params[this.params.length - 1]) || this;
 			// start processing
-			var children = typer.tree(line);
 			
-			// check the format
-			if(!children.length >= 2) {
-				printError();
-				return;
+			var data = tnd(line);
+			if(!data.name){
+				print("LINE: \n" + line + "\n does not match @params [{TYPE}] NAME DESCRIPTION");
 			}
-			var name,
-				typeToken,
-				description,
-				props = {};
 			
-			// if there's a type
-			if( children[1].type == "{" ) {
-				typeToken = children[1];
-				
-				if(typeof children[2] == "string"){
-					name = children[2];
-					description = line.substr(typeToken.end).replace(name,"").replace(/^\s+/,"");
-				} else {
-					name = namer.process( [children[2]], props).name;
-					description = line.substr(children[2].end).replace(/^\s+/,"")
-				}
-				
-			} else {
-				// there's only a name
-				var parts = line.match(/\s*@option\s+([^\(\s]+(?:\([^\)]+\)\]?)?) ?(.*)?/);
-				description = parts.pop().replace(/^\s+/,"");
-				name = parts.pop();
+			if(!prevParam.types){
+				prevParam.types = [];
 			}
 			var params = getParams(prevParam);
 			var options = getOptions(prevParam);
@@ -116,14 +95,13 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 				print("LINE: \n" + line + "\n could not find an object or arguments to add options to.");
 				return;
 			}
-			var option = getOrMakeOptionByName(options || params, name);
-			option.description = description;
-			if( typeToken ) {
-				// merge
-				typer.process(typeToken.children, option);
-			}
-			for(var prop in props){
-				option[prop] =  props[prop];
+			var option = getOrMakeOptionByName(options || params, data.name);
+			
+			
+			option.description = data.description;
+			
+			for(var prop in data){
+				option[prop] =  data[prop];
 			}
 
 			return option;

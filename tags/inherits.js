@@ -1,8 +1,8 @@
 steal(function() {
 	/**
-	 * @class DocumentJS.tags.inherits
+	 * @constructor documentjs/tags/inherits @inherits
 	 * @tag documentation
-	 * @parent DocumentJS.tags 
+	 * @parent DocumentJS
 	 * 
 	 * Says current class inherits from another class.
 	 *

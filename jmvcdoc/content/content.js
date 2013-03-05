@@ -20,7 +20,7 @@ steal('can/construct/proxy',
 		function(){
 
 /**
- * @class Jmvcdoc.Content
+ * @constructor Jmvcdoc.Content
  */
 can.Control('Jmvcdoc.Content',
 /* @Static */
@@ -59,9 +59,14 @@ can.Control('Jmvcdoc.Content',
 			.trigger("docUpdated",[docData]);
 		
 		// generate contents
-		this.element.find("h2").each(function(){
-			$("<li>").html(can.route.link($(this).text(), {where: $(this).text()})).appendTo("#outline")
-		})
+		var h2 = this.element.find("h2")
+		if(h2.length > 1){
+			// only draw if useful
+			h2.each(function(){
+				$("<li>").html(can.route.link($(this).text(), {where: $(this).text()})).appendTo("#outline")
+			})
+		}
+		
 		
 		
 		

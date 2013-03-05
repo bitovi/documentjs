@@ -1,7 +1,7 @@
 steal(function() {
 	/**
-	 * @class DocumentJS.tags.page
-	 * @parent DocumentJS.tags
+	 * @constructor documentjs/tags/page @page
+	 * @parent DocumentJS
 	 */
 	return {
 		add: function( line ) {
@@ -9,6 +9,7 @@ steal(function() {
 			if ( m ) {
 				this.name = m[1];
 				this.title = m[2] || this.name;
+				this.type= "page"
 			}
 		}
 	};

@@ -2,7 +2,7 @@ steal('can/control',
 	'can/observe/delegate',
 	'documentjs/jmvcdoc/models/search.js',function(){
 /**
- * @class Jmvcdoc.Search
+ * @constructor Jmvcdoc.Search
  */
 can.Control('Jmvcdoc.Search',
 /* @Static */
