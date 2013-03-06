@@ -1,29 +1,42 @@
 steal(function() {
 	/**
-	 * @constructor DocumentJS.tags.demo
-	 * @tag documentation
-	 * @parent DocumentJS.tags 
+	 * @constructor documentjs/tags/demo @demo
+	 * @parent DocumentJS 
 	 * 
 	 * Placeholder for an application demo.
 	 * 
-	 * ###Demo Example:
+	 * @signature `@demo SRC [HEIGHT]`
 	 * 
 	 * @codestart
-	 * /*
-	 *  * @demo jquery/controller/controller.html
+	 * /**
+	 *  * @demo can/control/control.html 300
 	 *  *|
 	 * @codeend
 	 * 
-	 * ###End Result:
-	 *   
-	 * @demo jquery/controller/controller.html
+	 * @param {String} SRC The source of the html page.
+	 * @param {Number} [HEIGHT] The height of the html page. If
+	 * a height is not provided, the height is determined as
+	 * the content of the body.
+	 * 
+	 * @body
+	 * 
+	 * ## Specifying the HTML and JS source
+	 * 
+	 * By default, `@demo` uses the html of the body minus
+	 * any script tags as the HTML source. This can 
+	 * be changed by:
+	 * 
+	 *  - Adding an element with `id="demo-html"` or 
+	 *    setting `window.DEMO_HTML` to the source text.
+	 *  - Adding `id="demo-source"` to a script tag or
+	 *    setting `window.DEMO_SOURCE` to the source JS.
 	 */
 	return {
 		add: function( line ) {
 			var m = line.match(/^\s*@demo\s*([\w\.\/\-\$]*)\s*([\w]*)/)
 			if ( m ) {
 				var src = m[1] ? m[1].toLowerCase() : '';
-				this.comment += "<div class='demo_wrapper' data-demo-src='" + src + "'></div>";
+				this.body += "<div class='demo_wrapper' data-demo-src='" + src + "'></div>";
 			}
 		}
 	};

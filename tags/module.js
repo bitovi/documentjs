@@ -2,6 +2,7 @@ steal(function() {
 	/**
 	 * @constructor documentjs/tags/module @module
 	 * @parent DocumentJS
+	 * @hide
 	 * 
 	 * Adds to another plugin. 
 	 * 

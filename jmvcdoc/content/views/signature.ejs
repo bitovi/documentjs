@@ -5,7 +5,7 @@
 		<%}%>
 	</h2>
 	<%== this.description %>
-	
+	<% if( this.params && this.params.length ) { %>
 	<h3>Parameters</h3>
 	<ol class='parameters'>
 		
@@ -16,6 +16,7 @@
 		<% }) %>
 		
 	</ol>
+	<% } %>
 	<% if(this.returns){ %>
 	<h3>Returns</h3>
 	<div class='returns'>

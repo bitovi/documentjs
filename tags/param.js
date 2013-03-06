@@ -17,9 +17,40 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 
 	/**
 	 * @constructor documentjs/tags/param @param
-	 * @parent DocumentJS
+	 * @tag documentation
+	 * @parent DocumentJS 
 	 * 
 	 * Adds parameter information.
+	 * 
+	 * @signature `@param {TYPE} NAME DESCRIPTION`
+	 * 
+	 * @codestart
+     * /**
+     *  * Finds an order by id.
+     *  * @@param {String} [id=0] Order identification number.
+     *  * @@param {function(Order)} [success(order)] Filter order search by this date.
+     *  *|
+     *  findById: function( id, success ) {
+	 *  @codeend
+	 * 
+	 * 
+	 * @param {String} [TYPE] A type expression specified 
+	 * [here](https://developers.google.com/closure/compiler/docs/js-for-compiler#types).
+	 * 
+	 * @param {String} NAME The name of the param. It can be specified as:
+	 * 
+	 *  - A simple name:
+	 * 
+	 * @codestart
+     * /**
+     *  * @@param {TYPE} id 
+     *  *|
+	 * @codeend
+	 * 
+	 * 
+	 * @body
+	 * 
+	 * 
 	 * 
 	 * ###Use cases:
 	 * 
@@ -38,27 +69,22 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 	 * ###Example:
 	 * 
 	 * @codestart
-     * /*
+     * /**
      *  * Finds an order by id.
      *  * @@param {String} id Order identification number.
      *  * @@param {Date} [date] Filter order search by this date.
      *  *|
-     *  findById: function(id, date) {
-     *      // looks for an order by id
-     *  }   
-	 *  @codeend
+     * findById: function(id, date) {
+     *     // looks for an order by id
+     * }   
+	 * @codeend
 	 *  
-	 * 
 	 */
 	return {
 
 		addMore: function( line, last ) {
 			if ( last ) last.description += "\n" + line;
 		},
-		/**
-		 * Adds @param data to the constructor function
-		 * @param {String} line
-		 */
 		add: function( line ) {
 			var printError = function(){
 				print("LINE: \n" + line + "\n does not match @param {TYPE} NAME DESCRIPTION");

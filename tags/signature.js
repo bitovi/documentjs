@@ -1,7 +1,6 @@
 steal(function() {
 	/**
-	 * @constructor documentjs/tags/codestart
-	 * @hide
+	 * @constructor documentjs/tags/signature @signature
 	 * @parent DocumentJS
 	 * 
 	 * Starts a code block.  

@@ -118,7 +118,7 @@ steal('documentjs/tags/process.js','documentjs/tags',function(process, tags) {
 				comment,
 				typeCreateHandler = function(docObject, newScope ){
 					//processTime = processTime + (new Date - start)
-					print(typeof docObject+" "+docObject.type+":"+docObject.name+" < "+docObject.parent)
+					//print(typeof docObject+" "+docObject.type+":"+docObject.name+" < "+docObject.parent)
 					
 					
 					if ( docObject && docObject.name) {

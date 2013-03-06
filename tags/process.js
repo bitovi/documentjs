@@ -30,7 +30,7 @@ steal('steal','../distance',function(s, distance){
 				if(!options.props){
 					options.props = {};
 				}
-				options.props.type = check[1]
+				options.props.type = check[1].toLowerCase();
 			}
 			
 			if(options.code){
@@ -95,12 +95,15 @@ steal('steal','../distance',function(s, distance){
 				lines = typeof comment == 'string' ? comment.split("\n") : comment,
 				len = lines.length,
 				typeDataStack = [],
-				curTag, lastType, curData, lastData, defaultWrite = 'body',
+				curTag, lastType, curData, lastData, defaultWrite = 'description',
 				//what data we are going to be called with
 				tag;
 
 			if (!props.body ) {
 				props.body = '';
+			}
+			if (!props.description ) {
+				props.description = '';
 			}
 			// for each line
 			for ( var l = 0; l < len; l++ ) {
@@ -225,7 +228,8 @@ steal('steal','../distance',function(s, distance){
 		tags: {},
 		guessTag: function( code, firstGuess, scope ) {
 			var matches = function(tag, code){
-				if ( process.tags[tag].codeMatch && 
+				if ( process.tags[tag] && 
+					 process.tags[tag].codeMatch && 
 					(typeof process.tags[tag].codeMatch == 'function' ? 
 						process.tags[tag].codeMatch(code) :
 						process.tags[tag].codeMatch.test(code) ) ) {

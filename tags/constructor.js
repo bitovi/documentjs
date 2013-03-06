@@ -4,6 +4,10 @@ steal('./helpers/getParent.js',
 	var funcMatch = /(?:([\w\.\$]+)|(["'][^"']+["']))\s*[=]\s*function\s?\(([^\)]*)/,
 		codeMatch = /([\w\.\$]+?).extend\(\s*["']([^"']*)["']/
 
+	/**
+	 * @constructor documentjs/tags/constructor @constructor
+	 * @signature `@constructor NAME [TITLE]`
+	 */
 	return {
 		codeMatch: function(code){
 			return codeMatch.test(code) || funcMatch.test(code);

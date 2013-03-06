@@ -17,7 +17,14 @@ steal('./namer.js','./typer.js',function(namer, typer){
 			if(children[1].type == "{"){
 				typer.process(children[1].children, param);
 				var nameChildren = children[2] ? [children[2]] : [];
-				if(children[3] && children[3].type == "("){
+				if(children[3] === "function") {
+					nameChildren = [nameChildren[0]+"function"]
+					
+					param.description = line.substr(children[1].end)
+						.replace(children[2],"")
+						.replace(children[3],"")
+					
+				} else if(children[3] && children[3].type == "("){
 					nameChildren.push( children[3] );
 					param.description = line.substr(children[3].end)
 				} else {
@@ -35,6 +42,10 @@ steal('./namer.js','./typer.js',function(namer, typer){
 				if(children[2] && children[2].type == "("){
 					nameChildren.push( children[2] );
 					param.description = line.substr(children[2].end)
+				} else if(children[2] == "function") { 
+					nameChildren = [nameChildren[0]+"function"];
+					
+					param.description = line.replace(children[0],"").replace(children[1]+'function',"")
 				} else {
 					param.description = line.replace(children[0],"").replace(children[1],"")
 				}

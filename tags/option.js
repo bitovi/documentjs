@@ -39,6 +39,36 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 	 * 
 	 * Adds parameter information.
 	 * 
+	 * @signature `@param {TYPE} NAME DESCRIPTION`
+	 * 
+	 * @codestart
+     * /**
+     *  * Finds an order by id.
+     *  * @@param {String} [id=0] Order identification number.
+     *  * @@param {function(Order)} [success(order)] Filter order search by this date.
+     *  *|
+     *  findById: function( id, success ) {
+	 *  @codeend
+	 * 
+	 * 
+	 * @param {String} [TYPE] A type expression specified 
+	 * [here](https://developers.google.com/closure/compiler/docs/js-for-compiler#types).
+	 * 
+	 * @param {String} NAME The name of the param. It can be specified as:
+	 * 
+	 *  - A simple name:
+	 * 
+	 * @codestart
+     * /**
+     *  * @@param {TYPE} id 
+     *  *|
+	 * @codeend
+	 * 
+	 * 
+	 * @body
+	 * 
+	 * 
+	 * 
 	 * ###Use cases:
 	 * 
 	 * 1. Common use:
@@ -73,10 +103,6 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 		addMore: function( line, last ) {
 			if ( last ) last.description += "\n" + line;
 		},
-		/**
-		 * Adds @param data to the constructor function
-		 * @param {String} line
-		 */
 		add: function( line ) {
 			var prevParam = this._curParam || (this.params && this.params[this.params.length - 1]) || this;
 			// start processing

@@ -4,23 +4,50 @@ steal('./helpers/getParent.js',
 
 	/**
 	 * @constructor documentjs/tags/function @function
+	 * 
 	 * @parent DocumentJS
+	 * 
+	 * Specifies the comment is for a function.
+	 * 
 	 * @signature `@function [NAME] [TITLE]`
 	 * 
-	 * @param {String} NAME
-	 * @param {String} TITLE
+	 * @codestart
+	 * /**
+	 *  * @function lib.Component.prototype.update update
+	 *  * @parent lib.Component
+	 *  *|
+	 * C.p.update = function(){
+	 * 	 
+	 * }
+	 * @codeend
 	 * 
+	 * @param {String} [NAME] The name of the function. It should 
+	 * be supplied if it can not be determined from the code block
+	 * following the comment.
+	 * 
+	 * @param {String} [TITLE] The title to be used for display purposes.
+	 * 
+	 * @body
 	 * 
 	 * ## Code Matching
 	 * 
-	 *     foo: function(){}
-	 *     foo = function(){}
+	 * The `@function` type can be infered from code like the following:
+	 * 
+	 * @codestart
+	 * /**
+	 *  * The foo function exists
+	 *  *|
+	 * foo: function(){}
+	 * /**
+	 *  * The bar function exists
+	 *  *|
+	 * bar = function(){}
+	 * @codeend
 	 */
 	return {
 		codeMatch: /(?:([\w\.\$]+)|(["'][^"']+["']))\s*[:=]\s*function\s?\(([^\)]*)/,
 		code: function( code, scope, docMap ) {
 			
-			print("function code "+code)
 			
 			var parts = code.match(this.codeMatch);
 
@@ -74,7 +101,7 @@ steal('./helpers/getParent.js',
 		},
 		add: function(line, curData, scope, docMap){
 			var data = tnd(line);
-			this.description = data.description;
+			this.title = data.description;
 			if(data.name) {
 				this.name = data.name;
 			}

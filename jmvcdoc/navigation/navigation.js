@@ -99,8 +99,13 @@ steal('can',
 			can.each(item.childDocs || [],function(name){
 				var childItem = Doc.findOne({
 					name : name
-				}),
-					child = self.groupChildren(childItem,item.name,parents.concat(cur.id))
+				});
+				if(childItem.hide){
+					return;
+				}
+				
+				
+				var child = self.groupChildren(childItem,item.name,parents.concat(cur.id))
 				
 				cur.children.push(child);
 				

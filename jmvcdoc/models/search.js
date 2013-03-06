@@ -70,11 +70,14 @@ steal('can/construct', 'can/util/json.js').then('./favorites.js',function(){
 				doc = this._data[prop];
 				if(doc.parent){
 					parent = data[doc.parent];
-					if(!parent.childDocs){
-						parent.childDocs = []
+					if(parent) {
+						if(!parent.childDocs){
+							parent.childDocs = []
+						}
+						// this 'should' take up less mem (but not in what's saved)
+						parent.childDocs.push(doc.name);
 					}
-					// this 'should' take up less mem (but not in what's saved)
-					parent.childDocs.push(doc.name);
+					
 				}
 				
 				

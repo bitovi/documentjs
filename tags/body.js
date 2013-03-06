@@ -1,10 +1,27 @@
 steal('../showdown.js',function(converter) {
 	/**
-	 * @constructor DocumentJS.tags.body
-	 * @tag documentation
-	 * @parent DocumentJS.tags 
+	 * @constructor documentjs/tags/body @body
+	 * @parent DocumentJS
 	 * 
-	 * Adds a short description.
+	 * Content after the `@body` tag appears after 
+	 * the title and signature content.
+	 * 
+	 * @signature `@body`
+	 * 
+	 * @codestart
+	 * /**
+	 *  * A component for lib.
+	 *  * @param {String} name
+	 *  * 
+	 *  * @body
+	 *  * 
+	 *  * ## Creating a lib.Component
+	 *  *
+	 *  *     new lib.Component("name")
+	 *  *|
+	 * lib.Component = function(name){}
+	 * @codeend
+	 * 
 	 * 
 	 * 
 	 */
@@ -16,7 +33,7 @@ steal('../showdown.js',function(converter) {
 				this.comment = m[1]+" ";
 				
 			}
-			return ["default","comment"]
+			return ["default","body"]
 		},
 		done: function(){
 			if(this.body){

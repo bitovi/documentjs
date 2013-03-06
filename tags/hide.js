@@ -3,19 +3,17 @@ steal(function() {
 	 * @constructor documentjs/tags/hide @hide
 	 * @parent DocumentJS
 	 * 
-	 * Hides this construct from the left hand side bar.
+	 * Hides the comment from the navigation.
 	 * 
-	 * ###Example:
+	 * @signature `@hide`
 	 * 
 	 * @codestart
-	 * /*
-	 *  * Checks if there is a set_<i>property</i> value.  
+	 * /**
+	 *  * Checks if there is a set_property value.  
 	 *  * If it returns true, lets it handle; otherwise saves it.
 	 *  * @@hide
-	 *  * @@param {Object} property
-	 *  * @@param {Object} value
 	 *  *|
-	 *  _setProperty: function( property, value, success, error, capitalized ) {
+	 *  _setProperty: function( prop ) {
 	 * @codeend
 	 */
 	return  {
