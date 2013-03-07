@@ -7,7 +7,8 @@ steal('./helpers/getParent.js',
 	 * 
 	 * @parent DocumentJS
 	 * 
-	 * Specifies the comment is for a function.
+	 * Specifies the comment is for a function. Use [documentjs/tags/param @param] to
+	 * specify the arguments of a function.
 	 * 
 	 * @signature `@function [NAME] [TITLE]`
 	 * 

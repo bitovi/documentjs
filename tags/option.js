@@ -40,7 +40,7 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 	 * Details the properties of an object or the arguments of a function
 	 * in a [documentjs/tags/param @param] tag.
 	 * 
-	 * @signature `@option {TYPE} NAME DESCRIPTION`
+	 * @signature `@option {TYPE} NAME [DESCRIPTION]`
 	 * 
 	 * @codestart
      * /**
@@ -57,50 +57,30 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 	 *  @codeend
 	 * 
 	 * 
-	 * @param {documentjs/type} [TYPE] A type expression specified 
-	 * [here](https://developers.google.com/closure/compiler/docs/js-for-compiler#types).
+	 * @param {documentjs/type} [TYPE] A [documentjs/type type expression]. Examples:
 	 * 
-	 * @param {documentjs/name} NAME The name of the option. It can be specified as:
+	 * `{String}` - type is a `String`.  
+	 * `{function(name)}` - type is a `function` that takes one `name` argument.  
 	 * 
-	 *  - A simple name:
+	 * `TYPE` does not need to be specified for types that are already described in
+	 * the option's corresponding function or object.  For example:
+	 * 
 	 * 
 	 * @codestart
      * /**
-     *  * @@param {TYPE} id 
+     *  * @@param {{type: String}} params A parameter object with the following options:
+     *  * @@option type Specifies the type of order.
+     *  *
+     *  * @@param {function(Orders.List)} [success(orders)] Callback function.
+     *  * @@option orders A list of [Orders] that match `params`.
      *  *|
 	 * @codeend
+	 * @param {documentjs/name} NAME A [documentjs/name name expression]. Examples:
 	 * 
+	 * `age` - age is item.  
+	 * `[age]` - age is item, age is optional.  
+	 * `[age=0]` - age defaults to 0.  
 	 * 
-	 * @body
-	 * 
-	 * 
-	 * 
-	 * ###Use cases:
-	 * 
-	 * 1. Common use:
-	 * 
-	 *      __@@params {TYPE} name description__
-	 * 
-	 * 2. Optional parameters use case:
-	 * 
-     *     __@@params {TYPE} [name] description__
-     * 
-     * 3. Default value use case:
-     * 
-     *     __@@params {TYPE} [name=default] description__
-	 *
-	 * ###Example:
-	 * 
-	 * @codestart
-     * /*
-     *  * Finds an order by id.
-     *  * @@param {String} id Order identification number.
-     *  * @@param {Date} [date] Filter order search by this date.
-     *  *|
-     *  findById: function(id, date) {
-     *      // looks for an order by id
-     *  }   
-	 *  @codeend
 	 *  
 	 * 
 	 */

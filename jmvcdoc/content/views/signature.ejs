@@ -4,7 +4,7 @@
 			<span class='version'>since <%= this.version %></span>
 		<%}%>
 	</h2>
-	<%== this.description %>
+	<%== link(this.description) %>
 	<% if( this.params && this.params.length ) { %>
 	<h3>Parameters</h3>
 	<ol class='parameters'>
@@ -22,7 +22,7 @@
 	<div class='returns'>
 		<h4><code class='types'><%== typesHTML(this.returns.types) %></code></h4>
 		<div class='description'>
-			<%== this.returns.description %>
+			<%== link(this.returns.description) %>
 		</div>
 	</div>
 	<% } %>

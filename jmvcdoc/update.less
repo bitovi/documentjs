@@ -140,7 +140,6 @@ h1, h2, h3, h4, h5 h6 {
       margin-left: 5px;
       padding: 2px 8px;
       &:before {  
-        content: '|';
         padding-right: 5px;
         padding-left: 3px;
       }
@@ -148,12 +147,13 @@ h1, h2, h3, h4, h5 h6 {
         content: none;
         padding: none;
       }
+      a {color: white;text-decoration: none;}
     }
   }
   .inherits {
     display: block;
   }
-  p {
+  p, ul, ol {
     font-size: 14px;
     line-height: 24px;
     margin-top: 0;
@@ -162,6 +162,9 @@ h1, h2, h3, h4, h5 h6 {
   .contents li {
     line-height: 24px;
     list-style-type: square;
+  }
+  .signature {
+    .types a{ color: white; }
   }
   .signature h2 {
     background-color: #165489;
@@ -184,6 +187,17 @@ h1, h2, h3, h4, h5 h6 {
   
 }
 
+.description code {
+    background: none repeat scroll 0 0 #EEF4FA;
+    border-radius: 1px 1px 1px 1px;
+    display: inline-block;
+    font-family: Monaco,Consolas,"Courier New",Courier,monospace;
+    font-size: 14px;
+    line-height: 130%;
+    padding: 1px 5px;
+    text-shadow: none;
+}
+
 
 .docs .parameters h4, .docs .returns h4 {
   background-color: #767676;
@@ -198,7 +212,7 @@ h1, h2, h3, h4, h5 h6 {
   margin: 0 0 5px;
   color: #000;
 }
-.docs .parameters code, .docs .returns code {
+.docs .parameters h4 code, .docs .returns h4 code {
   font-style: italic;
   font-weight: normal;
   margin-left: 3px;
@@ -217,8 +231,7 @@ h1, h2, h3, h4, h5 h6 {
 }
 .docs .parameters .description, 
 .docs .returns .description {
-  margin-left: 15px;
-  margin-bottom: 5px;
+  margin: 5px 15px 15px 15px;
 }
 .docs .parameters .description *:last-child, 
 .docs .returns .description *:last-child {

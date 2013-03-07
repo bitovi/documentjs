@@ -20,9 +20,10 @@ steal('documentjs/showdown.js','./helpers/typeNameDescription.js',
 	 * @tag documentation
 	 * @parent DocumentJS 
 	 * 
-	 * Adds parameter information.
+	 * Adds parameter information to a [documentjs/tags/function @function] or
+	 * [documentjs/tags/signature @signature].
 	 * 
-	 * @signature `@param {TYPE} NAME DESCRIPTION`
+	 * @signature `@param {TYPE} NAME [DESCRIPTION]`
 	 * 
 	 * @codestart
      * /**
@@ -33,52 +34,65 @@ steal('documentjs/showdown.js','./helpers/typeNameDescription.js',
      *  findById: function( id, success ) {
 	 *  @codeend
 	 * 
+	 * Use `@param` within a [documentjs/tags/function @function] comment block or after 
+	 * a [documentjs/tags/signature @signature] tag. 
 	 * 
-	 * @param {documentjs/type} [TYPE] A type expression specified 
-	 * [here](https://developers.google.com/closure/compiler/docs/js-for-compiler#types).
+	 * @param {documentjs/type} TYPE A [documentjs/type type expression]. Examples:
 	 * 
-	 * @param {documentjs/name} NAME The name of the param. It can be specified as:
+	 * `{String}` - type is a `String`.  
+	 * `{function(name)}` - type is a `function` that takes one `name` argument.  
 	 * 
-	 *  - A simple name:
+	 * Use [documentjs/tags/option @option] to detail a function's arguments or an
+	 * object's properties.
 	 * 
-	 * @codestart
-     * /**
-     *  * @@param {TYPE} id 
-     *  *|
-	 * @codeend
+	 * @param {documentjs/name} NAME A [documentjs/name name expression]. Examples:
 	 * 
-	 * 
+	 * `age` - age is item.  
+	 * `[age]` - age is item, age is optional.  
+	 * `[age=0]` - age defaults to 0.  
+	 *  
 	 * @body
 	 * 
+	 * ## @param within a function comment
 	 * 
-	 * 
-	 * ###Use cases:
-	 * 
-	 * 1. Common use:
-	 * 
-	 *      __@@params {TYPE} name description__
-	 * 
-	 * 2. Optional parameters use case:
-	 * 
-     *     __@@params {TYPE} [name] description__
-     * 
-     * 3. Default value use case:
-     * 
-     *     __@@params {TYPE} [name=default] description__
-	 *
-	 * ###Example:
+	 * If using a comment preceeds a function like ...
 	 * 
 	 * @codestart
      * /**
      *  * Finds an order by id.
-     *  * @@param {String} id Order identification number.
-     *  * @@param {Date} [date] Filter order search by this date.
+     *  * @@param {String} [id=0] Order identification number.
+     *  * @@param {function(Order)} [success(order)] Filter order search by this date.
      *  *|
-     * findById: function(id, date) {
-     *     // looks for an order by id
-     * }   
+     *  findById: function( id, success ) {
+	 *  @codeend
+	 * 
+	 * ... DocumentJS will automatically
+	 * make the comment's [documentjs/DocObject DocObject] type a function
+	 * and create params with just names (in this case `id` and `success`).
+	 * 
+	 * The comment's `@param`s tags should use the same names as the function. Any
+	 * params that specifies a name that isn't present is added at the end of
+	 * the arguments.
+	 * 
+	 * ## @param within a signature
+	 * 
+	 * Use `@param` to specify the params in a signature. 
+	 * 
+	 * @codestart
+     * /**
+     *  * Finds an order by id.
+     *  * 
+     *  * @signature `Order.findById(id=0,[success])`
+     *  * 
+     *  * @@param {String} [id=0] Order identification number.
+     *  * @@param {function(Order)} [success(order)] Filter order search by this date.
+     *  *|
+     * findById: function( id, success ) {
 	 * @codeend
-	 *  
+	 * 
+	 * When a `@signature` is used, any params automatically created from code 
+	 * are overwritten.
+	 * 
 	 */
 	return {
 

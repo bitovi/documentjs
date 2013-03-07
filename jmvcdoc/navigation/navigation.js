@@ -4,6 +4,20 @@ steal('can',
 	function( can, childrenEJS ) {
 	
 	
+	var nameOrIdSort = function(first, second){
+		first = first.name || first.id
+		second = second.name || second.id
+		if(first > second){
+			return 1
+		} else if(first == second) { 
+			return 0;	
+		} else {
+			return -1
+		}
+	}
+	
+	
+	
 	return can.Control({
 		init: function(){
 			this.contentsSet = false;
@@ -141,7 +155,10 @@ steal('can',
 				if(pagesItem.children.length){
 					cur.children.push(pagesItem)
 				}
+			} else {
+				cur.children.sort(nameOrIdSort)
 			}
+			
 			return cur;
 		}
 	})

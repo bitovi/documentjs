@@ -54,7 +54,7 @@ steal(function() {
 			if ( data.type == "javascript" ) { //convert comments
 				joined = joined.replace(/\*\|/g, "*/")
 			}
-			var out = "<pre><code class='" + data.type + "'>" + joined + "</code></pre>";
+			var out = "<pre>" + joined + "</pre>";
 
 			return ["pop", out];
 		}

@@ -13,7 +13,7 @@ steal('./property.js','./option.js','./process','funcunit/qunit',function(proper
 			name: "bar",
 			type: "property",
 			types: [{type: "Object"}],
-			description: "a description",
+			title: "a description",
 		})
 		
 	})
@@ -39,7 +39,7 @@ steal('./property.js','./option.js','./process','funcunit/qunit',function(proper
 					{name: "thing", types: [{type: "String"}], description: "thing's description"}
 				]
 			}],
-			description: "a description"
+			title: "a description"
 		})
 	})
 	

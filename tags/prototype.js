@@ -4,6 +4,29 @@ steal('./helpers/getParent.js',
 	/**
 	 * @constructor documentjs/tags/prototype @prototype
 	 * @parent DocumentJS
+	 * 
+	 * Declares that [documentjs/tags/property @property] and
+	 * [documentjs/tags/function @function] tags belong
+	 * to the preceeding [documentjs/tags/function @constructor]'s
+	 * prototype object.
+	 * 
+	 * @signature `@prototype`
+	 * 
+	 * @codestart
+	 * /**
+	 *  * @@constructor
+	 *  * Creates an Animal
+	 *  *|
+	 * Animal = function(){ ... }
+     * /** @@prototype *|
+     * Animal.prototype = {
+     *    /**
+     *     * Eats another animal.
+     *     *|
+     *     eat: function(animal){ ... }
+     * }
+	 * @codeend
+	 * 
 	 */
 	return {
 		add: function(line, curData, scope, docMap){

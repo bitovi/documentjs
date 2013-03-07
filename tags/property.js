@@ -6,7 +6,7 @@ steal('./helpers/getParent.js',
 	 * 
 	 * @description Documents a property of a parent object.
 	 * 
-	 * @signature `@property {TYPE} NAME DESCRIPTION` Documents a 
+	 * @signature `@property {TYPE} NAME [TITLE]` Documents a 
 	 * property named `NAME` of type `{TYPE}`. 
 	 * 
 	 * @codestart
@@ -19,10 +19,10 @@ steal('./helpers/getParent.js',
 	 * $.fixture.delay = 200
 	 * @codeend
 	 * 
-	 * @param {String} [TYPE] An optional type like `{Object}`.
-	 * @param {STRING} [NAME] The name of the property. This maybe infered from the 
+	 * @param {documentjs/type} [TYPE] An optional type like `{Object}`.
+	 * @param {documentjs/name} [NAME] The name of the property. This maybe infered from the 
 	 * code block immediately following the comment.
-	 * @param {STRING} [DESCRIPTION] The text description of the property.
+	 * @param {STRING} [TITLE] The display title of the property.
 	 * 
 	 */
 	return {
@@ -57,7 +57,7 @@ steal('./helpers/getParent.js',
 			var data = tnd(line);
 			this.types = data.types
 			
-			this.description = data.description;
+			this.title = data.description;
 			
 			
 			if(data.name){

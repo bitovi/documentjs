@@ -4,28 +4,25 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 	 * @constructor documentjs/tags/return @return
 	 * @parent DocumentJS
 	 * 
-	 * Describes return data in the format.
+	 * Describes a function's return value.
 	 * 
 	 * @signature `@return {TYPE} DESCRIPTION`
 	 * 
-	 * 
-	 * 
-	 * ###Example:
-	 * 
 	 * @codestart
-	 *  /**
-	 *   * Capitalizes a string
-	 *   * @param {String} s the string to be lowercased.
-	 *   * @return {String} a string with the first character capitalized, and everything else lowercased
-	 *   *|
-	 *   capitalize: function( s, cache ) {
-	 *       return s.charAt(0).toUpperCase() + s.substr(1);
-	 *   }
+	 * /**
+	 *  * Capitalizes a string
+	 *  * @@param {String} s the string to be lowercased.
+	 *  * @@return {String} a string with the first character capitalized, 
+	 *  * and everything else lowercased
+	 *  *|
+	 * capitalize: function( s ) { ... }
 	 * @codeend
 	 * 
-	 * ###End Result:
+	 * @param {documentjs/type} [TYPE] The type of 
+	 * return value.
 	 * 
-	 * @image site/images/return_tag_example.png
+	 * @param {String} [DESCRIPTION] The description of the 
+	 * return value.
 	 */
 	return {
 		add: function( line ) {

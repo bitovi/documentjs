@@ -278,7 +278,7 @@ steal('steal','../distance',function(s, distance){
 	}
 	
 	/**
-	 * @typedef {{}} DocObject
+	 * @typedef {{}} documentjs/DocObject
 	 * An object that represents something that is documented. Any 
 	 * property added to a DocObject gets serialized as JSONP and
 	 * sent to the client.  The following lists the important, near

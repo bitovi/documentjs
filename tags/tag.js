@@ -2,7 +2,7 @@ steal(function() {
 	/**
 	 * @constructor documentjs/tags/tag @tag
 	 * @parent DocumentJS
-	 * 
+	 * @hide
 	 * Tags for searching.
 	 * 
 	 * ###Example:

@@ -37,72 +37,25 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 	 * @tag documentation
 	 * @parent DocumentJS 
 	 * 
-	 * Details the properties of an Object or the arguments of a function
-	 * in a [documentjs/tags/param @param] tag.
+	 * Declares an alias for a more complex type. That alias can
+	 * be used in [documentjs/type TYPE] declarations.
 	 * 
-	 * @signature `@option {TYPE} NAME DESCRIPTION`
-	 * 
-	 * @codestart
-     * /**
-     *  * Retrieves a list of orders.
-     *  * 
-     *  * @@param {{}} params A parameter object with the following options:
-     *  * @@option {String} type Specifies the type of order.
-     *  * @@option {Number} [createdAt] Retrieves all orders after this timestamp. 
-     *  *
-     *  * @@param {function(Orders.List)} [success(orders)] Filter order search by this date.
-     *  * @@option orders A list of [Orders] that match `params`.
-     *  *|
-     *  find: function( params, success ) {
-	 *  @codeend
-	 * 
-	 * 
-	 * @param {String} [TYPE] A type expression specified 
-	 * [here](https://developers.google.com/closure/compiler/docs/js-for-compiler#types).
-	 * 
-	 * @param {String} NAME The name of the option. It can be specified as:
-	 * 
-	 *  - A simple name:
+	 * @signature `@typedef {TYPE} NAME [TITLE]`
 	 * 
 	 * @codestart
      * /**
-     *  * @@param {TYPE} id 
+     *  * @typedef {{}} lib/componentProps props
+     *  * @option {String} name The name of the component.
+     *  * @option {String} title The title of the component.
      *  *|
-	 * @codeend
-	 * 
-	 * 
-	 * @body
-	 * 
-	 * 
-	 * 
-	 * ###Use cases:
-	 * 
-	 * 1. Common use:
-	 * 
-	 *      __@@params {TYPE} name description__
-	 * 
-	 * 2. Optional parameters use case:
-	 * 
-     *     __@@params {TYPE} [name] description__
-     * 
-     * 3. Default value use case:
-     * 
-     *     __@@params {TYPE} [name=default] description__
-	 *
-	 * ###Example:
-	 * 
-	 * @codestart
-     * /*
-     *  * Finds an order by id.
-     *  * @@param {String} id Order identification number.
-     *  * @@param {Date} [date] Filter order search by this date.
-     *  *|
-     *  findById: function(id, date) {
-     *      // looks for an order by id
-     *  }   
 	 *  @codeend
-	 *  
 	 * 
+	 * @param {documentjs/type} [TYPE] A [documentjs/type type expression]. This
+	 * is typically an object specified like: `{{}}`.  
+	 * 
+	 * @param {String} NAME The name of the type.
+	 * 
+	 * @param {String} TITLE The title of the type used for display purposes.
 	 */
 	return {
 		add: function( line ) {

@@ -6,9 +6,12 @@ steal(function() {
 		 * @constructor documentjs/tags/parent @parent
 		 * @parent DocumentJS
 		 * 
-		 * Says under which parent the current type should be located.
+		 * Specifies the parent 
+		 * [documentjs/DocObject DocObject]'s name. The
+		 * current DocObject will be displayed under the
+		 * the parent in the navigation. 
 		 * 
-		 * ###Example:
+		 * @signature `@signature NAME`
 		 * 
 		 * @codestart
 		 * /**
@@ -19,9 +22,8 @@ steal(function() {
 		 *  $.Drag = function(){}
 		 * @codeend
 		 * 
-		 * ###End Result:
-		 * 
-		 * @image site/images/parent_tag_example.png
+		 * @param {String} NAME The name of the parent
+		 * [documentjs/DocObject DocObject].
 		 */
 		return {
 			add: function( line , curData, objects) {
