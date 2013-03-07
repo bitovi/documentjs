@@ -1,5 +1,5 @@
-steal('documentjs/showdown.js','./helpers/typer.js',
-	'./helpers/namer.js',function(converter, typer,namer) {
+steal('documentjs/showdown.js','./helpers/typeNameDescription.js',
+	function(converter, tnd ) {
 
 
 	var ordered = function( params ) {
@@ -86,47 +86,13 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 			if ( last ) last.description += "\n" + line;
 		},
 		add: function( line ) {
-			var printError = function(){
+	
+			var param = tnd(line);
+			if(!param.type && !param.name){
 				print("LINE: \n" + line + "\n does not match @param {TYPE} NAME DESCRIPTION");
 			}
 			
-			// start processing
-			var children = typer.tree(line);
 			
-			// check the format
-			if(!children.length >= 3) {
-				printError();
-				return;
-			}
-			if(!children[1].type == "{") {
-				printError();
-				return;
-			}
-			if(!children[2]){
-				print("LINE: \n" + line + "\n does not match @param {TYPE} NAME DESCRIPTION");
-			}
-			
-			var param = {},
-				description;
-			
-			typer.process(children[1].children, param);
-			var nameChildren = [children[2]];
-			
-			// include for function naming
-			if(children[3] && children[3].type == "("){
-				nameChildren.push( children[3] );
-			}
-			
-			namer.process( nameChildren, param);
-			
-			if(nameChildren.length > 1 ){
-				param.description = line.substr(children[3].end)
-			} else if(typeof children[2] == "string"){
-				param.description = line.substr(children[1].end).replace(children[2],"")
-			} else {
-				param.description = line.substr(children[2].end)
-			}
-			param.description = param.description.replace(/^\s+/,"")
 			
 			// if we have a signiture, add this param to the last 
 			// signiture

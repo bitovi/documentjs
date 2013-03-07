@@ -74,17 +74,25 @@ return function(str, tokens, ignore){
 		
 		var prev = str.substring(currentIndex, reg.lastIndex - match[0].length ).replace(/\\/g,"");
 		if(prev){
-			current().children.push(prev)
+			current().children.push({
+				start: currentIndex,
+				end: currentIndex+prev.length,
+				token: prev
+			})
 		}
 		
 		if(match[4]) { // ignore matched
 			
 		} else if(!match[1]) { // not a nested
-			current().children.push(match[0])
+			current().children.push({
+				token: match[0],
+				start: currentIndex,
+				end: reg.lastIndex
+			})
 			
 		} else if(matches[match[0]]) { // a nested
 			var node = {
-				type: match[0],
+				token: match[0],
 				children: [],
 				start: reg.lastIndex - match[0].length
 			};
@@ -98,7 +106,11 @@ return function(str, tokens, ignore){
 	}
 	var last = str.substring(currentIndex).replace(/\\/g,"");
 	if(last){
-		root.children.push(last)
+		root.children.push({
+			token: last,
+			start: currentIndex,
+			end: str.length
+		})
 	}
 	return root.children;
 

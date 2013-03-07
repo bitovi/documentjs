@@ -8,6 +8,19 @@ steal('./typeNameDescription.js','funcunit/qunit',function(tnd){
 		
 		equal(res.name, "documentjs/tags/function")
 		
-	})
+	});
+	
+	
+	/*test("has a function in it", function(){
+		
+		var res = tnd("@param {String} \... description");
+		deepEqual(res,{
+			types: [{name: "String"}],
+			name: "...",
+			description: "description",
+			variable: true
+		});
+		
+	})*/
 	
 })

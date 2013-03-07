@@ -19,11 +19,12 @@ steal('./tree.js','./typer',function(tree, typer){
 	 * 
 	 * Indicates that the option or param is optional.
 	 * 
-	 * @param {String} \(args\...\) If `name` is a function,
+	 * @param {String} \(args\...\) 
+	 * If `name` is a function,
 	 * `()` provides the names of each argument.
 	 * 
 	 * 
-	 * @param {String} \... An argument is variable. The argument can
+	 * @param {String} '\...' An argument is variable. The argument can
 	 * be given 0 or more times.
 	 * 
 	 * @param {String} \=default `=default` provides
@@ -46,7 +47,7 @@ steal('./tree.js','./typer',function(tree, typer){
 			index = 0;
 		while(i < arr.length){
 			
-			if(arr[i] == betweener){
+			if(arr[i].token == betweener){
 				if(cur.length){
 					cb(cur,index++);
 					cur  = [];
@@ -66,16 +67,13 @@ steal('./tree.js','./typer',function(tree, typer){
 		
 		if(!children || !children.length){
 			return obj;
-		} else if(typeof children[0] === "string") {
+		} else {
 
-			switch(children[0]){
-				case " ": 
-					process(children.slice(1), obj);
-					break;
+			switch(children[0].token) {
 				case "=": 
 					obj.optional = true;
 					if(children[1]){
-						obj.defaultValue = children[1];
+						obj.defaultValue = children[1].token;
 					}
 					process(children.slice(2), obj);
 					break;
@@ -123,12 +121,6 @@ steal('./tree.js','./typer',function(tree, typer){
 					obj.variable = true;
 					process(children.slice(1), obj);
 					break;
-				default:
-					obj.name = children[0];
-					process(children.slice(1), obj);
-			}
-		} else if(children[0].type){
-			switch(children[0].type){
 				case "[":
 					obj.optional = true;
 					process(children[0].children,obj)
@@ -160,20 +152,26 @@ steal('./tree.js','./typer',function(tree, typer){
 						}
 
 						process(typeChildren, obj.types[0].params[index] );
-					})
+					});
+					break;
+					
+				default:
+					obj.name = children[0].token;
+					process(children.slice(1), obj);
+					
 			}
-		}
+		} 
 		return obj
 	}
 
 	return {
-		tokens: ["\\?", "\\!", "function", "\\.\\.\\.", ",", "\\:", "\\|", "=","\\s+"],
+		tokens: ["\\?", "\\!", "function", "\\.\\.\\.", ",", "\\:", "\\|", "="],
 		process: process,
 		name: function(str, typeData){
 			return process(this.tree(str), typeData)
 		},
 		tree: function(str){
-			return tree(str, "("+this.tokens.join("|")+")" );
+			return tree(str, "("+this.tokens.join("|")+")", "(\\s)" );
 		}
 	}
 	

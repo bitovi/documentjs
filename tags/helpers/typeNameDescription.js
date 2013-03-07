@@ -1,11 +1,42 @@
 steal('./namer.js','./typer.js',function(namer, typer){
+	
+	
+	
+	
 	return function(line){
-			var children = typer.tree(line);
+		
+			var children = typer.tree(line),
+				param = {};
+		
+			var textIs = function(i,text){
+				return children[i] && children[i].token == text;
+			}
+			var processNameAndDescription = function(index){
+				if(!children[index]){
+					return;
+				}
+				var nameChildren = [children[index]];
+				index++;
+				if( textIs(index,"function") ) {
+					nameChildren[0].token = nameChildren[0].token + "function";
+					index++;
+				}
+				if( textIs(index,"(") ){
+					nameChildren.push( children[index] );
+					index++;
+				}
+				namer.process( nameChildren, param);
+				param.description = line.substr(children[index]?
+						children[index].start : children[index-1].end)
+			}
+			
+			
 			
 			// @function will be broken up by tree, lets put that back together
-			if(children[0] == "@" && children[1] == "function"){
+			if(textIs(0,"@") && textIs(1,"function")){
 				children.splice(0,2,"@function")
 			}
+			
 			if(children.length <= 1){
 				return {};
 			}
@@ -14,41 +45,14 @@ steal('./namer.js','./typer.js',function(namer, typer){
 				nameChildren;
 			
 			// starts with an object
-			if(children[1].type == "{"){
+			if(textIs(1,"{")){
+				
 				typer.process(children[1].children, param);
-				var nameChildren = children[2] ? [children[2]] : [];
-				if(children[3] === "function") {
-					nameChildren = [nameChildren[0]+"function"]
-					
-					param.description = line.substr(children[1].end)
-						.replace(children[2],"")
-						.replace(children[3],"")
-					
-				} else if(children[3] && children[3].type == "("){
-					nameChildren.push( children[3] );
-					param.description = line.substr(children[3].end)
-				} else {
-					if(typeof children[2] == "string"){
-						param.description = line.substr(children[1].end).replace(children[2],"")
-					} else if(children[2]){ // [foo]
-						param.description = line.substr(children[2].end)
-					}
-					
-					
-				}
+				processNameAndDescription(2)
+				
 			} else {
 				// starts with a name
-				var nameChildren = [children[1]];
-				if(children[2] && children[2].type == "("){
-					nameChildren.push( children[2] );
-					param.description = line.substr(children[2].end)
-				} else if(children[2] == "function") { 
-					nameChildren = [nameChildren[0]+"function"];
-					
-					param.description = line.replace(children[0],"").replace(children[1]+'function',"")
-				} else {
-					param.description = line.replace(children[0],"").replace(children[1],"")
-				}
+				processNameAndDescription(1)
 			}
 			
 			// include for function naming
