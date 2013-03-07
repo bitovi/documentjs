@@ -1,5 +1,44 @@
 steal('./tree.js','./typer',function(tree, typer){
 	
+	/**
+	 * @function documentjs/name NAME
+	 * @parent DocumentJS
+	 * 
+	 * Provides the NAME of a [documentjs/tags/param @param] or 
+	 * [documentjs/tags/param @option]. 
+	 * 
+	 * @signature `[name(args...)=default]`
+	 * 
+	 *     [success(item)=updater]
+	 * 
+	 * @param {String} name
+	 * 
+	 * Provides the name of the type.
+	 * 
+	 * @param {String} \[\]
+	 * 
+	 * Indicates that the option or param is optional.
+	 * 
+	 * @param {String} \(args\...\) If `name` is a function,
+	 * `()` provides the names of each argument.
+	 * 
+	 * 
+	 * @param {String} \... An argument is variable. The argument can
+	 * be given 0 or more times.
+	 * 
+	 * @param {String} \=default `=default` provides
+	 * the default value for the type. For example:
+	 * 
+	 * @codestart
+	 * /**
+	 *  * @param {Number} [age=0]
+	 *  *|
+	 * @codeend
+	 * 
+	 * @body
+	 */
+	
+	
 	var eachBetweenCommas = function(arr,cb,betweener){
 		var cur = [],
 			i = 0,
@@ -30,6 +69,9 @@ steal('./tree.js','./typer',function(tree, typer){
 		} else if(typeof children[0] === "string") {
 
 			switch(children[0]){
+				case " ": 
+					process(children.slice(1), obj);
+					break;
 				case "=": 
 					obj.optional = true;
 					if(children[1]){
@@ -125,13 +167,13 @@ steal('./tree.js','./typer',function(tree, typer){
 	}
 
 	return {
-		tokens: ["\\?", "\\!", "function", "\\.\\.\\.", ",", "\\:", "\\|", "="],
+		tokens: ["\\?", "\\!", "function", "\\.\\.\\.", ",", "\\:", "\\|", "=","\\s+"],
 		process: process,
 		name: function(str, typeData){
 			return process(this.tree(str), typeData)
 		},
 		tree: function(str){
-			return tree(str, "("+this.tokens.join("|")+")", "(\\s)" );
+			return tree(str, "("+this.tokens.join("|")+")" );
 		}
 	}
 	

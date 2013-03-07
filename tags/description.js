@@ -1,4 +1,4 @@
-steal(function() {
+steal('documentjs/showdown.js',function(converter) {
 	/**
 	 * @constructor documentjs/tags/description @description
 	 * @tag documentation
@@ -27,6 +27,11 @@ steal(function() {
 			if ( m ) {
 				this.description = m[1]+" ";
 				return ["default","description"]
+			}
+		},
+		done: function(){
+			if(this.description){
+				this.description = converter.makeHtml(this.description)
 			}
 		}
 	};

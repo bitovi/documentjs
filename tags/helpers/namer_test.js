@@ -68,6 +68,19 @@ steal('./namer.js','./typer.js','funcunit/qunit',function(namer, typer){
 		
 		);
 		
+	});
+	
+	
+	test("special characters",function(){
+		same(namer.name("f\\=oo",{}),{
+			name: "f=oo"
+		});
+		same(namer.name("\\(args\\...\\)",{}),{
+			name: "(args...)"
+		});
+		//same(namer.name("\\...",{}),{
+		//	name: "..."
+		//});
 	})
 	
 	

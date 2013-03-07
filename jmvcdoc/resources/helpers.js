@@ -116,8 +116,9 @@ DocumentationHelpers = {
 	typesHTML: function(types){
 		var typeHTML = [];
 		types.forEach(function(type){
-			if(Doc.findOne({name: type.type})){
-				typeHTML.push( can.route.link(type.type,{who: type.type}) );
+			var item = Doc.findOne({name: type.type})
+			if(item){
+				typeHTML.push( can.route.link(item.title || type.type,{who: type.type}) );
 			} else {
 				typeHTML.push( type.type )
 			}

@@ -13,7 +13,7 @@ steal('steal','../distance',function(s, distance){
 		 * @option {String} code
 		 * @option {Array.<String>} comment
 		 * @option {DocObject} scope
-		 * @options {DocObject} suggestedProps
+		 * @option {DocObject} suggestedProps
 		 * 
 		 * @param {function(DocObject,DocObject)} callback(newDoc,newScope)
 		 * @option newType the new documentation object
@@ -299,10 +299,12 @@ steal('steal','../distance',function(s, distance){
 	 * added by the system based on the `parent` property.
 	 * 
 	 */
-	
+	//
 	/**
-	 * @typedef {{}} Tag An object that describes the behavior of 
+	 * @typedef {{}} documentjs/tags/tag Tag 
+	 * An object that describes the behavior of 
 	 * a tag.  
+	 * @parent documentjs/implementation
 	 * 
 	 * @option {function(String):Boolean|RegExp} codeMatch(code) Returns true
 	 * if the code matches this tag. 
@@ -310,7 +312,6 @@ steal('steal','../distance',function(s, distance){
 	 * @option {Boolean} [codeScope=false] If `code(codeLine)` returns a DocObject,
 	 * set this object as the new scope.
 	 */
-	
 	return process;
 	
 	

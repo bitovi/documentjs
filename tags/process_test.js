@@ -103,7 +103,8 @@ steal('documentjs/tags/process.js',
 				name: "constructed",
 				type: "constructor",
 				parent: "parented",
-				body: ""
+				body: "",
+				description: ""
 			})
 		})
 		

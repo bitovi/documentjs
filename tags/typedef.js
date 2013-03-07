@@ -33,11 +33,11 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 	
 
 	/**
-	 * @constructor documentjs/tags/option @option
+	 * @constructor documentjs/tags/typedef @typedef
 	 * @tag documentation
 	 * @parent DocumentJS 
 	 * 
-	 * Details the properties of an object or the arguments of a function
+	 * Details the properties of an Object or the arguments of a function
 	 * in a [documentjs/tags/param @param] tag.
 	 * 
 	 * @signature `@option {TYPE} NAME DESCRIPTION`
@@ -57,10 +57,10 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 	 *  @codeend
 	 * 
 	 * 
-	 * @param {documentjs/type} [TYPE] A type expression specified 
+	 * @param {String} [TYPE] A type expression specified 
 	 * [here](https://developers.google.com/closure/compiler/docs/js-for-compiler#types).
 	 * 
-	 * @param {documentjs/name} NAME The name of the option. It can be specified as:
+	 * @param {String} NAME The name of the option. It can be specified as:
 	 * 
 	 *  - A simple name:
 	 * 
@@ -105,38 +105,21 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 	 * 
 	 */
 	return {
-
-		addMore: function( line, last ) {
-			if ( last ) last.description += "\n" + line;
-		},
 		add: function( line ) {
-			var prevParam = this._curParam || (this.params && this.params[this.params.length - 1]) || this;
+			var prevParam = this;
 			// start processing
 			
 			var data = tnd(line);
 			if(!data.name){
-				print("LINE: \n" + line + "\n does not match @params [{TYPE}] NAME DESCRIPTION");
+				print("LINE: \n" + line + "\n does not match @typedef [{TYPE}] NAME TITLE");
 			}
-			
-			if(!prevParam.types){
-				prevParam.types = [];
-			}
-			var params = getParams(prevParam);
-			var options = getOptions(prevParam);
-			if(!options && !params){
-				print("LINE: \n" + line + "\n could not find an object or arguments to add options to.");
-				return;
-			}
-			var option = getOrMakeOptionByName(options || params, data.name);
-			
-			
-			option.description = data.description;
+			this.type = "typedef"
+			this.title = data.description;
+			delete data.description
 			
 			for(var prop in data){
-				option[prop] =  data[prop];
+				this[prop] =  data[prop];
 			}
-
-			return option;
 		},
 		done : function(){
 			return;

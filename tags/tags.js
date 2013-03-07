@@ -29,11 +29,12 @@ steal(
 "./static.js",
 "./tag",
 "./test",
+"./typedef.js",
 function(add, alias, author, body, codeend, codestart, constructor, demo, description, download,
 	func,
 	hide, iframe, image, inherits, mod, option,  page, param, parent, plugin, property, prototype, 
 	release, ret, 
-	signature, statc, tag, test) {
+	signature, statc, tag, test, typedef) {
 	return {
 		add: add,
 		alias: alias,
@@ -63,8 +64,8 @@ function(add, alias, author, body, codeend, codestart, constructor, demo, descri
 		signature: signature,
 		"static": statc,
 		tag: tag,
-		test: test
-		
+		test: test,
+		typedef: typedef
 	}
 	
 	/**

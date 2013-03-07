@@ -27,6 +27,14 @@ steal('./tree.js','funcunit/qunit',function(tree){
 		
 
 		
+	});
+	
+	test("escaping",function(){
+		same( tree("fo\\(\\)o"), ["fo()o"] );
+		
+		same( tree("\\(args...\\)"), ["(args...)"])
+		
+		
 	})
 	
 	

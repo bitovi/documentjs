@@ -7,12 +7,12 @@ steal('./function.js','./option.js','funcunit/qunit',function(func, option){
 		
 		var obj = {};
 		var docMap = {Foo: {name: "Foo", type: "constructor"}}
-		func.add.call(obj,"@function bar a description",null,docMap.Foo, docMap );
+		func.add.call(obj,"@function bar title",null,docMap.Foo, docMap );
 		
 		deepEqual(obj,{
 			name: "bar",
 			type: "function",
-			description: "a description",
+			title: "title",
 		})
 		
 	})

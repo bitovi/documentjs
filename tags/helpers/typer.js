@@ -1,5 +1,17 @@
 steal('./tree.js',function(tree){
-	
+	/**
+	 * @typedef {STRING} documentjs/type TYPE
+	 * @parent DocumentJS
+	 * 
+	 * `TYPE` represents a [Google Closure type expression](https://developers.google.com/closure/compiler/docs/js-for-compiler#types).
+	 * 
+	 * Examples:
+	 * 
+	 *     "{Construct}"
+	 *     "{{first: String, last: String}}"
+	 *     "{function(first,second):int}" 
+	 *     
+	 */
 	var eachBetweenCommas = function(arr,cb,betweener){
 		var cur = [],
 			i = 0,
@@ -27,8 +39,14 @@ steal('./tree.js',function(tree){
 		if(!children || !children.length){
 			return obj;
 		} else if(typeof children[0] === "string") {
-
+			if(/\s+/.test(children[0])){
+			   	process(children.slice(1), obj);
+			   	return obj;
+			}  
 			switch(children[0]){
+				case " ":
+					process(children.slice(1), obj);
+					break;
 				case "|":
 					process(children.slice(1), obj);
 					break;
@@ -145,13 +163,13 @@ steal('./tree.js',function(tree){
 	}
 
 	return {
-		tokens: ["\\?", "\\!", "function", "\\.\\.\\.", ",", "\\:", "\\|", "="],
+		tokens: ["\\?", "\\!", "function", "\\.\\.\\.", ",", "\\:", "\\|", "=", "\\s+"],
 		process: process,
 		type: function(str){
 			return process(this.tree(str), {})
 		},
 		tree: function(str){
-			return tree(str, "("+this.tokens.join("|")+")", "(\\s)" );
+			return tree(str, "("+this.tokens.join("|")+")" );
 		}
 	}
 	

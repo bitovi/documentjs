@@ -34,10 +34,10 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 	 *  @codeend
 	 * 
 	 * 
-	 * @param {String} [TYPE] A type expression specified 
+	 * @param {documentjs/type} [TYPE] A type expression specified 
 	 * [here](https://developers.google.com/closure/compiler/docs/js-for-compiler#types).
 	 * 
-	 * @param {String} NAME The name of the param. It can be specified as:
+	 * @param {documentjs/name} NAME The name of the param. It can be specified as:
 	 * 
 	 *  - A simple name:
 	 * 
