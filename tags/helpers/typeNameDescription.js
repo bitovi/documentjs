@@ -26,8 +26,8 @@ steal('./namer.js','./typer.js',function(namer, typer){
 					index++;
 				}
 				namer.process( nameChildren, param);
-				param.description = line.substr(children[index]?
-						children[index].start : children[index-1].end)
+				param.description = children[index] ?
+					line.substr( children[index].start ) : ""
 			}
 			
 			
