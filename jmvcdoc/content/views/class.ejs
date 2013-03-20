@@ -1,5 +1,5 @@
 <%== can.view.render("//documentjs/jmvcdoc/content/views/top.ejs",this,DocumentationHelpers)%>
-
+<%== can.view.render("//documentjs/jmvcdoc/content/views/signitures.ejs",this,DocumentationHelpers)%>
 <%== link(this.comment)%>
 <%if(this.construct){%>
 	<h2>Constructor</h2>
@@ -8,7 +8,7 @@
 	<h2>API</h2>
 <% } %>
 <%if(this.params || this.ret){%>
-<pre class='signiture'><code><%= signiture()%></code></pre>
+<pre class='signiture'><code><%= makeSigniture()%></code></pre>
 <%}%>
 
   <div class='params'>

@@ -1,17 +1,12 @@
 <%== can.view.render("//documentjs/jmvcdoc/content/views/top.ejs",this,DocumentationHelpers)%>
  <div class='comment'><%== link(this.comment)%></div>
  <h2>API</h2>
- <pre class='signiture'><code><%= signiture()%></code></pre>
+ <pre class='signiture'><code><%= makeSigniture()%></code></pre>
   
   <div class='params'>
   
-  <% for(var n in this.params){   
-       var param = this.params[n]; %>  
-      <div class='param <%= param.optional ? "optional" : ""%>'>
-          <label><%= param.name%></label>
-          <code>{<%=(param.optional ? 'optional:' : '') +""+(param.type) %>}<%= param["default"] ? " defaults to "+param["default"] :""%></code> 
-		   <%== link(param.description) %>
-      </div>
+  <% for(var n in this.params){  %>  
+       <%== can.view.render("//documentjs/jmvcdoc/content/views/param.ejs",{param: this.params[n]},DocumentationHelpers)%>
  <% } %>
 
  <% if(this.ret && this.ret.type) {%>

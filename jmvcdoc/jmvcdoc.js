@@ -9,7 +9,7 @@ steal('can/util/string',
 	'can/route',
 	'steal/html',
 	'steal/less'
-).then('./style.less', function () {
+).then('./style.less','./update.less', function () {
 	var pageNameArr = window.location.href.match(/docs\/(.*)\.html/),
 		pageName = pageNameArr && pageNameArr[1];
 
