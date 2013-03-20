@@ -38,7 +38,7 @@ DocumentationHelpers = {
 			}
 		};
 		return {
-			padding: ( hasStaticOrPrototype ? (Math.floor(left.length/2) * 20) : 20 ) + "px",
+			padding: ( ( hasStaticOrPrototype ? (Math.floor(left.length/2) * 20) : 20 ) || 20) + "px",
 			left: left.join(""),
 			right: right.join(""),
 			href: current.type == 'prototype' || current.type == 'static' ? 
