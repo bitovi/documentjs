@@ -319,7 +319,7 @@ steal('steal',
 				  cb(dir.replace('\\', '/'), dir);
 			  } else {
 				  file.contents(function(f, type){
-					if(type == 'directory'){
+					if(type == 'directory' && !/node_modules/.test(f)) {
 				       getJSFiles(dir+"/"+f)
 				    }else {
 					  cb((dir+"/"+f).replace('\\', '/'), f);
