@@ -10,6 +10,7 @@ steal('steal',
 	/**
 	 * @function DocumentJS
 	 * @module documentjs
+	 * @parent index
 	 * 
 	 * @description DocumentJS makes it easy to produce beautiful
 	 * and useful documentation for your JavaScript project.
