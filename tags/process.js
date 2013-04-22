@@ -271,9 +271,9 @@ steal('steal','../distance',function(s, distance){
 				
 			check(process.tags);
 
-			if ( suggest ) {
-				print("\nWarning!!\nThere is no @" + incorrect + " directive. did you mean @" + suggest + " ?\n")
-			}
+//			if ( suggest ) {
+//				print("\nWarning!!\nThere is no @" + incorrect + " directive. did you mean @" + suggest + " ?\n")
+//			}
 		}
 	}
 	

@@ -1,38 +1,43 @@
 {
-	"name": "DocumentJS",
-	"description": "A JavaScript documentation engine",
-	"version": "4.0.0",
-	"maintainers": [
-		{
-			"name": "Bitovi",
-			"email": "contact@bitovi.com",
-			"web": "http://bitovi.com/"
-		}
-	],
-	"main": "lib/node",
-	"devDependencies": {
-		"mocha": ">= 1.6.0",
-		"qunit-mocha-ui": "*"
-	},
-	"dependencies": {
-		"showdown": ">= 0.2.0",
-		"winston": ">= 0.6.2",
-		"ejs": "~0.8.0",
-		"commander": ">= 1.1.1",
-		"steal": "git+ssh://git@github.com:bitovi/steal-build.git"
-	},
-	"bin": {
-		"documentjs": "./bin/documentjs"
-	},
-	"homepage": "http://javascriptmvc.com",
-	"repository": {
-		"type": "git",
-		"url": "git://github.com/bitovi/documentjs.git"
-	},
-	"licenses": [
-		{
-			"type": "MIT",
-			"url": "http://opensource.org/licenses/mit-license.php"
-		}
-	]
+  "name": "DocumentJS",
+  "description": "A JavaScript documentation engine",
+  "version": "4.0.0",
+  "maintainers": [
+    {
+      "name": "Bitovi",
+      "email": "contact@bitovi.com",
+      "web": "http://bitovi.com/"
+    }
+  ],
+  "main": "lib/node",
+  "devDependencies": {
+    "mocha": ">= 1.6.0",
+    "qunit-mocha-ui": "*",
+    "grunt": "~0.4.1",
+    "grunt-contrib-concat": "~0.2.0",
+    "grunt-contrib-uglify": "~0.2.0",
+    "grunt-contrib-watch": "~0.3.1",
+    "grunt-contrib-jshint": "~0.4.3"
+  },
+  "dependencies": {
+    "steal": "git+ssh://git@github.com:bitovi/steal-build.git",
+    "globule": "~0.1.0",
+    "async": "~0.2.7",
+    "underscore": "~1.4.4",
+    "handlebars": "~1.0.10"
+  },
+  "bin": {
+    "documentjs": "./bin/documentjs"
+  },
+  "homepage": "http://javascriptmvc.com",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bitovi/documentjs.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/mit-license.php"
+    }
+  ]
 }

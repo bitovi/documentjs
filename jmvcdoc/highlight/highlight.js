@@ -1,1 +1,0 @@
-steal('./prettify.js','./highlight.css');
