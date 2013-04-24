@@ -5,7 +5,24 @@ module.exports = function(grunt) {
 
 	grunt.registerMultiTask('generate', 'Generates documentation', function() {
 		var done = this.async();
-		console.log(this.options());
-		done();
+		var options = this.options();
+		var files = [];
+
+		this.files.forEach(function(file) {
+			files.push.apply(files, file.src);
+			options.folder = file.dest;
+		});
+
+		generate(files, options, function(error, files) {
+			if(error) {
+				grunt.fatal(error);
+				return done(error);
+			}
+
+			files.forEach(function(f) {
+				grunt.verbose.writeln(f);
+			});
+			done();
+		});
 	});
 }
