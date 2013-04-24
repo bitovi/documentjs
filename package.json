@@ -1,5 +1,5 @@
 {
-  "name": "DocumentJS",
+  "name": "documentjs",
   "description": "A JavaScript documentation engine",
   "version": "4.0.0",
   "maintainers": [
@@ -12,12 +12,7 @@
   "main": "lib/node",
   "devDependencies": {
     "mocha": ">= 1.6.0",
-    "qunit-mocha-ui": "*",
-    "grunt": "~0.4.1",
-    "grunt-contrib-concat": "~0.2.0",
-    "grunt-contrib-uglify": "~0.2.0",
-    "grunt-contrib-watch": "~0.3.1",
-    "grunt-contrib-jshint": "~0.4.3"
+    "qunit-mocha-ui": "*"
   },
   "dependencies": {
     "steal": "git+ssh://git@github.com:bitovi/steal-build.git",
