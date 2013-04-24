@@ -4,3 +4,4 @@ production.js
 *.orig
 docs
 docs.html
+tmp
