@@ -54,7 +54,7 @@ steal(function() {
 			if ( data.type == "javascript" ) { //convert comments
 				joined = joined.replace(/\*\|/g, "*/")
 			}
-			var out = "<pre>" + joined + "</pre>";
+			var out = "<pre class=\"prettyprint linenums:1 lang-" + data.type + "\">" + joined + "</pre>";
 
 			return ["pop", out];
 		}
