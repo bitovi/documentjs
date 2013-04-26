@@ -15,7 +15,7 @@
     "qunit-mocha-ui": "*"
   },
   "dependencies": {
-    "steal": "git+ssh://git@github.com:bitovi/steal-build.git",
+    "steal": "https://github.com/bitovi/steal-build/tarball/master",
     "globule": "~0.1.0",
     "async": "~0.2.7",
     "underscore": "~1.4.4",
