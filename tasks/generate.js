@@ -10,7 +10,7 @@ module.exports = function(grunt) {
 
 		this.files.forEach(function(file) {
 			files.push.apply(files, file.src);
-			options.folder = file.dest;
+			options.out = file.dest;
 		});
 
 		generate(files, options, function(error, files) {
