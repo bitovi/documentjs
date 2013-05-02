@@ -27,25 +27,24 @@ steal('./helpers/getParent.js',
 		 */
 		return {
 			add: function (line, curData, scope, docMap) {
-				var m = line.match(/^\s*@group\s*([\w\-\.]*)[\s*](.*)/);
+				var m = line.match(/@group[\s+](.*?)[\s](.*)/),
+					currentName = this.name;
 
-				console.log(m);
-				if (m && scope) {
-					var parentAndName = getParent.andName({
-						parents: ["constructor", "function", "page"],
-						useName: ["constructor", "function", "page"],
-						scope: scope,
-						docMap: docMap,
-						name: m[1]
-					});
+				if (m) {
+					var name = m[1],
+						title = m[2] || m[1],
+						docObject = docMap[name] ?
+							docMap[name] :
+							docMap[name] = {
+								name: name,
+								title: title || name,
+								type: title,
+								parent: currentName,
+								description: ''
+							};
 
-					this.type = m[1];
-					this.title = m[2] || this.type;
-					this.name = parentAndName.name;
-					this.parent = parentAndName.parent;
-					return ['scope', this]
+					return ["scope", docObject]
 				}
-
 			}
 		}
 	})
