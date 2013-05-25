@@ -1,53 +1,64 @@
-steal(function() {
+steal('documentjs/showdown.js','./helpers/typer.js',
+	function(converter, typer) {
 	/**
-	 * @class DocumentJS.tags.return
-	 * @tag documentation
-	 * @parent DocumentJS.tags 
+	 * @constructor documentjs/tags/return @return
+	 * @parent DocumentJS
 	 * 
-	 * Describes return data in the format.
+	 * Describes a function's return value.
 	 * 
-	 * ###Example:
+	 * @signature `@return {TYPE} DESCRIPTION`
 	 * 
 	 * @codestart
-	 *  /**
-	 *   * Capitalizes a string
-	 *   * @param {String} s the string to be lowercased.
-	 *   * @return {String} a string with the first character capitalized, and everything else lowercased
-	 *   *|
-	 *   capitalize: function( s, cache ) {
-	 *       return s.charAt(0).toUpperCase() + s.substr(1);
-	 *   }
+	 * /**
+	 *  * Capitalizes a string
+	 *  * @@param {String} s the string to be lowercased.
+	 *  * @@return {String} a string with the first character capitalized, 
+	 *  * and everything else lowercased
+	 *  *|
+	 * capitalize: function( s ) { ... }
 	 * @codeend
 	 * 
-	 * ###End Result:
+	 * @param {documentjs/type} [TYPE] The type of 
+	 * return value.
 	 * 
-	 * @image site/images/return_tag_example.png
+	 * @param {String} [DESCRIPTION] The description of the 
+	 * return value.
 	 */
 	return {
 		add: function( line ) {
-			if (!this.ret ) {
-				this.ret = {
-					type: 'undefined',
-					description: ""
-				}
+			var printError = function(){
+				print("LINE: \n" + line + "\n does not match @return {TYPE} DESCRIPTION");
 			}
+			
+			// start processing
+			var children = typer.tree(line);
+			
+			// check the format
+			if(!children.length >= 2 || !children[1].children) {
+				printError();
+				return;
+			}
+			
+			var returns = typer.process(children[1].children, {});
+			returns.description = line.substr(children[1].end).replace(/^\s+/,"");
+			
 
 			var parts = line.match(/\s*@return\s+(?:\{([^\}]+)\})?\s*(.*)?/);
 
 			if (!parts ) {
 				return;
 			}
+			var ret;
+			if(this.signatures){
+				this.signatures[this.signatures.length-1].returns = returns;
+			} else {
+				this.returns = returns;
+			} 
 
-			var description = parts.pop() || "";
-			var type = parts.pop();
-			this.ret = {
-				description: description,
-				type: type
-			};
-			return this.ret;
+			return returns;
 		},
-		addMore: function( line ) {
-			this.ret.description += "\n" + line;
+		addMore: function( line, ret ) {
+			ret.description += "\n" + line;
 		}
 	};
 })

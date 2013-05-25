@@ -1,0 +1,36 @@
+{
+  "name": "documentjs",
+  "description": "A JavaScript documentation engine",
+  "version": "4.0.0",
+  "maintainers": [
+    {
+      "name": "Bitovi",
+      "email": "contact@bitovi.com",
+      "web": "http://bitovi.com/"
+    }
+  ],
+  "main": "lib/node",
+  "devDependencies": {
+    "mocha": ">= 1.6.0",
+    "qunit-mocha-ui": "*"
+  },
+  "dependencies": {
+    "steal": "https://github.com/bitovi/steal-build/tarball/master",
+    "globule": "~0.1.0",
+    "async": "~0.2.7",
+    "underscore": "~1.4.4",
+    "handlebars": "1.0.10",
+    "js-beautify": "~1.3.1"
+  },
+  "homepage": "http://javascriptmvc.com",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bitovi/documentjs.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/mit-license.php"
+    }
+  ]
+}

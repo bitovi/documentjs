@@ -12,15 +12,15 @@
  * @param {Object} options
  */
 
-steal('steal','./out', function(s, out){
+steal(function() {
 	// Makes a JSON object for search data
 	var searchData = function(objects, options){
 		
 		var searchData = {};
 
-		addToSearchData(objects, searchData)
-		
-		return new s.URI(options.out + "/searchData.json").save( out(searchData, false) );
+		addToSearchData(objects, searchData);
+
+		return searchData;
 	}
 	var addIDs = function(list){
 		var count = 0;
@@ -50,7 +50,7 @@ steal('steal','./out', function(s, out){
 					name: c.name,
 					type: c.type
 				};
-				
+
 				if ( c.id !== undefined ) {
 					searchData[fullName].id = c.id
 				}
@@ -63,8 +63,8 @@ steal('steal','./out', function(s, out){
 				if ( c.hide ) {
 					searchData[fullName].hide = c.hide
 				}
-				if ( c.parents ) {
-					searchData[fullName].parents = c.parents
+				if ( c.parent ) {
+					searchData[fullName].parent = c.parent
 				}
 				if ( c.order != null) {
 					searchData[fullName].order = c.order;

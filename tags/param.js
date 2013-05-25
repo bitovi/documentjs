@@ -1,4 +1,5 @@
-steal('documentjs/showdown.js',function(converter) {
+steal('documentjs/showdown.js','./helpers/typeNameDescription.js',
+	function(converter, tnd ) {
 
 
 	var ordered = function( params ) {
@@ -9,42 +10,88 @@ steal('documentjs/showdown.js',function(converter) {
 		}
 		return arr;
 	}
-
+	var indexOf = function(arr, name){
+		return arr.map(function(item){return item.name}).indexOf(name);
+	}
+	
 
 	/**
-	 * @class DocumentJS.tags.param
+	 * @constructor documentjs/tags/param @param
 	 * @tag documentation
-	 * @parent DocumentJS.tags 
+	 * @parent DocumentJS 
 	 * 
-	 * Adds parameter information.
+	 * Adds parameter information to a [documentjs/tags/function @function] or
+	 * [documentjs/tags/signature @signature].
 	 * 
-	 * ###Use cases:
-	 * 
-	 * 1. Common use:
-	 * 
-	 *      __@@params {TYPE} name description__
-	 * 
-	 * 2. Optional parameters use case:
-	 * 
-     *     __@@params {TYPE} [name] description__
-     * 
-     * 3. Default value use case:
-     * 
-     *     __@@params {TYPE} [name=default] description__
-	 *
-	 * ###Example:
+	 * @signature `@param {TYPE} NAME [DESCRIPTION]`
 	 * 
 	 * @codestart
-     * /*
+     * /**
      *  * Finds an order by id.
-     *  * @@param {String} id Order identification number.
-     *  * @@param {Date} [date] Filter order search by this date.
+     *  * @@param {String} [id=0] Order identification number.
+     *  * @@param {function(Order)} [success(order)] Filter order search by this date.
      *  *|
-     *  findById: function(id, date) {
-     *      // looks for an order by id
-     *  }   
+     *  findById: function( id, success ) {
 	 *  @codeend
+	 * 
+	 * Use `@param` within a [documentjs/tags/function @function] comment block or after 
+	 * a [documentjs/tags/signature @signature] tag. 
+	 * 
+	 * @param {documentjs/type} TYPE A [documentjs/type type expression]. Examples:
+	 * 
+	 * `{String}` - type is a `String`.  
+	 * `{function(name)}` - type is a `function` that takes one `name` argument.  
+	 * 
+	 * Use [documentjs/tags/option @option] to detail a function's arguments or an
+	 * object's properties.
+	 * 
+	 * @param {documentjs/name} NAME A [documentjs/name name expression]. Examples:
+	 * 
+	 * `age` - age is item.  
+	 * `[age]` - age is item, age is optional.  
+	 * `[age=0]` - age defaults to 0.  
 	 *  
+	 * @body
+	 * 
+	 * ## @param within a function comment
+	 * 
+	 * If using a comment preceeds a function like ...
+	 * 
+	 * @codestart
+     * /**
+     *  * Finds an order by id.
+     *  * @@param {String} [id=0] Order identification number.
+     *  * @@param {function(Order)} [success(order)] Filter order search by this date.
+     *  *|
+     *  findById: function( id, success ) {
+	 *  @codeend
+	 * 
+	 * ... DocumentJS will automatically
+	 * make the comment's [documentjs/DocObject DocObject] type a function
+	 * and create params with just names (in this case `id` and `success`).
+	 * 
+	 * The comment's `@param`s tags should use the same names as the function. Any
+	 * params that specifies a name that isn't present is added at the end of
+	 * the arguments.
+	 * 
+	 * ## @param within a signature
+	 * 
+	 * Use `@param` to specify the params in a signature. 
+	 * 
+	 * @codestart
+     * /**
+     *  * Finds an order by id.
+     *  * 
+     *  * @signature `Order.findById(id=0,[success])`
+     *  * 
+     *  * @@param {String} [id=0] Order identification number.
+     *  * @@param {function(Order)} [success(order)] Filter order search by this date.
+     *  *|
+     * findById: function( id, success ) {
+	 * @codeend
+	 * 
+	 * When a `@signature` is used, any params automatically created from code 
+	 * are overwritten.
 	 * 
 	 */
 	return {
@@ -52,60 +99,40 @@ steal('documentjs/showdown.js',function(converter) {
 		addMore: function( line, last ) {
 			if ( last ) last.description += "\n" + line;
 		},
-		/**
-		 * Adds @param data to the constructor function
-		 * @param {String} line
-		 */
 		add: function( line ) {
-			if (!this.params ) {
-				this.params = {};
+	
+			var param = tnd(line);
+			if(!param.type && !param.name){
+				print("LINE: \n" + line + "\n does not match @param {TYPE} NAME DESCRIPTION");
 			}
-			var parts = line.match(/\s*@param\s+(?:\{?([^}]+)\}?)?\s+([^\(\s]+(?:\([^\)]+\)\]?)?) ?(.*)?/);
-			if (!parts ) {
-				print("LINE: \n" + line + "\n does not match @params {TYPE} NAME DESCRIPTION")
-				return;
-			}
-			var description = parts.pop();
-			var n = parts.pop(),
-				optional = false,
-				defaultVal;
-			//check if it has anything ...
-			var nameParts = n.match(/\[([\w\.\$\(\),]+)(?:=([^\]]*))?\]/)
-			if ( nameParts ) {
-				optional = true;
-				defaultVal = nameParts[2]
-				n = nameParts[1]
-			}
-			// check if parens 
-				
-			var nameParts = n.match(/([^\[\(\s]+)(\([^\)]+\))/) 
-			if ( nameParts && this.params[nameParts[1]]) {
-				
-				var order = this.params[nameParts[1]].order;
-				delete this.params[nameParts[1]];
-			}
-			var param = this.params[n] ? 
-				this.params[n] : 
-				this.params[n] = {
-						order: order === undefined ? ordered(this.params).length : order
-					};
-
 			
-			param.description = description || "";
-			param.name = n;
-			param.type = parts.pop() || "";
-
-
-			param.optional = optional;
-			if ( defaultVal ) {
-				param["default"] = defaultVal;
+			
+			
+			// if we have a signiture, add this param to the last 
+			// signiture
+			if(this.signatures){
+				this.signatures[this.signatures.length-1].params.push(param)
+			} else {
+				if (!this.params ) {
+					this.params = [];
+				}
+				// we are the _body's_ param
+				// check if one by the same name hasn't already been created
+				if ( indexOf(this.params, param.name) != -1) {
+					// probably needs to swap
+					this.params.splice(indexOf(this.params, param.name),1, param)
+				} else {
+					// add to params
+					
+					this.params.push(param)
+				}
 			}
-
-			return this.params[n];
+			this._curParam = param;
+			return param;
 		},
 		done : function(){
-			if(this.ret && this.ret.description && this.ret.description ){
-				this.ret.description = converter.makeHtml(this.ret.description)
+			if(this.returns && this.returns.description && this.returns.description ){
+				this.returns.description = converter.makeHtml(this.returns.description)
 			}
 			if(this.params){
 				for(var paramName in this.params){
@@ -114,6 +141,18 @@ steal('documentjs/showdown.js',function(converter) {
 					}
 				}
 			}
+			(this.signatures || []).forEach(function(signature){
+				signature.description = converter.makeHtml( signature.description );
+				
+				(signature.params || []).forEach(function(param){
+					param.description = converter.makeHtml(param.description);
+					
+				})
+				if(signature.returns && signature.returns.description){
+					signature.returns.description = converter.makeHtml(signature.returns.description)
+				}
+			})
+			delete this._curParam;
 		}
 	};
 

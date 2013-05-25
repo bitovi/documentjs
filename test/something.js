@@ -1,5 +1,5 @@
 /**
- * @class Something
+ * @constructor Something
  * 
  * ## boom
  * 
@@ -48,7 +48,7 @@ staticSomething = function() {
 
 
 /**
- * @class
+ * @constructor
  * this is a comment
  * @tag home
  */

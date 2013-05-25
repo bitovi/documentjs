@@ -1,22 +1,26 @@
 steal(function() {
 	/**
-	 * @class DocumentJS.tags.iframe
-	 * @tag documentation
-	 * @parent DocumentJS.tags 
+	 * @constructor documentjs/tags/iframe @iframe
+	 * @parent DocumentJS
 	 * 
-	 * Adds an iframe to some page with example code.
+	 * Adds an iframe to the page. It can be added to the 
+	 * [documentjs/tags/body @body] or any other tags that
+	 * accept a description.
 	 * 
-	 * ###Example:
-	 * 
+	 * @signature `@iframe SRC [HEIGHT]`
 	 * @codestart
-	 * /*
-	 *  * @iframe jquery/view/view.html 700
+	 * /**
+	 *  * A component for lib.
+	 *  * @body
+	 *  * See it in action:
+	 *  * @iframe lib/component/component.html 300
 	 *  *|
 	 * @codeend
 	 * 
-	 * ###End Result:
-	 * 
-	 * @iframe jquery/view/view.html 700
+	 * @param {String} SRC The source of the html page.
+	 * @param {Number} [HEIGHT] The height of the html page. If
+	 * a height is not provided, the height is determined as
+	 * the content of the body.
 	 */
 	return  {
 		add: function( line ) {
@@ -25,9 +29,9 @@ steal(function() {
 			if ( m ) {
 				var src = m[1] ? m[1].toLowerCase() : '';
 				var height = m[2] ? m[2] : '320';
-				this.comment += "<div class='iframe_wrapper' "
-				this.comment += "data-iframe-src='" + src + "' "
-				this.comment += "data-iframe-height='" + height + "'></div>";
+				this.body += "<div class='iframe_wrapper' "
+				this.body += "data-iframe-src='" + src + "' "
+				this.body += "data-iframe-height='" + height + "'></div>";
 			}
 		}
 	};

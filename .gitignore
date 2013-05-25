@@ -2,3 +2,6 @@ test/docs/*
 dist
 production.js
 *.orig
+docs
+docs.html
+tmp

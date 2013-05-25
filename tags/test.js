@@ -1,28 +1,21 @@
 steal(function() {
 	/**
-	 * @class DocumentJS.tags.test
-	 * @tag documentation
-	 * @parent DocumentJS.tags 
+	 * @constructor documentjs/tags/test @test
+	 * @parent DocumentJS
 	 * 
-	 * Link to test cases.
+	 * Link to test page.
 	 * 
-	 * #Example
+	 * @signature `@test URL`
 	 * 
 	 * @codestart
-	 * /*
-	 *  * @constructor jQuery.Drag
-	 *  * @parent specialevents
-	 *  * @plugin jquery/event/drag
-	 *  * @download jquery/dist/jquery.event.drag.js
-	 *  * @test jquery/event/drag/qunit.html
-	 *  * ...
+	 * /**
+	 *  * A component for the lib library.
+	 *  * @test lib/component/component.test
 	 *  *|
-	 *  $.Drag = function(){}
+	 * lib.Component = function( name ) { ... }
 	 * @codeend
 	 * 
-	 * ###End Result:
-	 * @image site/images/test_tag_example.png
-	 * @image site/images/test_tag_test_example.png
+	 * @param {String} URL The url of the test page.
 	 */
 	return {
 		add: function( line ) {
