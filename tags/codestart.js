@@ -1,8 +1,8 @@
 steal(function() {
 	/**
-	 * @class DocumentJS.tags.codestart
-	 * @tag documentation
-	 * @parent DocumentJS.tags 
+	 * @constructor documentjs/tags/codestart @codestart
+	 * @hide
+	 * @parent DocumentJS 
 	 * 
 	 * Starts a code block.  
 	 * 

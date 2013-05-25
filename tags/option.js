@@ -1,5 +1,8 @@
 steal('documentjs/showdown.js','./helpers/typer.js',
-	'./helpers/tree.js','./helpers/namer.js',function(converter, typer, tree,namer) {
+	'./helpers/tree.js',
+	'./helpers/namer.js',
+	'./helpers/typeNameDescription.js',
+	function(converter, typer, tree,namer, tnd) {
 
 	var getOptions = function(param){
 		for(var i =0; i < param.types.length; i++) {
@@ -30,38 +33,54 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 	
 
 	/**
-	 * @class DocumentJS.tags.param
+	 * @constructor documentjs/tags/option @option
 	 * @tag documentation
-	 * @parent DocumentJS.tags 
+	 * @parent DocumentJS 
 	 * 
-	 * Adds parameter information.
+	 * Details the properties of an object or the arguments of a function
+	 * in a [documentjs/tags/param @param] tag.
 	 * 
-	 * ###Use cases:
-	 * 
-	 * 1. Common use:
-	 * 
-	 *      __@@params {TYPE} name description__
-	 * 
-	 * 2. Optional parameters use case:
-	 * 
-     *     __@@params {TYPE} [name] description__
-     * 
-     * 3. Default value use case:
-     * 
-     *     __@@params {TYPE} [name=default] description__
-	 *
-	 * ###Example:
+	 * @signature `@option {TYPE} NAME [DESCRIPTION]`
 	 * 
 	 * @codestart
-     * /*
-     *  * Finds an order by id.
-     *  * @@param {String} id Order identification number.
-     *  * @@param {Date} [date] Filter order search by this date.
+     * /**
+     *  * Retrieves a list of orders.
+     *  * 
+     *  * @@param {{}} params A parameter object with the following options:
+     *  * @@option {String} type Specifies the type of order.
+     *  * @@option {Number} [createdAt] Retrieves all orders after this timestamp. 
+     *  *
+     *  * @@param {function(Orders.List)} [success(orders)] Filter order search by this date.
+     *  * @@option orders A list of [Orders] that match `params`.
      *  *|
-     *  findById: function(id, date) {
-     *      // looks for an order by id
-     *  }   
+     *  find: function( params, success ) {
 	 *  @codeend
+	 * 
+	 * 
+	 * @param {documentjs/type} [TYPE] A [documentjs/type type expression]. Examples:
+	 * 
+	 * `{String}` - type is a `String`.  
+	 * `{function(name)}` - type is a `function` that takes one `name` argument.  
+	 * 
+	 * `TYPE` does not need to be specified for types that are already described in
+	 * the option's corresponding function or object.  For example:
+	 * 
+	 * 
+	 * @codestart
+     * /**
+     *  * @@param {{type: String}} params A parameter object with the following options:
+     *  * @@option type Specifies the type of order.
+     *  *
+     *  * @@param {function(Orders.List)} [success(orders)] Callback function.
+     *  * @@option orders A list of [Orders] that match `params`.
+     *  *|
+	 * @codeend
+	 * @param {documentjs/name} NAME A [documentjs/name name expression]. Examples:
+	 * 
+	 * `age` - age is item.  
+	 * `[age]` - age is item, age is optional.  
+	 * `[age=0]` - age defaults to 0.  
+	 * 
 	 *  
 	 * 
 	 */
@@ -70,35 +89,17 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 		addMore: function( line, last ) {
 			if ( last ) last.description += "\n" + line;
 		},
-		/**
-		 * Adds @param data to the constructor function
-		 * @param {String} line
-		 */
 		add: function( line ) {
-			var printError = function(){
-				print("LINE: \n" + line + "\n does not match @params {TYPE} NAME DESCRIPTION");
-			}
-			var prevParam = this._curParam || this.params[this.params.length - 1];
+			var prevParam = this._curParam || (this.params && this.params[this.params.length - 1]) || this;
 			// start processing
-			var children = typer.tree(line);
 			
-			// check the format
-			if(!children.length >= 2) {
-				printError();
-				return;
+			var data = tnd(line);
+			if(!data.name){
+				print("LINE: \n" + line + "\n does not match @params [{TYPE}] NAME DESCRIPTION");
 			}
-			var name,
-				typeToken,
-				description;
 			
-			if( children[1].type == "{" ) {
-				typeToken = children[1];
-				name = children[2];
-				description = line.substr(typeToken.end).replace(name,"").replace(/^\s+/,"");
-			} else {
-				var parts = line.match(/\s*@option\s+([^\(\s]+(?:\([^\)]+\)\]?)?) ?(.*)?/);
-				description = parts.pop().replace(/^\s+/,"");
-				name = parts.pop();
+			if(!prevParam.types){
+				prevParam.types = [];
 			}
 			var params = getParams(prevParam);
 			var options = getOptions(prevParam);
@@ -106,13 +107,14 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 				print("LINE: \n" + line + "\n could not find an object or arguments to add options to.");
 				return;
 			}
-			var option = getOrMakeOptionByName(options || params, name);
-			option.description = description;
-			if( typeToken ) {
-				// merge
-				typer.process(typeToken.children, option);
-			}
+			var option = getOrMakeOptionByName(options || params, data.name);
 			
+			
+			option.description = data.description;
+			
+			for(var prop in data){
+				option[prop] =  data[prop];
+			}
 
 			return option;
 		},

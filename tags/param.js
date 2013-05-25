@@ -1,5 +1,5 @@
-steal('documentjs/showdown.js','./helpers/typer.js',
-	'./helpers/namer.js',function(converter, typer,namer) {
+steal('documentjs/showdown.js','./helpers/typeNameDescription.js',
+	function(converter, tnd ) {
 
 
 	var ordered = function( params ) {
@@ -16,39 +16,82 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 	
 
 	/**
-	 * @class DocumentJS.tags.param
+	 * @constructor documentjs/tags/param @param
 	 * @tag documentation
-	 * @parent DocumentJS.tags 
+	 * @parent DocumentJS 
 	 * 
-	 * Adds parameter information.
+	 * Adds parameter information to a [documentjs/tags/function @function] or
+	 * [documentjs/tags/signature @signature].
 	 * 
-	 * ###Use cases:
-	 * 
-	 * 1. Common use:
-	 * 
-	 *      __@@params {TYPE} name description__
-	 * 
-	 * 2. Optional parameters use case:
-	 * 
-     *     __@@params {TYPE} [name] description__
-     * 
-     * 3. Default value use case:
-     * 
-     *     __@@params {TYPE} [name=default] description__
-	 *
-	 * ###Example:
+	 * @signature `@param {TYPE} NAME [DESCRIPTION]`
 	 * 
 	 * @codestart
-     * /*
+     * /**
      *  * Finds an order by id.
-     *  * @@param {String} id Order identification number.
-     *  * @@param {Date} [date] Filter order search by this date.
+     *  * @@param {String} [id=0] Order identification number.
+     *  * @@param {function(Order)} [success(order)] Filter order search by this date.
      *  *|
-     *  findById: function(id, date) {
-     *      // looks for an order by id
-     *  }   
+     *  findById: function( id, success ) {
 	 *  @codeend
+	 * 
+	 * Use `@param` within a [documentjs/tags/function @function] comment block or after 
+	 * a [documentjs/tags/signature @signature] tag. 
+	 * 
+	 * @param {documentjs/type} TYPE A [documentjs/type type expression]. Examples:
+	 * 
+	 * `{String}` - type is a `String`.  
+	 * `{function(name)}` - type is a `function` that takes one `name` argument.  
+	 * 
+	 * Use [documentjs/tags/option @option] to detail a function's arguments or an
+	 * object's properties.
+	 * 
+	 * @param {documentjs/name} NAME A [documentjs/name name expression]. Examples:
+	 * 
+	 * `age` - age is item.  
+	 * `[age]` - age is item, age is optional.  
+	 * `[age=0]` - age defaults to 0.  
 	 *  
+	 * @body
+	 * 
+	 * ## @param within a function comment
+	 * 
+	 * If using a comment preceeds a function like ...
+	 * 
+	 * @codestart
+     * /**
+     *  * Finds an order by id.
+     *  * @@param {String} [id=0] Order identification number.
+     *  * @@param {function(Order)} [success(order)] Filter order search by this date.
+     *  *|
+     *  findById: function( id, success ) {
+	 *  @codeend
+	 * 
+	 * ... DocumentJS will automatically
+	 * make the comment's [documentjs/DocObject DocObject] type a function
+	 * and create params with just names (in this case `id` and `success`).
+	 * 
+	 * The comment's `@param`s tags should use the same names as the function. Any
+	 * params that specifies a name that isn't present is added at the end of
+	 * the arguments.
+	 * 
+	 * ## @param within a signature
+	 * 
+	 * Use `@param` to specify the params in a signature. 
+	 * 
+	 * @codestart
+     * /**
+     *  * Finds an order by id.
+     *  * 
+     *  * @signature `Order.findById(id=0,[success])`
+     *  * 
+     *  * @@param {String} [id=0] Order identification number.
+     *  * @@param {function(Order)} [success(order)] Filter order search by this date.
+     *  *|
+     * findById: function( id, success ) {
+	 * @codeend
+	 * 
+	 * When a `@signature` is used, any params automatically created from code 
+	 * are overwritten.
 	 * 
 	 */
 	return {
@@ -56,49 +99,14 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 		addMore: function( line, last ) {
 			if ( last ) last.description += "\n" + line;
 		},
-		/**
-		 * Adds @param data to the constructor function
-		 * @param {String} line
-		 */
 		add: function( line ) {
-			var printError = function(){
+	
+			var param = tnd(line);
+			if(!param.type && !param.name){
 				print("LINE: \n" + line + "\n does not match @param {TYPE} NAME DESCRIPTION");
 			}
 			
-			// start processing
-			var children = typer.tree(line);
 			
-			// check the format
-			if(!children.length >= 3) {
-				printError();
-				return;
-			}
-			if(!children[1].type == "{") {
-				printError();
-				return;
-			}
-			
-			var param = {},
-				description;
-			
-			typer.process(children[1].children, param);
-			var nameChildren = [children[2]];
-			
-			// include for function naming
-			if(children[3] && children[3].type == "("){
-				nameChildren.push( children[3] );
-			}
-			
-			namer.process( nameChildren, param);
-			
-			if(nameChildren.length > 1 ){
-				param.description = line.substr(children[3].end)
-			} else if(typeof children[2] == "string"){
-				param.description = line.substr(children[1].end).replace(children[2],"")
-			} else {
-				param.description = line.substr(children[2].end)
-			}
-			param.description = param.description.replace(/^\s+/,"")
 			
 			// if we have a signiture, add this param to the last 
 			// signiture
@@ -123,8 +131,8 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 			return param;
 		},
 		done : function(){
-			if(this.ret && this.ret.description && this.ret.description ){
-				this.ret.description = converter.makeHtml(this.ret.description)
+			if(this.returns && this.returns.description && this.returns.description ){
+				this.returns.description = converter.makeHtml(this.returns.description)
 			}
 			if(this.params){
 				for(var paramName in this.params){
@@ -133,6 +141,17 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 					}
 				}
 			}
+			(this.signatures || []).forEach(function(signature){
+				signature.description = converter.makeHtml( signature.description );
+				
+				(signature.params || []).forEach(function(param){
+					param.description = converter.makeHtml(param.description);
+					
+				})
+				if(signature.returns && signature.returns.description){
+					signature.returns.description = converter.makeHtml(signature.returns.description)
+				}
+			})
 			delete this._curParam;
 		}
 	};

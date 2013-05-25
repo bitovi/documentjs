@@ -1,6 +1,6 @@
 steal(function() {
 	/**
-	 * @class DocumentJS.tags.codeend
+	 * @constructor DocumentJS.tags.codeend
 	 * @tag documentation
 	 * @parent DocumentJS.tags 
 	 * 
@@ -54,7 +54,9 @@ steal(function() {
 			if ( data.type == "javascript" ) { //convert comments
 				joined = joined.replace(/\*\|/g, "*/")
 			}
-			var out = "<pre><code class='" + data.type + "'>" + joined + "</code></pre>";
+			var out = "<pre><code class=\"lang-" + data.type + "\">"
+				+ joined +
+			"</code></pre>";
 
 			return ["pop", out];
 		}

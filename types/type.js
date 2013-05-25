@@ -2,24 +2,17 @@ steal('steal','../distance','../showdown','documentjs/tags',function(s, distance
 	var typeCheckReg = /^\s*@(\w+)/,
 		nameCheckReg = /^\s*@(\w+)[ \t]+([\w\.\$\/]+)/m,
 		doubleAt = /@@/g;
-	/**
-	 * @class DocumentJS.Type
-	 * @tag documentation
-	 * Keeps track of types of directives in DocumentJS.  
-	 * Each type is added to the types array.
-	 * @param {Object} type
-	 * @param {Object} props
-	 */
+
 	var Type = function( type, props ) {
 		Type.types[type] = props;
 		props.type = type;
 	}
 
 	s.extend(Type,
-	/**
-	 * @Static
-	 */
 	{
+		/**
+		 * @property {Object}
+		 */
 		types : {},
 		/**
 		 * Must get type and name
@@ -82,13 +75,11 @@ steal('steal','../distance','../showdown','documentjs/tags',function(s, distance
 				props.type = type.type;
 			}
 			if ( props.name ) {
-
 				var parent = this.getParent(type, scope, objects)
 				//print("    p="+(parent ? parent.name+":"+parent.type : ""))
 				//if we are adding to an unlinked parent, add parent's name
 				// if we have a parent ...
 				if ( parent ) {
-
 					if (!parent.type || Type.types[parent.type].useName ) {
 						props.name = parent.name + "." + props.name
 					}
@@ -104,7 +95,9 @@ steal('steal','../distance','../showdown','documentjs/tags',function(s, distance
 					props.parents.unshift(parent.name);
 
 					if (props.name === "index") {
+						
 					}
+					// merging 
 					if ( objects[props.name] ) {
 						var newProps = props;
 						props = objects[props.name];
@@ -113,7 +106,7 @@ steal('steal','../distance','../showdown','documentjs/tags',function(s, distance
 					if (!parent.children ) {
 						parent.children = [];
 					}
-					parent.children.push(props.name)
+					
 
 				} else { // in the case that it doesn't have a parent 
 					if ( objects[props.name] ) {
@@ -123,7 +116,11 @@ steal('steal','../distance','../showdown','documentjs/tags',function(s, distance
 					}
 				}
 
-				this.process(props, comment, type, objects)
+				this.process(props, comment, type, objects);
+				// the name may change in process ... only assign as child here
+				if(parent){
+					parent.children.push(props.name);
+				}
 
 				return handler(props)
 			}
@@ -283,6 +280,7 @@ steal('steal','../distance','../showdown','documentjs/tags',function(s, distance
 						// this is used by @constructor
 					} else if ( curData && curData.length == 2 && curData[0] == 'default' ) {
 						defaultWrite = curData[1];
+						lastType = null;
 					}
 					// if we have anything else, we store it as the last thing we went to
 					else if ( curData ) {

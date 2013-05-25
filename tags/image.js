@@ -1,15 +1,21 @@
 steal(function() {
 	/**
-	 * @class DocumentJS.tags.image
-	 * @tag documentation
-	 * @parent DocumentJS.tags 
+	 * @constructor documentjs/tags/image @image
+	 * @parent DocumentJS
+	 * @hide
 	 * 
 	 * Adds an image.
 	 * 
-	 * ###Example:
+	 * @signature `@image SRC [WIDTH] [HEIGHT]`
+	 * @param {String} SRC
+	 * @param {Number} [WIDTH]
+	 * @param {Number} [HEIGHT]
+	 * 
 	 * 
 	 * @codestart
-	 * /* 
+	 * /**
+	 *  * @body
+	 *  * Check out this awesomeness:
 	 *  * @image site/images/page_type_example.png 640 480
 	 *  *|
 	 * @codeend
@@ -20,11 +26,11 @@ steal(function() {
 
 			if ( m ) {
 				var src = m[1] ? m[1] : '';
-				this.comment += "<img class='image_tag' ";
-				this.comment += "src='" + src + "' ";
-				m[2] ? this.comment += "width='" + m[2] + "' " : true;
-				m[3] ? this.comment += "height='" + m[3] + "' " : true;
-				this.comment += "/>";
+				this.body += "<img class='image_tag' ";
+				this.body += "src='" + src + "' ";
+				m[2] ? this.body += "width='" + m[2] + "' " : true;
+				m[3] ? this.body += "height='" + m[3] + "' " : true;
+				this.body += "/>";
 			}
 		}
 	};

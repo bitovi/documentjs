@@ -1,9 +1,12 @@
-steal('./type',function(Type) {
+steal('documentjs/tags/process.js', 'documentjs/tags', function (process, tags) {
+
+	process.tags = tags;
+
 	var ignoreCheck = /\@documentjs-ignore/,
 		commentReg = /\r?\n(?:\s*\*+)?/g,
 		spaceReg = /\S/g,
 		newLine = /\n/g,
-		lineNumber = function( source ) {
+		lineNumber = function (source) {
 			// reset lastIndex
 			newLine.lastIndex = 0;
 
@@ -11,18 +14,18 @@ steal('./type',function(Type) {
 				curIndex, lines, len;
 
 
-			return function( index ) {
-				if (!lines ) {
+			return function (index) {
+				if (!lines) {
 					lines = source.split('\n');
 					curIndex = lines[0].length + 1;
 					len = lines.length;
 				}
 				// if we haven't already, split the 	
-				if ( index <= curIndex ) {
+				if (index <= curIndex) {
 					return curLine;
 				}
 				curLine++;
-				while ( curLine < len && (curIndex += lines[curLine].length + 1) <= index ) {
+				while (curLine < len && (curIndex += lines[curLine].length + 1) <= index) {
 					curLine++;
 				}
 				return curLine;
@@ -42,7 +45,7 @@ steal('./type',function(Type) {
 	var Script = {
 
 		// removes indent inline
-		removeIndent: function( lines ) {
+		removeIndent: function (lines) {
 			// first calculate the amount of space to remove
 			// and get lines starting with text content 
 			var removeSpace = Infinity,
@@ -52,19 +55,19 @@ steal('./type',function(Type) {
 				line, l;
 
 			// for each line
-			for ( l = 0; l < lines.length; l++ ) {
+			for (l = 0; l < lines.length; l++) {
 				line = lines[l];
 				// test if it has something other than a space
 				match = noSpace.exec(line);
 				// if it does, and it's less than our current maximum
-				if ( match && line && noSpace.lastIndex < removeSpace ) {
+				if (match && line && noSpace.lastIndex < removeSpace) {
 					// update our current maximum
 					removeSpace = noSpace.lastIndex;
 					// mark as starting to have content
 					hasContent = true;
 				}
 				// if we have content now, add to contentLines
-				if ( hasContent ) {
+				if (hasContent) {
 					contentLines.push(line);
 				}
 				// update the regexp position
@@ -74,14 +77,14 @@ steal('./type',function(Type) {
 			removeSpace = removeSpace - 1;
 
 			// go through content lines and remove the removeSpace
-			if ( isFinite(removeSpace) && removeSpace !== 0 ) {
-				for ( l = 0; l < contentLines.length; l++ ) {
+			if (isFinite(removeSpace) && removeSpace !== 0) {
+				for (l = 0; l < contentLines.length; l++) {
 					contentLines[l] = contentLines[l].substr(removeSpace);
 				}
 			}
 			return contentLines;
 		},
-		getCommentCodePairs: function() {
+		getCommentCodePairs: function () {
 
 		},
 		group: new RegExp("(?:/\\*(?:[^*]|(?:\\*+[^*/]))*\\*+/\[^\\w\\{\\(\\[/]*[^\\n]*)", "g"),
@@ -91,76 +94,86 @@ steal('./type',function(Type) {
 
 		/**
 		 * Generates docs for a file.
-		 * @param {Object} docScript an object that has src and text attributes.  It can also just be 
+		 * @param {Object} docScript an object that has src and text attributes.  It can also just be
 		 * the path of a file.
 		 */
-		process: function( docScript, objects ) {
-			if ( typeof docScript == 'string' ) {
-				docScript = {
-					src: docScript
-				}
+		process: function (docScript, objects) {
+			if (typeof docScript == 'string') {
+				throw new Error('Filenames not supported!');
 			}
-			var source = readFile(docScript.src);
+			var source = docScript.text;
 			//check if the source has @documentjs-ignore
-			if ( ignoreCheck.test(source) ) {
+			if (ignoreCheck.test(source)) {
 				return;
 			}
 			var script = {
-				type: "script",
-				name: docScript.src
-			},
+					type: "script",
+					name: docScript.src + ""
+				},
 				scope = script,
-				comments, 
+				comments,
 				type,
 				comment,
-				typeCreateHandler = function(type, newScope ){
+				typeCreateHandler = function (docObject, newScope) {
 					//processTime = processTime + (new Date - start)
-					if ( type ) {
-						objects[type.name] = type;				
-						// get the new scope if you need it
-						// if we don't have a type, assume we can have children
-						if(newScope){
-							scope = newScope;
+					if (docObject && docObject.name) {
+						if (objects[docObject.name]) {
+							// merge props
+							for (var prop in docObject) {
+								objects[docObject.name][prop] = docObject[prop];
+							}
 						} else {
-							scope = !type.type || Type.types[type.type].hasChildren ? type : scope;
+							objects[docObject.name] = docObject;
 						}
-						type.src = docScript.src;
-						if(comment){
-							type.line = comment.line;
+
+						docObject.src = docScript.src + "";
+						if (comment) {
+							docObject.line = comment.line;
 						}
-						
+						/*if(docObject.parent){
+						 var parent = objects[docObject.parent] ?
+						 objects[docObject.parent] : objects[docObject.parent] = {}
+						 if(!parent.children){
+						 parent.children = [];
+						 }
+						 parent.children.push(docObject.name)
+						 }*/
+					}
+					if (newScope) {
+						scope = newScope
 					}
 				}
 
-			print("  " + script.name);
 			objects[script.name] = script;
 
 			// handle markdown docs
-			if (/\.(md|markdown)$/.test(docScript.src) ) {
-				Type.create(source, 
-					"", 
-					scope, 
-					objects, 
-					'page', 
-					docScript.src.match(/([^\/]+)\.(md|markdown)$/)[1],
-					typeCreateHandler);
+			if (/\.(md|markdown)$/.test(docScript.src)) {
+
+				process.comment({
+					comment: source,
+					docMap: objects,
+					scope: scope,
+					props: {
+						type: 'page',
+						name: docScript.src.match(/([^\/]+)\.(md|markdown)$/)[1]
+					}
+				}, typeCreateHandler);
+
 				return;
 			}
 
 			comments = this.getComments(source);
 			//clean comments
-			for ( var i = 0; i < comments.length; i++ ) {
+			for (var i = 0; i < comments.length; i++) {
 				comment = comments[i];
 
 				//var start = new Date;
-
-				Type.create(comment.comment, 
-					comment.code, 
-					scope, 
-					objects, 
-					undefined, 
-					undefined,
-					typeCreateHandler);
+				process.codeAndComment({
+					code: comment.code,
+					comment: comment.comment,
+					docMap: objects,
+					scope: scope
+				}, typeCreateHandler)
 			}
 
 
@@ -170,7 +183,7 @@ steal('./type',function(Type) {
 		// - comment : an array of lines that make up the comment
 		// - code : the line of code after the comment
 		// - line : the line number of the comment
-		getComments: function( source ) {
+		getComments: function (source) {
 			var start = new Date;
 			//var source = source.replace('\r\n','\n')
 			var comments = [],
@@ -179,15 +192,11 @@ steal('./type',function(Type) {
 			this.group.lastIndex = 0;
 
 
-
-			while ( match = this.group.exec(source) ) {
-
-				//print("|TTT\n"+match[0]+"\n-------")
-
-				var lastIndex =this.group.lastIndex,
+			while (match = this.group.exec(source)) {
+				var lastIndex = this.group.lastIndex,
 					origComment = match[0],
-					splits =origComment.match(this.splitter),
-					// the comment after removing leading *
+					splits = origComment.match(this.splitter),
+				// the comment after removing leading *
 					comment = splits[1].replace(commentReg, '\n'),
 					code = splits[2],
 					lines = comment.split("\n");
@@ -195,13 +204,11 @@ steal('./type',function(Type) {
 				lines = this.removeIndent(lines);
 				// probably want line numbers and such
 				// an empty line
-				if (!lines.length ) {
+				if (!lines.length) {
 					continue;
 				}
-				var line =getLine(lastIndex - origComment.length );
-				//print((lastIndex - origComment.length)+"->"+line+ " "+source.substr(lastIndex - origComment.length,50));
-				
-				
+				var line = getLine(lastIndex - origComment.length);
+
 				comments.push({
 					comment: lines,
 					code: code,
@@ -213,10 +220,5 @@ steal('./type',function(Type) {
 		}
 	};
 
-	Type("script", {
-		useName: false,
-		hasChildren: true
-	});
-	
 	return Script;
 })

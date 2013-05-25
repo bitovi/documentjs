@@ -1,28 +1,28 @@
 steal('documentjs/showdown.js','./helpers/typer.js',
 	function(converter, typer) {
 	/**
-	 * @class DocumentJS.tags.return
-	 * @tag documentation
-	 * @parent DocumentJS.tags 
+	 * @constructor documentjs/tags/return @return
+	 * @parent DocumentJS
 	 * 
-	 * Describes return data in the format.
+	 * Describes a function's return value.
 	 * 
-	 * ###Example:
+	 * @signature `@return {TYPE} DESCRIPTION`
 	 * 
 	 * @codestart
-	 *  /**
-	 *   * Capitalizes a string
-	 *   * @param {String} s the string to be lowercased.
-	 *   * @return {String} a string with the first character capitalized, and everything else lowercased
-	 *   *|
-	 *   capitalize: function( s, cache ) {
-	 *       return s.charAt(0).toUpperCase() + s.substr(1);
-	 *   }
+	 * /**
+	 *  * Capitalizes a string
+	 *  * @@param {String} s the string to be lowercased.
+	 *  * @@return {String} a string with the first character capitalized, 
+	 *  * and everything else lowercased
+	 *  *|
+	 * capitalize: function( s ) { ... }
 	 * @codeend
 	 * 
-	 * ###End Result:
+	 * @param {documentjs/type} [TYPE] The type of 
+	 * return value.
 	 * 
-	 * @image site/images/return_tag_example.png
+	 * @param {String} [DESCRIPTION] The description of the 
+	 * return value.
 	 */
 	return {
 		add: function( line ) {
@@ -49,7 +49,7 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 				return;
 			}
 			var ret;
-			if(this.signitures){
+			if(this.signatures){
 				this.signatures[this.signatures.length-1].returns = returns;
 			} else {
 				this.returns = returns;

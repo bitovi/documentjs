@@ -1,6 +1,6 @@
 steal(function() {
 	/**
-	 * @class DocumentJS.tags.author
+	 * @constructor DocumentJS.tags.author
 	 * @tag documentation
 	 * @parent DocumentJS.tags 
 	 * Describes who the author of a class is.

@@ -1,22 +1,24 @@
 steal(function() {
 	/**
-	 * @class DocumentJS.tags.inherits
+	 * @constructor documentjs/tags/inherits @inherits
 	 * @tag documentation
-	 * @parent DocumentJS.tags 
+	 * @parent DocumentJS
 	 * 
-	 * Says current class inherits from another class.
-	 *
-	 * ###Example:
+	 * Indicates that the current [DocObject] inherits from another [DocObject].
+	 * 
+	 * @signature `@inherits NAME`
 	 * 
 	 * @codestart
 	 * /*
-	 *  * @class Client
+	 *  * @constructor Client
 	 *  * @inherits Person
 	 *  * ...
 	 *  *|
-	 *  var client = new Client() {
-	 *  ...
+	 *  var Client = Person.extend({})
 	 * @codeend
+	 * 
+	 * @param {String} NAME The name of DocObject the current DocObject inherits from.
+	 * 
 	 */
 	return {
 		add: function( line ) {
