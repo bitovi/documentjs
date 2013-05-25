@@ -358,7 +358,10 @@ steal('steal',
 			else { // assume its a directory
 				this.files(file, function(path, f){
 					if(/\.(js|md|markdown)$/.test(f)){
-					  collection.push( path )
+					  collection.push( {
+					  	src: path,
+					  	text: readFile(path)
+					  } )
 				    }
 				})
 				

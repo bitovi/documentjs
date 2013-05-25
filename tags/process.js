@@ -111,7 +111,7 @@ steal('steal','../distance',function(s, distance){
 				// see if it starts with something that looks like a @tag
 				var line = lines[l],
 					match = line.match(matchTag);
-
+				print("--",line)
 				// if we have a tag
 				if ( match ) {
 					// lower case it
