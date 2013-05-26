@@ -5,3 +5,4 @@ production.js
 docs
 docs.html
 tmp
+node_modules
