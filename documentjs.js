@@ -280,7 +280,10 @@ steal('steal',
 			for(var i =0 ; i < options.markdown.length; i++){
 				DocumentJS.files(options.markdown[i], function(path, f){
 					if(/\.(md|markdown)$/.test(f) && !/node_modules/.test(path)){
-					  scripts.push( path )
+					  scripts.push( {
+					  	src: path,
+					  	text: readFile(path)
+					  } )
 				    }
 				})
 			}

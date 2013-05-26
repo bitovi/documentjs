@@ -102,9 +102,11 @@ steal('documentjs/showdown.js','./helpers/typeNameDescription.js',
 		add: function( line ) {
 	
 			var param = tnd(line);
+			/* TODO no print statements
 			if(!param.type && !param.name){
 				print("LINE: \n" + line + "\n does not match @param {TYPE} NAME DESCRIPTION");
 			}
+			*/
 			
 			
 			
