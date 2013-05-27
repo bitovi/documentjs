@@ -44,6 +44,8 @@ steal('documentjs/generator', function (doc) {
 			'can/observe/observe.md'
 	], {
 		debug: true,
+		enableSearch: true,
+		parent: 'canjs',
 		layout: 'documentjs/templates/page.mustache',
 		docs: 'documentjs/templates/docs.mustache',
 		root: '.',

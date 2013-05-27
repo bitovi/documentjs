@@ -2,6 +2,7 @@ steal('../lib/underscore.js', '../lib/handlebars.js',
 	'documentjs/document.js', './utilities.js', 
 	'steal/rhino/json.js', function (_, Handlebars, documentjs, utils) {
 	var generate = function (files, options) {
+
 		var configuration = _.extend({
 			ignore: function (data) {
 				return data.hide || data.type === 'script' ||
@@ -9,6 +10,9 @@ steal('../lib/underscore.js', '../lib/handlebars.js',
 					data.type === 'prototype';
 			}
 		}, options);
+		if(!configuration.parent){
+			throw "must provide a parent"
+		}
 		var layout = Handlebars.compile(readFile(configuration.layout));
 		var renderer = Handlebars.compile(readFile(configuration.docs));
 		var docFiles = _.filter(files, function (file) {
@@ -46,7 +50,6 @@ steal('../lib/underscore.js', '../lib/handlebars.js',
 
 				file.save(source);
 			});
-
 			// Generates DocumentJS pages
 			_.each(docData, function (currentData, name) {
 				if (!configuration.ignore(currentData, name)) {
