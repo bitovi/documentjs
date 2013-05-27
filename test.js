@@ -46,7 +46,7 @@ steal('documentjs/generator', function (doc) {
 		debug: true,
 		layout: 'documentjs/templates/page.mustache',
 		docs: 'documentjs/templates/docs.mustache',
-		root: '',
+		root: '.',
 		out: 'testdocs',
 		helpers: handlebarsHelpers
 		// package: require(__dirname + '/can/package.json'),

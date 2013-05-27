@@ -34,6 +34,9 @@ steal('../lib/underscore.js', '../lib/handlebars.js', 'documentjs/document.js', 
 				var renderer = Handlebars.compile(source);
 				var page = utils.name(new steal.URI(file).filename());
 				var file = new steal.URI(configuration.out + '/' + page + '.html');
+
+				print('Writing static page ' + file);
+
 				var source = layout(_.defaults({
 					root: configuration.root,
 					page: page,
@@ -54,6 +57,8 @@ steal('../lib/underscore.js', '../lib/handlebars.js', 'documentjs/document.js', 
 					var data = _.extend({
 						menu: rootItem
 					}, configuration, currentData);
+
+					print('Writing documentation ' + filename);
 
 					if (options.debug) {
 						data.debug = steal.toJSON(currentData);

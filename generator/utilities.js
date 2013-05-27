@@ -24,6 +24,7 @@ steal('../lib/underscore', function (_) {
 
 	exports.handlebarsPartials = function (folder, Handlebars) {
 		new steal.URI(folder).contents(function(name) {
+			console.log('Adding Handlebars partial ' + folder + '/' + name);
 			var template = readFile(folder + '/' + name);
 			Handlebars.registerPartial(name, template);
 		});
