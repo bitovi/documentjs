@@ -1,4 +1,6 @@
-steal('../lib/underscore.js', '../lib/handlebars.js', 'documentjs/document.js', './utilities.js', 'steal/rhino/json.js', function (_, Handlebars, documentjs, utils) {
+steal('../lib/underscore.js', '../lib/handlebars.js', 
+	'documentjs/document.js', './utilities.js', 
+	'steal/rhino/json.js', function (_, Handlebars, documentjs, utils) {
 	var generate = function (files, options) {
 		var configuration = _.extend({
 			ignore: function (data) {
@@ -36,7 +38,6 @@ steal('../lib/underscore.js', '../lib/handlebars.js', 'documentjs/document.js', 
 				var file = new steal.URI(configuration.out + '/' + page + '.html');
 
 				print('Writing static page ' + file);
-
 				var source = layout(_.defaults({
 					root: configuration.root,
 					page: page,
@@ -61,9 +62,8 @@ steal('../lib/underscore.js', '../lib/handlebars.js', 'documentjs/document.js', 
 					print('Writing documentation ' + filename);
 
 					if (options.debug) {
-						data.debug = steal.toJSON(currentData);
+						data.debug = steal.toJSON(data);
 					}
-
 					var contents = layout(_.extend({
 						content: renderer(data)
 					}, data));
