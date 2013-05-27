@@ -16,7 +16,7 @@ steal('documentjs/showdown.js','./helpers/typeNameDescription.js',
 	
 
 	/**
-	 * @constructor documentjs/tags/param @param
+	 * @constructor DocumentJS.tags.param @param
 	 * @tag documentation
 	 * @parent DocumentJS 
 	 * 

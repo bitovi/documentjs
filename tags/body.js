@@ -1,6 +1,6 @@
 steal('../showdown.js',function(converter) {
 	/**
-	 * @constructor documentjs/tags/body @body
+	 * @constructor DocumentJS.tags.body @body
 	 * @parent DocumentJS
 	 * 
 	 * Content after the `@body` tag appears after 

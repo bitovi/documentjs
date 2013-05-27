@@ -49,7 +49,7 @@ steal('steal',
      * ## Features
      * 
 	 * 
-     * - Fexible organization of your documentation
+     * - Flexible organization of your documentation
      * - An integrated documentation viewer where you can search your API
      * - Markdown support
      * - An extensible architecture
@@ -93,7 +93,7 @@ steal('steal',
 	 * There are a few things to notice:
 	 * 
 	 * * The example closes comments with _*|_.  You should close them with / instead of |.
-	 * * We create a link to another class with _[Animal | here]_. 
+	 * * We create a link to another class with _[Animal here]_. 
 	 * * We used the @@page directive to create the crm documentation home page. Don't worry about the @@tag directive for now, we'll get back to it later. 
 	 * * In all the examples in this walkthrough we use markdown markup instead of html to make the documentation more maintainable and easier to read .
 	 * 
@@ -129,7 +129,7 @@ steal('steal',
      *  }
 	 * @codeend 
 	 * 
-	 * After runnig the documentjs script once again you should be able to see this:
+	 * After running the documentjs script once again you should be able to see this:
 	 * 
 	 * @image site/images/crm_doc_demo_2.png
 	 * 
@@ -202,7 +202,7 @@ steal('steal',
 	 * 
 	 * ## How DocumentJS works
 	 * 
-	 * DocumentJS architecture is organized around the concepts of [DocumentJS.types | types] and [DocumentJS.tags | tags]. Types are meant to represent every javascript construct 
+	 * DocumentJS architecture is organized around the concepts of [DocumentJS.types types] and [DocumentJS.tags tags]. Types are meant to represent every javascript construct 
 	 * you might want to comment like classes, functions and attributes. Tags add aditional information to the comments of the type being processed.
 	 * 
 	 * DocumentJS works by loading a set of javascript files, then by spliting each file into type/comments pairs 
@@ -215,35 +215,34 @@ steal('steal',
 	 * 
 	 * ###Type directives
 	 * 
-	 * * [DocumentJS.types.page | @page] -  add a standalone page.
-	 * * [DocumentJS.types.attribute | @attribute] -  document values on an object.
-	 * * [DocumentJS.types.function | @function] - document functions.
-	 * * [DocumentJS.types.class| @class] - document a class. 
-	 * * [DocumentJS.types.prototype | @prototype] - add to the previous class or constructor's prototype functions.
-	 * * [DocumentJS.types.static | @static] - add to the previous class or constructor's static functions.
-	 * * [DocumentJS.types.add |@add] - add docs to a class or construtor described in another file.
+	 * * [DocumentJS.tags.add @add] - add docs to a class or constructor described in another file.
+	 * * [DocumentJS.tags.constructor @constructor] - document a class or constructor. 
+	 * * [DocumentJS.tags.function @function] - document functions.
+	 * * [DocumentJS.tags.page @page] -  add a standalone page.
+	 * * [DocumentJS.tags.property @property] -  document values on an object.
+	 * * [DocumentJS.tags.prototype @prototype] - add to the previous class or constructor's prototype functions.
+	 * * [DocumentJS.tags.static @static] - add to the previous class or constructor's static functions.
 	 * 
 	 * ###Tag directives
 	 * 
-	 * * [DocumentJS.tags.alias|@alias] - another commonly used name for Class or Constructor.
-	 * * [DocumentJS.tags.author|@author] - author of class.
-	 * * [DocumentJS.tags.codestart|@codestart] -> [DocumentJS.tags.codeend|@codeend] - insert highlighted code block.
-	 * * [DocumentJS.tags.constructor | @constructor] - documents a contructor function and its parameters.
-	 * * [DocumentJS.tags.demo|@demo] - placeholder for an application demo.
-	 * * [DocumentJS.tags.download|@download] - adds a download link.
-	 * * [DocumentJS.tags.iframe|@iframe] - adds an iframe with example code.
-	 * * [DocumentJS.tags.hide|@hide] - hide in Class view.
-	 * * [DocumentJS.tags.inherits|@inherits] - what the Class or Constructor inherits.
-	 * * [DocumentJS.tags.parent|@parent] - says under which parent the current type should be located. 
-	 * * [DocumentJS.tags.param|@param] - A function's parameter.
-	 * * [DocumentJS.tags.plugin|@plugin] - by which plugin this object gets steald.
-	 * * [DocumentJS.tags.return|@return] - what a function returns.
-	 * * [DocumentJS.tags.scope|@scope] - forces the current type to start scope.
-	 * * [DocumentJS.tags.tag|@tag] - tags for searching.
-	 * * [DocumentJS.tags.test|@test] - link for test cases.
-	 * * [DocumentJS.tags.type|@type] - sets the type for the current commented code.
-	 * * [DocumentJS.tags.image|@image] - adds an image.
-	 * * [DocumentJS.tags.release|@release] - specifies the release.
+	 * * [DocumentJS.tags.alias @alias] - another commonly used name for Class or Constructor.
+	 * * [DocumentJS.tags.author @author] - author of class.
+	 * * [DocumentJS.tags.codestart @codestart] and [DocumentJS.tags.codeend @codeend] - insert highlighted code block.
+	 * * [DocumentJS.tags.constructor @constructor] - documents a contructor function and its parameters.
+	 * * [DocumentJS.tags.demo @demo] - placeholder for an application demo.
+	 * * [DocumentJS.tags.download @download] - adds a download link.
+	 * * [DocumentJS.tags.hide @hide] - hide in Class view.
+	 * * [DocumentJS.tags.iframe @iframe] - adds an iframe with example code.
+	 * * [DocumentJS.tags.image @image] - adds an image.
+	 * * [DocumentJS.tags.inherits @inherits] - what the Class or Constructor inherits.
+	 * * [DocumentJS.tags.parent @parent] - says under which parent the current type should be located. 
+	 * * [DocumentJS.tags.param @param] - A function's parameter.
+	 * * [DocumentJS.tags.plugin @plugin] - by which plugin this object gets steal'd.
+	 * * [DocumentJS.tags.release @release] - specifies the release.
+	 * * [DocumentJS.tags.return @return] - what a function returns.
+	 * * [DocumentJS.tags.tag @tag] - tags for searching.
+	 * * [DocumentJS.tags.test @test] - link for test cases.
+	 * * [DocumentJS.tags.typedef @typedef] - aliases a complex type for use in other documentation.
 	 * 
 	 * 
 	 * ## Inspiration

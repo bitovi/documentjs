@@ -1,6 +1,6 @@
 steal(function() {
 	/**
-	 * @constructor documentjs/tags/release @release
+	 * @constructor DocumentJS.tags.release @release
 	 * @release 3.3
 	 * @parent DocumentJS
 	 * 

@@ -1,6 +1,6 @@
 steal(function() {
 	/**
-	 * @constructor documentjs/tags/demo @demo
+	 * @constructor DocumentJS.tags.demo @demo
 	 * @parent DocumentJS 
 	 * 
 	 * Placeholder for an application demo.

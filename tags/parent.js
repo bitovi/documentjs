@@ -3,7 +3,7 @@ steal(function() {
 		var waiting = {}
 
 		/**
-		 * @constructor documentjs/tags/parent @parent
+		 * @constructor DocumentJS.tags.parent @parent
 		 * @parent DocumentJS
 		 * 
 		 * Specifies the parent 
