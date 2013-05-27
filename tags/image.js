@@ -1,6 +1,6 @@
 steal(function() {
 	/**
-	 * @constructor documentjs/tags/image @image
+	 * @constructor DocumentJS.tags.image @image
 	 * @parent DocumentJS
 	 * @hide
 	 * 

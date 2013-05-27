@@ -3,7 +3,7 @@ steal('./helpers/getParent.js',
 
 
 	/**
-	 * @constructor documentjs/tags/function @function
+	 * @constructor DocumentJS.tags.function @function
 	 * 
 	 * @parent DocumentJS
 	 * 

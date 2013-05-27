@@ -1,8 +1,8 @@
 steal(function() {
 	/**
-	 * @constructor DocumentJS.tags.download
+	 * @constructor DocumentJS.tags.download @download
 	 * @tag documentation
-	 * @parent DocumentJS.tags 
+	 * @parent DocumentJS
 	 * 
 	 * Adds a download link.
 	 * 

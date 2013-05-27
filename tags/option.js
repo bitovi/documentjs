@@ -33,7 +33,7 @@ steal('documentjs/showdown.js','./helpers/typer.js',
 	
 
 	/**
-	 * @constructor documentjs/tags/option @option
+	 * @constructor DocumentJS.tags.option @option
 	 * @tag documentation
 	 * @parent DocumentJS 
 	 * 

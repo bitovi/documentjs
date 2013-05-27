@@ -1,8 +1,8 @@
 steal(function() {
 	/**
-	 * @constructor DocumentJS.tags.codeend
+	 * @constructor DocumentJS.tags.codeend @codeend
 	 * @tag documentation
-	 * @parent DocumentJS.tags 
+	 * @parent DocumentJS
 	 * 
 	 * Stops a code block.
 	 * 

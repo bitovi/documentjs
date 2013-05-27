@@ -1,7 +1,7 @@
 steal('./helpers/getParent.js',
 	'documentjs/tags/helpers/typeNameDescription.js',function(getParent, tnd) {
 	/**
-	 * @constructor documentjs/tags/property @property
+	 * @constructor DocumentJS.tags.property @property
 	 * @parent DocumentJS
 	 * 
 	 * @description Documents a property of a parent object.

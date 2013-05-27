@@ -1,7 +1,7 @@
 steal('./helpers/getParent.js',
 	'documentjs/tags/helpers/typeNameDescription.js',function(getParent, tnd) {
 	/**
-	 * @constructor documentjs/tags/static @static
+	 * @constructor DocumentJS.tags.static @static
 	 * @parent DocumentJS
 	 * @hide
 	 * 

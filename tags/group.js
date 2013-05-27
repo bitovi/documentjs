@@ -1,11 +1,11 @@
 steal('./helpers/getParent.js',
 	'documentjs/tags/helpers/typeNameDescription.js', function (getParent, tnd) {
 		/**
-		 * @constructor documentjs/tags/grout @group
+		 * @constructor DocumentJS.tags.group @group
 		 * @parent DocumentJS
 		 *
-		 * Declares that other tags belong to a groupt withing
-		 * the preceeding [documentjs/tags/function @constructor].
+		 * Declares that other tags belong to a group within
+		 * the preceeding [DocumentJS.tags.constructor @constructor].
 		 *
 		 * @signature `@group`
 		 *
@@ -17,11 +17,11 @@ steal('./helpers/getParent.js',
 		 * Animal = function(){ ... }
 		 * /** @@group plugin Plugin *|
 		 * Animal.prototype = {
-     *    /**
-     *     * Eats another animal.
-     *     *|
-     *     eat: function(animal){ ... }
-     * }
+	     *    /**
+	     *     * Eats another animal.
+	     *     *|
+	     *     eat: function(animal){ ... }
+	     * }
 		 * @codeend
 		 *
 		 */

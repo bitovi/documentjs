@@ -1,6 +1,6 @@
 steal(function() {
 	/**
-	 * @constructor documentjs/tags/hide @hide
+	 * @constructor DocumentJS.tags.hide @hide
 	 * @parent DocumentJS
 	 * 
 	 * Hides the comment from the navigation.
