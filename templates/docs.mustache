@@ -1,0 +1,43 @@
+<div class="container api">
+	<nav class="sidebar">
+		{{#if enableSearch}}
+		<div class="search-wrapper">
+			<div class="search">
+				<input type="text"/>
+			</div>
+		</div>
+		{{/if}}
+		{{> menu.mustache}}
+	</nav>
+	<article class="content docs">
+		<section class="title">
+			{{> title.mustache}}
+		</section>
+
+		<section class="contents">
+		</section>
+
+		<section class="description">
+			{{{docLinks description}}}
+		</section>
+
+		{{#signatures}}
+		<section class="signature">
+			{{> signature.mustache}}
+		</section>
+		{{/signatures}}
+
+		{{#if body}}
+		<section class="comment">
+			{{{docLinks body}}}
+		</section>
+		{{/if}}
+	</article>
+</div>
+{{#if debug}}
+<script type="text/javascript">
+	var docData = {{{debug}}};
+
+	console.log(docData);
+</script>
+{{/if}}

@@ -1,0 +1,39 @@
+<h2>{{code}}</h2>
+{{{docLinks description}}}
+{{#if params}}
+	<h3>Parameters</h3>
+
+	<ol class="parameters">
+		{{#params}}
+		<li class="parameter">
+			<h4>{{name}} {{#if types}}<code>{{makeTypesString types}}</code>{{/if}}</h4>
+			<div class="description">
+				<p>{{{docLinks description}}}</p>
+			</div>
+			{{#types}}
+			{{#if options.length}}
+			<ul class="options">
+				{{#options}}
+				<li class="option">
+					<h5>{{name}} {{#if types}}<code>{{makeTypesString types}}</code>{{/if}}</h5>
+					<div class="description">
+						{{{description}}}
+					</div>
+				</li>
+				{{/options}}
+			</ul>
+			{{/if}}
+			{{/types}}
+		</li>
+		{{/params}}
+	</ol>
+{{/if}}
+{{#if returns}}
+	<h3>Returns</h3>
+	<div class="returns">
+		<h4><code>{{makeTypesString returns.types}}</code></h4>
+		<div class="description">
+			{{{docLinks returns.description}}}
+		</div>
+	</div>
+{{/if}}

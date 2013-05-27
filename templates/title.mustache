@@ -1,0 +1,34 @@
+<div class="pull-right">
+	<ul class="tags">
+		<li>{{type}}</li>
+	</ul>
+	<ul class="links">
+		{{#if src}}
+			<li><a href="{{sourceUrl src type line}}">source</a></li>
+		{{/if}}
+		{{#if download}}
+			<li><a href="{{downloadUrl download}}">download</a></li>
+		{{else}}
+			{{#if plugin}}
+			<li><a href="{{downloadUrl plugin true}}">download</a></li>
+			{{/if}}
+		{{/if}}
+		{{#if test}}
+			<li><a href="{{testUrl test}}">tests</a></li>
+		{{/if}}
+	</ul>
+</div>
+
+<h1>
+{{#if title}}
+	{{title}}
+	{{^if plugin}}
+		<span class="module">{{name}}</span>
+	{{/if}}
+{{else}}
+	{{name}}
+{{/if}}
+{{#if plugin}}<span class="module">{{plugin}}</span>{{/if}}
+</h1>
+
+<span class="inherits">{{#if inherits}}inherits: <a href="{{makeHref inherits}}">{{inherits}}</a>{{else}}&nbsp;{{/if}}</span>

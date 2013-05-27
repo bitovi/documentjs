@@ -1,0 +1,23 @@
+<ul class="api">
+	{{#menu.children}}
+	<li class="search-container{{#active}} active{{/active}}">
+		<a href="{{makeHref name}}" data-search="{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}">
+			{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}
+		</a>
+		{{#if children.length}}
+		<ul class="search-container">
+		{{#children}}
+			{{#if children.length}}
+				<li class="heading search-container">
+					<span>{{type}}</span>
+					{{> submenu.mustache}}
+				</li>
+			{{else}}
+				{{> submenu.mustache}}
+			{{/if}}
+		{{/children}}
+		</ul>
+	{{/if}}
+	</li>
+	{{/menu.children}}
+</ul>
