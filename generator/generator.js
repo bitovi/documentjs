@@ -74,6 +74,13 @@ steal('../lib/underscore.js', '../lib/handlebars.js',
 					new steal.URI(filename).save(contents);
 				}
 			});
+
+			// copies resources folder to destination folder
+			var resourcesDest = new steal.URI(configuration.out+'/resources');
+			if (!resourcesDest.exists()) {
+				resourcesDest.mkdirs();
+			}
+			new steal.URI('documentjs/resources').copyTo(resourcesDest)
 		});
 	}
 
