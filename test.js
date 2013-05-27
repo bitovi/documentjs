@@ -50,6 +50,7 @@ steal('documentjs/generator', function (doc) {
 		docs: 'documentjs/templates/docs.mustache',
 		root: '.',
 		out: 'testdocs',
+		page: 'docs',
 		helpers: handlebarsHelpers
 		// package: require(__dirname + '/can/package.json'),
 		// self: require(__dirname + '/package.json'),
