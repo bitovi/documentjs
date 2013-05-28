@@ -36,6 +36,7 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 			var rootItem = utils.menuTree(docData, configuration.parent);
 			// provides docData for helpers that need it
 			utils.data(docData);
+			utils.config(configuration);
 			Handlebars.registerHelper('docLinks', function (text) {
 				return utils.replaceLinks(text, docData);
 			});

@@ -142,12 +142,21 @@ steal('../libs/underscore.js', function (_) {
 			return title || name || ""
 		}
 	}
-	var data;
+	var data, 
+		config;
 	exports.data = function(d){
 		if(d){
 			data = d;
 		} else {
 			return data;
+		}
+	}
+
+	exports.config = function(c){
+		if(c){
+			config = c;
+		} else {
+			return config;
 		}
 	}
 
@@ -173,6 +182,9 @@ steal('../libs/underscore.js', function (_) {
 		},
 
 		makeHref: function (name) {
+			if(name == config.parent){ // name is the topmost parent
+				return 'index.html'
+			}
 			return exports.docsFilename(name);
 		},
 		hasActiveChild: function (options) {
