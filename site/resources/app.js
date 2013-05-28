@@ -10,14 +10,14 @@
 	$(function() {
 		Bitovi.OSS.initTwitterWidgets();
 		initControls({
-			'.index #hero-download': 'HeroDownloadCustomizer',
 			'.index .benefits': 'Benefits',
 			'.index .social': 'SocialStats',
 			'.download .cdn': 'CDNChooser',
-			'.download .customize': 'DownloadCustomizer',
 			'.community .hero': 'CommunityTabs',
 			'.docs .sidebar': 'Menu',
 			'.docs .signature': 'ApiSignature',
+			'body.docs': 'FrameHelper',
+			'body.guides': 'FrameHelper',
 			'body.docs .contents': 'ContentsList'
 		});
 

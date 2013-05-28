@@ -1,6 +1,6 @@
 steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 	'documentjs/site/utilities.js', 'documentjs/site/defaults.js',
-	'documentjs/types/script.js', 'documentjs/searchdata.js', 
+	'documentjs/types/script.js', 'documentjs/site/searchdata.js', 
 	'documentjs/generator/getscripts.js',
 	'steal/rhino/json.js',
 	function (_, Handlebars, utils, defaults, Script, searchdata, getScripts) {

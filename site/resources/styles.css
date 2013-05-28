@@ -463,3 +463,27 @@ input[type='radio']:checked+label.radio:after{content:' ';width:6px;height:6px;b
 .lt-ie8 .container ul.nav li,.lt-ie8 .container ul.pullright li,.lt-ie8 .content ul.socialstats li,.lt-ie8 .content ul.carousel li,.lt-ie8 .container ul.circle-tabs li{float:left;}
 .lt-ie8 .nav{top:-30px;}
 .lt-ie8 .dropdown select{background:#fff;width:auto;height:auto;}
+
+
+    .demo ul {
+      list-style: none;
+      padding: 0;
+    }
+    .demo li.tab {
+      display: block;
+      float: left;
+      padding: 4px 8px;
+    }
+    .demo li.tab.active {
+      color: #fff;
+      font-weight: bold;
+      background-color: #165489;
+      .text-shadow;
+    }
+    .demo div.tab-content {
+      clear: both;
+    }
+    .demo iframe {
+      width: 100%;
+      border: 1px solid #d6d6d6;
+    }

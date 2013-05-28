@@ -1,4 +1,4 @@
-steal('documentjs/showdown.js','./helpers/typeNameDescription.js',
+steal('documentjs/libs/showdown.js','./helpers/typeNameDescription.js',
 	function(converter, tnd ) {
 
 

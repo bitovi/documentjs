@@ -1,4 +1,4 @@
-steal('steal','../distance',function(s, distance){
+steal('steal','documentjs/libs/distance.js',function(s, distance){
 	var typeCheckReg = /^\s*@(\w+)/,
 		nameCheckReg = /^\s*@(\w+)[ \t]+([\w\.\$\/]+)/m,
 		doubleAt = /@@/g,

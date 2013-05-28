@@ -1,4 +1,5 @@
-steal('steal','../distance','../showdown','documentjs/tags',function(s, distance, converter ,tags) {
+steal('steal','documentjs/libs/distance.js','documentjs/libs/showdown.js','documentjs/tags',
+	function(s, distance, converter ,tags) {
 	var typeCheckReg = /^\s*@(\w+)/,
 		nameCheckReg = /^\s*@(\w+)[ \t]+([\w\.\$\/]+)/m,
 		doubleAt = /@@/g;
