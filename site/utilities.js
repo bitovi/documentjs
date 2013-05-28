@@ -201,14 +201,37 @@ steal('../libs/underscore.js', function (_) {
 		},
 		activeParents: function (options) {
 			var parents = getParents(this.children);
-			parents.pop();
+			var active = _.last(parents);
+
+			if ((active && (!active.children || !active.children.length)) && parents.length > 2
+				&& parents[parents.length - 3].type === 'constructor') {
+				// Active has no children so lets check if it is part of a construct
+				parents = parents.slice(0, parents.length - 3);
+			} else {
+				parents.pop();
+			}
+
+			if(!active.children || !active.children.length) {
+				parents.pop();
+			}
+
 			return options.fn(parents);
 		},
 		activeMenu: function (options) {
 			var parents = getParents(this.children);
 			var active = _.last(parents);
 
+			if ((active && (!active.children || !active.children.length)) && parents.length > 2) {
+				var newActive = parents[parents.length - 3];
+				if(newActive.type === 'constructor') {
+					// Active has no children so lets check if it is part of a construct
+					active = newActive;
+				}
+			}
 
+			if(!active.children || !active.children.length) {
+				active = parents[parents.length - 2];
+			}
 
 			return options.fn(active);
 		}
