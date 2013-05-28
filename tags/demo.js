@@ -36,7 +36,8 @@ steal(function() {
 			var m = line.match(/^\s*@demo\s*([\w\.\/\-\$]*)\s*([\w]*)/)
 			if ( m ) {
 				var src = m[1] ? m[1].toLowerCase() : '';
-				this.body += "<div class='demo_wrapper' data-demo-src='" + src + "'></div>";
+				var heightAttr = m[2].length > 0 ? " data-demo-height='" + m[2] + "'" : '';
+				this.body += "<div class='demo_wrapper' data-demo-src='" + src + "'" + heightAttr + "></div>";
 			}
 		}
 	};
