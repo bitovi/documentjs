@@ -36,7 +36,10 @@ steal('documentjs/types/script.js', 'steal/build', 'steal/rhino/json.js',
 				});
 			}
 			else if (/\.js$/.test(file)) { // load just this file
-				collection.push(file)
+			  collection.push( {
+			  	src: file,
+			  	text: readFile(file)
+			  } )
 			}
 			else { // assume its a directory
 				this.files(file, function(path, f){
