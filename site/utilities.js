@@ -275,7 +275,7 @@ steal('../libs/underscore.js', function (_) {
 			}
 
 			parents = _.filter(parents, function(parent) {
-				return parent.type !== 'plugins' && parent.type !== 'Pages';
+				return parent.type !== 'group';
 			});
 
 			// Add root level at the beginning
