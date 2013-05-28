@@ -117,7 +117,7 @@ steal('../libs/underscore.js', function (_) {
 	exports.replaceLinks = function (text, data) {
 		if (!text) return "";
 		var replacer = function (match, content) {
-			var parts = content.match(/^(\S+)\s(.*)/);
+			var parts = content.match(/^(\S+)\s*(.*)/);
 			var link = parts ? parts[1].replace('::', '.prototype.') : content;
 			var description = parts && parts[2] ? parts[2] : link;
 
