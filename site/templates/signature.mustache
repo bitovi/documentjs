@@ -6,7 +6,7 @@
 	<ol class="parameters">
 		{{#params}}
 		<li class="parameter">
-			<h4>{{name}} {{#if types}}<code>{{makeTypesString types}}</code>{{/if}}</h4>
+			<h4>{{name}} {{#if types}}<code>{{{makeTypesString types}}}</code>{{/if}}</h4>
 			<div class="description">
 				<p>{{{docLinks description}}}</p>
 			</div>
@@ -15,7 +15,7 @@
 			<ul class="options">
 				{{#options}}
 				<li class="option">
-					<h5>{{name}} {{#if types}}<code>{{makeTypesString types}}</code>{{/if}}</h5>
+					<h5>{{name}} {{#if types}}<code>{{{makeTypesString types}}}</code>{{/if}}</h5>
 					<div class="description">
 						{{{description}}}
 					</div>
@@ -31,7 +31,7 @@
 {{#if returns}}
 	<h3>Returns</h3>
 	<div class="returns">
-		<h4><code>{{makeTypesString returns.types}}</code></h4>
+		<h4><code>{{{makeTypesString returns.types}}}</code></h4>
 		<div class="description">
 			{{{docLinks returns.description}}}
 		</div>

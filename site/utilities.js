@@ -129,6 +129,23 @@ steal('../libs/underscore.js', function (_) {
 		};
 		return text.replace(/[\[](.*?)\]/g, replacer);
 	}
+	exports.linkTo = function(name, title){
+		if (!name) return (title || "");
+		name = name.replace('::', '.prototype.')
+		if (data[name]) {
+			return '<a href="' + exports.docsFilename(name) + '">' + (name || title) + '</a>';
+		} else {
+			return title || name || ""
+		}
+	}
+	var data;
+	exports.data = function(d){
+		if(d){
+			data = d;
+		} else {
+			return data;
+		}
+	}
 
 	exports.helpers = {
 		activePage: function (current, expected) {
@@ -167,13 +184,31 @@ steal('../libs/underscore.js', function (_) {
 			}
 			return options.inverse(this);
 		},
-		makeTypesString: function (types) {
-			return '';
+		makeParamsString: function(params){
+			if(!params || !params.length){
+				return ""
+			}
+			return params.map(function(param){
+				return exports.linkTo(param.types && param.types[0] && param.types[0].type, param.name)
+			}).join(", ")
+		},
+		makeTypes: function(types){
 			if (types.length) {
 				// turns [{type: 'Object'}, {type: 'String'}] into '{Object | String}'
-				return '{' + types.map(function (t) {
+				return types.map(function (t) {
+					if(t.type === "function"){
+						return "function("+exports.helpers.makeParamsString(t.params)+")";
+					}
 					return t.type;
-				}).join(' | ') + '}';
+				}).join(' | ');
+			} else {
+				return '';
+			}
+		},
+		makeTypesString: function (types) {
+			if (types.length) {
+				// turns [{type: 'Object'}, {type: 'String'}] into '{Object | String}'
+				return "{"+exports.helpers.makeTypes(types)+"}";
 			} else {
 				return '';
 			}
@@ -234,6 +269,28 @@ steal('../libs/underscore.js', function (_) {
 			}
 
 			return options.fn(active);
+		},
+		orderedChildren: function(children, options){
+			children = children.slice(0).sort(function(child1, child2){
+				if(typeof child1.order == "number"){
+					if(typeof child2.order == "number"){
+						return child1.order - child2.order;
+					} else {
+						return -1;
+					}
+				} else {
+					if(typeof child2.order == "number"){
+						return 1;
+					} else {
+						return 0;
+					}
+				}
+			});
+			var res = "";
+			children.forEach(function(child){
+				res += options.fn(child)
+			})
+			return res;
 		}
 	};
 

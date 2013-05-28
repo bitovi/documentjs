@@ -34,6 +34,8 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 		utils.handlebarsPartials(new steal.URI(configuration.docs).dir() + '/', Handlebars);
 		getScriptsAndProcess(files, configuration, function (scripts, docData, search) {
 			var rootItem = utils.menuTree(docData, configuration.parent);
+			// provides docData for helpers that need it
+			utils.data(docData);
 			Handlebars.registerHelper('docLinks', function (text) {
 				return utils.replaceLinks(text, docData);
 			});

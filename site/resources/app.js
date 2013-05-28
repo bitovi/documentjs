@@ -2,7 +2,7 @@
 	var initControls = function(mappings) {
 		can.each(mappings, function(name, selector) {
 			$(selector).each(function() {
-				new Bitovi.OSS[name]($(this));
+				Bitovi.OSS[name] && new Bitovi.OSS[name]($(this));
 			});
 		});
 	}

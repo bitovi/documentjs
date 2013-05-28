@@ -27,6 +27,12 @@
 		</section>
 		{{/signatures}}
 
+		{{#if types}}
+		<div class='primary-options'>
+			{{> types.mustache}}
+		</div>
+		{{/if}}
+
 		{{#if body}}
 		<section class="comment">
 			{{{docLinks body}}}

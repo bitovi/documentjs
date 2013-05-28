@@ -3,7 +3,7 @@ steal('documentjs/generator',
 /**
 	 * @function DocumentJS
 	 * @module documentjs
-	 * @parent index
+	 * @parent index 4
 	 * 
 	 * @description DocumentJS makes it easy to produce beautiful
 	 * and useful documentation for your JavaScript project.

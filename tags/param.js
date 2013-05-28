@@ -143,6 +143,17 @@ steal('documentjs/libs/showdown.js','./helpers/typeNameDescription.js',
 					}
 				}
 			}
+			if(this.types){
+				this.types.forEach(function(type){
+					if(type.options){
+						type.options.forEach(function(option){
+							if(option.description){
+								option.description = converter.makeHtml(option.description);
+							}
+						})
+					}
+				})
+			}
 			(this.signatures || []).forEach(function(signature){
 				signature.description = converter.makeHtml( signature.description );
 				
