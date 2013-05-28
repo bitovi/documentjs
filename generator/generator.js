@@ -74,10 +74,6 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 					}, configuration, currentData);
 					print('Writing documentation ' + filename);
 
-
-
-
-
 					if (options.debug) {
 						data.debug = steal.toJSON(deepExtendWithoutBody(data));
 					}
@@ -89,6 +85,10 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 					new steal.URI(filename).save(contents);
 				}
 			});
+
+			// write the searchdata.json
+			var searchdataDest = new steal.URI(configuration.out+'/searchdata.json');
+			new steal.URI(searchdataDest).save(steal.toJSON(search))
 
 			// copies resources folder to destination folder
 			var resourcesDest = new steal.URI(configuration.out+'/resources');
