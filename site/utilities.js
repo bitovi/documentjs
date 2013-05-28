@@ -121,6 +121,10 @@ steal('../libs/underscore.js', function (_) {
 			var link = parts ? parts[1].replace('::', '.prototype.') : content;
 			var description = parts && parts[2] ? parts[2] : link;
 
+			if(/^http/.test(link)) {
+				return '<a href="' + link + '">' + description + '</a>';
+			}
+
 			if (data[link]) {
 				return '<a href="' + exports.docsFilename(link) + '">' + description + '</a>';
 			}
@@ -131,7 +135,7 @@ steal('../libs/underscore.js', function (_) {
 	}
 	exports.linkTo = function(name, title){
 		if (!name) return (title || "");
-		name = name.replace('::', '.prototype.')
+		name = name.replace('::', '.prototype.');
 		if (data[name]) {
 			return '<a href="' + exports.docsFilename(name) + '">' + (name || title) + '</a>';
 		} else {
@@ -237,18 +241,26 @@ steal('../libs/underscore.js', function (_) {
 		activeParents: function (options) {
 			var parents = getParents(this.children);
 			var active = _.last(parents);
+			var hasConstructorParent = (active && (!active.children || !active.children.length)) && parents.length > 2
+				&& parents[parents.length - 3].type === 'constructor';
 
-			if ((active && (!active.children || !active.children.length)) && parents.length > 2
-				&& parents[parents.length - 3].type === 'constructor') {
+			if (hasConstructorParent) {
 				// Active has no children so lets check if it is part of a construct
 				parents = parents.slice(0, parents.length - 3);
 			} else {
 				parents.pop();
 			}
 
-			if(!active.children || !active.children.length) {
+			if( (!active.children || !active.children.length) && !hasConstructorParent) {
 				parents.pop();
 			}
+
+			parents = _.filter(parents, function(parent) {
+				return parent.type !== 'plugins' && parent.type !== 'Pages';
+			});
+
+			// Add root level at the beginning
+			parents.unshift(this);
 
 			return options.fn(parents);
 		},
@@ -282,7 +294,11 @@ steal('../libs/underscore.js', function (_) {
 					if(typeof child2.order == "number"){
 						return 1;
 					} else {
-						return 0;
+						// alphabetical
+						if(child1.name < child2.name){
+							return -1
+						}
+						return 1;
 					}
 				}
 			});

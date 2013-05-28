@@ -33,6 +33,37 @@ steal('./option.js','./param.js','funcunit/qunit',function(option, param){
 		
 	});
 	
+	test("@option on Object",function(){
+		
+		var obj = {}
+		param.add.call(obj,"@param {Object} thing a description");
+		option.add.call(obj, "@option {String} name name description");
+		option.add.call(obj, "@option {Bar} [foo=thing] foo description");
+		option.add.call(obj, "@option {Extra} extra extra description");
+		
+		deepEqual(obj.params[0],
+		{
+			name: "thing",
+			description: "a description",
+			types: [{
+				type: "Object",
+				options: [
+					{types: [{type: "String"}], name: "name", description: "name description" },
+					{
+						types: [{type: "Bar"}], 
+						name: "foo", 
+						description: "foo description",
+						defaultValue: "thing",
+						optional: true
+					},
+					{types: [{type: "Extra"}], name: "extra", description: "extra description" }
+				]
+			}]
+		});
+		
+	});
+	
+	
 	test("@option - for function",function(){
 		
 		var obj = {}
