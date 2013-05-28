@@ -58,6 +58,20 @@ steal('documentjs/types/script.js', 'steal/build', 'steal/rhino/json.js',
 	};
 
 	return function(scripts, options){
+		var scriptsToProcess = [];
+		// an array of folders
+		if(options.markdown){
+			for(var i =0 ; i < options.markdown.length; i++){
+				helpers.files(options.markdown[i], function(path, f){
+					if(/\.(md|markdown)$/.test(f) && !/node_modules/.test(path)){
+					  scriptsToProcess.push( {
+					  	src: path,
+					  	text: readFile(path)
+					  } )
+				    }
+				})
+			}
+		}
 		if(typeof scripts == 'string'){
 			if(!options.out){
 				if(/\.html?$|\.js$/.test(scripts)){
@@ -67,7 +81,7 @@ steal('documentjs/types/script.js', 'steal/build', 'steal/rhino/json.js',
 				}
 			}
 			new steal.URI(options.out).mkdir();
-			scripts = helpers.getScripts(scripts)
+			scriptsToProcess.push.apply(scriptsToProcess, helpers.getScripts(scripts))
 		} else if(scripts instanceof Array){
 			new steal.URI(options.out).mkdir();
 			trueScriptsArr = [];
@@ -75,21 +89,8 @@ steal('documentjs/types/script.js', 'steal/build', 'steal/rhino/json.js',
 				files = helpers.getScripts(scripts[idx]);
 				trueScriptsArr = trueScriptsArr.concat(files);
 			}
-			scripts = trueScriptsArr;
+			scriptsToProcess.push.apply(scriptsToProcess, trueScriptsArr);
 		}
-		// an array of folders
-		if(options.markdown){
-			for(var i =0 ; i < options.markdown.length; i++){
-				helpers.files(options.markdown[i], function(path, f){
-					if(/\.(md|markdown)$/.test(f) && !/node_modules/.test(path)){
-					  scripts.push( {
-					  	src: path,
-					  	text: readFile(path)
-					  } )
-				    }
-				})
-			}
-		}
-		return scripts;
+		return scriptsToProcess;
 	}
 })
