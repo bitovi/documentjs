@@ -194,6 +194,13 @@ steal('../libs/underscore.js', function (_) {
 
 			return hasActiveChild ? options.fn(this) : options.inverse(this);
 		},
+		isGroup: function(options){
+			if(/group|prototype|static/i.test(this.type)){
+				return options.fn(this)
+			} else {
+				return options.inverse(this)
+			}
+		},
 		isConstructor: function (options) {
 			if (this.type === 'constructor') {
 				return options.fn(this);

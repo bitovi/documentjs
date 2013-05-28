@@ -5,6 +5,28 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 	'steal/rhino/json.js',
 	function (_, Handlebars, utils, defaults, Script, searchdata, getScripts) {
 
+
+	var deepExtendWithoutBody = function(obj){
+		if(!obj || typeof obj != "object"){
+			return obj;
+		}
+		var isArray = obj.map && typeof obj.length == "number";
+		if(isArray){
+			return obj.map(function(item){
+				return deepExtendWithoutBody(item)
+			})
+		} else {
+			var clone = {};
+			for(var prop in obj){
+				if(prop != "body"){
+					clone[prop] = deepExtendWithoutBody(obj[prop])
+				}
+				
+			}
+			return clone;
+		}
+	}
+
 	// gets scripts, processes
 	var getScriptsAndProcess = function(scripts, options, callback) {
 		var totalScripts = getScripts(scripts, options);
@@ -52,8 +74,12 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 					}, configuration, currentData);
 					print('Writing documentation ' + filename);
 
+
+
+
+
 					if (options.debug) {
-						data.debug = steal.toJSON(data);
+						data.debug = steal.toJSON(deepExtendWithoutBody(data));
 					}
 					var content = renderer(data);
 					var contents = layout(_.extend({
