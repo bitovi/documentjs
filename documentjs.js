@@ -15,34 +15,31 @@ steal('steal',
 	 * @description DocumentJS makes it easy to produce beautiful
 	 * and useful documentation for your JavaScript project.
 	 * 
-	 * @signature `DocumentJS(path,[options])` Documents
-	 * everything in folder path. Example:
+	 * @signature `DocumentJS(folder,[options])`
+	 * Documents everything in a folder path.
 	 * 
 	 *     DocumentJS("myproject",{});
 	 * 
-	 * Generates "myproject/docs.html" and resources in
-	 * "myproject/docs/".
+	 * will generate "myproject/docs.html" and resources in "myproject/docs/".
 	 * 
 	 * @param {String} folder The folder location to search for files ending with
 	 * `.js`.
-	 * @param {{}} [options] Optional options that configure the behavior of DocumentJS.
+	 * @param {{}} [options] Options that configure the behavior of DocumentJS.
 	 * 
-	 * @option {Array.<String>} markdown An array folders
-	 * to look for markdown files within. Defaults 
-	 * to `[folder]`.
-	 * @option {String} [out=folder] Where to place the output content. Defaults to 
-	 * the folder.
-	 * @option {String} [index=folder] The name of the object that is documented.
+	 * @option {Array.<String>} markdown An array of folders to look for markdown files in. Defaults to *folder*.
+	 * @option {String} out Where to place the docs.html and the docs/ folder. Defaults to *folder*.
+	 * @option {String} index The name of the object to be documented. Defaults to *folder*.
 	 * 
-	 * @signature `DocumentJS(files,[options])` Documents
-	 * the files in files.
-	 * @param {Array.<{src:String,text:String}>} files The files
-	 * to document.  Each file should have a src and text property like:
+	 * @signature `DocumentJS(files,[options])`
+	 * Documents a set of code organized in files.
+	 * @param {Array.<{src:String,text:String}>} files The files to document. Each file given should include these options:
+	 * @option {String} src The path to the file that contains some code.
+	 * @option {String} text The code from the file named in *src*.
 	 * 
 	 *     [{src: "path/to/file.js", text: "var a= 1;"}, { ... }]
 	 * 
-	 * @param {{}} options The same options available in the other 
-	 * signature.
+	 * @param {{}} options Options that configure the behavior of DocumentJS.
+	 * These are the same as the options for [The other signature](#sig0).
 	 * 
 	 * @body
 	 * 
@@ -131,7 +128,7 @@ steal('steal',
 	 * 
 	 * After running the documentjs script once again you should be able to see this:
 	 * 
-	 * @image site/images/crm_doc_demo_2.png
+	 * @image jmvc/site/images/crm_doc_demo_2.png
 	 * 
 	 * 
 	 * We want to be able to both look for our customer's orders and dispatch them so let's add a _findById_ method to our Order class
