@@ -14,7 +14,7 @@
 	{{^if hide}}
 	<li class="search-container {{#active}}active{{/active}}">
 	<a href="{{makeHref name}}" data-search="{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}">
-		{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}
+		{{getTitle}}
 	</a>
 	</li>
 	{{/if}}

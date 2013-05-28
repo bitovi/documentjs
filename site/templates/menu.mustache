@@ -5,7 +5,7 @@
 				{{#each .}}
 				<li class="search-container active parent">
 					<a href="{{makeHref name}}" data-search="{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}">
-						{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}
+						{{getTitle}}
 					</a>
 				</li>
 				{{/each}}
@@ -14,7 +14,7 @@
 			{{#activeMenu}}
 			<li class="search-container active">
 				<a href="{{makeHref name}}" data-search="{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}">
-					{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}
+					{{getTitle}}
 				</a>
 				{{> active-menu.mustache}}
 			</li>
@@ -25,7 +25,7 @@
 			{{#children}}
 				<li class="search-container">
 					<a href="{{makeHref name}}" data-search="{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}">
-						{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}
+						{{getTitle}}
 					</a>
 				</li>
 			{{/children}}

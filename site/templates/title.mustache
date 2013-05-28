@@ -20,13 +20,11 @@
 </div>
 
 <h1>
+{{getTitle}}
 {{#if title}}
-	{{title}}
 	{{^if plugin}}
 		<span class="module">{{name}}</span>
 	{{/if}}
-{{else}}
-	{{name}}
 {{/if}}
 {{#if plugin}}<span class="module">{{plugin}}</span>{{/if}}
 </h1>

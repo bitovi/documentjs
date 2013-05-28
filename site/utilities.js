@@ -20,6 +20,17 @@ steal('../libs/underscore.js', function (_) {
 		gatherParents(children);
 		return parents;
 	}
+	var constructorParentPosition = function(children) {
+		var parents = getParents(children);
+		var active = _.last(parents);
+
+		if ((active && (!active.children || !active.children.length)) && parents.length > 2) {
+			// Active has no children so lets check if it is part of a construct
+			return parents.length - 3;
+		}
+
+		return parents.length;
+	}
 
 	exports.docsFilename = function (name) {
 		return name.replace(/ /g, "_")
@@ -203,10 +214,7 @@ steal('../libs/underscore.js', function (_) {
 			var parents = getParents(this.children);
 			var active = _.last(parents);
 
-			if ((active && (!active.children || !active.children.length)) && parents.length > 2) {
-				// Active has no children so lets check if it is part of a construct
-				parents[parents.length - 2]
-			}
+
 
 			return options.fn(active);
 		}
