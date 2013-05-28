@@ -1,5 +1,5 @@
-steal('../lib/underscore.js', '../lib/handlebars.js', 
-	'documentjs', './utilities.js', './defaults.js',
+steal('../libs/underscore.js', '../libs/handlebars.js',
+	'documentjs', '../site/utilities.js', '../site/defaults.js',
 	'steal/rhino/json.js', function (_, Handlebars, documentjs, utils, defaults) {
 	var generate = function (files, options) {
 		var configuration = _.extend(defaults, options);
@@ -50,7 +50,7 @@ steal('../lib/underscore.js', '../lib/handlebars.js',
 			if (!resourcesDest.exists()) {
 				resourcesDest.mkdirs();
 			}
-			new steal.URI('documentjs/resources').copyTo(resourcesDest)
+			new steal.URI('documentjs/site/resources').copyTo(resourcesDest)
 		});
 	}
 

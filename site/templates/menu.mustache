@@ -1,0 +1,34 @@
+<ul class="api cascading">
+	{{#menu}}
+		{{#hasActiveChild}}
+			{{#activeParents}}
+				{{#each .}}
+				<li class="search-container active parent">
+					<a href="{{makeHref name}}" data-search="{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}">
+						{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}
+					</a>
+				</li>
+				{{/each}}
+			{{/activeParents}}
+
+			{{#activeMenu}}
+			<li class="search-container active">
+				<a href="{{makeHref name}}" data-search="{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}">
+					{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}
+				</a>
+				{{> active-menu.mustache}}
+			</li>
+			{{/activeMenu}}
+		{{/hasActiveChild}}
+
+		{{^hasActiveChild}}
+			{{#children}}
+				<li class="search-container">
+					<a href="{{makeHref name}}" data-search="{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}">
+						{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}
+					</a>
+				</li>
+			{{/children}}
+		{{/hasActiveChild}}
+	{{/menu}}
+</ul>

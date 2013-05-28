@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>CanJS {{#if title}}- {{title}} {{else}} {{#if name}}- {{name}}{{/if}}{{/if}}</title>
+	<title>JavaScriptMVC {{#if title}}- {{title}} {{else}} {{#if name}}- {{name}}{{/if}}{{/if}}</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -32,8 +32,23 @@
 		<nav class="container">
 
 			<div class="logo-menu">
-				<a class="brand" href="{{url 'index.html'}}">JavaScriptMVC</a>
+				<a class="brand canjs" href="{{url 'index.html'}}">CanJS</a>
+				<ul class="dropdown-menu">
+					<li><a href="http://javascriptmvc.com">JavaScriptMVC</a></li>
+					<li class="active"><a href="{{url 'index.html'}}">CanJS</a></li>
+					<li><a href="http://jquerypp.com">jQuery++</a></li>
+					<li><a href="http://javascriptmvc.com/docs.html#!stealjs">StealJS</a></li>
+					<li><a href="http://javascriptmvc.com/docs.html#!FuncUnit">FuncUnit</a></li>
+					<li><a href="http://javascriptmvc.com/docs.html#!DocumentJS">DocumentJS</a></li>
+				</ul>
 			</div>
+
+			<ul class="nav">
+				<li class="{{activePage 'index'}}"><a href="{{url 'index.html'}}">Home</a></li>
+				<li class="{{activePage 'guides'}}"><a href="{{url 'guides'}}/index.html">Tutorials</a></li>
+				<li class="{{activePage 'docs'}}"><a href="{{url 'docs'}}/index.html">Api</a></li>
+				<li class="{{activePage 'community'}}"><a href="{{url 'community.html#!forums'}}">Community</a></li>
+			</ul>
 
 			<div class="pull-right">
 				<div class="bitovi-menu">
@@ -56,7 +71,13 @@
 
 	<footer>
 		<nav class="container">
-			<a class="brand" href="{{url 'index.html'}}"></a>
+			<a class="brand javascriptmvc" href="index.html">JavaScriptMVC</a>
+			<ul class="pullright">
+				<li><a href="{{url 'index.html'}}">Home</a></li>
+				<li><a href="{{url 'guides'}}/index.html">Guides</a></li>
+				<li><a href="{{url 'docs'}}/index.html">Api</a></li>
+				<li><a href="{{url 'community.html#!forums'}}">Community</a></li>
+			</ul>
 		</nav>
 	</footer>
 	<script type="text/javascript">
@@ -71,9 +92,9 @@
 	</script>
 	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 	{{#if debug}}
-		<script type="text/javascript" src="{{url 'resources/shared.js'}}"></script>
+		<script type="text/javascript" src="{{url 'shared/resources/shared.js'}}"></script>
 	{{else}}
-		<script type="text/javascript" src="{{url 'resources/shared.min.js'}}"></script>
+		<script type="text/javascript" src="{{url 'shared/resources/shared.min.js'}}"></script>
 	{{/if}}
 	<script type="text/javascript" src="{{url 'resources/app.js'}}"></script>
 	<!--[if lt IE 9]>
