@@ -6,7 +6,7 @@
 	<ol class="parameters">
 		{{#params}}
 		<li class="parameter">
-			<h4>{{name}} {{#if types}}<code>{{makeTypesString types}}</code>{{/if}}</h4>
+			<h4>{{name}} {{#if types}}<code>{{makeTypesString types}}</code>{{/if}}{{#if optional}}<span class="pull-right optional">Optional</span>{{/if}}</h4>
 			<div class="description">
 				<p>{{{docLinks description}}}</p>
 			</div>
