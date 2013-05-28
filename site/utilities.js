@@ -121,6 +121,10 @@ steal('../libs/underscore.js', function (_) {
 			var link = parts ? parts[1].replace('::', '.prototype.') : content;
 			var description = parts && parts[2] ? parts[2] : link;
 
+			if(/^http/.test(link)) {
+				return '<a href="' + link + '">' + description + '</a>';
+			}
+
 			if (data[link]) {
 				return '<a href="' + exports.docsFilename(link) + '">' + description + '</a>';
 			}
@@ -131,7 +135,7 @@ steal('../libs/underscore.js', function (_) {
 	}
 	exports.linkTo = function(name, title){
 		if (!name) return (title || "");
-		name = name.replace('::', '.prototype.')
+		name = name.replace('::', '.prototype.');
 		if (data[name]) {
 			return '<a href="' + exports.docsFilename(name) + '">' + (name || title) + '</a>';
 		} else {
