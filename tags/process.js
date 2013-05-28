@@ -95,7 +95,7 @@ steal('steal','documentjs/libs/distance.js',function(s, distance){
 				lines = typeof comment == 'string' ? comment.split("\n") : comment,
 				len = lines.length,
 				typeDataStack = [],
-				curTag, lastType, curData, lastData, defaultWrite = 'description',
+				curTag, lastType, curData, lastData, defaultWrite = 'body',
 				//what data we are going to be called with
 				tag;
 
