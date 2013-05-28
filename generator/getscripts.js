@@ -1,5 +1,4 @@
-
-steal('./types/script.js', 'steal/build', 'steal/rhino/json.js',
+steal('documentjs/types/script.js', 'steal/build', 'steal/rhino/json.js',
 	  function(Script) {
 
 	var helpers = {
@@ -53,9 +52,9 @@ steal('./types/script.js', 'steal/build', 'steal/rhino/json.js',
 			}
 			return collection;
 		}
-	}
+	};
 
-	return function(){
+	return function(scripts, options){
 		if(typeof scripts == 'string'){
 			if(!options.out){
 				if(/\.html?$|\.js$/.test(scripts)){
@@ -88,5 +87,6 @@ steal('./types/script.js', 'steal/build', 'steal/rhino/json.js',
 				})
 			}
 		}
+		return scripts;
 	}
-}
+})

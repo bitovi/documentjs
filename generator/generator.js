@@ -1,6 +1,22 @@
-steal('../libs/underscore.js', '../libs/handlebars.js',
-	'documentjs', '../site/utilities.js', '../site/defaults.js',
-	'steal/rhino/json.js', function (_, Handlebars, documentjs, utils, defaults) {
+steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
+	'documentjs/site/utilities.js', 'documentjs/site/defaults.js',
+	'documentjs/types/script.js', 'documentjs/searchdata.js', 
+	'documentjs/generator/getscripts.js',
+	'steal/rhino/json.js',
+	function (_, Handlebars, utils, defaults, Script, searchdata, getScripts) {
+
+	// gets scripts, processes
+	var getScriptsAndProcess = function(scripts, options, callback) {
+		var totalScripts = getScripts(scripts, options);
+		var objects = {};
+		totalScripts.forEach(function(script) {
+			print('processing ', script.src)
+			Script.process(script, objects);
+		});
+		callback(totalScripts, objects, searchdata(objects));
+	};
+
+
 	var generate = function (files, options) {
 		var configuration = _.extend(defaults, options);
 		if(!configuration.parent){
@@ -16,7 +32,7 @@ steal('../libs/underscore.js', '../libs/handlebars.js',
 
 		utils.handlebarsHelpers(_.extend({}, utils.helpers, configuration.helpers), Handlebars);
 		utils.handlebarsPartials(new steal.URI(configuration.docs).dir() + '/', Handlebars);
-		documentjs(files, configuration, function (scripts, docData, search) {
+		getScriptsAndProcess(files, configuration, function (scripts, docData, search) {
 			var rootItem = utils.menuTree(docData, configuration.parent);
 			Handlebars.registerHelper('docLinks', function (text) {
 				return utils.replaceLinks(text, docData);

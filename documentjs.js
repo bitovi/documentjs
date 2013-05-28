@@ -1,16 +1,5 @@
-//steal.config({
-//	root: __dirname + '/../',
-//	map: {
-//		'*': {
-//			'documentjs/': ''
-//		}
-//	}
-//});
-
-steal('./types/script.js', './searchdata.js', 
-	  './generator/getscripts.js',
-	  'steal/rhino/json.js',
-	  function(Script, searchdata, getScripts) {
+steal('documentjs/generator',
+	function (generate) {
 /**
 	 * @function DocumentJS
 	 * @module documentjs
@@ -251,16 +240,6 @@ steal('./types/script.js', './searchdata.js',
 	 * 
 	 * DocumentJS was inspired by the [http://api.jquery.com/ jQuery API Browser] by [http://remysharp.com/ Remy Sharp]
 	 */
-	 
-	var DocumentJS = function(scripts, options, callback) {
-		var totalScripts = getScripts(scripts, options);
-		var objects = {};
-		totalScripts.forEach(function(script) {
-			print('processing ', script.src)
-			Script.process(script, objects);
-		});
-		callback(totalScripts, objects, searchdata(objects));
-	};
 
-	return DocumentJS;
+	return generate;
 });
