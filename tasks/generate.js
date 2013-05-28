@@ -1,4 +1,4 @@
-var generate = require('../lib/generator');
+var generate = require('./generator');
 
 module.exports = function(grunt) {
 	var _ = grunt.util._;

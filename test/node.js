@@ -1,4 +1,4 @@
-var document = require('../lib/node');
+var document = require('./node');
 
 document('documentjs', {
 	markdown : ['documentjs'],

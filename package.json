@@ -9,7 +9,7 @@
       "web": "http://bitovi.com/"
     }
   ],
-  "main": "lib/document.js",
+  "main": "node/document.js",
   "devDependencies": {
     "mocha": ">= 1.6.0",
     "qunit-mocha-ui": "*"
