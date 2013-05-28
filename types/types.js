@@ -1,6 +1,6 @@
 /**
-* @attribute DocumentJS.types
-* @parent DocumentJS
+* @property DocumentJS.types
+* @parent DocumentJS 1
 * Type directives represent every possible javascript construct 
 * you might want to document.
 * 

@@ -1,6 +1,6 @@
 steal(function() {
 	/**
-	 * @constructor documentjs/tags/test @test
+	 * @constructor DocumentJS.tags.test @test
 	 * @parent DocumentJS
 	 * 
 	 * Link to test page.

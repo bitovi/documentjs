@@ -1,6 +1,6 @@
 steal('documentjs/showdown.js',function(converter) {
 	/**
-	 * @constructor documentjs/tags/description @description
+	 * @constructor DocumentJS.tags.description @description
 	 * @tag documentation
 	 * @parent DocumentJS 
 	 * 

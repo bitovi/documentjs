@@ -11,7 +11,7 @@ steal('steal','../distance','../showdown','documentjs/tags',function(s, distance
 	s.extend(Type,
 	{
 		/**
-		 * @property {Object}
+		 * @property {Object} types
 		 */
 		types : {},
 		/**

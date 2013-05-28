@@ -1,11 +1,11 @@
 steal(function(){
 	/**
-	 * @constructor documentjs/tags/add @add 
+	 * @constructor DocumentJS.tags.add @add 
 	 * @parent DocumentJS
 	 * 
 	 * Sets a [DocObject] as the 
-	 * current scope. [documentjs/tags/function Functions]
-	 * or [documentjs/tags/property properties] created
+	 * current scope. [DocumentJS.tags.function Functions]
+	 * or [DocumentJS.tags.property properties] created
 	 * without a name will use their code block and
 	 * the scope to guess the name.
 	 * 

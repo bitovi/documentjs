@@ -1,6 +1,6 @@
 steal(function() {
 	/**
-	 * @constructor documentjs/tags/module @module
+	 * @constructor DocumentJS.tags.module @module
 	 * @parent DocumentJS
 	 * @hide
 	 * 

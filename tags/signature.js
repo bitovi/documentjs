@@ -1,6 +1,6 @@
 steal(function() {
 	/**
-	 * @constructor documentjs/tags/signature @signature
+	 * @constructor DocumentJS.tags.signature @signature
 	 * @parent DocumentJS
 	 * 
 	 * Specifies a signature for a [documentjs/tags/function @function]

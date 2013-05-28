@@ -1,6 +1,6 @@
 steal(function() {
 	/**
-	 * @constructor documentjs/tags/page @page
+	 * @constructor DocumentJS.tags.page @page
 	 * @parent DocumentJS
 	 * 
 	 * Declares this comment as a page. Use pages to

@@ -1,6 +1,6 @@
 steal(function() {
 	/**
-	 * @constructor documentjs/tags/iframe @iframe
+	 * @constructor DocumentJS.tags.iframe @iframe
 	 * @parent DocumentJS
 	 * 
 	 * Adds an iframe to the page. It can be added to the 

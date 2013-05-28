@@ -1,7 +1,7 @@
 steal('documentjs/showdown.js','./helpers/typer.js',
 	function(converter, typer) {
 	/**
-	 * @constructor documentjs/tags/return @return
+	 * @constructor DocumentJS.tags.return @return
 	 * @parent DocumentJS
 	 * 
 	 * Describes a function's return value.

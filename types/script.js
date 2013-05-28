@@ -93,9 +93,9 @@ steal('documentjs/tags/process.js', 'documentjs/tags', function (process, tags) 
 		splitter: new RegExp("(?:/\\*+((?:[^*]|(?:\\*+[^*/]))*)\\*+/\[^\\w\\{\\(\\[\"'\$]*([^\\r\\n]*))"),
 
 		/**
-		 * Generates docs for a file.
-		 * @param {Object} docScript an object that has src and text attributes.  It can also just be
-		 * the path of a file.
+		 * @description Generates the docs from a file.
+		 * @param {Object|String} docScript An object that has src and text attributes.  It can also just be
+		 * the path of a file. (Filenames are not supported yet.)
 		 */
 		process: function (docScript, objects) {
 			if (typeof docScript == 'string') {

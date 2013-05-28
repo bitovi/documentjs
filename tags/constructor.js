@@ -5,7 +5,7 @@ steal('./helpers/getParent.js',
 		codeMatch = /([\w\.\$]+?).extend\(\s*["']([^"']*)["']/
 
 	/**
-	 * @constructor documentjs/tags/constructor @constructor
+	 * @constructor DocumentJS.tags.constructor @constructor
 	 * @signature `@constructor NAME [TITLE]`
 	 */
 	return {
