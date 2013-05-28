@@ -18,34 +18,33 @@ steal('./types/script.js', './searchdata.js',
 	 * @description DocumentJS makes it easy to produce beautiful
 	 * and useful documentation for your JavaScript project.
 	 * 
-	 * @signature `DocumentJS(path,[options])` Documents
-	 * everything in folder path. Example:
+	 * @signature `DocumentJS(folder,[options])`
+	 * Documents everything in a folder path.
 	 * 
 	 *     DocumentJS("myproject",{});
 	 * 
-	 * Generates "myproject/docs.html" and resources in
-	 * "myproject/docs/".
+	 * will generate "myproject/docs.html" and resources in "myproject/docs/".
 	 * 
 	 * @param {String} folder The folder location to search for files ending with
 	 * `.js`.
-	 * @param {{}} [options] Optional options that configure the behavior of DocumentJS.
+	 * @param {{}} [options] Options that configure the behavior of DocumentJS.
+	 * @option {Array.<String>} markdown An array of folders to look for markdown files in. Defaults to `folder`.
+	 * @option {String} out Where to place the docs.html and the docs/ folder. Defaults to `folder`.
+	 * @option {String} index The name of the object to be documented. Defaults to `folder`.
 	 * 
-	 * @option {Array.<String>} markdown An array folders
-	 * to look for markdown files within. Defaults 
-	 * to `[folder]`.
-	 * @option {String} [out=folder] Where to place the output content. Defaults to 
-	 * the folder.
-	 * @option {String} [index=folder] The name of the object that is documented.
+	 * @signature `DocumentJS(files,[options])`
+	 * Documents a set of code organized in files.
+	 * @param {Array.<{src:String,text:String}>} files The files to document. Each file given should include these options:
+	 *
+	 * - `{String}` src The path to the file that contains some code.
+	 * - `{String}` text The code from the file named in *src*.
+	 *
+	 * @codestart
+	 * [{src: "path/to/file.js", text: "var a= 1;"}, { ... }]
+	 * @codeend
 	 * 
-	 * @signature `DocumentJS(files,[options])` Documents
-	 * the files in files.
-	 * @param {Array.<{src:String,text:String}>} files The files
-	 * to document.  Each file should have a src and text property like:
-	 * 
-	 *     [{src: "path/to/file.js", text: "var a= 1;"}, { ... }]
-	 * 
-	 * @param {{}} options The same options available in the other 
-	 * signature.
+	 * @param {{}} [options] Options that configure the behavior of DocumentJS.
+	 * These are the same as the options for [The other signature](#sig0).
 	 * 
 	 * @body
 	 * 
@@ -90,12 +89,11 @@ steal('./types/script.js', './searchdata.js',
 	 * 
 	 * This is what you should see when you open __crm\docs.html__:
 	 * 
-	 * @image site/images/crm_doc_demo_1.png
+	 * @image ../jmvc/site/images/crm_doc_demo_1.png
 	 * 
 	 * 
 	 * There are a few things to notice:
 	 * 
-	 * * The example closes comments with _*|_.  You should close them with / instead of |.
 	 * * We create a link to another class with _[Animal here]_. 
 	 * * We used the @@page directive to create the crm documentation home page. Don't worry about the @@tag directive for now, we'll get back to it later. 
 	 * * In all the examples in this walkthrough we use markdown markup instead of html to make the documentation more maintainable and easier to read .
@@ -134,7 +132,7 @@ steal('./types/script.js', './searchdata.js',
 	 * 
 	 * After running the documentjs script once again you should be able to see this:
 	 * 
-	 * @image site/images/crm_doc_demo_2.png
+	 * @image ../jmvc/site/images/crm_doc_demo_2.png
 	 * 
 	 * 
 	 * We want to be able to both look for our customer's orders and dispatch them so let's add a _findById_ method to our Order class
@@ -205,14 +203,14 @@ steal('./types/script.js', './searchdata.js',
 	 * 
 	 * ## How DocumentJS works
 	 * 
-	 * DocumentJS architecture is organized around the concepts of [DocumentJS.types types] and [DocumentJS.tags tags]. Types are meant to represent every javascript construct 
+	 * DocumentJS architecture is organized around the concepts of [DocumentJS.types types] and [DocumentJS.tags tags]. Types are meant to represent every JavaScript construct 
 	 * you might want to comment like classes, functions and attributes. Tags add aditional information to the comments of the type being processed.
 	 * 
-	 * DocumentJS works by loading a set of javascript files, then by spliting each file into type/comments pairs 
-	 * and finally parsing each type's comments tag directives to produce a set of jsonp files (one per type) 
+	 * DocumentJS works by loading a set of JavaScript files, then by spliting each file into type/comments pairs 
+	 * and finally parsing each type's comments tag directives to produce a set of html files (one per type) 
 	 * that are used by the document viewer (jmvcdoc) to render the documentation.
 	 * 
-	 * DocumentJS was written thinking of extensibility and it's very easy to add custom type/tag directives to handle your specific documentation needs.
+	 * DocumentJS was written thinking of extensibility, so it's very easy to add custom type/tag directives to handle your specific documentation needs.
 	 *
 	 * DocumentJS currently requires [stealjs Steal] to be included on the pages you are documenting.   
 	 * 
@@ -251,8 +249,6 @@ steal('./types/script.js', './searchdata.js',
 	 * ## Inspiration
 	 * 
 	 * DocumentJS was inspired by the [http://api.jquery.com/ jQuery API Browser] by [http://remysharp.com/ Remy Sharp]
-	 * 
-	 * 
 	 */
 	var DocumentJS = function(scripts, options, callback) {
 		var objects = {};
