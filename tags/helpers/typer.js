@@ -123,13 +123,24 @@ steal('./tree.js',function(tree){
 						process(typeChildren, obj )
 					},"|")
 					break;
-					
 				default: // a type name like {Animal}
 					var types = obj.types || (obj.types = []),
 						type = {type: 
 						// correct for Foo.<>
 						children[0].token.replace(/\.$/,"")
 					};
+					// if a normally defined type
+					if(type.type == "Object" || type.type == "Array"){
+						type.options = [];
+					}
+					if(type.type == "Function"){
+						type.constructs = undefined;
+						type.returns = {types: [{type: "undefined"}]};
+						type.params = [];
+						type.context = undefined;
+					}
+					
+					
 					types.push(type);
 					
 					var next = children[1];
