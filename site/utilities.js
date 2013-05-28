@@ -237,18 +237,26 @@ steal('../libs/underscore.js', function (_) {
 		activeParents: function (options) {
 			var parents = getParents(this.children);
 			var active = _.last(parents);
+			var hasConstructorParent = (active && (!active.children || !active.children.length)) && parents.length > 2
+				&& parents[parents.length - 3].type === 'constructor';
 
-			if ((active && (!active.children || !active.children.length)) && parents.length > 2
-				&& parents[parents.length - 3].type === 'constructor') {
+			if (hasConstructorParent) {
 				// Active has no children so lets check if it is part of a construct
 				parents = parents.slice(0, parents.length - 3);
 			} else {
 				parents.pop();
 			}
 
-			if(!active.children || !active.children.length) {
+			if( (!active.children || !active.children.length) && !hasConstructorParent) {
 				parents.pop();
 			}
+
+			parents = _.filter(parents, function(parent) {
+				return parent.type !== 'plugins' && parent.type !== 'Pages';
+			});
+
+			// Add root level at the beginning
+			parents.unshift(this);
 
 			return options.fn(parents);
 		},
