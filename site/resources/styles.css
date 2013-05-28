@@ -327,6 +327,7 @@ li.L1,li.L3,li.L5,li.L7,li.L9{}
 .docs .parameters h4,.docs .returns h4{background-color:#767676;padding:3px 10px;text-shadow:0 -1px 0 rgba(0, 0, 0, 0.5);color:#fff;margin:-11px -11px 5px;}
 .docs .parameters h5,.docs .returns h5{font-size:14px;margin:0 0 5px;color:#000;}
 .docs .parameters h4 code,.docs .returns h4 code{font-style:italic;font-weight:normal;margin-left:3px;background:none;background-color:none;}
+.docs .parameter .optional {font-size:8pt;line-height:20px;}
 .docs .parameters .options,.docs .returns .options,.docs .parameters .options .option,.docs .returns .options .option{margin:0 -10px 15px;border-top:1px solid #eeeeee;list-style-type:none;padding-left:25px;padding-top:5px;}
 .docs .parameters ul.options:last-child,.docs .returns ul.options:last-child{margin-bottom:0;}
 .docs .parameters .description,.docs .returns .description{margin-left:15px;padding-bottom:15px;font-size:14px;line-height:24px;margin-top:0;margin-bottom:15px;}
