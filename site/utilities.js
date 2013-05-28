@@ -135,12 +135,6 @@ steal('../libs/underscore.js', function (_) {
 			return current == this.page ? 'active' : '';
 		},
 
-		emptyStaticAndPrototype: function (options) {
-			var node = this;
-			if (node)
-				options.fn.call(this)
-		},
-
 		getTitle: function () {
 			var node = this;
 			if (node.title) {

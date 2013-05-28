@@ -117,7 +117,6 @@ steal('documentjs/tags/process.js', 'documentjs/tags', function (process, tags) 
 				typeCreateHandler = function (docObject, newScope) {
 					//processTime = processTime + (new Date - start)
 					if (docObject && docObject.name) {
-						console.log('created ', docObject.name)
 						if (objects[docObject.name]) {
 							// merge props
 							for (var prop in docObject) {
