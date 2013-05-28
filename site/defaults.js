@@ -2,7 +2,7 @@ steal(function(){
 	return {
 		debug: false,
 		enableSearch: true,
-		parent: 'canjs',
+		parent: 'index',
 		layout: 'documentjs/site/templates/page.mustache',
 		docs: 'documentjs/site/templates/docs.mustache',
 		root: '.',
