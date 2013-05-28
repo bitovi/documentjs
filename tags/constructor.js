@@ -7,6 +7,7 @@ steal('./helpers/getParent.js',
 	/**
 	 * @constructor DocumentJS.tags.constructor @constructor
 	 * @signature `@constructor NAME [TITLE]`
+	 * @parent DocumentJS
 	 */
 	return {
 		codeMatch: function(code){
