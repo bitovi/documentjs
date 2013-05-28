@@ -187,7 +187,7 @@ steal('steal','documentjs/libs/distance.js','documentjs/libs/showdown.js','docum
 			check(tags);
 
 			if ( suggest ) {
-				print("\nWarning!!\nThere is no @" + incorrect + " directive. did you mean @" + suggest + " ?\n")
+				console.log("\nWarning!!\nThere is no @" + incorrect + " directive. did you mean @" + suggest + " ?\n")
 			}
 		},
 		matchTag: /^\s*@(\w+)/,

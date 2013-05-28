@@ -95,7 +95,7 @@ steal('documentjs/libs/showdown.js','./helpers/typer.js',
 			
 			var data = tnd(line);
 			if(!data.name){
-				print("LINE: \n" + line + "\n does not match @params [{TYPE}] NAME DESCRIPTION");
+				console.log("LINE: \n" + line + "\n does not match @params [{TYPE}] NAME DESCRIPTION");
 			}
 			
 			if(!prevParam.types){
@@ -104,7 +104,7 @@ steal('documentjs/libs/showdown.js','./helpers/typer.js',
 			var params = getParams(prevParam);
 			var options = getOptions(prevParam);
 			if(!options && !params){
-				print("LINE: \n" + line + "\n could not find an object or arguments to add options to.");
+				console.log("LINE: \n" + line + "\n could not find an object or arguments to add options to.");
 				return;
 			}
 			var option = getOrMakeOptionByName(options || params, data.name);

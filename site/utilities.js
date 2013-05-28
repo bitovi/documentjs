@@ -294,7 +294,11 @@ steal('../libs/underscore.js', function (_) {
 					if(typeof child2.order == "number"){
 						return 1;
 					} else {
-						return 0;
+						// alphabetical
+						if(child1.name < child2.name){
+							return -1
+						}
+						return 1;
 					}
 				}
 			});
