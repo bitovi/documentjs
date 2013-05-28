@@ -1,4 +1,4 @@
-/*! web-shared - v0.1.0 - 2013-05-27
+/*! web-shared - v0.1.0 - 2013-05-28
 * https://github.com/bitovi/web-shared
 * Copyright (c) 2013 Bitovi; Licensed MIT */
 /*!
@@ -506,7 +506,7 @@
                         ev = args.shift();
                     args[0] = (prop === "*" ? [parent.indexOf(val), args[0]] : [prop, args[0]]).join(".");
 
-                    // track objects dispatched on this observe		
+                    // track objects dispatched on this observe     
                     ev.triggeredNS = ev.triggeredNS || {};
 
                     // if it has already been dispatched exit
@@ -515,7 +515,7 @@
                     }
 
                     ev.triggeredNS[parent._cid] = true;
-                    // send change event with modified attr to parent	
+                    // send change event with modified attr to parent   
                     can.trigger(parent, ev, args);
                     // send modified attr event to parent
                     //can.trigger(parent, args[0], args);
@@ -1241,9 +1241,9 @@
 
             // This object describes how to make an ajax request for each ajax method.  
             // The available properties are:
-            //		`url` - The default url to use as indicated as a property on the model.
-            //		`type` - The default http request type
-            //		`data` - A method that takes the `arguments` and returns `data` used for ajax.
+            //      `url` - The default url to use as indicated as a property on the model.
+            //      `type` - The default http request type
+            //      `data` - A method that takes the `arguments` and returns `data` used for ajax.
 
             ajaxMethods = {
 
@@ -1282,8 +1282,8 @@
                 findOne: {}
             },
             // Makes an ajax request `function` from a string.
-            //		`ajaxMethod` - The `ajaxMethod` object defined above.
-            //		`str` - The string the user provided. Ex: `findAll: "/recipes.json"`.
+            //      `ajaxMethod` - The `ajaxMethod` object defined above.
+            //      `str` - The string the user provided. Ex: `findAll: "/recipes.json"`.
             ajaxMaker = function(ajaxMethod, str) {
                 // Return a `function` that serves as the ajax method.
                 return function(data) {
@@ -3920,21 +3920,21 @@
                 // An ordered token registry for the scanner.
                 // This needs to be ordered by priority to prevent token parsing errors.
                 // Each token follows the following structure:
-                //		[
-                //			// Which key in the token map to match.
-                //			"tokenMapName",
-                //			// A simple token to match, like "{{".
-                //			"token",
-                //			// Optional. A complex (regexp) token to match that 
-                //			// overrides the simple token.
-                //			"[\\s\\t]*{{",
-                //			// Optional. A function that executes advanced 
-                //			// manipulation of the matched content. This is 
-                //			// rarely used.
-                //			function(content){   
-                //				return content;
-                //			}
-                //		]
+                //      [
+                //          // Which key in the token map to match.
+                //          "tokenMapName",
+                //          // A simple token to match, like "{{".
+                //          "token",
+                //          // Optional. A complex (regexp) token to match that 
+                //          // overrides the simple token.
+                //          "[\\s\\t]*{{",
+                //          // Optional. A function that executes advanced 
+                //          // manipulation of the matched content. This is 
+                //          // rarely used.
+                //          function(content){   
+                //              return content;
+                //          }
+                //      ]
                 tokens: [
                     // Return unescaped
                     ["returnLeft", "{{{", "{{[{&]"],
@@ -3961,36 +3961,36 @@
 
                 // ## Scanning Helpers
                 // This is an array of helpers that transform content that is within escaped tags like `{{token}}`. These helpers are solely for the scanning phase; they are unrelated to Mustache/Handlebars helpers which execute at render time. Each helper has a definition like the following:
-                //		{
-                //			// The content pattern to match in order to execute.
-                //			// Only the first matching helper is executed.
-                //			name: /pattern to match/,
-                //			// The function to transform the content with.
-                //			// @param {String} content   The content to transform.
-                //			// @param {Object} cmd       Scanner helper data.
-                //			//                           {
-                //			//                             insert: "insert command",
-                //			//                             tagName: "div",
-                //			//                             status: 0
-                //			//                           }
-                //			fn: function(content, cmd) {
-                //				return 'for text injection' || 
-                //					{ raw: 'to bypass text injection' };
-                //			}
-                //		}
+                //      {
+                //          // The content pattern to match in order to execute.
+                //          // Only the first matching helper is executed.
+                //          name: /pattern to match/,
+                //          // The function to transform the content with.
+                //          // @param {String} content   The content to transform.
+                //          // @param {Object} cmd       Scanner helper data.
+                //          //                           {
+                //          //                             insert: "insert command",
+                //          //                             tagName: "div",
+                //          //                             status: 0
+                //          //                           }
+                //          fn: function(content, cmd) {
+                //              return 'for text injection' || 
+                //                  { raw: 'to bypass text injection' };
+                //          }
+                //      }
                 helpers: [
                     // ### Partials
                     // Partials begin with a greater than sign, like {{> box}}.
                     // Partials are rendered at runtime (as opposed to compile time), 
                     // so recursive partials are possible. Just avoid infinite loops.
                     // For example, this template and partial:
-                    // 		base.mustache:
-                    // 			<h2>Names</h2>
-                    // 			{{#names}}
-                    // 				{{> user}}
-                    // 			{{/names}}
-                    // 		user.mustache:
-                    // 			<strong>{{name}}</strong>
+                    //      base.mustache:
+                    //          <h2>Names</h2>
+                    //          {{#names}}
+                    //              {{> user}}
+                    //          {{/names}}
+                    //      user.mustache:
+                    //          <strong>{{name}}</strong>
                     {
                         name: /^>[\s]*\w*/,
                         fn: function(content, cmd) {
@@ -4007,9 +4007,9 @@
                     // its found on using the first argument as the data attribute
                     // key.
                     // For example:
-                    //		<li id="nameli" {{ data 'name' }}></li>
+                    //      <li id="nameli" {{ data 'name' }}></li>
                     // then later you can access it like:
-                    //		can.$('#nameli').data('name');
+                    //      can.$('#nameli').data('name');
                     {
                         name: /^\s*data\s/,
                         fn: function(content, cmd) {
@@ -4029,22 +4029,22 @@
                     // This outputs the render code for almost all cases.
                     // #### Definitions
                     // * `context` - This is the object that the current rendering context operates within. 
-                    //		Each nested template adds a new `context` to the context stack.
+                    //      Each nested template adds a new `context` to the context stack.
                     // * `stack` - Mustache supports nested sections, 
-                    //		each of which add their own context to a stack of contexts.
-                    //		Whenever a token gets interpolated, it will check for a match against the 
-                    //		last context in the stack, then iterate through the rest of the stack checking for matches.
-                    //		The first match is the one that gets returned.
+                    //      each of which add their own context to a stack of contexts.
+                    //      Whenever a token gets interpolated, it will check for a match against the 
+                    //      last context in the stack, then iterate through the rest of the stack checking for matches.
+                    //      The first match is the one that gets returned.
                     // * `Mustache.txt` - This serializes a collection of logic, optionally contained within a section.
-                    //		If this is a simple interpolation, only the interpolation lookup will be passed.
-                    //		If this is a section, then an `options` object populated by the truthy (`options.fn`) and 
-                    //		falsey (`options.inverse`) encapsulated functions will also be passed. This section handling 
-                    //		exists to support the runtime context nesting that Mustache supports.
+                    //      If this is a simple interpolation, only the interpolation lookup will be passed.
+                    //      If this is a section, then an `options` object populated by the truthy (`options.fn`) and 
+                    //      falsey (`options.inverse`) encapsulated functions will also be passed. This section handling 
+                    //      exists to support the runtime context nesting that Mustache supports.
                     // * `Mustache.get` - This resolves an interpolation reference given a stack of contexts.
                     // * `options` - An object containing methods for executing the inner contents of sections or helpers.  
-                    //		`options.fn` - Contains the inner template logic for a truthy section.  
-                    //		`options.inverse` - Contains the inner template logic for a falsey section.  
-                    //		`options.hash` - Contains the merged hash object argument for custom helpers.
+                    //      `options.fn` - Contains the inner template logic for a truthy section.  
+                    //      `options.inverse` - Contains the inner template logic for a falsey section.  
+                    //      `options.hash` - Contains the merged hash object argument for custom helpers.
                     // #### Design
                     // This covers the design of the render code that the transformation helper generates.
                     // ##### Pseudocode
@@ -4052,61 +4052,61 @@
                     // that gives a high level overview of what the generated render code does (with a template similar to  
                     // `"{{#a}}{{b.c.d.e.name}}{{/a}}" == "Phil"`).
                     // *Initialize the render code.*
-                    // 		view = []
-                    // 		context = []
-                    // 		stack = fn { context.concat([this]) }
+                    //      view = []
+                    //      context = []
+                    //      stack = fn { context.concat([this]) }
                     // *Render the root section.*
-                    // 		view.push( "string" )
-                    // 		view.push( can.view.txt(
+                    //      view.push( "string" )
+                    //      view.push( can.view.txt(
                     // *Render the nested section with `can.Mustache.txt`.*
-                    // 			txt( 
+                    //          txt( 
                     // *Add the current context to the stack.*
-                    // 				stack(), 
+                    //              stack(), 
                     // *Flag this for truthy section mode.*
-                    // 				"#",
+                    //              "#",
                     // *Interpolate and check the `a` variable for truthyness using the stack with `can.Mustache.get`.*
-                    // 				get( "a", stack() ),
+                    //              get( "a", stack() ),
                     // *Include the nested section's inner logic.
                     // The stack argument is usually the parent section's copy of the stack, 
                     // but it can be an override context that was passed by a custom helper.
                     // Sections can nest `0..n` times -- **NESTCEPTION**.*
-                    // 				{ fn: fn(stack) {
+                    //              { fn: fn(stack) {
                     // *Render the nested section (everything between the `{{#a}}` and `{{/a}}` tokens).*
-                    // 					view = []
-                    // 					view.push( "string" )
-                    // 					view.push(
+                    //                  view = []
+                    //                  view.push( "string" )
+                    //                  view.push(
                     // *Add the current context to the stack.*
-                    // 						stack(),
+                    //                      stack(),
                     // *Flag this as interpolation-only mode.*
-                    // 						null,
+                    //                      null,
                     // *Interpolate the `b.c.d.e.name` variable using the stack.*
-                    // 						get( "b.c.d.e.name", stack() ),
-                    // 					)
-                    // 					view.push( "string" )
+                    //                      get( "b.c.d.e.name", stack() ),
+                    //                  )
+                    //                  view.push( "string" )
                     // *Return the result for the nested section.*
-                    // 					return view.join()
-                    // 				}}
-                    // 			)
-                    // 		))
-                    // 		view.push( "string" )
+                    //                  return view.join()
+                    //              }}
+                    //          )
+                    //      ))
+                    //      view.push( "string" )
                     // *Return the result for the root section, which includes all nested sections.*
-                    // 		return view.join()
+                    //      return view.join()
                     // ##### Initialization
                     // Each rendered template is started with the following initialization code:
-                    // 		var ___v1ew = [];
-                    // 		var ___c0nt3xt = [];
-                    // 		___c0nt3xt.___st4ck = true;
-                    // 		var ___st4ck = function(context, self) {
-                    // 			var s;
-                    // 			if (arguments.length == 1 && context) {
-                    // 				s = !context.___st4ck ? [context] : context;
-                    // 			} else {
-                    // 				s = context && context.___st4ck 
-                    //					? context.concat([self]) 
-                    //					: ___st4ck(context).concat([self]);
-                    // 			}
-                    // 			return (s.___st4ck = true) && s;
-                    // 		};
+                    //      var ___v1ew = [];
+                    //      var ___c0nt3xt = [];
+                    //      ___c0nt3xt.___st4ck = true;
+                    //      var ___st4ck = function(context, self) {
+                    //          var s;
+                    //          if (arguments.length == 1 && context) {
+                    //              s = !context.___st4ck ? [context] : context;
+                    //          } else {
+                    //              s = context && context.___st4ck 
+                    //                  ? context.concat([self]) 
+                    //                  : ___st4ck(context).concat([self]);
+                    //          }
+                    //          return (s.___st4ck = true) && s;
+                    //      };
                     // The `___v1ew` is the the array used to serialize the view.
                     // The `___c0nt3xt` is a stacking array of contexts that slices and expands with each nested section.
                     // The `___st4ck` function is used to more easily update the context stack in certain situations.
@@ -4119,14 +4119,14 @@
                     // Here's an example of a template without any descendent sections.  
                     // Given the template: `"{{a.b.c.d.e.name}}" == "Phil"`  
                     // Would output the following render code:
-                    //		___v1ew.push("\"");
-                    //		___v1ew.push(can.view.txt(1, '', 0, this, function() {
-                    // 			return can.Mustache.txt(___st4ck(___c0nt3xt, this), null, 
-                    //				can.Mustache.get("a.b.c.d.e.name", 
-                    //					___st4ck(___c0nt3xt, this))
-                    //			);
-                    //		}));
-                    //		___v1ew.push("\" == \"Phil\"");
+                    //      ___v1ew.push("\"");
+                    //      ___v1ew.push(can.view.txt(1, '', 0, this, function() {
+                    //          return can.Mustache.txt(___st4ck(___c0nt3xt, this), null, 
+                    //              can.Mustache.get("a.b.c.d.e.name", 
+                    //                  ___st4ck(___c0nt3xt, this))
+                    //          );
+                    //      }));
+                    //      ___v1ew.push("\" == \"Phil\"");
                     // The simple strings will get appended to the view. Any interpolated references (like `{{a.b.c.d.e.name}}`) 
                     // will be pushed onto the view via `can.view.txt` in order to support live binding.
                     // The function passed to `can.view.txt` will call `can.Mustache.txt`, which serializes the object data by doing 
@@ -4142,33 +4142,33 @@
                     // Here's an example of a template with a single nested section.  
                     // Given the template: `"{{#a}}{{b.c.d.e.name}}{{/a}}" == "Phil"`  
                     // Would output the following render code:
-                    //		___v1ew.push("\"");
-                    // 		___v1ew.push(can.view.txt(0, '', 0, this, function() {
-                    // 			return can.Mustache.txt(___st4ck(___c0nt3xt, this), "#", 
-                    //				can.Mustache.get("a", ___st4ck(___c0nt3xt, this)), 
-                    //					[{
-                    // 					_: function() {
-                    // 						return ___v1ew.join("");
-                    // 					}
-                    // 				}, {
-                    // 					fn: function(___c0nt3xt) {
-                    // 						var ___v1ew = [];
-                    // 						___v1ew.push(can.view.txt(1, '', 0, this, 
-                    //								function() {
-                    //  								return can.Mustache.txt(
-                    // 									___st4ck(___c0nt3xt, this), 
-                    // 									null, 
-                    // 									can.Mustache.get("b.c.d.e.name", 
-                    // 										___st4ck(___c0nt3xt, this))
-                    // 								);
-                    // 							}
-                    // 						));
-                    // 						return ___v1ew.join("");
-                    // 					}
-                    // 				}]
-                    //			)
-                    // 		}));
-                    //		___v1ew.push("\" == \"Phil\"");
+                    //      ___v1ew.push("\"");
+                    //      ___v1ew.push(can.view.txt(0, '', 0, this, function() {
+                    //          return can.Mustache.txt(___st4ck(___c0nt3xt, this), "#", 
+                    //              can.Mustache.get("a", ___st4ck(___c0nt3xt, this)), 
+                    //                  [{
+                    //                  _: function() {
+                    //                      return ___v1ew.join("");
+                    //                  }
+                    //              }, {
+                    //                  fn: function(___c0nt3xt) {
+                    //                      var ___v1ew = [];
+                    //                      ___v1ew.push(can.view.txt(1, '', 0, this, 
+                    //                              function() {
+                    //                                  return can.Mustache.txt(
+                    //                                  ___st4ck(___c0nt3xt, this), 
+                    //                                  null, 
+                    //                                  can.Mustache.get("b.c.d.e.name", 
+                    //                                      ___st4ck(___c0nt3xt, this))
+                    //                              );
+                    //                          }
+                    //                      ));
+                    //                      return ___v1ew.join("");
+                    //                  }
+                    //              }]
+                    //          )
+                    //      }));
+                    //      ___v1ew.push("\" == \"Phil\"");
                     // This is specified as a truthy section via the `"#"` argument. The last argument includes an array of helper methods used with `options`.
                     // These act similarly to custom helpers: `options.fn` will be called for truthy sections, `options.inverse` will be called for falsey sections.
                     // The `options._` function only exists as a dummy function to make generating the section nesting easier (a section may have a `fn`, `inverse`,
@@ -4569,7 +4569,7 @@
         // passed in object.
         // Built-in helpers:
         // * `data` - `data` is a special helper that is implemented via scanning helpers. 
-        //		It hooks up the active element to the active data object: `<div {{data "key"}} />`
+        //      It hooks up the active element to the active data object: `<div {{data "key"}} />`
         // * `if` - Renders a truthy section: `{{#if var}} render {{/if}}`
         // * `unless` - Renders a falsey section: `{{#unless var}} render {{/unless}}`
         // * `each` - Renders an array: `{{#each array}} render {{this}} {{/each}}`
@@ -4736,25 +4736,25 @@
     window['can'] = __m5;
 })();
 //steal('can/util',function( can ) {
-	
+    
 var isArray = can.isArray,
-	// essentially returns an object that has all the must have comparisons ...
-	// must haves, do not return true when provided undefined
-	cleanSet = function(obj, compares){
-		var copy = can.extend({}, obj);
-		for(var prop in copy) {
-			var compare = compares[prop] === undefined ? compares["*"] : compares[prop];
-			if( same(copy[prop], undefined, compare ) ) {
-				delete copy[prop]
-			}
-		}
-		return copy;
-	},
-	propCount = function(obj){
-		var count = 0;
-		for(var prop in obj) count++;
-		return count;
-	};
+    // essentially returns an object that has all the must have comparisons ...
+    // must haves, do not return true when provided undefined
+    cleanSet = function(obj, compares){
+        var copy = can.extend({}, obj);
+        for(var prop in copy) {
+            var compare = compares[prop] === undefined ? compares["*"] : compares[prop];
+            if( same(copy[prop], undefined, compare ) ) {
+                delete copy[prop]
+            }
+        }
+        return copy;
+    },
+    propCount = function(obj){
+        var count = 0;
+        for(var prop in obj) count++;
+        return count;
+    };
 
 /**
  * @class can.Object
@@ -4845,62 +4845,62 @@ can.Object = {};
  * @param {Object} [deep] used internally
  */
 var same = can.Object.same = function(a, b, compares, aParent, bParent, deep){
-	var aType = typeof a,
-		aArray = isArray(a),
-		comparesType = typeof compares,
-		compare;
-	
-	if(comparesType == 'string' || compares === null ){
-		compares = compareMethods[compares];
-		comparesType = 'function'
-	}
-	if(comparesType == 'function'){
-		return compares(a, b, aParent, bParent)
-	} 
-	compares = compares || {};
-	
-	if(a instanceof Date){
-		return a === b;
-	}
-	if(deep === -1){
-		return aType === 'object' || a === b;
-	}
-	if(aType !== typeof  b || aArray !== isArray(b)){
-		return false;
-	}
-	if(a === b){
-		return true;
-	}
-	if(aArray){
-		if(a.length !== b.length){
-			return false;
-		}
-		for(var i =0; i < a.length; i ++){
-			compare = compares[i] === undefined ? compares["*"] : compares[i]
-			if(!same(a[i],b[i], a, b, compare )){
-				return false;
-			}
-		};
-		return true;
-	} else if(aType === "object" || aType === 'function'){
-		var bCopy = can.extend({}, b);
-		for(var prop in a){
-			compare = compares[prop] === undefined ? compares["*"] : compares[prop];
-			if(! same( a[prop], b[prop], compare , a, b, deep === false ? -1 : undefined )){
-				return false;
-			}
-			delete bCopy[prop];
-		}
-		// go through bCopy props ... if there is no compare .. return false
-		for(prop in bCopy){
-			if( compares[prop] === undefined || 
-			    ! same( undefined, b[prop], compares[prop] , a, b, deep === false ? -1 : undefined )){
-				return false;
-			}
-		}
-		return true;
-	} 
-	return false;
+    var aType = typeof a,
+        aArray = isArray(a),
+        comparesType = typeof compares,
+        compare;
+    
+    if(comparesType == 'string' || compares === null ){
+        compares = compareMethods[compares];
+        comparesType = 'function'
+    }
+    if(comparesType == 'function'){
+        return compares(a, b, aParent, bParent)
+    } 
+    compares = compares || {};
+    
+    if(a instanceof Date){
+        return a === b;
+    }
+    if(deep === -1){
+        return aType === 'object' || a === b;
+    }
+    if(aType !== typeof  b || aArray !== isArray(b)){
+        return false;
+    }
+    if(a === b){
+        return true;
+    }
+    if(aArray){
+        if(a.length !== b.length){
+            return false;
+        }
+        for(var i =0; i < a.length; i ++){
+            compare = compares[i] === undefined ? compares["*"] : compares[i]
+            if(!same(a[i],b[i], a, b, compare )){
+                return false;
+            }
+        };
+        return true;
+    } else if(aType === "object" || aType === 'function'){
+        var bCopy = can.extend({}, b);
+        for(var prop in a){
+            compare = compares[prop] === undefined ? compares["*"] : compares[prop];
+            if(! same( a[prop], b[prop], compare , a, b, deep === false ? -1 : undefined )){
+                return false;
+            }
+            delete bCopy[prop];
+        }
+        // go through bCopy props ... if there is no compare .. return false
+        for(prop in bCopy){
+            if( compares[prop] === undefined || 
+                ! same( undefined, b[prop], compares[prop] , a, b, deep === false ? -1 : undefined )){
+                return false;
+            }
+        }
+        return true;
+    } 
+    return false;
 };
 
 /**
@@ -4910,19 +4910,19 @@ var same = can.Object.same = function(a, b, compares, aParent, bParent, deep){
  * @param {Object} sets
  */
 can.Object.subsets = function(checkSet, sets, compares){
-	var len = sets.length,
-		subsets = [],
-		checkPropCount = propCount(checkSet),
-		setLength;
-		
-	for(var i =0; i < len; i++){
-		//check this subset
-		var set = sets[i];
-		if( can.Object.subset(checkSet, set, compares) ){
-			subsets.push(set)
-		}
-	}
-	return subsets;
+    var len = sets.length,
+        subsets = [],
+        checkPropCount = propCount(checkSet),
+        setLength;
+        
+    for(var i =0; i < len; i++){
+        //check this subset
+        var set = sets[i];
+        if( can.Object.subset(checkSet, set, compares) ){
+            subsets.push(set)
+        }
+    }
+    return subsets;
 };
 /**
  * @function subset
@@ -4933,1070 +4933,1070 @@ can.Object.subsets = function(checkSet, sets, compares){
  * @param {Object} [checkPropCount]
  */
 can.Object.subset = function(subset, set, compares){
-	// go through set {type: 'folder'} and make sure every property
-	// is in subset {type: 'folder', parentId :5}
-	// then make sure that set has fewer properties
-	// make sure we are only checking 'important' properties
-	// in subset (ones that have to have a value)
-	
-	var setPropCount =0,
-		compares = compares || {};
-			
-	for(var prop in set){
+    // go through set {type: 'folder'} and make sure every property
+    // is in subset {type: 'folder', parentId :5}
+    // then make sure that set has fewer properties
+    // make sure we are only checking 'important' properties
+    // in subset (ones that have to have a value)
+    
+    var setPropCount =0,
+        compares = compares || {};
+            
+    for(var prop in set){
 
-		if(! same(subset[prop], set[prop], compares[prop], subset, set )  ){
-			return false;
-		} 
-	}
-	return true;
+        if(! same(subset[prop], set[prop], compares[prop], subset, set )  ){
+            return false;
+        } 
+    }
+    return true;
 }
 
 
 var compareMethods = {
-	"null" : function(){
-		return true;
-	},
-	i : function(a, b){
-		return (""+a).toLowerCase() == (""+b).toLowerCase()
-	}
+    "null" : function(){
+        return true;
+    },
+    i : function(a, b){
+        return (""+a).toLowerCase() == (""+b).toLowerCase()
+    }
 }
-	
+    
 //return can.Object;
 
 //});
 //steal('can/util','can/util/string','can/util/object', function (can) {
 
-	// Get the URL from old Steal root, new Steal config or can.fixture.rootUrl
-	var getUrl = function(url) {
-		if(typeof steal !== 'undefined') {
-			if(can.isFunction(steal.config)) {
-				return steal.config().root.mapJoin(url).toString();
-			}
-			return steal.root.join(url).toString();
-		}
-		return (can.fixture.rootUrl || '') + url;
-	}
+    // Get the URL from old Steal root, new Steal config or can.fixture.rootUrl
+    var getUrl = function(url) {
+        if(typeof steal !== 'undefined') {
+            if(can.isFunction(steal.config)) {
+                return steal.config().root.mapJoin(url).toString();
+            }
+            return steal.root.join(url).toString();
+        }
+        return (can.fixture.rootUrl || '') + url;
+    }
 
-	var updateSettings = function (settings, originalOptions) {
-			if (!can.fixture.on) {
-				return;
-			}
+    var updateSettings = function (settings, originalOptions) {
+            if (!can.fixture.on) {
+                return;
+            }
 
-			//simple wrapper for logging
-			var _logger = function(type, arr){
-				if(console.log.apply){
-					Function.prototype.call.apply(console[type], [console].concat(arr));
-					// console[type].apply(console, arr)
-				} else {
-					console[type](arr)
-				}
-			},
-			log = function () {
-				if (window.console && console.log) {
-					Array.prototype.unshift.call(arguments, 'fixture INFO:');
-					_logger( "log", Array.prototype.slice.call(arguments) );
-				}
-				else if (window.opera && window.opera.postError) {
-					opera.postError("fixture INFO: " + Array.prototype.join.call(arguments, ','));
-				}
-			}
+            //simple wrapper for logging
+            var _logger = function(type, arr){
+                if(console.log.apply){
+                    Function.prototype.call.apply(console[type], [console].concat(arr));
+                    // console[type].apply(console, arr)
+                } else {
+                    console[type](arr)
+                }
+            },
+            log = function () {
+                if (window.console && console.log) {
+                    Array.prototype.unshift.call(arguments, 'fixture INFO:');
+                    _logger( "log", Array.prototype.slice.call(arguments) );
+                }
+                else if (window.opera && window.opera.postError) {
+                    opera.postError("fixture INFO: " + Array.prototype.join.call(arguments, ','));
+                }
+            }
 
-			// We always need the type which can also be called method, default to GET
-			settings.type = settings.type || settings.method || 'GET';
+            // We always need the type which can also be called method, default to GET
+            settings.type = settings.type || settings.method || 'GET';
 
-			// add the fixture option if programmed in
-			var data = overwrite(settings);
+            // add the fixture option if programmed in
+            var data = overwrite(settings);
 
-			// if we don't have a fixture, do nothing
-			if (!settings.fixture) {
-				if (window.location.protocol === "file:") {
-					log("ajax request to " + settings.url + ", no fixture found");
-				}
-				return;
-			}
+            // if we don't have a fixture, do nothing
+            if (!settings.fixture) {
+                if (window.location.protocol === "file:") {
+                    log("ajax request to " + settings.url + ", no fixture found");
+                }
+                return;
+            }
 
-			//if referencing something else, update the fixture option
-			if (typeof settings.fixture === "string" && can.fixture[settings.fixture]) {
-				settings.fixture = can.fixture[settings.fixture];
-			}
+            //if referencing something else, update the fixture option
+            if (typeof settings.fixture === "string" && can.fixture[settings.fixture]) {
+                settings.fixture = can.fixture[settings.fixture];
+            }
 
-			// if a string, we just point to the right url
-			if (typeof settings.fixture == "string") {
-				var url = settings.fixture;
+            // if a string, we just point to the right url
+            if (typeof settings.fixture == "string") {
+                var url = settings.fixture;
 
-				if (/^\/\//.test(url)) {
-					// this lets us use rootUrl w/o having steal...
-					url = getUrl(settings.fixture.substr(2));
-				}
+                if (/^\/\//.test(url)) {
+                    // this lets us use rootUrl w/o having steal...
+                    url = getUrl(settings.fixture.substr(2));
+                }
 
-				if(data) {
-					// Template static fixture URLs
-					url = can.sub(url, data);
-				}
+                if(data) {
+                    // Template static fixture URLs
+                    url = can.sub(url, data);
+                }
 
-				delete settings.fixture;
+                delete settings.fixture;
 
-				//!steal-remove-start
-				log("looking for fixture in " + url);
-				//!steal-remove-end
+                //!steal-remove-start
+                log("looking for fixture in " + url);
+                //!steal-remove-end
 
-				settings.url = url;
-				settings.data = null;
-				settings.type = "GET";
-				if (!settings.error) {
-					settings.error = function (xhr, error, message) {
-						throw "fixtures.js Error " + error + " " + message;
-					};
-				}
-			}
-			else {
-				//!steal-remove-start
-				log("using a dynamic fixture for " + settings.type + " " + settings.url);
-				//!steal-remove-end
+                settings.url = url;
+                settings.data = null;
+                settings.type = "GET";
+                if (!settings.error) {
+                    settings.error = function (xhr, error, message) {
+                        throw "fixtures.js Error " + error + " " + message;
+                    };
+                }
+            }
+            else {
+                //!steal-remove-start
+                log("using a dynamic fixture for " + settings.type + " " + settings.url);
+                //!steal-remove-end
 
-				//it's a function ... add the fixture datatype so our fixture transport handles it
-				// TODO: make everything go here for timing and other fun stuff
-				// add to settings data from fixture ...
-				settings.dataTypes && settings.dataTypes.splice(0, 0, "fixture");
+                //it's a function ... add the fixture datatype so our fixture transport handles it
+                // TODO: make everything go here for timing and other fun stuff
+                // add to settings data from fixture ...
+                settings.dataTypes && settings.dataTypes.splice(0, 0, "fixture");
 
-				if (data && originalOptions) {
-					can.extend(originalOptions.data, data)
-				}
-			}
-		},
-		// A helper function that takes what's called with response
-		// and moves some common args around to make it easier to call
-		extractResponse = function(status, statusText, responses, headers) {
-			// if we get response(RESPONSES, HEADERS)
-			if(typeof status != "number"){
-				headers = statusText;
-				responses = status;
-				statusText = "success"
-				status = 200;
-			}
-			// if we get response(200, RESPONSES, HEADERS)
-			if(typeof statusText != "string"){
-				headers = responses;
-				responses = statusText;
-				statusText = "success";
-			}
-			if ( status >= 400 && status <= 599 ) {
-				this.dataType = "text"
-			}
-			return [status, statusText, extractResponses(this, responses), headers];
-		},
-		// If we get data instead of responses,
-		// make sure we provide a response type that matches the first datatype (typically json)
-		extractResponses = function(settings, responses){
-			var next = settings.dataTypes ? settings.dataTypes[0] : (settings.dataType || 'json');
-			if (!responses || !responses[next]) {
-				var tmp = {}
-				tmp[next] = responses;
-				responses = tmp;
-			}
-			return responses;
-		};
+                if (data && originalOptions) {
+                    can.extend(originalOptions.data, data)
+                }
+            }
+        },
+        // A helper function that takes what's called with response
+        // and moves some common args around to make it easier to call
+        extractResponse = function(status, statusText, responses, headers) {
+            // if we get response(RESPONSES, HEADERS)
+            if(typeof status != "number"){
+                headers = statusText;
+                responses = status;
+                statusText = "success"
+                status = 200;
+            }
+            // if we get response(200, RESPONSES, HEADERS)
+            if(typeof statusText != "string"){
+                headers = responses;
+                responses = statusText;
+                statusText = "success";
+            }
+            if ( status >= 400 && status <= 599 ) {
+                this.dataType = "text"
+            }
+            return [status, statusText, extractResponses(this, responses), headers];
+        },
+        // If we get data instead of responses,
+        // make sure we provide a response type that matches the first datatype (typically json)
+        extractResponses = function(settings, responses){
+            var next = settings.dataTypes ? settings.dataTypes[0] : (settings.dataType || 'json');
+            if (!responses || !responses[next]) {
+                var tmp = {}
+                tmp[next] = responses;
+                responses = tmp;
+            }
+            return responses;
+        };
 
-	//used to check urls
-	// check if jQuery
-	if (can.ajaxPrefilter && can.ajaxTransport) {
+    //used to check urls
+    // check if jQuery
+    if (can.ajaxPrefilter && can.ajaxTransport) {
 
-		// the pre-filter needs to re-route the url
-		can.ajaxPrefilter(updateSettings);
+        // the pre-filter needs to re-route the url
+        can.ajaxPrefilter(updateSettings);
 
-		can.ajaxTransport("fixture", function (s, original) {
-			// remove the fixture from the datatype
-			s.dataTypes.shift();
+        can.ajaxTransport("fixture", function (s, original) {
+            // remove the fixture from the datatype
+            s.dataTypes.shift();
 
-			//we'll return the result of the next data type
-			var timeout, stopped = false;
+            //we'll return the result of the next data type
+            var timeout, stopped = false;
 
-			return {
-				send: function (headers, callback) {
-					// we'll immediately wait the delay time for all fixtures
-					timeout = setTimeout(function () {
-						// if the user wants to call success on their own, we allow it ...
-						var success = function() {
-							if(stopped === false) {
-								callback.apply(null, extractResponse.apply(s, arguments) );
-							}
-						},
-						// get the result form the fixture
-						result = s.fixture(original, success, headers, s);
-						if(result !== undefined) {
-							// make sure the result has the right dataType
-							callback(200, "success", extractResponses(s, result), {});
-						}
-					}, can.fixture.delay);
-				},
-				abort: function () {
-					stopped = true;
-					clearTimeout(timeout)
-				}
-			};
-		});
-	} else {
-		var AJAX = can.ajax;
-		can.ajax = function (settings) {
-			updateSettings(settings, settings);
-			if (settings.fixture) {
-				var timeout, d = new can.Deferred(),
-					stopped = false;
+            return {
+                send: function (headers, callback) {
+                    // we'll immediately wait the delay time for all fixtures
+                    timeout = setTimeout(function () {
+                        // if the user wants to call success on their own, we allow it ...
+                        var success = function() {
+                            if(stopped === false) {
+                                callback.apply(null, extractResponse.apply(s, arguments) );
+                            }
+                        },
+                        // get the result form the fixture
+                        result = s.fixture(original, success, headers, s);
+                        if(result !== undefined) {
+                            // make sure the result has the right dataType
+                            callback(200, "success", extractResponses(s, result), {});
+                        }
+                    }, can.fixture.delay);
+                },
+                abort: function () {
+                    stopped = true;
+                    clearTimeout(timeout)
+                }
+            };
+        });
+    } else {
+        var AJAX = can.ajax;
+        can.ajax = function (settings) {
+            updateSettings(settings, settings);
+            if (settings.fixture) {
+                var timeout, d = new can.Deferred(),
+                    stopped = false;
 
-				//TODO this should work with response
-				d.getResponseHeader = function () {
-				}
+                //TODO this should work with response
+                d.getResponseHeader = function () {
+                }
 
-				// call success and fail
-				d.then(settings.success, settings.fail);
+                // call success and fail
+                d.then(settings.success, settings.fail);
 
-				// abort should stop the timeout and calling success
-				d.abort = function () {
-					clearTimeout(timeout);
-					stopped = true;
-					d.reject(d)
-				}
-				// set a timeout that simulates making a request ....
-				timeout = setTimeout(function () {
-					// if the user wants to call success on their own, we allow it ...
-					var success = function() {
-						var response = extractResponse.apply(settings, arguments),
-							status = response[0];
+                // abort should stop the timeout and calling success
+                d.abort = function () {
+                    clearTimeout(timeout);
+                    stopped = true;
+                    d.reject(d)
+                }
+                // set a timeout that simulates making a request ....
+                timeout = setTimeout(function () {
+                    // if the user wants to call success on their own, we allow it ...
+                    var success = function() {
+                        var response = extractResponse.apply(settings, arguments),
+                            status = response[0];
 
-						if ( (status >= 200 && status < 300 || status === 304) && stopped === false) {
-							d.resolve(response[2][settings.dataType])
-						} else {
-							// TODO probably resolve better
-							d.reject(d, 'error', response[1]);
-						}
-					},
-					// get the result form the fixture
-					result = settings.fixture(settings, success, settings.headers, settings);
-					if(result !== undefined) {
-						d.resolve(result)
-					}
-				}, can.fixture.delay);
-				
-				return d;
-			} else {
-				return AJAX(settings);
-			}
-		}
-	}
+                        if ( (status >= 200 && status < 300 || status === 304) && stopped === false) {
+                            d.resolve(response[2][settings.dataType])
+                        } else {
+                            // TODO probably resolve better
+                            d.reject(d, 'error', response[1]);
+                        }
+                    },
+                    // get the result form the fixture
+                    result = settings.fixture(settings, success, settings.headers, settings);
+                    if(result !== undefined) {
+                        d.resolve(result)
+                    }
+                }, can.fixture.delay);
+                
+                return d;
+            } else {
+                return AJAX(settings);
+            }
+        }
+    }
 
-	var typeTest = /^(script|json|text|jsonp)$/,
-	// a list of 'overwrite' settings object
-		overwrites = [],
-	// returns the index of an overwrite function
-		find = function (settings, exact) {
-			for (var i = 0; i < overwrites.length; i++) {
-				if ($fixture._similar(settings, overwrites[i], exact)) {
-					return i;
-				}
-			}
-			return -1;
-		},
-	// overwrites the settings fixture if an overwrite matches
-		overwrite = function (settings) {
-			var index = find(settings);
-			if (index > -1) {
-				settings.fixture = overwrites[index].fixture;
-				return $fixture._getData(overwrites[index].url, settings.url)
-			}
+    var typeTest = /^(script|json|text|jsonp)$/,
+    // a list of 'overwrite' settings object
+        overwrites = [],
+    // returns the index of an overwrite function
+        find = function (settings, exact) {
+            for (var i = 0; i < overwrites.length; i++) {
+                if ($fixture._similar(settings, overwrites[i], exact)) {
+                    return i;
+                }
+            }
+            return -1;
+        },
+    // overwrites the settings fixture if an overwrite matches
+        overwrite = function (settings) {
+            var index = find(settings);
+            if (index > -1) {
+                settings.fixture = overwrites[index].fixture;
+                return $fixture._getData(overwrites[index].url, settings.url)
+            }
 
-		},
-		// Makes an attempt to guess where the id is at in the url and returns it.
-		getId = function (settings) {
-			var id = settings.data.id;
+        },
+        // Makes an attempt to guess where the id is at in the url and returns it.
+        getId = function (settings) {
+            var id = settings.data.id;
 
-			if (id === undefined && typeof settings.data === "number") {
-				id = settings.data;
-			}
+            if (id === undefined && typeof settings.data === "number") {
+                id = settings.data;
+            }
 
-			/*
-			 Check for id in params(if query string)
-			 If this is just a string representation of an id, parse
-			 if(id === undefined && typeof settings.data === "string") {
-			 id = settings.data;
-			 }
-			 //*/
+            /*
+             Check for id in params(if query string)
+             If this is just a string representation of an id, parse
+             if(id === undefined && typeof settings.data === "string") {
+             id = settings.data;
+             }
+             //*/
 
-			if (id === undefined) {
-				settings.url.replace(/\/(\d+)(\/|$|\.)/g, function (all, num) {
-					id = num;
-				});
-			}
+            if (id === undefined) {
+                settings.url.replace(/\/(\d+)(\/|$|\.)/g, function (all, num) {
+                    id = num;
+                });
+            }
 
-			if (id === undefined) {
-				id = settings.url.replace(/\/(\w+)(\/|$|\.)/g, function (all, num) {
-					if (num != 'update') {
-						id = num;
-					}
-				})
-			}
+            if (id === undefined) {
+                id = settings.url.replace(/\/(\w+)(\/|$|\.)/g, function (all, num) {
+                    if (num != 'update') {
+                        id = num;
+                    }
+                })
+            }
 
-			if (id === undefined) { // if still not set, guess a random number
-				id = Math.round(Math.random() * 1000)
-			}
+            if (id === undefined) { // if still not set, guess a random number
+                id = Math.round(Math.random() * 1000)
+            }
 
-			return id;
-		};
-
-
-	var $fixture = can.fixture = function (settings, fixture) {
-		// if we provide a fixture ...
-		if (fixture !== undefined) {
-			if (typeof settings == 'string') {
-				// handle url strings
-				var matches = settings.match(/(GET|POST|PUT|DELETE) (.+)/i);
-				if (!matches) {
-					settings = {
-						url : settings
-					};
-				} else {
-					settings = {
-						url : matches[2],
-						type : matches[1]
-					};
-				}
-
-			}
-
-			//handle removing.  An exact match if fixture was provided, otherwise, anything similar
-			var index = find(settings, !!fixture);
-			if (index > -1) {
-				overwrites.splice(index, 1)
-			}
-			if (fixture == null) {
-				return
-			}
-			settings.fixture = fixture;
-			overwrites.push(settings)
-		} else {
-			can.each(settings, function(fixture, url){
-				$fixture(url, fixture);
-			})
-		}
-	};
-	var replacer = can.replacer;
-
-	can.extend(can.fixture, {
-		// given ajax settings, find an overwrite
-		_similar : function (settings, overwrite, exact) {
-			if (exact) {
-				return can.Object.same(settings, overwrite, {fixture : null})
-			} else {
-				return can.Object.subset(settings, overwrite, can.fixture._compare)
-			}
-		},
-		_compare : {
-			url : function (a, b) {
-				return !!$fixture._getData(b, a)
-			},
-			fixture : null,
-			type : "i"
-		},
-		// gets data from a url like "/todo/{id}" given "todo/5"
-		_getData : function (fixtureUrl, url) {
-			var order = [],
-				fixtureUrlAdjusted = fixtureUrl.replace('.', '\\.').replace('?', '\\?'),
-				res = new RegExp(fixtureUrlAdjusted.replace(replacer, function (whole, part) {
-					order.push(part)
-					return "([^\/]+)"
-				}) + "$").exec(url),
-				data = {};
-
-			if (!res) {
-				return null;
-			}
-			res.shift();
-			can.each(order, function (name) {
-				data[name] = res.shift()
-			})
-			return data;
-		},
-
-		store: function (types, count, make, filter) {
-			/**
-			 * @function can.fixture.store
-			 * @parent can.fixture
-			 *
-			 * `can.fixture.store(count, generator(index,items))` is used
-			 * to create a store of items that can simulate a full CRUD service. Furthermore,
-			 * the store can do filtering, grouping, sorting, and paging.
-			 * 
-			 * ## Basic Example
-			 * 
-			 * The following creates a store for 100 todos:
-			 * 
-			 *     var todoStore = can.fixture.store(100, function(i){
-			 *       return {
-			 * 	       id: i,
-			 *         name: "todo number "+i,
-			 *         description: "a description of some todo",
-			 *         ownerId: can.fixture.rand(10)
-			 *       }
-			 *     })
-			 * 
-			 * `todoStore`'s methods can be used for the response to a REST service like:
-			 * 
-			 *      can.fixture({
-			 * 	      'GET /todos':         todoStore.findAll,
-			 *        'GET /todos/{id}':    todoStore.findOne,
-			 *        'POST /todos':        todoStore.create,
-			 *        'PUT /todos/{id}':    todoStore.update,
-			 *        'DELETE /todos/{id}': todoStore.destroy
-			 *      });
-			 * 
-			 * These fixtures, combined with a [can.Model] that connects to these services like:
-			 * 
-			 *      var Todo = can.Model({
-			 *          findAll : 'GET /todos',
-			 *          findOne : 'GET /todos/{id}',
-			 *          create  : 'POST /todos',
-			 *          update  : 'PUT /todos/{id}',
-			 *          destroy : 'DELETE /todos/{id}'
-			 *      }, {});
-			 * 
-			 * ... allows you to simulate requests for all of owner 5's todos like:
-			 * 
-			 *     Todo.findAll({ownerId: 5}, function(todos){
-			 *        	   
-			 *     })
-			 * 
-			 * ## Simulated Service
-			 * 
-			 * `can.fixture.store`'s [can.fixture.store.findAll findAll],
-			 * [can.fixture.store.findOne findOne],
-			 * [can.fixture.store.findOne create],
-			 * [can.fixture.store.findOne update], and
-			 * [can.fixture.store.findOne destroy] methods are used to
-			 * simulate a REST service that 
-			 * 
-			 * 
-			 * ## With can.ajax
-			 *
-			 *     //makes a nested list of messages
-			 *     can.fixture.store(["messages","message"], 1000,
-			 *      function(i, messages){
-			 *       return {
-			 *         subject: "This is message "+i,
-			 *         body: "Here is some text for this message",
-			 *         date: Math.floor( new Date().getTime() ),
-			 *         parentId : i < 100 ? null : Math.floor(Math.random()*i)
-			 *       }
-			 *     })
-			 *     //uses the message fixture to return messages limited by
-			 *     // offset, limit, order, etc.
-			 *     can.ajax({
-			 *       url: "messages",
-			 *       data: {
-			 *          offset: 100,
-			 *          limit: 50,
-			 *          order: ["date ASC"],
-			 *          parentId: 5},
-			 *        },
-			 *        fixture: "-messages",
-			 *        success: function( messages ) {  ... }
-			 *     });
-			 *
-			 * ## With can.Model
-			 *
-			 * `can.fixture.make` returns a model store that offers `findAll`, `findOne`, `create`,
-			 * `update` and `destroy` fixture functions you can map to a [can.Model] Ajax request.
-			 * Consider a model like this:
-			 *
-			 *      
-			 *
-			 * And an unnamed generated fixture like this:
-			 *
-			 *      var store = can.fixture.make(100, function(i) {
-			 *          return {
-			 *              id : i,
-			 *              name : 'Todo ' + i
-			 *          }
-			 *      });
-			 *
-			 * You can map can.Model requests using the return value of `can.fixture.make`:
-			 *
-
-			 *
-			 * @param {Array|String} types An array of the fixture names or the singular fixture name.
-			 * If an array, the first item is the plural fixture name (prefixed with -) and the second
-			 * item is the singular name.  If a string, it's assumed to be the singular fixture name.  Make
-			 * will simply add s to the end of it for the plural name. If this parameter is not an array
-			 * or a String the fixture won't be added and only return the generator object.
-			 * @param {Number} count the number of items to create
-			 * @param {Function} make a function that will return the JavaScript object. The
-			 * make function is called back with the id and the current array of items.
-			 * @param {Function} filter (optional) a function used to further filter results. Used for to simulate
-			 * server params like searchText or startDate.
-			 * The function should return true if the item passes the filter,
-			 * false otherwise. For example:
-			 *
-			 *
-			 *     function(item, settings){
-			 *       if(settings.data.searchText){
-			 *            var regex = new RegExp("^"+settings.data.searchText)
-			 *           return regex.test(item.name);
-			 *       }
-			 *     }
-			 *
-			 * @return {Object} A generator object providing fixture functions for *findAll*, *findOne*, *create*,
-			 * *update* and *destroy*.
-			 */
-			var items = [], // TODO: change this to a hash
-				findOne = function (id) {
-					for (var i = 0; i < items.length; i++) {
-						if (id == items[i].id) {
-							return items[i];
-						}
-					}
-				},
-				methods = {};
-
-			if (typeof types === "string") {
-				types = [types + "s", types ]
-			} else if (!can.isArray(types)) {
-				filter = make;
-				make = count;
-				count = types;
-			}
-
-			// make all items
-			can.extend(methods, {
-				/**
-				 * @function can.fixture.store.findAll
-				 * @parent can.fixture.store
-				 * 
-				 * `store.findAll(request)` simulates a request to 
-				 * get a list items from the server. It supports the
-				 * following params:
-				 * 
-				 *  - order - `order=name ASC` 
-				 *  - group - `group=name`
-				 *  - limit - `limit=20`
-				 *  - offset - `offset=60`
-				 *  - id filtering - `ownerId=5`
-				 * 
-				 * 
-				 * @param {AjaxRequest} request The ajax request object 
-				 * that contains a data object like:
-				 * 
-				 *     var response = store.findAll({
-				 *       data: {
-				 *         order: "name ASC"    
-				 *       }
-				 *     });
-				 * 
-				 * The `data` object may include any of the following properties
-				 * 
-				 * #### order
-				 * 
-				 * #### group
-				 * 
-				 * #### limit
-				 * 
-				 * #### offset
-				 * 
-				 * #### id properties
-				 * 
-				 * @return {Object} a response object like:
-				 * 
-				 *     {
-				 *       count: 1000,
-				 *       limit: 20,
-				 *       offset: 60,
-				 *       data: [item1, item2, ...]
-				 *     }
-				 * 
-				 * where:
-				 * 
-				 * - count - the number of items that match any filtering 
-				 *   before limit and offset is taken into account
-				 * - offset - the offset passed
-				 * - limit - the limit passed
-				 * - data - an array of JS objects with each item's properties
-				 * 
-				 */
-				findAll: function (request) {
-					//copy array of items
-					var retArr = items.slice(0);
-					request.data = request.data || {};
-					//sort using order
-					//order looks like ["age ASC","gender DESC"]
-					can.each((request.data.order || []).slice(0).reverse(), function (name) {
-						var split = name.split(" ");
-						retArr = retArr.sort(function (a, b) {
-							if (split[1].toUpperCase() !== "ASC") {
-								if (a[split[0]] < b[split[0]]) {
-									return 1;
-								} else if (a[split[0]] == b[split[0]]) {
-									return 0
-								} else {
-									return -1;
-								}
-							}
-							else {
-								if (a[split[0]] < b[split[0]]) {
-									return -1;
-								} else if (a[split[0]] == b[split[0]]) {
-									return 0
-								} else {
-									return 1;
-								}
-							}
-						});
-					});
-
-					//group is just like a sort
-					can.each((request.data.group || []).slice(0).reverse(), function (name) {
-						var split = name.split(" ");
-						retArr = retArr.sort(function (a, b) {
-							return a[split[0]] > b[split[0]];
-						});
-					});
+            return id;
+        };
 
 
-					var offset = parseInt(request.data.offset, 10) || 0,
-						limit = parseInt(request.data.limit, 10) || (items.length - offset),
-						i = 0;
+    var $fixture = can.fixture = function (settings, fixture) {
+        // if we provide a fixture ...
+        if (fixture !== undefined) {
+            if (typeof settings == 'string') {
+                // handle url strings
+                var matches = settings.match(/(GET|POST|PUT|DELETE) (.+)/i);
+                if (!matches) {
+                    settings = {
+                        url : settings
+                    };
+                } else {
+                    settings = {
+                        url : matches[2],
+                        type : matches[1]
+                    };
+                }
 
-					//filter results if someone added an attr like parentId
-					for (var param in request.data) {
-						i = 0;
-						if (request.data[param] !== undefined && // don't do this if the value of the param is null (ignore it)
-							(param.indexOf("Id") != -1 || param.indexOf("_id") != -1)) {
-							while (i < retArr.length) {
-								if (request.data[param] != retArr[i][param]) {
-									retArr.splice(i, 1);
-								} else {
-									i++;
-								}
-							}
-						}
-					}
+            }
 
-					if (filter) {
-						i = 0;
-						while (i < retArr.length) {
-							if (!filter(retArr[i], request)) {
-								retArr.splice(i, 1);
-							} else {
-								i++;
-							}
-						}
-					}
+            //handle removing.  An exact match if fixture was provided, otherwise, anything similar
+            var index = find(settings, !!fixture);
+            if (index > -1) {
+                overwrites.splice(index, 1)
+            }
+            if (fixture == null) {
+                return
+            }
+            settings.fixture = fixture;
+            overwrites.push(settings)
+        } else {
+            can.each(settings, function(fixture, url){
+                $fixture(url, fixture);
+            })
+        }
+    };
+    var replacer = can.replacer;
 
-					//return data spliced with limit and offset
-					return {
-						"count" : retArr.length,
-						"limit" : request.data.limit,
-						"offset" : request.data.offset,
-						"data" : retArr.slice(offset, offset + limit)
-					};
-				},
-				/**
-				 * @function can.fixture.store.findOne
-				 * @parent can.fixture.store
-				 * 
-				 * `store.findOne(request, response(item))` simulates a request to 
-				 * get a single item from the server by id.
-				 * 
-				 *     todosStore.findOne({
-				 *       url: "/todos/5"
-				 *     }, function(todo){
-				 *       
-				 *     });
-				 * 
-				 */
-				findOne : function (request, response) {
-					var item = findOne(getId(request));
-					response(item ? item : undefined);
-				},
-				/**
-				 * @function can.fixture.store.update
-				 * @parent can.fixture.store
-				 * 
-				 * `store.update(request, response(props,headers))` simulates
-				 * a request to update an items properties on a server.
-				 * 
-				 *     todosStore.update({
-				 *       url: "/todos/5"
-				 *     }, function(props, headers){
-				 *       props.id //-> 5
-				 *       headers.location // "todos/5"
-				 *     });
-				 */
-				update: function (request,response) {
-					var id = getId(request);
+    can.extend(can.fixture, {
+        // given ajax settings, find an overwrite
+        _similar : function (settings, overwrite, exact) {
+            if (exact) {
+                return can.Object.same(settings, overwrite, {fixture : null})
+            } else {
+                return can.Object.subset(settings, overwrite, can.fixture._compare)
+            }
+        },
+        _compare : {
+            url : function (a, b) {
+                return !!$fixture._getData(b, a)
+            },
+            fixture : null,
+            type : "i"
+        },
+        // gets data from a url like "/todo/{id}" given "todo/5"
+        _getData : function (fixtureUrl, url) {
+            var order = [],
+                fixtureUrlAdjusted = fixtureUrl.replace('.', '\\.').replace('?', '\\?'),
+                res = new RegExp(fixtureUrlAdjusted.replace(replacer, function (whole, part) {
+                    order.push(part)
+                    return "([^\/]+)"
+                }) + "$").exec(url),
+                data = {};
 
-					// TODO: make it work with non-linear ids ..
-					can.extend(findOne(id), request.data);
-					response({
-						id : getId(request)
-					}, {
-						location : request.url || "/" + getId(request)
-					});
-				},
-				/**
-				 * @function can.fixture.store.destroy
-				 * @parent can.fixture.store
-				 * 
-				 * `store.destroy(request, response())` simulates
-				 * a request to destroy an item from the server.
-				 * 
-				 *     todosStore.destroy({
-				 *       url: "/todos/5"
-				 *     }, function(){});
-				 */
-				destroy: function (request) {
-					var id = getId(request);
-					for (var i = 0; i < items.length; i++) {
-						if (items[i].id == id) {
-							items.splice(i, 1);
-							break;
-						}
-					}
+            if (!res) {
+                return null;
+            }
+            res.shift();
+            can.each(order, function (name) {
+                data[name] = res.shift()
+            })
+            return data;
+        },
 
-					// TODO: make it work with non-linear ids ..
-					can.extend(findOne(id) || {}, request.data);
-					return {};
-				},
-				/**
-				 * @function can.fixture.store.create
-				 * @parent can.fixture.store
-				 * 
-				 * `store.create(request, response)`
-				 */
-				create: function (settings, response) {
-					var item = make(items.length, items);
+        store: function (types, count, make, filter) {
+            /**
+             * @function can.fixture.store
+             * @parent can.fixture
+             *
+             * `can.fixture.store(count, generator(index,items))` is used
+             * to create a store of items that can simulate a full CRUD service. Furthermore,
+             * the store can do filtering, grouping, sorting, and paging.
+             * 
+             * ## Basic Example
+             * 
+             * The following creates a store for 100 todos:
+             * 
+             *     var todoStore = can.fixture.store(100, function(i){
+             *       return {
+             *         id: i,
+             *         name: "todo number "+i,
+             *         description: "a description of some todo",
+             *         ownerId: can.fixture.rand(10)
+             *       }
+             *     })
+             * 
+             * `todoStore`'s methods can be used for the response to a REST service like:
+             * 
+             *      can.fixture({
+             *        'GET /todos':         todoStore.findAll,
+             *        'GET /todos/{id}':    todoStore.findOne,
+             *        'POST /todos':        todoStore.create,
+             *        'PUT /todos/{id}':    todoStore.update,
+             *        'DELETE /todos/{id}': todoStore.destroy
+             *      });
+             * 
+             * These fixtures, combined with a [can.Model] that connects to these services like:
+             * 
+             *      var Todo = can.Model({
+             *          findAll : 'GET /todos',
+             *          findOne : 'GET /todos/{id}',
+             *          create  : 'POST /todos',
+             *          update  : 'PUT /todos/{id}',
+             *          destroy : 'DELETE /todos/{id}'
+             *      }, {});
+             * 
+             * ... allows you to simulate requests for all of owner 5's todos like:
+             * 
+             *     Todo.findAll({ownerId: 5}, function(todos){
+             *             
+             *     })
+             * 
+             * ## Simulated Service
+             * 
+             * `can.fixture.store`'s [can.fixture.store.findAll findAll],
+             * [can.fixture.store.findOne findOne],
+             * [can.fixture.store.findOne create],
+             * [can.fixture.store.findOne update], and
+             * [can.fixture.store.findOne destroy] methods are used to
+             * simulate a REST service that 
+             * 
+             * 
+             * ## With can.ajax
+             *
+             *     //makes a nested list of messages
+             *     can.fixture.store(["messages","message"], 1000,
+             *      function(i, messages){
+             *       return {
+             *         subject: "This is message "+i,
+             *         body: "Here is some text for this message",
+             *         date: Math.floor( new Date().getTime() ),
+             *         parentId : i < 100 ? null : Math.floor(Math.random()*i)
+             *       }
+             *     })
+             *     //uses the message fixture to return messages limited by
+             *     // offset, limit, order, etc.
+             *     can.ajax({
+             *       url: "messages",
+             *       data: {
+             *          offset: 100,
+             *          limit: 50,
+             *          order: ["date ASC"],
+             *          parentId: 5},
+             *        },
+             *        fixture: "-messages",
+             *        success: function( messages ) {  ... }
+             *     });
+             *
+             * ## With can.Model
+             *
+             * `can.fixture.make` returns a model store that offers `findAll`, `findOne`, `create`,
+             * `update` and `destroy` fixture functions you can map to a [can.Model] Ajax request.
+             * Consider a model like this:
+             *
+             *      
+             *
+             * And an unnamed generated fixture like this:
+             *
+             *      var store = can.fixture.make(100, function(i) {
+             *          return {
+             *              id : i,
+             *              name : 'Todo ' + i
+             *          }
+             *      });
+             *
+             * You can map can.Model requests using the return value of `can.fixture.make`:
+             *
 
-					can.extend(item, settings.data);
+             *
+             * @param {Array|String} types An array of the fixture names or the singular fixture name.
+             * If an array, the first item is the plural fixture name (prefixed with -) and the second
+             * item is the singular name.  If a string, it's assumed to be the singular fixture name.  Make
+             * will simply add s to the end of it for the plural name. If this parameter is not an array
+             * or a String the fixture won't be added and only return the generator object.
+             * @param {Number} count the number of items to create
+             * @param {Function} make a function that will return the JavaScript object. The
+             * make function is called back with the id and the current array of items.
+             * @param {Function} filter (optional) a function used to further filter results. Used for to simulate
+             * server params like searchText or startDate.
+             * The function should return true if the item passes the filter,
+             * false otherwise. For example:
+             *
+             *
+             *     function(item, settings){
+             *       if(settings.data.searchText){
+             *            var regex = new RegExp("^"+settings.data.searchText)
+             *           return regex.test(item.name);
+             *       }
+             *     }
+             *
+             * @return {Object} A generator object providing fixture functions for *findAll*, *findOne*, *create*,
+             * *update* and *destroy*.
+             */
+            var items = [], // TODO: change this to a hash
+                findOne = function (id) {
+                    for (var i = 0; i < items.length; i++) {
+                        if (id == items[i].id) {
+                            return items[i];
+                        }
+                    }
+                },
+                methods = {};
 
-					if (!item.id) {
-						item.id = items.length;
-					}
+            if (typeof types === "string") {
+                types = [types + "s", types ]
+            } else if (!can.isArray(types)) {
+                filter = make;
+                make = count;
+                count = types;
+            }
 
-					items.push(item);
-					var id = item.id || parseInt(Math.random() * 100000, 10);
-					response({
-						id : id
-					}, {
-						location : settings.url + "/" + id
-					})
-				}
-			});
+            // make all items
+            can.extend(methods, {
+                /**
+                 * @function can.fixture.store.findAll
+                 * @parent can.fixture.store
+                 * 
+                 * `store.findAll(request)` simulates a request to 
+                 * get a list items from the server. It supports the
+                 * following params:
+                 * 
+                 *  - order - `order=name ASC` 
+                 *  - group - `group=name`
+                 *  - limit - `limit=20`
+                 *  - offset - `offset=60`
+                 *  - id filtering - `ownerId=5`
+                 * 
+                 * 
+                 * @param {AjaxRequest} request The ajax request object 
+                 * that contains a data object like:
+                 * 
+                 *     var response = store.findAll({
+                 *       data: {
+                 *         order: "name ASC"    
+                 *       }
+                 *     });
+                 * 
+                 * The `data` object may include any of the following properties
+                 * 
+                 * #### order
+                 * 
+                 * #### group
+                 * 
+                 * #### limit
+                 * 
+                 * #### offset
+                 * 
+                 * #### id properties
+                 * 
+                 * @return {Object} a response object like:
+                 * 
+                 *     {
+                 *       count: 1000,
+                 *       limit: 20,
+                 *       offset: 60,
+                 *       data: [item1, item2, ...]
+                 *     }
+                 * 
+                 * where:
+                 * 
+                 * - count - the number of items that match any filtering 
+                 *   before limit and offset is taken into account
+                 * - offset - the offset passed
+                 * - limit - the limit passed
+                 * - data - an array of JS objects with each item's properties
+                 * 
+                 */
+                findAll: function (request) {
+                    //copy array of items
+                    var retArr = items.slice(0);
+                    request.data = request.data || {};
+                    //sort using order
+                    //order looks like ["age ASC","gender DESC"]
+                    can.each((request.data.order || []).slice(0).reverse(), function (name) {
+                        var split = name.split(" ");
+                        retArr = retArr.sort(function (a, b) {
+                            if (split[1].toUpperCase() !== "ASC") {
+                                if (a[split[0]] < b[split[0]]) {
+                                    return 1;
+                                } else if (a[split[0]] == b[split[0]]) {
+                                    return 0
+                                } else {
+                                    return -1;
+                                }
+                            }
+                            else {
+                                if (a[split[0]] < b[split[0]]) {
+                                    return -1;
+                                } else if (a[split[0]] == b[split[0]]) {
+                                    return 0
+                                } else {
+                                    return 1;
+                                }
+                            }
+                        });
+                    });
 
-			var reset = function(){
-				items = [];
-				for (var i = 0; i < (count); i++) {
-					//call back provided make
-					var item = make(i, items);
-	
-					if (!item.id) {
-						item.id = i;
-					}
-					items.push(item);
-				}
-				if(can.isArray(types)) {
-					can.fixture["~" + types[0]] = items;
-					can.fixture["-" + types[0]] = methods.findAll;
-					can.fixture["-" + types[1]] = methods.findOne;
-					can.fixture["-" + types[1]+"Update"] = methods.update;
-					can.fixture["-" + types[1]+"Destroy"] = methods.destroy;
-					can.fixture["-" + types[1]+"Create"] = methods.create;
-				}
-			}
-			reset()
-			// if we have types given add them to can.fixture
-			
+                    //group is just like a sort
+                    can.each((request.data.group || []).slice(0).reverse(), function (name) {
+                        var split = name.split(" ");
+                        retArr = retArr.sort(function (a, b) {
+                            return a[split[0]] > b[split[0]];
+                        });
+                    });
 
-			return can.extend({
-				getId: getId,
-				/**
-				 * @function can.fixture.store.find
-				 * @parent can.fixture.store
-				 * 
-				 * `store.find(settings)`
-				 */
-				find: function(settings){
-					return findOne( getId(settings) );
-				},
-				/**
-				 * @function can.fixture.store.reset
-				 * @parent can.fixture.store
-				 * 
-				 * `store.reset()` resets the store to contain its 
-				 * original data. This is useful for making tests that
-				 * operate independently.
-				 * 
-				 * ## Basic Example
-				 * 
-				 * After creating a `taskStore` and hooking it up to a 
-				 * `task` model in the "Basic Example" in [can.fixture.store store's docs],
-				 * a test might create several tasks like:
-				 * 
-				 *     new Task({name: "Take out trash", ownerId: 5}).save();
-				 * 
-				 * But, another test might need to operate on the original set of
-				 * tasks created by `can.fixture.store`. Reset the task store with:
-				 * 
-				 *     taskStore.reset()
-				 * 
-				 */
-				reset: reset
-			}, methods);
-		},
-		/**
-		 * @function can.fixture.rand
-		 * @parent can.fixture
-		 *
-		 * `can.fixture.rand` creates random integers or random arrays of
-		 * other arrays.
-		 *
-		 * ## Examples
-		 *
-		 *     var rand = can.fixture.rand;
-		 *
-		 *     // get a random integer between 0 and 10 (inclusive)
-		 *     rand(11);
-		 *
-		 *     // get a random number between -5 and 5 (inclusive)
-		 *     rand(-5, 6);
-		 *
-		 *     // pick a random item from an array
-		 *     rand(["j","m","v","c"],1)[0]
-		 *
-		 *     // pick a random number of items from an array
-		 *     rand(["j","m","v","c"])
-		 *
-		 *     // pick 2 items from an array
-		 *     rand(["j","m","v","c"],2)
-		 *
-		 *     // pick between 2 and 3 items at random
-		 *     rand(["j","m","v","c"],2,3)
-		 *
-		 *
-		 * @param {Array|Number} arr An array of items to select from.
-		 * If a number is provided, a random number is returned.
-		 * If min and max are not provided, a random number of items are selected
-		 * from this array.
-		 * @param {Number} [min] If only min is provided, min items
-		 * are selected.
-		 * @param {Number} [max] If min and max are provided, a random number of
-		 * items between min and max (inclusive) is selected.
-		 */
-		rand : function (arr, min, max) {
-			if (typeof arr == 'number') {
-				if (typeof min == 'number') {
-					return arr + Math.floor(Math.random() * (min - arr));
-				} else {
-					return Math.floor(Math.random() * arr);
-				}
 
-			}
-			var rand = arguments.callee;
-			// get a random set
-			if (min === undefined) {
-				return rand(arr, rand(arr.length + 1))
-			}
-			// get a random selection of arr
-			var res = [];
-			arr = arr.slice(0);
-			// set max
-			if (!max) {
-				max = min;
-			}
-			//random max
-			max = min + Math.round(rand(max - min))
-			for (var i = 0; i < max; i++) {
-				res.push(arr.splice(rand(arr.length), 1)[0])
-			}
-			return res;
-		},
-		/**
-		 * @hide
-		 *
-		 * Use can.fixture.xhr to create an object that looks like an xhr object.
-		 *
-		 * ## Example
-		 *
-		 * The following example shows how the -restCreate fixture uses xhr to return
-		 * a simulated xhr object:
-		 * @codestart
-		 * "-restCreate" : function( settings, cbType ) {
-		 *   switch(cbType){
-		 *     case "success":
-		 *       return [
-		 *         {id: parseInt(Math.random()*1000)},
-		 *         "success",
-		 *         can.fixture.xhr()];
-		 *     case "complete":
-		 *       return [
-		 *         can.fixture.xhr({
-		 *           getResponseHeader: function() { 
-		 *             return settings.url+"/"+parseInt(Math.random()*1000);
-		 *           }
-		 *         }),
-		 *         "success"];
-		 *   }
-		 * }
-		 * @codeend
-		 * @param {Object} [xhr] properties that you want to overwrite
-		 * @return {Object} an object that looks like a successful XHR object.
-		 */
-		xhr : function (xhr) {
-			return can.extend({}, {
-				abort : can.noop,
-				getAllResponseHeaders : function () {
-					return "";
-				},
-				getResponseHeader : function () {
-					return "";
-				},
-				open : can.noop,
-				overrideMimeType : can.noop,
-				readyState : 4,
-				responseText : "",
-				responseXML : null,
-				send : can.noop,
-				setRequestHeader : can.noop,
-				status : 200,
-				statusText : "OK"
-			}, xhr);
-		},
-		/**
-		 * @attribute can.fixture.on
-		 * @parent can.fixture
-		 *
-		 * `can.fixture.on` lets you programatically turn off fixtures. This is mostly used for testing.
-		 *
-		 *     can.fixture.on = false
-		 *     Task.findAll({}, function(){
-		 *       can.fixture.on = true;
-		 *     })
-		 */
-		on : true
-	});
-	/**
-	 * @attribute can.fixture.delay
-	 * @parent can.fixture
-	 *
-	 * `can.fixture.delay` indicates the delay in milliseconds between an ajax request is made and
-	 * the success and complete handlers are called.  This only sets
-	 * functional synchronous fixtures that return a result. By default, the delay is 200ms.
-	 *
-	 * @codestart
-	 * steal('can/util/fixtures').then(function(){
-	 *   can.fixture.delay = 1000;
-	 * })
-	 * @codeend
-	 */
-	can.fixture.delay = 200;
+                    var offset = parseInt(request.data.offset, 10) || 0,
+                        limit = parseInt(request.data.limit, 10) || (items.length - offset),
+                        i = 0;
 
-	/**
-	 * @attribute can.fixture.rootUrl
-	 * @parent can.fixture
-	 *
-	 * `can.fixture.rootUrl` contains the root URL for fixtures to use.
-	 * If you are using StealJS it will use the Steal root
-	 * URL by default.
-	 */
-	can.fixture.rootUrl = getUrl('');
+                    //filter results if someone added an attr like parentId
+                    for (var param in request.data) {
+                        i = 0;
+                        if (request.data[param] !== undefined && // don't do this if the value of the param is null (ignore it)
+                            (param.indexOf("Id") != -1 || param.indexOf("_id") != -1)) {
+                            while (i < retArr.length) {
+                                if (request.data[param] != retArr[i][param]) {
+                                    retArr.splice(i, 1);
+                                } else {
+                                    i++;
+                                }
+                            }
+                        }
+                    }
 
-	can.fixture["-handleFunction"] = function (settings) {
-		if (typeof settings.fixture === "string" && can.fixture[settings.fixture]) {
-			settings.fixture = can.fixture[settings.fixture];
-		}
-		if (typeof settings.fixture == "function") {
-			setTimeout(function () {
-				if (settings.success) {
-					settings.success.apply(null, settings.fixture(settings, "success"));
-				}
-				if (settings.complete) {
-					settings.complete.apply(null, settings.fixture(settings, "complete"));
-				}
-			}, can.fixture.delay);
-			return true;
-		}
-		return false;
-	};
+                    if (filter) {
+                        i = 0;
+                        while (i < retArr.length) {
+                            if (!filter(retArr[i], request)) {
+                                retArr.splice(i, 1);
+                            } else {
+                                i++;
+                            }
+                        }
+                    }
 
-	//Expose this for fixture debugging
-	can.fixture.overwrites = overwrites;
-	can.fixture.make = can.fixture.store;
-//	return can.fixture;
+                    //return data spliced with limit and offset
+                    return {
+                        "count" : retArr.length,
+                        "limit" : request.data.limit,
+                        "offset" : request.data.offset,
+                        "data" : retArr.slice(offset, offset + limit)
+                    };
+                },
+                /**
+                 * @function can.fixture.store.findOne
+                 * @parent can.fixture.store
+                 * 
+                 * `store.findOne(request, response(item))` simulates a request to 
+                 * get a single item from the server by id.
+                 * 
+                 *     todosStore.findOne({
+                 *       url: "/todos/5"
+                 *     }, function(todo){
+                 *       
+                 *     });
+                 * 
+                 */
+                findOne : function (request, response) {
+                    var item = findOne(getId(request));
+                    response(item ? item : undefined);
+                },
+                /**
+                 * @function can.fixture.store.update
+                 * @parent can.fixture.store
+                 * 
+                 * `store.update(request, response(props,headers))` simulates
+                 * a request to update an items properties on a server.
+                 * 
+                 *     todosStore.update({
+                 *       url: "/todos/5"
+                 *     }, function(props, headers){
+                 *       props.id //-> 5
+                 *       headers.location // "todos/5"
+                 *     });
+                 */
+                update: function (request,response) {
+                    var id = getId(request);
+
+                    // TODO: make it work with non-linear ids ..
+                    can.extend(findOne(id), request.data);
+                    response({
+                        id : getId(request)
+                    }, {
+                        location : request.url || "/" + getId(request)
+                    });
+                },
+                /**
+                 * @function can.fixture.store.destroy
+                 * @parent can.fixture.store
+                 * 
+                 * `store.destroy(request, response())` simulates
+                 * a request to destroy an item from the server.
+                 * 
+                 *     todosStore.destroy({
+                 *       url: "/todos/5"
+                 *     }, function(){});
+                 */
+                destroy: function (request) {
+                    var id = getId(request);
+                    for (var i = 0; i < items.length; i++) {
+                        if (items[i].id == id) {
+                            items.splice(i, 1);
+                            break;
+                        }
+                    }
+
+                    // TODO: make it work with non-linear ids ..
+                    can.extend(findOne(id) || {}, request.data);
+                    return {};
+                },
+                /**
+                 * @function can.fixture.store.create
+                 * @parent can.fixture.store
+                 * 
+                 * `store.create(request, response)`
+                 */
+                create: function (settings, response) {
+                    var item = make(items.length, items);
+
+                    can.extend(item, settings.data);
+
+                    if (!item.id) {
+                        item.id = items.length;
+                    }
+
+                    items.push(item);
+                    var id = item.id || parseInt(Math.random() * 100000, 10);
+                    response({
+                        id : id
+                    }, {
+                        location : settings.url + "/" + id
+                    })
+                }
+            });
+
+            var reset = function(){
+                items = [];
+                for (var i = 0; i < (count); i++) {
+                    //call back provided make
+                    var item = make(i, items);
+    
+                    if (!item.id) {
+                        item.id = i;
+                    }
+                    items.push(item);
+                }
+                if(can.isArray(types)) {
+                    can.fixture["~" + types[0]] = items;
+                    can.fixture["-" + types[0]] = methods.findAll;
+                    can.fixture["-" + types[1]] = methods.findOne;
+                    can.fixture["-" + types[1]+"Update"] = methods.update;
+                    can.fixture["-" + types[1]+"Destroy"] = methods.destroy;
+                    can.fixture["-" + types[1]+"Create"] = methods.create;
+                }
+            }
+            reset()
+            // if we have types given add them to can.fixture
+            
+
+            return can.extend({
+                getId: getId,
+                /**
+                 * @function can.fixture.store.find
+                 * @parent can.fixture.store
+                 * 
+                 * `store.find(settings)`
+                 */
+                find: function(settings){
+                    return findOne( getId(settings) );
+                },
+                /**
+                 * @function can.fixture.store.reset
+                 * @parent can.fixture.store
+                 * 
+                 * `store.reset()` resets the store to contain its 
+                 * original data. This is useful for making tests that
+                 * operate independently.
+                 * 
+                 * ## Basic Example
+                 * 
+                 * After creating a `taskStore` and hooking it up to a 
+                 * `task` model in the "Basic Example" in [can.fixture.store store's docs],
+                 * a test might create several tasks like:
+                 * 
+                 *     new Task({name: "Take out trash", ownerId: 5}).save();
+                 * 
+                 * But, another test might need to operate on the original set of
+                 * tasks created by `can.fixture.store`. Reset the task store with:
+                 * 
+                 *     taskStore.reset()
+                 * 
+                 */
+                reset: reset
+            }, methods);
+        },
+        /**
+         * @function can.fixture.rand
+         * @parent can.fixture
+         *
+         * `can.fixture.rand` creates random integers or random arrays of
+         * other arrays.
+         *
+         * ## Examples
+         *
+         *     var rand = can.fixture.rand;
+         *
+         *     // get a random integer between 0 and 10 (inclusive)
+         *     rand(11);
+         *
+         *     // get a random number between -5 and 5 (inclusive)
+         *     rand(-5, 6);
+         *
+         *     // pick a random item from an array
+         *     rand(["j","m","v","c"],1)[0]
+         *
+         *     // pick a random number of items from an array
+         *     rand(["j","m","v","c"])
+         *
+         *     // pick 2 items from an array
+         *     rand(["j","m","v","c"],2)
+         *
+         *     // pick between 2 and 3 items at random
+         *     rand(["j","m","v","c"],2,3)
+         *
+         *
+         * @param {Array|Number} arr An array of items to select from.
+         * If a number is provided, a random number is returned.
+         * If min and max are not provided, a random number of items are selected
+         * from this array.
+         * @param {Number} [min] If only min is provided, min items
+         * are selected.
+         * @param {Number} [max] If min and max are provided, a random number of
+         * items between min and max (inclusive) is selected.
+         */
+        rand : function (arr, min, max) {
+            if (typeof arr == 'number') {
+                if (typeof min == 'number') {
+                    return arr + Math.floor(Math.random() * (min - arr));
+                } else {
+                    return Math.floor(Math.random() * arr);
+                }
+
+            }
+            var rand = arguments.callee;
+            // get a random set
+            if (min === undefined) {
+                return rand(arr, rand(arr.length + 1))
+            }
+            // get a random selection of arr
+            var res = [];
+            arr = arr.slice(0);
+            // set max
+            if (!max) {
+                max = min;
+            }
+            //random max
+            max = min + Math.round(rand(max - min))
+            for (var i = 0; i < max; i++) {
+                res.push(arr.splice(rand(arr.length), 1)[0])
+            }
+            return res;
+        },
+        /**
+         * @hide
+         *
+         * Use can.fixture.xhr to create an object that looks like an xhr object.
+         *
+         * ## Example
+         *
+         * The following example shows how the -restCreate fixture uses xhr to return
+         * a simulated xhr object:
+         * @codestart
+         * "-restCreate" : function( settings, cbType ) {
+         *   switch(cbType){
+         *     case "success":
+         *       return [
+         *         {id: parseInt(Math.random()*1000)},
+         *         "success",
+         *         can.fixture.xhr()];
+         *     case "complete":
+         *       return [
+         *         can.fixture.xhr({
+         *           getResponseHeader: function() { 
+         *             return settings.url+"/"+parseInt(Math.random()*1000);
+         *           }
+         *         }),
+         *         "success"];
+         *   }
+         * }
+         * @codeend
+         * @param {Object} [xhr] properties that you want to overwrite
+         * @return {Object} an object that looks like a successful XHR object.
+         */
+        xhr : function (xhr) {
+            return can.extend({}, {
+                abort : can.noop,
+                getAllResponseHeaders : function () {
+                    return "";
+                },
+                getResponseHeader : function () {
+                    return "";
+                },
+                open : can.noop,
+                overrideMimeType : can.noop,
+                readyState : 4,
+                responseText : "",
+                responseXML : null,
+                send : can.noop,
+                setRequestHeader : can.noop,
+                status : 200,
+                statusText : "OK"
+            }, xhr);
+        },
+        /**
+         * @attribute can.fixture.on
+         * @parent can.fixture
+         *
+         * `can.fixture.on` lets you programatically turn off fixtures. This is mostly used for testing.
+         *
+         *     can.fixture.on = false
+         *     Task.findAll({}, function(){
+         *       can.fixture.on = true;
+         *     })
+         */
+        on : true
+    });
+    /**
+     * @attribute can.fixture.delay
+     * @parent can.fixture
+     *
+     * `can.fixture.delay` indicates the delay in milliseconds between an ajax request is made and
+     * the success and complete handlers are called.  This only sets
+     * functional synchronous fixtures that return a result. By default, the delay is 200ms.
+     *
+     * @codestart
+     * steal('can/util/fixtures').then(function(){
+     *   can.fixture.delay = 1000;
+     * })
+     * @codeend
+     */
+    can.fixture.delay = 200;
+
+    /**
+     * @attribute can.fixture.rootUrl
+     * @parent can.fixture
+     *
+     * `can.fixture.rootUrl` contains the root URL for fixtures to use.
+     * If you are using StealJS it will use the Steal root
+     * URL by default.
+     */
+    can.fixture.rootUrl = getUrl('');
+
+    can.fixture["-handleFunction"] = function (settings) {
+        if (typeof settings.fixture === "string" && can.fixture[settings.fixture]) {
+            settings.fixture = can.fixture[settings.fixture];
+        }
+        if (typeof settings.fixture == "function") {
+            setTimeout(function () {
+                if (settings.success) {
+                    settings.success.apply(null, settings.fixture(settings, "success"));
+                }
+                if (settings.complete) {
+                    settings.complete.apply(null, settings.fixture(settings, "complete"));
+                }
+            }, can.fixture.delay);
+            return true;
+        }
+        return false;
+    };
+
+    //Expose this for fixture debugging
+    can.fixture.overwrites = overwrites;
+    can.fixture.make = can.fixture.store;
+//  return can.fixture;
 //});
 
 // Adapted from http://webdesignerwall.com/tutorials/html5-grayscale-image-hover
 
 var grayscale = function(src) {
-	var canvas = document.createElement('canvas'),
-		ctx = canvas.getContext('2d'),
-		imgObj = new Image();
-	
-	imgObj.src = src;
-	canvas.width = imgObj.width;
-	canvas.height = imgObj.height; 
-	
-	ctx.drawImage(imgObj, 0, 0); 
-	var imgPixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    var canvas = document.createElement('canvas'),
+        ctx = canvas.getContext('2d'),
+        imgObj = new Image();
+    
+    imgObj.src = src;
+    canvas.width = imgObj.width;
+    canvas.height = imgObj.height; 
+    
+    ctx.drawImage(imgObj, 0, 0); 
+    var imgPixels = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
-	for(var y = 0; y < imgPixels.height; y++){
-		for(var x = 0; x < imgPixels.width; x++){
-			var i = (y * 4) * imgPixels.width + x * 4;
-			var avg = (imgPixels.data[i] + imgPixels.data[i + 1] + imgPixels.data[i + 2]) / 3;
-			imgPixels.data[i] = avg; 
-			imgPixels.data[i + 1] = avg; 
-			imgPixels.data[i + 2] = avg;
-		}
-	}
-	
-	ctx.putImageData(imgPixels, 0, 0, 0, 0, imgPixels.width, imgPixels.height);
-	return canvas.toDataURL();
+    for(var y = 0; y < imgPixels.height; y++){
+        for(var x = 0; x < imgPixels.width; x++){
+            var i = (y * 4) * imgPixels.width + x * 4;
+            var avg = (imgPixels.data[i] + imgPixels.data[i + 1] + imgPixels.data[i + 2]) / 3;
+            imgPixels.data[i] = avg; 
+            imgPixels.data[i + 1] = avg; 
+            imgPixels.data[i + 2] = avg;
+        }
+    }
+    
+    ctx.putImageData(imgPixels, 0, 0, 0, 0, imgPixels.width, imgPixels.height);
+    return canvas.toDataURL();
 };
 
 window.Grayscale = function(elements, fadeDuration) {
-	elements.each(function() {
-		var el = $(this);
+    elements.each(function() {
+        var el = $(this);
 
-		// wrap the image in a wrapper and clone it, adding the clone to the wrapper
-		el.css({"position":"absolute"})
-		  .wrap("<div class='img_wrapper' style='display: inline-block'>")
-		  .clone()
-		  .addClass('img_grayscale')
-		  .css({
-		  	'position': "absolute",
-		  	'z-index': "998",
-		  	'opacity': "0"
-		  })
-		  .insertBefore(el)
-		  .queue(function(){
-			el.parent().css({
-				'width': this.width,
-				'height': this.height
-			}).end()
-			.dequeue();
-		});
+        // wrap the image in a wrapper and clone it, adding the clone to the wrapper
+        el.css({"position":"absolute"})
+          .wrap("<div class='img_wrapper' style='display: inline-block'>")
+          .clone()
+          .addClass('img_grayscale')
+          .css({
+            'position': "absolute",
+            'z-index': "998",
+            'opacity': "0"
+          })
+          .insertBefore(el)
+          .queue(function(){
+            el.parent().css({
+                'width': this.width,
+                'height': this.height
+            }).end()
+            .dequeue();
+        });
 
-		// replace the original with a greyscale version
-		this.src = grayscale(this.src);
-	});
+        // replace the original with a greyscale version
+        this.src = grayscale(this.src);
+    });
 
-	elements.parent().mouseover(function() {
-		// fade in color image
-		$(this).find('img:first').stop().animate({opacity:1}, fadeDuration);
-	});
+    elements.parent().mouseover(function() {
+        // fade in color image
+        $(this).find('img:first').stop().animate({opacity:1}, fadeDuration);
+    });
 };
 
 $(function() {
-	$(document.body).on('mouseout', '.img_grayscale', function(){
-		// fade out color image
-		$(this).stop().animate({opacity:0}, 300);
-	});
+    $(document.body).on('mouseout', '.img_grayscale', function(){
+        // fade out color image
+        $(this).stop().animate({opacity:0}, 300);
+    });
 });
-	    
+        
 // moment.js
 // version : 2.0.0
 // author : Tim Wood
@@ -6005,2057 +6005,2115 @@ $(function() {
 
 (function (undefined) {
 
-	/************************************
-	 Constants
-	 ************************************/
-
-	var moment,
-		VERSION = "2.0.0",
-		round = Math.round, i,
-	// internal storage for language config files
-		languages = {},
-
-	// check for nodeJS
-		hasModule = (typeof module !== 'undefined' && module.exports),
-
-	// ASP.NET json date format regex
-		aspNetJsonRegex = /^\/?Date\((\-?\d+)/i,
-
-	// format tokens
-		formattingTokens = /(\[[^\[]*\])|(\\)?(Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|YYYYY|YYYY|YY|a|A|hh?|HH?|mm?|ss?|SS?S?|X|zz?|ZZ?|.)/g,
-		localFormattingTokens = /(\[[^\[]*\])|(\\)?(LT|LL?L?L?|l{1,4})/g,
-
-	// parsing tokens
-		parseMultipleFormatChunker = /([0-9a-zA-Z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)/gi,
-
-	// parsing token regexes
-		parseTokenOneOrTwoDigits = /\d\d?/, // 0 - 99
-		parseTokenOneToThreeDigits = /\d{1,3}/, // 0 - 999
-		parseTokenThreeDigits = /\d{3}/, // 000 - 999
-		parseTokenFourDigits = /\d{1,4}/, // 0 - 9999
-		parseTokenSixDigits = /[+\-]?\d{1,6}/, // -999,999 - 999,999
-		parseTokenWord = /[0-9]*[a-z\u00A0-\u05FF\u0700-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+|[\u0600-\u06FF]+\s*?[\u0600-\u06FF]+/i, // any word (or two) characters or numbers including two word month in arabic.
-		parseTokenTimezone = /Z|[\+\-]\d\d:?\d\d/i, // +00:00 -00:00 +0000 -0000 or Z
-		parseTokenT = /T/i, // T (ISO seperator)
-		parseTokenTimestampMs = /[\+\-]?\d+(\.\d{1,3})?/, // 123456789 123456789.123
-
-	// preliminary iso regex
-	// 0000-00-00 + T + 00 or 00:00 or 00:00:00 or 00:00:00.000 + +00:00 or +0000
-		isoRegex = /^\s*\d{4}-\d\d-\d\d((T| )(\d\d(:\d\d(:\d\d(\.\d\d?\d?)?)?)?)?([\+\-]\d\d:?\d\d)?)?/,
-		isoFormat = 'YYYY-MM-DDTHH:mm:ssZ',
-
-	// iso time formats and regexes
-		isoTimes = [
-			['HH:mm:ss.S', /(T| )\d\d:\d\d:\d\d\.\d{1,3}/],
-			['HH:mm:ss', /(T| )\d\d:\d\d:\d\d/],
-			['HH:mm', /(T| )\d\d:\d\d/],
-			['HH', /(T| )\d\d/]
-		],
-
-	// timezone chunker "+10:00" > ["10", "00"] or "-1530" > ["-15", "30"]
-		parseTimezoneChunker = /([\+\-]|\d\d)/gi,
-
-	// getter and setter names
-		proxyGettersAndSetters = 'Month|Date|Hours|Minutes|Seconds|Milliseconds'.split('|'),
-		unitMillisecondFactors = {
-			'Milliseconds' : 1,
-			'Seconds' : 1e3,
-			'Minutes' : 6e4,
-			'Hours' : 36e5,
-			'Days' : 864e5,
-			'Months' : 2592e6,
-			'Years' : 31536e6
-		},
-
-	// format function strings
-		formatFunctions = {},
-
-	// tokens to ordinalize and pad
-		ordinalizeTokens = 'DDD w W M D d'.split(' '),
-		paddedTokens = 'M D H h m s w W'.split(' '),
-
-		formatTokenFunctions = {
-			M    : function () {
-				return this.month() + 1;
-			},
-			MMM  : function (format) {
-				return this.lang().monthsShort(this, format);
-			},
-			MMMM : function (format) {
-				return this.lang().months(this, format);
-			},
-			D    : function () {
-				return this.date();
-			},
-			DDD  : function () {
-				return this.dayOfYear();
-			},
-			d    : function () {
-				return this.day();
-			},
-			dd   : function (format) {
-				return this.lang().weekdaysMin(this, format);
-			},
-			ddd  : function (format) {
-				return this.lang().weekdaysShort(this, format);
-			},
-			dddd : function (format) {
-				return this.lang().weekdays(this, format);
-			},
-			w    : function () {
-				return this.week();
-			},
-			W    : function () {
-				return this.isoWeek();
-			},
-			YY   : function () {
-				return leftZeroFill(this.year() % 100, 2);
-			},
-			YYYY : function () {
-				return leftZeroFill(this.year(), 4);
-			},
-			YYYYY : function () {
-				return leftZeroFill(this.year(), 5);
-			},
-			a    : function () {
-				return this.lang().meridiem(this.hours(), this.minutes(), true);
-			},
-			A    : function () {
-				return this.lang().meridiem(this.hours(), this.minutes(), false);
-			},
-			H    : function () {
-				return this.hours();
-			},
-			h    : function () {
-				return this.hours() % 12 || 12;
-			},
-			m    : function () {
-				return this.minutes();
-			},
-			s    : function () {
-				return this.seconds();
-			},
-			S    : function () {
-				return ~~(this.milliseconds() / 100);
-			},
-			SS   : function () {
-				return leftZeroFill(~~(this.milliseconds() / 10), 2);
-			},
-			SSS  : function () {
-				return leftZeroFill(this.milliseconds(), 3);
-			},
-			Z    : function () {
-				var a = -this.zone(),
-					b = "+";
-				if (a < 0) {
-					a = -a;
-					b = "-";
-				}
-				return b + leftZeroFill(~~(a / 60), 2) + ":" + leftZeroFill(~~a % 60, 2);
-			},
-			ZZ   : function () {
-				var a = -this.zone(),
-					b = "+";
-				if (a < 0) {
-					a = -a;
-					b = "-";
-				}
-				return b + leftZeroFill(~~(10 * a / 6), 4);
-			},
-			X    : function () {
-				return this.unix();
-			}
-		};
-
-	function padToken(func, count) {
-		return function (a) {
-			return leftZeroFill(func.call(this, a), count);
-		};
-	}
-	function ordinalizeToken(func) {
-		return function (a) {
-			return this.lang().ordinal(func.call(this, a));
-		};
-	}
-
-	while (ordinalizeTokens.length) {
-		i = ordinalizeTokens.pop();
-		formatTokenFunctions[i + 'o'] = ordinalizeToken(formatTokenFunctions[i]);
-	}
-	while (paddedTokens.length) {
-		i = paddedTokens.pop();
-		formatTokenFunctions[i + i] = padToken(formatTokenFunctions[i], 2);
-	}
-	formatTokenFunctions.DDDD = padToken(formatTokenFunctions.DDD, 3);
-
-
-	/************************************
-	 Constructors
-	 ************************************/
-
-	function Language() {
-
-	}
-
-	// Moment prototype object
-	function Moment(config) {
-		extend(this, config);
-	}
-
-	// Duration Constructor
-	function Duration(duration) {
-		var data = this._data = {},
-			years = duration.years || duration.year || duration.y || 0,
-			months = duration.months || duration.month || duration.M || 0,
-			weeks = duration.weeks || duration.week || duration.w || 0,
-			days = duration.days || duration.day || duration.d || 0,
-			hours = duration.hours || duration.hour || duration.h || 0,
-			minutes = duration.minutes || duration.minute || duration.m || 0,
-			seconds = duration.seconds || duration.second || duration.s || 0,
-			milliseconds = duration.milliseconds || duration.millisecond || duration.ms || 0;
-
-		// representation for dateAddRemove
-		this._milliseconds = milliseconds +
-			seconds * 1e3 + // 1000
-			minutes * 6e4 + // 1000 * 60
-			hours * 36e5; // 1000 * 60 * 60
-		// Because of dateAddRemove treats 24 hours as different from a
-		// day when working around DST, we need to store them separately
-		this._days = days +
-			weeks * 7;
-		// It is impossible translate months into days without knowing
-		// which months you are are talking about, so we have to store
-		// it separately.
-		this._months = months +
-			years * 12;
-
-		// The following code bubbles up values, see the tests for
-		// examples of what that means.
-		data.milliseconds = milliseconds % 1000;
-		seconds += absRound(milliseconds / 1000);
-
-		data.seconds = seconds % 60;
-		minutes += absRound(seconds / 60);
-
-		data.minutes = minutes % 60;
-		hours += absRound(minutes / 60);
-
-		data.hours = hours % 24;
-		days += absRound(hours / 24);
-
-		days += weeks * 7;
-		data.days = days % 30;
-
-		months += absRound(days / 30);
-
-		data.months = months % 12;
-		years += absRound(months / 12);
-
-		data.years = years;
-	}
-
-
-	/************************************
-	 Helpers
-	 ************************************/
-
-
-	function extend(a, b) {
-		for (var i in b) {
-			if (b.hasOwnProperty(i)) {
-				a[i] = b[i];
-			}
-		}
-		return a;
-	}
-
-	function absRound(number) {
-		if (number < 0) {
-			return Math.ceil(number);
-		} else {
-			return Math.floor(number);
-		}
-	}
-
-	// left zero fill a number
-	// see http://jsperf.com/left-zero-filling for performance comparison
-	function leftZeroFill(number, targetLength) {
-		var output = number + '';
-		while (output.length < targetLength) {
-			output = '0' + output;
-		}
-		return output;
-	}
-
-	// helper function for _.addTime and _.subtractTime
-	function addOrSubtractDurationFromMoment(mom, duration, isAdding) {
-		var ms = duration._milliseconds,
-			d = duration._days,
-			M = duration._months,
-			currentDate;
-
-		if (ms) {
-			mom._d.setTime(+mom + ms * isAdding);
-		}
-		if (d) {
-			mom.date(mom.date() + d * isAdding);
-		}
-		if (M) {
-			currentDate = mom.date();
-			mom.date(1)
-				.month(mom.month() + M * isAdding)
-				.date(Math.min(currentDate, mom.daysInMonth()));
-		}
-	}
-
-	// check if is an array
-	function isArray(input) {
-		return Object.prototype.toString.call(input) === '[object Array]';
-	}
-
-	// compare two arrays, return the number of differences
-	function compareArrays(array1, array2) {
-		var len = Math.min(array1.length, array2.length),
-			lengthDiff = Math.abs(array1.length - array2.length),
-			diffs = 0,
-			i;
-		for (i = 0; i < len; i++) {
-			if (~~array1[i] !== ~~array2[i]) {
-				diffs++;
-			}
-		}
-		return diffs + lengthDiff;
-	}
-
-
-	/************************************
-	 Languages
-	 ************************************/
-
-
-	Language.prototype = {
-		set : function (config) {
-			var prop, i;
-			for (i in config) {
-				prop = config[i];
-				if (typeof prop === 'function') {
-					this[i] = prop;
-				} else {
-					this['_' + i] = prop;
-				}
-			}
-		},
-
-		_months : "January_February_March_April_May_June_July_August_September_October_November_December".split("_"),
-		months : function (m) {
-			return this._months[m.month()];
-		},
-
-		_monthsShort : "Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec".split("_"),
-		monthsShort : function (m) {
-			return this._monthsShort[m.month()];
-		},
-
-		monthsParse : function (monthName) {
-			var i, mom, regex, output;
-
-			if (!this._monthsParse) {
-				this._monthsParse = [];
-			}
-
-			for (i = 0; i < 12; i++) {
-				// make the regex if we don't have it already
-				if (!this._monthsParse[i]) {
-					mom = moment([2000, i]);
-					regex = '^' + this.months(mom, '') + '|^' + this.monthsShort(mom, '');
-					this._monthsParse[i] = new RegExp(regex.replace('.', ''), 'i');
-				}
-				// test the regex
-				if (this._monthsParse[i].test(monthName)) {
-					return i;
-				}
-			}
-		},
-
-		_weekdays : "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"),
-		weekdays : function (m) {
-			return this._weekdays[m.day()];
-		},
-
-		_weekdaysShort : "Sun_Mon_Tue_Wed_Thu_Fri_Sat".split("_"),
-		weekdaysShort : function (m) {
-			return this._weekdaysShort[m.day()];
-		},
-
-		_weekdaysMin : "Su_Mo_Tu_We_Th_Fr_Sa".split("_"),
-		weekdaysMin : function (m) {
-			return this._weekdaysMin[m.day()];
-		},
-
-		_longDateFormat : {
-			LT : "h:mm A",
-			L : "MM/DD/YYYY",
-			LL : "MMMM D YYYY",
-			LLL : "MMMM D YYYY LT",
-			LLLL : "dddd, MMMM D YYYY LT"
-		},
-		longDateFormat : function (key) {
-			var output = this._longDateFormat[key];
-			if (!output && this._longDateFormat[key.toUpperCase()]) {
-				output = this._longDateFormat[key.toUpperCase()].replace(/MMMM|MM|DD|dddd/g, function (val) {
-					return val.slice(1);
-				});
-				this._longDateFormat[key] = output;
-			}
-			return output;
-		},
-
-		meridiem : function (hours, minutes, isLower) {
-			if (hours > 11) {
-				return isLower ? 'pm' : 'PM';
-			} else {
-				return isLower ? 'am' : 'AM';
-			}
-		},
-
-		_calendar : {
-			sameDay : '[Today at] LT',
-			nextDay : '[Tomorrow at] LT',
-			nextWeek : 'dddd [at] LT',
-			lastDay : '[Yesterday at] LT',
-			lastWeek : '[last] dddd [at] LT',
-			sameElse : 'L'
-		},
-		calendar : function (key, mom) {
-			var output = this._calendar[key];
-			return typeof output === 'function' ? output.apply(mom) : output;
-		},
-
-		_relativeTime : {
-			future : "in %s",
-			past : "%s ago",
-			s : "a few seconds",
-			m : "a minute",
-			mm : "%d minutes",
-			h : "an hour",
-			hh : "%d hours",
-			d : "a day",
-			dd : "%d days",
-			M : "a month",
-			MM : "%d months",
-			y : "a year",
-			yy : "%d years"
-		},
-		relativeTime : function (number, withoutSuffix, string, isFuture) {
-			var output = this._relativeTime[string];
-			return (typeof output === 'function') ?
-				output(number, withoutSuffix, string, isFuture) :
-				output.replace(/%d/i, number);
-		},
-		pastFuture : function (diff, output) {
-			var format = this._relativeTime[diff > 0 ? 'future' : 'past'];
-			return typeof format === 'function' ? format(output) : format.replace(/%s/i, output);
-		},
-
-		ordinal : function (number) {
-			return this._ordinal.replace("%d", number);
-		},
-		_ordinal : "%d",
-
-		preparse : function (string) {
-			return string;
-		},
-
-		postformat : function (string) {
-			return string;
-		},
-
-		week : function (mom) {
-			return weekOfYear(mom, this._week.dow, this._week.doy);
-		},
-		_week : {
-			dow : 0, // Sunday is the first day of the week.
-			doy : 6  // The week that contains Jan 1st is the first week of the year.
-		}
-	};
-
-	// Loads a language definition into the `languages` cache.  The function
-	// takes a key and optionally values.  If not in the browser and no values
-	// are provided, it will load the language file module.  As a convenience,
-	// this function also returns the language values.
-	function loadLang(key, values) {
-		values.abbr = key;
-		if (!languages[key]) {
-			languages[key] = new Language();
-		}
-		languages[key].set(values);
-		return languages[key];
-	}
-
-	// Determines which language definition to use and returns it.
-	//
-	// With no parameters, it will return the global language.  If you
-	// pass in a language key, such as 'en', it will return the
-	// definition for 'en', so long as 'en' has already been loaded using
-	// moment.lang.
-	function getLangDefinition(key) {
-		if (!key) {
-			return moment.fn._lang;
-		}
-		if (!languages[key] && hasModule) {
-			require('./lang/' + key);
-		}
-		return languages[key];
-	}
-
-
-	/************************************
-	 Formatting
-	 ************************************/
-
-
-	function removeFormattingTokens(input) {
-		if (input.match(/\[.*\]/)) {
-			return input.replace(/^\[|\]$/g, "");
-		}
-		return input.replace(/\\/g, "");
-	}
-
-	function makeFormatFunction(format) {
-		var array = format.match(formattingTokens), i, length;
-
-		for (i = 0, length = array.length; i < length; i++) {
-			if (formatTokenFunctions[array[i]]) {
-				array[i] = formatTokenFunctions[array[i]];
-			} else {
-				array[i] = removeFormattingTokens(array[i]);
-			}
-		}
-
-		return function (mom) {
-			var output = "";
-			for (i = 0; i < length; i++) {
-				output += typeof array[i].call === 'function' ? array[i].call(mom, format) : array[i];
-			}
-			return output;
-		};
-	}
-
-	// format date using native date object
-	function formatMoment(m, format) {
-		var i = 5;
-
-		function replaceLongDateFormatTokens(input) {
-			return m.lang().longDateFormat(input) || input;
-		}
-
-		while (i-- && localFormattingTokens.test(format)) {
-			format = format.replace(localFormattingTokens, replaceLongDateFormatTokens);
-		}
-
-		if (!formatFunctions[format]) {
-			formatFunctions[format] = makeFormatFunction(format);
-		}
-
-		return formatFunctions[format](m);
-	}
-
-
-	/************************************
-	 Parsing
-	 ************************************/
-
-
-		// get the regex to find the next token
-	function getParseRegexForToken(token) {
-		switch (token) {
-			case 'DDDD':
-				return parseTokenThreeDigits;
-			case 'YYYY':
-				return parseTokenFourDigits;
-			case 'YYYYY':
-				return parseTokenSixDigits;
-			case 'S':
-			case 'SS':
-			case 'SSS':
-			case 'DDD':
-				return parseTokenOneToThreeDigits;
-			case 'MMM':
-			case 'MMMM':
-			case 'dd':
-			case 'ddd':
-			case 'dddd':
-			case 'a':
-			case 'A':
-				return parseTokenWord;
-			case 'X':
-				return parseTokenTimestampMs;
-			case 'Z':
-			case 'ZZ':
-				return parseTokenTimezone;
-			case 'T':
-				return parseTokenT;
-			case 'MM':
-			case 'DD':
-			case 'YY':
-			case 'HH':
-			case 'hh':
-			case 'mm':
-			case 'ss':
-			case 'M':
-			case 'D':
-			case 'd':
-			case 'H':
-			case 'h':
-			case 'm':
-			case 's':
-				return parseTokenOneOrTwoDigits;
-			default :
-				return new RegExp(token.replace('\\', ''));
-		}
-	}
-
-	// function to convert string input to date
-	function addTimeToArrayFromToken(token, input, config) {
-		var a, b,
-			datePartArray = config._a;
-
-		switch (token) {
-			// MONTH
-			case 'M' : // fall through to MM
-			case 'MM' :
-				datePartArray[1] = (input == null) ? 0 : ~~input - 1;
-				break;
-			case 'MMM' : // fall through to MMMM
-			case 'MMMM' :
-				a = getLangDefinition(config._l).monthsParse(input);
-				// if we didn't find a month name, mark the date as invalid.
-				if (a != null) {
-					datePartArray[1] = a;
-				} else {
-					config._isValid = false;
-				}
-				break;
-			// DAY OF MONTH
-			case 'D' : // fall through to DDDD
-			case 'DD' : // fall through to DDDD
-			case 'DDD' : // fall through to DDDD
-			case 'DDDD' :
-				if (input != null) {
-					datePartArray[2] = ~~input;
-				}
-				break;
-			// YEAR
-			case 'YY' :
-				datePartArray[0] = ~~input + (~~input > 68 ? 1900 : 2000);
-				break;
-			case 'YYYY' :
-			case 'YYYYY' :
-				datePartArray[0] = ~~input;
-				break;
-			// AM / PM
-			case 'a' : // fall through to A
-			case 'A' :
-				config._isPm = ((input + '').toLowerCase() === 'pm');
-				break;
-			// 24 HOUR
-			case 'H' : // fall through to hh
-			case 'HH' : // fall through to hh
-			case 'h' : // fall through to hh
-			case 'hh' :
-				datePartArray[3] = ~~input;
-				break;
-			// MINUTE
-			case 'm' : // fall through to mm
-			case 'mm' :
-				datePartArray[4] = ~~input;
-				break;
-			// SECOND
-			case 's' : // fall through to ss
-			case 'ss' :
-				datePartArray[5] = ~~input;
-				break;
-			// MILLISECOND
-			case 'S' :
-			case 'SS' :
-			case 'SSS' :
-				datePartArray[6] = ~~ (('0.' + input) * 1000);
-				break;
-			// UNIX TIMESTAMP WITH MS
-			case 'X':
-				config._d = new Date(parseFloat(input) * 1000);
-				break;
-			// TIMEZONE
-			case 'Z' : // fall through to ZZ
-			case 'ZZ' :
-				config._useUTC = true;
-				a = (input + '').match(parseTimezoneChunker);
-				if (a && a[1]) {
-					config._tzh = ~~a[1];
-				}
-				if (a && a[2]) {
-					config._tzm = ~~a[2];
-				}
-				// reverse offsets
-				if (a && a[0] === '+') {
-					config._tzh = -config._tzh;
-					config._tzm = -config._tzm;
-				}
-				break;
-		}
-
-		// if the input is null, the date is not valid
-		if (input == null) {
-			config._isValid = false;
-		}
-	}
-
-	// convert an array to a date.
-	// the array should mirror the parameters below
-	// note: all values past the year are optional and will default to the lowest possible value.
-	// [year, month, day , hour, minute, second, millisecond]
-	function dateFromArray(config) {
-		var i, date, input = [];
-
-		if (config._d) {
-			return;
-		}
-
-		for (i = 0; i < 7; i++) {
-			config._a[i] = input[i] = (config._a[i] == null) ? (i === 2 ? 1 : 0) : config._a[i];
-		}
-
-		// add the offsets to the time to be parsed so that we can have a clean array for checking isValid
-		input[3] += config._tzh || 0;
-		input[4] += config._tzm || 0;
-
-		date = new Date(0);
-
-		if (config._useUTC) {
-			date.setUTCFullYear(input[0], input[1], input[2]);
-			date.setUTCHours(input[3], input[4], input[5], input[6]);
-		} else {
-			date.setFullYear(input[0], input[1], input[2]);
-			date.setHours(input[3], input[4], input[5], input[6]);
-		}
-
-		config._d = date;
-	}
-
-	// date from string and format string
-	function makeDateFromStringAndFormat(config) {
-		// This array is used to make a Date, either with `new Date` or `Date.UTC`
-		var tokens = config._f.match(formattingTokens),
-			string = config._i,
-			i, parsedInput;
-
-		config._a = [];
-
-		for (i = 0; i < tokens.length; i++) {
-			parsedInput = (getParseRegexForToken(tokens[i]).exec(string) || [])[0];
-			if (parsedInput) {
-				string = string.slice(string.indexOf(parsedInput) + parsedInput.length);
-			}
-			// don't parse if its not a known token
-			if (formatTokenFunctions[tokens[i]]) {
-				addTimeToArrayFromToken(tokens[i], parsedInput, config);
-			}
-		}
-		// handle am pm
-		if (config._isPm && config._a[3] < 12) {
-			config._a[3] += 12;
-		}
-		// if is 12 am, change hours to 0
-		if (config._isPm === false && config._a[3] === 12) {
-			config._a[3] = 0;
-		}
-		// return
-		dateFromArray(config);
-	}
-
-	// date from string and array of format strings
-	function makeDateFromStringAndArray(config) {
-		var tempConfig,
-			tempMoment,
-			bestMoment,
-
-			scoreToBeat = 99,
-			i,
-			currentDate,
-			currentScore;
-
-		while (config._f.length) {
-			tempConfig = extend({}, config);
-			tempConfig._f = config._f.pop();
-			makeDateFromStringAndFormat(tempConfig);
-			tempMoment = new Moment(tempConfig);
-
-			if (tempMoment.isValid()) {
-				bestMoment = tempMoment;
-				break;
-			}
-
-			currentScore = compareArrays(tempConfig._a, tempMoment.toArray());
-
-			if (currentScore < scoreToBeat) {
-				scoreToBeat = currentScore;
-				bestMoment = tempMoment;
-			}
-		}
-
-		extend(config, bestMoment);
-	}
-
-	// date from iso format
-	function makeDateFromString(config) {
-		var i,
-			string = config._i;
-		if (isoRegex.exec(string)) {
-			config._f = 'YYYY-MM-DDT';
-			for (i = 0; i < 4; i++) {
-				if (isoTimes[i][1].exec(string)) {
-					config._f += isoTimes[i][0];
-					break;
-				}
-			}
-			if (parseTokenTimezone.exec(string)) {
-				config._f += " Z";
-			}
-			makeDateFromStringAndFormat(config);
-		} else {
-			config._d = new Date(string);
-		}
-	}
-
-	function makeDateFromInput(config) {
-		var input = config._i,
-			matched = aspNetJsonRegex.exec(input);
-
-		if (input === undefined) {
-			config._d = new Date();
-		} else if (matched) {
-			config._d = new Date(+matched[1]);
-		} else if (typeof input === 'string') {
-			makeDateFromString(config);
-		} else if (isArray(input)) {
-			config._a = input.slice(0);
-			dateFromArray(config);
-		} else {
-			config._d = input instanceof Date ? new Date(+input) : new Date(input);
-		}
-	}
-
-
-	/************************************
-	 Relative Time
-	 ************************************/
-
-
-		// helper function for moment.fn.from, moment.fn.fromNow, and moment.duration.fn.humanize
-	function substituteTimeAgo(string, number, withoutSuffix, isFuture, lang) {
-		return lang.relativeTime(number || 1, !!withoutSuffix, string, isFuture);
-	}
-
-	function relativeTime(milliseconds, withoutSuffix, lang) {
-		var seconds = round(Math.abs(milliseconds) / 1000),
-			minutes = round(seconds / 60),
-			hours = round(minutes / 60),
-			days = round(hours / 24),
-			years = round(days / 365),
-			args = seconds < 45 && ['s', seconds] ||
-				minutes === 1 && ['m'] ||
-				minutes < 45 && ['mm', minutes] ||
-				hours === 1 && ['h'] ||
-				hours < 22 && ['hh', hours] ||
-				days === 1 && ['d'] ||
-				days <= 25 && ['dd', days] ||
-				days <= 45 && ['M'] ||
-				days < 345 && ['MM', round(days / 30)] ||
-				years === 1 && ['y'] || ['yy', years];
-		args[2] = withoutSuffix;
-		args[3] = milliseconds > 0;
-		args[4] = lang;
-		return substituteTimeAgo.apply({}, args);
-	}
-
-
-	/************************************
-	 Week of Year
-	 ************************************/
-
-
-		// firstDayOfWeek       0 = sun, 6 = sat
-		//                      the day of the week that starts the week
-		//                      (usually sunday or monday)
-		// firstDayOfWeekOfYear 0 = sun, 6 = sat
-		//                      the first week is the week that contains the first
-		//                      of this day of the week
-		//                      (eg. ISO weeks use thursday (4))
-	function weekOfYear(mom, firstDayOfWeek, firstDayOfWeekOfYear) {
-		var end = firstDayOfWeekOfYear - firstDayOfWeek,
-			daysToDayOfWeek = firstDayOfWeekOfYear - mom.day();
-
-
-		if (daysToDayOfWeek > end) {
-			daysToDayOfWeek -= 7;
-		}
-
-		if (daysToDayOfWeek < end - 7) {
-			daysToDayOfWeek += 7;
-		}
-
-		return Math.ceil(moment(mom).add('d', daysToDayOfWeek).dayOfYear() / 7);
-	}
-
-
-	/************************************
-	 Top Level Functions
-	 ************************************/
-
-	function makeMoment(config) {
-		var input = config._i,
-			format = config._f;
-
-		if (input === null || input === '') {
-			return null;
-		}
-
-		if (typeof input === 'string') {
-			config._i = input = getLangDefinition().preparse(input);
-		}
-
-		if (moment.isMoment(input)) {
-			config = extend({}, input);
-			config._d = new Date(+input._d);
-		} else if (format) {
-			if (isArray(format)) {
-				makeDateFromStringAndArray(config);
-			} else {
-				makeDateFromStringAndFormat(config);
-			}
-		} else {
-			makeDateFromInput(config);
-		}
-
-		return new Moment(config);
-	}
-
-	moment = function (input, format, lang) {
-		return makeMoment({
-			_i : input,
-			_f : format,
-			_l : lang,
-			_isUTC : false
-		});
-	};
-
-	// creating with utc
-	moment.utc = function (input, format, lang) {
-		return makeMoment({
-			_useUTC : true,
-			_isUTC : true,
-			_l : lang,
-			_i : input,
-			_f : format
-		});
-	};
-
-	// creating with unix timestamp (in seconds)
-	moment.unix = function (input) {
-		return moment(input * 1000);
-	};
-
-	// duration
-	moment.duration = function (input, key) {
-		var isDuration = moment.isDuration(input),
-			isNumber = (typeof input === 'number'),
-			duration = (isDuration ? input._data : (isNumber ? {} : input)),
-			ret;
-
-		if (isNumber) {
-			if (key) {
-				duration[key] = input;
-			} else {
-				duration.milliseconds = input;
-			}
-		}
-
-		ret = new Duration(duration);
-
-		if (isDuration && input.hasOwnProperty('_lang')) {
-			ret._lang = input._lang;
-		}
-
-		return ret;
-	};
-
-	// version number
-	moment.version = VERSION;
-
-	// default format
-	moment.defaultFormat = isoFormat;
-
-	// This function will load languages and then set the global language.  If
-	// no arguments are passed in, it will simply return the current global
-	// language key.
-	moment.lang = function (key, values) {
-		var i;
-
-		if (!key) {
-			return moment.fn._lang._abbr;
-		}
-		if (values) {
-			loadLang(key, values);
-		} else if (!languages[key]) {
-			getLangDefinition(key);
-		}
-		moment.duration.fn._lang = moment.fn._lang = getLangDefinition(key);
-	};
-
-	// returns language data
-	moment.langData = function (key) {
-		if (key && key._lang && key._lang._abbr) {
-			key = key._lang._abbr;
-		}
-		return getLangDefinition(key);
-	};
-
-	// compare moment object
-	moment.isMoment = function (obj) {
-		return obj instanceof Moment;
-	};
-
-	// for typechecking Duration objects
-	moment.isDuration = function (obj) {
-		return obj instanceof Duration;
-	};
-
-
-	/************************************
-	 Moment Prototype
-	 ************************************/
-
-
-	moment.fn = Moment.prototype = {
-
-		clone : function () {
-			return moment(this);
-		},
-
-		valueOf : function () {
-			return +this._d;
-		},
-
-		unix : function () {
-			return Math.floor(+this._d / 1000);
-		},
-
-		toString : function () {
-			return this.format("ddd MMM DD YYYY HH:mm:ss [GMT]ZZ");
-		},
-
-		toDate : function () {
-			return this._d;
-		},
-
-		toJSON : function () {
-			return moment.utc(this).format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
-		},
-
-		toArray : function () {
-			var m = this;
-			return [
-				m.year(),
-				m.month(),
-				m.date(),
-				m.hours(),
-				m.minutes(),
-				m.seconds(),
-				m.milliseconds()
-			];
-		},
-
-		isValid : function () {
-			if (this._isValid == null) {
-				if (this._a) {
-					this._isValid = !compareArrays(this._a, (this._isUTC ? moment.utc(this._a) : moment(this._a)).toArray());
-				} else {
-					this._isValid = !isNaN(this._d.getTime());
-				}
-			}
-			return !!this._isValid;
-		},
-
-		utc : function () {
-			this._isUTC = true;
-			return this;
-		},
-
-		local : function () {
-			this._isUTC = false;
-			return this;
-		},
-
-		format : function (inputString) {
-			var output = formatMoment(this, inputString || moment.defaultFormat);
-			return this.lang().postformat(output);
-		},
-
-		add : function (input, val) {
-			var dur;
-			// switch args to support add('s', 1) and add(1, 's')
-			if (typeof input === 'string') {
-				dur = moment.duration(+val, input);
-			} else {
-				dur = moment.duration(input, val);
-			}
-			addOrSubtractDurationFromMoment(this, dur, 1);
-			return this;
-		},
-
-		subtract : function (input, val) {
-			var dur;
-			// switch args to support subtract('s', 1) and subtract(1, 's')
-			if (typeof input === 'string') {
-				dur = moment.duration(+val, input);
-			} else {
-				dur = moment.duration(input, val);
-			}
-			addOrSubtractDurationFromMoment(this, dur, -1);
-			return this;
-		},
-
-		diff : function (input, units, asFloat) {
-			var that = this._isUTC ? moment(input).utc() : moment(input).local(),
-				zoneDiff = (this.zone() - that.zone()) * 6e4,
-				diff, output;
-
-			if (units) {
-				// standardize on singular form
-				units = units.replace(/s$/, '');
-			}
-
-			if (units === 'year' || units === 'month') {
-				diff = (this.daysInMonth() + that.daysInMonth()) * 432e5; // 24 * 60 * 60 * 1000 / 2
-				output = ((this.year() - that.year()) * 12) + (this.month() - that.month());
-				output += ((this - moment(this).startOf('month')) - (that - moment(that).startOf('month'))) / diff;
-				if (units === 'year') {
-					output = output / 12;
-				}
-			} else {
-				diff = (this - that) - zoneDiff;
-				output = units === 'second' ? diff / 1e3 : // 1000
-					units === 'minute' ? diff / 6e4 : // 1000 * 60
-						units === 'hour' ? diff / 36e5 : // 1000 * 60 * 60
-							units === 'day' ? diff / 864e5 : // 1000 * 60 * 60 * 24
-								units === 'week' ? diff / 6048e5 : // 1000 * 60 * 60 * 24 * 7
-									diff;
-			}
-			return asFloat ? output : absRound(output);
-		},
-
-		from : function (time, withoutSuffix) {
-			return moment.duration(this.diff(time)).lang(this.lang()._abbr).humanize(!withoutSuffix);
-		},
-
-		fromNow : function (withoutSuffix) {
-			return this.from(moment(), withoutSuffix);
-		},
-
-		calendar : function () {
-			var diff = this.diff(moment().startOf('day'), 'days', true),
-				format = diff < -6 ? 'sameElse' :
-					diff < -1 ? 'lastWeek' :
-						diff < 0 ? 'lastDay' :
-							diff < 1 ? 'sameDay' :
-								diff < 2 ? 'nextDay' :
-									diff < 7 ? 'nextWeek' : 'sameElse';
-			return this.format(this.lang().calendar(format, this));
-		},
-
-		isLeapYear : function () {
-			var year = this.year();
-			return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
-		},
-
-		isDST : function () {
-			return (this.zone() < moment([this.year()]).zone() ||
-				this.zone() < moment([this.year(), 5]).zone());
-		},
-
-		day : function (input) {
-			var day = this._isUTC ? this._d.getUTCDay() : this._d.getDay();
-			return input == null ? day :
-				this.add({ d : input - day });
-		},
-
-		startOf: function (units) {
-			units = units.replace(/s$/, '');
-			// the following switch intentionally omits break keywords
-			// to utilize falling through the cases.
-			switch (units) {
-				case 'year':
-					this.month(0);
-				/* falls through */
-				case 'month':
-					this.date(1);
-				/* falls through */
-				case 'week':
-				case 'day':
-					this.hours(0);
-				/* falls through */
-				case 'hour':
-					this.minutes(0);
-				/* falls through */
-				case 'minute':
-					this.seconds(0);
-				/* falls through */
-				case 'second':
-					this.milliseconds(0);
-				/* falls through */
-			}
-
-			// weeks are a special case
-			if (units === 'week') {
-				this.day(0);
-			}
-
-			return this;
-		},
-
-		endOf: function (units) {
-			return this.startOf(units).add(units.replace(/s?$/, 's'), 1).subtract('ms', 1);
-		},
-
-		isAfter: function (input, units) {
-			units = typeof units !== 'undefined' ? units : 'millisecond';
-			return +this.clone().startOf(units) > +moment(input).startOf(units);
-		},
-
-		isBefore: function (input, units) {
-			units = typeof units !== 'undefined' ? units : 'millisecond';
-			return +this.clone().startOf(units) < +moment(input).startOf(units);
-		},
-
-		isSame: function (input, units) {
-			units = typeof units !== 'undefined' ? units : 'millisecond';
-			return +this.clone().startOf(units) === +moment(input).startOf(units);
-		},
-
-		zone : function () {
-			return this._isUTC ? 0 : this._d.getTimezoneOffset();
-		},
-
-		daysInMonth : function () {
-			return moment.utc([this.year(), this.month() + 1, 0]).date();
-		},
-
-		dayOfYear : function (input) {
-			var dayOfYear = round((moment(this).startOf('day') - moment(this).startOf('year')) / 864e5) + 1;
-			return input == null ? dayOfYear : this.add("d", (input - dayOfYear));
-		},
-
-		isoWeek : function (input) {
-			var week = weekOfYear(this, 1, 4);
-			return input == null ? week : this.add("d", (input - week) * 7);
-		},
-
-		week : function (input) {
-			var week = this.lang().week(this);
-			return input == null ? week : this.add("d", (input - week) * 7);
-		},
-
-		// If passed a language key, it will set the language for this
-		// instance.  Otherwise, it will return the language configuration
-		// variables for this instance.
-		lang : function (key) {
-			if (key === undefined) {
-				return this._lang;
-			} else {
-				this._lang = getLangDefinition(key);
-				return this;
-			}
-		}
-	};
-
-	// helper for adding shortcuts
-	function makeGetterAndSetter(name, key) {
-		moment.fn[name] = moment.fn[name + 's'] = function (input) {
-			var utc = this._isUTC ? 'UTC' : '';
-			if (input != null) {
-				this._d['set' + utc + key](input);
-				return this;
-			} else {
-				return this._d['get' + utc + key]();
-			}
-		};
-	}
-
-	// loop through and add shortcuts (Month, Date, Hours, Minutes, Seconds, Milliseconds)
-	for (i = 0; i < proxyGettersAndSetters.length; i ++) {
-		makeGetterAndSetter(proxyGettersAndSetters[i].toLowerCase().replace(/s$/, ''), proxyGettersAndSetters[i]);
-	}
-
-	// add shortcut for year (uses different syntax than the getter/setter 'year' == 'FullYear')
-	makeGetterAndSetter('year', 'FullYear');
-
-	// add plural methods
-	moment.fn.days = moment.fn.day;
-	moment.fn.weeks = moment.fn.week;
-	moment.fn.isoWeeks = moment.fn.isoWeek;
-
-	/************************************
-	 Duration Prototype
-	 ************************************/
-
-
-	moment.duration.fn = Duration.prototype = {
-		weeks : function () {
-			return absRound(this.days() / 7);
-		},
-
-		valueOf : function () {
-			return this._milliseconds +
-				this._days * 864e5 +
-				this._months * 2592e6;
-		},
-
-		humanize : function (withSuffix) {
-			var difference = +this,
-				output = relativeTime(difference, !withSuffix, this.lang());
-
-			if (withSuffix) {
-				output = this.lang().pastFuture(difference, output);
-			}
-
-			return this.lang().postformat(output);
-		},
-
-		lang : moment.fn.lang
-	};
-
-	function makeDurationGetter(name) {
-		moment.duration.fn[name] = function () {
-			return this._data[name];
-		};
-	}
-
-	function makeDurationAsGetter(name, factor) {
-		moment.duration.fn['as' + name] = function () {
-			return +this / factor;
-		};
-	}
-
-	for (i in unitMillisecondFactors) {
-		if (unitMillisecondFactors.hasOwnProperty(i)) {
-			makeDurationAsGetter(i, unitMillisecondFactors[i]);
-			makeDurationGetter(i.toLowerCase());
-		}
-	}
-
-	makeDurationAsGetter('Weeks', 6048e5);
-
-
-	/************************************
-	 Default Lang
-	 ************************************/
-
-
-		// Set default language, other languages will inherit from English.
-	moment.lang('en', {
-		ordinal : function (number) {
-			var b = number % 10,
-				output = (~~ (number % 100 / 10) === 1) ? 'th' :
-					(b === 1) ? 'st' :
-						(b === 2) ? 'nd' :
-							(b === 3) ? 'rd' : 'th';
-			return number + output;
-		}
-	});
-
-
-	/************************************
-	 Exposing Moment
-	 ************************************/
-
-
-	// CommonJS module is defined
-	if (hasModule) {
-		module.exports = moment;
-	}
-	/*global ender:false */
-	if (typeof ender === 'undefined') {
-		// here, `this` means `window` in the browser, or `global` on the server
-		// add `moment` as a global object via a string identifier,
-		// for Closure Compiler "advanced" mode
-		this['moment'] = moment;
-	}
-	/*global define:false */
-	if (typeof define === "function" && define.amd) {
-		define("moment", [], function () {
-			return moment;
-		});
-	}
+    /************************************
+     Constants
+     ************************************/
+
+    var moment,
+        VERSION = "2.0.0",
+        round = Math.round, i,
+    // internal storage for language config files
+        languages = {},
+
+    // check for nodeJS
+        hasModule = (typeof module !== 'undefined' && module.exports),
+
+    // ASP.NET json date format regex
+        aspNetJsonRegex = /^\/?Date\((\-?\d+)/i,
+
+    // format tokens
+        formattingTokens = /(\[[^\[]*\])|(\\)?(Mo|MM?M?M?|Do|DDDo|DD?D?D?|ddd?d?|do?|w[o|w]?|W[o|W]?|YYYYY|YYYY|YY|a|A|hh?|HH?|mm?|ss?|SS?S?|X|zz?|ZZ?|.)/g,
+        localFormattingTokens = /(\[[^\[]*\])|(\\)?(LT|LL?L?L?|l{1,4})/g,
+
+    // parsing tokens
+        parseMultipleFormatChunker = /([0-9a-zA-Z\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+)/gi,
+
+    // parsing token regexes
+        parseTokenOneOrTwoDigits = /\d\d?/, // 0 - 99
+        parseTokenOneToThreeDigits = /\d{1,3}/, // 0 - 999
+        parseTokenThreeDigits = /\d{3}/, // 000 - 999
+        parseTokenFourDigits = /\d{1,4}/, // 0 - 9999
+        parseTokenSixDigits = /[+\-]?\d{1,6}/, // -999,999 - 999,999
+        parseTokenWord = /[0-9]*[a-z\u00A0-\u05FF\u0700-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]+|[\u0600-\u06FF]+\s*?[\u0600-\u06FF]+/i, // any word (or two) characters or numbers including two word month in arabic.
+        parseTokenTimezone = /Z|[\+\-]\d\d:?\d\d/i, // +00:00 -00:00 +0000 -0000 or Z
+        parseTokenT = /T/i, // T (ISO seperator)
+        parseTokenTimestampMs = /[\+\-]?\d+(\.\d{1,3})?/, // 123456789 123456789.123
+
+    // preliminary iso regex
+    // 0000-00-00 + T + 00 or 00:00 or 00:00:00 or 00:00:00.000 + +00:00 or +0000
+        isoRegex = /^\s*\d{4}-\d\d-\d\d((T| )(\d\d(:\d\d(:\d\d(\.\d\d?\d?)?)?)?)?([\+\-]\d\d:?\d\d)?)?/,
+        isoFormat = 'YYYY-MM-DDTHH:mm:ssZ',
+
+    // iso time formats and regexes
+        isoTimes = [
+            ['HH:mm:ss.S', /(T| )\d\d:\d\d:\d\d\.\d{1,3}/],
+            ['HH:mm:ss', /(T| )\d\d:\d\d:\d\d/],
+            ['HH:mm', /(T| )\d\d:\d\d/],
+            ['HH', /(T| )\d\d/]
+        ],
+
+    // timezone chunker "+10:00" > ["10", "00"] or "-1530" > ["-15", "30"]
+        parseTimezoneChunker = /([\+\-]|\d\d)/gi,
+
+    // getter and setter names
+        proxyGettersAndSetters = 'Month|Date|Hours|Minutes|Seconds|Milliseconds'.split('|'),
+        unitMillisecondFactors = {
+            'Milliseconds' : 1,
+            'Seconds' : 1e3,
+            'Minutes' : 6e4,
+            'Hours' : 36e5,
+            'Days' : 864e5,
+            'Months' : 2592e6,
+            'Years' : 31536e6
+        },
+
+    // format function strings
+        formatFunctions = {},
+
+    // tokens to ordinalize and pad
+        ordinalizeTokens = 'DDD w W M D d'.split(' '),
+        paddedTokens = 'M D H h m s w W'.split(' '),
+
+        formatTokenFunctions = {
+            M    : function () {
+                return this.month() + 1;
+            },
+            MMM  : function (format) {
+                return this.lang().monthsShort(this, format);
+            },
+            MMMM : function (format) {
+                return this.lang().months(this, format);
+            },
+            D    : function () {
+                return this.date();
+            },
+            DDD  : function () {
+                return this.dayOfYear();
+            },
+            d    : function () {
+                return this.day();
+            },
+            dd   : function (format) {
+                return this.lang().weekdaysMin(this, format);
+            },
+            ddd  : function (format) {
+                return this.lang().weekdaysShort(this, format);
+            },
+            dddd : function (format) {
+                return this.lang().weekdays(this, format);
+            },
+            w    : function () {
+                return this.week();
+            },
+            W    : function () {
+                return this.isoWeek();
+            },
+            YY   : function () {
+                return leftZeroFill(this.year() % 100, 2);
+            },
+            YYYY : function () {
+                return leftZeroFill(this.year(), 4);
+            },
+            YYYYY : function () {
+                return leftZeroFill(this.year(), 5);
+            },
+            a    : function () {
+                return this.lang().meridiem(this.hours(), this.minutes(), true);
+            },
+            A    : function () {
+                return this.lang().meridiem(this.hours(), this.minutes(), false);
+            },
+            H    : function () {
+                return this.hours();
+            },
+            h    : function () {
+                return this.hours() % 12 || 12;
+            },
+            m    : function () {
+                return this.minutes();
+            },
+            s    : function () {
+                return this.seconds();
+            },
+            S    : function () {
+                return ~~(this.milliseconds() / 100);
+            },
+            SS   : function () {
+                return leftZeroFill(~~(this.milliseconds() / 10), 2);
+            },
+            SSS  : function () {
+                return leftZeroFill(this.milliseconds(), 3);
+            },
+            Z    : function () {
+                var a = -this.zone(),
+                    b = "+";
+                if (a < 0) {
+                    a = -a;
+                    b = "-";
+                }
+                return b + leftZeroFill(~~(a / 60), 2) + ":" + leftZeroFill(~~a % 60, 2);
+            },
+            ZZ   : function () {
+                var a = -this.zone(),
+                    b = "+";
+                if (a < 0) {
+                    a = -a;
+                    b = "-";
+                }
+                return b + leftZeroFill(~~(10 * a / 6), 4);
+            },
+            X    : function () {
+                return this.unix();
+            }
+        };
+
+    function padToken(func, count) {
+        return function (a) {
+            return leftZeroFill(func.call(this, a), count);
+        };
+    }
+    function ordinalizeToken(func) {
+        return function (a) {
+            return this.lang().ordinal(func.call(this, a));
+        };
+    }
+
+    while (ordinalizeTokens.length) {
+        i = ordinalizeTokens.pop();
+        formatTokenFunctions[i + 'o'] = ordinalizeToken(formatTokenFunctions[i]);
+    }
+    while (paddedTokens.length) {
+        i = paddedTokens.pop();
+        formatTokenFunctions[i + i] = padToken(formatTokenFunctions[i], 2);
+    }
+    formatTokenFunctions.DDDD = padToken(formatTokenFunctions.DDD, 3);
+
+
+    /************************************
+     Constructors
+     ************************************/
+
+    function Language() {
+
+    }
+
+    // Moment prototype object
+    function Moment(config) {
+        extend(this, config);
+    }
+
+    // Duration Constructor
+    function Duration(duration) {
+        var data = this._data = {},
+            years = duration.years || duration.year || duration.y || 0,
+            months = duration.months || duration.month || duration.M || 0,
+            weeks = duration.weeks || duration.week || duration.w || 0,
+            days = duration.days || duration.day || duration.d || 0,
+            hours = duration.hours || duration.hour || duration.h || 0,
+            minutes = duration.minutes || duration.minute || duration.m || 0,
+            seconds = duration.seconds || duration.second || duration.s || 0,
+            milliseconds = duration.milliseconds || duration.millisecond || duration.ms || 0;
+
+        // representation for dateAddRemove
+        this._milliseconds = milliseconds +
+            seconds * 1e3 + // 1000
+            minutes * 6e4 + // 1000 * 60
+            hours * 36e5; // 1000 * 60 * 60
+        // Because of dateAddRemove treats 24 hours as different from a
+        // day when working around DST, we need to store them separately
+        this._days = days +
+            weeks * 7;
+        // It is impossible translate months into days without knowing
+        // which months you are are talking about, so we have to store
+        // it separately.
+        this._months = months +
+            years * 12;
+
+        // The following code bubbles up values, see the tests for
+        // examples of what that means.
+        data.milliseconds = milliseconds % 1000;
+        seconds += absRound(milliseconds / 1000);
+
+        data.seconds = seconds % 60;
+        minutes += absRound(seconds / 60);
+
+        data.minutes = minutes % 60;
+        hours += absRound(minutes / 60);
+
+        data.hours = hours % 24;
+        days += absRound(hours / 24);
+
+        days += weeks * 7;
+        data.days = days % 30;
+
+        months += absRound(days / 30);
+
+        data.months = months % 12;
+        years += absRound(months / 12);
+
+        data.years = years;
+    }
+
+
+    /************************************
+     Helpers
+     ************************************/
+
+
+    function extend(a, b) {
+        for (var i in b) {
+            if (b.hasOwnProperty(i)) {
+                a[i] = b[i];
+            }
+        }
+        return a;
+    }
+
+    function absRound(number) {
+        if (number < 0) {
+            return Math.ceil(number);
+        } else {
+            return Math.floor(number);
+        }
+    }
+
+    // left zero fill a number
+    // see http://jsperf.com/left-zero-filling for performance comparison
+    function leftZeroFill(number, targetLength) {
+        var output = number + '';
+        while (output.length < targetLength) {
+            output = '0' + output;
+        }
+        return output;
+    }
+
+    // helper function for _.addTime and _.subtractTime
+    function addOrSubtractDurationFromMoment(mom, duration, isAdding) {
+        var ms = duration._milliseconds,
+            d = duration._days,
+            M = duration._months,
+            currentDate;
+
+        if (ms) {
+            mom._d.setTime(+mom + ms * isAdding);
+        }
+        if (d) {
+            mom.date(mom.date() + d * isAdding);
+        }
+        if (M) {
+            currentDate = mom.date();
+            mom.date(1)
+                .month(mom.month() + M * isAdding)
+                .date(Math.min(currentDate, mom.daysInMonth()));
+        }
+    }
+
+    // check if is an array
+    function isArray(input) {
+        return Object.prototype.toString.call(input) === '[object Array]';
+    }
+
+    // compare two arrays, return the number of differences
+    function compareArrays(array1, array2) {
+        var len = Math.min(array1.length, array2.length),
+            lengthDiff = Math.abs(array1.length - array2.length),
+            diffs = 0,
+            i;
+        for (i = 0; i < len; i++) {
+            if (~~array1[i] !== ~~array2[i]) {
+                diffs++;
+            }
+        }
+        return diffs + lengthDiff;
+    }
+
+
+    /************************************
+     Languages
+     ************************************/
+
+
+    Language.prototype = {
+        set : function (config) {
+            var prop, i;
+            for (i in config) {
+                prop = config[i];
+                if (typeof prop === 'function') {
+                    this[i] = prop;
+                } else {
+                    this['_' + i] = prop;
+                }
+            }
+        },
+
+        _months : "January_February_March_April_May_June_July_August_September_October_November_December".split("_"),
+        months : function (m) {
+            return this._months[m.month()];
+        },
+
+        _monthsShort : "Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec".split("_"),
+        monthsShort : function (m) {
+            return this._monthsShort[m.month()];
+        },
+
+        monthsParse : function (monthName) {
+            var i, mom, regex, output;
+
+            if (!this._monthsParse) {
+                this._monthsParse = [];
+            }
+
+            for (i = 0; i < 12; i++) {
+                // make the regex if we don't have it already
+                if (!this._monthsParse[i]) {
+                    mom = moment([2000, i]);
+                    regex = '^' + this.months(mom, '') + '|^' + this.monthsShort(mom, '');
+                    this._monthsParse[i] = new RegExp(regex.replace('.', ''), 'i');
+                }
+                // test the regex
+                if (this._monthsParse[i].test(monthName)) {
+                    return i;
+                }
+            }
+        },
+
+        _weekdays : "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"),
+        weekdays : function (m) {
+            return this._weekdays[m.day()];
+        },
+
+        _weekdaysShort : "Sun_Mon_Tue_Wed_Thu_Fri_Sat".split("_"),
+        weekdaysShort : function (m) {
+            return this._weekdaysShort[m.day()];
+        },
+
+        _weekdaysMin : "Su_Mo_Tu_We_Th_Fr_Sa".split("_"),
+        weekdaysMin : function (m) {
+            return this._weekdaysMin[m.day()];
+        },
+
+        _longDateFormat : {
+            LT : "h:mm A",
+            L : "MM/DD/YYYY",
+            LL : "MMMM D YYYY",
+            LLL : "MMMM D YYYY LT",
+            LLLL : "dddd, MMMM D YYYY LT"
+        },
+        longDateFormat : function (key) {
+            var output = this._longDateFormat[key];
+            if (!output && this._longDateFormat[key.toUpperCase()]) {
+                output = this._longDateFormat[key.toUpperCase()].replace(/MMMM|MM|DD|dddd/g, function (val) {
+                    return val.slice(1);
+                });
+                this._longDateFormat[key] = output;
+            }
+            return output;
+        },
+
+        meridiem : function (hours, minutes, isLower) {
+            if (hours > 11) {
+                return isLower ? 'pm' : 'PM';
+            } else {
+                return isLower ? 'am' : 'AM';
+            }
+        },
+
+        _calendar : {
+            sameDay : '[Today at] LT',
+            nextDay : '[Tomorrow at] LT',
+            nextWeek : 'dddd [at] LT',
+            lastDay : '[Yesterday at] LT',
+            lastWeek : '[last] dddd [at] LT',
+            sameElse : 'L'
+        },
+        calendar : function (key, mom) {
+            var output = this._calendar[key];
+            return typeof output === 'function' ? output.apply(mom) : output;
+        },
+
+        _relativeTime : {
+            future : "in %s",
+            past : "%s ago",
+            s : "a few seconds",
+            m : "a minute",
+            mm : "%d minutes",
+            h : "an hour",
+            hh : "%d hours",
+            d : "a day",
+            dd : "%d days",
+            M : "a month",
+            MM : "%d months",
+            y : "a year",
+            yy : "%d years"
+        },
+        relativeTime : function (number, withoutSuffix, string, isFuture) {
+            var output = this._relativeTime[string];
+            return (typeof output === 'function') ?
+                output(number, withoutSuffix, string, isFuture) :
+                output.replace(/%d/i, number);
+        },
+        pastFuture : function (diff, output) {
+            var format = this._relativeTime[diff > 0 ? 'future' : 'past'];
+            return typeof format === 'function' ? format(output) : format.replace(/%s/i, output);
+        },
+
+        ordinal : function (number) {
+            return this._ordinal.replace("%d", number);
+        },
+        _ordinal : "%d",
+
+        preparse : function (string) {
+            return string;
+        },
+
+        postformat : function (string) {
+            return string;
+        },
+
+        week : function (mom) {
+            return weekOfYear(mom, this._week.dow, this._week.doy);
+        },
+        _week : {
+            dow : 0, // Sunday is the first day of the week.
+            doy : 6  // The week that contains Jan 1st is the first week of the year.
+        }
+    };
+
+    // Loads a language definition into the `languages` cache.  The function
+    // takes a key and optionally values.  If not in the browser and no values
+    // are provided, it will load the language file module.  As a convenience,
+    // this function also returns the language values.
+    function loadLang(key, values) {
+        values.abbr = key;
+        if (!languages[key]) {
+            languages[key] = new Language();
+        }
+        languages[key].set(values);
+        return languages[key];
+    }
+
+    // Determines which language definition to use and returns it.
+    //
+    // With no parameters, it will return the global language.  If you
+    // pass in a language key, such as 'en', it will return the
+    // definition for 'en', so long as 'en' has already been loaded using
+    // moment.lang.
+    function getLangDefinition(key) {
+        if (!key) {
+            return moment.fn._lang;
+        }
+        if (!languages[key] && hasModule) {
+            require('./lang/' + key);
+        }
+        return languages[key];
+    }
+
+
+    /************************************
+     Formatting
+     ************************************/
+
+
+    function removeFormattingTokens(input) {
+        if (input.match(/\[.*\]/)) {
+            return input.replace(/^\[|\]$/g, "");
+        }
+        return input.replace(/\\/g, "");
+    }
+
+    function makeFormatFunction(format) {
+        var array = format.match(formattingTokens), i, length;
+
+        for (i = 0, length = array.length; i < length; i++) {
+            if (formatTokenFunctions[array[i]]) {
+                array[i] = formatTokenFunctions[array[i]];
+            } else {
+                array[i] = removeFormattingTokens(array[i]);
+            }
+        }
+
+        return function (mom) {
+            var output = "";
+            for (i = 0; i < length; i++) {
+                output += typeof array[i].call === 'function' ? array[i].call(mom, format) : array[i];
+            }
+            return output;
+        };
+    }
+
+    // format date using native date object
+    function formatMoment(m, format) {
+        var i = 5;
+
+        function replaceLongDateFormatTokens(input) {
+            return m.lang().longDateFormat(input) || input;
+        }
+
+        while (i-- && localFormattingTokens.test(format)) {
+            format = format.replace(localFormattingTokens, replaceLongDateFormatTokens);
+        }
+
+        if (!formatFunctions[format]) {
+            formatFunctions[format] = makeFormatFunction(format);
+        }
+
+        return formatFunctions[format](m);
+    }
+
+
+    /************************************
+     Parsing
+     ************************************/
+
+
+        // get the regex to find the next token
+    function getParseRegexForToken(token) {
+        switch (token) {
+            case 'DDDD':
+                return parseTokenThreeDigits;
+            case 'YYYY':
+                return parseTokenFourDigits;
+            case 'YYYYY':
+                return parseTokenSixDigits;
+            case 'S':
+            case 'SS':
+            case 'SSS':
+            case 'DDD':
+                return parseTokenOneToThreeDigits;
+            case 'MMM':
+            case 'MMMM':
+            case 'dd':
+            case 'ddd':
+            case 'dddd':
+            case 'a':
+            case 'A':
+                return parseTokenWord;
+            case 'X':
+                return parseTokenTimestampMs;
+            case 'Z':
+            case 'ZZ':
+                return parseTokenTimezone;
+            case 'T':
+                return parseTokenT;
+            case 'MM':
+            case 'DD':
+            case 'YY':
+            case 'HH':
+            case 'hh':
+            case 'mm':
+            case 'ss':
+            case 'M':
+            case 'D':
+            case 'd':
+            case 'H':
+            case 'h':
+            case 'm':
+            case 's':
+                return parseTokenOneOrTwoDigits;
+            default :
+                return new RegExp(token.replace('\\', ''));
+        }
+    }
+
+    // function to convert string input to date
+    function addTimeToArrayFromToken(token, input, config) {
+        var a, b,
+            datePartArray = config._a;
+
+        switch (token) {
+            // MONTH
+            case 'M' : // fall through to MM
+            case 'MM' :
+                datePartArray[1] = (input == null) ? 0 : ~~input - 1;
+                break;
+            case 'MMM' : // fall through to MMMM
+            case 'MMMM' :
+                a = getLangDefinition(config._l).monthsParse(input);
+                // if we didn't find a month name, mark the date as invalid.
+                if (a != null) {
+                    datePartArray[1] = a;
+                } else {
+                    config._isValid = false;
+                }
+                break;
+            // DAY OF MONTH
+            case 'D' : // fall through to DDDD
+            case 'DD' : // fall through to DDDD
+            case 'DDD' : // fall through to DDDD
+            case 'DDDD' :
+                if (input != null) {
+                    datePartArray[2] = ~~input;
+                }
+                break;
+            // YEAR
+            case 'YY' :
+                datePartArray[0] = ~~input + (~~input > 68 ? 1900 : 2000);
+                break;
+            case 'YYYY' :
+            case 'YYYYY' :
+                datePartArray[0] = ~~input;
+                break;
+            // AM / PM
+            case 'a' : // fall through to A
+            case 'A' :
+                config._isPm = ((input + '').toLowerCase() === 'pm');
+                break;
+            // 24 HOUR
+            case 'H' : // fall through to hh
+            case 'HH' : // fall through to hh
+            case 'h' : // fall through to hh
+            case 'hh' :
+                datePartArray[3] = ~~input;
+                break;
+            // MINUTE
+            case 'm' : // fall through to mm
+            case 'mm' :
+                datePartArray[4] = ~~input;
+                break;
+            // SECOND
+            case 's' : // fall through to ss
+            case 'ss' :
+                datePartArray[5] = ~~input;
+                break;
+            // MILLISECOND
+            case 'S' :
+            case 'SS' :
+            case 'SSS' :
+                datePartArray[6] = ~~ (('0.' + input) * 1000);
+                break;
+            // UNIX TIMESTAMP WITH MS
+            case 'X':
+                config._d = new Date(parseFloat(input) * 1000);
+                break;
+            // TIMEZONE
+            case 'Z' : // fall through to ZZ
+            case 'ZZ' :
+                config._useUTC = true;
+                a = (input + '').match(parseTimezoneChunker);
+                if (a && a[1]) {
+                    config._tzh = ~~a[1];
+                }
+                if (a && a[2]) {
+                    config._tzm = ~~a[2];
+                }
+                // reverse offsets
+                if (a && a[0] === '+') {
+                    config._tzh = -config._tzh;
+                    config._tzm = -config._tzm;
+                }
+                break;
+        }
+
+        // if the input is null, the date is not valid
+        if (input == null) {
+            config._isValid = false;
+        }
+    }
+
+    // convert an array to a date.
+    // the array should mirror the parameters below
+    // note: all values past the year are optional and will default to the lowest possible value.
+    // [year, month, day , hour, minute, second, millisecond]
+    function dateFromArray(config) {
+        var i, date, input = [];
+
+        if (config._d) {
+            return;
+        }
+
+        for (i = 0; i < 7; i++) {
+            config._a[i] = input[i] = (config._a[i] == null) ? (i === 2 ? 1 : 0) : config._a[i];
+        }
+
+        // add the offsets to the time to be parsed so that we can have a clean array for checking isValid
+        input[3] += config._tzh || 0;
+        input[4] += config._tzm || 0;
+
+        date = new Date(0);
+
+        if (config._useUTC) {
+            date.setUTCFullYear(input[0], input[1], input[2]);
+            date.setUTCHours(input[3], input[4], input[5], input[6]);
+        } else {
+            date.setFullYear(input[0], input[1], input[2]);
+            date.setHours(input[3], input[4], input[5], input[6]);
+        }
+
+        config._d = date;
+    }
+
+    // date from string and format string
+    function makeDateFromStringAndFormat(config) {
+        // This array is used to make a Date, either with `new Date` or `Date.UTC`
+        var tokens = config._f.match(formattingTokens),
+            string = config._i,
+            i, parsedInput;
+
+        config._a = [];
+
+        for (i = 0; i < tokens.length; i++) {
+            parsedInput = (getParseRegexForToken(tokens[i]).exec(string) || [])[0];
+            if (parsedInput) {
+                string = string.slice(string.indexOf(parsedInput) + parsedInput.length);
+            }
+            // don't parse if its not a known token
+            if (formatTokenFunctions[tokens[i]]) {
+                addTimeToArrayFromToken(tokens[i], parsedInput, config);
+            }
+        }
+        // handle am pm
+        if (config._isPm && config._a[3] < 12) {
+            config._a[3] += 12;
+        }
+        // if is 12 am, change hours to 0
+        if (config._isPm === false && config._a[3] === 12) {
+            config._a[3] = 0;
+        }
+        // return
+        dateFromArray(config);
+    }
+
+    // date from string and array of format strings
+    function makeDateFromStringAndArray(config) {
+        var tempConfig,
+            tempMoment,
+            bestMoment,
+
+            scoreToBeat = 99,
+            i,
+            currentDate,
+            currentScore;
+
+        while (config._f.length) {
+            tempConfig = extend({}, config);
+            tempConfig._f = config._f.pop();
+            makeDateFromStringAndFormat(tempConfig);
+            tempMoment = new Moment(tempConfig);
+
+            if (tempMoment.isValid()) {
+                bestMoment = tempMoment;
+                break;
+            }
+
+            currentScore = compareArrays(tempConfig._a, tempMoment.toArray());
+
+            if (currentScore < scoreToBeat) {
+                scoreToBeat = currentScore;
+                bestMoment = tempMoment;
+            }
+        }
+
+        extend(config, bestMoment);
+    }
+
+    // date from iso format
+    function makeDateFromString(config) {
+        var i,
+            string = config._i;
+        if (isoRegex.exec(string)) {
+            config._f = 'YYYY-MM-DDT';
+            for (i = 0; i < 4; i++) {
+                if (isoTimes[i][1].exec(string)) {
+                    config._f += isoTimes[i][0];
+                    break;
+                }
+            }
+            if (parseTokenTimezone.exec(string)) {
+                config._f += " Z";
+            }
+            makeDateFromStringAndFormat(config);
+        } else {
+            config._d = new Date(string);
+        }
+    }
+
+    function makeDateFromInput(config) {
+        var input = config._i,
+            matched = aspNetJsonRegex.exec(input);
+
+        if (input === undefined) {
+            config._d = new Date();
+        } else if (matched) {
+            config._d = new Date(+matched[1]);
+        } else if (typeof input === 'string') {
+            makeDateFromString(config);
+        } else if (isArray(input)) {
+            config._a = input.slice(0);
+            dateFromArray(config);
+        } else {
+            config._d = input instanceof Date ? new Date(+input) : new Date(input);
+        }
+    }
+
+
+    /************************************
+     Relative Time
+     ************************************/
+
+
+        // helper function for moment.fn.from, moment.fn.fromNow, and moment.duration.fn.humanize
+    function substituteTimeAgo(string, number, withoutSuffix, isFuture, lang) {
+        return lang.relativeTime(number || 1, !!withoutSuffix, string, isFuture);
+    }
+
+    function relativeTime(milliseconds, withoutSuffix, lang) {
+        var seconds = round(Math.abs(milliseconds) / 1000),
+            minutes = round(seconds / 60),
+            hours = round(minutes / 60),
+            days = round(hours / 24),
+            years = round(days / 365),
+            args = seconds < 45 && ['s', seconds] ||
+                minutes === 1 && ['m'] ||
+                minutes < 45 && ['mm', minutes] ||
+                hours === 1 && ['h'] ||
+                hours < 22 && ['hh', hours] ||
+                days === 1 && ['d'] ||
+                days <= 25 && ['dd', days] ||
+                days <= 45 && ['M'] ||
+                days < 345 && ['MM', round(days / 30)] ||
+                years === 1 && ['y'] || ['yy', years];
+        args[2] = withoutSuffix;
+        args[3] = milliseconds > 0;
+        args[4] = lang;
+        return substituteTimeAgo.apply({}, args);
+    }
+
+
+    /************************************
+     Week of Year
+     ************************************/
+
+
+        // firstDayOfWeek       0 = sun, 6 = sat
+        //                      the day of the week that starts the week
+        //                      (usually sunday or monday)
+        // firstDayOfWeekOfYear 0 = sun, 6 = sat
+        //                      the first week is the week that contains the first
+        //                      of this day of the week
+        //                      (eg. ISO weeks use thursday (4))
+    function weekOfYear(mom, firstDayOfWeek, firstDayOfWeekOfYear) {
+        var end = firstDayOfWeekOfYear - firstDayOfWeek,
+            daysToDayOfWeek = firstDayOfWeekOfYear - mom.day();
+
+
+        if (daysToDayOfWeek > end) {
+            daysToDayOfWeek -= 7;
+        }
+
+        if (daysToDayOfWeek < end - 7) {
+            daysToDayOfWeek += 7;
+        }
+
+        return Math.ceil(moment(mom).add('d', daysToDayOfWeek).dayOfYear() / 7);
+    }
+
+
+    /************************************
+     Top Level Functions
+     ************************************/
+
+    function makeMoment(config) {
+        var input = config._i,
+            format = config._f;
+
+        if (input === null || input === '') {
+            return null;
+        }
+
+        if (typeof input === 'string') {
+            config._i = input = getLangDefinition().preparse(input);
+        }
+
+        if (moment.isMoment(input)) {
+            config = extend({}, input);
+            config._d = new Date(+input._d);
+        } else if (format) {
+            if (isArray(format)) {
+                makeDateFromStringAndArray(config);
+            } else {
+                makeDateFromStringAndFormat(config);
+            }
+        } else {
+            makeDateFromInput(config);
+        }
+
+        return new Moment(config);
+    }
+
+    moment = function (input, format, lang) {
+        return makeMoment({
+            _i : input,
+            _f : format,
+            _l : lang,
+            _isUTC : false
+        });
+    };
+
+    // creating with utc
+    moment.utc = function (input, format, lang) {
+        return makeMoment({
+            _useUTC : true,
+            _isUTC : true,
+            _l : lang,
+            _i : input,
+            _f : format
+        });
+    };
+
+    // creating with unix timestamp (in seconds)
+    moment.unix = function (input) {
+        return moment(input * 1000);
+    };
+
+    // duration
+    moment.duration = function (input, key) {
+        var isDuration = moment.isDuration(input),
+            isNumber = (typeof input === 'number'),
+            duration = (isDuration ? input._data : (isNumber ? {} : input)),
+            ret;
+
+        if (isNumber) {
+            if (key) {
+                duration[key] = input;
+            } else {
+                duration.milliseconds = input;
+            }
+        }
+
+        ret = new Duration(duration);
+
+        if (isDuration && input.hasOwnProperty('_lang')) {
+            ret._lang = input._lang;
+        }
+
+        return ret;
+    };
+
+    // version number
+    moment.version = VERSION;
+
+    // default format
+    moment.defaultFormat = isoFormat;
+
+    // This function will load languages and then set the global language.  If
+    // no arguments are passed in, it will simply return the current global
+    // language key.
+    moment.lang = function (key, values) {
+        var i;
+
+        if (!key) {
+            return moment.fn._lang._abbr;
+        }
+        if (values) {
+            loadLang(key, values);
+        } else if (!languages[key]) {
+            getLangDefinition(key);
+        }
+        moment.duration.fn._lang = moment.fn._lang = getLangDefinition(key);
+    };
+
+    // returns language data
+    moment.langData = function (key) {
+        if (key && key._lang && key._lang._abbr) {
+            key = key._lang._abbr;
+        }
+        return getLangDefinition(key);
+    };
+
+    // compare moment object
+    moment.isMoment = function (obj) {
+        return obj instanceof Moment;
+    };
+
+    // for typechecking Duration objects
+    moment.isDuration = function (obj) {
+        return obj instanceof Duration;
+    };
+
+
+    /************************************
+     Moment Prototype
+     ************************************/
+
+
+    moment.fn = Moment.prototype = {
+
+        clone : function () {
+            return moment(this);
+        },
+
+        valueOf : function () {
+            return +this._d;
+        },
+
+        unix : function () {
+            return Math.floor(+this._d / 1000);
+        },
+
+        toString : function () {
+            return this.format("ddd MMM DD YYYY HH:mm:ss [GMT]ZZ");
+        },
+
+        toDate : function () {
+            return this._d;
+        },
+
+        toJSON : function () {
+            return moment.utc(this).format('YYYY-MM-DD[T]HH:mm:ss.SSS[Z]');
+        },
+
+        toArray : function () {
+            var m = this;
+            return [
+                m.year(),
+                m.month(),
+                m.date(),
+                m.hours(),
+                m.minutes(),
+                m.seconds(),
+                m.milliseconds()
+            ];
+        },
+
+        isValid : function () {
+            if (this._isValid == null) {
+                if (this._a) {
+                    this._isValid = !compareArrays(this._a, (this._isUTC ? moment.utc(this._a) : moment(this._a)).toArray());
+                } else {
+                    this._isValid = !isNaN(this._d.getTime());
+                }
+            }
+            return !!this._isValid;
+        },
+
+        utc : function () {
+            this._isUTC = true;
+            return this;
+        },
+
+        local : function () {
+            this._isUTC = false;
+            return this;
+        },
+
+        format : function (inputString) {
+            var output = formatMoment(this, inputString || moment.defaultFormat);
+            return this.lang().postformat(output);
+        },
+
+        add : function (input, val) {
+            var dur;
+            // switch args to support add('s', 1) and add(1, 's')
+            if (typeof input === 'string') {
+                dur = moment.duration(+val, input);
+            } else {
+                dur = moment.duration(input, val);
+            }
+            addOrSubtractDurationFromMoment(this, dur, 1);
+            return this;
+        },
+
+        subtract : function (input, val) {
+            var dur;
+            // switch args to support subtract('s', 1) and subtract(1, 's')
+            if (typeof input === 'string') {
+                dur = moment.duration(+val, input);
+            } else {
+                dur = moment.duration(input, val);
+            }
+            addOrSubtractDurationFromMoment(this, dur, -1);
+            return this;
+        },
+
+        diff : function (input, units, asFloat) {
+            var that = this._isUTC ? moment(input).utc() : moment(input).local(),
+                zoneDiff = (this.zone() - that.zone()) * 6e4,
+                diff, output;
+
+            if (units) {
+                // standardize on singular form
+                units = units.replace(/s$/, '');
+            }
+
+            if (units === 'year' || units === 'month') {
+                diff = (this.daysInMonth() + that.daysInMonth()) * 432e5; // 24 * 60 * 60 * 1000 / 2
+                output = ((this.year() - that.year()) * 12) + (this.month() - that.month());
+                output += ((this - moment(this).startOf('month')) - (that - moment(that).startOf('month'))) / diff;
+                if (units === 'year') {
+                    output = output / 12;
+                }
+            } else {
+                diff = (this - that) - zoneDiff;
+                output = units === 'second' ? diff / 1e3 : // 1000
+                    units === 'minute' ? diff / 6e4 : // 1000 * 60
+                        units === 'hour' ? diff / 36e5 : // 1000 * 60 * 60
+                            units === 'day' ? diff / 864e5 : // 1000 * 60 * 60 * 24
+                                units === 'week' ? diff / 6048e5 : // 1000 * 60 * 60 * 24 * 7
+                                    diff;
+            }
+            return asFloat ? output : absRound(output);
+        },
+
+        from : function (time, withoutSuffix) {
+            return moment.duration(this.diff(time)).lang(this.lang()._abbr).humanize(!withoutSuffix);
+        },
+
+        fromNow : function (withoutSuffix) {
+            return this.from(moment(), withoutSuffix);
+        },
+
+        calendar : function () {
+            var diff = this.diff(moment().startOf('day'), 'days', true),
+                format = diff < -6 ? 'sameElse' :
+                    diff < -1 ? 'lastWeek' :
+                        diff < 0 ? 'lastDay' :
+                            diff < 1 ? 'sameDay' :
+                                diff < 2 ? 'nextDay' :
+                                    diff < 7 ? 'nextWeek' : 'sameElse';
+            return this.format(this.lang().calendar(format, this));
+        },
+
+        isLeapYear : function () {
+            var year = this.year();
+            return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0;
+        },
+
+        isDST : function () {
+            return (this.zone() < moment([this.year()]).zone() ||
+                this.zone() < moment([this.year(), 5]).zone());
+        },
+
+        day : function (input) {
+            var day = this._isUTC ? this._d.getUTCDay() : this._d.getDay();
+            return input == null ? day :
+                this.add({ d : input - day });
+        },
+
+        startOf: function (units) {
+            units = units.replace(/s$/, '');
+            // the following switch intentionally omits break keywords
+            // to utilize falling through the cases.
+            switch (units) {
+                case 'year':
+                    this.month(0);
+                /* falls through */
+                case 'month':
+                    this.date(1);
+                /* falls through */
+                case 'week':
+                case 'day':
+                    this.hours(0);
+                /* falls through */
+                case 'hour':
+                    this.minutes(0);
+                /* falls through */
+                case 'minute':
+                    this.seconds(0);
+                /* falls through */
+                case 'second':
+                    this.milliseconds(0);
+                /* falls through */
+            }
+
+            // weeks are a special case
+            if (units === 'week') {
+                this.day(0);
+            }
+
+            return this;
+        },
+
+        endOf: function (units) {
+            return this.startOf(units).add(units.replace(/s?$/, 's'), 1).subtract('ms', 1);
+        },
+
+        isAfter: function (input, units) {
+            units = typeof units !== 'undefined' ? units : 'millisecond';
+            return +this.clone().startOf(units) > +moment(input).startOf(units);
+        },
+
+        isBefore: function (input, units) {
+            units = typeof units !== 'undefined' ? units : 'millisecond';
+            return +this.clone().startOf(units) < +moment(input).startOf(units);
+        },
+
+        isSame: function (input, units) {
+            units = typeof units !== 'undefined' ? units : 'millisecond';
+            return +this.clone().startOf(units) === +moment(input).startOf(units);
+        },
+
+        zone : function () {
+            return this._isUTC ? 0 : this._d.getTimezoneOffset();
+        },
+
+        daysInMonth : function () {
+            return moment.utc([this.year(), this.month() + 1, 0]).date();
+        },
+
+        dayOfYear : function (input) {
+            var dayOfYear = round((moment(this).startOf('day') - moment(this).startOf('year')) / 864e5) + 1;
+            return input == null ? dayOfYear : this.add("d", (input - dayOfYear));
+        },
+
+        isoWeek : function (input) {
+            var week = weekOfYear(this, 1, 4);
+            return input == null ? week : this.add("d", (input - week) * 7);
+        },
+
+        week : function (input) {
+            var week = this.lang().week(this);
+            return input == null ? week : this.add("d", (input - week) * 7);
+        },
+
+        // If passed a language key, it will set the language for this
+        // instance.  Otherwise, it will return the language configuration
+        // variables for this instance.
+        lang : function (key) {
+            if (key === undefined) {
+                return this._lang;
+            } else {
+                this._lang = getLangDefinition(key);
+                return this;
+            }
+        }
+    };
+
+    // helper for adding shortcuts
+    function makeGetterAndSetter(name, key) {
+        moment.fn[name] = moment.fn[name + 's'] = function (input) {
+            var utc = this._isUTC ? 'UTC' : '';
+            if (input != null) {
+                this._d['set' + utc + key](input);
+                return this;
+            } else {
+                return this._d['get' + utc + key]();
+            }
+        };
+    }
+
+    // loop through and add shortcuts (Month, Date, Hours, Minutes, Seconds, Milliseconds)
+    for (i = 0; i < proxyGettersAndSetters.length; i ++) {
+        makeGetterAndSetter(proxyGettersAndSetters[i].toLowerCase().replace(/s$/, ''), proxyGettersAndSetters[i]);
+    }
+
+    // add shortcut for year (uses different syntax than the getter/setter 'year' == 'FullYear')
+    makeGetterAndSetter('year', 'FullYear');
+
+    // add plural methods
+    moment.fn.days = moment.fn.day;
+    moment.fn.weeks = moment.fn.week;
+    moment.fn.isoWeeks = moment.fn.isoWeek;
+
+    /************************************
+     Duration Prototype
+     ************************************/
+
+
+    moment.duration.fn = Duration.prototype = {
+        weeks : function () {
+            return absRound(this.days() / 7);
+        },
+
+        valueOf : function () {
+            return this._milliseconds +
+                this._days * 864e5 +
+                this._months * 2592e6;
+        },
+
+        humanize : function (withSuffix) {
+            var difference = +this,
+                output = relativeTime(difference, !withSuffix, this.lang());
+
+            if (withSuffix) {
+                output = this.lang().pastFuture(difference, output);
+            }
+
+            return this.lang().postformat(output);
+        },
+
+        lang : moment.fn.lang
+    };
+
+    function makeDurationGetter(name) {
+        moment.duration.fn[name] = function () {
+            return this._data[name];
+        };
+    }
+
+    function makeDurationAsGetter(name, factor) {
+        moment.duration.fn['as' + name] = function () {
+            return +this / factor;
+        };
+    }
+
+    for (i in unitMillisecondFactors) {
+        if (unitMillisecondFactors.hasOwnProperty(i)) {
+            makeDurationAsGetter(i, unitMillisecondFactors[i]);
+            makeDurationGetter(i.toLowerCase());
+        }
+    }
+
+    makeDurationAsGetter('Weeks', 6048e5);
+
+
+    /************************************
+     Default Lang
+     ************************************/
+
+
+        // Set default language, other languages will inherit from English.
+    moment.lang('en', {
+        ordinal : function (number) {
+            var b = number % 10,
+                output = (~~ (number % 100 / 10) === 1) ? 'th' :
+                    (b === 1) ? 'st' :
+                        (b === 2) ? 'nd' :
+                            (b === 3) ? 'rd' : 'th';
+            return number + output;
+        }
+    });
+
+
+    /************************************
+     Exposing Moment
+     ************************************/
+
+
+    // CommonJS module is defined
+    if (hasModule) {
+        module.exports = moment;
+    }
+    /*global ender:false */
+    if (typeof ender === 'undefined') {
+        // here, `this` means `window` in the browser, or `global` on the server
+        // add `moment` as a global object via a string identifier,
+        // for Closure Compiler "advanced" mode
+        this['moment'] = moment;
+    }
+    /*global define:false */
+    if (typeof define === "function" && define.amd) {
+        define("moment", [], function () {
+            return moment;
+        });
+    }
 }).call(this);
 !function(){var q=null;window.PR_SHOULD_USE_CONTINUATION=!0;
-	(function(){function S(a){function d(e){var b=e.charCodeAt(0);if(b!==92)return b;var a=e.charAt(1);return(b=r[a])?b:"0"<=a&&a<="7"?parseInt(e.substring(1),8):a==="u"||a==="x"?parseInt(e.substring(2),16):e.charCodeAt(1)}function g(e){if(e<32)return(e<16?"\\x0":"\\x")+e.toString(16);e=String.fromCharCode(e);return e==="\\"||e==="-"||e==="]"||e==="^"?"\\"+e:e}function b(e){var b=e.substring(1,e.length-1).match(/\\u[\dA-Fa-f]{4}|\\x[\dA-Fa-f]{2}|\\[0-3][0-7]{0,2}|\\[0-7]{1,2}|\\[\S\s]|[^\\]/g),e=[],a=
-		b[0]==="^",c=["["];a&&c.push("^");for(var a=a?1:0,f=b.length;a<f;++a){var h=b[a];if(/\\[bdsw]/i.test(h))c.push(h);else{var h=d(h),l;a+2<f&&"-"===b[a+1]?(l=d(b[a+2]),a+=2):l=h;e.push([h,l]);l<65||h>122||(l<65||h>90||e.push([Math.max(65,h)|32,Math.min(l,90)|32]),l<97||h>122||e.push([Math.max(97,h)&-33,Math.min(l,122)&-33]))}}e.sort(function(e,a){return e[0]-a[0]||a[1]-e[1]});b=[];f=[];for(a=0;a<e.length;++a)h=e[a],h[0]<=f[1]+1?f[1]=Math.max(f[1],h[1]):b.push(f=h);for(a=0;a<b.length;++a)h=b[a],c.push(g(h[0])),
-		h[1]>h[0]&&(h[1]+1>h[0]&&c.push("-"),c.push(g(h[1])));c.push("]");return c.join("")}function s(e){for(var a=e.source.match(/\[(?:[^\\\]]|\\[\S\s])*]|\\u[\dA-Fa-f]{4}|\\x[\dA-Fa-f]{2}|\\\d+|\\[^\dux]|\(\?[!:=]|[()^]|[^()[\\^]+/g),c=a.length,d=[],f=0,h=0;f<c;++f){var l=a[f];l==="("?++h:"\\"===l.charAt(0)&&(l=+l.substring(1))&&(l<=h?d[l]=-1:a[f]=g(l))}for(f=1;f<d.length;++f)-1===d[f]&&(d[f]=++x);for(h=f=0;f<c;++f)l=a[f],l==="("?(++h,d[h]||(a[f]="(?:")):"\\"===l.charAt(0)&&(l=+l.substring(1))&&l<=h&&
-		(a[f]="\\"+d[l]);for(f=0;f<c;++f)"^"===a[f]&&"^"!==a[f+1]&&(a[f]="");if(e.ignoreCase&&m)for(f=0;f<c;++f)l=a[f],e=l.charAt(0),l.length>=2&&e==="["?a[f]=b(l):e!=="\\"&&(a[f]=l.replace(/[A-Za-z]/g,function(a){a=a.charCodeAt(0);return"["+String.fromCharCode(a&-33,a|32)+"]"}));return a.join("")}for(var x=0,m=!1,j=!1,k=0,c=a.length;k<c;++k){var i=a[k];if(i.ignoreCase)j=!0;else if(/[a-z]/i.test(i.source.replace(/\\u[\da-f]{4}|\\x[\da-f]{2}|\\[^UXux]/gi,""))){m=!0;j=!1;break}}for(var r={b:8,t:9,n:10,v:11,
-		f:12,r:13},n=[],k=0,c=a.length;k<c;++k){i=a[k];if(i.global||i.multiline)throw Error(""+i);n.push("(?:"+s(i)+")")}return RegExp(n.join("|"),j?"gi":"g")}function T(a,d){function g(a){var c=a.nodeType;if(c==1){if(!b.test(a.className)){for(c=a.firstChild;c;c=c.nextSibling)g(c);c=a.nodeName.toLowerCase();if("br"===c||"li"===c)s[j]="\n",m[j<<1]=x++,m[j++<<1|1]=a}}else if(c==3||c==4)c=a.nodeValue,c.length&&(c=d?c.replace(/\r\n?/g,"\n"):c.replace(/[\t\n\r ]+/g," "),s[j]=c,m[j<<1]=x,x+=c.length,m[j++<<1|1]=
-		a)}var b=/(?:^|\s)nocode(?:\s|$)/,s=[],x=0,m=[],j=0;g(a);return{a:s.join("").replace(/\n$/,""),d:m}}function H(a,d,g,b){d&&(a={a:d,e:a},g(a),b.push.apply(b,a.g))}function U(a){for(var d=void 0,g=a.firstChild;g;g=g.nextSibling)var b=g.nodeType,d=b===1?d?a:g:b===3?V.test(g.nodeValue)?a:d:d;return d===a?void 0:d}function C(a,d){function g(a){for(var j=a.e,k=[j,"pln"],c=0,i=a.a.match(s)||[],r={},n=0,e=i.length;n<e;++n){var z=i[n],w=r[z],t=void 0,f;if(typeof w==="string")f=!1;else{var h=b[z.charAt(0)];
-		if(h)t=z.match(h[1]),w=h[0];else{for(f=0;f<x;++f)if(h=d[f],t=z.match(h[1])){w=h[0];break}t||(w="pln")}if((f=w.length>=5&&"lang-"===w.substring(0,5))&&!(t&&typeof t[1]==="string"))f=!1,w="src";f||(r[z]=w)}h=c;c+=z.length;if(f){f=t[1];var l=z.indexOf(f),B=l+f.length;t[2]&&(B=z.length-t[2].length,l=B-f.length);w=w.substring(5);H(j+h,z.substring(0,l),g,k);H(j+h+l,f,I(w,f),k);H(j+h+B,z.substring(B),g,k)}else k.push(j+h,w)}a.g=k}var b={},s;(function(){for(var g=a.concat(d),j=[],k={},c=0,i=g.length;c<i;++c){var r=
-		g[c],n=r[3];if(n)for(var e=n.length;--e>=0;)b[n.charAt(e)]=r;r=r[1];n=""+r;k.hasOwnProperty(n)||(j.push(r),k[n]=q)}j.push(/[\S\s]/);s=S(j)})();var x=d.length;return g}function v(a){var d=[],g=[];a.tripleQuotedStrings?d.push(["str",/^(?:'''(?:[^'\\]|\\[\S\s]|''?(?=[^']))*(?:'''|$)|"""(?:[^"\\]|\\[\S\s]|""?(?=[^"]))*(?:"""|$)|'(?:[^'\\]|\\[\S\s])*(?:'|$)|"(?:[^"\\]|\\[\S\s])*(?:"|$))/,q,"'\""]):a.multiLineStrings?d.push(["str",/^(?:'(?:[^'\\]|\\[\S\s])*(?:'|$)|"(?:[^"\\]|\\[\S\s])*(?:"|$)|`(?:[^\\`]|\\[\S\s])*(?:`|$))/,
-		q,"'\"`"]):d.push(["str",/^(?:'(?:[^\n\r'\\]|\\.)*(?:'|$)|"(?:[^\n\r"\\]|\\.)*(?:"|$))/,q,"\"'"]);a.verbatimStrings&&g.push(["str",/^@"(?:[^"]|"")*(?:"|$)/,q]);var b=a.hashComments;b&&(a.cStyleComments?(b>1?d.push(["com",/^#(?:##(?:[^#]|#(?!##))*(?:###|$)|.*)/,q,"#"]):d.push(["com",/^#(?:(?:define|e(?:l|nd)if|else|error|ifn?def|include|line|pragma|undef|warning)\b|[^\n\r]*)/,q,"#"]),g.push(["str",/^<(?:(?:(?:\.\.\/)*|\/?)(?:[\w-]+(?:\/[\w-]+)+)?[\w-]+\.h(?:h|pp|\+\+)?|[a-z]\w*)>/,q])):d.push(["com",
-		/^#[^\n\r]*/,q,"#"]));a.cStyleComments&&(g.push(["com",/^\/\/[^\n\r]*/,q]),g.push(["com",/^\/\*[\S\s]*?(?:\*\/|$)/,q]));if(b=a.regexLiterals){var s=(b=b>1?"":"\n\r")?".":"[\\S\\s]";g.push(["lang-regex",RegExp("^(?:^^\\.?|[+-]|[!=]=?=?|\\#|%=?|&&?=?|\\(|\\*=?|[+\\-]=|->|\\/=?|::?|<<?=?|>>?>?=?|,|;|\\?|@|\\[|~|{|\\^\\^?=?|\\|\\|?=?|break|case|continue|delete|do|else|finally|instanceof|return|throw|try|typeof)\\s*("+("/(?=[^/*"+b+"])(?:[^/\\x5B\\x5C"+b+"]|\\x5C"+s+"|\\x5B(?:[^\\x5C\\x5D"+b+"]|\\x5C"+
-		s+")*(?:\\x5D|$))+/")+")")])}(b=a.types)&&g.push(["typ",b]);b=(""+a.keywords).replace(/^ | $/g,"");b.length&&g.push(["kwd",RegExp("^(?:"+b.replace(/[\s,]+/g,"|")+")\\b"),q]);d.push(["pln",/^\s+/,q," \r\n\t\u00a0"]);b="^.[^\\s\\w.$@'\"`/\\\\]*";a.regexLiterals&&(b+="(?!s*/)");g.push(["lit",/^@[$_a-z][\w$@]*/i,q],["typ",/^(?:[@_]?[A-Z]+[a-z][\w$@]*|\w+_t\b)/,q],["pln",/^[$_a-z][\w$@]*/i,q],["lit",/^(?:0x[\da-f]+|(?:\d(?:_\d+)*\d*(?:\.\d*)?|\.\d\+)(?:e[+-]?\d+)?)[a-z]*/i,q,"0123456789"],["pln",/^\\[\S\s]?/,
-		q],["pun",RegExp(b),q]);return C(d,g)}function J(a,d,g){function b(a){var c=a.nodeType;if(c==1&&!x.test(a.className))if("br"===a.nodeName)s(a),a.parentNode&&a.parentNode.removeChild(a);else for(a=a.firstChild;a;a=a.nextSibling)b(a);else if((c==3||c==4)&&g){var d=a.nodeValue,i=d.match(m);if(i)c=d.substring(0,i.index),a.nodeValue=c,(d=d.substring(i.index+i[0].length))&&a.parentNode.insertBefore(j.createTextNode(d),a.nextSibling),s(a),c||a.parentNode.removeChild(a)}}function s(a){function b(a,c){var d=
-		c?a.cloneNode(!1):a,e=a.parentNode;if(e){var e=b(e,1),g=a.nextSibling;e.appendChild(d);for(var i=g;i;i=g)g=i.nextSibling,e.appendChild(i)}return d}for(;!a.nextSibling;)if(a=a.parentNode,!a)return;for(var a=b(a.nextSibling,0),d;(d=a.parentNode)&&d.nodeType===1;)a=d;c.push(a)}for(var x=/(?:^|\s)nocode(?:\s|$)/,m=/\r\n?|\n/,j=a.ownerDocument,k=j.createElement("li");a.firstChild;)k.appendChild(a.firstChild);for(var c=[k],i=0;i<c.length;++i)b(c[i]);d===(d|0)&&c[0].setAttribute("value",d);var r=j.createElement("ol");
-		r.className="linenums";for(var d=Math.max(0,d-1|0)||0,i=0,n=c.length;i<n;++i)k=c[i],k.className="L"+(i+d)%10,k.firstChild||k.appendChild(j.createTextNode("\u00a0")),r.appendChild(k);a.appendChild(r)}function p(a,d){for(var g=d.length;--g>=0;){var b=d[g];F.hasOwnProperty(b)?D.console&&console.warn("cannot override language handler %s",b):F[b]=a}}function I(a,d){if(!a||!F.hasOwnProperty(a))a=/^\s*</.test(d)?"default-markup":"default-code";return F[a]}function K(a){var d=a.h;try{var g=T(a.c,a.i),b=g.a;
-		a.a=b;a.d=g.d;a.e=0;I(d,b)(a);var s=/\bMSIE\s(\d+)/.exec(navigator.userAgent),s=s&&+s[1]<=8,d=/\n/g,x=a.a,m=x.length,g=0,j=a.d,k=j.length,b=0,c=a.g,i=c.length,r=0;c[i]=m;var n,e;for(e=n=0;e<i;)c[e]!==c[e+2]?(c[n++]=c[e++],c[n++]=c[e++]):e+=2;i=n;for(e=n=0;e<i;){for(var p=c[e],w=c[e+1],t=e+2;t+2<=i&&c[t+1]===w;)t+=2;c[n++]=p;c[n++]=w;e=t}c.length=n;var f=a.c,h;if(f)h=f.style.display,f.style.display="none";try{for(;b<k;){var l=j[b+2]||m,B=c[r+2]||m,t=Math.min(l,B),A=j[b+1],G;if(A.nodeType!==1&&(G=x.substring(g,
-			t))){s&&(G=G.replace(d,"\r"));A.nodeValue=G;var L=A.ownerDocument,o=L.createElement("span");o.className=c[r+1];var v=A.parentNode;v.replaceChild(o,A);o.appendChild(A);g<l&&(j[b+1]=A=L.createTextNode(x.substring(t,l)),v.insertBefore(A,o.nextSibling))}g=t;g>=l&&(b+=2);g>=B&&(r+=2)}}finally{if(f)f.style.display=h}}catch(u){D.console&&console.log(u&&u.stack||u)}}var D=window,y=["break,continue,do,else,for,if,return,while"],E=[[y,"auto,case,char,const,default,double,enum,extern,float,goto,inline,int,long,register,short,signed,sizeof,static,struct,switch,typedef,union,unsigned,void,volatile"],
-			"catch,class,delete,false,import,new,operator,private,protected,public,this,throw,true,try,typeof"],M=[E,"alignof,align_union,asm,axiom,bool,concept,concept_map,const_cast,constexpr,decltype,delegate,dynamic_cast,explicit,export,friend,generic,late_check,mutable,namespace,nullptr,property,reinterpret_cast,static_assert,static_cast,template,typeid,typename,using,virtual,where"],N=[E,"abstract,assert,boolean,byte,extends,final,finally,implements,import,instanceof,interface,null,native,package,strictfp,super,synchronized,throws,transient"],
-		O=[N,"as,base,by,checked,decimal,delegate,descending,dynamic,event,fixed,foreach,from,group,implicit,in,internal,into,is,let,lock,object,out,override,orderby,params,partial,readonly,ref,sbyte,sealed,stackalloc,string,select,uint,ulong,unchecked,unsafe,ushort,var,virtual,where"],E=[E,"debugger,eval,export,function,get,null,set,undefined,var,with,Infinity,NaN"],P=[y,"and,as,assert,class,def,del,elif,except,exec,finally,from,global,import,in,is,lambda,nonlocal,not,or,pass,print,raise,try,with,yield,False,True,None"],
-		Q=[y,"alias,and,begin,case,class,def,defined,elsif,end,ensure,false,in,module,next,nil,not,or,redo,rescue,retry,self,super,then,true,undef,unless,until,when,yield,BEGIN,END"],W=[y,"as,assert,const,copy,drop,enum,extern,fail,false,fn,impl,let,log,loop,match,mod,move,mut,priv,pub,pure,ref,self,static,struct,true,trait,type,unsafe,use"],y=[y,"case,done,elif,esac,eval,fi,function,in,local,set,then,until"],R=/^(DIR|FILE|vector|(de|priority_)?queue|list|stack|(const_)?iterator|(multi)?(set|map)|bitset|u?(int|float)\d*)\b/,
-		V=/\S/,X=v({keywords:[M,O,E,"caller,delete,die,do,dump,elsif,eval,exit,foreach,for,goto,if,import,last,local,my,next,no,our,print,package,redo,require,sub,undef,unless,until,use,wantarray,while,BEGIN,END",P,Q,y],hashComments:!0,cStyleComments:!0,multiLineStrings:!0,regexLiterals:!0}),F={};p(X,["default-code"]);p(C([],[["pln",/^[^<?]+/],["dec",/^<!\w[^>]*(?:>|$)/],["com",/^<\!--[\S\s]*?(?:--\>|$)/],["lang-",/^<\?([\S\s]+?)(?:\?>|$)/],["lang-",/^<%([\S\s]+?)(?:%>|$)/],["pun",/^(?:<[%?]|[%?]>)/],["lang-",
-		/^<xmp\b[^>]*>([\S\s]+?)<\/xmp\b[^>]*>/i],["lang-js",/^<script\b[^>]*>([\S\s]*?)(<\/script\b[^>]*>)/i],["lang-css",/^<style\b[^>]*>([\S\s]*?)(<\/style\b[^>]*>)/i],["lang-in.tag",/^(<\/?[a-z][^<>]*>)/i]]),["default-markup","htm","html","mxml","xhtml","xml","xsl"]);p(C([["pln",/^\s+/,q," \t\r\n"],["atv",/^(?:"[^"]*"?|'[^']*'?)/,q,"\"'"]],[["tag",/^^<\/?[a-z](?:[\w-.:]*\w)?|\/?>$/i],["atn",/^(?!style[\s=]|on)[a-z](?:[\w:-]*\w)?/i],["lang-uq.val",/^=\s*([^\s"'>]*(?:[^\s"'/>]|\/(?=\s)))/],["pun",/^[/<->]+/],
-		["lang-js",/^on\w+\s*=\s*"([^"]+)"/i],["lang-js",/^on\w+\s*=\s*'([^']+)'/i],["lang-js",/^on\w+\s*=\s*([^\s"'>]+)/i],["lang-css",/^style\s*=\s*"([^"]+)"/i],["lang-css",/^style\s*=\s*'([^']+)'/i],["lang-css",/^style\s*=\s*([^\s"'>]+)/i]]),["in.tag"]);p(C([],[["atv",/^[\S\s]+/]]),["uq.val"]);p(v({keywords:M,hashComments:!0,cStyleComments:!0,types:R}),["c","cc","cpp","cxx","cyc","m"]);p(v({keywords:"null,true,false"}),["json"]);p(v({keywords:O,hashComments:!0,cStyleComments:!0,verbatimStrings:!0,types:R}),
-		["cs"]);p(v({keywords:N,cStyleComments:!0}),["java"]);p(v({keywords:y,hashComments:!0,multiLineStrings:!0}),["bash","bsh","csh","sh"]);p(v({keywords:P,hashComments:!0,multiLineStrings:!0,tripleQuotedStrings:!0}),["cv","py","python"]);p(v({keywords:"caller,delete,die,do,dump,elsif,eval,exit,foreach,for,goto,if,import,last,local,my,next,no,our,print,package,redo,require,sub,undef,unless,until,use,wantarray,while,BEGIN,END",hashComments:!0,multiLineStrings:!0,regexLiterals:2}),["perl","pl","pm"]);p(v({keywords:Q,
-		hashComments:!0,multiLineStrings:!0,regexLiterals:!0}),["rb","ruby"]);p(v({keywords:E,cStyleComments:!0,regexLiterals:!0}),["javascript","js"]);p(v({keywords:"all,and,by,catch,class,else,extends,false,finally,for,if,in,is,isnt,loop,new,no,not,null,of,off,on,or,return,super,then,throw,true,try,unless,until,when,while,yes",hashComments:3,cStyleComments:!0,multilineStrings:!0,tripleQuotedStrings:!0,regexLiterals:!0}),["coffee"]);p(v({keywords:W,cStyleComments:!0,multilineStrings:!0}),["rc","rs","rust"]);
-		p(C([],[["str",/^[\S\s]+/]]),["regex"]);var Y=D.PR={createSimpleLexer:C,registerLangHandler:p,sourceDecorator:v,PR_ATTRIB_NAME:"atn",PR_ATTRIB_VALUE:"atv",PR_COMMENT:"com",PR_DECLARATION:"dec",PR_KEYWORD:"kwd",PR_LITERAL:"lit",PR_NOCODE:"nocode",PR_PLAIN:"pln",PR_PUNCTUATION:"pun",PR_SOURCE:"src",PR_STRING:"str",PR_TAG:"tag",PR_TYPE:"typ",prettyPrintOne:D.prettyPrintOne=function(a,d,g){var b=document.createElement("div");b.innerHTML="<pre>"+a+"</pre>";b=b.firstChild;g&&J(b,g,!0);K({h:d,j:g,c:b,i:1});
-			return b.innerHTML},prettyPrint:D.prettyPrint=function(a,d){function g(){for(var b=D.PR_SHOULD_USE_CONTINUATION?c.now()+250:Infinity;i<p.length&&c.now()<b;i++){for(var d=p[i],j=h,k=d;k=k.previousSibling;){var m=k.nodeType,o=(m===7||m===8)&&k.nodeValue;if(o?!/^\??prettify\b/.test(o):m!==3||/\S/.test(k.nodeValue))break;if(o){j={};o.replace(/\b(\w+)=([\w%+\-.:]+)/g,function(a,b,c){j[b]=c});break}}k=d.className;if((j!==h||e.test(k))&&!v.test(k)){m=!1;for(o=d.parentNode;o;o=o.parentNode)if(f.test(o.tagName)&&
-			o.className&&e.test(o.className)){m=!0;break}if(!m){d.className+=" prettyprinted";m=j.lang;if(!m){var m=k.match(n),y;if(!m&&(y=U(d))&&t.test(y.tagName))m=y.className.match(n);m&&(m=m[1])}if(w.test(d.tagName))o=1;else var o=d.currentStyle,u=s.defaultView,o=(o=o?o.whiteSpace:u&&u.getComputedStyle?u.getComputedStyle(d,q).getPropertyValue("white-space"):0)&&"pre"===o.substring(0,3);u=j.linenums;if(!(u=u==="true"||+u))u=(u=k.match(/\blinenums\b(?::(\d+))?/))?u[1]&&u[1].length?+u[1]:!0:!1;u&&J(d,u,o);r=
-		{h:m,c:d,j:u,i:o};K(r)}}}i<p.length?setTimeout(g,250):"function"===typeof a&&a()}for(var b=d||document.body,s=b.ownerDocument||document,b=[b.getElementsByTagName("pre"),b.getElementsByTagName("code"),b.getElementsByTagName("xmp")],p=[],m=0;m<b.length;++m)for(var j=0,k=b[m].length;j<k;++j)p.push(b[m][j]);var b=q,c=Date;c.now||(c={now:function(){return+new Date}});var i=0,r,n=/\blang(?:uage)?-([\w.]+)(?!\S)/,e=/\bprettyprint\b/,v=/\bprettyprinted\b/,w=/pre|xmp/i,t=/^code$/i,f=/^(?:pre|code|xmp)$/i,
-			h={};g()}};typeof define==="function"&&define.amd&&define("google-code-prettify",[],function(){return Y})})();}()
+    (function(){function S(a){function d(e){var b=e.charCodeAt(0);if(b!==92)return b;var a=e.charAt(1);return(b=r[a])?b:"0"<=a&&a<="7"?parseInt(e.substring(1),8):a==="u"||a==="x"?parseInt(e.substring(2),16):e.charCodeAt(1)}function g(e){if(e<32)return(e<16?"\\x0":"\\x")+e.toString(16);e=String.fromCharCode(e);return e==="\\"||e==="-"||e==="]"||e==="^"?"\\"+e:e}function b(e){var b=e.substring(1,e.length-1).match(/\\u[\dA-Fa-f]{4}|\\x[\dA-Fa-f]{2}|\\[0-3][0-7]{0,2}|\\[0-7]{1,2}|\\[\S\s]|[^\\]/g),e=[],a=
+        b[0]==="^",c=["["];a&&c.push("^");for(var a=a?1:0,f=b.length;a<f;++a){var h=b[a];if(/\\[bdsw]/i.test(h))c.push(h);else{var h=d(h),l;a+2<f&&"-"===b[a+1]?(l=d(b[a+2]),a+=2):l=h;e.push([h,l]);l<65||h>122||(l<65||h>90||e.push([Math.max(65,h)|32,Math.min(l,90)|32]),l<97||h>122||e.push([Math.max(97,h)&-33,Math.min(l,122)&-33]))}}e.sort(function(e,a){return e[0]-a[0]||a[1]-e[1]});b=[];f=[];for(a=0;a<e.length;++a)h=e[a],h[0]<=f[1]+1?f[1]=Math.max(f[1],h[1]):b.push(f=h);for(a=0;a<b.length;++a)h=b[a],c.push(g(h[0])),
+        h[1]>h[0]&&(h[1]+1>h[0]&&c.push("-"),c.push(g(h[1])));c.push("]");return c.join("")}function s(e){for(var a=e.source.match(/\[(?:[^\\\]]|\\[\S\s])*]|\\u[\dA-Fa-f]{4}|\\x[\dA-Fa-f]{2}|\\\d+|\\[^\dux]|\(\?[!:=]|[()^]|[^()[\\^]+/g),c=a.length,d=[],f=0,h=0;f<c;++f){var l=a[f];l==="("?++h:"\\"===l.charAt(0)&&(l=+l.substring(1))&&(l<=h?d[l]=-1:a[f]=g(l))}for(f=1;f<d.length;++f)-1===d[f]&&(d[f]=++x);for(h=f=0;f<c;++f)l=a[f],l==="("?(++h,d[h]||(a[f]="(?:")):"\\"===l.charAt(0)&&(l=+l.substring(1))&&l<=h&&
+        (a[f]="\\"+d[l]);for(f=0;f<c;++f)"^"===a[f]&&"^"!==a[f+1]&&(a[f]="");if(e.ignoreCase&&m)for(f=0;f<c;++f)l=a[f],e=l.charAt(0),l.length>=2&&e==="["?a[f]=b(l):e!=="\\"&&(a[f]=l.replace(/[A-Za-z]/g,function(a){a=a.charCodeAt(0);return"["+String.fromCharCode(a&-33,a|32)+"]"}));return a.join("")}for(var x=0,m=!1,j=!1,k=0,c=a.length;k<c;++k){var i=a[k];if(i.ignoreCase)j=!0;else if(/[a-z]/i.test(i.source.replace(/\\u[\da-f]{4}|\\x[\da-f]{2}|\\[^UXux]/gi,""))){m=!0;j=!1;break}}for(var r={b:8,t:9,n:10,v:11,
+        f:12,r:13},n=[],k=0,c=a.length;k<c;++k){i=a[k];if(i.global||i.multiline)throw Error(""+i);n.push("(?:"+s(i)+")")}return RegExp(n.join("|"),j?"gi":"g")}function T(a,d){function g(a){var c=a.nodeType;if(c==1){if(!b.test(a.className)){for(c=a.firstChild;c;c=c.nextSibling)g(c);c=a.nodeName.toLowerCase();if("br"===c||"li"===c)s[j]="\n",m[j<<1]=x++,m[j++<<1|1]=a}}else if(c==3||c==4)c=a.nodeValue,c.length&&(c=d?c.replace(/\r\n?/g,"\n"):c.replace(/[\t\n\r ]+/g," "),s[j]=c,m[j<<1]=x,x+=c.length,m[j++<<1|1]=
+        a)}var b=/(?:^|\s)nocode(?:\s|$)/,s=[],x=0,m=[],j=0;g(a);return{a:s.join("").replace(/\n$/,""),d:m}}function H(a,d,g,b){d&&(a={a:d,e:a},g(a),b.push.apply(b,a.g))}function U(a){for(var d=void 0,g=a.firstChild;g;g=g.nextSibling)var b=g.nodeType,d=b===1?d?a:g:b===3?V.test(g.nodeValue)?a:d:d;return d===a?void 0:d}function C(a,d){function g(a){for(var j=a.e,k=[j,"pln"],c=0,i=a.a.match(s)||[],r={},n=0,e=i.length;n<e;++n){var z=i[n],w=r[z],t=void 0,f;if(typeof w==="string")f=!1;else{var h=b[z.charAt(0)];
+        if(h)t=z.match(h[1]),w=h[0];else{for(f=0;f<x;++f)if(h=d[f],t=z.match(h[1])){w=h[0];break}t||(w="pln")}if((f=w.length>=5&&"lang-"===w.substring(0,5))&&!(t&&typeof t[1]==="string"))f=!1,w="src";f||(r[z]=w)}h=c;c+=z.length;if(f){f=t[1];var l=z.indexOf(f),B=l+f.length;t[2]&&(B=z.length-t[2].length,l=B-f.length);w=w.substring(5);H(j+h,z.substring(0,l),g,k);H(j+h+l,f,I(w,f),k);H(j+h+B,z.substring(B),g,k)}else k.push(j+h,w)}a.g=k}var b={},s;(function(){for(var g=a.concat(d),j=[],k={},c=0,i=g.length;c<i;++c){var r=
+        g[c],n=r[3];if(n)for(var e=n.length;--e>=0;)b[n.charAt(e)]=r;r=r[1];n=""+r;k.hasOwnProperty(n)||(j.push(r),k[n]=q)}j.push(/[\S\s]/);s=S(j)})();var x=d.length;return g}function v(a){var d=[],g=[];a.tripleQuotedStrings?d.push(["str",/^(?:'''(?:[^'\\]|\\[\S\s]|''?(?=[^']))*(?:'''|$)|"""(?:[^"\\]|\\[\S\s]|""?(?=[^"]))*(?:"""|$)|'(?:[^'\\]|\\[\S\s])*(?:'|$)|"(?:[^"\\]|\\[\S\s])*(?:"|$))/,q,"'\""]):a.multiLineStrings?d.push(["str",/^(?:'(?:[^'\\]|\\[\S\s])*(?:'|$)|"(?:[^"\\]|\\[\S\s])*(?:"|$)|`(?:[^\\`]|\\[\S\s])*(?:`|$))/,
+        q,"'\"`"]):d.push(["str",/^(?:'(?:[^\n\r'\\]|\\.)*(?:'|$)|"(?:[^\n\r"\\]|\\.)*(?:"|$))/,q,"\"'"]);a.verbatimStrings&&g.push(["str",/^@"(?:[^"]|"")*(?:"|$)/,q]);var b=a.hashComments;b&&(a.cStyleComments?(b>1?d.push(["com",/^#(?:##(?:[^#]|#(?!##))*(?:###|$)|.*)/,q,"#"]):d.push(["com",/^#(?:(?:define|e(?:l|nd)if|else|error|ifn?def|include|line|pragma|undef|warning)\b|[^\n\r]*)/,q,"#"]),g.push(["str",/^<(?:(?:(?:\.\.\/)*|\/?)(?:[\w-]+(?:\/[\w-]+)+)?[\w-]+\.h(?:h|pp|\+\+)?|[a-z]\w*)>/,q])):d.push(["com",
+        /^#[^\n\r]*/,q,"#"]));a.cStyleComments&&(g.push(["com",/^\/\/[^\n\r]*/,q]),g.push(["com",/^\/\*[\S\s]*?(?:\*\/|$)/,q]));if(b=a.regexLiterals){var s=(b=b>1?"":"\n\r")?".":"[\\S\\s]";g.push(["lang-regex",RegExp("^(?:^^\\.?|[+-]|[!=]=?=?|\\#|%=?|&&?=?|\\(|\\*=?|[+\\-]=|->|\\/=?|::?|<<?=?|>>?>?=?|,|;|\\?|@|\\[|~|{|\\^\\^?=?|\\|\\|?=?|break|case|continue|delete|do|else|finally|instanceof|return|throw|try|typeof)\\s*("+("/(?=[^/*"+b+"])(?:[^/\\x5B\\x5C"+b+"]|\\x5C"+s+"|\\x5B(?:[^\\x5C\\x5D"+b+"]|\\x5C"+
+        s+")*(?:\\x5D|$))+/")+")")])}(b=a.types)&&g.push(["typ",b]);b=(""+a.keywords).replace(/^ | $/g,"");b.length&&g.push(["kwd",RegExp("^(?:"+b.replace(/[\s,]+/g,"|")+")\\b"),q]);d.push(["pln",/^\s+/,q," \r\n\t\u00a0"]);b="^.[^\\s\\w.$@'\"`/\\\\]*";a.regexLiterals&&(b+="(?!s*/)");g.push(["lit",/^@[$_a-z][\w$@]*/i,q],["typ",/^(?:[@_]?[A-Z]+[a-z][\w$@]*|\w+_t\b)/,q],["pln",/^[$_a-z][\w$@]*/i,q],["lit",/^(?:0x[\da-f]+|(?:\d(?:_\d+)*\d*(?:\.\d*)?|\.\d\+)(?:e[+-]?\d+)?)[a-z]*/i,q,"0123456789"],["pln",/^\\[\S\s]?/,
+        q],["pun",RegExp(b),q]);return C(d,g)}function J(a,d,g){function b(a){var c=a.nodeType;if(c==1&&!x.test(a.className))if("br"===a.nodeName)s(a),a.parentNode&&a.parentNode.removeChild(a);else for(a=a.firstChild;a;a=a.nextSibling)b(a);else if((c==3||c==4)&&g){var d=a.nodeValue,i=d.match(m);if(i)c=d.substring(0,i.index),a.nodeValue=c,(d=d.substring(i.index+i[0].length))&&a.parentNode.insertBefore(j.createTextNode(d),a.nextSibling),s(a),c||a.parentNode.removeChild(a)}}function s(a){function b(a,c){var d=
+        c?a.cloneNode(!1):a,e=a.parentNode;if(e){var e=b(e,1),g=a.nextSibling;e.appendChild(d);for(var i=g;i;i=g)g=i.nextSibling,e.appendChild(i)}return d}for(;!a.nextSibling;)if(a=a.parentNode,!a)return;for(var a=b(a.nextSibling,0),d;(d=a.parentNode)&&d.nodeType===1;)a=d;c.push(a)}for(var x=/(?:^|\s)nocode(?:\s|$)/,m=/\r\n?|\n/,j=a.ownerDocument,k=j.createElement("li");a.firstChild;)k.appendChild(a.firstChild);for(var c=[k],i=0;i<c.length;++i)b(c[i]);d===(d|0)&&c[0].setAttribute("value",d);var r=j.createElement("ol");
+        r.className="linenums";for(var d=Math.max(0,d-1|0)||0,i=0,n=c.length;i<n;++i)k=c[i],k.className="L"+(i+d)%10,k.firstChild||k.appendChild(j.createTextNode("\u00a0")),r.appendChild(k);a.appendChild(r)}function p(a,d){for(var g=d.length;--g>=0;){var b=d[g];F.hasOwnProperty(b)?D.console&&console.warn("cannot override language handler %s",b):F[b]=a}}function I(a,d){if(!a||!F.hasOwnProperty(a))a=/^\s*</.test(d)?"default-markup":"default-code";return F[a]}function K(a){var d=a.h;try{var g=T(a.c,a.i),b=g.a;
+        a.a=b;a.d=g.d;a.e=0;I(d,b)(a);var s=/\bMSIE\s(\d+)/.exec(navigator.userAgent),s=s&&+s[1]<=8,d=/\n/g,x=a.a,m=x.length,g=0,j=a.d,k=j.length,b=0,c=a.g,i=c.length,r=0;c[i]=m;var n,e;for(e=n=0;e<i;)c[e]!==c[e+2]?(c[n++]=c[e++],c[n++]=c[e++]):e+=2;i=n;for(e=n=0;e<i;){for(var p=c[e],w=c[e+1],t=e+2;t+2<=i&&c[t+1]===w;)t+=2;c[n++]=p;c[n++]=w;e=t}c.length=n;var f=a.c,h;if(f)h=f.style.display,f.style.display="none";try{for(;b<k;){var l=j[b+2]||m,B=c[r+2]||m,t=Math.min(l,B),A=j[b+1],G;if(A.nodeType!==1&&(G=x.substring(g,
+            t))){s&&(G=G.replace(d,"\r"));A.nodeValue=G;var L=A.ownerDocument,o=L.createElement("span");o.className=c[r+1];var v=A.parentNode;v.replaceChild(o,A);o.appendChild(A);g<l&&(j[b+1]=A=L.createTextNode(x.substring(t,l)),v.insertBefore(A,o.nextSibling))}g=t;g>=l&&(b+=2);g>=B&&(r+=2)}}finally{if(f)f.style.display=h}}catch(u){D.console&&console.log(u&&u.stack||u)}}var D=window,y=["break,continue,do,else,for,if,return,while"],E=[[y,"auto,case,char,const,default,double,enum,extern,float,goto,inline,int,long,register,short,signed,sizeof,static,struct,switch,typedef,union,unsigned,void,volatile"],
+            "catch,class,delete,false,import,new,operator,private,protected,public,this,throw,true,try,typeof"],M=[E,"alignof,align_union,asm,axiom,bool,concept,concept_map,const_cast,constexpr,decltype,delegate,dynamic_cast,explicit,export,friend,generic,late_check,mutable,namespace,nullptr,property,reinterpret_cast,static_assert,static_cast,template,typeid,typename,using,virtual,where"],N=[E,"abstract,assert,boolean,byte,extends,final,finally,implements,import,instanceof,interface,null,native,package,strictfp,super,synchronized,throws,transient"],
+        O=[N,"as,base,by,checked,decimal,delegate,descending,dynamic,event,fixed,foreach,from,group,implicit,in,internal,into,is,let,lock,object,out,override,orderby,params,partial,readonly,ref,sbyte,sealed,stackalloc,string,select,uint,ulong,unchecked,unsafe,ushort,var,virtual,where"],E=[E,"debugger,eval,export,function,get,null,set,undefined,var,with,Infinity,NaN"],P=[y,"and,as,assert,class,def,del,elif,except,exec,finally,from,global,import,in,is,lambda,nonlocal,not,or,pass,print,raise,try,with,yield,False,True,None"],
+        Q=[y,"alias,and,begin,case,class,def,defined,elsif,end,ensure,false,in,module,next,nil,not,or,redo,rescue,retry,self,super,then,true,undef,unless,until,when,yield,BEGIN,END"],W=[y,"as,assert,const,copy,drop,enum,extern,fail,false,fn,impl,let,log,loop,match,mod,move,mut,priv,pub,pure,ref,self,static,struct,true,trait,type,unsafe,use"],y=[y,"case,done,elif,esac,eval,fi,function,in,local,set,then,until"],R=/^(DIR|FILE|vector|(de|priority_)?queue|list|stack|(const_)?iterator|(multi)?(set|map)|bitset|u?(int|float)\d*)\b/,
+        V=/\S/,X=v({keywords:[M,O,E,"caller,delete,die,do,dump,elsif,eval,exit,foreach,for,goto,if,import,last,local,my,next,no,our,print,package,redo,require,sub,undef,unless,until,use,wantarray,while,BEGIN,END",P,Q,y],hashComments:!0,cStyleComments:!0,multiLineStrings:!0,regexLiterals:!0}),F={};p(X,["default-code"]);p(C([],[["pln",/^[^<?]+/],["dec",/^<!\w[^>]*(?:>|$)/],["com",/^<\!--[\S\s]*?(?:--\>|$)/],["lang-",/^<\?([\S\s]+?)(?:\?>|$)/],["lang-",/^<%([\S\s]+?)(?:%>|$)/],["pun",/^(?:<[%?]|[%?]>)/],["lang-",
+        /^<xmp\b[^>]*>([\S\s]+?)<\/xmp\b[^>]*>/i],["lang-js",/^<script\b[^>]*>([\S\s]*?)(<\/script\b[^>]*>)/i],["lang-css",/^<style\b[^>]*>([\S\s]*?)(<\/style\b[^>]*>)/i],["lang-in.tag",/^(<\/?[a-z][^<>]*>)/i]]),["default-markup","htm","html","mxml","xhtml","xml","xsl"]);p(C([["pln",/^\s+/,q," \t\r\n"],["atv",/^(?:"[^"]*"?|'[^']*'?)/,q,"\"'"]],[["tag",/^^<\/?[a-z](?:[\w-.:]*\w)?|\/?>$/i],["atn",/^(?!style[\s=]|on)[a-z](?:[\w:-]*\w)?/i],["lang-uq.val",/^=\s*([^\s"'>]*(?:[^\s"'/>]|\/(?=\s)))/],["pun",/^[/<->]+/],
+        ["lang-js",/^on\w+\s*=\s*"([^"]+)"/i],["lang-js",/^on\w+\s*=\s*'([^']+)'/i],["lang-js",/^on\w+\s*=\s*([^\s"'>]+)/i],["lang-css",/^style\s*=\s*"([^"]+)"/i],["lang-css",/^style\s*=\s*'([^']+)'/i],["lang-css",/^style\s*=\s*([^\s"'>]+)/i]]),["in.tag"]);p(C([],[["atv",/^[\S\s]+/]]),["uq.val"]);p(v({keywords:M,hashComments:!0,cStyleComments:!0,types:R}),["c","cc","cpp","cxx","cyc","m"]);p(v({keywords:"null,true,false"}),["json"]);p(v({keywords:O,hashComments:!0,cStyleComments:!0,verbatimStrings:!0,types:R}),
+        ["cs"]);p(v({keywords:N,cStyleComments:!0}),["java"]);p(v({keywords:y,hashComments:!0,multiLineStrings:!0}),["bash","bsh","csh","sh"]);p(v({keywords:P,hashComments:!0,multiLineStrings:!0,tripleQuotedStrings:!0}),["cv","py","python"]);p(v({keywords:"caller,delete,die,do,dump,elsif,eval,exit,foreach,for,goto,if,import,last,local,my,next,no,our,print,package,redo,require,sub,undef,unless,until,use,wantarray,while,BEGIN,END",hashComments:!0,multiLineStrings:!0,regexLiterals:2}),["perl","pl","pm"]);p(v({keywords:Q,
+        hashComments:!0,multiLineStrings:!0,regexLiterals:!0}),["rb","ruby"]);p(v({keywords:E,cStyleComments:!0,regexLiterals:!0}),["javascript","js"]);p(v({keywords:"all,and,by,catch,class,else,extends,false,finally,for,if,in,is,isnt,loop,new,no,not,null,of,off,on,or,return,super,then,throw,true,try,unless,until,when,while,yes",hashComments:3,cStyleComments:!0,multilineStrings:!0,tripleQuotedStrings:!0,regexLiterals:!0}),["coffee"]);p(v({keywords:W,cStyleComments:!0,multilineStrings:!0}),["rc","rs","rust"]);
+        p(C([],[["str",/^[\S\s]+/]]),["regex"]);var Y=D.PR={createSimpleLexer:C,registerLangHandler:p,sourceDecorator:v,PR_ATTRIB_NAME:"atn",PR_ATTRIB_VALUE:"atv",PR_COMMENT:"com",PR_DECLARATION:"dec",PR_KEYWORD:"kwd",PR_LITERAL:"lit",PR_NOCODE:"nocode",PR_PLAIN:"pln",PR_PUNCTUATION:"pun",PR_SOURCE:"src",PR_STRING:"str",PR_TAG:"tag",PR_TYPE:"typ",prettyPrintOne:D.prettyPrintOne=function(a,d,g){var b=document.createElement("div");b.innerHTML="<pre>"+a+"</pre>";b=b.firstChild;g&&J(b,g,!0);K({h:d,j:g,c:b,i:1});
+            return b.innerHTML},prettyPrint:D.prettyPrint=function(a,d){function g(){for(var b=D.PR_SHOULD_USE_CONTINUATION?c.now()+250:Infinity;i<p.length&&c.now()<b;i++){for(var d=p[i],j=h,k=d;k=k.previousSibling;){var m=k.nodeType,o=(m===7||m===8)&&k.nodeValue;if(o?!/^\??prettify\b/.test(o):m!==3||/\S/.test(k.nodeValue))break;if(o){j={};o.replace(/\b(\w+)=([\w%+\-.:]+)/g,function(a,b,c){j[b]=c});break}}k=d.className;if((j!==h||e.test(k))&&!v.test(k)){m=!1;for(o=d.parentNode;o;o=o.parentNode)if(f.test(o.tagName)&&
+            o.className&&e.test(o.className)){m=!0;break}if(!m){d.className+=" prettyprinted";m=j.lang;if(!m){var m=k.match(n),y;if(!m&&(y=U(d))&&t.test(y.tagName))m=y.className.match(n);m&&(m=m[1])}if(w.test(d.tagName))o=1;else var o=d.currentStyle,u=s.defaultView,o=(o=o?o.whiteSpace:u&&u.getComputedStyle?u.getComputedStyle(d,q).getPropertyValue("white-space"):0)&&"pre"===o.substring(0,3);u=j.linenums;if(!(u=u==="true"||+u))u=(u=k.match(/\blinenums\b(?::(\d+))?/))?u[1]&&u[1].length?+u[1]:!0:!1;u&&J(d,u,o);r=
+        {h:m,c:d,j:u,i:o};K(r)}}}i<p.length?setTimeout(g,250):"function"===typeof a&&a()}for(var b=d||document.body,s=b.ownerDocument||document,b=[b.getElementsByTagName("pre"),b.getElementsByTagName("code"),b.getElementsByTagName("xmp")],p=[],m=0;m<b.length;++m)for(var j=0,k=b[m].length;j<k;++j)p.push(b[m][j]);var b=q,c=Date;c.now||(c={now:function(){return+new Date}});var i=0,r,n=/\blang(?:uage)?-([\w.]+)(?!\S)/,e=/\bprettyprint\b/,v=/\bprettyprinted\b/,w=/pre|xmp/i,t=/^code$/i,f=/^(?:pre|code|xmp)$/i,
+            h={};g()}};typeof define==="function"&&define.amd&&define("google-code-prettify",[],function(){return Y})})();}()
 
 can.Model('Bitovi.OSS.ActivitySummary', {
-	summary: null,
-	// the configuration is not going to change,
-	// and it's pretty much a singleton, so:
-	findOne: function() {
-		if(Bitovi.OSS.ActivitySummary.summary === null) {
-			Bitovi.OSS.ActivitySummary.summary = $.ajax({
-				url: Bitovi.URL.BITHUB + 'summary',
-				dataType: 'json',
-				data: {
-					origin_date: moment().subtract('months', 1).format('YYYY-MM-DD:')
-				}
-			});
-		}
+    summary: null,
+    // the configuration is not going to change,
+    // and it's pretty much a singleton, so:
+    findOne: function() {
+        if(Bitovi.OSS.ActivitySummary.summary === null) {
+            Bitovi.OSS.ActivitySummary.summary = $.ajax({
+                url: Bitovi.URL.BITHUB + 'summary',
+                dataType: 'json',
+                data: {
+                    origin_date: moment().subtract('months', 1).format('YYYY-MM-DD:')
+                }
+            });
+        }
 
-		return Bitovi.OSS.ActivitySummary.summary;
-	},
-	model: function(data) {
-		//{"data":{"app":23,"article":30,"plugin":7,"code":1041,"chat":5578,"twitter":1510,"issues_event":247,"github":2547}}
-		data = data.data;
-		return {
-			apps: data.app,
-			commits: data.code,
-			posts: data.posts,
-			articles: data.article,
-			plugins: data.plugin
-		};
-	}
+        return Bitovi.OSS.ActivitySummary.summary;
+    },
+    model: function(data) {
+        //{"data":{"app":23,"article":30,"plugin":7,"code":1041,"chat":5578,"twitter":1510,"issues_event":247,"github":2547}}
+        data = data.data;
+        return {
+            apps: data.app,
+            commits: data.code,
+            posts: data.posts,
+            articles: data.article,
+            plugins: data.plugin
+        };
+    }
 }, { });
 can.Model("Bitovi.OSS.ChatLine", {
-	models: function(list) {
-		var models = list.data.map(function(el) {
-			return Bitovi.OSS.ChatLine.model(el);
-		});
+    models: function(list) {
+        var models = list.data.map(function(el) {
+            return Bitovi.OSS.ChatLine.model(el);
+        });
 
-		return new can.Observe.List(models).reverse();
-	},
-	model: function(data) {
-		return {
-			actor: data.actor,
-			body: data.title,
-			feed: data.feed,
-			date: new Date(data.origin_ts)
-		};
-	},
-	findAll: {
-		url: Bitovi.URL.BITHUB + '?category=chat&order=origin_ts:desc&limit={limit}',
-		dataType: 'json'
-	}
+        return new can.Observe.List(models).reverse();
+    },
+    model: function(data) {
+        return {
+            actor: data.actor,
+            body: data.title,
+            feed: data.feed,
+            date: new Date(data.origin_ts)
+        };
+    },
+    findAll: {
+        url: Bitovi.URL.BITHUB + '?category=chat&order=origin_ts:desc&limit={limit}',
+        dataType: 'json'
+    }
 }, { });
 
 can.Model('Bitovi.OSS.Configuration', {
-	configuration: null,
-	// the configuration is not going to change,
-	// and it's pretty much a singleton, so:
-	findOne: function() {
-		if(Bitovi.OSS.Configuration.configuration === null) {
-			Bitovi.OSS.Configuration.configuration = $.ajax({
-				url: Bitovi.URL.BUILDER_DATA,
-				dataType: 'jsonp'
-			});
-		}
+    configuration: null,
+    // the configuration is not going to change,
+    // and it's pretty much a singleton, so:
+    findOne: function() {
+        if(Bitovi.OSS.Configuration.configuration === null) {
+            Bitovi.OSS.Configuration.configuration = $.ajax({
+                url: Bitovi.URL.BUILDER_DATA,
+                dataType: 'jsonp'
+            });
+        }
 
-		return Bitovi.OSS.Configuration.configuration;
-	},
-	model: function(data) {
-		var libraries = [];
-		can.each(data.configurations, function(library, id) {
-			library.id = id;
-			libraries.push(library);
-		});
-		
-		var types = {};
-		can.each(data.types, function(description, id) {
-			types[id] = {
-				id: id,
-				description: description,
-				modules: []
-			};
-		});
+        return Bitovi.OSS.Configuration.configuration;
+    },
+    model: function(data) {
+        var libraries = [];
+        can.each(data.configurations, function(library, id) {
+            library.id = id;
+            libraries.push(library);
+        });
+        
+        var types = {};
+        can.each(data.types, function(description, id) {
+            types[id] = {
+                id: id,
+                description: description,
+                modules: []
+            };
+        });
 
-		can.each(data.modules, function(module, path) {
-			module.id = Bitovi.OSS.Configuration.pathToID(path);
-			module.path = path;
-			types[module.type].modules.push(module);
-		});
+        can.each(data.modules, function(module, path) {
+            module.id = Bitovi.OSS.Configuration.pathToID(path);
+            module.path = path;
+            types[module.type].modules.push(module);
+        });
 
-		return {
-			name: data.name,
-			version: data.version,
-			description: data.description,
-			libraries: libraries,
-			types: types,
-			modules: data.modules
-		};
-	},
-	pathToID: function(path) {
-		return path.split('/').join('-').split('.').join('_');
-	},
-	idToPath: function(id) {
-		return id.split('_').join('.').split('/').join('/');
-	}
+        return {
+            name: data.name,
+            version: data.version,
+            description: data.description,
+            libraries: libraries,
+            types: types,
+            modules: data.modules
+        };
+    },
+    pathToID: function(path) {
+        return path.split('/').join('-').split('.').join('_');
+    },
+    idToPath: function(id) {
+        return id.split('_').join('.').split('/').join('/');
+    }
 }, { });
 can.Model("Bitovi.OSS.ForumPost", {
-	model: function(data) {
-		return {
-			actor: data.actor,
-			title: data.title,
-			body: data.body,
+    model: function(data) {
+        return {
+            actor: data.actor,
+            title: data.title,
+            body: data.body,
 
-			feed: data.feed,
-			link: data.url,
-			points: data.upvotes,
-			date: new Date(data.origin_ts)
-		};
-	},
-	findAll: {
-		url: Bitovi.URL.BITHUB + '?feed=forums&order=origin_ts:desc&limit={limit}',
-		dataType: 'json'
-	}
+            feed: data.feed,
+            link: data.url,
+            points: data.upvotes,
+            date: new Date(data.origin_ts)
+        };
+    },
+    findAll: {
+        url: Bitovi.URL.BITHUB + '?feed=forums&order=origin_ts:desc&limit={limit}',
+        dataType: 'json'
+    }
 }, { });
 can.Model("Bitovi.OSS.GithubEvent", {
-	model: function(data) {
-		return {
-			actor: data.actor,
-			actorID: data._author,
-			picture: data.source_data.org.avatar_url,
-			title: data.title,
-			commits: data.source_data.payload.commits.map(function(el) {
-				return {
-					hash: el.sha,
-					message: el.message
-				}
-			}),
+    model: function(data) {
+        return {
+            actor: data.actor,
+            actorID: data._author,
+            picture: data.source_data.org.avatar_url,
+            title: data.title,
+            commits: data.source_data.payload.commits.map(function(el) {
+                return {
+                    hash: el.sha,
+                    message: el.message
+                }
+            }),
 
-			feed: data.feed,
-			category: data.category,
-			link: data.url,
-			points: data.points,
-			date: new Date(data.origin_ts)
-		};
-	},
-	findAll: {
-		url: Bitovi.URL.BITHUB + '?category=code&also=source_data&order=origin_ts:desc&limit={limit}',
-		dataType: 'json'
-	}
+            feed: data.feed,
+            category: data.category,
+            link: data.url,
+            points: data.points,
+            date: new Date(data.origin_ts)
+        };
+    },
+    findAll: {
+        url: Bitovi.URL.BITHUB + '?category=code&also=source_data&order=origin_ts:desc&limit={limit}',
+        dataType: 'json'
+    }
 }, { });
 can.Model("Bitovi.OSS.GithubIssue", {
-	model: function(data) {
-		return {
-			actor: data.actor,
-			actorID: data._author,
-			picture: data.source_data.org.avatar_url,
-			title: data.title,
-			body: data.body,
+    model: function(data) {
+        return {
+            actor: data.actor,
+            actorID: data._author,
+            picture: data.source_data.org.avatar_url,
+            title: data.title,
+            body: data.body,
 
-			feed: data.feed,
-			category: data.category,
-			link: data.url,
-			points: data.upvotes,
-			date: new Date(data.origin_ts)
-		};
-	},
-	findAll: {
-		url: Bitovi.URL.BITHUB +  '?category=bug&also=source_data&order=upvotes&limit={limit}',
-		dataType: 'json'
-	}
+            feed: data.feed,
+            category: data.category,
+            link: data.url,
+            points: data.upvotes,
+            date: new Date(data.origin_ts)
+        };
+    },
+    findAll: {
+        url: Bitovi.URL.BITHUB +  '?category=bug&also=source_data&order=upvotes&limit={limit}',
+        dataType: 'json'
+    }
 }, { });
 can.Model("Bitovi.OSS.Plugin", {
-	model: function(data) {
-		// The API's not returning plugins and apps yet, so this may
-		// end up being innacurate.
-		return {
-			actor: data.actor,
-			title: data.title,
-			body: data.body,
+    model: function(data) {
+        // The API's not returning plugins and apps yet, so this may
+        // end up being innacurate.
+        return {
+            actor: data.actor,
+            title: data.title,
+            body: data.body,
 
-			feed: data.feed,
-			link: data.url,
-			points: data.upvotes,
-			date: new Date(data.origin_ts)
-		};
-	},
-	findAll: {
-		url: Bitovi.URL.BITHUB + '?category=article|app|plugin&order=upvotes:desc&limit={limit}',
-		dataType: 'json'
-	}
+            feed: data.feed,
+            link: data.url,
+            points: data.upvotes,
+            date: new Date(data.origin_ts)
+        };
+    },
+    findAll: {
+        url: Bitovi.URL.BITHUB + '?category=article|app|plugin&order=upvotes:desc&limit={limit}',
+        dataType: 'json'
+    }
 }, { });
 can.Model("Bitovi.OSS.Tweet", {
-	model: function(data) {
-		return {
-			handle: data.actor,
-			realName: data.source_data.user.name,
-			picture: data.source_data.user.profile_image_url,
-			body: data.title,
+    model: function(data) {
+        return {
+            handle: data.actor,
+            realName: data.source_data.user.name,
+            picture: data.source_data.user.profile_image_url,
+            body: data.title,
 
-			feed: data.feed,
-			link: data.url,
-			points: data.upvotes,
-			date: new Date(data.origin_ts)
-		};
-	},
-	findAll: {
-		url: Bitovi.URL.BITHUB + '?feed=twitter&order=origin_ts:desc&limit={limit}',
-		dataType: 'json'
-	}
+            feed: data.feed,
+            link: data.url,
+            points: data.upvotes,
+            date: new Date(data.origin_ts)
+        };
+    },
+    findAll: {
+        url: Bitovi.URL.BITHUB + '?feed=twitter&order=origin_ts:desc&limit={limit}',
+        dataType: 'json'
+    }
 }, { });
 can.Control('Bitovi.OSS.ApiSignature', {}, {
-	'h2 click': function(el, ev) {
-		this.element.toggleClass('collapsed');
-	}
+    'h2 click': function(el, ev) {
+        this.element.toggleClass('collapsed');
+    }
 });
 can.Control('Bitovi.OSS.Benefits', {
-	defaults: {
-		tabs: {
-			flexible: {
-				className: 'flexible',
-				title: 'Flexible',
-				tagline: 'Works with jQuery, Dojo, Mootools, YUI, and Zepto. Reuse your existing templates.',
-				link: 'guides/Why.html#Flexible'
-			},
-			powerful: {
-				className: 'powerful',
-				title: 'Powerful',
-				tagline: 'Packs in everything you need to build your app. And you can learn it in a day.',
-				link: 'guides/Why.html#Powerful'
-			},
-			fast: {
-				className: 'fast',
-				title: 'Fast',
-				tagline: 'Sleek, responsive, and only 36K: exactly what it says on the can.',
-				link: 'guides/Why.html#Fast'
-			}
-		}
-	}
+    defaults: {
+        tabs: {
+            flexible: {
+                className: 'flexible',
+                title: 'Flexible',
+                tagline: 'Works with jQuery, Dojo, Mootools, YUI, and Zepto. Reuse your existing templates.',
+                link: 'guides/Why.html#Flexible'
+            },
+            powerful: {
+                className: 'powerful',
+                title: 'Powerful',
+                tagline: 'Packs in everything you need to build your app. And you can learn it in a day.',
+                link: 'guides/Why.html#Powerful'
+            },
+            fast: {
+                className: 'fast',
+                title: 'Fast',
+                tagline: 'Sleek, responsive, and only 36K: exactly what it says on the can.',
+                link: 'guides/Why.html#Fast'
+            }
+        }
+    }
 }, {
-	init: function() {
-		this.state = new can.Observe({tabs: this.options.tabs, selectedTab: this.options.tabs.powerful});
-		this.element.html(can.view('templates/benefitTabs.mustache', this.state, {
-			makeTabs: function(tabs, options) {
-				var out = '';
-				can.each(tabs().attr(), function(val, key) {
-					out += options.fn(val);
-				});
-				return out;
-			}
-		}));
-		this._switchBenefit('powerful');
-	},
-	'li mouseover': function(el, ev) {
-		this._switchBenefit(el.data('benefit'));
-	},
-	_switchBenefit: function(benefit) {
-		this.state.attr('selectedTab', this.options.tabs[benefit]);
+    init: function() {
+        this.state = new can.Observe({tabs: this.options.tabs, selectedTab: this.options.tabs.powerful});
+        this.element.html(can.view('templates/benefitTabs.mustache', this.state, {
+            makeTabs: function(tabs, options) {
+                var out = '';
+                can.each(tabs().attr(), function(val, key) {
+                    out += options.fn(val);
+                });
+                return out;
+            }
+        }));
+        this._switchBenefit('powerful');
+    },
+    'li mouseover': function(el, ev) {
+        this._switchBenefit(el.data('benefit'));
+    },
+    _switchBenefit: function(benefit) {
+        this.state.attr('selectedTab', this.options.tabs[benefit]);
 
-		$('li', this.element).removeClass('active');
-		$('li[data-benefit=' + benefit + ']', this.element).addClass('active');
+        $('li', this.element).removeClass('active');
+        $('li[data-benefit=' + benefit + ']', this.element).addClass('active');
 
-	}
+    }
 });
 can.Control('Bitovi.OSS.CDNChooser', {
-	defaults: {
-		version: '',
-		libraries: [],
-		selectedLibrary: '',
-		cdn: Bitovi.URL.CDN
-	}
+    defaults: {
+        version: '',
+        libraries: [],
+        selectedLibrary: '',
+        cdn: Bitovi.URL.CDN
+    }
 }, {
-	init: function() {
-		this.options = new can.Observe(this.options);
-		
-		var self = this;
-		Bitovi.OSS.Configuration.findOne().done(function(config) {
-			self.options.libraries.attr(config.libraries);
-			self.options.attr('version', config.version);
-			self.element.find('select').change();
-		});
+    init: function() {
+        this.options = new can.Observe(this.options);
+        
+        var self = this;
+        Bitovi.OSS.Configuration.findOne().done(function(config) {
+            self.options.libraries.attr(config.libraries);
+            self.options.attr('version', config.version);
+            self.element.find('select').change();
+        });
 
-		this.element.html(can.view('templates/cdnChooser.mustache', this.options));
-	},
-	// function adapted from http://stackoverflow.com/questions/11128130/select-text-in-javascript
-	selectText: function(element) {
-		if (document.body.createTextRange) { // ms
-	        var range = document.body.createTextRange();
-	        range.moveToElementText(element);
-	        range.select();
-	    } else if (window.getSelection) { // moz, opera, webkit
-	        var selection = window.getSelection();            
-	        var range = document.createRange();
-	        range.selectNodeContents(element);
-	        selection.removeAllRanges();
-	        selection.addRange(range);
-	    }
-	},
-	'.cdn-link click': function(el, ev) {
-		this.selectText(el[0]);
-	},
-	'select change': function(el, ev) {
-		this.options.attr('selectedLibrary', el.val());
-	}
+        this.element.html(can.view('templates/cdnChooser.mustache', this.options));
+    },
+    // function adapted from http://stackoverflow.com/questions/11128130/select-text-in-javascript
+    selectText: function(element) {
+        if (document.body.createTextRange) { // ms
+            var range = document.body.createTextRange();
+            range.moveToElementText(element);
+            range.select();
+        } else if (window.getSelection) { // moz, opera, webkit
+            var selection = window.getSelection();            
+            var range = document.createRange();
+            range.selectNodeContents(element);
+            selection.removeAllRanges();
+            selection.addRange(range);
+        }
+    },
+    '.cdn-link click': function(el, ev) {
+        this.selectText(el[0]);
+    },
+    'select change': function(el, ev) {
+        this.options.attr('selectedLibrary', el.val());
+    }
 });
 can.Control('Bitovi.OSS.CommunityTab', {
-	defaults: {
-		view: ''
-	}
+    defaults: {
+        view: ''
+    }
 }, {
-	init: function() {
-		can.Mustache.registerHelper('formatDate', function(date) {
-			return moment(date()).calendar();
-		});
+    init: function() {
+        can.Mustache.registerHelper('formatDate', function(date) {
+            return moment(date()).calendar();
+        });
 
-		this.element.html(can.view(this.options.view, this.options.state));
-	}
+        this.element.html(can.view(this.options.view, this.options.state));
+    }
 });
 can.Control('Bitovi.OSS.CommunityTabs', {
-	defaults: {
-		tabControls: {
-			'forums': 'ForumsTab',
-			'irc': 'IRCTab',
-			'plugins': 'PluginsTab',
-			'twitter': 'TwitterTab',
-			'issues': 'IssuesTab',
-			'github': 'GithubTab'
-		}
-	}
+    defaults: {
+        tabControls: {
+            'forums': 'ForumsTab',
+            'irc': 'IRCTab',
+            'plugins': 'PluginsTab',
+            'twitter': 'TwitterTab',
+            'issues': 'IssuesTab',
+            'github': 'GithubTab'
+        }
+    }
 }, {
-	init: function() {
-		// get data for all six tabs up front
-		// this way, it doesn't call for the data every time a tab switches.
-		this.state = new can.Observe({});
-		var self = this;
+    init: function() {
+        // get data for all six tabs up front
+        // this way, it doesn't call for the data every time a tab switches.
+        this.state = new can.Observe({});
+        var self = this;
 
-		Bitovi.OSS.ForumPost.findAll({limit: 3}).done(function(posts) {
-			self.state.attr('forumPosts', posts);
-		});
-		// Missing counts for forum categories
-		Bitovi.OSS.ChatLine.findAll({limit: 30}).done(function(lines) {
-			self.state.attr('lines', lines);
-		});
-		Bitovi.OSS.Plugin.findAll({limit: 3}).done(function(plugins) {
-			self.state.attr('plugins', plugins);
-		});
-		// Missing counts for plugins/apps/articles
-		Bitovi.OSS.Tweet.findAll({limit: 3}).done(function(tweets) {
-			self.state.attr('tweets', tweets);
-		});
-		Bitovi.OSS.GithubIssue.findAll({limit: 3}).done(function(issues) {
-			self.state.attr('issues', issues);
-		});
-		Bitovi.OSS.GithubEvent.findAll({limit: 3}).done(function(commits) {
-			self.state.attr('commits', commits);
-		});
-		// Missing follower counts for github
+        Bitovi.OSS.ForumPost.findAll({limit: 3}).done(function(posts) {
+            self.state.attr('forumPosts', posts);
+        });
+        // Missing counts for forum categories
+        Bitovi.OSS.ChatLine.findAll({limit: 30}).done(function(lines) {
+            self.state.attr('lines', lines);
+        });
+        Bitovi.OSS.Plugin.findAll({limit: 3}).done(function(plugins) {
+            self.state.attr('plugins', plugins);
+        });
+        // Missing counts for plugins/apps/articles
+        Bitovi.OSS.Tweet.findAll({limit: 3}).done(function(tweets) {
+            self.state.attr('tweets', tweets);
+        });
+        Bitovi.OSS.GithubIssue.findAll({limit: 3}).done(function(issues) {
+            self.state.attr('issues', issues);
+        });
+        Bitovi.OSS.GithubEvent.findAll({limit: 3}).done(function(commits) {
+            self.state.attr('commits', commits);
+        });
+        // Missing follower counts for github
 
-		this.element.html(can.view('templates/communityTabs.mustache', {}));
-	},
-	//'li mouseenter': '_switchTab',
-	'li click': function(el, ev) {
-		can.route.attr('type', el.prop('class'));
-	},
-	':type route': function(data) {
-		this._switchTab(data.type);
-	},
-	_switchTab: function(selectedTab) {
-		this.element
-			.find('li').removeClass('active')
-			.filter('.' + selectedTab).addClass('active');
-		var tabControl = this.options.tabControls[selectedTab];
-		new Bitovi.OSS[tabControl]($('.content > .container'), {state: this.state});
-	}
+        this.element.html(can.view('templates/communityTabs.mustache', {}));
+    },
+    //'li mouseenter': '_switchTab',
+    'li click': function(el, ev) {
+        can.route.attr('type', el.prop('class'));
+    },
+    ':type route': function(data) {
+        this._switchTab(data.type);
+    },
+    _switchTab: function(selectedTab) {
+        this.element
+            .find('li').removeClass('active')
+            .filter('.' + selectedTab).addClass('active');
+        var tabControl = this.options.tabControls[selectedTab];
+        new Bitovi.OSS[tabControl]($('.content > .container'), {state: this.state});
+    }
 });
 can.Control("Bitovi.OSS.ContentsList", {
-	init: function() {
-		var sections = [];
+    init: function() {
+        var sections = [];
 
-		this.collectSignatures().each(function(ix) {
-			var h2 = $('h2', this);
-			this.id = 'sig' + ix;
-			//this.id = encodeURIComponent(h2.text());
-			sections.push({id: this.id, text: h2.text()});
-		});
+        this.collectSignatures().each(function(ix) {
+            var h2 = $('h2', this);
+            this.id = 'sig' + ix;
+            //this.id = encodeURIComponent(h2.text());
+            sections.push({id: this.id, text: h2.text()});
+        });
 
-		this.collectHeadings().each(function(ix) {
-			var el = $(this);
-			this.id = 'section' + ix;
-			//this.id = encodeURIComponent(el.text());
-			sections.push({id: this.id, text: el.text()});
-		});
+        this.collectHeadings().each(function(ix) {
+            var el = $(this);
+            this.id = 'section' + ix;
+            //this.id = encodeURIComponent(el.text());
+            sections.push({id: this.id, text: el.text()});
+        });
 
-		this.element.html(can.view(
-			'templates/contentsList.mustache',
-			{sections: sections},
-			{encode: function() { return encodeURIComponent(this); }}
-		));
+        this.element.html(can.view(
+            'templates/contentsList.mustache',
+            {sections: sections},
+            {encode: function() { return encodeURIComponent(this); }}
+        ));
 
-		if(window.location.hash.length) {
-			var anchor = $(window.location.hash);
-			if(anchor.length) {
-				anchor[0].scrollIntoView(true);
-			}
-		}
-	},
-	collectSignatures: function() {
-		return $('.content .signature');
-	},
-	collectHeadings: function() {
-		return $('.content .comment h2');
-	}
+        if(window.location.hash.length) {
+            var anchor = $(window.location.hash);
+            if(anchor.length) {
+                anchor[0].scrollIntoView(true);
+            }
+        }
+    },
+    collectSignatures: function() {
+        return $('.content .signature');
+    },
+    collectHeadings: function() {
+        return $('.content .comment h2');
+    }
+});
+can.Control('Bitovi.OSS.DemoFrame', {
+    init: function() {
+        // Render out the demo container.
+        this.element.html(can.view('templates/demoFrame.mustache', {demoSrc: '../' + this.element.data('demoSrc')}));
+
+        // Start with the demo tab showing.
+        this.showTab('demo');
+
+        // When the iframe loads, grab the HTML and JS and fill in the other tabs.
+        var self = this;
+        $('[data-for=demo] > iframe', this.element).load(function() {
+            $('[data-for=html] > pre').html(self.prettify(this.contentDocument.getElementById('demo-html').innerHTML));
+            $('[data-for=js] > pre').html(self.prettify(this.contentDocument.getElementById('demo-source').innerHTML));
+        });
+
+        $('.tab-content', this.element).height(this.element.data('demoHeight'));
+    },
+    '.tab click': function(el, ev) {
+        this.showTab(el.data('tab'));
+    },
+    showTab: function(tabName) {
+        $('.tab', this.element).removeClass('active');
+        $('.tab-content', this.element).hide();
+        $('.tab[data-tab=' + tabName + ']', this.element).addClass('active');
+        $('[data-for=' + tabName + ']', this.element).show();
+    },
+    prettify: function(unescaped) {
+        return prettyPrintOne(unescaped.replace(/</g, '&lt;'));
+    }
 });
 can.Control('Bitovi.OSS.DownloadCustomizer', {
-	defaults: {
-		minified: false,
-		configuration: null,
-		view: 'templates/downloadCustomizer.mustache'
-	}
+    defaults: {
+        minified: false,
+        configuration: null,
+        view: 'templates/downloadCustomizer.mustache'
+    }
 }, {
-	init: function() {
-		this.options = new can.Observe(this.options);
-		this.isDependedOnBy = {};
-		this.checkAlls = {};
-		
-		var self = this;
-		Bitovi.OSS.Configuration.findOne().done(function(config) {
-			self.isDependedOnBy = self._collectDependedOn(config);
-			self.options.attr('configuration', config);
-			can.each(config.types, function(obj, type) {
-				self.element.find('[name=' + type + ']:checkbox:first').change();
-			});
-		});
+    init: function() {
+        this.options = new can.Observe(this.options);
+        this.isDependedOnBy = {};
+        this.checkAlls = {};
+        
+        var self = this;
+        Bitovi.OSS.Configuration.findOne().done(function(config) {
+            self.isDependedOnBy = self._collectDependedOn(config);
+            self.options.attr('configuration', config);
+            can.each(config.types, function(obj, type) {
+                self.element.find('[name=' + type + ']:checkbox:first').change();
+            });
+        });
 
-		this.element.append(can.view(this.options.view, this.options, {
-			versionNumber: function(version) {
-				return version() ? version() : '';
-			}
-		}));
-	},
-	_collectDependedOn: function(config) {
-		var isDependedOnBy = {};
-		can.each(config.modules, function(module, path) {
-			can.each(module.dependencies, function(dependency) {
-				if(! isDependedOnBy[dependency]) {
-					isDependedOnBy[dependency] = [];
-				}
+        this.element.append(can.view(this.options.view, this.options, {
+            versionNumber: function(version) {
+                return version() ? version() : '';
+            }
+        }));
+    },
+    _collectDependedOn: function(config) {
+        var isDependedOnBy = {};
+        can.each(config.modules, function(module, path) {
+            can.each(module.dependencies, function(dependency) {
+                if(! isDependedOnBy[dependency]) {
+                    isDependedOnBy[dependency] = [];
+                }
 
-				isDependedOnBy[dependency].push(path);
-			});
-		});
+                isDependedOnBy[dependency].push(path);
+            });
+        });
 
-		return isDependedOnBy;
-	},
-	'input.module[type=checkbox] change': function(el, ev) {
-		if(el.prop('checked')) {
-			// also check dependencies
-			can.each(can.data(el, 'module').dependencies, function(dependency) {
-				$('#' + Bitovi.OSS.Configuration.pathToID(dependency)).prop('checked', true).change();
-			});
+        return isDependedOnBy;
+    },
+    'input.module[type=checkbox] change': function(el, ev) {
+        if(el.prop('checked')) {
+            // also check dependencies
+            can.each(can.data(el, 'module').dependencies, function(dependency) {
+                $('#' + Bitovi.OSS.Configuration.pathToID(dependency)).prop('checked', true).change();
+            });
 
-			if(! $('[name=' + el.prop('name') + ']:checkbox:enabled:not(:checked)').length) {
-				$('#' + el.prop('name')).prop('checked', true);
-			}
-		} else {
-			$('.all[data-type=' + can.data(el, 'module').type + ']').prop('checked', false);
-			this.checkAlls[can.data(el, 'module').type] = false;
+            if(! $('[name=' + el.prop('name') + ']:checkbox:enabled:not(:checked)').length) {
+                $('#' + el.prop('name')).prop('checked', true);
+            }
+        } else {
+            $('.all[data-type=' + can.data(el, 'module').type + ']').prop('checked', false);
+            this.checkAlls[can.data(el, 'module').type] = false;
 
-			if(this.isDependedOnBy[el.val()]) {
-				// uncheck depended-on-cies
-				can.each(this.isDependedOnBy[el.val()], function(dependedOn) {
-					$('#' + Bitovi.OSS.Configuration.pathToID(dependedOn)).prop('checked', false).change();
-				});
-			}
-		}
-	},
-	'.all change': function(el, ev) {
-		this.checkAlls[can.data(el, 'type')] = el.prop('checked');
+            if(this.isDependedOnBy[el.val()]) {
+                // uncheck depended-on-cies
+                can.each(this.isDependedOnBy[el.val()], function(dependedOn) {
+                    $('#' + Bitovi.OSS.Configuration.pathToID(dependedOn)).prop('checked', false).change();
+                });
+            }
+        }
+    },
+    '.all change': function(el, ev) {
+        this.checkAlls[can.data(el, 'type')] = el.prop('checked');
 
-		can.each(this.options.configuration.types[can.data(el, 'type')].modules, function(module) {
-			var check = $('#' + Bitovi.OSS.Configuration.pathToID(module.id))
-			if(! check.prop('disabled')) {
-				check.prop('checked', el.prop('checked')).change();
-			}
-		});
-	},
-	'input[name=configuration] change': function(el, ev) {
-		if(el.prop('checked')) {
-			this._libraryChanged(el.prop('id'));
-		}
-	},
-	_libraryChanged: function(libraryID) {
-		var self = this;
-		can.each(this.options.configuration.modules, function(module) {
-			var disallowed = !!(module.configurations && module.configurations.indexOf(libraryID) < 0);
-			var check = $('#' + module.id);
-			check
-				.closest('tr').toggleClass('inactive', disallowed).end()
-				.prop('disabled', disallowed)
-				.prop('checked', disallowed ? false : check.prop('checked') || self.checkAlls[module.type]).change();
-		});
-		can.each(this.options.configuration.types, function(obj, type) {
-			self.element.find('[name=' + type + ']:checkbox:first').change();
-		});
-	}
+        can.each(this.options.configuration.types[can.data(el, 'type')].modules, function(module) {
+            var check = $('#' + Bitovi.OSS.Configuration.pathToID(module.id))
+            if(! check.prop('disabled')) {
+                check.prop('checked', el.prop('checked')).change();
+            }
+        });
+    },
+    'input[name=configuration] change': function(el, ev) {
+        if(el.prop('checked')) {
+            this._libraryChanged(el.prop('id'));
+        }
+    },
+    _libraryChanged: function(libraryID) {
+        var self = this;
+        can.each(this.options.configuration.modules, function(module) {
+            var disallowed = !!(module.configurations && module.configurations.indexOf(libraryID) < 0);
+            var check = $('#' + module.id);
+            check
+                .closest('tr').toggleClass('inactive', disallowed).end()
+                .prop('disabled', disallowed)
+                .prop('checked', disallowed ? false : check.prop('checked') || self.checkAlls[module.type]).change();
+        });
+        can.each(this.options.configuration.types, function(obj, type) {
+            self.element.find('[name=' + type + ']:checkbox:first').change();
+        });
+    }
 
 });
 Bitovi.OSS.CommunityTab('Bitovi.OSS.ForumsTab', {
-	defaults: {
-		view: 'templates/forumsTab.mustache'
-	}
+    defaults: {
+        view: 'templates/forumsTab.mustache'
+    }
 }, {
-	init: function() {
-		this._super();
+    init: function() {
+        this._super();
 
-		can.Mustache.registerHelper('truncatePost', function(post) {
-			var div = $('<div></div>').html(post());
-			/* Here's the 'smart' (ish?) way, but that's not how Bithub does it.
-			return div[0].childNodes[0].nodeValue || div.children().first().text();
-			*/
-			return div.text().substr(0, 200);
-		});
+        can.Mustache.registerHelper('truncatePost', function(post) {
+            var div = $('<div></div>').html(post());
+            /* Here's the 'smart' (ish?) way, but that's not how Bithub does it.
+            return div[0].childNodes[0].nodeValue || div.children().first().text();
+            */
+            return div.text().substr(0, 200);
+        });
 
-	},
-	'#forumSearch button click': function(el, ev) {
-		var terms = $('input[type=search]').val();
-		window.location.href = 'https://forum.javascriptmvc.com/#Search/' + terms;
-	},
-	'#forumSearch input[type=search] keypress': function(el, ev) {
-		if(ev.which === 13/* Return */) {
-			ev.preventDefault();
-			var terms = el.val();
-			window.location.href = 'https://forum.javascriptmvc.com/#Search/' + terms;
-		}
-	}
+    },
+    '#forumSearch button click': function(el, ev) {
+        var terms = $('input[type=search]').val();
+        window.location.href = 'https://forum.javascriptmvc.com/#Search/' + terms;
+    },
+    '#forumSearch input[type=search] keypress': function(el, ev) {
+        if(ev.which === 13/* Return */) {
+            ev.preventDefault();
+            var terms = el.val();
+            window.location.href = 'https://forum.javascriptmvc.com/#Search/' + terms;
+        }
+    }
+});
+can.Control('Bitovi.OSS.FrameHelper', {
+    init: function() {
+        this.replaceIframes();
+        this.replaceDemos();
+    },
+    replaceIframes: function() {
+        // @iframe can/test/demo.html 400
+        // <div class="iframe_wrapper" data-iframe-src="can/test/demo.html" data-iframe-height="400"></div>
+        $('.iframe_wrapper', this.element).each(function() {
+            var wrapper = $(this),
+                iframe = $('<iframe src="../' + wrapper.data('iframeSrc') + '">');
+            
+            if(wrapper.data('iframeHeight')) {
+                iframe.height(wrapper.data('iframeHeight'));
+            }
+
+            wrapper.append(iframe);
+        });
+    },
+    replaceDemos: function() {
+        // @demo can/control/control.html 400
+        // <div class="demo_wrapper" data-demo-src="can/control/control.html"></div>
+        $('.demo_wrapper', this.element).each(function() {
+            var wrapper = $(this);
+            new Bitovi.OSS.DemoFrame(wrapper);
+        });
+    }
 });
 Bitovi.OSS.CommunityTab('Bitovi.OSS.GithubTab', {
-	defaults: {
-		view: 'templates/githubTab.mustache'
-	}
+    defaults: {
+        view: 'templates/githubTab.mustache'
+    }
 }, {
-	init: function() {
-		this._super();
+    init: function() {
+        this._super();
 
-		can.Mustache.registerHelper('truncateHash', function(hash) {
-			return hash().substr(0, 6);
-		});
-	}
+        can.Mustache.registerHelper('truncateHash', function(hash) {
+            return hash().substr(0, 6);
+        });
+    }
 });
 Bitovi.OSS.DownloadCustomizer('Bitovi.OSS.HeroDownloadCustomizer', {
-	defaults: {
-		view: 'templates/heroDownloadCustomizer.mustache'
-	}
+    defaults: {
+        view: 'templates/heroDownloadCustomizer.mustache'
+    }
 }, {
-	init: function() {
-		this._super();
-		this.isOpen = false;
-	},
-	'.customize click': function(el, ev) {
-		this.toggleFlyout();
-		ev.stopPropagation();
-	},
-	'.customize-box click': function(el, ev) {
-		ev.stopPropagation();
-	},
-	'{window} click': function(el, ev) {
-		this.toggleFlyout(false);
-	},
-	'.download click': function(el, ev) {
-		this.toggleFlyout(false);
-	},
-	'select[name=configuration] change': function(el, ev) {
-		this._libraryChanged(el.val());
-	},
-	_libraryChanged: function(libraryID) {
-		var self = this;
-		can.each(this.options.configuration.modules, function(module) {
-			var disallowed = !!(module.configurations && module.configurations.indexOf(libraryID) < 0);
-			var check = $('#' + module.id);
-			check
-				.closest('li').toggleClass('inactive', disallowed).end()
-				.prop('disabled', disallowed)
-				.prop('checked', disallowed ? false : check.prop('checked') || self.checkAlls[module.type]).change();
-		});
-	},
-	toggleFlyout: function(open) {
-		if(open === undefined) {
-			this.isOpen = this.element.find('.customize').toggleClass('active').hasClass('active');
-			open = this.isOpen;
-		}
+    init: function() {
+        this._super();
+        this.isOpen = false;
+    },
+    '.customize click': function(el, ev) {
+        this.toggleFlyout();
+        ev.stopPropagation();
+    },
+    '.customize-box click': function(el, ev) {
+        ev.stopPropagation();
+    },
+    '{window} click': function(el, ev) {
+        this.toggleFlyout(false);
+    },
+    '.download click': function(el, ev) {
+        this.toggleFlyout(false);
+    },
+    'select[name=configuration] change': function(el, ev) {
+        this._libraryChanged(el.val());
+    },
+    _libraryChanged: function(libraryID) {
+        var self = this;
+        can.each(this.options.configuration.modules, function(module) {
+            var disallowed = !!(module.configurations && module.configurations.indexOf(libraryID) < 0);
+            var check = $('#' + module.id);
+            check
+                .closest('li').toggleClass('inactive', disallowed).end()
+                .prop('disabled', disallowed)
+                .prop('checked', disallowed ? false : check.prop('checked') || self.checkAlls[module.type]).change();
+        });
+    },
+    toggleFlyout: function(open) {
+        if(open === undefined) {
+            this.isOpen = this.element.find('.customize').toggleClass('active').hasClass('active');
+            open = this.isOpen;
+        }
 
-		if(open) {
-			this.element.find('.customize').addClass('active');
-			var customizeBox = this.element.find('.customize-box').show();
+        if(open) {
+            this.element.find('.customize').addClass('active');
+            var customizeBox = this.element.find('.customize-box').show();
 
-			// make customizeBox the right width
-			customizeBox.width($('#hero-download').width() - (parseInt(customizeBox.css('padding-left'), 10) + parseInt(customizeBox.css('padding-right'), 10)));
+            // make customizeBox the right width
+            customizeBox.width($('#hero-download').width() - (parseInt(customizeBox.css('padding-left'), 10) + parseInt(customizeBox.css('padding-right'), 10)));
 
-			this.isOpen = true;
-		} else {
-			this.element.find('.customize').removeClass('active');
-			this.element.find('.customize-box').hide();
-			this.isOpen = false;
-		}
-	}
+            this.isOpen = true;
+        } else {
+            this.element.find('.customize').removeClass('active');
+            this.element.find('.customize-box').hide();
+            this.isOpen = false;
+        }
+    }
 });
 Bitovi.OSS.CommunityTab('Bitovi.OSS.IRCTab', {
-	defaults: {
-		view: 'templates/ircTab.mustache'
-	}
+    defaults: {
+        view: 'templates/ircTab.mustache'
+    }
 }, {
-	init: function() {
-		this._super();
-		this.scrollToBottom();
-	},
-	scrollToBottom: function() {
-		var chatbox = $('.irc-chat-container', this.element);
-		chatbox.scrollTop(chatbox.prop('scrollHeight'));
-	},
-	'{state} lines': function(ev, newVal, oldVal) {
-		// we have to wait until the tempate re-renders
-		window.setTimeout(can.proxy(this.scrollToBottom, this), 0);
-	}
+    init: function() {
+        this._super();
+        this.scrollToBottom();
+    },
+    scrollToBottom: function() {
+        var chatbox = $('.irc-chat-container', this.element);
+        chatbox.scrollTop(chatbox.prop('scrollHeight'));
+    },
+    '{state} lines': function(ev, newVal, oldVal) {
+        // we have to wait until the tempate re-renders
+        window.setTimeout(can.proxy(this.scrollToBottom, this), 0);
+    }
 });
 Bitovi.OSS.CommunityTab('Bitovi.OSS.IssuesTab', {
-	defaults: {
-		view: 'templates/issuesTab.mustache'
-	}
+    defaults: {
+        view: 'templates/issuesTab.mustache'
+    }
 }, {
-	init: function() {
-		this._super();
-	}
+    init: function() {
+        this._super();
+    }
 });
 can.Control('Bitovi.OSS.LiveExample', {
     
@@ -8064,91 +8122,91 @@ can.Control('Bitovi.OSS.LiveExample', {
     }
 });
 can.Mustache.registerHelper('makeHref', function(src) {
-	return src().replace(/ /g, "_")
-		.replace(/&#46;/g, ".")
-		.replace(/&gt;/g, "_gt_")
-		.replace(/\*/g, "_star_")
-		.replace(/\//g, "|") + '.html';
+    return src().replace(/ /g, "_")
+        .replace(/&#46;/g, ".")
+        .replace(/&gt;/g, "_gt_")
+        .replace(/\*/g, "_star_")
+        .replace(/\//g, "|") + '.html';
 });
 
 can.Control('Bitovi.OSS.Menu', {
-	defaults: {
-		emptyText: 'Nothing found...'
-	}
+    defaults: {
+        emptyText: 'Nothing found...'
+    }
 }, {
-	search: function(regex) {
-		this.element.addClass('search-results').find('[data-search]').each(function() {
-			var el = $(this),
-				searchTerm = el.data('search');
+    search: function(regex) {
+        this.element.addClass('search-results').find('[data-search]').each(function() {
+            var el = $(this),
+                searchTerm = el.data('search');
 
-			if(searchTerm && regex.test(searchTerm)) {
-				// Show parent search containers
-				el.show().parents('.search-container').show()
-					// Show all children
-					.end().closest('.search-container').find('.search-container').show();
-			}
-		});
+            if(searchTerm && regex.test(searchTerm)) {
+                // Show parent search containers
+                el.show().parents('.search-container').show()
+                    // Show all children
+                    .end().closest('.search-container').find('.search-container').show();
+            }
+        });
 
-		// Show main headings
-		this.element.find('.api > .search-container > [data-search]').show();
-	},
+        // Show main headings
+        this.element.find('.api > .search-container > [data-search]').show();
+    },
 
-	reset: function() {
-		this.element.removeClass('search-results').find('.search-container').css('display', '')
-			.end().find('[data-search]').css('display', '');
-	},
+    reset: function() {
+        this.element.removeClass('search-results').find('.search-container').css('display', '')
+            .end().find('[data-search]').css('display', '');
+    },
 
-	'.search input keyup': function(el) {
-		var value = el.val().replace(/([.?*+^$[\]\\(){}|-])/g);
-		if(value.length > 1) {
-			this.element.find('.search-container').hide();
-			this.search(new RegExp(value, 'gim'));
-		} else {
-			this.reset();
-		}
-	}/*,
+    '.search input keyup': function(el) {
+        var value = el.val().replace(/([.?*+^$[\]\\(){}|-])/g);
+        if(value.length > 1) {
+            this.element.find('.search-container').hide();
+            this.search(new RegExp(value, 'gim'));
+        } else {
+            this.reset();
+        }
+    }/*,
 
-	'li.active > a click': function(el, ev) {
-		ev.preventDefault();
-	},
+    'li.active > a click': function(el, ev) {
+        ev.preventDefault();
+    },
 
-	'li.active click': function(el, ev) {
-		el.toggleClass('collapsed');
-	}*/
+    'li.active click': function(el, ev) {
+        el.toggleClass('collapsed');
+    }*/
 });
 
 Bitovi.OSS.CommunityTab('Bitovi.OSS.PluginsTab', {
-	defaults: {
-		view: 'templates/pluginsTab.mustache'
-	}
+    defaults: {
+        view: 'templates/pluginsTab.mustache'
+    }
 }, {
-	init: function() {
-		this._super();
-	}
+    init: function() {
+        this._super();
+    }
 });
 can.Control('Bitovi.OSS.SocialStats', {}, {
-	init: function() {
-		this.state = new can.Observe({});
-		this.element.html(can.view('templates/socialStats.mustache', this.state, {
-			plural: function(word, count) {
-				// if we ever get an irregular plural (like 'people') we'll have to special-case.
-				return count === 1 ? word : word + 's';
-			}
-		}));
+    init: function() {
+        this.state = new can.Observe({});
+        this.element.html(can.view('templates/socialStats.mustache', this.state, {
+            plural: function(word, count) {
+                // if we ever get an irregular plural (like 'people') we'll have to special-case.
+                return count === 1 ? word : word + 's';
+            }
+        }));
 
-		Bitovi.OSS.ActivitySummary.findOne().done(can.proxy(function(summary) {
-			this.state.attr(summary);
-		}, this));
-	}
+        Bitovi.OSS.ActivitySummary.findOne().done(can.proxy(function(summary) {
+            this.state.attr(summary);
+        }, this));
+    }
 });
 Bitovi.OSS.CommunityTab('Bitovi.OSS.TwitterTab', {
-	defaults: {
-		view: 'templates/twitterTab.mustache'
-	}
+    defaults: {
+        view: 'templates/twitterTab.mustache'
+    }
 }, {
-	init: function() {
-		this._super();
-	}
+    init: function() {
+        this._super();
+    }
 });
 (function(window) {
 can.view.preload('templates_benefitTabs_mustache',can.Mustache(function(_CONTEXT,_VIEW) { with(_VIEW) { with (_CONTEXT) {var ___v1ew = [];var ___c0nt3xt = this && this.___st4ck3d ? this : [];___c0nt3xt.___st4ck3d = true;var ___st4ck = function(context, self) {var s;if (arguments.length == 1 && context) {s = !context.___st4ck3d ? [context] : context;} else if (!context.___st4ck3d) {s = [self, context];} else if (context && context === self && context.___st4ck3d) {s = context.slice(0);} else {s = context && context.___st4ck3d ? context.concat([self]) : ___st4ck(context).concat([self]);}return (s.___st4ck3d = true) && s;};___v1ew.push("  <ul class=\"circle-tabs\">");___v1ew.push("\n");___v1ew.push(can.view.txt(0,'ul',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},"#",can.Mustache.get("makeTabs",{context:___st4ck(___c0nt3xt,this),options:options},true,false),can.Mustache.get("tabs",{context:___st4ck(___c0nt3xt,this),options:options},false,true),[{_:function(){return ___v1ew.join("");}},{fn:function(___c0nt3xt){var ___v1ew = [];___v1ew.push(" \t<li class=\"");___v1ew.push(can.view.txt(1,'li','class',this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("className",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("\" data-benefit=\"");___v1ew.push(can.view.txt(1,'li','data-benefit',this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("className",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("\"",can.view.pending(),">");___v1ew.push("<a href=\"");___v1ew.push(can.view.txt(1,'a','href',this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("link",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("\"",can.view.pending(),">");___v1ew.push(can.view.txt(1,'a',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("title",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("</a></li>");___v1ew.push("\n");return ___v1ew.join("");}}])}));___v1ew.push(" </ul>");___v1ew.push("\n");___v1ew.push(can.view.txt(0,'',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},"#",can.Mustache.get("with",{context:___st4ck(___c0nt3xt,this),options:options},true,false),can.Mustache.get("selectedTab",{context:___st4ck(___c0nt3xt,this),options:options},false,true),[{_:function(){return ___v1ew.join("");}},{fn:function(___c0nt3xt){var ___v1ew = [];___v1ew.push(" <div class=\"tab-description ");___v1ew.push(can.view.txt(1,'div','class',this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("className",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("\"",can.view.pending(),">");___v1ew.push(can.view.txt(1,'div',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("tagline",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push(" <a class=\"readmore\" href=\"");___v1ew.push(can.view.txt(1,'a','href',this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("link",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("\"",can.view.pending(),">");___v1ew.push("More &#187;</a></div>");return ___v1ew.join("");}}])}));; return ___v1ew.join('')}} }));
@@ -8156,6 +8214,7 @@ can.view.preload('templates_cdnChooser_mustache',can.Mustache(function(_CONTEXT,
 can.view.preload('templates_chat_mustache',can.Mustache(function(_CONTEXT,_VIEW) { with(_VIEW) { with (_CONTEXT) {var ___v1ew = [];var ___c0nt3xt = this && this.___st4ck3d ? this : [];___c0nt3xt.___st4ck3d = true;var ___st4ck = function(context, self) {var s;if (arguments.length == 1 && context) {s = !context.___st4ck3d ? [context] : context;} else if (!context.___st4ck3d) {s = [self, context];} else if (context && context === self && context.___st4ck3d) {s = context.slice(0);} else {s = context && context.___st4ck3d ? context.concat([self]) : ___st4ck(context).concat([self]);}return (s.___st4ck3d = true) && s;};___v1ew.push("<div class=\"irc-chat-container\">");___v1ew.push("\n");___v1ew.push(can.view.txt(0,'div',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},"#",can.Mustache.get("lines",{context:___st4ck(___c0nt3xt,this),options:options},false,false),[{_:function(){return ___v1ew.join("");}},{fn:function(___c0nt3xt){var ___v1ew = [];___v1ew.push("\t<div><span class=\"username\">");___v1ew.push(can.view.txt(1,'span',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("actor",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("</span>: ");___v1ew.push(can.view.txt(1,'div',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("body",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("</div>");___v1ew.push("\n");return ___v1ew.join("");}}])}));___v1ew.push("</div>");; return ___v1ew.join('')}} }));
 can.view.preload('templates_communityTabs_mustache',can.Mustache(function(_CONTEXT,_VIEW) { with(_VIEW) { with (_CONTEXT) {var ___v1ew = [];var ___c0nt3xt = this && this.___st4ck3d ? this : [];___c0nt3xt.___st4ck3d = true;var ___st4ck = function(context, self) {var s;if (arguments.length == 1 && context) {s = !context.___st4ck3d ? [context] : context;} else if (!context.___st4ck3d) {s = [self, context];} else if (context && context === self && context.___st4ck3d) {s = context.slice(0);} else {s = context && context.___st4ck3d ? context.concat([self]) : ___st4ck(context).concat([self]);}return (s.___st4ck3d = true) && s;};___v1ew.push("<ul class=\"circle-tabs\">\n   <li class=\"forums\"><a>Forums</a></li>\n   <li class=\"irc\"><a>IRC</a></li>\n   <li class=\"plugins\"><a>Apps & Plugins</a></li>\n   <li class=\"twitter\"><a>Twitter</a></li>\n   <li class=\"issues\"><a>Issues</a></li>\n   <li class=\"github\"><a>Github</a></li>\n</ul>");; return ___v1ew.join('')}} }));
 can.view.preload('templates_contentsList_mustache',can.Mustache(function(_CONTEXT,_VIEW) { with(_VIEW) { with (_CONTEXT) {var ___v1ew = [];var ___c0nt3xt = this && this.___st4ck3d ? this : [];___c0nt3xt.___st4ck3d = true;var ___st4ck = function(context, self) {var s;if (arguments.length == 1 && context) {s = !context.___st4ck3d ? [context] : context;} else if (!context.___st4ck3d) {s = [self, context];} else if (context && context === self && context.___st4ck3d) {s = context.slice(0);} else {s = context && context.___st4ck3d ? context.concat([self]) : ___st4ck(context).concat([self]);}return (s.___st4ck3d = true) && s;};___v1ew.push("<ul>");___v1ew.push("\n");___v1ew.push(can.view.txt(0,'ul',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},"#",can.Mustache.get("sections",{context:___st4ck(___c0nt3xt,this),options:options},false,false),[{_:function(){return ___v1ew.join("");}},{fn:function(___c0nt3xt){var ___v1ew = [];___v1ew.push("\t<li><a href=\"#");___v1ew.push(can.view.txt(1,'a','href',this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("id",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("\"",can.view.pending(),">");___v1ew.push(can.view.txt(1,'a',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("text",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("</a></li>");___v1ew.push("\n");return ___v1ew.join("");}}])}));___v1ew.push("</ul>");; return ___v1ew.join('')}} }));
+can.view.preload('templates_demoFrame_mustache',can.Mustache(function(_CONTEXT,_VIEW) { with(_VIEW) { with (_CONTEXT) {var ___v1ew = [];var ___c0nt3xt = this && this.___st4ck3d ? this : [];___c0nt3xt.___st4ck3d = true;var ___st4ck = function(context, self) {var s;if (arguments.length == 1 && context) {s = !context.___st4ck3d ? [context] : context;} else if (!context.___st4ck3d) {s = [self, context];} else if (context && context === self && context.___st4ck3d) {s = context.slice(0);} else {s = context && context.___st4ck3d ? context.concat([self]) : ___st4ck(context).concat([self]);}return (s.___st4ck3d = true) && s;};___v1ew.push("<div class=\"demo\">\n\t<ul>\n\t\t<li class=\"tab\" data-tab=\"demo\">Demo</li>\n\t\t<li class=\"tab\" data-tab=\"html\">HTML</li>\n\t\t<li class=\"tab\" data-tab=\"js\">JS</li>\n\t</ul>\n\t<div class=\"tab-content\" data-for=\"demo\">\n\t\t<iframe src=\"");___v1ew.push(can.view.txt(1,'iframe','src',this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("demoSrc",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("\"",can.view.pending(),"/>");___v1ew.push("\n\t</div>\n\t<div class=\"tab-content\" data-for=\"html\">\n\t\t<pre class=\"prettyprint\"></pre>\n\t</div>\n\t<div class=\"tab-content\" data-for=\"js\">\n\t\t<pre class=\"prettyprint lang-js\"></pre>\n\t</div>\n</div>");; return ___v1ew.join('')}} }));
 can.view.preload('templates_downloadCustomizer_mustache',can.Mustache(function(_CONTEXT,_VIEW) { with(_VIEW) { with (_CONTEXT) {var ___v1ew = [];var ___c0nt3xt = this && this.___st4ck3d ? this : [];___c0nt3xt.___st4ck3d = true;var ___st4ck = function(context, self) {var s;if (arguments.length == 1 && context) {s = !context.___st4ck3d ? [context] : context;} else if (!context.___st4ck3d) {s = [self, context];} else if (context && context === self && context.___st4ck3d) {s = context.slice(0);} else {s = context && context.___st4ck3d ? context.concat([self]) : ___st4ck(context).concat([self]);}return (s.___st4ck3d = true) && s;};___v1ew.push("<h1>Customize<span class=\"pullright\">version ");___v1ew.push(can.view.txt(1,'span',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("versionNumber",{context:___st4ck(___c0nt3xt,this),options:options},true,false),can.Mustache.get("configuration.version",{context:___st4ck(___c0nt3xt,this),options:options},false,true));}));___v1ew.push("</span></h1>\n<form method=\"get\" action=\"http://bitbuilder.herokuapp.com/can.custom.js\">");___v1ew.push("\n");___v1ew.push(can.view.txt(0,'form',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},"^",can.Mustache.get("configuration",{context:___st4ck(___c0nt3xt,this),options:options},false,false),[{_:function(){return ___v1ew.join("");}},{inverse:function(___c0nt3xt){var ___v1ew = [];___v1ew.push("\t<div class=\"loading\"/>");___v1ew.push("\n");return ___v1ew.join("");}}])}));___v1ew.push("  ");___v1ew.push(can.view.txt(0,'form',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},"#",can.Mustache.get("if",{context:___st4ck(___c0nt3xt,this),options:options},true,false),can.Mustache.get("configuration",{context:___st4ck(___c0nt3xt,this),options:options},false,true),[{_:function(){return ___v1ew.join("");}},{fn:function(___c0nt3xt){var ___v1ew = [];___v1ew.push("\n  <div class=\"libraries\">Library:");___v1ew.push("\n");___v1ew.push(can.view.txt(0,'div',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},"#",can.Mustache.get("configuration.libraries",{context:___st4ck(___c0nt3xt,this),options:options},false,false),[{_:function(){return ___v1ew.join("");}},{fn:function(___c0nt3xt){var ___v1ew = [];___v1ew.push("    <input type=\"radio\" id=\"");___v1ew.push(can.view.txt(1,'input','id',this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("id",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("\" name=\"configuration\" value=\"");___v1ew.push(can.view.txt(1,'input','value',this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("name",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("\" ");___v1ew.push(can.view.txt(0,'input',1,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},"#",can.Mustache.get("isDefault",{context:___st4ck(___c0nt3xt,this),options:options},false,false),[{_:function(){return ___v1ew.join("");}},{fn:function(___c0nt3xt){var ___v1ew = [];___v1ew.push("checked");return ___v1ew.join("");}}])}));___v1ew.push("",can.view.pending(),">");___v1ew.push("<label for=\"");___v1ew.push(can.view.txt(1,'label','for',this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("id",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("\" class=\"radio\"",can.view.pending(),">");___v1ew.push("</label>\n    <label for=\"");___v1ew.push(can.view.txt(1,'label','for',this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("id",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("\"",can.view.pending(),">");___v1ew.push(can.view.txt(1,'label',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("description",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("</label>");___v1ew.push("\n");return ___v1ew.join("");}}])}));___v1ew.push("    <span class=\"pullright\">\n      <input id=\"minify\" type=\"checkbox\" name=\"minify\" value=\"true\" ");___v1ew.push(can.view.txt(0,'input',1,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},"#",can.Mustache.get("minified",{context:___st4ck(___c0nt3xt,this),options:options},false,false),[{_:function(){return ___v1ew.join("");}},{fn:function(___c0nt3xt){var ___v1ew = [];___v1ew.push("checked");return ___v1ew.join("");}}])}));___v1ew.push("",can.view.pending(),">");___v1ew.push("<label for=\"minify\" class=\"checkbox\"></label><label for=\"minify\">Minified</label>\n    </span>\n  </div>\n  <table class=\"options\" width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n    <tr>\n      <th width=\"40\" align=\"center\" valign=\"top\"><input type=\"checkbox\" class=\"all\" id=\"core\" data-type=\"core\"/><label for=\"core\" class=\"checkbox\"></label></th>\n      <th colspan=\"2\" align=\"center\" valign=\"middle\"><label for=\"core\">Core</label></th>\n    </tr>");___v1ew.push("\n");___v1ew.push(can.view.txt(0,'table',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},"#",can.Mustache.get("configuration.types.core.modules",{context:___st4ck(___c0nt3xt,this),options:options},false,false),[{_:function(){return ___v1ew.join("");}},{fn:function(___c0nt3xt){var ___v1ew = [];___v1ew.push("    <tr>\n      <td width=\"40\" align=\"center\" valign=\"top\"><input type=\"checkbox\" id=\"");___v1ew.push(can.view.txt(1,'input','id',this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("id",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("\" class=\"module\" name=\"plugins\" value=\"");___v1ew.push(can.view.txt(1,'input','value',this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("path",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("\" ");___v1ew.push(can.view.txt(0,'input',1,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},"#",can.Mustache.get("isDefault",{context:___st4ck(___c0nt3xt,this),options:options},false,false),[{_:function(){return ___v1ew.join("");}},{fn:function(___c0nt3xt){var ___v1ew = [];___v1ew.push("checked");return ___v1ew.join("");}}])}));___v1ew.push(" ");___v1ew.push(can.view.txt(1,'input',1,this,function(){ return can.proxy(function(__){can.data(can.$(__),'module', this.pop()); }, ___st4ck(___c0nt3xt,this))}));___v1ew.push("",can.view.pending(),"/>");___v1ew.push("<label for=\"");___v1ew.push(can.view.txt(1,'label','for',this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("id",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("\" class=\"checkbox\"",can.view.pending(),">");___v1ew.push("</label></td>\n      <td width=\"175\" align=\"left\" valign=\"top\"><label for=\"");___v1ew.push(can.view.txt(1,'label','for',this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("id",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("\"",can.view.pending(),">");___v1ew.push(can.view.txt(1,'label',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("name",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("</label></td>\n      <td align=\"left\" valign=\"top\">");___v1ew.push(can.view.txt(1,'td',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("description",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("</td>\n    </tr>");___v1ew.push("\n");return ___v1ew.join("");}}])}));___v1ew.push("    </tr>\n  </table>\n  <table class=\"options\" width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\n    <tr>\n      <th width=\"40\" align=\"center\" valign=\"top\"><input type=\"checkbox\" class=\"all checkbox\" id=\"plugin\" data-type=\"plugin\"/><label for=\"plugin\" class=\"checkbox\"></label></th>\n      <th colspan=\"2\" align=\"center\" valign=\"middle\"><label for=\"plugin\">Plugins</label></th>\n    </tr>");___v1ew.push("\n");___v1ew.push(can.view.txt(0,'table',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},"#",can.Mustache.get("configuration.types.plugin.modules",{context:___st4ck(___c0nt3xt,this),options:options},false,false),[{_:function(){return ___v1ew.join("");}},{fn:function(___c0nt3xt){var ___v1ew = [];___v1ew.push("    <tr>\n      <td width=\"40\" align=\"center\" valign=\"top\"><input type=\"checkbox\" id=\"");___v1ew.push(can.view.txt(1,'input','id',this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("id",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("\" class=\"module\" name=\"plugins\" value=\"");___v1ew.push(can.view.txt(1,'input','value',this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("path",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("\" ");___v1ew.push(can.view.txt(0,'input',1,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},"#",can.Mustache.get("isDefault",{context:___st4ck(___c0nt3xt,this),options:options},false,false),[{_:function(){return ___v1ew.join("");}},{fn:function(___c0nt3xt){var ___v1ew = [];___v1ew.push("checked");return ___v1ew.join("");}}])}));___v1ew.push(" ");___v1ew.push(can.view.txt(1,'input',1,this,function(){ return can.proxy(function(__){can.data(can.$(__),'module', this.pop()); }, ___st4ck(___c0nt3xt,this))}));___v1ew.push("",can.view.pending(),"/>");___v1ew.push("<label for=\"");___v1ew.push(can.view.txt(1,'label','for',this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("id",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("\" class=\"checkbox\"",can.view.pending(),">");___v1ew.push("</label></td>\n      <td width=\"175\" align=\"left\" valign=\"top\"><label for=\"");___v1ew.push(can.view.txt(1,'label','for',this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("id",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("\"",can.view.pending(),">");___v1ew.push(can.view.txt(1,'label',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("name",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("</label></td>\n      <td align=\"left\" valign=\"top\">");___v1ew.push(can.view.txt(1,'td',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("description",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("</td>\n    </tr>");___v1ew.push("\n");return ___v1ew.join("");}}])}));___v1ew.push("    </tr>\n  </table>\n  <br />\n  <div class=\"download-button\">\n    <button class=\"color\" type=\"submit\">Customize & Download</button>\n  </div>");___v1ew.push("\n");return ___v1ew.join("");}}])}));___v1ew.push("</form>");; return ___v1ew.join('')}} }));
 can.view.preload('templates_forumPost_mustache',can.Mustache(function(_CONTEXT,_VIEW) { with(_VIEW) { with (_CONTEXT) {var ___v1ew = [];var ___c0nt3xt = this && this.___st4ck3d ? this : [];___c0nt3xt.___st4ck3d = true;var ___st4ck = function(context, self) {var s;if (arguments.length == 1 && context) {s = !context.___st4ck3d ? [context] : context;} else if (!context.___st4ck3d) {s = [self, context];} else if (context && context === self && context.___st4ck3d) {s = context.slice(0);} else {s = context && context.___st4ck3d ? context.concat([self]) : ___st4ck(context).concat([self]);}return (s.___st4ck3d = true) && s;};___v1ew.push("<div class=\"bithub-post\">\n\t<!-- Commented out b/c it doesn't make sense without the ability to vote up, which we can't do yet. //TG -->\n\t<!-- <div class=\"pull-left score\">");___v1ew.push(can.view.txt(1,'div',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("points",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("</div> --> \n\t\n\t<h5><a href=\"");___v1ew.push(can.view.txt(1,'a','href',this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("link",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("\"",can.view.pending(),">");___v1ew.push(can.view.txt(1,'a',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("title",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("</a></h5>\n\t<p>");___v1ew.push(can.view.txt(1,'p',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("truncatePost",{context:___st4ck(___c0nt3xt,this),options:options},true,false),can.Mustache.get("body",{context:___st4ck(___c0nt3xt,this),options:options},false,true));}));___v1ew.push(" <a href=\"");___v1ew.push(can.view.txt(1,'a','href',this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("link",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("\"",can.view.pending(),">");___v1ew.push("+</a></p>\n\t<div class=\"bithub-footer\">");___v1ew.push(can.view.txt(1,'div',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("actor",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push(" / ");___v1ew.push(can.view.txt(1,'div',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("formatDate",{context:___st4ck(___c0nt3xt,this),options:options},true,false),can.Mustache.get("date",{context:___st4ck(___c0nt3xt,this),options:options},false,true));}));___v1ew.push(" via <a href=\"");___v1ew.push(can.view.txt(1,'a','href',this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("link",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("\"",can.view.pending(),">");___v1ew.push(can.view.txt(1,'a',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},null,can.Mustache.get("feed",{context:___st4ck(___c0nt3xt,this),options:options},false,false));}));___v1ew.push("</a></div>\n</div>");; return ___v1ew.join('')}} }));
 can.view.preload('templates_forumsTab_mustache',can.Mustache(function(_CONTEXT,_VIEW) { with(_VIEW) { with (_CONTEXT) {var ___v1ew = [];var ___c0nt3xt = this && this.___st4ck3d ? this : [];___c0nt3xt.___st4ck3d = true;var ___st4ck = function(context, self) {var s;if (arguments.length == 1 && context) {s = !context.___st4ck3d ? [context] : context;} else if (!context.___st4ck3d) {s = [self, context];} else if (context && context === self && context.___st4ck3d) {s = context.slice(0);} else {s = context && context.___st4ck3d ? context.concat([self]) : ___st4ck(context).concat([self]);}return (s.___st4ck3d = true) && s;};___v1ew.push("<div class=\"tab-description forums\">\n\t<form id=\"forumSearch\">\n\t\t<input type=\"search\" placeholder=\"Search the forums...\" />\n\t\t<button type=\"button\">Go</button>\n\t</form>\n\t<div class=\"posts\">\n\t\t<h1>Recent Posts</h1>\n\t\t<div class=\"bithub-content\">");___v1ew.push("\n");___v1ew.push(can.view.txt(0,'div',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},"#",can.Mustache.get("forumPosts",{context:___st4ck(___c0nt3xt,this),options:options},false,false),[{_:function(){return ___v1ew.join("");}},{fn:function(___c0nt3xt){var ___v1ew = [];___v1ew.push("\t\t");___v1ew.push(can.view.txt(0,'div',0,this,function(){ return options.partials && options.partials['templates/forumPost.mustache'] ? can.Mustache.renderPartial(options.partials['templates/forumPost.mustache'],___st4ck(___c0nt3xt,this).pop(),options) : can.Mustache.render('templates/forumPost.mustache', ___st4ck(___c0nt3xt,this))}));___v1ew.push("\n");return ___v1ew.join("");}}])}));___v1ew.push("\t\t");___v1ew.push(can.view.txt(0,'div',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},"^",can.Mustache.get("forumPosts",{context:___st4ck(___c0nt3xt,this),options:options},false,false),[{_:function(){return ___v1ew.join("");}},{inverse:function(___c0nt3xt){var ___v1ew = [];___v1ew.push("\n\t\t<div class=\"loading\"/>");___v1ew.push("\n");return ___v1ew.join("");}}])}));___v1ew.push("\t\t</div>\n\t</div>\n\t<div class=\"pull-right categories\">\n\t\t<ul>\n\t\t\t<li><a href=\"https://forum.javascriptmvc.com/#filter/discussions\">Discussions</a></li>\n\t\t\t<li><a href=\"https://forum.javascriptmvc.com/#filter/announcement\">Announcements</a></li>\n\t\t\t<li><a href=\"https://forum.javascriptmvc.com/#filter/questions\">Questions</a></li>\n\t\t\t<li><a href=\"https://forum.javascriptmvc.com/#filter/ideas\">Ideas</a></li>\n\t\t\t<li><a href=\"https://forum.javascriptmvc.com/#filter/problems\">Problems</a></li>\n\t\t</ul>\n\t\t<!--<ul>\n\t\t\t<li><a href=\"#\">Today</a></li>\n\t\t\t<li><a href=\"#\">This Week</a></li>\n\t\t\t<li><a href=\"#\">This Month</a></li>\n\t\t\t<li><a href=\"#\">This Year</a></li>\n\t\t</ul>-->\n\t</div>\n\t<br class=\"clear\" />\n</div><!-- .tab-description -->");; return ___v1ew.join('')}} }));
@@ -8173,28 +8232,28 @@ can.view.preload('templates_tweet_mustache',can.Mustache(function(_CONTEXT,_VIEW
 can.view.preload('templates_twitterTab_mustache',can.Mustache(function(_CONTEXT,_VIEW) { with(_VIEW) { with (_CONTEXT) {var ___v1ew = [];var ___c0nt3xt = this && this.___st4ck3d ? this : [];___c0nt3xt.___st4ck3d = true;var ___st4ck = function(context, self) {var s;if (arguments.length == 1 && context) {s = !context.___st4ck3d ? [context] : context;} else if (!context.___st4ck3d) {s = [self, context];} else if (context && context === self && context.___st4ck3d) {s = context.slice(0);} else {s = context && context.___st4ck3d ? context.concat([self]) : ___st4ck(context).concat([self]);}return (s.___st4ck3d = true) && s;};___v1ew.push("<div class=\"tab-description twitter\">\n\t<div class=\"pull-right categories\">\n\t\t<a href=\"http://twitter.com/canjs\" class=\"button\"><span class=\"icon-twitter\"></span> Follow on Twitter</a>\n\t</div><!-- categories -->\n\t<div class=\"posts\">\n\t\t<h1>Recent CanJS Tweets</h1>\n\t\t<div class=\"bithub-content\">");___v1ew.push("\n");___v1ew.push(can.view.txt(0,'div',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},"#",can.Mustache.get("tweets",{context:___st4ck(___c0nt3xt,this),options:options},false,false),[{_:function(){return ___v1ew.join("");}},{fn:function(___c0nt3xt){var ___v1ew = [];___v1ew.push("\t\t\t");___v1ew.push(can.view.txt(0,'div',0,this,function(){ return options.partials && options.partials['templates/tweet.mustache'] ? can.Mustache.renderPartial(options.partials['templates/tweet.mustache'],___st4ck(___c0nt3xt,this).pop(),options) : can.Mustache.render('templates/tweet.mustache', ___st4ck(___c0nt3xt,this))}));___v1ew.push("\n");return ___v1ew.join("");}}])}));___v1ew.push("\t\t\t");___v1ew.push(can.view.txt(0,'div',0,this,function(){ return can.Mustache.txt({context:___st4ck(___c0nt3xt,this),options:options},"^",can.Mustache.get("tweets",{context:___st4ck(___c0nt3xt,this),options:options},false,false),[{_:function(){return ___v1ew.join("");}},{inverse:function(___c0nt3xt){var ___v1ew = [];___v1ew.push("\n\t\t\t<div class=\"loading\"/>");___v1ew.push("\n");return ___v1ew.join("");}}])}));___v1ew.push("\t\t</div>\n\t</div>\n\t<br class=\"clear\" />\n</div>");; return ___v1ew.join('')}} }));
 })(this);
 (function() {
-	Bitovi.OSS.initTwitterWidgets = function() {
-		if($('.twitter-follow-button').length) {
-			// replace the "Follow @canjs!" link with a little wiget with follower count.
-			$('#twitter-wjs').remove();
-			!function (d, s, id) {
-				var js, fjs = d.getElementsByTagName(s)[0];
-				if (!d.getElementById(id)) {
-					js = d.createElement(s);
-					js.id = id;
-					js.src = "//platform.twitter.com/widgets.js";
-					fjs.parentNode.insertBefore(js, fjs);
-				}
-			}(document, "script", "twitter-wjs");
-		}
-	};
+    Bitovi.OSS.initTwitterWidgets = function() {
+        if($('.twitter-follow-button').length) {
+            // replace the "Follow @canjs!" link with a little wiget with follower count.
+            $('#twitter-wjs').remove();
+            !function (d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (!d.getElementById(id)) {
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = "//platform.twitter.com/widgets.js";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }
+            }(document, "script", "twitter-wjs");
+        }
+    };
 
-	Bitovi.OSS.redrawFont = function() {
-		var style = $('<style>:before,:after{content:none !important}</style>');
-		$('head').append(style);
+    Bitovi.OSS.redrawFont = function() {
+        var style = $('<style>:before,:after{content:none !important}</style>');
+        $('head').append(style);
 
-		window.setTimeout(function() {
-			style.remove();
-		}, 0);
-	};
+        window.setTimeout(function() {
+            style.remove();
+        }, 0);
+    };
 })();
