@@ -1,0 +1,21 @@
+{{#if children.length}}
+<ul>
+	{{#children}}
+	{{^if hide}}
+	<li class="search-container{{#if active}} active{{#children.length}} parent{{/children.length}}{{/if}}">
+		<a class="{{type}}" href="{{makeHref name}}" data-search="{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}">
+			{{getTitle}}
+		</a>
+	</li>
+	{{/if}}
+	{{/children}}
+</ul>
+{{else}}
+	{{^if hide}}
+	<li class="search-container {{#active}}active{{/active}}">
+	<a href="{{makeHref name}}" data-search="{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}">
+		{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}
+	</a>
+	</li>
+	{{/if}}
+{{/if}}

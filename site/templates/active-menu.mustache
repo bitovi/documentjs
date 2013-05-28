@@ -1,0 +1,16 @@
+{{#isConstructor}}
+<ul class="search-container">
+	{{#children}}
+	{{#if children.length}}
+	<li class="heading search-container">
+		<span>{{type}}</span>
+		{{> submenu.mustache}}
+	</li>
+	{{/if}}
+	{{/children}}
+</ul>
+{{/isConstructor}}
+
+{{^isConstructor}}
+	{{> submenu.mustache}}
+{{/isConstructor}}
