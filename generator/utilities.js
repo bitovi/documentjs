@@ -24,7 +24,6 @@ steal('../lib/underscore', function (_) {
 
 	exports.handlebarsPartials = function (folder, Handlebars) {
 		new steal.URI(folder).contents(function(name) {
-			console.log('Adding Handlebars partial ' + folder + '/' + name);
 			var template = readFile(folder + '/' + name);
 			Handlebars.registerPartial(name, template);
 		});
@@ -85,6 +84,7 @@ steal('../lib/underscore', function (_) {
 	}
 
 	exports.replaceLinks = function (text, data) {
+		if(!text) return "";
 		var replacer = function (match, content) {
 			var parts = content.match(/^(\S+)\s(.*)/);
 			var link = parts ? parts[1].replace('::', '.prototype.') : content;
@@ -96,13 +96,30 @@ steal('../lib/underscore', function (_) {
 
 			return match;
 		};
-
 		return text.replace(/[\[](.*?)\]/g, replacer);
 	}
 
 	exports.helpers = {
 		activePage: function (current, expected) {
 			return current == this.page ? 'active' : '';
+		},
+
+		emptyStaticAndPrototype: function(options){
+			var node = this;
+			if(node)
+			options.fn.call(this)
+		},
+
+		getTitle: function(){
+			var node = this;
+			if(node.title){
+				return node.title
+			}
+			// name: "cookbook/recipe/list.static.defaults"
+			// parent: "cookbook/recipe/list.static"
+			// src: "cookbook/recipe/list/list.js"
+			var title = node.name.replace(node.parent+".", "");
+			return title;
 		},
 
 		url: function (url) {

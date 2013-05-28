@@ -4,7 +4,7 @@
 	{{^if hide}}
 	<li class="search-container{{#children.length}} parent expanded{{/children.length}}{{#active}} active{{/active}}">
 			<a class="{{type}}" href="{{makeHref name}}" data-search="{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}">
-				{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}
+				{{getTitle}}
 			</a>
 			{{#if children.length}}
 				{{> submenu.mustache}}
