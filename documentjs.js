@@ -8,8 +8,9 @@
 //});
 
 steal('./types/script.js', './searchdata.js', 
-	  'steal/build', 'steal/rhino/json.js',
-	  function(Script, searchdata) {
+	  './generator/getscripts.js',
+	  'steal/rhino/json.js',
+	  function(Script, searchdata, getScripts) {
 /**
 	 * @function DocumentJS
 	 * @module documentjs
@@ -250,100 +251,16 @@ steal('./types/script.js', './searchdata.js',
 	 * 
 	 * DocumentJS was inspired by the [http://api.jquery.com/ jQuery API Browser] by [http://remysharp.com/ Remy Sharp]
 	 */
+	 
 	var DocumentJS = function(scripts, options, callback) {
+		var totalScripts = getScripts(scripts, options);
 		var objects = {};
-
-		if(typeof scripts == 'string'){
-			if(!options.out){
-				if(/\.html?$|\.js$/.test(scripts)){
-					options.out = scripts.replace(/[^\/]*$/, 'docs')
-				}else{ //folder
-					options.out = scripts+"/docs";
-				}
-			}
-			new steal.URI(options.out).mkdir();
-			scripts = DocumentJS.getScripts(scripts)
-		} else if(scripts instanceof Array){
-			new steal.URI(options.out).mkdir();
-			trueScriptsArr = [];
-			for(idx in scripts) {
-				files = DocumentJS.getScripts(scripts[idx]);
-				trueScriptsArr = trueScriptsArr.concat(files);
-			}
-			scripts = trueScriptsArr;
-		}
-		// an array of folders
-		if(options.markdown){
-			for(var i =0 ; i < options.markdown.length; i++){
-				DocumentJS.files(options.markdown[i], function(path, f){
-					if(/\.(md|markdown)$/.test(f) && !/node_modules/.test(path)){
-					  scripts.push( {
-					  	src: path,
-					  	text: readFile(path)
-					  } )
-				    }
-				})
-			}
-		}
-		scripts.forEach(function(script) {
+		totalScripts.forEach(function(script) {
 			print('processing ', script.src)
 			Script.process(script, objects);
 		});
-		callback(scripts, objects, searchdata(objects));
+		callback(totalScripts, objects, searchdata(objects));
 	};
-	
-	DocumentJS.files = function(path, cb){
-		var getJSFiles = function(dir){
-		  var file = new steal.URI(dir);
-		  if(file.isFile()) {
-			  cb(dir.replace('\\', '/'), dir);
-		  } else {
-			  file.contents(function(f, type){
-				if(type == 'directory' && !/node_modules/.test(f)) {
-			       getJSFiles(dir+"/"+f)
-			    }else {
-				  cb((dir+"/"+f).replace('\\', '/'), f);
-			    }
-			  });
-		  }
-		};
-		getJSFiles(path);
-	}
-	
-	DocumentJS.getScripts = function(file){
-		var collection = [], scriptUrl;
-		if (/\.html?$/.test(file)) { // load all the page's scripts
-			steal.build.open(file, function(scripts){
-				var paths = steal.config().paths;
-				scripts.each(function(script, text){
-					if(script.id && text){
-						scriptUrl = paths[script.id] || script.id;
-						print('pushing ', scriptUrl, script.text.length)
-						collection.push({
-							src: scriptUrl,
-							text: script.text
-						})
-					}
-				});
-			});
-		}
-		else if (/\.js$/.test(file)) { // load just this file
-			collection.push(file)
-		}
-		else { // assume its a directory
-			this.files(file, function(path, f){
-				if(/\.(js|md|markdown)$/.test(f)){
-				  collection.push( {
-				  	src: path,
-				  	text: readFile(path)
-				  } )
-			    }
-			})
-			
-			
-		}
-		return collection;
-	}
 
 	return DocumentJS;
 });

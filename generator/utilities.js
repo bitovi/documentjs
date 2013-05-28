@@ -106,7 +106,9 @@ steal('../lib/underscore', function (_) {
 
 		emptyStaticAndPrototype: function(options){
 			var node = this;
-			if(node)
+			if(node){
+				
+			}
 			options.fn.call(this)
 		},
 

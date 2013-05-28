@@ -4,7 +4,7 @@
 		<a href="{{makeHref name}}" data-search="{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}">
 			{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}
 		</a>
-		{{^emptyStaticAndPrototype}}
+		{{#if children.length}}
 		<ul class="search-container">
 		{{#children}}
 			{{#if children.length}}
@@ -15,7 +15,7 @@
 			{{else}}
 				{{> submenu.mustache}}
 			{{/if}}
-		{{/emptyStaticAndPrototype}}
+		{{/children}}
 		</ul>
 	{{/if}}
 	</li>
