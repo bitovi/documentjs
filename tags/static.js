@@ -36,7 +36,8 @@ steal('./helpers/getParent.js',
 					useName: ["constructor","function"],
 					scope: scope,
 					docMap: docMap,
-					name: "static"
+					name: "static",
+					title: "static"
 				});
 				
 				this.type= "static";

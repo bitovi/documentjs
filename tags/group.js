@@ -38,7 +38,7 @@ steal('./helpers/getParent.js',
 							docMap[name] = {
 								name: name,
 								title: title || name,
-								type: title,
+								type: "group",
 								parent: currentName,
 								description: ''
 							};

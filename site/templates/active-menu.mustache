@@ -1,18 +1,24 @@
-{{#isConstructor}}
-<ul class="search-container">
-	{{#children}}
-	{{#if children.length}}
-	<li class="heading search-container">
-		<span>{{type}}</span>
-		{{> submenu.mustache}}
-	</li>
-	{{/if}}
-	{{/children}}
-</ul>
-{{/isConstructor}}
-
-{{^isConstructor}}
-<ul class="submenu">
-	<li>{{> submenu.mustache}}</li>
-</ul>
-{{/isConstructor}}
+{{#if children.length}}
+	<ul>
+		{{#orderedChildren children}}
+			{{^if hide}}
+				{{#isGroup}}
+					
+					<li class="heading search-container">
+						<span>{{getTitle}}</span>
+						{{> active-menu.mustache}}
+					</li>
+					
+				{{/isGroup}}
+				{{^isGroup}}
+				<li class="search-container{{#if active}} active{{#children.length}} parent{{/children.length}}{{/if}}">
+					<a class="{{type}}" href="{{makeHref name}}" data-search="{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}">
+						{{getTitle}}
+					</a>
+				</li>
+				{{/isGroup}}
+			
+			{{/if}}
+		{{/orderedChildren}}
+	</ul>
+{{/if}}
