@@ -1,4 +1,4 @@
-steal('../showdown.js',function(converter) {
+steal('documentjs/libs/showdown.js',function(converter) {
 	/**
 	 * @constructor DocumentJS.tags.body @body
 	 * @parent DocumentJS

@@ -15,7 +15,7 @@ steal.config({
 });
 
 module.exports = function(files, callback) {
-	steal('types/script.js', 'searchdata.js', function(Script, searchdata) {
+	steal('types/script.js', 'documentjs/site/searchdata.js', function(Script, searchdata) {
 		var objects = {};
 		var fileList = [];
 

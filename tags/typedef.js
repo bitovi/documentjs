@@ -1,4 +1,4 @@
-steal('documentjs/showdown.js','./helpers/typer.js',
+steal('documentjs/libs/showdown.js','./helpers/typer.js',
 	'./helpers/tree.js',
 	'./helpers/namer.js',
 	'./helpers/typeNameDescription.js',

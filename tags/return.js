@@ -1,4 +1,4 @@
-steal('documentjs/showdown.js','./helpers/typer.js',
+steal('documentjs/libs/showdown.js','./helpers/typer.js',
 	function(converter, typer) {
 	/**
 	 * @constructor DocumentJS.tags.return @return
