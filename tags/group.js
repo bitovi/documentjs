@@ -6,8 +6,10 @@ steal('./helpers/getParent.js',
 		 *
 		 * Declares that other tags belong to a group within
 		 * the preceeding [DocumentJS.tags.constructor @constructor].
+		 * The name will be a child under the @constructor and the
+		 * description will show up in the sidebar.
 		 *
-		 * @signature `@group`
+		 * @signature `@group name description`
 		 *
 		 * @codestart
 		 * /**
