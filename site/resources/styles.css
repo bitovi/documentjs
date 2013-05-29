@@ -303,7 +303,10 @@ li.L1,li.L3,li.L5,li.L7,li.L9{}
 .docs footer{margin-top:20px;}
 .container.api{display:table;table-layout:fixed;border-bottom:1px solid #d5d5d5;padding-top:20px;}
 .container.api>*{display:table-cell !important;vertical-align:top;}
-.search-wrapper{position:relative;}
+.search-wrapper{position:relative;
+	visibility: hidden;
+	display: none;
+}
 .container.api>*{display:table-cell !important;vertical-align:top;}
 .search{display:block;border:1px solid #d5d5d5;padding:3px 3px 3px 30px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;-moz-box-shadow:inset 2px 2px 4px rgba(0, 0, 0, 0.1);-webkit-box-shadow:inset 2px 2px 4px rgba(0, 0, 0, 0.1);box-shadow:inset 2px 2px 4px rgba(0, 0, 0, 0.1);margin:8px;}.search input[type='text']:focus,.search input[type='text']:enabled{border-color:none;outline:none;}
 .search input[type='text']{display:block;border-style:none;background-color:rgba(255, 255, 254, 0);width:100%;}
