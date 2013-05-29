@@ -298,6 +298,10 @@ steal('../libs/underscore.js', function (_) {
 			if(!active.children || !active.children.length) {
 				active = parents[parents.length - 2];
 			}
+			
+			if(!active){
+				active = parents[0];
+			}
 
 			return options.fn(active);
 		},
