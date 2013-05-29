@@ -162,9 +162,6 @@ header .nav li{display:inline-block;line-height:54px;}header .nav li a{text-tran
 header .nav li a:hover,header .nav li.active a{background-color:rgba(0, 0, 0, 0.37);border:1px solid rgba(0, 0, 0, 0.62);border-radius:2px;-moz-border-radius:2px;-webkit-border-radius:2px;}
 header .bitovi.icon-bits{color:#ffffff;text-shadow:0 -1px 0 rgba(0, 4, 159, 0.49);display:block;opacity:.2;font-size:26px;line-height:54px;text-align:center;width:50px;height:54px;}header .bitovi.icon-bits:before{right:10px;}
 
-header .bitovi-menu:hover .bitovi.icon-bits,header .logo-menu:hover .brand.canjs{background-color:#fff;border-left:1px solid #d5d5d5;border-right:1px solid #d5d5d5;color:#323332;text-shadow:none;opacity:1;}
-
-
 header .logo-menu{position:relative;display:inline-block;}
 header .dropdown-menu{display:none;visibility:collapse;position:absolute;left:0;background-color:#fff;border:1px solid #d5d5d5;border-top:none;z-index:5;margin:0;padding:0;list-style-type:none;top:54px;width:240px;}
 header .dropdown-menu li a{display:block;text-decoration:none;border-bottom:1px solid #f5f5f5;color:#676767;font-size:14px;line-height:32px;padding-left:20px;padding-right:20px;}
