@@ -117,7 +117,7 @@ steal('../libs/underscore.js', function (_) {
 	exports.replaceLinks = function (text, data) {
 		if (!text) return "";
 		var replacer = function (match, content) {
-			var parts = content.match(/^(\S+)\s(.*)/);
+			var parts = content.match(/^(\S+)\s*(.*)/);
 			var link = parts ? parts[1].replace('::', '.prototype.') : content;
 			var description = parts && parts[2] ? parts[2] : link;
 
@@ -275,7 +275,7 @@ steal('../libs/underscore.js', function (_) {
 			}
 
 			parents = _.filter(parents, function(parent) {
-				return parent.type !== 'plugins' && parent.type !== 'Pages';
+				return parent.type !== 'group';
 			});
 
 			// Add root level at the beginning
@@ -297,6 +297,10 @@ steal('../libs/underscore.js', function (_) {
 
 			if(!active.children || !active.children.length) {
 				active = parents[parents.length - 2];
+			}
+			
+			if(!active){
+				active = parents[0];
 			}
 
 			return options.fn(active);
