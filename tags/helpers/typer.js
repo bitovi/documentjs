@@ -129,10 +129,7 @@ steal('./tree.js',function(tree){
 						// correct for Foo.<>
 						children[0].token.replace(/\.$/,"")
 					};
-					// if a normally defined type
-					if(type.type == "Object" || type.type == "Array"){
-						type.options = [];
-					}
+					
 					if(type.type == "Function"){
 						type.constructs = undefined;
 						type.returns = {types: [{type: "undefined"}]};
@@ -158,6 +155,11 @@ steal('./tree.js',function(tree){
 								// do anything at the end ...
 								process(children.slice(1), obj)
 								break;
+						}
+					} else {
+						// if a normally defined type
+						if(type.type == "Object" || type.type == "Array"){
+							type.options = [];
 						}
 					}
 			}

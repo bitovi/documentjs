@@ -222,10 +222,17 @@ steal('../libs/underscore.js', function (_) {
 					if(t.type === "function"){
 						return "function("+exports.helpers.makeParamsString(t.params)+")";
 					}
-					return t.type;
+					return exports.linkTo(t.type);
 				}).join(' | ');
 			} else {
 				return '';
+			}
+		},
+		equal: function( first, second, options ) {
+			if(first == second){
+				return options.fn(this);
+			} else {
+				return options.inverse(this);
 			}
 		},
 		makeTypesString: function (types) {
@@ -306,7 +313,17 @@ steal('../libs/underscore.js', function (_) {
 			return options.fn(active);
 		},
 		orderedChildren: function(children, options){
-			children = children.slice(0).sort(function(child1, child2){
+			children = (children || []).slice(0).sort(function(child1, child2){
+				// put groups at the end
+				if(/group|prototype|static/i.test(child1.type)){
+					if(!/group|prototype|static/i.test(child2.type)){
+						return 1;
+					}
+				}
+				if(/group|prototype|static/i.test(child2.type)){
+					return -1;
+				}
+
 				if(typeof child1.order == "number"){
 					if(typeof child2.order == "number"){
 						return child1.order - child2.order;

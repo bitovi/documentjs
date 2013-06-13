@@ -52,6 +52,16 @@ steal('documentjs/libs/showdown.js','./helpers/typer.js',
 			if(this.signatures){
 				this.signatures[this.signatures.length-1].returns = returns;
 			} else {
+				// check types (created by typedef) for a function type
+				if(this.types){
+					for(var i =0; i< this.types.length; i++ ){
+						if(this.types[i].type === "function"){
+							this.types[i].returns = returns;
+							return returns;
+						}
+					}
+				}
+				
 				this.returns = returns;
 			} 
 

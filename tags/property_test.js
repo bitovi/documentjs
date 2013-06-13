@@ -12,7 +12,7 @@ steal('./property.js','./option.js','./process','funcunit/qunit',function(proper
 		deepEqual(obj,{
 			name: "bar",
 			type: "property",
-			types: [{type: "Object"}],
+			types: [{type: "Object", options: []}],
 			title: "a description",
 		})
 		

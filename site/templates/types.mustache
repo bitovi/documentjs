@@ -1,6 +1,10 @@
 <h2><code>{{{makeTypesString types}}}</code></h2>
 
 {{#types}}
+{{#equal type "function"}}
+  {{> signature.mustache}}
+{{/equal}}
+
 {{#if options.length}}
 <ul class="options">
 	{{#options}}

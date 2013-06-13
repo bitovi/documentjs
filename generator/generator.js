@@ -75,7 +75,7 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 					print('Writing documentation ' + filename);
 
 					if (options.debug) {
-						data.debug = steal.toJSON(deepExtendWithoutBody(data));
+						data.debug = steal.toJSON(deepExtendWithoutBody(currentData));
 					}
 					var content = renderer(data);
 					var contents = layout(_.extend({

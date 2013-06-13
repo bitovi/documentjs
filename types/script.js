@@ -87,7 +87,7 @@ steal('documentjs/tags/process.js', 'documentjs/tags', function (process, tags) 
 		getCommentCodePairs: function () {
 
 		},
-		group: new RegExp("(?:/\\*(?:[^*]|(?:\\*+[^*/]))*\\*+/\[^\\w\\{\\(\\[/]*[^\\n]*)", "g"),
+		group: new RegExp("(?:/\\*(?:[^*]|(?:\\*+[^*/]))*\\*+/\[^\\w\\{\\(\\}\\[/]*[^\\n]*)", "g"),
 
 		// (?:/\*+((?:[^*]|(?:\*+[^*/]))*)\*+/[^\w\{\(\[\"'\$]*([^\r\n]*))
 		splitter: new RegExp("(?:/\\*+((?:[^*]|(?:\\*+[^*/]))*)\\*+/\[^\\w\\{\\(\\[\"'\$]*([^\\r\\n]*))"),
@@ -120,7 +120,10 @@ steal('documentjs/tags/process.js', 'documentjs/tags', function (process, tags) 
 						if (objects[docObject.name]) {
 							// merge props
 							for (var prop in docObject) {
-								objects[docObject.name][prop] = docObject[prop];
+								// only change if there is a value
+								if( docObject[prop] ) {
+									objects[docObject.name][prop] = docObject[prop];
+								}
 							}
 						} else {
 							objects[docObject.name] = docObject;

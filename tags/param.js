@@ -115,18 +115,36 @@ steal('documentjs/libs/showdown.js','./helpers/typeNameDescription.js',
 			if(this.signatures){
 				this.signatures[this.signatures.length-1].params.push(param)
 			} else {
-				if (!this.params ) {
-					this.params = [];
+				
+				var params
+				// check types (created by typedef) for a function type
+				if(this.types){
+					for(var i =0; i< this.types.length; i++ ){
+						if(this.types[i].type === "function"){
+							params = this.types[i].params
+						}
+					}
 				}
+				
+				// params not found
+				if(!params){
+					// create a params directly on the current object
+					if (!this.params ) {
+						this.params = [];
+					}
+					params = this.params;
+				}
+				
+				
 				// we are the _body's_ param
 				// check if one by the same name hasn't already been created
-				if ( indexOf(this.params, param.name) != -1) {
+				if ( indexOf(params, param.name) != -1) {
 					// probably needs to swap
-					this.params.splice(indexOf(this.params, param.name),1, param)
+					params.splice(indexOf(params, param.name),1, param)
 				} else {
 					// add to params
 					
-					this.params.push(param)
+					params.push(param)
 				}
 			}
 			this._curParam = param;
