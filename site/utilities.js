@@ -314,6 +314,7 @@ steal('../libs/underscore.js', function (_) {
 		},
 		orderedChildren: function(children, options){
 			children = (children || []).slice(0).sort(function(child1, child2){
+
 				// put groups at the end
 				if(/group|prototype|static/i.test(child1.type)){
 					if(!/group|prototype|static/i.test(child2.type)){
