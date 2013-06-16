@@ -49,7 +49,7 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 		}
 		
 		// check if there is anything in site/dist
-		if(true || !steal.URI("documentjs/site/static/dist/production.css").exists()){
+		if(!steal.URI("documentjs/site/static/dist/production.css").exists()){
 			console.log("Copying default/static to static/build")
 			// make the build
 			

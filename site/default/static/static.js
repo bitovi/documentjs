@@ -1,4 +1,4 @@
-steal("./styles/styles.less","./prettify",function(){
+steal("./content_list","./styles/styles.less","./prettify",function(ContentList){
 	var codes = document.getElementsByTagName("code");
 	for(var i = 0; i < codes.length; i ++){
 		var code = codes[i];
@@ -7,4 +7,6 @@ steal("./styles/styles.less","./prettify",function(){
 		}
 	}
 	prettyPrint();
+	
+	new ContentList(".contents")
 })

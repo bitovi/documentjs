@@ -100,12 +100,14 @@ steal('../libs/underscore.js', function (_) {
 				if(children[i].name == name){
 					return children[i]
 				} else if(children[i].children){
-					return traverse(children[i].children)
+					var res = traverse(children[i].children);
+					if(res){
+						return res;
+					}
 				}
 			}
 			return;
 		}
-
 		return traverse(root.children);
 	}
 	exports.activateItems = function (root, name) {
@@ -183,11 +185,15 @@ steal('../libs/underscore.js', function (_) {
 		};
 		return text.replace(/[\[](.*?)\]/g, replacer);
 	}
-	exports.linkTo = function(name, title){
+	exports.linkTo = function(name, title, attrs){
 		if (!name) return (title || "");
 		name = name.replace('::', '.prototype.');
 		if (data[name]) {
-			return '<a href="' + exports.docsFilename(name) + '">' + (title || name ) + '</a>';
+			var attrsArr = [];
+			for(var prop in attrs){
+				attrsArr.push(prop+"=\""+attrs[prop]+"\"")
+			}
+			return '<a href="' + exports.docsFilename(name) + '" '+attrsArr.join(" ")+'>' + (title || name ) + '</a>';
 		} else {
 			return title || name || ""
 		}
@@ -397,6 +403,7 @@ steal('../libs/underscore.js', function (_) {
 			return res;
 		},
 		apiSection: function(options){
+			var depth = 0;
 			var txt = "";
 			var item = exports.findItem(menuData, this.name)
 			if(!item){
@@ -406,7 +413,7 @@ steal('../libs/underscore.js', function (_) {
 				
 				signatures.forEach(function(signature){
 					txt += "<div class='small-signature'>"
-					txt += exports.linkTo(parent, signature.code);
+					txt += exports.linkTo(parent, signature.code,{"class":"sig"});
 					
 					var description = signature.description || defaultDescription;
 					var lastDot = description.indexOf(". ")
@@ -416,13 +423,17 @@ steal('../libs/underscore.js', function (_) {
 				})
 			}
 			var process = function(child){
+				txt += "<div class='group_"+depth+"'>"
 				var item = data[child.name]
 				if( item.signatures ){
 					makeSignatures(item.signatures, item.description, child.name)
 				}
 				if(child.children){
+					depth++;
 					child.children.sort(sortChildren).forEach(process)
+					depth--;
 				}
+				txt += "</div>"
 			}
 			
 			item.children.sort(sortChildren).forEach(process)
