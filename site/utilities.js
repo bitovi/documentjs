@@ -93,13 +93,14 @@ steal('../libs/underscore.js', function (_) {
 		return Handlebars;
 	}
 	exports.findItem = function(root, name){
+		
 		var traverse = function (children) {
 			var anyActive = false;
 			for(var i = 0; i < children.length; i++){
 				if(children[i].name == name){
 					return children[i]
 				} else if(children[i].children){
-					return traverse(child.children)
+					return traverse(children[i].children)
 				}
 			}
 			return;
@@ -398,7 +399,9 @@ steal('../libs/underscore.js', function (_) {
 		apiSection: function(options){
 			var txt = "";
 			var item = exports.findItem(menuData, this.name)
-			
+			if(!item){
+				return "Can't find "+this.name+"!";
+			}
 			var makeSignatures = function(signatures, defaultDescription, parent){
 				
 				signatures.forEach(function(signature){

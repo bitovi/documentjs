@@ -59,7 +59,11 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 			
 			
 			// TODO: copy overwrites
-			
+			if(options["static"]){
+				console.log("Copying "+options["static"]+" to static/build");
+				steal.URI(options["static"])
+					.copyTo("documentjs/site/static/build")
+			}
 			// run build
 			console.log("Getting build module")
 			steal("documentjs/site/static/build/build.js", function(build){
