@@ -1,0 +1,288 @@
+.container {
+	width: 960px;
+	margin: 0 auto;
+}
+section {
+	margin-bottom: 15px;
+}
+a {
+	text-decoration: underline;
+	color: @dark;
+	&:hover {
+		text-decoration: none;
+	}
+	cursor: pointer;
+}
+
+.pull-right, .pullright, .float-right, .floatright {
+	float: right;
+}
+.pull-left, .pullleft, .float-left, .float-right {
+	float: left;
+}
+
+h1,h2,h3,h4,h5,h6{
+	font-family: 'LatoBold', sans-serif;
+	font-weight: normal;
+	margin: 0;
+	margin-bottom: 10px;
+}
+
+h1{
+	font-size: 30px;
+}
+
+h2{
+	font-size: 26px;
+}
+
+h3{
+	font-size: 20px;
+}
+
+h4{
+	font-size:17px;
+}
+
+h5{
+	font-size:15px;
+}
+
+h6{
+	font-size:13px;
+}
+
+p, .p {
+	font-size: 14px;
+	line-height: 24px;
+	margin-top: 0;
+	margin-bottom: 15px;
+}
+ol,ul{
+	list-style:none;
+}
+ul{
+	list-style: square;
+	margin:0 0 21px 2.5em;
+}
+ol{
+	list-style-type:decimal;
+	margin:0 0 21px 3em;
+}
+ol ol{
+	list-style:upper-roman;
+}
+ol ol ol{
+	list-style:lower-roman;
+}
+ol ol ol ol{
+	list-style:upper-alpha;
+}
+ol ol ol ol ol{
+	list-style:lower-alpha;
+}
+ul ul,ol ol,ul ol,ol ul{
+	margin-bottom:0;
+}
+dl{
+	margin:0 0 18px 3px;
+}
+dl dt{
+	font-weight:bold;
+	margin:12px 0 0 0;
+}
+dl dd{
+	margin:6px 0 0 1.5em;
+}
+strong{
+	font-weight: 700; 
+	.text-smoothing;
+}
+strong strong{
+	font-weight:normal;
+}
+em,cite{
+	font-style:italic;
+}
+em em,cite cite{
+	font-style:normal;
+}
+abbr{
+	cursor:help;
+}
+acronym{
+	text-transform:uppercase;
+	border-bottom:1px dashed #666;
+	cursor:help;
+}
+big{
+	font-size:120%;
+}
+small,sup,sub{
+	font-size:80%;
+}
+sup{
+	vertical-align:baseline;
+	position:relative;
+	bottom:0.3em;
+}
+sub{
+	vertical-align:baseline;
+	position:relative;
+	top:0.3em;
+}
+address{
+	font-style:italic;
+	margin:0 0 21px 0;
+}
+li address,dd address{
+margin:0;
+
+}
+blockquote{
+	margin:0 2.5em;
+	font-style:normal;
+}
+blockquote em,blockquote cite{
+	font-style:italic;
+}
+blockquote,q {
+	quotes:none;
+}
+blockquote:before,blockquote:after,q:before,q:after{
+	content:'';
+	content:none;
+}
+a {
+	cursor:pointer;
+}
+a img{
+	border:none;
+}
+.content img {
+	background-color: #eee;
+	padding: 3px;
+	border: 1px solid #ccc;
+	margin-bottom: 10px;
+}
+ins,dfn{
+	font-style:italic;
+	text-decoration:none;
+	border-bottom:1px solid #666;
+}
+del,s,strike{
+	text-decoration:line-through;
+}
+object{
+	margin-bottom:21px;
+}
+input,textarea{
+	font-size:1em;
+	padding:3px;
+}
+input[type="submit"]{
+	cursor:pointer;
+}
+:focus{
+	outline:none;
+}
+form label{
+	cursor:pointer;
+}
+option{
+	padding:1px 3px;
+}
+table {
+	border-spacing:0;
+	margin-bottom:21px;
+	width:100%;
+	border-collapse:separate;
+	border-top:1px solid #ccc;
+	border-left:1px solid #ccc;
+	background: #fff;
+	.border-radius(@borderRadius);
+}
+caption{
+	font-size:.9em;
+	font-style:italic;
+	text-align:right;
+}
+td,th{
+	padding:3px 6px;
+	border-bottom:1px solid #ccc;
+	border-right:1px solid #ccc;
+	.text-shadow-light;
+}
+th{
+	background:#eee;
+}
+
+hr {
+	height:1px;
+	margin-bottom:20px;
+	background: #ccc;
+	border: none;
+}
+iframe {
+	margin-bottom: 20px;
+}
+
+button, .button {
+	background-color: @dark;
+	border: 1px solid darken(@dark, 10%);
+	color: #fff;
+	.text-shadow;
+	.border-radius(@borderRadius);
+	padding: 5px 15px;
+	position: relative;
+	font-size: 14px;
+	line-height: 18px;
+	text-decoration: none;
+	&:hover, &.active {
+		background-color: darken(@dark, 10%);
+	}
+}
+button.color, .button.color {
+	background-color: @color;
+	.text-shadow();
+	border-color: darken(@color, 10%);
+	
+	&:hover, &.active  {
+		background-color: darken(@color, 10%);
+	}
+}
+.hero button.active, .hero .button.active {
+	background-color: darken(@action, 10%);
+}
+.center {
+	margin-right: auto;
+	margin-left: auto;
+	text-align: center;
+}
+a.next {
+	text-transform: uppercase;
+	color: #7b7b7a;
+	font-weight: bold;
+	font-size: 12px;
+	line-height: 14px;
+	text-decoration: none;
+	
+	&:hover {
+		text-decoration: underline;
+	}
+	
+	&:after {
+		content: '\e015';
+		text-decoration: inherit;
+		display: inline;
+		font: normal normal 18px/12px Bitstrap;
+	}
+}
+.well {
+	padding: 20px;
+	margin-bottom: 20px;
+	background: #eeeeee;
+}
+.clear {
+	clear: both;
+}

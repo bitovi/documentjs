@@ -1,0 +1,121 @@
+.ie {
+
+	.search:before {
+	  font-family: Bitstrap;
+	  content: "\e012";
+	  display: block;
+	  position: absolute;
+	  left: 17px;
+	  color: #ccc;
+	} 
+	
+	.sidebar .api li li.active > a, 
+	.sidebar .api li li.active > a:hover,
+	.sidebar .api li li.active > a:before,
+	.sidebar .api li li.active > a:before {
+		background-image: none;
+		background-color: #ffffff;
+		background: #ffffff;
+	}
+	.sidebar .api li li.active > a:before,
+	.sidebar .api li li.active > a:before {
+		display: none;
+	}
+	.download {
+		.cdn {
+			.input .dropdown {
+				top: 0;
+			}
+			span {
+				top: -14px;
+			}
+			.dropdown select {
+				padding: 8px 0px 6px 8px;
+			}
+		}
+		.hero .cdn h4 {
+			top: -14px;
+		}
+	}
+}
+
+.lt-ie9 {
+	.brand:before { 
+		content: "\e004"; 
+		font-size: 180px;
+		top: 0px;
+		left: 0px;
+	}
+	.hero {
+		background: #797977 url(../img/hero-ribbons.png) no-repeat center center;
+		
+		 .pull-right {
+			width: 360px;
+		}
+	}
+	input.all, 
+	input.module, 
+	input#minify, 
+	input#minified,
+	input#dojo, 
+	input#yui, 
+	input#mootools, 
+	input#zepto, 
+	input#jquery {
+		display: inline-block;
+	}
+	label.checkbox,
+	label.radio {
+		display: none;
+	}
+	.dropdown {
+		background-color: #dfdfdf;
+		select {
+				background: #fff;
+				width: 100%;
+		}
+	}
+	.tab-description:before { 
+		display: none;
+	}
+	.community .tab-description.forums #forumSearch input[type='search'] {
+		width: 721px;
+		margin-right: 20px;
+	}
+	
+	.circle-tabs li a:before {
+		background-color: none;
+		border: none;
+		background: url('../img/ie-circle-tabs-137.png') no-repeat left top;
+	}
+	.community .circle-tabs li a:before {
+		background: url('../img/ie-circle-tabs-80.png') no-repeat left top;
+	}
+	.circle-tabs li a:hover:before,
+	.circle-tabs li.active a:before {
+		background-position-x: right;
+	}
+	ul.wizard {
+ 		background: url(../img/wizard-bkg.png) no-repeat center center!important;
+ 	}
+}
+.lt-ie8 .container ul.nav li,
+.lt-ie8 .container ul.pullright li,
+.lt-ie8 .content ul.socialstats li,
+.lt-ie8 .content ul.carousel li,
+.lt-ie8 .container ul.circle-tabs li,
+ {
+	float: left;
+}
+.lt-ie8 {
+ 	.nav {
+		top: -30px;
+	}
+	
+	.dropdown select {
+		background: #fff;
+		width: auto;
+		height: auto;
+	}
+
+}

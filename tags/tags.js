@@ -2,6 +2,7 @@
 steal(
 "./add.js",	
 "./alias",
+"./api.js",
 "./author",
 "./body.js",
 "./codeend",
@@ -31,7 +32,7 @@ steal(
 "./test",
 "./typedef.js",
 "./group.js",
-function(add, alias, author, body, codeend, codestart, constructor, demo, description, download,
+function(add, alias, api, author, body, codeend, codestart, constructor, demo, description, download,
 	func,
 	hide, iframe, image, inherits, mod, option,  page, param, parent, plugin, property, prototype, 
 	release, ret, 
@@ -39,6 +40,7 @@ function(add, alias, author, body, codeend, codestart, constructor, demo, descri
 	return {
 		add: add,
 		alias: alias,
+		api: api,
 		author: author,
 		body: body,
 		codeend: codeend,

@@ -21,9 +21,9 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<link rel="stylesheet" type="text/css" href="{{url 'resources/styles.css'}}" />
+	<link rel="stylesheet" type="text/css" href="{{url 'static/production.css'}}" />
 	<!--[if lt IE 9]>
-   <script type="text/javascript" src="{{url 'resources/html5shiv.js'}}"></script>
+   <script type="text/javascript" src="{{url 'static/html5shiv.js'}}"></script>
     <!--<![endif]-->
 </head>
 
@@ -68,21 +68,12 @@
 				CDN: '{{url.cdn}}'
 			}
 		}
+		steal = {
+			productionId: "production.js",
+			executed: ["documentjs/site/static/dist/production.css"]
+		}
 	</script>
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-	{{#if debug}}
-		<script type="text/javascript" src="{{url 'resources/shared.js'}}"></script>
-	{{else}}
-		<script type="text/javascript" src="{{url 'resources/shared.min.js'}}"></script>
-	{{/if}}
-	<script type="text/javascript" src="{{url 'resources/app.js'}}"></script>
-	<!--[if lt IE 9]>
-   	<script type="text/javascript">
-   	$(function() {
-   		Bitovi.OSS.redrawFont();
-   	});
-   	</script>
-    <!--<![endif]-->
+	<script type='text/javascript' src="./static/steal.production.js"></script>
 </body>
 
 </html>

@@ -20,6 +20,37 @@ steal('../libs/underscore.js', function (_) {
 		gatherParents(children);
 		return parents;
 	}
+	var sortChildren = function(child1, child2){
+
+				// put groups at the end
+				if(/group|prototype|static/i.test(child1.type)){
+					if(!/group|prototype|static/i.test(child2.type)){
+						return 1;
+					}
+				}
+				if(/group|prototype|static/i.test(child2.type)){
+					return -1;
+				}
+
+				if(typeof child1.order == "number"){
+					if(typeof child2.order == "number"){
+						return child1.order - child2.order;
+					} else {
+						return -1;
+					}
+				} else {
+					if(typeof child2.order == "number"){
+						return 1;
+					} else {
+						// alphabetical
+						if(child1.name < child2.name){
+							return -1
+						}
+						return 1;
+					}
+				}
+			}
+	
 	var constructorParentPosition = function(children) {
 		var parents = getParents(children);
 		var active = _.last(parents);
@@ -61,8 +92,23 @@ steal('../libs/underscore.js', function (_) {
 
 		return Handlebars;
 	}
+	exports.findItem = function(root, name){
+		var traverse = function (children) {
+			var anyActive = false;
+			for(var i = 0; i < children.length; i++){
+				if(children[i].name == name){
+					return children[i]
+				} else if(children[i].children){
+					return traverse(child.children)
+				}
+			}
+			return;
+		}
 
+		return traverse(root.children);
+	}
 	exports.activateItems = function (root, name) {
+		var matched;
 		var traverse = function (children) {
 			var anyActive = false;
 			_.each(children, function (child) {
@@ -71,6 +117,9 @@ steal('../libs/underscore.js', function (_) {
 					active = traverse(child.children);
 				}
 				child.active = active || child.name == name;
+				if(child.name === name){
+					matched = matched;
+				}
 				if (child.active) {
 					anyActive = true;
 				}
@@ -81,7 +130,7 @@ steal('../libs/underscore.js', function (_) {
 
 		traverse(root.children);
 
-		return root;
+		return matched || root;
 	}
 
 	exports.menuTree = function (data, root) {
@@ -137,16 +186,24 @@ steal('../libs/underscore.js', function (_) {
 		if (!name) return (title || "");
 		name = name.replace('::', '.prototype.');
 		if (data[name]) {
-			return '<a href="' + exports.docsFilename(name) + '">' + (name || title) + '</a>';
+			return '<a href="' + exports.docsFilename(name) + '">' + (title || name ) + '</a>';
 		} else {
 			return title || name || ""
 		}
 	}
 	var data, 
-		config;
+		config,
+		menuData;
 	exports.data = function(d){
 		if(d){
 			data = d;
+		} else {
+			return data;
+		}
+	}
+	exports.menuData = function(d){
+		if(d){
+			menuData = d;
 		} else {
 			return data;
 		}
@@ -167,13 +224,24 @@ steal('../libs/underscore.js', function (_) {
 
 		getTitle: function () {
 			var node = this;
+			
 			if (node.title) {
 				return node.title
 			}
 			// name: "cookbook/recipe/list.static.defaults"
 			// parent: "cookbook/recipe/list.static"
 			// src: "cookbook/recipe/list/list.js"
-			var title = node.name.replace(node.parent + ".", "");
+			var parentParent = data[node.parent] && data[node.parent].parent;
+			// check if we can replace with our parent
+			if( node.name.indexOf(node.parent + ".") == 0){
+				var title = node.name.replace(node.parent + ".", "");
+			} else if(parentParent && parentParent.indexOf(".") > 0 && node.name.indexOf(parentParent + ".") == 0){
+				// try with our parents parent
+				var title = node.name.replace(parentParent + ".", "");
+			} else {
+				title = node.name
+			}
+			
 			return title;
 		},
 
@@ -222,7 +290,14 @@ steal('../libs/underscore.js', function (_) {
 					if(t.type === "function"){
 						return "function("+exports.helpers.makeParamsString(t.params)+")";
 					}
-					return exports.linkTo(t.type);
+					var txt = exports.linkTo(t.type);
+					if(t.template && t.template.length){
+						txt += "&lt;"+t.template.map(function(templateItem){
+							return exports.helpers.makeTypes(templateItem.types)
+						}).join(",")+"&gt;"
+					}
+					
+					return txt;
 				}).join(' | ');
 			} else {
 				return '';
@@ -313,41 +388,44 @@ steal('../libs/underscore.js', function (_) {
 			return options.fn(active);
 		},
 		orderedChildren: function(children, options){
-			children = (children || []).slice(0).sort(function(child1, child2){
-
-				// put groups at the end
-				if(/group|prototype|static/i.test(child1.type)){
-					if(!/group|prototype|static/i.test(child2.type)){
-						return 1;
-					}
-				}
-				if(/group|prototype|static/i.test(child2.type)){
-					return -1;
-				}
-
-				if(typeof child1.order == "number"){
-					if(typeof child2.order == "number"){
-						return child1.order - child2.order;
-					} else {
-						return -1;
-					}
-				} else {
-					if(typeof child2.order == "number"){
-						return 1;
-					} else {
-						// alphabetical
-						if(child1.name < child2.name){
-							return -1
-						}
-						return 1;
-					}
-				}
-			});
+			children = (children || []).slice(0).sort(sortChildren);
 			var res = "";
 			children.forEach(function(child){
 				res += options.fn(child)
 			})
 			return res;
+		},
+		apiSection: function(options){
+			var txt = "";
+			var item = exports.findItem(menuData, this.name)
+			
+			var makeSignatures = function(signatures, defaultDescription, parent){
+				
+				signatures.forEach(function(signature){
+					txt += "<div class='small-signature'>"
+					txt += exports.linkTo(parent, signature.code);
+					
+					var description = signature.description || defaultDescription;
+					var lastDot = description.indexOf(". ")
+					
+					txt += "<p>"+exports.replaceLinks(lastDot != -1 ? description.substr(0, lastDot) +".": description, data)+"</p>"
+					txt += "</div>"
+				})
+			}
+			var process = function(child){
+				var item = data[child.name]
+				if( item.signatures ){
+					makeSignatures(item.signatures, item.description, child.name)
+				}
+				if(child.children){
+					child.children.sort(sortChildren).forEach(process)
+				}
+			}
+			
+			item.children.sort(sortChildren).forEach(process)
+			
+			
+			return txt
 		}
 	};
 
