@@ -49,7 +49,7 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 		}
 		
 		// check if there is anything in site/dist
-		if(!steal.URI("documentjs/site/static/dist/production.css").exists()){
+		if(true || !steal.URI("documentjs/site/static/dist/production.css").exists()){
 			console.log("Copying default/static to static/build")
 			// make the build
 			
@@ -100,7 +100,7 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 			}
 			new steal.URI('documentjs/site/static/dist').copyTo(resourcesDest)
 		});
-
+		
 		utils.handlebarsHelpers(_.extend({}, utils.helpers, configuration.helpers), Handlebars);
 		utils.handlebarsPartials(new steal.URI(configuration.docs).dir() + '/', Handlebars);
 		getScriptsAndProcess(files, configuration, function (scripts, docData, search) {
