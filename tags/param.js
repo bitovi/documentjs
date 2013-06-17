@@ -151,13 +151,16 @@ steal('documentjs/libs/showdown.js','./helpers/typeNameDescription.js',
 			return param;
 		},
 		done : function(){
+			
+			var trim=function(str){return str.replace(/^\s+|\s+$/g, '');};
+			
 			if(this.returns && this.returns.description && this.returns.description ){
-				this.returns.description = converter.makeHtml(this.returns.description)
+				this.returns.description = converter.makeHtml(trim(this.returns.description))
 			}
 			if(this.params){
 				for(var paramName in this.params){
 					if(this.params[paramName].description  ){
-						this.params[paramName].description = converter.makeHtml(this.params[paramName].description)
+						this.params[paramName].description = converter.makeHtml(trim(this.params[paramName].description))
 					}
 				}
 			}
@@ -166,21 +169,21 @@ steal('documentjs/libs/showdown.js','./helpers/typeNameDescription.js',
 					if(type.options){
 						type.options.forEach(function(option){
 							if(option.description){
-								option.description = converter.makeHtml(option.description);
+								option.description = converter.makeHtml(trim(option.description));
 							}
 						})
 					}
 				})
 			}
 			(this.signatures || []).forEach(function(signature){
-				signature.description = converter.makeHtml( signature.description );
+				signature.description = converter.makeHtml( trim(signature.description) );
 				
 				(signature.params || []).forEach(function(param){
-					param.description = converter.makeHtml(param.description);
+					param.description = converter.makeHtml(trim(param.description));
 					
 				})
 				if(signature.returns && signature.returns.description){
-					signature.returns.description = converter.makeHtml(signature.returns.description)
+					signature.returns.description = converter.makeHtml(trim(signature.returns.description))
 				}
 			})
 			delete this._curParam;
