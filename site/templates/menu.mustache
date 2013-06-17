@@ -27,6 +27,7 @@
 					{{getTitle}}
 				</a>
 			</li>
+			<ul class="projects">
 			{{#orderedChildren children}}
 				<li class="search-container">
 					<a href="{{makeHref name}}" data-search="{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}">
@@ -34,6 +35,8 @@
 					</a>
 				</li>
 			{{/orderedChildren}}
+			</ul>
+			
 		{{/hasActiveChild}}
 	{{/menu}}
 </ul>
