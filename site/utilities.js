@@ -131,7 +131,11 @@ steal('../libs/underscore.js', function (_) {
 			return anyActive;
 		}
 
-		traverse(root.children);
+		if(!root) {
+			print('WARNING: No children for ' + name);
+		} else {
+			traverse(root.children || []);
+		}
 
 		return matched || root;
 	}
