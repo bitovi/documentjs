@@ -7,7 +7,7 @@ section {
 }
 a {
 	text-decoration: underline;
-	color: @dark;
+	color: @colorLinks;
 	&:hover {
 		text-decoration: none;
 	}
@@ -22,8 +22,7 @@ a {
 }
 
 h1,h2,h3,h4,h5,h6{
-	font-family: 'LatoBold', sans-serif;
-	font-weight: normal;
+	font-weight: bold;
 	margin: 0;
 	margin-bottom: 10px;
 }
@@ -53,7 +52,7 @@ h6{
 }
 
 p, .p {
-	font-size: 14px;
+	font-size: 15px;
 	line-height: 24px;
 	margin-top: 0;
 	margin-bottom: 15px;
@@ -200,7 +199,7 @@ table {
 	border-top:1px solid #ccc;
 	border-left:1px solid #ccc;
 	background: #fff;
-	.border-radius(@borderRadius);
+	.border-radius(2px);
 }
 caption{
 	font-size:.9em;
@@ -228,31 +227,19 @@ iframe {
 }
 
 button, .button {
-	background-color: @dark;
-	border: 1px solid darken(@dark, 10%);
+	background-color: @colorLinks;
+	border: 1px solid darken(@colorLinks, 10%);
 	color: #fff;
 	.text-shadow;
-	.border-radius(@borderRadius);
+	.border-radius(2px);
 	padding: 5px 15px;
 	position: relative;
 	font-size: 14px;
 	line-height: 18px;
 	text-decoration: none;
 	&:hover, &.active {
-		background-color: darken(@dark, 10%);
+		background-color: darken(@colorLinks, 10%);
 	}
-}
-button.color, .button.color {
-	background-color: @color;
-	.text-shadow();
-	border-color: darken(@color, 10%);
-	
-	&:hover, &.active  {
-		background-color: darken(@color, 10%);
-	}
-}
-.hero button.active, .hero .button.active {
-	background-color: darken(@action, 10%);
 }
 .center {
 	margin-right: auto;

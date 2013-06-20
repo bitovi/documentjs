@@ -1,4 +1,5 @@
 <h2>{{code}}</h2>
+<div class="signature-wrapper">
 {{{docLinks description}}}
 {{#if params}}
 	<h3>Parameters</h3>
@@ -8,7 +9,7 @@
 		<li class="parameter">
 			<h4>{{name}} {{#if types}}<code>{{{makeTypesString types}}}</code>{{/if}}{{#if optional}}<span class="pull-right optional">Optional</span>{{/if}}</h4>
 			<div class="description">
-				<p>{{{docLinks description}}}</p>
+				{{{docLinks description}}}
 			</div>
 			{{#types}}
 			{{#if options.length}}
@@ -17,7 +18,7 @@
 				<li class="option">
 					<h5>{{name}} {{#if types}}<code>{{{makeTypesString types}}}</code>{{/if}}</h5>
 					<div class="description">
-						{{{description}}}
+						{{{docLinks description}}}
 					</div>
 				</li>
 				{{/options}}
@@ -37,3 +38,4 @@
 		</div>
 	</div>
 {{/if}}
+</div>

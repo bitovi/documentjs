@@ -27,11 +27,18 @@
   footer {
     margin-top: 20px;
   }
+  .signature-wrapper {
+  	padding: 10px 15px 0;
+  	border: 1px solid #d9d9d9;
+  	&*:last-child {
+  		margin-bottom: 0;
+  	}
+  }
 }
 .container.api {
 	display: table;
 	table-layout: fixed;
-  border-bottom: 1px solid #d5d5d5;
+  	border-bottom: 1px solid #d5d5d5;
 	padding-top: 20px;
 }
 .container.api > * {
@@ -100,6 +107,8 @@
   .module,  .inherits,  .title .links li {
     font-size: 14px;
     color: #999999;
+    font-weight: normal;
+    font-style: normal;
   }
   .title {
   	.links, .tags {
@@ -114,7 +123,7 @@
   	  -webkit-border-radius: 4px;
   	  -moz-border-radius: 4px;
   	  border-radius: 4px;
-  	  background-color: #767676;
+  	  background-color: @colorTags;
   	  color: #fff;
   	  font-size: 12px;
   	  margin-left: 5px;
@@ -146,17 +155,18 @@
     display: none;
   }
   .signature h2 {
-    background-color: @dark;
+    background-color: @colorSignature;
     color: #fff;
     font-size: 18px;
     line-height: 24px;
-    -webkit-border-top-left-radius: 3px;
-    -webkit-border-top-right-radius: 3px;
-    -moz-border-radius-topleft: 3px;
-    -moz-border-radius-topright: 3px;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    padding: 3px 10px;
+    margin: 0;
+    -webkit-border-top-left-radius: 4px;
+    -webkit-border-top-right-radius: 4px;
+    -moz-border-radius-topleft: 4px;
+    -moz-border-radius-topright: 4px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    padding: 3px 15px;
     .text-shadow;
     
     span {
@@ -174,16 +184,20 @@
   .parameters, .returns {
     list-style-type: none;
     margin: 0 0 15px;
-    border: 1px solid #eeeeee;
-    background-color: #fff;
-    padding: 10px 10px 5px;
+    border: 1px solid @colorParamsReturns;
+    background-color: #fcfafa;
+    padding: 10px 15px 0;
   }
   .parameters h4, .returns h4 {
-    background-color: #767676;
-    padding: 3px 10px;
-    .text-shadow;
-    color: #fff;
-    margin: -11px -11px 5px;
+    background-color: @colorParamsReturns;
+    padding: 4px 15px;
+    .text-shadow-light;
+    color: #000;
+    margin: -11px -15px 5px;
+    .optional {
+		font-size: 10px;
+		line-height: 19px;
+    }
   }
   .parameters h5, .returns h5 {
     font-size: 14px;
@@ -193,7 +207,6 @@
   .parameters h4 code, .returns h4 code {
     font-style: italic;
     font-weight: normal;
-    margin-left: 3px;
     background: none;
     background-color: none;
   }
@@ -235,24 +248,6 @@
       border: 1px solid #d6d6d6;
     }
   }
-/*
-<div class="demo">
-  <ul>
-    <li class="tab" data-tab="demo">Demo</li>
-    <li class="tab" data-tab="html">HTML</li>
-    <li class="tab" data-tab="js">JS</li>
-  </ul>
-  <div class="tab-content" data-for="demo">
-    <iframe src="{{demoSrc}}"/>
-  </div>
-  <div class="tab-content" data-for="html">
-    <pre class="prettyprint"></pre>
-  </div>
-  <div class="tab-content" data-for="js">
-    <pre class="prettyprint lang-js"></pre>
-  </div>
-</div>
-*/
 
 }
 .docs .parameters ul.options:last-child,
@@ -261,17 +256,17 @@
 }
 .docs .parameters .description,
 .docs .returns .description {
-  margin-left: 15px;
-  padding-bottom: 15px;
-  .p;
+  padding-bottom: 15px; 
+}
+.docs .returns .description {
+	margin-top: 15px;
 }
 .docs .parameters :last-child .description,
-.docs .returns :last-child .description,
-.docs .parameters .description *:last-child,
-.docs .returns .description *:last-child {
+.docs .returns :last-child .description {
   margin-bottom: 0px;
   padding-bottom: 0px;
 }
+
 .sidebar {
   background-color: #f8f8f8;
   border: 1px solid #c5c3c3;
@@ -295,88 +290,100 @@
   color: #000;
   .text-shadow-light;
 }
-.sidebar .api {
 
+.sidebar .api {
+	padding-bottom: 10px;
+	border-bottom: 3px solid @colorNav;
+	border-left: 3px solid @colorNav;
+	border-right: 3px solid @colorNav;
+	
+	background-color: #eee;
+	background: -moz-linear-gradient(top,  rgba(0,0,0,0.1) 0%, rgba(255,255,255,0) 5%, rgba(255,255,255,0) 96%, rgba(0,0,0,0.1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.1)), color-stop(5%,rgba(255,255,255,0)), color-stop(96%,rgba(255,255,255,0)), color-stop(100%,rgba(0,0,0,0.1)));
+	background: -webkit-linear-gradient(top,  rgba(0,0,0,0.1) 0%,rgba(255,255,255,0) 5%,rgba(255,255,255,0) 96%,rgba(0,0,0,0.1) 100%);
+	background: -o-linear-gradient(top,  rgba(0,0,0,0.1) 0%,rgba(255,255,255,0) 5%,rgba(255,255,255,0) 96%,rgba(0,0,0,0.1) 100%);
+	background: -ms-linear-gradient(top,  rgba(0,0,0,0.1) 0%,rgba(255,255,255,0) 5%,rgba(255,255,255,0) 96%,rgba(0,0,0,0.1) 100%);
+	background: linear-gradient(to bottom,  rgba(0,0,0,0.1) 0%,rgba(255,255,255,0) 5%,rgba(255,255,255,0) 96%,rgba(0,0,0,0.1) 100%);
+  
   li {
 	  font-size: 15px;
 	  line-height: 24px;
 	  text-indent: 15px;
 	  position: relative;
+	  a {
+	    display: block;
+	    border: 1px solid rgba(255, 255, 254, 0);
+	    
+	    &:hover {
+	      border: 1px solid rgba(255, 255, 254, 0);
+	      background: rgba(204, 204, 204, 0.25);
+	    }
+	  }
   }
-  a {
-    display: block;
+  ul ul li a:hover {
     border: 1px solid rgba(255, 255, 254, 0);
+    background: rgba(204, 204, 204, 0.25);
+  }
+  li li li li a {
+    font-size: 13px;
+    color: #666;
+  }
+  > li > ul {
+    display: none;
+  }
+  > li.active {
+    margin-left: -1px;
+    margin-right: -1px;
+    margin-top: -1px;
+    position: relative;
+    z-index: 0;
+    
+    &:last-child > a {
+    	margin-bottom: 10px;
+    }
+    > ul {
+      display: block;
+    }
+  }
+  li.active > a {
+    font-weight: bold;
+  }
+  li.active.collapsed > :not(a) {
+    display:none;
+  }
+  li li li {
+    text-indent: 30px;
+  }
+  li li li li {
+    text-indent: 45px;
+  }
+  ul.projects {
+	  padding-top: 10px;
   }
 }
 
-.sidebar .api ul ul li a:hover {
-  border: 1px solid rgba(255, 255, 254, 0);
-  background: rgba(204, 204, 204, 0.25);
-}
-.sidebar .api li li li li a {
-  font-size: 13px;
-  color: #666;
-}
-.sidebar .api > li > ul {
-  display: none;
-}
-
-.sidebar .api > li.active {
-  border-bottom: 3px solid @dark;
-  border-left: 3px solid @dark;
-  border-right: 3px solid @dark;
-  margin-left: -1px;
-  margin-right: -1px;
-  margin-top: -1px;
-  position: relative;
-  z-index: 0;
-  background-color: #eee;
-  background: -moz-linear-gradient(top,  rgba(0,0,0,0.1) 0%, rgba(255,255,255,0) 5%, rgba(255,255,255,0) 96%, rgba(0,0,0,0.1) 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.1)), color-stop(5%,rgba(255,255,255,0)), color-stop(96%,rgba(255,255,255,0)), color-stop(100%,rgba(0,0,0,0.1)));
-  background: -webkit-linear-gradient(top,  rgba(0,0,0,0.1) 0%,rgba(255,255,255,0) 5%,rgba(255,255,255,0) 96%,rgba(0,0,0,0.1) 100%);
-  background: -o-linear-gradient(top,  rgba(0,0,0,0.1) 0%,rgba(255,255,255,0) 5%,rgba(255,255,255,0) 96%,rgba(0,0,0,0.1) 100%);
-  background: -ms-linear-gradient(top,  rgba(0,0,0,0.1) 0%,rgba(255,255,255,0) 5%,rgba(255,255,255,0) 96%,rgba(0,0,0,0.1) 100%);
-  background: linear-gradient(to bottom,  rgba(0,0,0,0.1) 0%,rgba(255,255,255,0) 5%,rgba(255,255,255,0) 96%,rgba(0,0,0,0.1) 100%);
-
-  &> ul {
-    display: block;
-  }
-}
-.sidebar .api li.active > a {
-  font-weight: bold;
-}
-.sidebar .api li.active.collapsed > :not(a) {
-  display:none;
-}
-.sidebar .api li li li {
-  text-indent: 30px;
-}
-.sidebar .api li li li li {
-  text-indent: 45px;
+.sidebar .api > li.active > a {
+	font-size: 17px;
+	font-weight: bold;
+	line-height: 40px;
+	color: #767676;
+	display: block;
+	border: none;
 }
 .sidebar .api > li > a,
 .sidebar .api.cascading > .active > ul > li > a {
-  font-size: 17px;
-  font-weight: bold;
-  line-height: 40px;
-  color: #767676;
-  display: block;
-  border: none;
+  
 }
 .sidebar .api > li > a:hover,
 .sidebar .api.cascading .active > ul > li > a:hover {
   color: #000;
-  border: none;
 }
 .sidebar .api > li.active > a,
 .sidebar .api.cascading > .active > a {
   color: #fff;
-  background: @dark;
+  background: @colorNav;
   .text-shadow;
   border: none;
-}
-.sidebar .api > li:first-child {
-	margin-top: 10px;
 }
 .sidebar .api .heading span {
   text-transform: uppercase;
@@ -385,12 +392,7 @@
   color: #959494;
   line-height: 24px;
 }
-.sidebar .api ul {
-  /*background-color: #fff; */
-}
-.sidebar .api .active > ul {
-  padding-bottom: 10px;
-}
+
 .sidebar .api li.parent {
   text-indent: 40px;
 }
@@ -435,11 +437,12 @@
     rgba(243,243,243,1) 0%,
     rgba(255,255,255,1) 100%
   );
-
+  margin-left: 1px;
   border-top: 1px solid #c5c3c3;
   border-bottom: 1px solid #c5c3c3;
 }
 
+/* This is the caret/triangle that points out of the container to the page on active items */
 .sidebar .api li li.active > a:before,
 .sidebar .api li li.active > a:before {
   position:absolute;
@@ -489,11 +492,14 @@
   -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.19);
   -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.19);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.19);
+  margin-left: 0px;
+  margin-right: 0px;
 }
+/* The caret that points down from an active parent element to the child below */
 .sidebar .api.cascading > .parent:before {
   position:absolute;
   content : ' ';
-  left:49%;
+  left:47%;
   top:17px;
   height : 25px;
   width: 25px;
@@ -501,7 +507,7 @@
   -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.19);
   -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.19);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.19);
-  background: @dark;
+  background: @colorNav;
   -moz-transform : rotateZ(-45deg) skewY(15deg) skewX(15deg);
   -o-transform : rotateZ(-45deg) skewY(15deg) skewX(15deg);
   -webkit-transform : rotateZ(-45deg) skewY(15deg) skewX(15deg);
@@ -512,9 +518,11 @@
   border-bottom-left-radius : 0px;
   border: 1px solid #ffffff;
 }
+/*
 .sidebar .api.cascading .active > ul {
   padding-bottom: 0;
 }
+*/
 .sidebar .api.cascading > li:nth-child(1) {
   z-index: 10;
 }
@@ -549,4 +557,34 @@
 	.container;
 	font-size: 12px;
 	margin-bottom: 15px;
+}
+.api {
+  .group_0 {
+    margin-bottom: 40px;
+  }
+}
+
+.small-signature {
+	padding: 10px;
+	background-color: #fcfafa;
+	border: 1px solid #ece7e7;
+	margin-bottom: 10px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	
+	a.sig {
+		text-decoration: none;
+		color: #000;
+		display: block;
+		font-weight: bold;
+	}
+	
+	p {
+		color: #666;
+		line-height: 15px;
+		margin-bottom: 10px;
+		margin-left: 10px;
+		margin-right: 10px;
+	}
 }

@@ -299,7 +299,16 @@ steal('../libs/underscore.js', function (_) {
 				// turns [{type: 'Object'}, {type: 'String'}] into '{Object | String}'
 				return types.map(function (t) {
 					if(t.type === "function"){
-						return "function("+exports.helpers.makeParamsString(t.params)+")";
+						var fn = "("+exports.helpers.makeParamsString(t.params)+")";
+						
+						if(t.constructs && t.constructs.types){
+							fn = "constructor"+fn;
+							fn += " => "+exports.helpers.makeTypes(t.constructs.types)
+						} else {
+							fn = "function"+fn;
+						}
+						
+						return fn;
 					}
 					var txt = exports.linkTo(t.type);
 					if(t.template && t.template.length){
