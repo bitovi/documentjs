@@ -164,6 +164,9 @@ steal('documentjs/libs/showdown.js','./helpers/typeNameDescription.js',
 					}
 				}
 			}
+			if(this.context && this.context.description){
+				this.context.description = converter.makeHtml(trim(this.context.description))
+			}
 			if(this.types){
 				this.types.forEach(function(type){
 					if(type.options){
@@ -172,6 +175,21 @@ steal('documentjs/libs/showdown.js','./helpers/typeNameDescription.js',
 								option.description = converter.makeHtml(trim(option.description));
 							}
 						})
+					}
+					
+					if(type.params){
+						type.params.forEach(function(param){
+							if(param.description){
+								param.description = converter.makeHtml(trim(param.description));
+							}
+						})
+					}
+					
+					if(type.context && type.context.description){
+						type.context.description = converter.makeHtml(trim(type.context.description))
+					}
+					if(type.returns && type.returns.description){
+						type.returns.description = converter.makeHtml(trim(type.returns.description))
 					}
 				})
 			}
@@ -184,6 +202,9 @@ steal('documentjs/libs/showdown.js','./helpers/typeNameDescription.js',
 				})
 				if(signature.returns && signature.returns.description){
 					signature.returns.description = converter.makeHtml(trim(signature.returns.description))
+				}
+				if(signature.context && signature.context.description){
+					signature.context.description = converter.makeHtml(trim(signature.context.description))
 				}
 			})
 			delete this._curParam;

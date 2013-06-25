@@ -28,7 +28,7 @@ steal(function() {
 	 */
 	return {
 		add: function( line ) {
-			var m = line.match(/^\s*@\w+\s+([^\s]+)(?:\s+([^\s]+))?/)
+			var m = line.match(/^\s*@\w+\s+([^\s]+)(?:\s+(.+))?/)
 			if ( m ) {
 				this.name = m[1];
 				if(m[2]){

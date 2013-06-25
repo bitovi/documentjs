@@ -1,4 +1,12 @@
-<h2><code>{{{makeTypesString types}}}</code></h2>
+<h2>
+	{{#equal type "property"}}
+	   Property Type:
+	{{/equal}}
+	{{#equal type "typedef"}}
+	   Type Definition:
+	{{/equal}}
+	<code>{{{makeTypesString types}}}</code>
+</h2>
 
 {{#types}}
 {{#equal type "function"}}

@@ -306,11 +306,24 @@ steal('../libs/underscore.js', function (_) {
 						
 						return fn;
 					}
-					var txt = exports.linkTo(t.type);
+					var type = data[t.type];
+					var title = type && type.title || undefined;
+					
+					var txt = exports.linkTo(t.type, title);
 					if(t.template && t.template.length){
 						txt += "&lt;"+t.template.map(function(templateItem){
 							return exports.helpers.makeTypes(templateItem.types)
 						}).join(",")+"&gt;"
+					}
+					if(type){
+						if(type.type === "function" && (type.params || type.signatures)){
+							var params = type.params || (type.signatures[0] && type.signatures[0].params ) || []
+						} else if(type.type === "typedef" && type.types[0] && type.types[0].type == "function"){
+							var params = type.types[0].params;
+						}
+						if(params){
+							txt += "("+exports.helpers.makeParamsString(params)+")";
+						}
 					}
 					
 					return txt;
@@ -329,7 +342,11 @@ steal('../libs/underscore.js', function (_) {
 		makeTypesString: function (types) {
 			if (types.length) {
 				// turns [{type: 'Object'}, {type: 'String'}] into '{Object | String}'
-				return "{"+exports.helpers.makeTypes(types)+"}";
+				var txt = "{"+exports.helpers.makeTypes(types);
+				//if(this.defaultValue){
+				//	txt+="="+this.defaultValue
+				//}
+				return txt+"}";
 			} else {
 				return '';
 			}
@@ -412,9 +429,10 @@ steal('../libs/underscore.js', function (_) {
 			return res;
 		},
 		apiSection: function(options){
-			var depth = 0;
-			var txt = "";
-			var item = exports.findItem(menuData, this.name)
+			var depth = (this.api && this.api !== this.name ? 1 : 0);
+			var txt = "",
+				periodReg = /\.\s/g;
+			var item = exports.findItem(menuData, this.api || this.name)
 			if(!item){
 				return "Can't find "+this.name+"!";
 			}
@@ -422,19 +440,28 @@ steal('../libs/underscore.js', function (_) {
 				
 				signatures.forEach(function(signature){
 					txt += "<div class='small-signature'>"
-					txt += exports.linkTo(parent, signature.code,{"class":"sig"});
+					txt += exports.linkTo(parent, "<code class='prettyprint'>"+signature.code+"</code>",{"class":"sig"});
 					
-					var description = signature.description || defaultDescription;
-					var lastDot = description.indexOf(". ")
 					
-					txt += "<p>"+exports.replaceLinks(lastDot != -1 ? description.substr(0, lastDot) +".": description, data)+"</p>"
+					var description = (signature.description || defaultDescription)
+						// remove all html tags
+						.replace(/<\/?\w+((\s+\w+(\s*=\s*(?:".*?"|'.*?'|[^'">\s]+))?)+\s*|\s*)\/?>/g,"");
+						
+					periodReg.lastIndex = 0;
+					periodReg.exec(description)
+					var lastDot = periodReg.lastIndex;
+					
+					txt += "<p>"+exports.replaceLinks(lastDot != 0 ? description.substr(0, lastDot): description, data)+"</p>"
 					txt += "</div>"
 				})
 			}
 			var process = function(child){
+				if(child.hide ){
+					return;
+				}
 				txt += "<div class='group_"+depth+"'>"
 				var item = data[child.name]
-				if( item.signatures ){
+				if( item.signatures && child.type !== "typedef" ){
 					makeSignatures(item.signatures, item.description, child.name)
 				}
 				if(child.children){

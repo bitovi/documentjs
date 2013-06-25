@@ -11,7 +11,7 @@ steal('./helpers/getParent.js',
 	 * 
 	 * @codestart
 	 * /**
-	 *  * @@attribute {Number} delay
+	 *  * @@property {Number} delay
 	 *  * Sets the delay in milliseconds between an ajax request is made and
 	 *  * the success and complete handlers are called.  This only sets
 	 *  * functional fixtures.  By default, the delay is 200ms.
