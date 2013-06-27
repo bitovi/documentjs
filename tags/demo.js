@@ -3,7 +3,7 @@ steal(function() {
 	 * @constructor DocumentJS.tags.demo @demo
 	 * @parent DocumentJS 
 	 * 
-	 * Placeholder for an application demo.
+	 * @description Placeholder for an application demo.
 	 * 
 	 * @signature `@demo SRC [HEIGHT]`
 	 * 

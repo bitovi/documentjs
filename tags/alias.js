@@ -3,7 +3,12 @@ steal(function() {
 	 * @constructor DocumentJS.tags.alias @alias
 	 * @tag documentation
 	 * @parent DocumentJS
+	 * 
+	 * @description 
+	 * 
 	 * The Class or Constructor is known by another name.
+	 * 
+	 * @body
 	 * 
 	 * ###Example:
 	 *  

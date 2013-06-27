@@ -76,7 +76,21 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 			callback();
 		}		
 	}
-
+	var makeAndCopyTemplates = function(configuration){
+		// if site/templates doesn't exist, make it
+		if(!steal.URI("documentjs/site/templates").exists()){
+			steal.URI("documentjs/site/templates").mkdirs()
+		}
+		// first copy everything from default to 
+		steal.URI("documentjs/site/default/templates")
+				.copyTo("documentjs/site/templates")
+				
+		if(configuration["templates"]){
+			print("Copying tempaltes from "+configuration["templates"])
+			steal.URI(configuration["templates"])
+				.copyTo("documentjs/site/templates")
+		}
+	}
 	var generate = function (files, options) {
 		
 
@@ -84,15 +98,14 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 		if(!configuration.parent){
 			throw "must provide a parent"
 		}
-		var layout = Handlebars.compile(readFile(configuration.layout));
-		var renderer = Handlebars.compile(readFile(configuration.docs));
+		
 		var dir = new steal.URI(configuration.out);
 
 		if (!dir.exists()) {
 			dir.mkdirs();
 		}
 
-		makeAndCopyStatic(options, function(){
+		makeAndCopyStatic(configuration, function(){
 			// copies resources folder to destination folder
 			var resourcesDest = new steal.URI(configuration.out+'/static');
 			if (!resourcesDest.exists()) {
@@ -100,6 +113,13 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 			}
 			new steal.URI('documentjs/site/static/dist').copyTo(resourcesDest)
 		});
+		
+		// move templates
+		makeAndCopyTemplates(configuration)
+		
+		// get big templates
+		var layout = Handlebars.compile(readFile('documentjs/site/templates/layout.mustache')),
+			renderer = Handlebars.compile(readFile('documentjs/site/templates/docs.mustache'));
 		
 		utils.handlebarsHelpers(_.extend({}, utils.helpers, configuration.helpers), Handlebars);
 		utils.handlebarsPartials(new steal.URI(configuration.docs).dir() + '/', Handlebars);
@@ -135,6 +155,8 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 					new steal.URI(filename).save(contents);
 				}
 			});
+			
+			utils.handlebarStatics(configuration,docData, layout, Handlebars);
 
 			// write the searchdata.json
 			var searchdataDest = new steal.URI(configuration.out+'/searchdata.json');

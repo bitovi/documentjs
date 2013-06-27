@@ -6,6 +6,9 @@ steal('./helpers/getParent.js',
 
 	/**
 	 * @constructor DocumentJS.tags.constructor @constructor
+	 * 
+	 * Document a constructor function.
+	 * 
 	 * @signature `@constructor NAME [TITLE]`
 	 * @parent DocumentJS
 	 */

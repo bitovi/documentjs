@@ -154,6 +154,23 @@ steal('documentjs/libs/showdown.js','./helpers/typeNameDescription.js',
 			
 			var trim=function(str){return str.replace(/^\s+|\s+$/g, '');};
 			
+			
+			// recursively look for description properties
+			var findDescriptions = function(obj){
+				for(var prop in obj){
+					var val = obj[prop]
+						isObject = val && typeof val === "object"
+					if(prop === "description"){
+						obj.description = converter.makeHtml(trim(obj.description))
+					} else if(isObject && obj[prop].forEach){
+						obj[prop].forEach(findDescriptions)
+					} else if(isObject){
+						findDescriptions(val)
+					}
+				}
+			}
+			findDescriptions(this)
+			/*
 			if(this.returns && this.returns.description && this.returns.description ){
 				this.returns.description = converter.makeHtml(trim(this.returns.description))
 			}
@@ -206,7 +223,7 @@ steal('documentjs/libs/showdown.js','./helpers/typeNameDescription.js',
 				if(signature.context && signature.context.description){
 					signature.context.description = converter.makeHtml(trim(signature.context.description))
 				}
-			})
+			})*/
 			delete this._curParam;
 		}
 	};

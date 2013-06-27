@@ -21,6 +21,18 @@ steal('documentjs/generator',
 	 * @option {Array.<String>} markdown An array of folders to look for markdown files in. Defaults to `folder`.
 	 * @option {String} out Where to place the docs.html and the docs/ folder. Defaults to `folder`.
 	 * @option {String} index The name of the object to be documented. Defaults to `folder`.
+	 * @option {String} static The file location of static file overwrites for the content 
+	 * in `documentjs/site/defaults/static`. The content at `static` is copied to `documentjs/site/static/build` where
+	 * the `documentjs/site/static/build/build.js` module is stolen.  The function it returns is called. That
+	 * function should copy the production ready files to `documentjs/site/static/dist` where they will
+	 * be copied to `{out}/static`.
+	 * 
+	 * @option {String} templates The file location of template overrides of `documentjs/site/defaults/templates`.
+	 * 
+	 * The most common templates to overwrite are:
+	 * 
+	 *  - _layout.mustache_ - the page's headers / footers and script tags it loads.
+	 *  - _docs.mustache_ - the the content of the page.
 	 * 
 	 * @signature `DocumentJS(files,[options])`
 	 * Documents a set of code organized in files.

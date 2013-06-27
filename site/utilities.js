@@ -92,6 +92,37 @@ steal('../libs/underscore.js', function (_) {
 
 		return Handlebars;
 	}
+	
+	exports.handlebarStatics = function(configuration, docData, layout, Handlebars){
+		if(configuration.statics && configuration.statics.src){
+			print("Rendering mustache files in "+configuration.statics.src+" to "+(configuration.statics.dest||'.'))
+			
+			new steal.URI(configuration.statics.src).contents(function (name) {
+				if(name.indexOf(".mustache")>0){
+					print("  "+name)
+					var template = readFile(configuration.statics.src + '/' + name);
+					var renderer = Handlebars.compile(template);
+					
+					var data = _.extend({},configuration,docData)
+					
+					var content = renderer(data);
+					
+					var contents = layout(_.extend({
+						content: content
+					}, data));
+
+					new steal.URI(
+						(configuration.statics.dest||'')+
+						name.replace(".mustache",".html")
+						).save(contents);
+				}
+				
+			});
+			
+		}
+		
+	}
+	
 	exports.findItem = function(root, name){
 		
 		var traverse = function (children) {

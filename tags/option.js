@@ -38,7 +38,7 @@ steal('documentjs/libs/showdown.js','./helpers/typer.js',
 	 * @parent DocumentJS 
 	 * 
 	 * Details the properties of an object or the arguments of a function
-	 * in a [documentjs/tags/param @param] tag.
+	 * in a [DocumentJS.tags.param @param] tag.
 	 * 
 	 * @signature `@option {TYPE} NAME [DESCRIPTION]`
 	 * 

@@ -3,6 +3,8 @@ steal('documentjs/libs/showdown.js',function(converter) {
 	 * @constructor DocumentJS.tags.body @body
 	 * @parent DocumentJS
 	 * 
+	 * @description 
+	 * 
 	 * Content after the `@body` tag appears after 
 	 * the title and signature content.
 	 * 

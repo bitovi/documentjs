@@ -3,7 +3,9 @@ steal(function(){
 	 * @constructor DocumentJS.tags.add @add 
 	 * @parent DocumentJS
 	 * 
-	 * Sets a [DocObject] as the 
+	 * @description 
+	 * 
+	 * Sets a [documentjs/DocObject DocObject] as the 
 	 * current scope. [DocumentJS.tags.function Functions]
 	 * or [DocumentJS.tags.property properties] created
 	 * without a name will use their code block and
@@ -22,7 +24,7 @@ steal(function(){
 	 * })
 	 * @codeend
 	 * 
-	 * @param {STRING} NAME the name of [DocObject]
+	 * @param {STRING} NAME the name of [documentjs/DocObject DocObject]
 	 * to set as the scope.
 	 * 
 	 * @body

@@ -4,7 +4,7 @@ steal(function() {
 	 * @tag documentation
 	 * @parent DocumentJS
 	 * 
-	 * Indicates that the current [DocObject] inherits from another [DocObject].
+	 * Indicates that the current [documentjs/DocObject DocObject] inherits from another [documentjs/DocObject DocObject].
 	 * 
 	 * @signature `@inherits NAME`
 	 * 

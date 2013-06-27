@@ -4,7 +4,9 @@ steal(function() {
 	 * @tag documentation
 	 * @parent DocumentJS
 	 * 
-	 * Adds a download link.
+	 * @description Adds a download link.
+	 * 
+	 * @body
 	 * 
 	 * ###Example:
 	 * 

@@ -4,13 +4,10 @@ steal('documentjs/libs/showdown.js',function(converter) {
 	 * @tag documentation
 	 * @parent DocumentJS 
 	 * 
-	 * The text following `@description` is added at the top
-	 * of the documentation page. By default any text
-	 * in a comment that isn't after a multi-line `@` directive is added to 
-	 * the `description` of the [DocObject]. `@description`
-	 * can be used to escape a multi-line `@` directive.
+	 * @description Provide a short description.
 	 * 
-	 * @signature `@description`
+	 * 
+	 * @signature `@description CONTENT`
 	 * 
 	 * @codestart
 	 * /**
@@ -19,6 +16,15 @@ steal('documentjs/libs/showdown.js',function(converter) {
 	 *  *|
 	 * lib.Component = function(name){}
 	 * @codeend
+	 * 
+	 * 
+	 * @body
+	 * 
+	 * The text following `@description` is added at the top
+	 * of the documentation page. By default any text
+	 * in a comment that isn't after a multi-line `@` directive is added to 
+	 * the `description` of the [documentjs/DocObject DocObject]. `@description`
+	 * can be used to escape a multi-line `@` directive.
 	 * 
 	 */
 	return  {

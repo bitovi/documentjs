@@ -4,7 +4,7 @@ steal(function() {
 	 * @release 3.3
 	 * @parent DocumentJS
 	 * 
-	 * Specifies the release of a [documentjs/tags/param @param],
+	 * Specifies the release of a [DocumentJS.tags.param @param],
 	 * [documentjs/tags/signature @signature], 
 	 * [documentjs/tags/function @function] or
 	 * [documentjs/tags/property @property].
