@@ -120,18 +120,16 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 		// get big templates
 		var layout = Handlebars.compile(readFile('documentjs/site/templates/layout.mustache')),
 			renderer = Handlebars.compile(readFile('documentjs/site/templates/docs.mustache'));
+		utils.handlebarsPartials(steal.URI('documentjs/site/templates/'), Handlebars);
 		
-		utils.handlebarsHelpers(_.extend({}, utils.helpers, configuration.helpers), Handlebars);
-		utils.handlebarsPartials(new steal.URI(configuration.docs).dir() + '/', Handlebars);
 		getScriptsAndProcess(files, configuration, function (scripts, docData, search) {
+			
 			var rootItem = utils.menuTree(docData, configuration.parent);
-			// provides docData for helpers that need it
-			utils.data(docData);
-			utils.config(configuration);
-			utils.menuData(rootItem);
-			Handlebars.registerHelper('docLinks', function (text) {
-				return utils.replaceLinks(text, docData);
-			});
+			
+			// make helpers
+			utils.handlebarsHelpers(_.extend({}, utils.helpers(docData, rootItem, configuration), configuration.helpers), Handlebars);
+			
+			// go everything and render it
 			_.each(docData, function (currentData, name) {
 				if (!configuration.ignore(currentData, name)) {
 					// Set the active item from the given name
