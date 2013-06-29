@@ -11,7 +11,7 @@
 					
 				{{/isGroup}}
 				{{^isGroup}}
-				<li class="search-container{{#if active}} active{{#children.length}} parent{{/children.length}}{{/if}}">
+				<li class="search-container{{#isActive}} active{{#children.length}} parent{{/children.length}}{{/isActive}}">
 					<a class="{{type}}" href="{{makeHref name}}" data-search="{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}">
 						{{getTitle}}
 					</a>

@@ -145,6 +145,13 @@ steal('./tree.js','./typer',function(tree, typer){
 				case "(": // params
 					
 					eachBetweenCommas(children[0].children,function(typeChildren, index){
+						if(!obj.types[0].params){
+							console.log("WARNING! "+obj.types[0].name+" does not appear to be a function."+
+							  " If it is a typedef, you can not specify the params to the typedef.")
+							return;
+						}
+						
+						
 						// this should really be trying to find the function by looking in types
 						if(!obj.types[0].params[index]) {
 							// sometimes types of args is not specified

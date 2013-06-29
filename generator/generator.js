@@ -124,27 +124,31 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 		
 		getScriptsAndProcess(files, configuration, function (scripts, docData, search) {
 			
-			var rootItem = utils.menuTree(docData, configuration.parent);
+			//var rootItem = utils.menuTree(docData, configuration.parent);
 			
 			// make helpers
-			utils.handlebarsHelpers(_.extend({}, utils.helpers(docData, rootItem, configuration), configuration.helpers), Handlebars);
+			var current;
+			utils.handlebarsHelpers(_.extend({}, utils.helpers(docData, configuration, function(){
+				return current;
+			}), configuration.helpers), Handlebars);
 			
 			// go everything and render it
 			_.each(docData, function (currentData, name) {
 				if (!configuration.ignore(currentData, name)) {
 					// Set the active item from the given name
-					utils.activateItems(rootItem, name);
-
+					// update who is current
+					current = currentData;
 					var filename = configuration.out + '/' +
 						(name === configuration.parent ? 'index.html' : utils.docsFilename(name));
-					var data = _.extend({
-						menu: rootItem
-					}, configuration, currentData);
-					print('Writing documentation ' + filename);
+						
+					var data = _.extend({}, configuration, currentData);
+					
+					print('Writing ' + filename);
 
 					if (true || options.debug) {
 						data.debug = steal.toJSON(deepExtendWithoutBody(currentData));
 					}
+					
 					var content = renderer(data);
 					var contents = layout(_.extend({
 						content: content

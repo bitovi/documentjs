@@ -1,17 +1,23 @@
 steal('../libs/underscore.js', function (_) {
 	var exports = {};
+	// given the children of the root menu item
 	var getParents = function (children) {
 		var parents = [];
 		var gatherParents = function (children) {
+			// check if their is a currently active child
 			var current = _.find(children, function (child) {
 				return child.active;
 			});
 
+			// if not exit
 			if (!current) {
 				return;
 			}
-
+			// add that to parents
 			parents.push(current);
+			
+			// if the current item has children, go into them
+			
 			if (current.children && current.type) {
 				gatherParents(current.children);
 			}
@@ -123,24 +129,7 @@ steal('../libs/underscore.js', function (_) {
 		
 	}
 	
-	exports.findItem = function(root, name){
-		
-		var traverse = function (children) {
-			var anyActive = false;
-			for(var i = 0; i < children.length; i++){
-				if(children[i].name == name){
-					return children[i]
-				} else if(children[i].children){
-					var res = traverse(children[i].children);
-					if(res){
-						return res;
-					}
-				}
-			}
-			return;
-		}
-		return traverse(root.children);
-	}
+
 	exports.activateItems = function (root, name) {
 		var matched;
 		var traverse = function (children) {
@@ -221,7 +210,32 @@ steal('../libs/underscore.js', function (_) {
 		return text.replace(/[\[](.*?)\]/g, replacer);
 	}
 	
-	exports.helpers = function(data, menuData, config){
+	var setupChildrenOnData = function(data){
+		
+		// go through everything in data and
+		// add yourself to your parent's children array
+		_.each(data, function (current, name) {
+			
+			// make sure it has a parent
+			if(current.parent){
+				
+				var parent = data[current.parent]
+
+				if (parent && parent.name !== name) {
+
+					parent.children = parent.children || [];
+					parent.children.push(current);
+				}
+				
+			}
+			
+		});
+		
+	}
+	
+	exports.helpers = function(data, config, getCurrent){
+		
+		setupChildrenOnData(data);
 		
 		var helpers = {
 			docLinks: function(text){
@@ -240,7 +254,28 @@ steal('../libs/underscore.js', function (_) {
 					return title || name || ""
 				}
 			},
-			
+			getParentsPathToSelf: function(name){
+				var names = {};
+				
+				// walk up parents until you don't have a parent
+				var parent = data[name],
+					parents = [];
+					
+				// don't allow things that are their own parent
+				if(parent.parent === name){
+					return parents;
+				}
+				
+				while(parent){
+					parents.unshift(parent);
+					if(names[parent.name]){
+						return parents;
+					}
+					names[parent.name] = true;
+					parent = data[parent.parent];
+				}
+				return parents;
+			},
 			
 			activePage: function (current, expected) {
 				return current == this.page ? 'active' : '';
@@ -389,53 +424,49 @@ steal('../libs/underscore.js', function (_) {
 				// be a more flexible way for doing this
 				return '../' + test;
 			},
-			activeParents: function (options) {
-				var parents = getParents(this.children);
-				var active = _.last(parents);
-				var hasConstructorParent = (active && (!active.children || !active.children.length)) && parents.length > 2
-					&& parents[parents.length - 3].type === 'constructor';
-	
-				if (hasConstructorParent) {
-					// Active has no children so lets check if it is part of a construct
-					parents = parents.slice(0, parents.length - 3);
-				} else {
-					parents.pop();
+			/*
+			 * Provides a parents array of items and the 
+			 * last parent menu as the "active" item
+			 */
+			activeAndParents: function(options){
+				var parents = helpers.getParentsPathToSelf(getCurrent().name);
+				var	active = parents.pop();
+				
+				if(!active){
+					// there are no parents, possibly nothing active
+					parents = []
+					active = data[config.parent]
+				} else if(!active.children && parents.length){
+					// we want to show this item along-side it's siblings
+					// make it's parent active
+					active = parents.pop();  
+					
+					// if the original active was in a group, prototype, etc, move up again
+					if(parents.length && /group|prototype|static/i.test( active.type) ){
+						active = parents.pop()
+					}
 				}
-	
-				if( (!active.children || !active.children.length) && !hasConstructorParent) {
-					parents.pop();
-				}
-	
+				
+				// remove groups because we don't want them showing up
 				parents = _.filter(parents, function(parent) {
 					return parent.type !== 'group';
 				});
-	
-				// Add root level at the beginning
-				parents.unshift(this);
-	
-				return options.fn(parents);
-			},
-			activeMenu: function (options) {
-				var parents = getParents(this.children);
-				var active = _.last(parents);
-	
-				if ((active && (!active.children || !active.children.length)) && parents.length > 2) {
-					var newActive = parents[parents.length - 3];
-					if(newActive.type === 'constructor') {
-						// Active has no children so lets check if it is part of a construct
-						active = newActive;
-					}
-				}
-	
-				if(!active.children || !active.children.length) {
-					active = parents[parents.length - 2];
-				}
 				
-				if(!active){
-					active = parents[0];
+				// Make sure root is always here
+				if(active.name !== config.parent && (!parents.length || parents[0].name !== config.parent)  ){
+					parents.unshift(data[config.parent]);
 				}
-	
-				return options.fn(active);
+				return options.fn({
+					parents: parents,
+					active: active
+				})
+			},
+			isActive: function(options){
+				if(this.name == getCurrent().name){
+					return options.fn(this)
+				} else {
+					return options.inverse(this)
+				}
 			},
 			orderedChildren: function(children, options){
 				children = (children || []).slice(0).sort(sortChildren);
@@ -449,7 +480,7 @@ steal('../libs/underscore.js', function (_) {
 				var depth = (this.api && this.api !== this.name ? 1 : 0);
 				var txt = "",
 					periodReg = /\.\s/g;
-				var item = exports.findItem(menuData, this.api || this.name)
+				var item = data[this.api || getCurrent().name]
 				if(!item){
 					return "Can't find "+this.name+"!";
 				}
