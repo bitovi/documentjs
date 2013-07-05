@@ -104,7 +104,7 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 		if (!dir.exists()) {
 			dir.mkdirs();
 		}
-
+		// setup static
 		makeAndCopyStatic(configuration, function(){
 			// copies resources folder to destination folder
 			var resourcesDest = new steal.URI(configuration.out+'/static');
@@ -117,20 +117,33 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 		// move templates
 		makeAndCopyTemplates(configuration)
 		
-		// get big templates
+		// get important templates
 		var layout = Handlebars.compile(readFile('documentjs/site/templates/layout.mustache')),
 			renderer = Handlebars.compile(readFile('documentjs/site/templates/docs.mustache'));
+			
+		// setup partials
 		utils.handlebarsPartials(steal.URI('documentjs/site/templates/'), Handlebars);
 		
+		
+		// go through all files and 
 		getScriptsAndProcess(files, configuration, function (scripts, docData, search) {
 			
-			//var rootItem = utils.menuTree(docData, configuration.parent);
-			
-			// make helpers
+			// We will update this variable to the current doc object
 			var current;
-			utils.handlebarsHelpers(_.extend({}, utils.helpers(docData, configuration, function(){
-				return current;
-			}), configuration.helpers), Handlebars);
+			
+			// setup helpers through utils
+			var helpers = utils.helpers(
+				// maping of docObjects
+				docData, 
+				// the configuration settings
+				configuration, 
+				// a function that allows the helpers to get the current rendered object
+				function(){
+					return current;
+				})
+			
+			// register all the helpers
+			utils.handlebarsHelpers(_.extend({}, helpers, configuration.helpers), Handlebars);
 			
 			// go everything and render it
 			_.each(docData, function (currentData, name) {
@@ -141,15 +154,19 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 					var filename = configuration.out + '/' +
 						(name === configuration.parent ? 'index.html' : utils.docsFilename(name));
 						
+					// merge the current DocObject with the configuration
 					var data = _.extend({}, configuration, currentData);
 					
 					print('Writing ' + filename);
 
-					if (true || options.debug) {
+					if ( options.debug ) {
 						data.debug = steal.toJSON(deepExtendWithoutBody(currentData));
 					}
 					
+					// render the content
 					var content = renderer(data);
+					
+					// pass that content to the layout
 					var contents = layout(_.extend({
 						content: content
 					}, data));
@@ -158,6 +175,7 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 				}
 			});
 			
+			// render static files
 			utils.handlebarStatics(configuration,docData, layout, Handlebars);
 
 			// write the searchdata.json

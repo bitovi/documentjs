@@ -1,73 +1,38 @@
 steal('../libs/underscore.js', function (_) {
 	var exports = {};
-	// given the children of the root menu item
-	var getParents = function (children) {
-		var parents = [];
-		var gatherParents = function (children) {
-			// check if their is a currently active child
-			var current = _.find(children, function (child) {
-				return child.active;
-			});
 
-			// if not exit
-			if (!current) {
-				return;
-			}
-			// add that to parents
-			parents.push(current);
-			
-			// if the current item has children, go into them
-			
-			if (current.children && current.type) {
-				gatherParents(current.children);
-			}
-		}
-
-		gatherParents(children);
-		return parents;
-	}
 	var sortChildren = function(child1, child2){
 
-				// put groups at the end
-				if(/group|prototype|static/i.test(child1.type)){
-					if(!/group|prototype|static/i.test(child2.type)){
-						return 1;
-					}
-				}
-				if(/group|prototype|static/i.test(child2.type)){
-					return -1;
-				}
-
-				if(typeof child1.order == "number"){
-					if(typeof child2.order == "number"){
-						return child1.order - child2.order;
-					} else {
-						return -1;
-					}
-				} else {
-					if(typeof child2.order == "number"){
-						return 1;
-					} else {
-						// alphabetical
-						if(child1.name < child2.name){
-							return -1
-						}
-						return 1;
-					}
-				}
+		// put groups at the end
+		if(/group|prototype|static/i.test(child1.type)){
+			if(!/group|prototype|static/i.test(child2.type)){
+				return 1;
 			}
-	
-	var constructorParentPosition = function(children) {
-		var parents = getParents(children);
-		var active = _.last(parents);
-
-		if ((active && (!active.children || !active.children.length)) && parents.length > 2) {
-			// Active has no children so lets check if it is part of a construct
-			return parents.length - 3;
+		}
+		if(/group|prototype|static/i.test(child2.type)){
+			return -1;
 		}
 
-		return parents.length;
-	}
+		if(typeof child1.order == "number"){
+			if(typeof child2.order == "number"){
+				return child1.order - child2.order;
+			} else {
+				return -1;
+			}
+		} else {
+			if(typeof child2.order == "number"){
+				return 1;
+			} else {
+				// alphabetical
+				if(child1.name < child2.name){
+					return -1
+				}
+				return 1;
+			}
+		}
+	};
+	
+
 
 	exports.docsFilename = function (name) {
 		return name.replace(/ /g, "_")
@@ -129,66 +94,6 @@ steal('../libs/underscore.js', function (_) {
 		
 	}
 	
-
-	exports.activateItems = function (root, name) {
-		var matched;
-		var traverse = function (children) {
-			var anyActive = false;
-			_.each(children, function (child) {
-				var active = false;
-				if (child.children) {
-					active = traverse(child.children);
-				}
-				child.active = active || child.name == name;
-				if(child.name === name){
-					matched = matched;
-				}
-				if (child.active) {
-					anyActive = true;
-				}
-			});
-
-			return anyActive;
-		}
-
-		if(!root) {
-			print('WARNING: No children for ' + name);
-		} else {
-			traverse(root.children || []);
-		}
-
-		return matched || root;
-	}
-
-	exports.menuTree = function (data, root) {
-		var copies = _.map(data, function (value) {
-			return _.extend({
-				active: false
-			}, value);
-		});
-
-		_.each(copies, function (current, index, arr) {
-			var parent = _.find(arr, function (value) {
-				return value.name === current.parent;
-			});
-
-			if (parent) {
-				parent.children = parent.children || [];
-				parent.children.push(current);
-				parent.children = _.sortBy(parent.children, function (child) {
-					return child.order || child.name;
-				});
-			}
-		});
-
-		if (root) {
-			return _.find(copies, function (current) {
-				return current.name == root;
-			});
-		}
-
-		return copies;
-	}
 
 	exports.replaceLinks = function (text, data) {
 		if (!text) return "";
@@ -313,13 +218,6 @@ steal('../libs/underscore.js', function (_) {
 					return 'index.html'
 				}
 				return exports.docsFilename(name);
-			},
-			hasActiveChild: function (options) {
-				var hasActiveChild = _.some(this.children, function (child) {
-					return child.active;
-				});
-	
-				return hasActiveChild ? options.fn(this) : options.inverse(this);
 			},
 			isGroup: function(options){
 				if(/group|prototype|static/i.test(this.type)){
