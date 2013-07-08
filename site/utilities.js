@@ -210,7 +210,12 @@ steal('../libs/underscore.js', function (_) {
 			},
 	
 			url: function (url) {
-				return this.root + '/' + url;
+				if(this.root){
+					return this.root + '/' + url;
+				} else {
+					return url;
+				}
+				
 			},
 	
 			makeHref: function (name) {
