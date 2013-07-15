@@ -191,8 +191,7 @@
   .parameters h4, .returns h4 {
     background-color: @colorParamsReturns;
     padding: 4px 15px;
-    .text-shadow-light;
-    color: #000;
+    color: @fontColorParamsReturns;
     margin: -11px -15px 5px;
     .optional {
 		font-size: 10px;
@@ -267,100 +266,7 @@
   padding-bottom: 0px;
 }
 
-.sidebar {
-  background-color: #f8f8f8;
-  border: 1px solid #c5c3c3;
-  position: relative;
-  z-index: 1;
-  -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.08);
-  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.08);
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.08);
-  margin-bottom: 15px;
-  
-  ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-}
 
-.sidebar .api a, .sidebar .api a:hover {
-  text-decoration: none;
-  color: #000;
-  .text-shadow-light;
-}
-
-.sidebar .api {
-	padding-bottom: 10px;
-	border-bottom: 3px solid @colorNav;
-	border-left: 3px solid @colorNav;
-	border-right: 3px solid @colorNav;
-	
-	background-color: #eee;
-	background: -moz-linear-gradient(top,  rgba(0,0,0,0.1) 0%, rgba(255,255,255,0) 5%, rgba(255,255,255,0) 96%, rgba(0,0,0,0.1) 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.1)), color-stop(5%,rgba(255,255,255,0)), color-stop(96%,rgba(255,255,255,0)), color-stop(100%,rgba(0,0,0,0.1)));
-	background: -webkit-linear-gradient(top,  rgba(0,0,0,0.1) 0%,rgba(255,255,255,0) 5%,rgba(255,255,255,0) 96%,rgba(0,0,0,0.1) 100%);
-	background: -o-linear-gradient(top,  rgba(0,0,0,0.1) 0%,rgba(255,255,255,0) 5%,rgba(255,255,255,0) 96%,rgba(0,0,0,0.1) 100%);
-	background: -ms-linear-gradient(top,  rgba(0,0,0,0.1) 0%,rgba(255,255,255,0) 5%,rgba(255,255,255,0) 96%,rgba(0,0,0,0.1) 100%);
-	background: linear-gradient(to bottom,  rgba(0,0,0,0.1) 0%,rgba(255,255,255,0) 5%,rgba(255,255,255,0) 96%,rgba(0,0,0,0.1) 100%);
-  
-  li {
-	  font-size: 15px;
-	  line-height: 24px;
-	  text-indent: 15px;
-	  position: relative;
-	  a {
-	    display: block;
-	    border: 1px solid rgba(255, 255, 254, 0);
-	    
-	    &:hover {
-	      border: 1px solid rgba(255, 255, 254, 0);
-	      background: rgba(204, 204, 204, 0.25);
-	    }
-	  }
-  }
-  ul ul li a:hover {
-    border: 1px solid rgba(255, 255, 254, 0);
-    background: rgba(204, 204, 204, 0.25);
-  }
-  li li li li a {
-    font-size: 13px;
-    color: #666;
-  }
-  > li > ul {
-    display: none;
-  }
-  > li.active {
-    margin-left: -1px;
-    margin-right: -1px;
-    margin-top: -1px;
-    position: relative;
-    z-index: 0;
-    
-    &:last-child > a {
-    	margin-bottom: 10px;
-    }
-    > ul {
-      display: block;
-    }
-  }
-  li.active > a {
-    font-weight: bold;
-  }
-  li.active.collapsed > :not(a) {
-    display:none;
-  }
-  li li li {
-    text-indent: 30px;
-  }
-  li li li li {
-    text-indent: 45px;
-  }
-  ul.projects {
-	  padding-top: 10px;
-  }
-}
 
 .sidebar .api > li.active > a {
 	font-size: 17px;
@@ -523,36 +429,9 @@
   padding-bottom: 0;
 }
 */
-.sidebar .api.cascading > li:nth-child(1) {
-  z-index: 10;
-}
-.sidebar .api.cascading > li:nth-child(2) {
-  z-index: 9;
-}
-.sidebar .api.cascading > li:nth-child(3) {
-  z-index: 8;
-}
-.sidebar .api.cascading > li:nth-child(4) {
-  z-index: 7;
-}
-.sidebar .api.cascading > li:nth-child(5) {
-  z-index: 6;
-}
-.sidebar .api.cascading > li:nth-child(6) {
-  z-index: 5;
-}
-.sidebar .api.cascading > li:nth-child(7) {
-  z-index: 4;
-}
-.sidebar .api.cascading > li:nth-child(8) {
-  z-index: 3;
-}
-.sidebar .api.cascading > li:nth-child(9) {
-  z-index: 2;
-}
-.sidebar .api.cascading > li:nth-child(10) {
-  z-index: 1;
-}
+
+
+
 #low {
 	.container;
 	font-size: 12px;

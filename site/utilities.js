@@ -7,6 +7,20 @@ steal('../libs/underscore.js', function (_) {
 		if(/group|prototype|static/i.test(child1.type)){
 			if(!/group|prototype|static/i.test(child2.type)){
 				return 1;
+			} else {
+				if(child1.type === "prototype"){
+					return -1
+				}
+				if(child2.type === "prototype"){
+					return 1
+				}
+				if(child1.type === "static"){
+					return -1
+				}
+				if(child2.type === "static"){
+					return 1
+				}
+				
 			}
 		}
 		if(/group|prototype|static/i.test(child2.type)){
@@ -379,6 +393,37 @@ steal('../libs/underscore.js', function (_) {
 				})
 				return res;
 			},
+			// helpers for 2nd layout type
+			hasActive: function( options ){
+				
+				var parents = helpers.getParentsPathToSelf(getCurrent().name)
+				
+				for(var i = 0; i < parents.length; i++){
+					
+					if( parents[i].name === this.name ){
+						return options.fn(this)
+					}
+				}
+				
+				return options.inverse(this)
+				
+			},
+			hasOrIsActive: function( options ){
+				if(this.name == getCurrent().name){
+					return options.fn(this)
+				} else {
+					return helpers.hasActive.apply(this, arguments);
+				}
+			},
+			firstLevelChildren: function( options ){
+				var res = "";
+				(data[config.parent].children || []).forEach(function(item){
+					res += options.fn(item)
+				})
+				return res;
+			},
+			
+			
 			apiSection: function(options){
 				var depth = (this.api && this.api !== this.name ? 1 : 0);
 				var txt = "",
@@ -428,6 +473,9 @@ steal('../libs/underscore.js', function (_) {
 				
 				return txt
 			}
+		}
+		if(typeof config.helpers == "function"){
+			_.extend(helpers, config.helpers(data, config, getCurrent, helpers) );
 		}
 		return helpers;
 	};
