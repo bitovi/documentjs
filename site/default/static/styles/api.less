@@ -298,11 +298,17 @@
   color: #959494;
   line-height: 24px;
 }
+.sidebar .api li li.parent {
+  text-indent: 30px;
+}
+.sidebar .api li li.parent:before {
+  left: 20px;
+}
 
-.sidebar .api li.parent {
+.sidebar .api li li li.parent {
   text-indent: 40px;
 }
-.sidebar .api li.parent li {
+.sidebar .api li li li.parent li {
   text-indent: 50px;
 }
 .sidebar .api li.parent:before {
@@ -317,6 +323,9 @@
   top: 10px;
   left: 30px;
 }
+
+
+
 .sidebar .api li.parent.expanded:before {
   -webkit-transform:rotate(90deg);
   -moz-transform:rotate(90deg);

@@ -422,7 +422,15 @@ steal('../libs/underscore.js', function (_) {
 				})
 				return res;
 			},
-			
+			isFirstLevelChild: function(options){
+				var children  = (data[config.parent].children || [])
+				for(var i = 0 ; i < children.length; i++){
+					if(children[i].name == this.name){
+						return options.fn(this)
+					}
+				}
+				return "";
+			},
 			
 			apiSection: function(options){
 				var depth = (this.api && this.api !== this.name ? 1 : 0);
