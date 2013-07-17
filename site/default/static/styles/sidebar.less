@@ -99,9 +99,10 @@
 
 .zIndexer (@index) when (@index > 0){
   (~".sidebar .api.cascading > li:nth-child(@{index})") {
-    z-index: 11-@index;
+    z-index: 21-@index;
   }
+  .zIndexer(@index - 1);
 }
 .zIndexer (0) {}
 
-.zIndexer (10)
+.zIndexer (10);
