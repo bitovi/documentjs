@@ -21,7 +21,12 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<link rel="stylesheet" type="text/css" href="{{url 'static/production.css'}}" />
+	<link rel="stylesheet" type="text/css" 
+		{{#staticLocation}}
+			href="{{.}}production.css"
+		{{else}}
+			href="{{url 'static/production.css'}}"
+		{{/staticLocation}} />
 	<!--[if lt IE 9]>
    <script type="text/javascript" src="{{url 'static/html5shiv.js'}}"></script>
     <!--<![endif]-->
@@ -73,7 +78,13 @@
 			executed: ["documentjs/site/static/build/production.css"]
 		}
 	</script>
-	<script type='text/javascript' src="./static/steal.production.js"></script>
+	<script type='text/javascript' 
+	{{#staticLocation}}
+		src="{{.}}steal.production.js"
+	{{else}}
+		src="./static/steal.production.js"
+	{{/staticLocation}}
+		></script>
 </body>
 
 </html>

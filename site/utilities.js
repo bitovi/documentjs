@@ -86,20 +86,35 @@ steal('../libs/underscore.js', function (_) {
 				if(name.indexOf(".mustache")>0){
 					print("  "+name)
 					var template = readFile(configuration.statics.src + '/' + name);
+					
+					var out = (configuration.statics.dest||'')+
+						name.replace(".mustache",".html")
+					
+					
 					var renderer = Handlebars.compile(template);
 					
 					var data = _.extend({},configuration,docData)
 					
 					var content = renderer(data);
 					
+					
+					var outDir = steal.URI(out).dir()
+					if( (""+outDir).length ){
+						var staticLocation =  ""+steal.URI(outDir).pathTo(configuration.out+"/static/")
+					} else {
+						var staticLocation =  configuration.out+"/static/"
+					}
+					console.log("static loc",staticLocation);
 					var contents = layout(_.extend({
-						content: content
+						content: content,
+						staticLocation: staticLocation
 					}, data));
 
-					new steal.URI(
-						(configuration.statics.dest||'')+
-						name.replace(".mustache",".html")
-						).save(contents);
+					// configuration.out
+
+					
+
+					new steal.URI(out).save(contents);
 				}
 				
 			});
