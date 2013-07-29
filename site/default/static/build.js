@@ -34,7 +34,7 @@ steal('steal','steal/build',function(steal){
 		// copy fonts and images
 		steal.URI("documentjs/site/static/dist/fonts").mkdirs();
 		steal.URI("documentjs/site/static/dist/img").mkdirs();
-		steal.URI("documentjs/site/static/dist/img").mkdirs();
+		steal.URI("documentjs/site/static/dist/templates").mkdirs();
 		
 		steal.URI("documentjs/site/static/build/fonts")
 			.copyTo("documentjs/site/static/dist/fonts");

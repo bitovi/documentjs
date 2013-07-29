@@ -94,6 +94,8 @@ steal('../libs/underscore.js', function (_) {
 					var renderer = Handlebars.compile(template);
 					
 					var data = _.extend({},configuration,docData)
+					data.root = "";
+					data.page = name.replace(".mustache","");
 					
 					var content = renderer(data);
 					

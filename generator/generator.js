@@ -155,7 +155,9 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 						(name === configuration.parent ? 'index.html' : utils.docsFilename(name));
 						
 					// merge the current DocObject with the configuration
-					var data = _.extend({}, configuration, currentData);
+					var data = _.extend({
+						root: ".."
+					}, configuration, currentData);
 					
 					print('Writing ' + filename);
 
