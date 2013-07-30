@@ -40,10 +40,13 @@ steal('steal','steal/build',function(steal){
 			.copyTo("documentjs/site/static/dist/fonts");
 		steal.URI("documentjs/site/static/build/img")
 			.copyTo("documentjs/site/static/dist/img")
-			
-		// not used by main documentjs, but canjs.com buid
-		steal.URI("documentjs/site/static/build/templates")
-			.copyTo("documentjs/site/static/dist/templates")
+		
+		if( steal.URI("documentjs/site/static/build/templates").exists() ){
+			// not used by main documentjs, but canjs.com buid
+			steal.URI("documentjs/site/static/build/templates")
+				.copyTo("documentjs/site/static/dist/templates")
+		}
+		
 		
 	}
 	
