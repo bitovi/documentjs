@@ -338,22 +338,35 @@ steal('../libs/underscore.js', function (_) {
 				}
 			},
 			downloadUrl: function (download, isPlugin) {
-				return '';
-				if (isPlugin) {
-					download = 'plugins=' + download;
+				if(config.url && config.url.builder){
+					return config.url.builder +"?"+(isPlugin? 'plugins=' + download: download)
+				} else {
+					return "";
 				}
-				// TOOO make builder URL configurable
-				return 'http://bitbuilder.herokuapp.com/can.custom.js?' + download;
 			},
 			sourceUrl: function (src, type, line) {
-				return '';
+				var pack;
+				if(pack  = config["package"]){
+					return pack.repository.github+
+						"/tree/v"+pack.version+"/"+
+						// removes can/ because that is not part of 
+						// the url and that identifier comes from the base .github url
+						src.replace(/^\w+\//,"")+
+						(type !== 'page' && type !== 'constructor' && line ? '#L' + line : '')
+
+						
+				} else {
+					return ""
+				}
+				
+				config.url.cdn
+				
 				var pkg = {},
-					relative = path.relative(grunt.config('can.path'), src),
+					relative = src; //path.relative(grunt.config('can.path'), src),
 					hash = type !== 'page' && type !== 'constructor' && line ? '#L' + line : '';
 				return pkg.repository.github + '/tree/v' + pkg.version + '/' + relative + hash;
 			},
 			testUrl: function (test) {
-				return '';
 				// TODO we know we're in the docs/ folder for test links but there might
 				// be a more flexible way for doing this
 				return '../' + test;
@@ -434,7 +447,7 @@ steal('../libs/underscore.js', function (_) {
 			},
 			firstLevelChildren: function( options ){
 				var res = "";
-				(data[config.parent].children || []).forEach(function(item){
+				(data[config.parent].children || []).sort(sortChildren).forEach(function(item){
 					res += options.fn(item)
 				})
 				return res;

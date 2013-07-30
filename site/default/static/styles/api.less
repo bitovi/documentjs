@@ -3,6 +3,9 @@
   .sidebar {
     width:  255px;
     margin-top: 20px;
+    li.active {
+      z-index: 20;
+    }
   }
   .content.docs {
     width: 662px;
@@ -266,7 +269,9 @@
   padding-bottom: 0px;
 }
 
-
+.sidebar .api li.active  {
+  z-index: 20;
+}
 
 .sidebar .api > li.active > a {
 	font-size: 17px;
