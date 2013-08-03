@@ -29,7 +29,17 @@ steal('../libs/underscore.js', function (_) {
 
 		if(typeof child1.order == "number"){
 			if(typeof child2.order == "number"){
-				return child1.order - child2.order;
+				// same order given?
+				if(child1.order == child2.order){
+					// sort by name
+					if(child1.name < child2.name){
+						return -1
+					}
+					return 1;
+				} else {
+					return child1.order - child2.order;
+				}
+				
 			} else {
 				return -1;
 			}
