@@ -13,8 +13,25 @@ return can.Control({
 		// When the iframe loads, grab the HTML and JS and fill in the other tabs.
 		var self = this;
 		$('[data-for=demo] > iframe').load(function() {
-			$('[data-for=html] > pre').html(self.prettify(this.contentDocument.getElementById('demo-html').innerHTML));
-			$('[data-for=js] > pre').html(self.prettify(this.contentDocument.getElementById('demo-source').innerHTML));
+			var demoEl = this.contentDocument.getElementById('demo-html'),
+				sourceEl = this.contentDocument.getElementById('demo-source')
+
+			var html = demoEl ? demoEl.innerHTML : this.contentWindow.DEMO_HTML;
+			
+			if(!html) {
+				// try to make from body
+				var clonedBody = $(this.contentDocument.body).clone();
+				clonedBody.find("script").remove();
+				html = $.trim( clonedBody.html() );
+			}
+
+			var source = sourceEl ? sourceEl.innerHTML : this.contentWindow.DEMO_SOURCE;
+			if(!source){
+				source =  $(this.contentDocument.body).find("script:not([src])")[0].innerHTML
+			}
+
+			$('[data-for=html] > pre').html(self.prettify(html));
+			$('[data-for=js] > pre').html(self.prettify( source ));
 			//prettyPrint();
 		});
 	},
