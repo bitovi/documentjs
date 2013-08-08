@@ -273,3 +273,28 @@ a.next {
 .clear {
 	clear: both;
 }
+
+ul.pager {
+	list-style: none;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	clear: both;
+	
+	li {
+		display: inline-block;
+	}
+	.next {
+		float: right;
+	}
+	.previous {
+		float: left;
+	}
+	&::before, &::after {
+		display: table;
+		content: " ";
+	}
+	&::after {
+		clear: both;
+	}
+}
