@@ -9,7 +9,7 @@ steal('./helpers/getParent.js',
 		 * The name will be a child under the @constructor and the
 		 * description will show up in the sidebar.
 		 *
-		 * @signature `@group name description`
+		 * @signature `@group name [ORDER] description`
 		 *
 		 * @codestart
 		 * /**
@@ -29,12 +29,13 @@ steal('./helpers/getParent.js',
 		 */
 		return {
 			add: function (line, curData, scope, docMap) {
-				var m = line.match(/@group[\s+](.*?)[\s](.*)/),
+				var m = line.match(/@group[\s+](.*?)([\s+]([\d]+))?[\s+](.*)/),
 					currentName = this.name;
 
 				if (m) {
 					var name = m[1],
-						title = m[2] || m[1],
+						title = m[4] || m[1],
+						order = parseInt(m[3],10) || 0,
 						docObject = docMap[name] ?
 							docMap[name] :
 							docMap[name] = {
@@ -42,7 +43,8 @@ steal('./helpers/getParent.js',
 								title: title || name,
 								type: "group",
 								parent: currentName,
-								description: ''
+								description: '',
+								order: order
 							};
 
 					return ["scope", docObject]

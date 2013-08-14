@@ -34,7 +34,7 @@ steal('../libs/underscore.js', function (_) {
 				
 			}
 		}
-		if(/group|prototype|static/i.test(child2.type)){
+		if(/prototype|static/i.test(child2.type)){
 			return -1;
 		}
 
