@@ -1,6 +1,17 @@
 steal('../libs/underscore.js', function (_) {
 	var exports = {};
 
+
+	
+	var lastPartOfName = function(str){
+		var lastIndex = Math.max( str.lastIndexOf("/"), str.lastIndexOf(".") );
+		// make sure there is at least a character
+		if(lastIndex > 0){
+			return str.substr(lastIndex)
+		}
+		return str;
+	}
+
 	var sortChildren = function(child1, child2){
 
 		// put groups at the end
@@ -56,8 +67,6 @@ steal('../libs/underscore.js', function (_) {
 		}
 	};
 	
-
-
 	exports.docsFilename = function (name) {
 		return name.replace(/ /g, "_")
 			.replace(/&#46;/g, ".")
@@ -520,6 +529,39 @@ steal('../libs/underscore.js', function (_) {
 				
 				
 				return txt
+			},
+			makeSignature: function( code){
+				if(code){
+					return code;
+				}
+				var sig = "";
+				// if it's a constructor add new
+				if(this.type === "constructor"){
+					sig += "new "
+				}
+				
+				// get the name part right
+				var parent = data[this.parent];
+				if(parent){
+					if(parent.type == "prototype"){
+						var parentParent = data[parent.parent];
+						sig += (parentParent.alias || lastPartOfName( parentParent.name) ).toLowerCase();
+						
+					} else {
+						sig += (parent.alias || lastPartOfName( parent.name) );
+					}
+					
+					sig += lastPartOfName(this.name);
+				}
+				
+				sig+="("+helpers.makeParamsString(this.params)+")";
+				
+				// now get the params
+				
+				
+				
+				return sig;
+				
 			}
 		}
 		if(typeof config.helpers == "function"){

@@ -32,6 +32,13 @@
 			{{> types.mustache}}
 		</section>
 		{{/if}}
+		
+		{{#if params}}
+			<section class="signature">
+				{{> signature.mustache}}
+			</section>
+		{{/if}}
+		
 
 		{{#if body}}
 		<section class="comment">

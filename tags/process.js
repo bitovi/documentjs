@@ -95,7 +95,9 @@ steal('steal','documentjs/libs/distance.js',function(s, distance){
 				lines = typeof comment == 'string' ? comment.split("\n") : comment,
 				len = lines.length,
 				typeDataStack = [],
-				curTag, lastType, curData, lastData, defaultWrite = 'body',
+				curTag, lastType, curData, lastData, 
+				// Where we are currently writing to.
+				currentWrite,
 				//what data we are going to be called with
 				tag;
 
@@ -168,7 +170,7 @@ steal('steal','documentjs/libs/distance.js',function(s, distance){
 							last.type.addMore.call(props, curData[1], last.data);
 						} else {
 							// otherwise, add to the default place to write to
-							props[defaultWrite] += "\n" + curData[1]
+							props[currentWrite || "body"] += "\n" + curData[1]
 						}
 						// restore the old data
 						lastData = curData = last.data;
@@ -179,9 +181,9 @@ steal('steal','documentjs/libs/distance.js',function(s, distance){
 						// if we get ['default',PROPNAME]
 						// we change default write to prop name
 						// this will make it so if we aren't in a tag, all default
-						// lines to to the defaultWrite
+						// lines to to the currentWrite
 						// this is used by @constructor
-						defaultWrite = curData[1];
+						currentWrite = curData[1];
 						lastType = null;
 					}
 					// if we have anything else, we store it as the last thing we went to
@@ -205,7 +207,22 @@ steal('steal','documentjs/libs/distance.js',function(s, distance){
 						lastType.addMore.call(props, line, curData, scope, objects)
 					} else {
 						// write to the default place
-						props[defaultWrite] += line + "\n"
+						if(currentWrite){
+							props[currentWrite] += line + "\n";
+						} else {
+							// if we don't have two newlines, keep adding to description
+							if( props.body ){
+								props.body += line + "\n"
+							} else if(!props.description){
+								props.description += line + "\n"
+							} else if(!line ||  /^[\s]/.test( line ) ){
+								currentWrite = "body";
+								props[currentWrite] += line + "\n";
+							} else {
+								props.description += line + "\n"
+							}
+						}
+						
 					}
 				}
 			}

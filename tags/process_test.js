@@ -142,5 +142,52 @@ steal('documentjs/tags/process.js',
 			})
 			
 		})
-	})
+	});
+	
+	var makeDescription = function( comment, cb ){
+		var docMap = {Foo: {name: "Foo",type: "constructor"}},
+			props = {};
+		
+		process.tags.constructor = {
+			add : function(){
+				this.name = "constructed";
+			}
+		}
+		
+		process.comment({
+			comment:   comment,
+			scope: docMap.Foo,
+			docMap: docMap,
+			props: props,
+		},cb)
+	}
+	
+	
+	test("description",function(){
+		
+		makeDescription(
+			["This is a description.",
+			 "Another line."], function(newDoc){
+				equal(newDoc.description, "This is a description.\nAnother line.\n")
+		});
+
+	});
+	
+	
+	test("description then body",function(){
+		
+		makeDescription(
+			["This is a description.",
+			 "Another line.",
+			 "",
+			 "the body"], function(newDoc){
+				equal(newDoc.description, "This is a description.\nAnother line.\n");
+				
+				equal(newDoc.body, "\nthe body\n");
+		});
+
+	});
+	
+	
+	
 })
