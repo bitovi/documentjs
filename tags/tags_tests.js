@@ -1,11 +1,9 @@
-steal('./helpers/namer_test.js',
-	'./helpers/tree_test.js',
-	'./helpers/typer_test.js',
-	'./helpers/typeNameDescription_test.js',
-	
-	'./add_test.js',
-	'./function_test.js',
-	'./option_test.js',
+steal('./helpers/namer_test.js')
+	.then('./helpers/tree_test.js')
+	.then('./helpers/typer_test.js')
+	.then('./helpers/typeNameDescription_test.js')
+	.then('./add_test.js').then('./function_test.js')
+	.then('./option_test.js').then(
 	'./param_test.js',
 	'./process_test.js',
 	'./property_test.js',

@@ -1,4 +1,4 @@
-steal('./option.js','./param.js','funcunit/qunit',function(option, param){
+steal('./option.js','./param.js','./property','funcunit/qunit',function(option, param, property){
 	
 	
 	module("documentjs/tags/option")
@@ -92,5 +92,28 @@ steal('./option.js','./param.js','funcunit/qunit',function(option, param){
 		});
 		
 	});
+	
+	test("@option on a property", function(){
+		
+		var obj = {}
+		property.add.call(obj,"@property {String|Thing} thing");
+		option.add.call(obj, "@option {String} String description");
+		option.add.call(obj, "@option {Thing} Thing description");
+		
+		deepEqual(obj,
+		{
+			name: "thing",
+			title: "",
+			type: "property",
+			types: [{
+				type: "String",
+				description: "String description"
+			},{
+				type: "Thing",
+				description: "Thing description"
+			}]
+		});
+		
+	})
 	
 })

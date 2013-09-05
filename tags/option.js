@@ -19,6 +19,15 @@ steal('documentjs/libs/showdown.js','./helpers/typer.js',
 			}
 		}
 	}
+	
+	// find matching type
+	var getType = function(types, type){
+		for(var i =0; i < types.length; i++) {
+			if( types[i].type === type ) {
+				return types[i];
+			}
+		}
+	}
 
 	var getOrMakeOptionByName = function(options, name){
 		for(var i =0; i < options.length; i++) {
@@ -93,9 +102,11 @@ steal('documentjs/libs/showdown.js','./helpers/typer.js',
 			var prevParam = this._curParam || (this.params && this.params[this.params.length - 1]) || this;
 			// start processing
 			
+			
+			
 			var data = tnd(line);
 			if(!data.name){
-				console.log("LINE: \n" + line + "\n does not match @params [{TYPE}] NAME DESCRIPTION");
+				console.log("LINE: \n" + line + "\n does not match @option [{TYPE}] NAME DESCRIPTION");
 			}
 			
 			if(!prevParam.types){
@@ -103,7 +114,34 @@ steal('documentjs/libs/showdown.js','./helpers/typer.js',
 			}
 			var params = getParams(prevParam);
 			var options = getOptions(prevParam);
+			
+			
+			
+			
 			if(!options && !params){
+				
+				// maybe it's an option for one of the property types
+				if(prevParam.type === "property"){
+					var data = tnd(line, true);
+					if(!data.types || data.types.length !== 1){
+						console.log("LINE: \n" + line + "\n does not match @option {TYPE} DESCRIPTION");
+						return;
+					}
+					
+					var type = getType(prevParam.types, data.types[0].type)
+					if(type){
+						for(var prop in data){
+							if(prop !== "types"){
+								type[prop] = data[prop];
+							}
+						}
+					} else {
+						prevParam.types.push(type)
+					}
+					return type;
+				}
+				
+				
 				console.log("LINE: \n" + line + "\n could not find an object or arguments to add options to.");
 				return;
 			}

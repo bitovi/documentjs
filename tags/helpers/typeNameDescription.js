@@ -3,7 +3,7 @@ steal('./namer.js','./typer.js',function(namer, typer){
 	
 	
 	
-	return function(line){
+	return function(line, ignoreName){
 		
 			var children = typer.tree(line),
 				param = {};
@@ -15,17 +15,20 @@ steal('./namer.js','./typer.js',function(namer, typer){
 				if(!children[index]){
 					return;
 				}
-				var nameChildren = [children[index]];
-				index++;
-				if( textIs(index,"function") ) {
-					nameChildren[0].token = nameChildren[0].token + "function";
+				if(!ignoreName){
+					var nameChildren = [children[index]];
 					index++;
+					if( textIs(index,"function") ) {
+						nameChildren[0].token = nameChildren[0].token + "function";
+						index++;
+					}
+					if( textIs(index,"(") ){
+						nameChildren.push( children[index] );
+						index++;
+					}
+					namer.process( nameChildren, param);
 				}
-				if( textIs(index,"(") ){
-					nameChildren.push( children[index] );
-					index++;
-				}
-				namer.process( nameChildren, param);
+				
 				param.description = children[index] ?
 					line.substr( children[index].start ) : ""
 			}

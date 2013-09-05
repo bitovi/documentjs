@@ -10,6 +10,11 @@ steal('./typeNameDescription.js','funcunit/qunit',function(tnd){
 		
 	});
 	
+	test("ignore name", function(){
+		var res = tnd("@constructor {Type} description", true);
+		
+		equal(res.description, "description")
+	})
 	
 	/*test("has a function in it", function(){
 		
