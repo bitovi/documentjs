@@ -1,4 +1,4 @@
-steal('./option.js','./param.js','./property','funcunit/qunit',function(option, param, property){
+steal('./option.js','./param.js','./property','./return.js','funcunit/qunit',function(option, param, property, returns){
 	
 	
 	module("documentjs/tags/option")
@@ -115,5 +115,33 @@ steal('./option.js','./param.js','./property','funcunit/qunit',function(option, 
 		});
 		
 	})
+	
+	test("@option on a @return value", function(){
+		
+		var obj = {}
+		returns.add.call(obj,"@return {Foo|Bar} ret description");
+		option.add.call(obj, "@option {Foo} Foo description");
+		option.add.call(obj, "@option {Bar} Bar description");
+		
+		
+		deepEqual(obj.returns,
+		{
+			description: "ret description",
+			types: [
+				{
+					type: "Foo",
+					description: "Foo description"
+				},
+				{
+					type: "Bar",
+					description: "Bar description"
+				}
+			]
+		});
+		
+		
+	})
+	
+	
 	
 })

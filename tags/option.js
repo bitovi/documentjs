@@ -99,40 +99,38 @@ steal('documentjs/libs/showdown.js','./helpers/typer.js',
 			if ( last ) last.description += "\n" + line;
 		},
 		add: function( line ) {
-			var prevParam = this._curReturn || this._curParam || (this.params && this.params[this.params.length - 1]) || this;
+			
+			var noNameData = tnd(line, true);
+			
 			// start processing
 			
-			
-			
-			
-			
-			if(!prevParam.types){
-				prevParam.types = [];
-			}
-			
-			
-			// maybe it's an option for one of the property types
-			if(prevParam.type === "property"){
-				var data = tnd(line, true);
-				if(data.types && data.types.length == 1) {
-					var type = getType(prevParam.types, data.types[0].type)
-					if(type){
-						// copy description
-						type.description = data.description;
-						// copy any additional type info
-						for(var prop in data.types[0]){
-							type[prop] = data.types[0][prop];
+			// we should look to find something matching
+			var locations = [this._curReturn, this._curParam, (this.params && this.params[this.params.length - 1]), this];
+			// only process this type of option if there is one value
+			if(noNameData.types && noNameData.types.length == 1) {
+				var typeData = noNameData.types[0];
+				for(var i = 0 ; i < locations.length; i++){
+					var obj = locations[i];
+					if(obj){
+						if(!obj.types){
+							obj.types = [];
 						}
-						return type;
-					} 
+						var type = getType(obj.types, typeData.type);
+						if(type){
+							// copy description
+							type.description = noNameData.description;
+							// copy any additional type info
+							for(var prop in typeData){
+								type[prop] = typeData[prop];
+							}
+							return type;
+						} 
+					}
 				}
-				/*if(!data.types || data.types.length !== 1){
-					console.log("LINE: \n" + line + "\n does not match @option {TYPE} DESCRIPTION");
-					return;
-				}*/
 			}
-			
 			var data = tnd(line);
+			var prevParam = this._curReturn || this._curParam || (this.params && this.params[this.params.length - 1]) || this;
+
 			if(!data.name){
 				console.log("LINE: \n" + line + "\n does not match @option [{TYPE}] NAME DESCRIPTION");
 			}
@@ -156,19 +154,6 @@ steal('documentjs/libs/showdown.js','./helpers/typer.js',
 			}
 
 			return option;
-		},
-		done : function(){
-			return;
-			if(this.ret && this.ret.description && this.ret.description ){
-				this.ret.description = converter.makeHtml(this.ret.description)
-			}
-			if(this.params){
-				for(var paramName in this.params){
-					if(this.params[paramName].description  ){
-						this.params[paramName].description = converter.makeHtml(this.params[paramName].description)
-					}
-				}
-			}
 		}
 	};
 
