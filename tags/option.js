@@ -117,10 +117,11 @@ steal('documentjs/libs/showdown.js','./helpers/typer.js',
 				if(data.types && data.types.length == 1) {
 					var type = getType(prevParam.types, data.types[0].type)
 					if(type){
-						for(var prop in data){
-							if(prop !== "types"){
-								type[prop] = data[prop];
-							}
+						// copy description
+						type.description = data.description;
+						// copy any additional type info
+						for(var prop in data.types[0]){
+							type[prop] = data.types[0][prop];
 						}
 						return type;
 					} 

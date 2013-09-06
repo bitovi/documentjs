@@ -22,10 +22,10 @@ steal('./property.js','./option.js','./process','funcunit/qunit',function(proper
 		
 		var obj = {};
 		var docMap = {Foo: {name: "Foo", type: "constructor"}}
-		property.add.call(obj,"@property {can.Map|Object|function(String)} bar a description",null,docMap.Foo, docMap );
+		property.add.call(obj,"@property {can.Map|Object|function} bar a description",null,docMap.Foo, docMap );
 		option.add.call(obj,"@option {can.Map} can.Map description");
 		option.add.call(obj,"@option {Object} Object description");
-		
+		option.add.call(obj,"@option {function(String)} Function description");
 		
 		
 		deepEqual(obj,{
@@ -33,7 +33,7 @@ steal('./property.js','./option.js','./process','funcunit/qunit',function(proper
 			type: "property",
 			types: [
 				{type: "can.Map", description: "can.Map description"},
-				{type: "Object", description: "Object description"},
+				{type: "Object", description: "Object description", options: []},
 				{
 					constructs: undefined,
 					context: undefined,
@@ -41,7 +41,8 @@ steal('./property.js','./option.js','./process','funcunit/qunit',function(proper
 					params: [
 						{types: [{type: "String"}]}
 					],
-					returns: {types: [{type: "undefined"}]}
+					returns: {types: [{type: "undefined"}]},
+					description: "Function description"
 				}
 			],
 			title: "a description",
