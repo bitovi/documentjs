@@ -57,6 +57,7 @@ steal('documentjs/libs/showdown.js','./helpers/typer.js',
 					for(var i =0; i< this.types.length; i++ ){
 						if(this.types[i].type === "function"){
 							this.types[i].returns = returns;
+							this._curReturn = returns;
 							return returns;
 						}
 					}

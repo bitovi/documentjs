@@ -142,6 +142,21 @@ steal('./option.js','./param.js','./property','./return.js','funcunit/qunit',fun
 		
 	})
 	
-	
+	test("@property with @function option with @option on returns", function(){
+		var obj = {};
+		property.add.call(obj,"@property {String|function} thing");
+		option.add.call(obj, "@option {String} String description");
+		option.add.call(obj, "@option {function} Function description");
+		returns.add.call(obj,"@return {Foo|Bar} ret description");
+		option.add.call(obj, "@option {Foo} Foo description");
+		option.add.call(obj, "@option {Bar} Bar description");
+		deepEqual(obj.types[1].returns.types,
+			[
+				{type: "Foo", description: "Foo description"},
+				{type: "Bar", description: "Bar description"}
+			])
+		
+		
+	})
 	
 })

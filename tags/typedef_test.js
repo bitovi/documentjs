@@ -28,7 +28,7 @@ steal('./typedef.js','./param.js','./return','funcunit/qunit',function(typedef, 
 		returns.add.call(obj,"@return {Number} RET DESCRIPTION",null,docMap.Foo, docMap );
 		
 		delete obj._curParam;
-		
+		delete obj._curReturn;
 		deepEqual(obj,{
 			name: "func",
 			title: "functionjunction",
