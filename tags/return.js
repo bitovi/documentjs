@@ -65,10 +65,15 @@ steal('documentjs/libs/showdown.js','./helpers/typer.js',
 				this.returns = returns;
 			} 
 
+			this._curReturn = returns;
+
 			return returns;
 		},
 		addMore: function( line, ret ) {
 			ret.description += "\n" + line;
+		},
+		done : function(){
+			delete this._curReturn;	
 		}
 	};
 })

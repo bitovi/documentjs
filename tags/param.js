@@ -170,60 +170,7 @@ steal('documentjs/libs/showdown.js','./helpers/typeNameDescription.js',
 				}
 			}
 			findDescriptions(this)
-			/*
-			if(this.returns && this.returns.description && this.returns.description ){
-				this.returns.description = converter.makeHtml(trim(this.returns.description))
-			}
-			if(this.params){
-				for(var paramName in this.params){
-					if(this.params[paramName].description  ){
-						this.params[paramName].description = converter.makeHtml(trim(this.params[paramName].description))
-					}
-				}
-			}
-			if(this.context && this.context.description){
-				this.context.description = converter.makeHtml(trim(this.context.description))
-			}
-			if(this.types){
-				this.types.forEach(function(type){
-					if(type.options){
-						type.options.forEach(function(option){
-							if(option.description){
-								option.description = converter.makeHtml(trim(option.description));
-							}
-						})
-					}
-					
-					if(type.params){
-						type.params.forEach(function(param){
-							if(param.description){
-								param.description = converter.makeHtml(trim(param.description));
-							}
-						})
-					}
-					
-					if(type.context && type.context.description){
-						type.context.description = converter.makeHtml(trim(type.context.description))
-					}
-					if(type.returns && type.returns.description){
-						type.returns.description = converter.makeHtml(trim(type.returns.description))
-					}
-				})
-			}
-			(this.signatures || []).forEach(function(signature){
-				signature.description = converter.makeHtml( trim(signature.description) );
-				
-				(signature.params || []).forEach(function(param){
-					param.description = converter.makeHtml(trim(param.description));
-					
-				})
-				if(signature.returns && signature.returns.description){
-					signature.returns.description = converter.makeHtml(trim(signature.returns.description))
-				}
-				if(signature.context && signature.context.description){
-					signature.context.description = converter.makeHtml(trim(signature.context.description))
-				}
-			})*/
+			
 			delete this._curParam;
 		}
 	};

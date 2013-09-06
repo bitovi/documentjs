@@ -99,7 +99,7 @@ steal('documentjs/libs/showdown.js','./helpers/typer.js',
 			if ( last ) last.description += "\n" + line;
 		},
 		add: function( line ) {
-			var prevParam = this._curParam || (this.params && this.params[this.params.length - 1]) || this;
+			var prevParam = this._curReturn || this._curParam || (this.params && this.params[this.params.length - 1]) || this;
 			// start processing
 			
 			

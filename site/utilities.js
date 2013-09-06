@@ -551,7 +551,9 @@ steal('../libs/underscore.js', function (_) {
 						sig += (parent.alias || lastPartOfName( parent.name) );
 					}
 					
-					sig += lastPartOfName(this.name);
+					sig += ( lastPartOfName(this.name) || "function" );
+				} else {
+					sig += "function"
 				}
 				
 				sig+="("+helpers.makeParamsString(this.params)+")";
