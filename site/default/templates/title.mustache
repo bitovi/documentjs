@@ -1,7 +1,11 @@
 <div class="pull-right">
-	<ul class="tags">
-		<li>{{type}}</li>
-	</ul>
+	{{#if title}}
+		{{^if plugin}}
+			<span class="module">{{name}}</span>
+		{{/if}}
+	{{/if}}
+	
+	{{#if plugin}}<span class="module">{{plugin}}</span>{{/if}}
 	<ul class="links">
 		{{#if src}}
 			<li><a href="{{sourceUrl src type line}}">source</a></li>
@@ -20,13 +24,9 @@
 </div>
 
 <h1>
-{{getTitle}}
-{{#if title}}
-	{{^if plugin}}
-		<span class="module">{{name}}</span>
-	{{/if}}
-{{/if}}
-{{#if plugin}}<span class="module">{{plugin}}</span>{{/if}}
+{{getTitle}} <span class='simple-tag'>{{type}}</span>
 </h1>
-
+{{#equal type "property"}}
+<div><code>{{{makeTypesString types}}}</code></div>
+{{/equal}}
 <span class="inherits">{{#if inherits}}inherits: <a href="{{makeHref inherits}}">{{inherits}}</a>{{else}}&nbsp;{{/if}}</span>

@@ -161,7 +161,7 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 					
 					print('Writing ' + filename);
 
-					if ( options.debug ) {
+					if (true || options.debug ) {
 						data.debug = steal.toJSON(deepExtendWithoutBody(currentData));
 					}
 					

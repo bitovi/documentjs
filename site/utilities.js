@@ -11,7 +11,19 @@ steal('../libs/underscore.js', function (_) {
 		}
 		return str;
 	}
-
+	var esc = function (content) {
+		// Convert bad values into empty strings
+		var isInvalid = content === null || content === undefined || (isNaN(content) && ("" + content === 'NaN'));
+		return ( "" + ( isInvalid ? '' : content ) )
+			.replace(/&/g, '&amp;')
+			.replace(/</g, '&lt;')
+			.replace(/>/g, '&gt;')
+			.replace(strQuote, '&#34;')
+			.replace(strSingleQuote, "&#39;");
+	},
+		strQuote = /"/g,
+		strSingleQuote = /'/g;
+		
 	var sortChildren = function(child1, child2){
 
 		// put groups at the end
@@ -295,44 +307,45 @@ steal('../libs/underscore.js', function (_) {
 					return helpers.linkTo(param.types && param.types[0] && param.types[0].type, param.name)
 				}).join(", ")
 			},
+			makeType: function (t) {
+				if(t.type === "function"){
+					var fn = "("+helpers.makeParamsString(t.params)+")";
+					
+					if(t.constructs && t.constructs.types){
+						fn = "constructor"+fn;
+						fn += " => "+helpers.makeTypes(t.constructs.types)
+					} else {
+						fn = "function"+fn;
+					}
+					
+					return fn;
+				}
+				var type = data[t.type];
+				var title = type && type.title || undefined;
+				
+				var txt = helpers.linkTo(t.type, title);
+				if(t.template && t.template.length){
+					txt += "&lt;"+t.template.map(function(templateItem){
+						return helpers.makeTypes(templateItem.types)
+					}).join(",")+"&gt;"
+				}
+				if(type){
+					if(type.type === "function" && (type.params || type.signatures)){
+						var params = type.params || (type.signatures[0] && type.signatures[0].params ) || []
+					} else if(type.type === "typedef" && type.types[0] && type.types[0].type == "function"){
+						var params = type.types[0].params;
+					}
+					if(params){
+						txt += "("+helpers.makeParamsString(params)+")";
+					}
+				}
+				
+				return txt;
+			},
 			makeTypes: function(types){
 				if (types.length) {
 					// turns [{type: 'Object'}, {type: 'String'}] into '{Object | String}'
-					return types.map(function (t) {
-						if(t.type === "function"){
-							var fn = "("+helpers.makeParamsString(t.params)+")";
-							
-							if(t.constructs && t.constructs.types){
-								fn = "constructor"+fn;
-								fn += " => "+helpers.makeTypes(t.constructs.types)
-							} else {
-								fn = "function"+fn;
-							}
-							
-							return fn;
-						}
-						var type = data[t.type];
-						var title = type && type.title || undefined;
-						
-						var txt = helpers.linkTo(t.type, title);
-						if(t.template && t.template.length){
-							txt += "&lt;"+t.template.map(function(templateItem){
-								return helpers.makeTypes(templateItem.types)
-							}).join(",")+"&gt;"
-						}
-						if(type){
-							if(type.type === "function" && (type.params || type.signatures)){
-								var params = type.params || (type.signatures[0] && type.signatures[0].params ) || []
-							} else if(type.type === "typedef" && type.types[0] && type.types[0].type == "function"){
-								var params = type.types[0].params;
-							}
-							if(params){
-								txt += "("+helpers.makeParamsString(params)+")";
-							}
-						}
-						
-						return txt;
-					}).join(' | ');
+					return types.map(helpers.makeType).join(' | ');
 				} else {
 					return '';
 				}
@@ -344,8 +357,15 @@ steal('../libs/underscore.js', function (_) {
 					return options.inverse(this);
 				}
 			},
+			notEqual: function( first, second, options ) {
+				if(first !== second){
+					return options.fn(this);
+				} else {
+					return options.inverse(this);
+				}
+			},
 			makeTypesString: function (types) {
-				if (types.length) {
+				if (types && types.length) {
 					// turns [{type: 'Object'}, {type: 'String'}] into '{Object | String}'
 					var txt = "{"+helpers.makeTypes(types);
 					//if(this.defaultValue){
@@ -389,6 +409,20 @@ steal('../libs/underscore.js', function (_) {
 				// TODO we know we're in the docs/ folder for test links but there might
 				// be a more flexible way for doing this
 				return '../' + test;
+			},
+			typesWithDescriptions: function(types, options){
+				var typesWithDescriptions = [];
+				types.forEach(function( type ){
+					if(type.description){
+						typesWithDescriptions.push(type)
+					}
+				});
+				
+				if(typesWithDescriptions.length){
+					return options.fn({types: typesWithDescriptions})
+				} else {
+					return options.inverse(this);
+				}
 			},
 			/*
 			 * Provides a parents array of items and the 
@@ -532,7 +566,7 @@ steal('../libs/underscore.js', function (_) {
 			},
 			makeSignature: function( code){
 				if(code){
-					return code;
+					return esc(code);
 				}
 				var sig = "";
 				// if it's a constructor add new
@@ -555,7 +589,9 @@ steal('../libs/underscore.js', function (_) {
 				} else {
 					sig += "function"
 				}
-				
+				if(! /function|constructor/i.test(this.type) && !this.params && !this.returns){
+					return helpers.makeType(this);
+				}
 				sig+="("+helpers.makeParamsString(this.params)+")";
 				
 				// now get the params

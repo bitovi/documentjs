@@ -1,4 +1,4 @@
-<h2>{{makeSignature code params returns context}}</h2>
+<h2>{{{makeSignature code params returns context}}}</h2>
 <div class="signature-wrapper">
 {{{docLinks description}}}
 {{#if params}}
@@ -39,7 +39,21 @@
 		<div class="description">
 			{{{docLinks returns.description}}}
 		</div>
+		
+		{{#typesWithDescriptions returns.types}}
+		<ul class="options">
+			{{#types}}
+			<li class="option">
+				<h5>{{type}}</h5>
+				<div class="description">
+					{{{docLinks description}}}
+				</div>
+			</li>
+			{{/types}}
+		</ul>
+		{{/typesWithDescriptions}}
 	</div>
+	
 {{/if}}
 {{#if context}}
 	<h3>This</h3>

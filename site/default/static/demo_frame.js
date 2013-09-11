@@ -8,7 +8,7 @@ return can.Control({
 		this.element.html(demoFrameMustache( {demoSrc: '../' + this.element.data('demoSrc')}));
 
 		// Start with the demo tab showing.
-		this.showTab('html');
+		this.showTab('demo');
 
 		// When the iframe loads, grab the HTML and JS and fill in the other tabs.
 		var self = this;
@@ -21,14 +21,26 @@ return can.Control({
 			if(!html) {
 				// try to make from body
 				var clonedBody = $(this.contentDocument.body).clone();
-				clonedBody.find("script").remove();
+				clonedBody.find("script").each(function(){
+					if(!this.type || this.type.indexOf("javascript") >= 0){
+						$(this).remove()
+					}
+				}).find("style").remove();
 				html = $.trim( clonedBody.html() );
 			}
 
 			var source = sourceEl ? sourceEl.innerHTML : this.contentWindow.DEMO_SOURCE;
 			if(!source){
-				source =  $(this.contentDocument.body).find("script:not([src])")[0].innerHTML
+				var scripts = $(this.contentDocument.body).find("script:not([src])");
+				// get the first one that is JS
+				for(var i =0; i < scripts.length; i++){
+					if(!scripts[i].type || scripts[i].type.indexOf("javascript") >= 0){
+						source =  scripts[i].innerHTML
+					}
+				}
+				
 			}
+			source = $.trim(source);
 
 			$('[data-for=html] > pre').html(self.prettify(html));
 			$('[data-for=js] > pre').html(self.prettify( source ));

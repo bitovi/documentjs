@@ -1,20 +1,8 @@
-<h2>
-	{{#equal type "property"}}
-	   Property Type:
-	{{/equal}}
-	{{#equal type "typedef"}}
-	   Type Definition:
-	{{/equal}}
-	<code>{{{makeTypesString types}}}</code>
-</h2>
-
 {{#types}}
-{{#equal type "function"}}
-  {{> signature.mustache}}
-{{/equal}}
 
-{{#if options.length}}
-<ul class="options">
+  {{> signature.mustache}}
+  {{#if options.length}}
+  <ul class="options">
 	{{#options}}
 	<li class="option">
 		<h5>{{name}} {{#if types}}<code>{{{makeTypesString types}}}</code>{{/if}}</h5>
@@ -23,6 +11,7 @@
 		</div>
 	</li>
 	{{/options}}
-</ul>
-{{/if}}
+  </ul>
+  {{/if}}
+  
 {{/types}}
