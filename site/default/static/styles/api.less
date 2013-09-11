@@ -12,6 +12,56 @@
 
 
 .docs {
+	.title {
+	  display: block;
+	  border-bottom: 1px solid #eae9e9;
+	  //padding-bottom: 16px;
+	  
+	  .heading {
+	  	position: relative;
+	  	 margin: 0;
+	  	 
+	  	h1 {
+	  	  margin: 0;
+	  	  display: inline-block;
+	  	}		  
+	    .module {
+	    	position: absolute;
+	    	right: 0;
+	    	display: inline-block;
+	    	top: 10px;
+	    }
+	    ul.tags {
+	    	margin-bottom: 0 !important;
+	    	text-align: left;
+	    	display: inline-block;
+	    }
+	  	
+	  }
+	  h2,h3 {
+	  	display: inline-block;
+	  }
+	  h2 {
+	  	margin: 0;
+	  	  	code {
+	  	  		background: none;
+	  	  		color: #767676;
+	  	  		font-size: 18px;
+	  	  		font-weight: bold;
+	  	  	}
+	  }
+	  .sub-heading, ul.links {
+	  	float: left;
+	  	display: block;
+	  	width: 50%;
+	  	box-sizing: border-box;
+	  	margin: 0;
+	  }
+	  ul.links {
+	  	margin-bottom: 16px;
+	  }
+	} //.title
+	
 	
   .sidebar {
     width:  255px;
@@ -133,9 +183,14 @@
   	  text-align: right;
   	  padding: 0;
   	}
-  	
-  	.tags li {
-  	  .simple-tag();
+  	.tags {
+  		display: inline-block;
+  		margin: 0;
+  		position: relative;
+  		top: -5px;
+  		  	li {
+  		  	  .simple-tag();
+  		  	}
   	}
   	.links li {
   	  display: inline-block;
