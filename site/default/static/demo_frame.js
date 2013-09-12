@@ -12,7 +12,8 @@ return can.Control({
 
 		// When the iframe loads, grab the HTML and JS and fill in the other tabs.
 		var self = this;
-		$('[data-for=demo] > iframe').load(function() {
+		var iFrame = $('[data-for=demo] > iframe')
+		iFrame.load(function() {
 			var demoEl = this.contentDocument.getElementById('demo-html'),
 				sourceEl = this.contentDocument.getElementById('demo-source')
 
@@ -25,7 +26,8 @@ return can.Control({
 					if(!this.type || this.type.indexOf("javascript") >= 0){
 						$(this).remove()
 					}
-				}).find("style").remove();
+				});
+				clonedBody.find("style").remove();
 				html = $.trim( clonedBody.html() );
 			}
 
@@ -45,6 +47,23 @@ return can.Control({
 			$('[data-for=html] > pre').html(self.prettify(html));
 			$('[data-for=js] > pre').html(self.prettify( source ));
 			//prettyPrint();
+			
+			var win = this.contentWindow,
+				lastHeight = 0;
+			
+			var checkHeight = function(){
+				var current = $(win.document.body).outerHeight(true);
+				if(current && (current > lastHeight) ) {
+					iFrame.height( current +  $(win.document.body).offset().top+20);
+					lastHeight = current
+				}
+				setTimeout( arguments.callee, 200 )
+			}
+			
+			checkHeight()
+			
+			
+			
 		});
 	},
 	'.tab click': function(el, ev) {
