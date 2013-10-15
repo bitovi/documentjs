@@ -12,7 +12,7 @@ return can.Control({
 
 		// When the iframe loads, grab the HTML and JS and fill in the other tabs.
 		var self = this;
-		var iFrame = this.element.find("iframe")
+		var iFrame = this.element.find("iframe");
 		iFrame.load(function() {
 			var demoEl = this.contentDocument.getElementById('demo-html'),
 				sourceEl = this.contentDocument.getElementById('demo-source')
@@ -48,14 +48,14 @@ return can.Control({
 			$('[data-for=js] > pre').html(self.prettify( source ));
 			//prettyPrint();
 			
-			var win = this.contentWindow,
+			var frame = this,
 				lastHeight = 0;
 			
 			var checkHeight = function(){
-				var current = $(win.document.body).outerHeight(true);
+				var current = $(frame).contents().height();
 				if(current && (current > lastHeight) ) {
-					iFrame.height( current +  $(win.document.body).offset().top+20);
-					lastHeight = current
+					iFrame.height(current);
+					lastHeight = current;
 				}
 				setTimeout( arguments.callee, 200 )
 			}
