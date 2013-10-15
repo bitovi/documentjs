@@ -12,7 +12,7 @@ return can.Control({
 
 		// When the iframe loads, grab the HTML and JS and fill in the other tabs.
 		var self = this;
-		var iFrame = $('[data-for=demo] > iframe')
+		var iFrame = this.element.find("iframe")
 		iFrame.load(function() {
 			var demoEl = this.contentDocument.getElementById('demo-html'),
 				sourceEl = this.contentDocument.getElementById('demo-source')
