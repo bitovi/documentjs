@@ -46,21 +46,16 @@ return can.Control({
 
 			self.element.find('[data-for=html] > pre').html(self.prettify(html));
 			self.element.find('[data-for=js] > pre').html(self.prettify( source.replace(/\t/g,"  ") ));
+
 			//prettyPrint();
-			
-			var frame = this,
-				lastHeight = 0;
-			
-			var checkHeight = function(){
-				var current = $(frame).contents().height();
-				if(current && (current > lastHeight) ) {
-					iFrame.height(current);
-					lastHeight = current;
-				}
-				setTimeout( arguments.callee, 200 )
+	
+			var resizeIframe = function(){
+				iFrame.height(0);
+				iFrame.height($(iFrame).contents().height());
+				setTimeout( arguments.callee, 1000 )
 			}
 			
-			checkHeight()
+			resizeIframe()
 			
 			
 			
