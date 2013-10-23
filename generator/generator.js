@@ -1,9 +1,9 @@
-steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
+steal('steal','documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 	'documentjs/site/utilities.js', 'documentjs/site/defaults.js',
 	'documentjs/types/script.js', 'documentjs/site/searchdata.js', 
 	'documentjs/generator/getscripts.js',
 	'steal/rhino/json.js',
-	function (_, Handlebars, utils, defaults, Script, searchdata, getScripts) {
+	function (steal, _, Handlebars, utils, defaults, Script, searchdata, getScripts) {
 
 
 	var deepExtendWithoutBody = function(obj){
@@ -49,7 +49,7 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 		}
 		
 		// check if there is anything in site/dist
-		if(!steal.URI("documentjs/site/static/dist/production.css").exists()){
+		if(!steal.URI("documentjs/site/static/dist/production.css").exists() || options.forceBuild ){
 			console.log("Copying default/static to static/build")
 			// make the build
 			
@@ -67,9 +67,8 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 			// run build
 			console.log("Getting build module")
 			steal("documentjs/site/static/build/build.js", function(build){
-				console.log("calling build module");
-				build()
-				callback();
+				console.log("Calling build module");
+				build(options, callback);
 			})
 		} else {
 			console.log("Using files in documentjs/site/static/dist")
@@ -86,7 +85,7 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 				.copyTo("documentjs/site/templates")
 				
 		if(configuration["templates"]){
-			print("Copying tempaltes from "+configuration["templates"])
+			print("Copying templates from "+configuration["templates"])
 			steal.URI(configuration["templates"])
 				.copyTo("documentjs/site/templates")
 		}
@@ -94,7 +93,7 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 	var generate = function (files, options) {
 		
 
-		var configuration = _.extend(defaults, options);
+		var configuration = _.extend({},defaults, options);
 		if(!configuration.parent){
 			throw "must provide a parent"
 		}
@@ -111,6 +110,7 @@ steal('documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 			if (!resourcesDest.exists()) {
 				resourcesDest.mkdirs();
 			}
+			console.log("Copying production files to "+resourcesDest)
 			new steal.URI('documentjs/site/static/dist').copyTo(resourcesDest)
 		});
 		

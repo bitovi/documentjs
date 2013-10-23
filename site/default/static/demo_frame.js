@@ -44,8 +44,8 @@ return can.Control({
 			}
 			source = $.trim(source);
 
-			$('[data-for=html] > pre').html(self.prettify(html));
-			$('[data-for=js] > pre').html(self.prettify( source ));
+			self.element.find('[data-for=html] > pre').html(self.prettify(html));
+			self.element.find('[data-for=js] > pre').html(self.prettify( source.replace(/\t/g,"  ") ));
 			//prettyPrint();
 			
 			var frame = this,
