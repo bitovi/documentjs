@@ -3,6 +3,7 @@
 		<li class="tab" data-tab="demo">Demo</li>
 		<li class="tab" data-tab="html">HTML</li>
 		<li class="tab" data-tab="js">JS</li>
+		<li class="tab" data-tab="jsfiddle">Open in JSFiddle</li>
 	</ul>
 	<div class="tab-content" data-for="demo">
 		<iframe src="{{demoSrc}}"/>
@@ -12,5 +13,15 @@
 	</div>
 	<div class="tab-content" data-for="js">
 		<pre class="prettyprint lang-js"></pre>
+	</div>
+	<div class="tab-content" data-for="jsfiddle">
+		<form method="post" action="http://jsfiddle.net/api/post/library/pure/dependencies/more/" target="_blank">
+		  <input type="hidden" name="resources" />
+		  <input type="hidden" name="html" />
+		  <input type="hidden" name="css" />
+		  <input type="hidden" name="js" />
+		  <input type="hidden" name="title" />
+		  <input type="hidden" name="wrap" value="l" />
+		</form>
 	</div>
 </div>
