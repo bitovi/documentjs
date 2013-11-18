@@ -38,7 +38,14 @@ steal('documentjs/libs/showdown.js','./helpers/typer.js',
 		var option = {name: name}
 		options.push(option);
 		return option;
-	}
+	},
+		setOptionData = function(option, data){
+			option.description = data.description;
+			
+			for(var prop in data){
+				option[prop] =  data[prop];
+			}
+		}
 	
 
 	/**
@@ -100,9 +107,26 @@ steal('documentjs/libs/showdown.js','./helpers/typer.js',
 		},
 		add: function( line ) {
 			
-			var noNameData = tnd(line, true);
+			var noNameData = tnd(line, true),
+				data = tnd(line);
 			
 			// start processing
+			if(this.type == "typedef"){
+				// Typedef's can have option values, but those values can be objects
+				// with options.
+				// So, we should check in options objects first
+				for( var i = 0 ; i < this.types.length; i++ ) {
+					var obj = this.types[i];
+					if( obj.type == "Object" ) {
+						var option = getOrMakeOptionByName(obj.options || [], data.name);
+						if(option) {
+							setOptionData(option, data);
+							return option;
+						}
+					}
+				}
+			}
+			
 			
 			// we should look to find something matching
 			var locations = [this._curReturn, this._curParam, (this.params && this.params[this.params.length - 1]), this];
@@ -128,7 +152,7 @@ steal('documentjs/libs/showdown.js','./helpers/typer.js',
 					}
 				}
 			}
-			var data = tnd(line);
+			
 			var prevParam = this._curReturn || this._curParam || (this.params && this.params[this.params.length - 1]) || this;
 
 			if(!data.name){
@@ -146,12 +170,7 @@ steal('documentjs/libs/showdown.js','./helpers/typer.js',
 			}
 			var option = getOrMakeOptionByName(options || params, data.name);
 			
-			
-			option.description = data.description;
-			
-			for(var prop in data){
-				option[prop] =  data[prop];
-			}
+			setOptionData(option, data);
 
 			return option;
 		}

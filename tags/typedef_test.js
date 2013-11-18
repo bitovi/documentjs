@@ -1,4 +1,4 @@
-steal('./typedef.js','./param.js','./return','funcunit/qunit',function(typedef, param,returns){
+steal('./typedef.js','./param.js','./return',"./option.js",'funcunit/qunit',function(typedef, param,returns, option){
 	
 	
 	module("documentjs/tags/typedef")
@@ -61,5 +61,31 @@ steal('./typedef.js','./param.js','./return','funcunit/qunit',function(typedef, 
 		
 	})
 
-	
+	test("@option on a typedef with a template", function(){
+		var obj = {};
+		var docMap = {}
+		typedef.add.call(obj,"@typedef {{hash:Object}} helperOptions",null,null, docMap );
+		option.add.call(obj,"@option {Object.<String,Number>} hash",null,null, docMap );
+		
+		deepEqual(obj, {
+			type: "typedef",
+			title: '',
+			name: "helperOptions",
+			types: [{
+				type: "Object",
+				options: [{
+					name: "hash",
+					description: "",
+					types: [{
+						type: "Object",
+						template: [
+							{types: [{type: "String"}]},
+							{types: [{type: "Number"}]}]
+					}]
+				}]
+			}]
+		});
+		
+		
+	})
 })
