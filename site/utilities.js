@@ -7,7 +7,7 @@ steal('../libs/underscore.js', function (_) {
 		var lastIndex = Math.max( str.lastIndexOf("/"), str.lastIndexOf(".") );
 		// make sure there is at least a character
 		if(lastIndex > 0){
-			return str.substr(lastIndex)
+			return str.substr(lastIndex+1)
 		}
 		return str;
 	}
@@ -410,6 +410,7 @@ steal('../libs/underscore.js', function (_) {
 				// be a more flexible way for doing this
 				return '../' + test;
 			},
+			
 			typesWithDescriptions: function(types, options){
 				var typesWithDescriptions = [];
 				types.forEach(function( type ){
@@ -417,6 +418,16 @@ steal('../libs/underscore.js', function (_) {
 						typesWithDescriptions.push(type)
 					}
 				});
+				
+				if( !typesWithDescriptions.length ) {
+					// check the 1st one's options
+					if(types.length == 1 && types[0].options ) {
+						types[0].options.forEach(function(option){
+							typesWithDescriptions.push(option)
+						})
+					}
+					
+				}
 				
 				if(typesWithDescriptions.length){
 					return options.fn({types: typesWithDescriptions})
@@ -579,7 +590,7 @@ steal('../libs/underscore.js', function (_) {
 				if(parent){
 					if(parent.type == "prototype"){
 						var parentParent = data[parent.parent];
-						sig += (parentParent.alias || lastPartOfName( parentParent.name) ).toLowerCase();
+						sig += (parentParent.alias || (lastPartOfName( parentParent.name) +".")  ).toLowerCase();
 						
 					} else {
 						sig += (parent.alias || lastPartOfName( parent.name) );

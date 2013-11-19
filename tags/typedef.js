@@ -73,19 +73,6 @@ steal('documentjs/libs/showdown.js','./helpers/typer.js',
 			for(var prop in data){
 				this[prop] =  data[prop];
 			}
-		},
-		done : function(){
-			return;
-			if(this.ret && this.ret.description && this.ret.description ){
-				this.ret.description = converter.makeHtml(this.ret.description)
-			}
-			if(this.params){
-				for(var paramName in this.params){
-					if(this.params[paramName].description  ){
-						this.params[paramName].description = converter.makeHtml(this.params[paramName].description)
-					}
-				}
-			}
 		}
 	};
 

@@ -44,7 +44,9 @@
 		<ul class="options">
 			{{#types}}
 			<li class="option">
-				<h5>{{type}}</h5>
+				<h5>{{name}} 
+					{{#if types}}<code>{{{makeTypesString types}}}</code>{{/if}}
+				</h5>
 				<div class="description">
 					{{{docLinks description}}}
 				</div>
@@ -64,4 +66,37 @@
 		</div>
 	</div>
 {{/if}}
+
+{{#if options.length}}
+  <h3>Properties</h3>
+  
+  <ol class="parameters">
+	{{#options}}
+	<li class="parameter">
+		<h4>{{name}}{{#if defaultValue}}<code>={{defaultValue}}</code>{{/if}}
+			{{#if types}}<code>{{{makeTypesString types}}}</code>{{/if}}{{#if optional}}<span class="pull-right optional">Optional</span>{{/if}}</h4>
+		<div class="description">
+			{{{docLinks description}}}
+		</div>
+		{{#types}}
+		{{#if params.length}}
+		<ul class="options">
+			{{#params}}
+			<li class="option">
+				<h5>{{name}} 
+					{{#if types}}<code>{{{makeTypesString types}}}</code>{{/if}}
+				</h5>
+				<div class="description">
+					{{{docLinks description}}}
+				</div>
+			</li>
+			{{/params}}
+		</ul>
+		{{/if}}
+		{{/types}}
+	</li>
+	{{/options}}
+</ol>
+{{/if}}
+
 </div>

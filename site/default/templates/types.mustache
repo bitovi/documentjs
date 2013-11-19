@@ -1,17 +1,5 @@
 {{#types}}
 
   {{> signature.mustache}}
-  {{#if options.length}}
-  <ul class="options">
-	{{#options}}
-	<li class="option">
-		<h5>{{name}} {{#if types}}<code>{{{makeTypesString types}}}</code>{{/if}}</h5>
-		<div class="description">
-			{{{docLinks description}}}
-		</div>
-	</li>
-	{{/options}}
-  </ul>
-  {{/if}}
   
 {{/types}}
