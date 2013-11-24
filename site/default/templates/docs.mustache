@@ -17,6 +17,19 @@
 		<section class="contents">
 		</section>
 
+		{{#if deprecated.length}}
+			<section class='warnings'>
+				{{#deprecated}}
+					<div class='deprecated warning'>
+						<h3>Deprecated {{version}}</h3>
+						<div class='signature-wrapper'>
+							{{{docLinks description}}}
+						</div>
+					</div>
+				{{/deprecated}}
+			</section>
+		{{/if}}
+
 		<section class="description">
 			{{{docLinks description}}}
 		</section>
