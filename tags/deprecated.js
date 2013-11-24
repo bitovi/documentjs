@@ -30,7 +30,7 @@ steal('./helpers/typeNameDescription.js',function(tnd){
 				this.deprecated = [];
 			}
 			var deprecate = {
-				version: noNameData.types[0],
+				version: noNameData.types[0].type,
 				description: noNameData.description
 			}
 			this.deprecated.push(deprecate);
