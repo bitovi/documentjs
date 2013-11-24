@@ -5,5 +5,5 @@ steal('./helpers/namer_test.js')
 	.then('./add_test.js').then('./function_test.js')
 	.then('./option_test.js').then(
 	'./param_test.js').then('./process_test.js').then('./property_test.js').then(
-	'./return_test.js',
-	'./typedef_test.js')
+	'./return_test.js').then("./deprecated_test.js")
+		.then('./typedef_test.js')
