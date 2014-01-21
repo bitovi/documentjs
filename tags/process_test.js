@@ -64,7 +64,7 @@ steal('documentjs/tags/process.js',
 			comment: "@property {Object} tags Tags for something",
 			scope: docMap.Foo,
 			docMap: docMap,
-			props: {},
+			props: {}
 		},function(newDoc, newScope){
 			equal(newScope, docMap.Foo, "same scope scope")
 			equal(newDoc.name, "Foo.tags")

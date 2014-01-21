@@ -1,4 +1,4 @@
-steal('../libs/underscore.js', function (_) {
+steal('../libs/underscore.js', 'steal', 'steal/rhino/json.js', function (_, steal) {
 	var exports = {};
 
 
@@ -205,6 +205,15 @@ steal('../libs/underscore.js', function (_) {
 		setupChildrenOnData(data);
 		
 		var helpers = {
+			config: function(){
+				var configCopy = {};
+				for(var prop in config){
+					if(typeof config[prop] !== "function"){
+						configCopy[prop] = config[prop];
+					}
+				}
+				return steal.toJSON(configCopy);
+			},
 			docLinks: function(text){
 				return exports.replaceLinks(text, data);
 			},
@@ -593,7 +602,7 @@ steal('../libs/underscore.js', function (_) {
 						sig += (parentParent.alias || (lastPartOfName( parentParent.name) +".")  ).toLowerCase();
 						
 					} else {
-						sig += (parent.alias || lastPartOfName( parent.name) );
+						sig += (parent.alias || lastPartOfName( parent.name)+"." );
 					}
 					
 					sig += ( lastPartOfName(this.name) || "function" );

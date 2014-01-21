@@ -20,7 +20,7 @@ steal('documentjs/tags/process.js',
 		process.comment({
 			comment: "@add Foo",
 			docMap: docMap,
-			props: {},
+			props: {}
 		}, function(newDoc, newScope){
 			equals(newScope, docMap.Foo)
 		})

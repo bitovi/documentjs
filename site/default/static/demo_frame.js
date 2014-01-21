@@ -4,8 +4,10 @@ steal("can/control","./demo_frame.mustache","jquery","can/observe","./prettify.j
 
 return can.Control({
 	init: function() {
+		
+		var docConfig = window.docConfig || {};
 		// Render out the demo container.
-		this.element.html(demoFrameMustache( {demoSrc: '../' + this.element.data('demoSrc')}));
+		this.element.html(demoFrameMustache( {demoSrc: (docConfig.demoSrcRoot || ".." )+'/' + this.element.data('demoSrc')}));
 
 		// Start with the demo tab showing.
 		this.showTab('demo');
@@ -50,7 +52,10 @@ return can.Control({
 			//prettyPrint();
 	
 			var resizeIframe = function(){
-				iFrame.height(0);
+				
+				// The following was called to make it possible to shrink the size of the demo.  
+				// This feature was removed because it broke the tooltip demo on can.view.attr's page
+				// iFrame.height(0);
 				iFrame.height($(iFrame).contents().height());
 				setTimeout( arguments.callee, 1000 )
 			}

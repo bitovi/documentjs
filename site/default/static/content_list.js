@@ -33,7 +33,10 @@ steal("can/control","./content_list.mustache","jquery","can/observe",function(Co
 			}
 		},
 		collectSignatures: function() {
-			return $('.content .signature');
+			var cloned = $('.content .signature').clone();
+			// remove release numbers
+			cloned.find(".release").remove();
+			return cloned;
 		},
 		collectHeadings: function() {
 			return $('.content .comment h2');
