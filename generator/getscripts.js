@@ -64,10 +64,15 @@ steal('documentjs/types/script.js', 'steal/build', 'steal/rhino/json.js',
 			for(var i =0 ; i < options.markdown.length; i++){
 				helpers.files(options.markdown[i], function(path, f){
 					if(/\.(md|markdown)$/.test(f) && !/node_modules/.test(path)){
-					  scriptsToProcess.push( {
-					  	src: path,
-					  	text: readFile(path)
-					  } )
+						if(!options.markdownIgnore || ! options.markdownIgnore.test(path)) {
+							
+							scriptsToProcess.push( {
+							  src: path,
+							  text: readFile(path)
+							})
+						}
+						
+					  
 				    }
 				})
 			}
