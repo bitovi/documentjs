@@ -1,4 +1,4 @@
-steal(function() {
+steal("steal",function(steal) {
 	/**
 	 * @constructor DocumentJS.tags.demo @demo
 	 * @parent DocumentJS 
@@ -32,12 +32,30 @@ steal(function() {
 	 *    setting `window.DEMO_SOURCE` to the source JS.
 	 */
 	return {
-		add: function( line ) {
+		add: function(  line, curData, scope, objects, currentWrite ) {
+			
 			var m = line.match(/^\s*@demo\s*([\w\.\/\-\$]*)\s*([\w]*)/)
 			if ( m ) {
 				var src = m[1] ? m[1].toLowerCase() : '';
 				var heightAttr = m[2].length > 0 ? " data-demo-height='" + m[2] + "'" : '';
-				this.body += "<div class='demo_wrapper' data-demo-src='" + src + "'" + heightAttr + "></div>";
+				
+				
+	
+				var cd =  ( curData && curData.length !== 2),
+					cw = (currentWrite || "body"),
+					html = "<div class='demo_wrapper' data-demo-src='" + src + "'" + heightAttr + "></div>";
+				
+				
+				// use curData if it is not an array
+				var useCurData = cd && (typeof curData.description=== "string");
+	
+				if(useCurData) {
+					
+					curData.description += html;
+				} else {
+					this.body += html;
+				}
+				
 			}
 		}
 	};

@@ -27,7 +27,7 @@ steal(function() {
 		 */
 		return {
 			add: function( line , curData, objects) {
-				var m = line.match(/^\s*@parent\s*([\w\.\/\$]*)\s*([\d]*)/);
+				var m = line.match(/^\s*@parent\s*([\w\-\.\/\$]*)\s*([\d]*)/);
 				this.parent = m[1];
 				if(m[2]){
 					this.order =  parseInt(m[2]) || 0;

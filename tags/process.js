@@ -137,7 +137,7 @@ steal('steal','documentjs/libs/distance.js',function(s, distance){
 					}
 					// call the tag types add method
 					//try{
-					curData = curTag.add.call(props, line, curData, scope, objects);
+					curData = curTag.add.call(props, line, curData, scope, objects, currentWrite );
 					//} catch(e){
 					//	print(line);
 					//	throw e;
