@@ -21,6 +21,9 @@
 </div>
 
 <ul class="links">
+    {{#links}}
+        <li><a href="{{href}}">{{title}}</a></li>
+    {{/links}}
 	{{#if src}}
 		<li><a href="{{sourceUrl src type line}}">source</a></li>
 	{{/if}}

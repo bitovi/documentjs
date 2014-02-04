@@ -17,6 +17,7 @@ steal(
 "./iframe",
 "./image",
 "./inherits",
+"./link.js",
 "./module.js",
 "./option.js",
 "./page",
@@ -36,7 +37,7 @@ steal(
 "./group.js",
 function(add, alias, api, author, body, codeend, codestart, constructor, demo, deprecated, description, download,
 	func,
-	hide, iframe, image, inherits, mod, option,  page, param, parent, plugin, property, prototype, 
+	hide, iframe, image, inherits, link, mod, option,  page, param, parent, plugin, property, prototype, 
 	release, ret, 
 	signature, statc, tag, test, that, typedef, group) {
 	return {
@@ -57,6 +58,7 @@ function(add, alias, api, author, body, codeend, codestart, constructor, demo, d
 		iframe: iframe,
 		image: image,
 		inherits: inherits,
+		link: link,
 		"module": mod,
 		option: option,
 		page: page,
