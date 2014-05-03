@@ -587,7 +587,7 @@ steal('../libs/underscore.js', 'steal', 'steal/rhino/json.js', function (_, stea
 				
 				return txt
 			},
-			makeSignature: function( code){
+			makeSignature: function(code){
 				if(code){
 					return esc(code);
 				}
@@ -623,6 +623,9 @@ steal('../libs/underscore.js', 'steal', 'steal/rhino/json.js', function (_, stea
 				
 				return sig;
 				
+			},
+			makeSignatureId: function(code){
+				return "sig_" + helpers.makeSignature(code).replace(/\s/g,"").replace(/[^\w]/g,"_");
 			}
 		}
 		if(typeof config.helpers == "function"){
