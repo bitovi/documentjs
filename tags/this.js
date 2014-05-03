@@ -26,8 +26,8 @@ steal('documentjs/libs/showdown.js','./helpers/typeNameDescription.js','steal',
 			// this code is VERY similar to @return and should be shared
 			// get type and description
 			var printError = function(){
-				print("LINE: \n" + line + "\n does not match @return {TYPE} DESCRIPTION");
-			}
+				print("LINE: \n" + line + "\n does not match @this {TYPE} DESCRIPTION");
+			};
 			
 			// start processing
 			var children = typer.tree(line);
@@ -46,6 +46,9 @@ steal('documentjs/libs/showdown.js','./helpers/typeNameDescription.js','steal',
 			
 			// find the current function's context
 			if(this.signatures){
+				if(!this.signatures[this.signatures.length-1].context) {
+					this.signatures[this.signatures.length-1].context = {};
+				}
 				context = this.signatures[this.signatures.length-1].context
 			} else {
 				// check types (created by typedef) for a function type
@@ -74,4 +77,4 @@ steal('documentjs/libs/showdown.js','./helpers/typeNameDescription.js','steal',
 		}
 	};
 
-})
+});

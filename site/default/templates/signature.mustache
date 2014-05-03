@@ -9,7 +9,7 @@
 		{{#params}}
 		<li class="parameter">
 			<h4>{{name}}{{#if defaultValue}}<code>={{defaultValue}}</code>{{/if}}
-				{{#if types}}<code>{{{makeTypesString types}}}</code>{{/if}}{{#if optional}}<span class="pull-right optional">Optional</span>{{/if}}</h4>
+				{{#if types}}<code>{{{makeTypesString types}}}</code>{{/if}}{{#if optional}}<span class="pull-right optional">Optional{{#if variable}} Variable{{/if}}</span>{{/if}}</h4>
 			<div class="description">
 				{{{docLinks description}}}
 			</div>

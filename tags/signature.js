@@ -56,6 +56,7 @@ steal(function() {
 					params: []
 				}
 				// remove code params
+				delete this._curParam;
 				delete this.params;
 				this.signatures.push(signature)
 				return signature;

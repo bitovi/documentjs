@@ -313,8 +313,11 @@ steal('../libs/underscore.js', 'steal', 'steal/rhino/json.js', function (_, stea
 					return ""
 				}
 				return params.map(function(param){
-					return helpers.linkTo(param.types && param.types[0] && param.types[0].type, param.name)
-				}).join(", ")
+					// try to look up the title
+					var type = param.types && param.types[0] && param.types[0].type
+					return helpers.linkTo(type, param.name) +
+						( param.variable ? "..." : "" );
+				}).join(", ");
 			},
 			makeType: function (t) {
 				if(t.type === "function"){
@@ -331,8 +334,8 @@ steal('../libs/underscore.js', 'steal', 'steal/rhino/json.js', function (_, stea
 				}
 				var type = data[t.type];
 				var title = type && type.title || undefined;
-				
 				var txt = helpers.linkTo(t.type, title);
+				
 				if(t.template && t.template.length){
 					txt += "&lt;"+t.template.map(function(templateItem){
 						return helpers.makeTypes(templateItem.types)
