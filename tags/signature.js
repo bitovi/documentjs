@@ -42,13 +42,7 @@ steal(function() {
 			} else if( m = line.match(/^\s*@signature\s*(?:`([^`]*)`)?\s*(.*)/) ){
 				code = m[1];
 				description =m[2]
-			} 
-			
-			code = code.replace(/&/g, "&amp;")
-					   .replace(/</g, "&lt;")
-					   .replace(/>/g, "&gt;")
-					   .replace(/"/g, "&quot;")
-					   .replace(/'/g, "&#039;");
+			}
 
 			if ( m ) {
 				if(!this.signatures){

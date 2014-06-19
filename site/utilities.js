@@ -550,7 +550,7 @@ steal('../libs/underscore.js', 'steal', 'steal/rhino/json.js', function (_, stea
 					
 					signatures.forEach(function(signature){
 						txt += "<div class='small-signature'>"
-						txt += helpers.linkTo(parent, "<code class='prettyprint'>"+signature.code+"</code>",{"class":"sig"});
+						txt += helpers.linkTo(parent, "<code class='prettyprint'>"+esc(signature.code)+"</code>",{"class":"sig"});
 						
 						
 						var description = (signature.description || defaultDescription)
