@@ -1,4 +1,6 @@
-steal('./tree.js','./typer',function(tree, typer){
+var tree = require('./tree'),
+	typer = require("./typer");
+
 	
 	/**
 	 * @function documentjs/name NAME
@@ -169,9 +171,9 @@ steal('./tree.js','./typer',function(tree, typer){
 			}
 		} 
 		return obj
-	}
+	};
 
-	return {
+	module.exports = {
 		tokens: ["\\?", "\\!", "function", "\\.\\.\\.", ",", "\\:", "\\|", "="],
 		process: process,
 		name: function(str, typeData){
@@ -180,6 +182,5 @@ steal('./tree.js','./typer',function(tree, typer){
 		tree: function(str){
 			return tree(str, "("+this.tokens.join("|")+")", "(\\s)" );
 		}
-	}
+	};
 	
-})

@@ -1,22 +1,24 @@
-steal('./param.js','funcunit/qunit',function(param){
+var param = require("./param"),
+	assert = require("assert");
 	
-	module("documentjs/tags/params")
 	
-	test("@params - basic", function(){
+describe("documentjs/tags/params", function(){
+	
+	it("@params - basic", function(){
 		
 		var obj = {}
 		param.add.call(obj,"@param {boolean} name")
-		equal(obj.params[0].types[0].type,"boolean")
-		equal(obj.params[0].name,"name")
+		assert.equal(obj.params[0].types[0].type,"boolean")
+		assert.equal(obj.params[0].name,"name")
 		
-	})
+	});
 	
-	test("@params - function",function(){
+	it("@params - function",function(){
 		
 		var obj = {}
 		param.add.call(obj,"@param {function(jQuery.Event,*...)} handler(event,args) a description");
 
-		deepEqual(obj.params[0],
+		assert.deepEqual(obj.params[0],
 		{
 			name: "handler",
 			description: "a description",
@@ -31,14 +33,14 @@ steal('./param.js','funcunit/qunit',function(param){
 				returns: {types: [{type: "undefined"}] }
 			}]
 		});
-	})
+	});
 	
-	test("@params - object",function(){
+	it("@params - object",function(){
 		
 		var obj = {}
 		param.add.call(obj,"@param {{name: String, foo}=} thing a description");
 		
-		deepEqual(obj.params[0],
+		assert.deepEqual(obj.params[0],
 		{
 			name: "thing",
 			description: "a description",
@@ -54,4 +56,4 @@ steal('./param.js','funcunit/qunit',function(param){
 	});
 	
 	
-})
+});

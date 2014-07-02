@@ -1,4 +1,3 @@
-steal('documentjs/libs/showdown.js',function(converter) {
 	/**
 	 * @constructor DocumentJS.tags.description @description
 	 * @tag documentation
@@ -27,18 +26,12 @@ steal('documentjs/libs/showdown.js',function(converter) {
 	 * can be used to escape a multi-line `@` directive.
 	 * 
 	 */
-	return  {
+	module.exports = {
 		add: function( line ) {
 			var m = line.match(/^\s*@description\s*(.*)/)
 			if ( m ) {
 				this.description = m[1]+" ";
 				return ["default","description"]
 			}
-		},
-		done: function(){
-			if(this.description){
-				this.description = converter.makeHtml(this.description)
-			}
 		}
 	};
-})

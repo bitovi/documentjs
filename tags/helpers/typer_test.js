@@ -1,22 +1,24 @@
-steal('./typer.js','funcunit/qunit',function(typer){
+var typer = require("./typer"),
+	assert = require("assert");
+
 	
-	module("documentjs/tags/helpers/typer")
+describe("documentjs/tags/helpers/typer", function(){
 	
-	test("name",function(){
-		same( typer.type("can.Control"), {
+	it("name",function(){
+		assert.deepEqual( typer.type("can.Control"), {
 			types: [{
 				type: "can.Control"
 			}]
 		});
 	});
 	
-	test("application",function(){
+	it("application",function(){
 		
-		same( typer.type("foo"), {
+		assert.deepEqual( typer.type("foo"), {
 			types: [{type: "foo"}]
 		}, "basic");
 		
-		same( typer.type("foo.<bar,car>"), {
+		assert.deepEqual( typer.type("foo.<bar,car>"), {
 			types: [{
 				type: "foo",
 				template: [
@@ -26,7 +28,7 @@ steal('./typer.js','funcunit/qunit',function(typer){
 			}]
 		}, "application");
 		
-		same( typer.type("Object.<String,DocProps>"), {
+		assert.deepEqual( typer.type("Object.<String,DocProps>"), {
 			types: [{
 				type: "Object",
 				template: [
@@ -40,8 +42,8 @@ steal('./typer.js','funcunit/qunit',function(typer){
 		
 	});
 	
-	test("union",function(){
-		same( typer.type("(can.Control|can.Model)"), {
+	it("union",function(){
+		assert.deepEqual( typer.type("(can.Control|can.Model)"), {
 			types: [{
 				type: "can.Control"
 			},{
@@ -50,9 +52,9 @@ steal('./typer.js','funcunit/qunit',function(typer){
 		});
 	})
 	
-	test("record",function(){
+	it("record",function(){
 		
-		same( typer.type("{myNum:number,myObject}"), {
+		assert.deepEqual( typer.type("{myNum:number,myObject}"), {
 			types: [{
 				type: "Object",
 				options: [
@@ -64,26 +66,26 @@ steal('./typer.js','funcunit/qunit',function(typer){
 		
 	});
 	
-	test("nullable",function(){
-		same( typer.type("?can.Control"), {
+	it("nullable",function(){
+		assert.deepEqual( typer.type("?can.Control"), {
 			types: [{
 				type: "can.Control"
 			}],
 			nullable: true
 		});
 		
-		same( typer.type("?can.Control"), {
+		assert.deepEqual( typer.type("?can.Control"), {
 			types: [{
 				type: "can.Control"
 			}],
 			nullable: true
 		});
 		
-	})
+	});
 	
 	
-	test("nonnullable",function(){
-		same( typer.type("!can.Control"), {
+	it("nonnullable",function(){
+		assert.deepEqual( typer.type("!can.Control"), {
 			types: [{
 				type: "can.Control"
 			}],
@@ -91,9 +93,9 @@ steal('./typer.js','funcunit/qunit',function(typer){
 		});
 	});
 	
-	test("function",function(){
+	it("function",function(){
 		
-		same( typer.type("function(this:foo,new:bar,string):number"), {
+		assert.deepEqual( typer.type("function(this:foo,new:bar,string):number"), {
 			types: [{
 				type: "function",
 				context: {types: [{type: "foo"}] },
@@ -106,7 +108,7 @@ steal('./typer.js','funcunit/qunit',function(typer){
 		}, "function");
 		
 		
-		same( typer.type("function( this:foo, new:bar, string ) :number "), {
+		assert.deepEqual( typer.type("function( this:foo, new:bar, string ) :number "), {
 			types: [{
 				type: "function",
 				context: {types: [{type: "foo"}] },
@@ -120,8 +122,8 @@ steal('./typer.js','funcunit/qunit',function(typer){
 		
 	});
 	
-	test("variable params",function(){
-		same( typer.type("...can.Control"), {
+	it("variable params",function(){
+		assert.deepEqual( typer.type("...can.Control"), {
 			types: [{
 				type: "can.Control"
 			}],
@@ -129,8 +131,8 @@ steal('./typer.js','funcunit/qunit',function(typer){
 		});
 	})
 	
-	test("variable params",function(){
-		same( typer.type("...can.Control"), {
+	it("variable params",function(){
+		assert.deepEqual( typer.type("...can.Control"), {
 			types: [{
 				type: "can.Control"
 			}],
@@ -139,9 +141,9 @@ steal('./typer.js','funcunit/qunit',function(typer){
 	});
 
 	
-	test("variable params",function(){
+	it("variable params",function(){
 		
-		same( typer.type("function(...can.Observe){}"), {
+		assert.deepEqual( typer.type("function(...can.Observe){}"), {
 			types: [{
 				type: "function",
 				constructs: undefined,
@@ -156,8 +158,8 @@ steal('./typer.js','funcunit/qunit',function(typer){
 	});
 	
 	// NON-STANDARD types ...
-	test("optional",function(){
-		same( typer.type("can.Control="), {
+	it("optional",function(){
+		assert.deepEqual( typer.type("can.Control="), {
 			types: [{
 				type: "can.Control"
 			}],
@@ -165,8 +167,8 @@ steal('./typer.js','funcunit/qunit',function(typer){
 		});
 	});
 	
-	test("optional / default", function(){
-		same( typer.type("context=foo"), {
+	it("optional / default", function(){
+		assert.deepEqual( typer.type("context=foo"), {
 			types: [{
 				type: "context"
 			}],
@@ -175,8 +177,8 @@ steal('./typer.js','funcunit/qunit',function(typer){
 		});
 	});
 	
-	test("parenthesis-less union", function(){
-		same( typer.type("can.Control|can.Model"), {
+	it("parenthesis-less union", function(){
+		assert.deepEqual( typer.type("can.Control|can.Model"), {
 			types: [{
 				type: "can.Control"
 			},{
@@ -185,8 +187,8 @@ steal('./typer.js','funcunit/qunit',function(typer){
 		});
 	})
 	
-	test("parenthesis-less union with function", function(){
-		same( typer.type("function|can.Model"), {
+	it("parenthesis-less union with function", function(){
+		assert.deepEqual( typer.type("function|can.Model"), {
 			types: [{
 				type: "function",
 				type: "function",
@@ -198,7 +200,7 @@ steal('./typer.js','funcunit/qunit',function(typer){
 				type: "can.Model"
 			}]
 		});
-	})
+	});
 	
 	
-})
+});

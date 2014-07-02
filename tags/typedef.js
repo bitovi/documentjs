@@ -1,8 +1,7 @@
-steal('documentjs/libs/showdown.js','./helpers/typer.js',
-	'./helpers/tree.js',
-	'./helpers/namer.js',
-	'./helpers/typeNameDescription.js',
-	function(converter, typer, tree,namer, tnd) {
+var typer = require('./helpers/typer'),
+	tree = require('./helpers/tree'),
+	namer = require('./helpers/namer'),
+	tnd = require('./helpers/typeNameDescription');
 
 	var getOptions = function(param){
 		for(var i =0; i < param.types.length; i++) {
@@ -57,7 +56,7 @@ steal('documentjs/libs/showdown.js','./helpers/typer.js',
 	 * 
 	 * @param {String} TITLE The title of the type used for display purposes.
 	 */
-	return {
+	module.exports = {
 		add: function( line ) {
 			var prevParam = this;
 			// start processing
@@ -76,4 +75,3 @@ steal('documentjs/libs/showdown.js','./helpers/typer.js',
 		}
 	};
 
-})

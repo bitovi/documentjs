@@ -1,34 +1,37 @@
-steal('./namer.js','./typer.js','funcunit/qunit',function(namer, typer){
+
+var namer = require("./namer"),
+	typer = require("./typer"),
+	assert = require("assert");
 	
-	module("documentjs/tags/helpers/namer")
+describe("documentjs/tags/helpers/namer", function(){
 	
-	test("name",function(){
-		same(namer.name("foo",{}),{
+	it("name",function(){
+		assert.deepEqual(namer.name("foo",{}),{
 			name: "foo"
 		});
 	});
 	
-	test("optional",function(){
-		same(namer.name("[foo]",{}),{
+	it("optional",function(){
+		assert.deepEqual(namer.name("[foo]",{}),{
 			name: "foo",
 			optional: true
 		});
 	});
 	
-	test("optional / default", function(){
-		same(namer.name("[foo=bar]",{}),{
+	it("optional / default", function(){
+		assert.deepEqual(namer.name("[foo=bar]",{}),{
 			name: "foo",
 			optional: true,
 			defaultValue: "bar",
 		});
 	});
 	
-	test("function",function(){
+	it("function",function(){
 		
 		var res = typer.type("function(jQuery.Event,*...)",{})
 		
 		
-		deepEqual(namer.name("handler(event,args)", res),
+		assert.deepEqual(namer.name("handler(event,args)", res),
 		{
 			name: "handler",
 			types: [{
@@ -44,14 +47,14 @@ steal('./namer.js','./typer.js','funcunit/qunit',function(namer, typer){
 		}
 		
 		);
-	})
+	});
 	
-	test("function without corresponding types",function(){
+	it("function without corresponding types",function(){
 		
 		var res = typer.type("function",{})
 		
 		
-		deepEqual(namer.name("handler(event,args)", res),
+		assert.deepEqual(namer.name("handler(event,args)", res),
 		{
 			name: "handler",
 			types: [{
@@ -71,17 +74,17 @@ steal('./namer.js','./typer.js','funcunit/qunit',function(namer, typer){
 	});
 	
 	
-	test("special characters",function(){
-		same(namer.name("f\\=oo",{}),{
+	it("special characters",function(){
+		assert.deepEqual(namer.name("f\\=oo",{}),{
 			name: "f=oo"
 		});
-		same(namer.name("\\(args\\...\\)",{}),{
+		assert.deepEqual(namer.name("\\(args\\...\\)",{}),{
 			name: "(args...)"
 		});
-		//same(namer.name("\\...",{}),{
+		//assert.deepEqual(namer.name("\\...",{}),{
 		//	name: "..."
 		//});
-	})
+	});
 	
 	
-})
+});

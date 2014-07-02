@@ -1,8 +1,7 @@
-steal('documentjs/libs/showdown.js','./helpers/typer.js',
-	'./helpers/tree.js',
-	'./helpers/namer.js',
-	'./helpers/typeNameDescription.js',
-	function(converter, typer, tree,namer, tnd) {
+var typer = require('./helpers/typer'),
+	tree = require('./helpers/tree'),
+	namer = require('./helpers/namer'),
+	tnd = require('./helpers/typeNameDescription');
 
 	var getOptions = function(param){
 		for(var i =0; i < param.types.length; i++) {
@@ -10,7 +9,7 @@ steal('documentjs/libs/showdown.js','./helpers/typer.js',
 				return param.types[i].options;
 			}
 		}
-	}
+	};
 
 	var getParams = function(param){
 		for(var i =0; i < param.types.length; i++) {
@@ -18,7 +17,7 @@ steal('documentjs/libs/showdown.js','./helpers/typer.js',
 				return param.types[i].params;
 			}
 		}
-	}
+	};
 	
 	// find matching type
 	var getType = function(types, type){
@@ -27,7 +26,7 @@ steal('documentjs/libs/showdown.js','./helpers/typer.js',
 				return types[i];
 			}
 		}
-	}
+	};
 
 	var getOrMakeOptionByName = function(options, name){
 		for(var i =0; i < options.length; i++) {
@@ -45,7 +44,7 @@ steal('documentjs/libs/showdown.js','./helpers/typer.js',
 			for(var prop in data){
 				option[prop] =  data[prop];
 			}
-		}
+		};
 	
 
 	/**
@@ -100,7 +99,7 @@ steal('documentjs/libs/showdown.js','./helpers/typer.js',
 	 *  
 	 * 
 	 */
-	return {
+	module.exports = {
 
 		addMore: function( line, last ) {
 			if ( last ) last.description += "\n" + line;
@@ -175,5 +174,3 @@ steal('documentjs/libs/showdown.js','./helpers/typer.js',
 			return option;
 		}
 	};
-
-})

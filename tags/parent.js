@@ -1,5 +1,4 @@
-steal(function() {
-	return (function() {
+	module.exports = (function() {
 		var waiting = {}
 
 		/**
@@ -36,4 +35,4 @@ steal(function() {
 		};
 
 	})();
-})
+

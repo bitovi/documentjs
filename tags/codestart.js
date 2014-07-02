@@ -1,4 +1,3 @@
-steal(function() {
 	/**
 	 * @constructor DocumentJS.tags.codestart @codestart
 	 * @hide
@@ -48,7 +47,7 @@ steal(function() {
 	 *
 	 * @codeend 
 	 */
-	return {
+	module.exports = {
 		add: function( line, last ) {
 			var m = line.match(/^\s*@codestart\s*([\w-]*)\s*(.*)/)
 
@@ -67,4 +66,3 @@ steal(function() {
 			data.lines.push(line);
 		}
 	};
-})

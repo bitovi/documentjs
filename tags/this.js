@@ -1,6 +1,9 @@
-steal('documentjs/libs/showdown.js','./helpers/typeNameDescription.js','steal',
-	'./helpers/typer.js',
-	function(converter, tnd, steal, typer ) {
+var getParent = require('./helpers/getParent'),
+	tnd = require('./helpers/typeNameDescription'),
+	typer = require('./helpers/typer');
+
+
+
 
 
 	var ordered = function( params ) {
@@ -10,14 +13,14 @@ steal('documentjs/libs/showdown.js','./helpers/typeNameDescription.js','steal',
 			arr[param.order] = param;
 		}
 		return arr;
-	}
+	};
 	var indexOf = function(arr, name){
 		return arr.map(function(item){return item.name}).indexOf(name);
-	}
+	};
 	
 
 	
-	return {
+	module.exports = {
 
 		addMore: function( line, last ) {
 			if ( last ) last.description += "\n" + line;
@@ -71,10 +74,11 @@ steal('documentjs/libs/showdown.js','./helpers/typeNameDescription.js','steal',
 			}
 			if(context && context !== that){
 				// copy props
-				steal.extend(context, that)
+				for(var prop in that){
+					context[prop] = that[prop];
+				}
 			}
 			return context;
 		}
 	};
 
-});

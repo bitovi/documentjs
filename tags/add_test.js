@@ -1,19 +1,24 @@
-steal('documentjs/tags/process.js',
-	'./add.js',
-	'funcunit/qunit',function(process, add){
+var process = require("../lib/process/doc"),
+	add = require("./add"),
+	assert = require("assert");
+
+
+
+
+describe("documentjs/tags/add", function(){
+	var old;
 	
-	module("documentjs/tags/add", {
-		setup : function(){
-			this.old = process.tags;
-			process.tags = {add: add};
-		},
-		teardown : function(){
-			process.tags = this.old;
-		}
-	})
+	beforeEach(function(){
+		old = process.tags;
+		process.tags = {add: add};
+	});
+	afterEach(function(){
+		process.tags = old;
+	});
 	
 	
-	test("basic",function(){
+	
+	it("basic",function(){
 		
 		var docMap = {Foo: {name: "Foo",type: "constructor"}};
 		
@@ -22,7 +27,8 @@ steal('documentjs/tags/process.js',
 			docMap: docMap,
 			props: {}
 		}, function(newDoc, newScope){
-			equals(newScope, docMap.Foo)
-		})
-	})
-})
+			assert.equal(newScope, docMap.Foo);
+		});
+	});
+
+});

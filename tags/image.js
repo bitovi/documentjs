@@ -1,4 +1,3 @@
-steal(function() {
 	/**
 	 * @constructor DocumentJS.tags.image @image
 	 * @parent DocumentJS
@@ -20,7 +19,7 @@ steal(function() {
 	 *  *|
 	 * @codeend
 	 */
-	return  {
+	module.exports = {
 		add: function( line ) {
 			var m = line.match(/^\s*@image\s*([^\s]+)\s*([\w]*)\s*([\w]*)\s*(.*)/)
 
@@ -34,4 +33,3 @@ steal(function() {
 			}
 		}
 	};
-})

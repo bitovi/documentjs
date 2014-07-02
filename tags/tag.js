@@ -1,4 +1,3 @@
-steal(function() {
 	/**
 	 * @constructor DocumentJS.tags.tag @tag
 	 * @parent DocumentJS
@@ -22,7 +21,7 @@ steal(function() {
 	 * 
 	 * @image jmvc/images/tag_tag_example.png
 	 */
-	return {
+	module.exports = {
 		add: function( line ) {
 			var parts = line.match(/^\s*@tag\s*(.+)/);
 
@@ -36,4 +35,3 @@ steal(function() {
 		//    this.tags.concat(line.split(/\s*,\s*/g))
 		//}
 	};
-})

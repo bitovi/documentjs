@@ -1,9 +1,12 @@
-steal('./option.js','./param.js','./property','./return.js','funcunit/qunit',function(option, param, property, returns){
+var option = require('./option'),
+	param = require('./param'),
+	property = require('./property'),
+	returns = require('./return'),
+	assert = require("assert");
 	
+describe("documentjs/tags/option",function(){
 	
-	module("documentjs/tags/option")
-	
-	test("@option",function(){
+	it("@option",function(){
 		
 		var obj = {}
 		param.add.call(obj,"@param {{name: String, foo}=} thing a description");
@@ -11,7 +14,7 @@ steal('./option.js','./param.js','./property','./return.js','funcunit/qunit',fun
 		option.add.call(obj, "@option {Bar} [foo=thing] foo description");
 		option.add.call(obj, "@option {Extra} extra extra description");
 		
-		deepEqual(obj.params[0],
+		assert.deepEqual(obj.params[0],
 		{
 			name: "thing",
 			description: "a description",
@@ -33,7 +36,7 @@ steal('./option.js','./param.js','./property','./return.js','funcunit/qunit',fun
 		
 	});
 	
-	test("@option on Object",function(){
+	it("@option on Object",function(){
 		
 		var obj = {}
 		param.add.call(obj,"@param {Object} thing a description");
@@ -41,7 +44,7 @@ steal('./option.js','./param.js','./property','./return.js','funcunit/qunit',fun
 		option.add.call(obj, "@option {Bar} [foo=thing] foo description");
 		option.add.call(obj, "@option {Extra} extra extra description");
 		
-		deepEqual(obj.params[0],
+		assert.deepEqual(obj.params[0],
 		{
 			name: "thing",
 			description: "a description",
@@ -64,14 +67,14 @@ steal('./option.js','./param.js','./property','./return.js','funcunit/qunit',fun
 	});
 	
 	
-	test("@option - for function",function(){
+	it("@option - for function",function(){
 		
 		var obj = {}
 		param.add.call(obj,"@param {function(String,Bar)} thing(first,second) a description");
 		option.add.call(obj, "@option first first description");
 		option.add.call(obj, "@option second second description");
 		
-		deepEqual(obj.params[0],
+		assert.deepEqual(obj.params[0],
 		{
 			name: "thing",
 			description: "a description",
@@ -93,14 +96,14 @@ steal('./option.js','./param.js','./property','./return.js','funcunit/qunit',fun
 		
 	});
 	
-	test("@option on a property", function(){
+	it("@option on a property", function(){
 		
 		var obj = {}
 		property.add.call(obj,"@property {String|Thing} thing");
 		option.add.call(obj, "@option {String} String description");
 		option.add.call(obj, "@option {Thing} Thing description");
 		
-		deepEqual(obj,
+		assert.deepEqual(obj,
 		{
 			name: "thing",
 			title: "",
@@ -114,9 +117,9 @@ steal('./option.js','./param.js','./property','./return.js','funcunit/qunit',fun
 			}]
 		});
 		
-	})
+	});
 	
-	test("@option on a @return value", function(){
+	it("@option on a @return value", function(){
 		
 		var obj = {}
 		returns.add.call(obj,"@return {Foo|Bar} ret description");
@@ -124,7 +127,7 @@ steal('./option.js','./param.js','./property','./return.js','funcunit/qunit',fun
 		option.add.call(obj, "@option {Bar} Bar description");
 		
 		
-		deepEqual(obj.returns,
+		assert.deepEqual(obj.returns,
 		{
 			description: "ret description",
 			types: [
@@ -140,9 +143,9 @@ steal('./option.js','./param.js','./property','./return.js','funcunit/qunit',fun
 		});
 		
 		
-	})
+	});
 	
-	test("@property with @function option with @option on returns", function(){
+	it("@property with @function option with @option on returns", function(){
 		var obj = {};
 		property.add.call(obj,"@property {String|function} thing");
 		option.add.call(obj, "@option {String} String description");
@@ -150,13 +153,13 @@ steal('./option.js','./param.js','./property','./return.js','funcunit/qunit',fun
 		returns.add.call(obj,"@return {Foo|Bar} ret description");
 		option.add.call(obj, "@option {Foo} Foo description");
 		option.add.call(obj, "@option {Bar} Bar description");
-		deepEqual(obj.types[1].returns.types,
+		assert.deepEqual(obj.types[1].returns.types,
 			[
 				{type: "Foo", description: "Foo description"},
 				{type: "Bar", description: "Bar description"}
 			])
 		
 		
-	})
+	});
 	
-})
+});

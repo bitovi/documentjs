@@ -1,4 +1,4 @@
-steal('./tree.js',function(tree){
+var tree = require("./tree");
 	/**
 	 * @typedef {STRING} documentjs/type TYPE
 	 * @parent DocumentJS
@@ -109,19 +109,19 @@ steal('./tree.js',function(tree){
 					eachBetweenCommas(children[0].children, function(typeChildren){
 						var option = {
 							name: typeChildren[0].token
-						}
+						};
 						if(typeChildren[2]){
 							process(typeChildren.slice(2), option)
 						}
 						type.options.push(option)
-					})
+					});
 					break;
 					
 				case "(": // Union (foo|bar)
 
 					eachBetweenCommas(children[0].children,function(typeChildren){
-						process(typeChildren, obj )
-					},"|")
+						process(typeChildren, obj );
+					},"|");
 					break;
 				default: // a type name like {Animal}
 					var types = obj.types || (obj.types = []),
@@ -148,12 +148,12 @@ steal('./tree.js',function(tree){
 								eachBetweenCommas(next.children, function(typeChildren){
 									type.template.push(
 										process(typeChildren, {})
-									)
+									);
 								});
 								break;
 							default: 
 								// do anything at the end ...
-								process(children.slice(1), obj)
+								process(children.slice(1), obj);
 								break;
 						}
 					} else {
@@ -165,19 +165,18 @@ steal('./tree.js',function(tree){
 			}
 		} 
 		return obj
-	}
+	};
 
-	return {
-		tokens: ["\\?", "\\!", "function", "\\.\\.\\.", ",", "\\:", "\\|", "="],
-		process: process,
-		type: function(str){
-			return process(this.tree(str), {})
-		},
-		tree: function(str){
-			return tree(str, "("+this.tokens.join("|")+")", "(\\s)" );
-		}
+module.exports = {
+	tokens: ["\\?", "\\!", "function", "\\.\\.\\.", ",", "\\:", "\\|", "="],
+	process: process,
+	type: function(str){
+		return process(this.tree(str), {});
+	},
+	tree: function(str){
+		return tree(str, "("+this.tokens.join("|")+")", "(\\s)" );
 	}
+};
 	
-});
 
 

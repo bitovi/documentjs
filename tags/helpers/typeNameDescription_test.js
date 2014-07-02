@@ -1,20 +1,22 @@
-steal('./typeNameDescription.js','funcunit/qunit',function(tnd){
+var tnd = require('./typeNameDescription'),
+	assert = require('assert');
+
 	
-	module("documentjs/tags/helpers/typeNameDescription");
+describe("documentjs/tags/helpers/typeNameDescription",function(){;
 	
-	test("has a function in it", function(){
+	it("has a function in it", function(){
 		
 		var res = tnd("@constructor documentjs/tags/function @function");
 		
-		equal(res.name, "documentjs/tags/function")
+		assert.equal(res.name, "documentjs/tags/function")
 		
 	});
 	
-	test("ignore name", function(){
+	it("ignore name", function(){
 		var res = tnd("@constructor {Type} description", true);
 		
-		equal(res.description, "description")
-	})
+		assert.equal(res.description, "description")
+	});
 	
 	/*test("has a function in it", function(){
 		
@@ -28,4 +30,4 @@ steal('./typeNameDescription.js','funcunit/qunit',function(tnd){
 		
 	})*/
 	
-})
+});

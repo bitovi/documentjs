@@ -1,4 +1,3 @@
-steal(function() {
 	/**
 	 * @constructor DocumentJS.tags.hide @hide
 	 * @parent DocumentJS
@@ -16,7 +15,7 @@ steal(function() {
 	 *  _setProperty: function( prop ) {
 	 * @codeend
 	 */
-	return  {
+	module.exports = {
 		add: function( line ) {
 			var m = line.match(/^\s*@hide/)
 			if ( m ) {
@@ -24,4 +23,3 @@ steal(function() {
 			}
 		}
 	};
-})

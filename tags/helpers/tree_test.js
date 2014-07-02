@@ -1,22 +1,23 @@
-steal('./tree.js','funcunit/qunit',function(tree){
+var tree = require("./tree"),
+	assert = require("assert");
 	
-	module("documentjs/tags/helpers/tree")
+describe("documentjs/tags/helpers/tree", function(){
 	
-	test("basics", function(){
+	it("basics", function(){
 		
-		same( tree("foo"), [{token: "foo",start: 0, end: 3}] );
-		same( tree("(foo)"), [{
+		assert.deepEqual( tree("foo"), [{token: "foo",start: 0, end: 3}] );
+		assert.deepEqual( tree("(foo)"), [{
 			token: "(", 
 			children: [{token: "foo",start: 1, end: 4}], 
 			start: 0, 
 			end: 5 }]);
 		
 	
-		same( tree("bar(foo)"), [
+		assert.deepEqual( tree("bar(foo)"), [
 			{token: "bar", start: 0, end:3},
 			{ token: "(", start: 3, end: 8, children: [{token: "foo",start: 4, end: 7}] }]);
 		
-		same( tree("(<foo>, {bar})abc",["([,])"]), 
+		assert.deepEqual( tree("(<foo>, {bar})abc",["([,])"]), 
 			[{token: "(",
 			  start: 0,
 			  end: 14,
@@ -28,19 +29,19 @@ steal('./tree.js','funcunit/qunit',function(tree){
 			  ]},
 			  {token: "abc",start: 14, end: 17}]);
 		
-		same( tree("foo",null, " "), [{token: "foo",start: 0, end: 3}] );
+		assert.deepEqual( tree("foo",null, " "), [{token: "foo",start: 0, end: 3}] );
 		
 
 		
 	});
 
-	test("escaping",function(){
-		same( tree("fo\\(\\)o"), [{token: "fo()o", start: 0, end: 7}] );
+	it("escaping",function(){
+		assert.deepEqual( tree("fo\\(\\)o"), [{token: "fo()o", start: 0, end: 7}] );
 		
-		same( tree("\\(args...\\)"), [{token:"(args...)", start: 0, end: 11}])
+		assert.deepEqual( tree("\\(args...\\)"), [{token:"(args...)", start: 0, end: 11}])
 		
 		
-	})
+	});
 	
 	
-})
+});

@@ -1,17 +1,17 @@
-steal('./return.js','funcunit/qunit',function(ret){
+var ret = require("./return"),
+	assert = require("assert");
 	
+describe("documentjs/tags/return",function(){
 	
-	module("documentjs/tags/return")
-	
-	test("@return",function(){
+	it("@return",function(){
 		var obj = {}
 		ret.add.call(obj,"@return {String} a description");
 		
-		deepEqual(obj.returns,{
+		assert.deepEqual(obj.returns,{
 			description: "a description",
 			types: [{type: "String"}]
-		})
+		});
 	});
 	
 	
-})
+});

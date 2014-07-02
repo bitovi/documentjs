@@ -1,5 +1,5 @@
-steal('./helpers/getParent.js',
-	'documentjs/tags/helpers/typeNameDescription.js',function(getParent, tnd) {
+var getParent = require('./helpers/getParent'),
+	tnd = require('./helpers/typeNameDescription.js');
 	/**
 	 * @constructor DocumentJS.tags.property @property
 	 * @parent DocumentJS
@@ -25,7 +25,7 @@ steal('./helpers/getParent.js',
 	 * @param {STRING} [TITLE] The display title of the property.
 	 * 
 	 */
-	return {
+	module.exports = {
 		codeMatch: function( code ) {
 			return code.match(/(\w+)\s*[:=]\s*/) && !code.match(/(\w+)\s*[:=]\s*function\(([^\)]*)/)
 		},
@@ -65,5 +65,4 @@ steal('./helpers/getParent.js',
 			}
 			this.type = "property";
 		}
-	}
-})
+	};

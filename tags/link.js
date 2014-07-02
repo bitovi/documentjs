@@ -1,4 +1,3 @@
-steal(function() {
 	/**
 	 * @constructor DocumentJS.tags.link @liink
 	 * @tag documentation
@@ -16,7 +15,7 @@ steal(function() {
 	 *  *|
 	 * @codeend
 	 */
-	return {
+	module.exports = {
 		add: function( line ) {
 			var m = line.match(/^\s*@link\s*([^\s]+)\s+(.+)/)
 			if ( m ) {
@@ -30,4 +29,3 @@ steal(function() {
 			}
 		}
 	};
-})

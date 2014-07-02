@@ -1,4 +1,4 @@
-steal("can/control","./content_list.mustache","jquery","can/observe",function(Control, contentList, $){
+steal("can/control","./content_list.mustache!","jquery","can/observe",function(Control, contentList, $){
 
 	return can.Control({
 		init: function() {

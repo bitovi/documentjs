@@ -1,5 +1,6 @@
-steal('./helpers/getParent.js',
-	'documentjs/tags/helpers/typeNameDescription.js',function(getParent, tnd) {
+var getParent = require('./helpers/getParent'),
+	tnd = require('./helpers/typeNameDescription');
+
 
 
 	/**
@@ -45,7 +46,7 @@ steal('./helpers/getParent.js',
 	 * bar = function(){}
 	 * @codeend
 	 */
-	return {
+	module.exports = {
 		codeMatch: /(?:([\w\.\$]+)|(["'][^"']+["']))\s*[:=]\s*function\s?\(([^\)]*)/,
 		code: function( code, scope, docMap ) {
 			
@@ -111,5 +112,5 @@ steal('./helpers/getParent.js',
 				data.params = [];
 			}
 		}
-	}
-})
+	};
+

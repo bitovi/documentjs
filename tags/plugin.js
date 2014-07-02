@@ -1,5 +1,3 @@
-steal(function() {
-
 	/**
 	 * @constructor DocumentJS.tags.plugin @plugin
 	 * @parent DocumentJS
@@ -22,9 +20,8 @@ steal(function() {
 	 * 
 	 * @param {String} NAME The name of the plugin.
 	 */
-	return {
+	module.exports = {
 		add: function( line ) {
 			this.plugin = line.match(/@plugin ([^ ]+)/)[1];
 		}
 	}
-})

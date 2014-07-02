@@ -1,4 +1,3 @@
-steal(function() {
 	/**
 	 * @constructor DocumentJS.tags.iframe @iframe
 	 * @parent DocumentJS
@@ -22,7 +21,7 @@ steal(function() {
 	 * a height is not provided, the height is determined as
 	 * the content of the body.
 	 */
-	return  {
+	module.exports = {
 		add: function( line ) {
 			var m = line.match(/^\s*@iframe\s*([\-\w\.\/]*)\s*([\w]*)\s*(.*)/)
 
@@ -35,4 +34,3 @@ steal(function() {
 			}
 		}
 	};
-})

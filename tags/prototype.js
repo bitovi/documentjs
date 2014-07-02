@@ -1,5 +1,5 @@
-steal('./helpers/getParent.js',
-	'documentjs/tags/helpers/typeNameDescription.js',function(getParent, tnd) {
+var getParent = require('./helpers/getParent'),
+	tnd = require('./helpers/typeNameDescription');
 
 	/**
 	 * @constructor DocumentJS.tags.prototype @prototype
@@ -28,7 +28,7 @@ steal('./helpers/getParent.js',
 	 * @codeend
 	 * 
 	 */
-	return {
+	module.exports = {
 		add: function(line, curData, scope, docMap){
 			
 			if(scope){
@@ -49,5 +49,4 @@ steal('./helpers/getParent.js',
 			}
 			
 		}
-	}
-})
+	};

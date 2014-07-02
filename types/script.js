@@ -29,7 +29,7 @@ steal('documentjs/tags/process.js', 'documentjs/tags', function (process, tags) 
 					curLine++;
 				}
 				return curLine;
-			}
+			};
 
 		};
 
@@ -83,9 +83,6 @@ steal('documentjs/tags/process.js', 'documentjs/tags', function (process, tags) 
 				}
 			}
 			return contentLines;
-		},
-		getCommentCodePairs: function () {
-
 		},
 		group: new RegExp("(?:/\\*(?:[^*]|(?:\\*+[^*/]))*\\*+/\[^\\w\\{\\(\\}\\[/]*[^\\n]*)", "g"),
 
@@ -225,4 +222,4 @@ steal('documentjs/tags/process.js', 'documentjs/tags', function (process, tags) 
 	};
 
 	return Script;
-})
+});

@@ -1,5 +1,4 @@
-steal('steal',function(s){
-	
+
 	
 var matches = {
  "(" : ")",
@@ -42,7 +41,7 @@ var makeCounter = function(){
 }
 
 
-return function(str, tokens, ignore){
+module.exports = function(str, tokens, ignore){
 	
 	
 	var reg = new RegExp("(["+regStr+"])|(\\\\)"+(
@@ -114,8 +113,6 @@ return function(str, tokens, ignore){
 	}
 	return root.children;
 
-}
+};
 	
 	
-	
-})

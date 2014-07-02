@@ -6,26 +6,7 @@ steal('steal','documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 	function (steal, _, Handlebars, utils, defaults, Script, searchdata, getScripts) {
 
 
-	var deepExtendWithoutBody = function(obj){
-		if(!obj || typeof obj != "object"){
-			return obj;
-		}
-		var isArray = obj.map && typeof obj.length == "number";
-		if(isArray){
-			return obj.map(function(item){
-				return deepExtendWithoutBody(item)
-			})
-		} else {
-			var clone = {};
-			for(var prop in obj){
-				if(prop != "body"){
-					clone[prop] = deepExtendWithoutBody(obj[prop])
-				}
-				
-			}
-			return clone;
-		}
-	}
+
 
 	// gets scripts, processes
 	var getScriptsAndProcess = function(scripts, options, callback) {
@@ -69,12 +50,12 @@ steal('steal','documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 			steal("documentjs/site/static/build/build.js", function(build){
 				console.log("Calling build module");
 				build(options, callback);
-			})
+			});
 		} else {
 			console.log("Using files in documentjs/site/static/dist")
 			callback();
 		}		
-	}
+	};
 	var makeAndCopyTemplates = function(configuration){
 		// if site/templates doesn't exist, make it
 		if(!steal.URI("documentjs/site/templates").exists()){
@@ -89,7 +70,7 @@ steal('steal','documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 			steal.URI(configuration["templates"])
 				.copyTo("documentjs/site/templates")
 		}
-	}
+	};
 	var generate = function (files, options) {
 		
 
@@ -186,7 +167,7 @@ steal('steal','documentjs/libs/underscore.js', 'documentjs/libs/handlebars.js',
 
 			
 		});
-	}
+	};
 
 	return generate;
 });

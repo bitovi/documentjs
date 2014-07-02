@@ -1,15 +1,19 @@
-steal('./typedef.js','./param.js','./return',"./option.js",'funcunit/qunit',function(typedef, param,returns, option){
+var typedef = require('./typedef'),
+	param = require("./param"),
+	option = require("./option"),
+	returns = require("./return"),
+	assert = require("assert");
 	
 	
-	module("documentjs/tags/typedef")
+describe("documentjs/tags/typedef", function(){
 	
-	test("basic",function(){
+	it("basic",function(){
 		
 		var obj = {};
 		var docMap = {Foo: {name: "Foo", type: "constructor"}}
 		typedef.add.call(obj,"@typedef {{}} name title",null,docMap.Foo, docMap );
 		
-		deepEqual(obj,{
+		assert.deepEqual(obj,{
 			name: "name",
 			title: "title",
 			type: "typedef",
@@ -19,7 +23,7 @@ steal('./typedef.js','./param.js','./return',"./option.js",'funcunit/qunit',func
 	})
 	
 	
-	test("function typedef followed by params",function(){
+	it("function typedef followed by params",function(){
 		
 		var obj = {};
 		var docMap = {Foo: {name: "Foo", type: "constructor"}}
@@ -29,7 +33,7 @@ steal('./typedef.js','./param.js','./return',"./option.js",'funcunit/qunit',func
 		
 		delete obj._curParam;
 		delete obj._curReturn;
-		deepEqual(obj,{
+		assert.deepEqual(obj,{
 			name: "func",
 			title: "functionjunction",
 			type: "typedef",
@@ -57,17 +61,17 @@ steal('./typedef.js','./param.js','./return',"./option.js",'funcunit/qunit',func
 		        	]
 		        }
 			}]
-		})
+		});
 		
-	})
+	});
 
-	test("@option on a typedef with a template", function(){
+	it("@option on a typedef with a template", function(){
 		var obj = {};
 		var docMap = {}
 		typedef.add.call(obj,"@typedef {{hash:Object}} helperOptions",null,null, docMap );
 		option.add.call(obj,"@option {Object.<String,Number>} hash",null,null, docMap );
 		
-		deepEqual(obj, {
+		assert.deepEqual(obj, {
 			type: "typedef",
 			title: '',
 			name: "helperOptions",
@@ -87,5 +91,5 @@ steal('./typedef.js','./param.js','./return',"./option.js",'funcunit/qunit',func
 		});
 		
 		
-	})
-})
+	});
+});

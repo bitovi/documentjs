@@ -1,4 +1,3 @@
-steal(function() {
 	/**
 	 * @constructor DocumentJS.tags.page @page
 	 * @parent DocumentJS
@@ -26,7 +25,7 @@ steal(function() {
 	 * @param {String} [TITLE] The title of the article used for display purposes.
 	 * 
 	 */
-	return {
+	module.exports = {
 		add: function( line ) {
 			var m = line.match(/^\s*@\w+\s+([^\s]+)(?:\s+(.+))?/)
 			if ( m ) {
@@ -38,4 +37,3 @@ steal(function() {
 			}
 		}
 	};
-})

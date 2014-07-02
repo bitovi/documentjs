@@ -1,4 +1,4 @@
-steal("can/control","./demo_frame.mustache","jquery","can/observe","./prettify.js",function(Control,demoFrameMustache,$){
+steal("can/control","./demo_frame.mustache!","jquery","can/observe","./prettify.js",function(Control,demoFrameMustache,$){
 	
 	
 

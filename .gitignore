@@ -9,3 +9,4 @@ node_modules
 site/static/build/
 site/static/dist/
 site/templates/
+lib/generate/test/out/

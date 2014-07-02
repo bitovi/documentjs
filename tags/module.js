@@ -1,4 +1,3 @@
-steal(function() {
 	/**
 	 * @constructor DocumentJS.tags.module @module
 	 * @parent DocumentJS
@@ -23,9 +22,8 @@ steal(function() {
 	 * 
 	 * @image site/images/plugin_tag_example.png
 	 */
-	return {
+	module.exports = {
 		add: function( line ) {
 			this["module"] = line.match(/@module ([^ ]+)/)[1];
 		}
 	}
-})

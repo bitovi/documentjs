@@ -1,4 +1,3 @@
-steal(function() {
 	/**
 	 * @constructor DocumentJS.tags.release @release
 	 * @release 3.3
@@ -54,7 +53,7 @@ steal(function() {
 	 * 
 	 * 
 	 */
-	return {
+	module.exports = {
 		add: function( line ) {
 			var m = line.match(/^\s*@release\s+(\S*)\s*$/);
 			if ( m ) {
@@ -70,5 +69,5 @@ steal(function() {
 			}
 		}
 	};
-})
+
 

@@ -1,4 +1,3 @@
-steal("steal",function(steal) {
 	/**
 	 * @constructor DocumentJS.tags.demo @demo
 	 * @parent DocumentJS 
@@ -31,7 +30,7 @@ steal("steal",function(steal) {
 	 *  - Adding `id="demo-source"` to a script tag or
 	 *    setting `window.DEMO_SOURCE` to the source JS.
 	 */
-	return {
+	module.exports = {
 		add: function(  line, curData, scope, objects, currentWrite ) {
 			
 			var m = line.match(/^\s*@demo\s*([\w\.\/\-\$]*)\s*([\w]*)/)
@@ -59,4 +58,3 @@ steal("steal",function(steal) {
 			}
 		}
 	};
-})

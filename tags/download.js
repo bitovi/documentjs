@@ -1,4 +1,3 @@
-steal(function() {
 	/**
 	 * @constructor DocumentJS.tags.download @download
 	 * @tag documentation
@@ -25,7 +24,7 @@ steal(function() {
 	 * You can click the example download link on this [jQuery.Drag | page]
      *
 	 */
-	return  {
+	module.exports = {
 		add: function( line ) {
 			var parts = line.match(/^\s*@download\s*([^ ]*)\s*([.]*)/)
 			this.download = parts[1];
@@ -34,4 +33,3 @@ steal(function() {
 			}
 		}
 	};
-})

@@ -94,12 +94,12 @@
   
 }
 
-.zIndexer (@index) when (@index > 0){
-  (~".sidebar .api.cascading > li:nth-child(@{index})") {
-    z-index: 21-@index;
-  }
-  .zIndexer(@index - 1);
-}
-.zIndexer (0) {}
 
-.zIndexer (10);
+.zIndexer(10);
+
+.zIndexer(@n, @i: 1) when (@i =< @n) {
+  .sidebar .api.cascading > li:nth-child(@{i}){
+    z-index: 21-@i;
+  }
+  .zIndexer(@n, (@i + 1));
+}

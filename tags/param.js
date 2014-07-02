@@ -1,6 +1,5 @@
-steal('documentjs/libs/showdown.js','./helpers/typeNameDescription.js',
-	function(converter, tnd ) {
-
+var converter = require("../lib/showdown"),
+	tnd = require("./helpers/typeNameDescription");
 
 	var ordered = function( params ) {
 		var arr = [];
@@ -94,7 +93,7 @@ steal('documentjs/libs/showdown.js','./helpers/typeNameDescription.js',
 	 * are overwritten.
 	 * 
 	 */
-	return {
+	module.exports = {
 
 		addMore: function( line, last ) {
 			if ( last ) last.description += "\n" + line;
@@ -174,5 +173,3 @@ steal('documentjs/libs/showdown.js','./helpers/typeNameDescription.js',
 			delete this._curParam;
 		}
 	};
-
-})

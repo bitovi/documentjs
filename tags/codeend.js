@@ -1,4 +1,3 @@
-steal(function() {
 	/**
 	 * @hide
 	 * @constructor DocumentJS.tags.codeend @codeend
@@ -45,7 +44,7 @@ steal(function() {
 	 *
 	 * @codeend 
 	 */
-	return {
+	module.exports =  {
 		add: function( line, data ) {
 
 			if (!data.lines ) {
@@ -64,4 +63,3 @@ steal(function() {
 			return ["pop", out];
 		}
 	};
-})

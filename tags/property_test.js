@@ -1,15 +1,19 @@
-steal('./property.js','./option.js','./process','funcunit/qunit',function(property, option,process){
+var property = require("./property"),
+	option = require("./option"),
+	process = require("../lib/process/doc"),
+	assert = require("assert");
+
+
 	
+describe("documentjs/tags/property",function(){
 	
-	module("documentjs/tags/property")
-	
-	test("basic add",function(){
+	it("basic add",function(){
 		
 		var obj = {};
 		var docMap = {Foo: {name: "Foo", type: "constructor"}}
 		property.add.call(obj,"@property {Object} bar a description",null,docMap.Foo, docMap );
 		
-		deepEqual(obj,{
+		assert.deepEqual(obj,{
 			name: "bar",
 			type: "property",
 			types: [{type: "Object", options: []}],
@@ -18,7 +22,7 @@ steal('./property.js','./option.js','./process','funcunit/qunit',function(proper
 		
 	});
 	
-	test("multiple types with options", function(){
+	it("multiple types with options", function(){
 		
 		var obj = {};
 		var docMap = {Foo: {name: "Foo", type: "constructor"}}
@@ -28,7 +32,7 @@ steal('./property.js','./option.js','./process','funcunit/qunit',function(proper
 		option.add.call(obj,"@option {function(String)} Function description");
 		
 		
-		deepEqual(obj,{
+		assert.deepEqual(obj,{
 			name: "bar",
 			type: "property",
 			types: [
@@ -51,19 +55,19 @@ steal('./property.js','./option.js','./process','funcunit/qunit',function(proper
 		
 	})
 	
-	test("codeMatch", function(){
-		ok(property.codeMatch("foo = 'bar'"));
-		ok(property.codeMatch("foo: 'bar'"));
-		ok(!property.codeMatch("foo: function(){}"))
+	it("codeMatch", function(){
+		assert.ok(property.codeMatch("foo = 'bar'"));
+		assert.ok(property.codeMatch("foo: 'bar'"));
+		assert.ok(!property.codeMatch("foo: function(){}"))
 	});
 	
-	test("options on property", function(){
+	it("options on property", function(){
 		var obj = {};
 		var docMap = {Foo: {name: "Foo", type: "constructor"}}
 		property.add.call(obj,"@property {{}} bar a description",null,docMap.Foo, docMap );
 		option.add.call(obj,"@option {String} thing thing's description")
 		
-		deepEqual(obj,{
+		assert.deepEqual(obj,{
 			name: "bar",
 			type: "property",
 			types: [{
@@ -73,10 +77,10 @@ steal('./property.js','./option.js','./process','funcunit/qunit',function(proper
 				]
 			}],
 			title: "a description"
-		})
-	})
+		});
+	});
 	
-	test("options code and scope", function(){
+	it("options code and scope", function(){
 		
 		var docMap = {Foo: {name: "Foo", type: "constructor"}};
 		
@@ -84,11 +88,11 @@ steal('./property.js','./option.js','./process','funcunit/qunit',function(proper
 		
 		property.add.call(obj,"@property",null,docMap.Foo, docMap );
 		
-		equal(obj.name, "Foo.bar")
+		assert.equal(obj.name, "Foo.bar")
 		
-	})
+	});
 	
-	test("process", function(){
+	it("process", function(){
 		process.tags.property = property;
 		
 		
@@ -100,9 +104,9 @@ steal('./property.js','./option.js','./process','funcunit/qunit',function(proper
 			docMap: docMap,
 			scope: docMap.Foo
 		}, function(newDoc, newScope){
-			equal(newScope, docMap.Foo, "scope is foo correctly");
-			equal(newDoc.name,"Foo.foo")
+			assert.equal(newScope, docMap.Foo, "scope is foo correctly");
+			assert.equal(newDoc.name,"Foo.foo")
 		})
-	})
+	});
 	
-})
+});

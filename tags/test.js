@@ -1,4 +1,3 @@
-steal(function() {
 	/**
 	 * @constructor DocumentJS.tags.test @test
 	 * @parent DocumentJS
@@ -17,9 +16,8 @@ steal(function() {
 	 * 
 	 * @param {String} URL The url of the test page.
 	 */
-	return {
+	module.exports = {
 		add: function( line ) {
 			this.test = line.match(/@test ([^ ]+)/)[1];
 		}
 	};
-})

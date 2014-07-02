@@ -1,4 +1,3 @@
-steal(function() {
 	/**
 	 * @constructor DocumentJS.tags.signature @signature
 	 * @parent DocumentJS
@@ -30,7 +29,7 @@ steal(function() {
 	 * of the signature.
 	 * 
 	 */
-	return {
+	module.export = {
 		add: function( line, last ) {
 			var description ="",
 				code,
@@ -67,4 +66,3 @@ steal(function() {
 			data.description += "\n"+line;
 		}
 	};
-})

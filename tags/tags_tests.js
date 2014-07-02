@@ -1,9 +1,15 @@
-steal('./helpers/namer_test.js')
-	.then('./helpers/tree_test.js')
-	.then('./helpers/typer_test.js')
-	.then('./helpers/typeNameDescription_test.js')
-	.then('./add_test.js').then('./function_test.js')
-	.then('./option_test.js').then(
-	'./param_test.js').then('./process_test.js').then('./property_test.js').then(
-	'./return_test.js').then("./deprecated_test.js")
-		.then('./typedef_test.js')
+require("./helpers/namer_test");
+
+require("./helpers/tree_test");
+require("./helpers/typeNameDescription_test");
+require("./helpers/typer_test");
+
+require("./add_test");
+require("./deprecated_test");
+require("./function_test");
+require("./option_test");
+
+require("./param_test");
+require("./property_test");
+require("./return_test");
+require("./typedef_test");

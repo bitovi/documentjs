@@ -1,5 +1,5 @@
-steal('./helpers/getParent.js',
-	'documentjs/tags/helpers/typeNameDescription.js',function(getParent, tnd) {
+var getParent = require("./helpers/getParent"),
+	tnd = require("./helpers/typeNameDescription");
 
 	var funcMatch = /(?:([\w\.\$]+)|(["'][^"']+["']))\s*[=]\s*function\s?\(([^\)]*)/,
 		codeMatch = /([\w\.\$]+?).extend\(\s*["']([^"']*)["']/
@@ -12,7 +12,7 @@ steal('./helpers/getParent.js',
 	 * @signature `@constructor NAME [TITLE]`
 	 * @parent DocumentJS
 	 */
-	return {
+	module.exports = {
 		codeMatch: function(code){
 			return codeMatch.test(code) || funcMatch.test(code);
 		},
@@ -24,7 +24,7 @@ steal('./helpers/getParent.js',
 					name: parts[2],
 					inherits: parts[1].replace(/^\$./, "jQuery."),
 					type: "constructor"
-				}
+				};
 			}
 			parts = code.match(funcMatch)
 			
@@ -32,7 +32,7 @@ steal('./helpers/getParent.js',
 				return {
 					name: parts[1] ? parts[1].replace(/^this\./, "") : parts[2],
 					type: "constructor"
-				}
+				};
 			}
 		},
 		codeScope: true,
@@ -49,5 +49,5 @@ steal('./helpers/getParent.js',
 			this.title = data.description;
 			return ["scope",this];
 		}
-	}
-})
+	};
+

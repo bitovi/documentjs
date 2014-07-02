@@ -1,4 +1,3 @@
-steal(function() {
 	/**
 	 * @constructor DocumentJS.tags.inherits @inherits
 	 * @tag documentation
@@ -20,7 +19,7 @@ steal(function() {
 	 * @param {String} NAME The name of DocObject the current DocObject inherits from.
 	 * 
 	 */
-	return {
+	module.exports = {
 		add: function( line ) {
 			var m = line.match(/^\s*@\w+ ([\w\.\$]+)/)
 			if ( m ) {
@@ -28,4 +27,3 @@ steal(function() {
 			}
 		}
 	};
-})

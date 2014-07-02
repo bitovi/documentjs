@@ -23,9 +23,9 @@
 
 	<link rel="stylesheet" type="text/css" 
 		{{#staticLocation}}
-			href="{{.}}production.css"
+			href="{{.}}static/bundles/static.css"
 		{{else}}
-			href="{{url 'static/production.css'}}"
+			href="{{url 'static/bundles/static.css'}}"
 		{{/staticLocation}} />
 	<!--[if lt IE 9]>
    <script type="text/javascript" src="{{url 'static/html5shiv.js'}}"></script>
@@ -80,9 +80,9 @@
 	</script>
 	<script type='text/javascript' 
 	{{#staticLocation}}
-		src="{{.}}steal.production.js"
+		src="{{.}}steal.js"
 	{{else}}
-		src="./static/steal.production.js"
+		src="./static/steal.js"
 	{{/staticLocation}}
 		></script>
 </body>
