@@ -14,8 +14,7 @@ module.exports = function(options, done){
 	},{
 		minify: options.minifyBuild === false ? false : true,
 		distDir: __dirname,
-		quiet: false,
-		minify: false
+		quiet: true
 	}).then(function(){
 		
 		return Q.all([

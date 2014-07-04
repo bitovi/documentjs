@@ -72,17 +72,17 @@
 				BITHUB: '{{url.bithub}}',
 				CDN: '{{url.cdn}}'
 			}
-		}
+		};
 		steal = {
-			productionId: "production.js",
-			executed: ["documentjs/site/static/build/production.css"]
-		}
+			paths: {"bundles/*": "bundles/*.js"}
+		};
 	</script>
 	<script type='text/javascript' 
+			data-main="static"
 	{{#staticLocation}}
 		src="{{.}}steal.js"
 	{{else}}
-		src="./static/steal.js"
+		src="./static/steal.production.js"
 	{{/staticLocation}}
 		></script>
 </body>
