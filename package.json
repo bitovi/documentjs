@@ -15,7 +15,8 @@
     "qunit-mocha-ui": "*",
     "rimraf": "2.1",
     "connect": "^2.14.4",
-    "zombie": "2.0.0-alpha31"
+    "zombie": "2.0.0-alpha31",
+    "comparify": "git://github.com/bitovi/comparify#master"
   },
   "dependencies": {
     "steal": "0.2.2",
@@ -30,7 +31,8 @@
     "canjs": "git://github.com/bitovi/canjs.git#system-steal-domless",
     "jquery": "~1.11.0",
     "less": "^1.7.0",
-    "glob" : "~4.0.3"
+    "glob" : "~4.0.3",
+    "esprima": "git://github.com/ariya/esprima#master"
   },
   "homepage": "http://javascriptmvc.com",
   "repository": {

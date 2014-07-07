@@ -29,7 +29,7 @@
 	 * of the signature.
 	 * 
 	 */
-	module.export = {
+	module.exports = {
 		add: function( line, last ) {
 			var description ="",
 				code,
