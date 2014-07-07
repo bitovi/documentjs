@@ -9,6 +9,7 @@
       "web": "http://bitovi.com/"
     }
   ],
+  "main": "main.js",
   "devDependencies": {
     "mocha": ">= 1.6.0",
     "qunit-mocha-ui": "*",

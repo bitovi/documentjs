@@ -1,3 +1,3 @@
-var generate = require("../lib/generate/generate");
+var generate = require("./lib/generate/generate");
 
 module.exports = generate;
