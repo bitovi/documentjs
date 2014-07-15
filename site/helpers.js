@@ -531,6 +531,10 @@ module.exports = function(data, config, getCurrent){
 		},
 		makeSignatureId: function(code){
 			return "sig_" + helpers.makeSignature(code).replace(/\s/g,"").replace(/[^\w]/g,"_");
+		},
+		parentTitle: function(){
+			var root = data[config.parent];
+			return root.title || root.name;
 		}
 	};
 	return helpers;
