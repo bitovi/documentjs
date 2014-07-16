@@ -2,14 +2,14 @@
 	{{#activeAndParents}}
 		{{#each parents}}
 		<li class="search-container active parent">
-			<a href="{{makeHref name}}" data-search="{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}">
+			<a class="sidebar-title" href="{{makeHref name}}" data-search="{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}">
 				{{getTitle}}
 			</a>
 		</li>
 		{{/each}}
 		{{#active}}
 			<li class="search-container active">
-			<a href="{{makeHref name}}" data-search="{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}">
+			<a class="sidebar-title" href="{{makeHref name}}" data-search="{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}">
 				{{getTitle}}
 			</a>
 			{{> active-menu.mustache}}

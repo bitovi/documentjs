@@ -2,35 +2,24 @@
 
 
 .sidebar {
-  background-color: #f8f8f8;
-  border: 1px solid #c5c3c3;
+  background-color: @colorNav;
+  border: 1px solid @colorNav;
   position: relative;
   z-index: 1;
-  -moz-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.08);
-  -webkit-box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.08);
-  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.08);
   margin-bottom: 15px;
+  border-radius: 5px 0 0 5px;
   
   ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
   }
-  
+  ul ul ul {
+      margin: 10px 0;
+  }
   .primary-grouping {
     padding-bottom: 10px;
-    border-bottom: 3px solid @colorNav;
-    border-left: 3px solid @colorNav;
-    border-right: 3px solid @colorNav;
-    background-color: #eee;
-    background: -moz-linear-gradient(top,  rgba(0,0,0,0.1) 0%, rgba(255,255,255,0) 5%, rgba(255,255,255,0) 96%, rgba(0,0,0,0.1) 100%);
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0.1)), color-stop(5%,rgba(255,255,255,0)), color-stop(96%,rgba(255,255,255,0)), color-stop(100%,rgba(0,0,0,0.1)));
-    background: -webkit-linear-gradient(top,  rgba(0,0,0,0.1) 0%,rgba(255,255,255,0) 5%,rgba(255,255,255,0) 96%,rgba(0,0,0,0.1) 100%);
-    background: -o-linear-gradient(top,  rgba(0,0,0,0.1) 0%,rgba(255,255,255,0) 5%,rgba(255,255,255,0) 96%,rgba(0,0,0,0.1) 100%);
-    background: -ms-linear-gradient(top,  rgba(0,0,0,0.1) 0%,rgba(255,255,255,0) 5%,rgba(255,255,255,0) 96%,rgba(0,0,0,0.1) 100%);
-    background: linear-gradient(to bottom,  rgba(0,0,0,0.1) 0%,rgba(255,255,255,0) 5%,rgba(255,255,255,0) 96%,rgba(0,0,0,0.1) 100%);
   }
-  
   .api {
     
     
@@ -42,13 +31,10 @@
       a {
         display: block;
         border: 1px solid rgba(255, 255, 254, 0);
-        
-        
       }
     }
     ul ul li a:hover {
-      border: 1px solid rgba(255, 255, 254, 0);
-      background: rgba(204, 204, 204, 0.25);
+      background: rgba(204, 204, 204, 0.04);
     }
     li li li li a {
       font-size: 13px;
@@ -68,9 +54,16 @@
         display: block;
       }
     }
-    li.active > a {
-      font-weight: bold;
+    li.active.parent > a.sidebar-title,
+    li.active > a.sidebar-title {
+      font-size: 24px;
+      background-color: @brand-color-4;
+      border-radius: 5px 0 0 0;
     }
+    li.active:nth-child(2) > a.sidebar-title {
+      background: none;
+      font-size: 18px;
+    } 
     li.active.collapsed > :not(a) {
       display:none;
     }
@@ -83,11 +76,10 @@
     ul.projects {
       padding-top: 10px;
     }
-
     a, a:hover {
       text-decoration: none;
-      color: #000;
-      .text-shadow-light;
+      color: @colorCode;
+      font-style: normal;
     }
     
   }
