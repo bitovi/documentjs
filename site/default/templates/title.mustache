@@ -3,17 +3,16 @@
 	<ul class="tags">
 		<li>{{type}}</li>
 	</ul>
-	
-	{{#if title}}
-	{{^if plugin}}
-		<span class="module">{{name}}</span>
-	{{/if}}
-	{{/if}}
 	{{#if plugin}}<span class="module">{{plugin}}</span>{{/if}}
 	{{#if release}}<span class="release">{{release}}</span>{{/if}}
 </div>
 
 <div class="sub-heading">
+	{{#if title}}
+	{{^if plugin}}
+		<span class="module">{{name}}</span>
+	{{/if}}
+	{{/if}}
 	{{#if types}}
 	<h2><code>{{{makeTypesString types}}}</code></h2>
 	{{/if}}
