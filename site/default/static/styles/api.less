@@ -97,6 +97,7 @@
   .signature-wrapper {
   	padding: 10px 15px 0;
   	border: 1px solid @brand-color-1;
+    border-radius: 0 0 5px 5px;
   	&*:last-child {
   		margin-bottom: 0;
   	}
@@ -158,7 +159,6 @@
 .title {
   display: block;
   border-bottom: 1px solid #eae9e9;
-  padding-bottom: 16px;
 }
 .docs {
 
@@ -293,8 +293,9 @@
   }
   .parameters h5, .returns h5 {
     font-size: 14px;
+    font-weight: bold;
     margin: 0 0 5px;
-    color: #000;
+    color: @brand-color-1;
   }
   .parameters h4 code, .returns h4 code {
     font-style: italic;
@@ -302,19 +303,20 @@
     background: none;
     background-color: none;
   }
+  .parameters .options {
+    margin-right: 50px;
+  }
   .parameters .options .option, .returns .options .option {
     margin: 0 -10px 15px;
     list-style-type: none;
-    border-top: 1px solid #eeeeee;
+    border-top: 1px solid @brand-color-6;
     list-style-type: none;
-    padding-left: 25px;
-    padding-top: 5px;
+    padding: 15px 25px 0 25px;
   }
   .parameters .optional {
     font-size: 8pt;
     line-height: 20px;
   }
-
   .demo {
     ul {
       list-style: none;
@@ -388,8 +390,6 @@
   color: @brand-color-1;
   line-height: 24px;
   display: block;
-  padding: 5px 0;
-  margin-top:10px;
   font-weight: bold;
 }
 .sidebar .api li li.parent {
