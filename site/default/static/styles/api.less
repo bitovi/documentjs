@@ -96,7 +96,7 @@
   }
   .signature-wrapper {
   	padding: 10px 15px 0;
-  	border: 1px solid #d9d9d9;
+  	border: 1px solid @brand-color-1;
   	&*:last-child {
   		margin-bottom: 0;
   	}
@@ -166,12 +166,6 @@
     margin: 0;
     display: inline-block;
   }
-  h2 {
-    font-size: 22px;
-  }
-  h3 {
-    font-size: 16px;
-  }
   .module,  .inherits,  .title .links li {
     font-size: 14px;
     color: #999999;
@@ -238,7 +232,7 @@
   }
   .signature h2, .primary-options h2 {
     background-color: @colorSignature;
-    color: #fff;
+    color: @brand-color-3;
     font-size: 18px;
     line-height: 24px;
     margin: 0;
@@ -270,15 +264,16 @@
   .parameters, .returns {
     list-style-type: none;
     margin: 0 0 15px;
-    border: 1px solid @colorParamsReturns;
+    border: 1px solid @brand-color-6;
     background-color: #fcfafa;
-    padding: 10px 15px 0;
+    padding: 0px 15px 10px;
+    border-radius: 5px;
   }
   .parameters h4, .returns h4 {
     background-color: @colorParamsReturns;
     padding: 4px 15px;
     color: @fontColorParamsReturns;
-    margin: -11px -15px 5px;
+    margin: 0px -15px 5px;
     .optional {
   		font-size: 10px;
   		line-height: 19px;
@@ -290,6 +285,11 @@
     a:hover {
       text-decoration: underline;
     }
+  }
+  .parameters li:first-child h4,
+  .returns h4  {
+      border-radius: 5px 5px 0 0;
+
   }
   .parameters h5, .returns h5 {
     font-size: 14px;
@@ -385,11 +385,12 @@
 }
 .sidebar .api .heading span {
   text-transform: uppercase;
-  color: @brand-color-3;
+  color: @brand-color-1;
   line-height: 24px;
-  background-color: @brand-color-2;
   display: block;
   padding: 5px 0;
+  margin-top:10px;
+  font-weight: bold;
 }
 .sidebar .api li li.parent {
   text-indent: 30px;
@@ -445,21 +446,22 @@
   top:-7px;
   height : 14px;
   width: 14px;
-  z-index : -1;
+  z-index : 1;
   width: 0; 
   height: 0; 
   border-top: 20px solid transparent;
   border-bottom: 20px solid transparent;
-  border-left: 20px solid @brand-color-1
+  border-left: 20px solid @brand-color-6
 }
 .sidebar .api li li.active > a:before {
   position: absolute;
   content: '';
   display: block;
-  border-left: 4px solid @brand-color-5;
+  border-left: 4px solid #484848;
   width: 5px;
-  height: 25px;
+  height: 20px;
   left: 20px;
+  top: 4px;
 }
 .sidebar .api.cascading > .parent {
   z-index: 1;
@@ -468,7 +470,7 @@
   margin-right: 0px;
 }
 /* The caret that points down from an active parent element to the child below */
-.sidebar .api.cascading > .parent:before {
+.sidebar .api.cascading > .active:before {
   position:absolute;
   content : ' ';
   left:10px;
@@ -479,6 +481,19 @@
   border-left: 20px solid transparent;
   border-right: 20px solid transparent;
   border-top: 20px solid @brand-color-4;
+}
+
+.sidebar .api.cascading > .active:nth-child(2):before {
+  position:absolute;
+  content : ' ';
+  left:10px;
+  top:30px;
+  z-index : -1;
+  width: 0; 
+  height: 0; 
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid @brand-color-5;
 }
 /*
 .sidebar .api.cascading .active > ul {
