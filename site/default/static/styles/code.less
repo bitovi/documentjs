@@ -6,7 +6,7 @@ code {
 pre, code, pre *, code * {
 	font-family: "Courier New", Courier, mono;
     font-style: normal;
-    font-weight: normal; 
+    font-weight: bold; 
 }
 pre {
   background-color: #fff;
@@ -51,119 +51,119 @@ pre {
 @media screen {
   /* string content */
   .str {
-    color: #718c00;
+    color:@str-color;
   }
 
   /* a keyword */
   .kwd {
-    color: #8959a8;
+    color:@kwd-color;
   }
 
   /* a comment */
   .com {
-    color: #8e908c;
+    color: @com-color;
   }
 
   /* a type name */
   .typ {
-    color: #4271ae;
+    color: @type-color;
   }
 
   /* a literal value */
   .lit {
-    color: #f5871f;
+    color: @lit-color;
   }
 
   /* punctuation */
   .pun {
-    color: #4d4d4c;
+    color: @pun-color;
   }
 
   /* lisp open bracket */
   .opn {
-    color: #4d4d4c;
+    color: @opn-color;
   }
 
   /* lisp close bracket */
   .clo {
-    color: #4d4d4c;
+    color: @clo-color;
   }
 
   /* a markup tag name */
   .tag {
-    color: #c82829;
+    color: @tag-color;
   }
 
   /* a markup attribute name */
   .atn {
-    color: #f5871f;
+    color: @atn-color;
   }
 
   /* a markup attribute value */
   .atv {
-    color: #3e999f;
+    color: @atv-color;
   }
 
   /* a declaration */
   .dec {
-    color: #f5871f;
+    color: @dec-color;
   }
 
   /* a variable name */
   .var {
-    color: #c82829;
+    color: @var-color;
   }
 
   /* a function name */
   .fun {
-    color: #4271ae;
+    color: @var-color;
   }
 }
   /* Use higher contrast and text-weight for printable form. */
 @media print, projection {
   .str {
-    color: #006600;
+    color: @str-color-pp;
   }
 
   .kwd {
-    color: #006;
+    color: @kwd-color-pp;
     font-weight: bold;
   }
 
   .com {
-    color: #600;
+    color: @com-color-pp;
     font-style: italic;
   }
 
   .typ {
-    color: #404;
+    color: @typ-color-pp;
     font-weight: bold;
   }
 
   .lit {
-    color: #004444;
+    color:@lit-color-pp;
   }
 
   .pun, .opn, .clo {
-    color: #444400;
+    color: @pun-color-pp;
   }
 
   .tag {
-    color: #006;
+    color: @tag-color-pp;
     font-weight: bold;
   }
 
   .atn {
-    color: #440044;
+    color: @atn-color-pp;
   }
 
   .atv {
-    color: #006600;
+    color: @atv-color-pp;
   }
 }
   /* Style */
 pre.prettyprint {
-  background: white;
+  background: @pp-bg;
   font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
   font-size: 12px;
   line-height: 1.5;
