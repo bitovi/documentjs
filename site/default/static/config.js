@@ -24,7 +24,7 @@
 	}());
 
 
-	steal.config({
+	System.config({
 		map: {
 			"jquery/jquery": "jquery",
 			"can/util/util": "can/util/jquery/jquery",
