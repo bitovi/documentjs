@@ -11,9 +11,9 @@ module.exports = function(options, done){
 	return stealTools.build({
 		main: "static",
 		config: __dirname+"/config.js",
+		bundlesPath: __dirname+"/bundles",
 	},{
 		minify: options.minifyBuild === false ? false : true,
-		distDir: __dirname,
 		quiet: true
 	}).then(function(){
 		

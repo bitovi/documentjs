@@ -73,9 +73,7 @@
 				CDN: '{{url.cdn}}'
 			}
 		};
-		steal = {
-			paths: {"bundles/*": "bundles/*.js"}
-		};
+
 	</script>
 	<script type='text/javascript' 
 			data-main="static"
@@ -84,6 +82,7 @@
 	{{else}}
 		src="./static/steal.production.js"
 	{{/staticLocation}}
+	    bundles-path="bundles"
 		></script>
 </body>
 

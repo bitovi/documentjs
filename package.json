@@ -19,8 +19,8 @@
     "comparify": "git://github.com/bitovi/comparify#master"
   },
   "dependencies": {
-    "steal": "0.2.2",
-    "steal-tools": "0.2.3",
+    "steal": "git://github.com/bitovi/steal.git#docs",
+    "steal-tools": "git://github.com/bitovi/steal-tools.git#docs",
     "globule": "~0.1.0",
     "async": "~0.2.7",
     "underscore": "~1.4.4",
