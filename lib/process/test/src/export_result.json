@@ -1,0 +1,12 @@
+{
+	"hello/world": {
+		"type": "module",
+		"description": "A module that says hello!",
+		"exports": ["hello/world#sayHello"]
+	},
+	"hello/world#sayHello": {
+		"type" : "function",
+		"params": [],
+		"description": "Say hello. "
+	}
+}
