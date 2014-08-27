@@ -2,7 +2,7 @@ steal("can/control","./demo_frame.mustache!","jquery","can/observe","./prettify.
 	
 	
 
-return can.Control({
+return can.Control.extend({
 	init: function() {
 		
 		var docConfig = window.docConfig || {};

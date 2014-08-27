@@ -1,6 +1,6 @@
 steal('can/control','jquery','./demo_frame.js',function(Control, $,DemoFrame){
 
-	return Control( {
+	return Control.extend( {
 		init: function() {
 			this.replaceIframes();
 			this.replaceDemos();

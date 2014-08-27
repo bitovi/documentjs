@@ -1,6 +1,6 @@
 steal("can/control","./content_list.mustache!","jquery","can/observe",function(Control, contentList, $){
 
-	return can.Control({
+	return can.Control.extend({
 		init: function() {
 			var sections = [];
 	
