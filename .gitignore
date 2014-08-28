@@ -10,3 +10,5 @@ site/static/build/
 site/static/dist/
 site/templates/
 lib/generate/test/out/
+lib/versions/tmp/
+lib/versions/test/tmp/
