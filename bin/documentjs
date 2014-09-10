@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var document = require("../lib/versions/document");
 
 document(process.cwd(), {}).then(function(){}, function(e){
