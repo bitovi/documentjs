@@ -1,0 +1,6 @@
+{
+	"versions": {
+		"0.0.0" : "git://github.com/bitovi/documentjs#multi-version"
+	},
+	"defaultVersion" : "0.0.0"
+}

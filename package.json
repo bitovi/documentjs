@@ -1,0 +1,33 @@
+{
+  "name": "documentjs.com",
+  "description": "We can do JS better.",
+  "version": "0.0.0",
+  "homepage": "http://documentjs.com",
+  "author": {
+    "name": "Bitovi",
+    "url": "http://bitovi.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/bitovi/documentjs.git",
+    "github": "https://github.com/bitovi/documentjs"
+  },
+  "bugs": {
+    "url": "https://github.com/bitovi/documentjs/issues"
+  },
+  "scripts": {
+    "documentjs" : "./node_modules/.bin/documentjs"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/bitovi/canjs.com/blob/master/LICENSE-MIT"
+    }
+  ],
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "dependencies": {
+    "documentjs": "git://github.com/bitovi/documentjs#multi-version"
+  }
+}
