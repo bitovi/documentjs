@@ -11,7 +11,7 @@
   ],
   "main": "main.js",
   "bin": {
-    "documentjs" : "node ./bin/documentjs"
+    "documentjs" : "./bin/documentjs"
   },
   "devDependencies": {
     "mocha": ">= 1.6.0",
