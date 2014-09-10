@@ -1,7 +1,7 @@
 {
   "name": "documentjs",
   "description": "A JavaScript documentation engine",
-  "version": "4.0.0",
+  "version": "0.0.1",
   "maintainers": [
     {
       "name": "Bitovi",
@@ -10,6 +10,9 @@
     }
   ],
   "main": "main.js",
+  "bin": {
+    "documentjs" : "./bin/documentjs"
+  },
   "devDependencies": {
     "mocha": ">= 1.6.0",
     "qunit-mocha-ui": "*",
