@@ -10,7 +10,7 @@ require("../lib/generate/test/generate_test");
 
 require("../lib/versions/test/get_test");
 
-require("../lib/versions/test/get_and_document_test");
+require("../lib/versions/test/document_test");
 
 /*
 var buildStaticDist = require('../lib/generate/build_static_dist');
