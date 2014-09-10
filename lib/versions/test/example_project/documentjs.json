@@ -1,5 +1,8 @@
 {
-	"api": {
-		"parent": "mylib"
+	"sites": {
+		"api": {
+			"parent": "mylib"
+		}
 	}
+	
 }
