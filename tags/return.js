@@ -2,7 +2,7 @@ var typer = require('./helpers/typer');
 
 	/**
 	 * @constructor DocumentJS.tags.return @return
-	 * @parent DocumentJS
+	 * @parent DocumentJS.tags
 	 * 
 	 * Describes a function's return value.
 	 * 

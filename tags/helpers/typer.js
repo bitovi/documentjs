@@ -1,7 +1,6 @@
 var tree = require("./tree");
 	/**
 	 * @typedef {STRING} documentjs/type TYPE
-	 * @parent DocumentJS
 	 * 
 	 * `TYPE` represents a [Google Closure type expression](https://developers.google.com/closure/compiler/docs/js-for-compiler#types).
 	 * 

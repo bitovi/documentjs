@@ -10,7 +10,7 @@ var getParent = require("./helpers/getParent"),
 	 * Document a constructor function.
 	 * 
 	 * @signature `@constructor NAME [TITLE]`
-	 * @parent DocumentJS
+	 * @parent DocumentJS.tags
 	 */
 	module.exports = {
 		codeMatch: function(code){

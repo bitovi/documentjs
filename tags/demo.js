@@ -1,6 +1,6 @@
 	/**
 	 * @constructor DocumentJS.tags.demo @demo
-	 * @parent DocumentJS 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * @description Placeholder for an application demo.
 	 * 

@@ -1,7 +1,7 @@
 	/**
 	 * @constructor DocumentJS.tags.inherits @inherits
 	 * @tag documentation
-	 * @parent DocumentJS
+	 * @parent DocumentJS.tags
 	 * 
 	 * Indicates that the current [documentjs/DocObject DocObject] inherits from another [documentjs/DocObject DocObject].
 	 * 

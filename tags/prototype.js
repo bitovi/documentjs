@@ -3,7 +3,7 @@ var getParent = require('./helpers/getParent'),
 
 	/**
 	 * @constructor DocumentJS.tags.prototype @prototype
-	 * @parent DocumentJS
+	 * @parent DocumentJS.tags
 	 * 
 	 * Declares that [documentjs/tags/property @property] and
 	 * [documentjs/tags/function @function] tags belong

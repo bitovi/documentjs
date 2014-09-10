@@ -1,6 +1,6 @@
 	/**
 	 * @constructor DocumentJS.tags.signature @signature
-	 * @parent DocumentJS
+	 * @parent DocumentJS.tags
 	 * 
 	 * Specifies a signature for a [documentjs/tags/function @function]
 	 * but can work with any other tag.

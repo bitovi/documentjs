@@ -1,6 +1,6 @@
 	/**
 	 * @constructor DocumentJS.tags.tag @tag
-	 * @parent DocumentJS
+	 * @parent DocumentJS.tags
 	 * @hide
 	 * Tags for searching.
 	 * 

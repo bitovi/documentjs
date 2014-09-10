@@ -1,7 +1,7 @@
 	/**
-	 * @constructor DocumentJS.tags.link @liink
+	 * @constructor DocumentJS.tags.link @link
 	 * @tag documentation
-	 * @parent DocumentJS
+	 * @parent DocumentJS.tags
 	 * 
 	 * @description 
 	 * 

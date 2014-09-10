@@ -1,7 +1,7 @@
 	/**
 	 * @constructor DocumentJS.tags.download @download
 	 * @tag documentation
-	 * @parent DocumentJS
+	 * @parent DocumentJS.tags
 	 * 
 	 * @description Adds a download link.
 	 * 

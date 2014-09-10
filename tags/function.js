@@ -6,7 +6,7 @@ var getParent = require('./helpers/getParent'),
 	/**
 	 * @constructor DocumentJS.tags.function @function
 	 * 
-	 * @parent DocumentJS
+	 * @parent DocumentJS.tags
 	 * 
 	 * @description Specifies the comment is for a function. Use [DocumentJS.tags.param @param] to
 	 * specify the arguments of a function.

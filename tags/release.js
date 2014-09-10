@@ -1,7 +1,7 @@
 	/**
 	 * @constructor DocumentJS.tags.release @release
 	 * @release 3.3
-	 * @parent DocumentJS
+	 * @parent DocumentJS.tags
 	 * 
 	 * Specifies the release of a [DocumentJS.tags.param @param],
 	 * [documentjs/tags/signature @signature], 

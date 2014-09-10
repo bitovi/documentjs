@@ -2,7 +2,7 @@ var getParent = require('./helpers/getParent'),
 	tnd = require('./helpers/typeNameDescription');
 	/**
 	 * @constructor DocumentJS.tags.group @group
-	 * @parent DocumentJS
+	 * @parent DocumentJS.tags
 	 *
 	 * Declares that other tags belong to a group within
 	 * the preceeding [DocumentJS.tags.constructor @constructor].

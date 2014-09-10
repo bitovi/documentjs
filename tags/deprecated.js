@@ -2,7 +2,7 @@ var tnd = require('./helpers/typeNameDescription')
 
 /**
  * @constructor DocumentJS.tags.deprecated @deprecated 
- * @parent DocumentJS
+ * @parent DocumentJS.tags
  * 
  * @description 
  * 

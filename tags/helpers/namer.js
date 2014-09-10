@@ -4,7 +4,6 @@ var tree = require('./tree'),
 	
 	/**
 	 * @function documentjs/name NAME
-	 * @parent DocumentJS
 	 * 
 	 * Provides the NAME of a [documentjs/tags/param @param] or 
 	 * [documentjs/tags/param @option]. 

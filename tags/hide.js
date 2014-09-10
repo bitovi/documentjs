@@ -1,6 +1,6 @@
 	/**
 	 * @constructor DocumentJS.tags.hide @hide
-	 * @parent DocumentJS
+	 * @parent DocumentJS.tags
 	 * 
 	 * Hides the comment from the navigation.
 	 * 

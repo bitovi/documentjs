@@ -1,7 +1,7 @@
 var converter = require('../lib/showdown');
 /**
  * @constructor DocumentJS.tags.body @body
- * @parent DocumentJS
+ * @parent DocumentJS.tags
  * 
  * @description 
  * 

@@ -1,6 +1,6 @@
 	/**
 	 * @constructor DocumentJS.tags.module @module
-	 * @parent DocumentJS
+	 * @parent DocumentJS.tags
 	 * @hide
 	 * 
 	 * Adds to another plugin. 

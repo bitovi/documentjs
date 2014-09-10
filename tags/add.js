@@ -1,7 +1,7 @@
 
 /**
  * @constructor DocumentJS.tags.add @add 
- * @parent DocumentJS
+ * @parent DocumentJS.tags
  * 
  * @description 
  * 

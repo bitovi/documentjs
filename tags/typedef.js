@@ -34,7 +34,7 @@ var typer = require('./helpers/typer'),
 	/**
 	 * @constructor DocumentJS.tags.typedef @typedef
 	 * @tag documentation
-	 * @parent DocumentJS 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Declares an alias for a more complex type. That alias can
 	 * be used in [documentjs/type TYPE] declarations.

@@ -1,7 +1,7 @@
 	/**
 	 * @constructor DocumentJS.tags.description @description
 	 * @tag documentation
-	 * @parent DocumentJS 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * @description Provide a short description.
 	 * 

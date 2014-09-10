@@ -17,7 +17,7 @@ var converter = require("../lib/showdown"),
 	/**
 	 * @constructor DocumentJS.tags.param @param
 	 * @tag documentation
-	 * @parent DocumentJS 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Adds parameter information to a [documentjs/tags/function @function] or
 	 * [documentjs/tags/signature @signature].

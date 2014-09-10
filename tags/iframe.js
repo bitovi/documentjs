@@ -1,6 +1,6 @@
 	/**
 	 * @constructor DocumentJS.tags.iframe @iframe
-	 * @parent DocumentJS
+	 * @parent DocumentJS.tags
 	 * 
 	 * Adds an iframe to the page. It can be added to the 
 	 * [documentjs/tags/body @body] or any other tags that

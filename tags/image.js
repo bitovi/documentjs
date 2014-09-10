@@ -1,6 +1,6 @@
 	/**
 	 * @constructor DocumentJS.tags.image @image
-	 * @parent DocumentJS
+	 * @parent DocumentJS.tags
 	 * @hide
 	 * 
 	 * Adds an image.

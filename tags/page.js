@@ -1,6 +1,6 @@
 	/**
 	 * @constructor DocumentJS.tags.page @page
-	 * @parent DocumentJS
+	 * @parent DocumentJS.tags
 	 * 
 	 * Declares this comment as a page. Use pages to
 	 * represent content that doesn't belong to part of the

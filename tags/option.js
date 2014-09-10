@@ -50,7 +50,7 @@ var typer = require('./helpers/typer'),
 	/**
 	 * @constructor DocumentJS.tags.option @option
 	 * @tag documentation
-	 * @parent DocumentJS 
+	 * @parent DocumentJS.tags 
 	 * 
 	 * Details the properties of an object or the arguments of a function
 	 * in a [DocumentJS.tags.param @param] tag.

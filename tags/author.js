@@ -1,7 +1,7 @@
 /**
  * @constructor DocumentJS.tags.author @author
  * @tag documentation
- * @parent DocumentJS
+ * @parent DocumentJS.tags
  * 
  * @description 
  * 

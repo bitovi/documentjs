@@ -2,7 +2,7 @@ var getParent = require('./helpers/getParent'),
 	tnd = require('./helpers/typeNameDescription');
 	/**
 	 * @constructor DocumentJS.tags.static @static
-	 * @parent DocumentJS
+	 * @parent DocumentJS.tags
 	 * @hide
 	 * 
 	 * Declares that [documentjs/tags/property @property] and
