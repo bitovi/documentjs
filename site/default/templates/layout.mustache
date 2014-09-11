@@ -64,17 +64,11 @@
 			<a class="brand javascriptmvc" href="index.html"></a>
 		</nav>
 	</footer>
+	{{#if pageConfig}}
 	<script type="text/javascript">
-		window.Bitovi = {
-			URL: {
-				BUILDER: '{{url.builder}}',
-				BUILDER_DATA: '{{url.builderData}}',
-				BITHUB: '{{url.bithub}}',
-				CDN: '{{url.cdn}}'
-			}
-		};
-
+		var pageConfig = {{{pageConfig}}};
 	</script>
+	{{/if}}
 	<script type='text/javascript' 
 			data-main="static"
 	{{#staticLocation}}
