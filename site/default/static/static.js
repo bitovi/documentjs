@@ -1,7 +1,8 @@
 steal("./content_list.js",
 	"./frame_helper.js",
+	"./versions.js",
 	"./styles/styles.less!",
-	"./prettify",function(ContentList, FrameHelper){
+	"./prettify",function(ContentList, FrameHelper, Versions){
 	var codes = document.getElementsByTagName("code");
 	for(var i = 0; i < codes.length; i ++){
 		var code = codes[i];
@@ -12,5 +13,6 @@ steal("./content_list.js",
 	prettyPrint();
 	
 	new ContentList(".contents");
-	new FrameHelper(".docs")
+	new FrameHelper(".docs");
+	new Versions( $(".sidebar-title:first") );
 });
