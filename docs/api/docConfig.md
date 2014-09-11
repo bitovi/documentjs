@@ -3,8 +3,9 @@
 
 Configures the behavior of DocumentJS.
 
-@option {DocumentJS.versionsConfig} versions A map of version names
-to their location.
+@option {Object<String,DocumentJS.resourceConfig|String>} versions A map of version names
+to their location or to a [DocumentJS.resourceConfig resourceConfig] that specifies where and how
+to install the release.
 
 @option {String} defaultVersion The default version that will be copied
 into the `defaultDest` location. This is so users can go to `http://site.com/api`

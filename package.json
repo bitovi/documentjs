@@ -36,7 +36,8 @@
     "less": "^1.7.0",
     "glob" : "~4.0.3",
     "esprima": "git://github.com/ariya/esprima#master",
-    "npm": "^1.4.16"
+    "npm": "^1.4.16",
+    "github-download": "^0.3.0"
   },
   "homepage": "http://javascriptmvc.com",
   "repository": {
