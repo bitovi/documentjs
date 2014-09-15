@@ -32,12 +32,12 @@
 			"mustache": "can/view/mustache/system"
 		},
 		paths: {
-			"jquery": "../../../node_modules/canjs/lib/jquery.1.10.2.js",
+			"jquery": "../../../../node_modules/canjs/lib/jquery.1.10.2.js",
 			"mootools/mootools.js": "lib/mootools-core-1.4.5.js",
 			"dojo/dojo.js": "util/dojo/dojo-1.8.1.js",
 			"yui/yui.js": "lib/yui-3.7.3.js",
 			"zepto/zepto.js": "bower_components/zepto/zepto.js",
-			"can/*": "../../../node_modules/canjs/*.js",
+			"can/*": "../../../../node_modules/canjs/*.js",
 			"jquerypp/": "http://jquerypp.com/release/1.0.1/steal/",
 			"benchmark": "bower_components/benchmark/benchmark.js",
 			"jqueryui/jqueryui.js" :"http://code.jquery.com/ui/1.10.4/jquery-ui.js"

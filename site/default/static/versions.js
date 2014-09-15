@@ -1,7 +1,17 @@
 steal("can/control", "can/util","jquery",function(Control, can, $){
 
 	var pageConfig = window.pageConfig || {};
-
+	var combine = function(first, second){
+		var right = first[first.length -1],
+			left = second[0];
+		if(right != "/" && left != "/") {
+			return first+"/"+second;
+		} else if(right == "/" && left == "/") {
+			return left+second.substr(1);
+		} else {
+			return first+second;
+		}
+	};
 	return Control.extend({
 		setup: function(el, options){
 			el = $(el);
@@ -28,16 +38,19 @@ steal("can/control", "can/util","jquery",function(Control, can, $){
 			});
 		},
 		addOptions: function(versions){
-			self.versions = versions;
+			this.versions = versions;
 			var html = "";
 			can.each(versions, function(version){
-				html += "<option value='"+version.number+"'"+
+				html += "<option value='"+version+"'"+
 							(version == pageConfig.version ? 
 								" SELECTED" : "") +
 						">"+ version+
 						"</option>";
 			});
 			this.element.html(html).fadeIn();
+		},
+		getVersionedPath: function(version){
+			return this.docConfig.dest.replace(/<%=\s*version\s*%>/,""+version);
 		},
 		'change': function(el, ev) {
 			var newVersion = this.element.val(),
@@ -59,15 +72,28 @@ steal("can/control", "can/util","jquery",function(Control, can, $){
 	
 			// going old to new
 			if( isVersioned && isNewCurrentVersion )  {
-				window.location = loc.replace("/"+version+"/","/");
+				var afterVersion = loc.replace(new RegExp(".*"+version),"");
+				
+				var toDocumentJSON = steal.joinURIs(window.location.pathname, 
+					pageConfig.docConfigDest );
+					
+				var toDefaultDest = steal.joinURIs(toDocumentJSON,this.docConfig.defaultDest);
+				
+				window.location = toDefaultDest+afterVersion;
 				
 			// going new to old
 			} else if( !isVersioned ) {
-				if ( loc.indexOf("/docs/") >= 0 ) {
-					window.location = loc.replace("/docs/","/"+newVersion+"/docs/");
-				} else {
-					window.location = loc.replace("/guides/","/"+newVersion+"/guides/");
-				}
+				// need to preserve where we are
+				var toDocumentJSON = steal.joinURIs(window.location.pathname, 
+					pageConfig.docConfigDest );
+				var toDefaultDest = steal.joinURIs(toDocumentJSON,this.docConfig.defaultDest);
+				// get what's added after the default dest
+				var after = window.location.pathname.replace( toDefaultDest, "");
+				// get the versioned part
+				var versioned = combine(toDefaultDest, this.getVersionedPath(newVersion));
+
+				window.location = versioned+after;
+				
 			} else {
 				// going old to old
 				
