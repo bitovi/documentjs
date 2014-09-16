@@ -1,11 +1,11 @@
 steal("can/control", "can/util","jquery",function(Control, can, $){
-
-	var pageConfig = window.pageConfig || {};
+	var dd = window.docData || {};
+	var pageConfig = dd.pageConfig || {};
 	var combine = function(first, second){
 		var right = first[first.length -1],
 			left = second[0];
 		if(right != "/" && left != "/") {
-			return first+"/"+second;
+			return steal.joinURIs(first,second);
 		} else if(right == "/" && left == "/") {
 			return left+second.substr(1);
 		} else {
@@ -50,7 +50,7 @@ steal("can/control", "can/util","jquery",function(Control, can, $){
 			this.element.html(html).fadeIn();
 		},
 		getVersionedPath: function(version){
-			return this.docConfig.dest.replace(/<%=\s*version\s*%>/,""+version);
+			return this.docConfig.versionDest.replace(/<%=\s*version\s*%>/,""+version);
 		},
 		'change': function(el, ev) {
 			var newVersion = this.element.val(),
@@ -90,7 +90,7 @@ steal("can/control", "can/util","jquery",function(Control, can, $){
 				// get what's added after the default dest
 				var after = window.location.pathname.replace( toDefaultDest, "");
 				// get the versioned part
-				var versioned = combine(toDefaultDest, this.getVersionedPath(newVersion));
+				var versioned = combine(toDocumentJSON, this.getVersionedPath(newVersion));
 
 				window.location = versioned+after;
 				
