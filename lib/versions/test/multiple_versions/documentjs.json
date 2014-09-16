@@ -6,5 +6,5 @@
 	},
 	"defaultVersion": "2.0.0",
 	"defaultDest": "../tmp/multiple_versions",
-	"dest": "<%= version %>"
+	"versionDest": "../tmp/multiple_versions/<%= version %>"
 }

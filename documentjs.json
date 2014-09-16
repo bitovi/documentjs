@@ -1,6 +1,6 @@
 {
 	"sites": {
-		"api": {
+		"docs": {
 			"pattern": "{docs,tags}/**/*.{js,md}"
 		}
 	}
