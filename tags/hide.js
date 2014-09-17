@@ -29,7 +29,7 @@
 				if(!name) {
 					this.hide = true;
 				} else {
-					this["show"+name[0].toUpperCase+name.substr(1).toLowerCase()] = false;
+					this["show"+name[0].toUpperCase()+name.substr(1).toLowerCase()] = false;
 				}
 			}
 			
