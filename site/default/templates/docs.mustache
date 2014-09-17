@@ -1,4 +1,5 @@
 <div class="container api">
+	{{#if showSidebar}}
 	<nav class="sidebar">
 		{{#if enableSearch}}
 		<div class="search-wrapper">
@@ -9,10 +10,13 @@
 		{{/if}}
 		{{> menu.mustache}}
 	</nav>
+	{{/if}}
 	<article class="content docs">
+		{{#if showTitle}}
 		<section class="title">
 			{{> title.mustache}}
 		</section>
+		{{/if}}
 
 		<section class="contents">
 		</section>

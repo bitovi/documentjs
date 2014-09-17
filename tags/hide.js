@@ -14,12 +14,24 @@
 	 *  *|
 	 *  _setProperty: function( prop ) {
 	 * @codeend
+	 * 
+	 * @signaure `@hide SECTION`
+	 * 
+	 * Hides some section.  To hide the sidebar 
+	 * write: `@@hide sidebar`. To hide the title write `@@hide title`.
 	 */
 	module.exports = {
 		add: function( line ) {
-			var m = line.match(/^\s*@hide/)
+			var m = line.match(/^\s*@hide\s*([\w\d]*)/);
+			
 			if ( m ) {
-				this.hide = true;
+				var name = m[1]
+				if(!name) {
+					this.hide = true;
+				} else {
+					this["show"+name[0].toUpperCase+name.substr(1).toLowerCase()] = false;
+				}
 			}
+			
 		}
 	};
