@@ -19,22 +19,25 @@ steal("can/control", "can/util","jquery",function(Control, can, $){
 			return Control.prototype.setup.call(this, container, options);
 		},
 		init: function(){
-			var self = this;
+			if(pageConfig.version) {
+				var self = this;
+				
+				$.ajax(pageConfig.docConfigDest || "../../documentjs.json", {
+					success: function(docConfig){
+						self.docConfig = docConfig;
+						var versions = [];
+						$.each(docConfig.versions||[], function(name){
+							versions.push(name);
+						});
+						self.addOptions(versions);
+					},
+					error: function(){
+						// self.addOptions(["0.0.0","0.0.1"]);	
+					},
+					dataType: "json"
+				});
+			}
 			
-			$.ajax(pageConfig.docConfigDest || "../../documentjs.json", {
-				success: function(docConfig){
-					self.docConfig = docConfig;
-					var versions = [];
-					$.each(docConfig.versions||[], function(name){
-						versions.push(name);
-					});
-					self.addOptions(versions);
-				},
-				error: function(){
-					// self.addOptions(["0.0.0","0.0.1"]);	
-				},
-				dataType: "json"
-			});
 		},
 		addOptions: function(versions){
 			this.versions = versions;
