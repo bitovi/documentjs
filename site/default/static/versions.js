@@ -1,6 +1,5 @@
 steal("can/control", "can/util","jquery",function(Control, can, $){
-	var dd = window.docData || {};
-	var pageConfig = dd.pageConfig || {};
+	var pageConfig = window.docData || {};
 	var combine = function(first, second){
 		var right = first[first.length -1],
 			left = second[0];
