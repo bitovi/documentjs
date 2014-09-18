@@ -8,7 +8,9 @@ var _ = require("underscore");
 
 
 var options = _.extend({}, yargs.argv);
-options.only = only(options._);
+if(options._){
+	options.only = only(options._);
+}
 delete options._;
 
 document({path: process.cwd()}, undefined, options).then(function(){}, function(e){
