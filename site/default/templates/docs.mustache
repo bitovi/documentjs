@@ -38,16 +38,16 @@
 			{{{docLinks description}}}
 		</section>
 
-		{{#signatures}}
+		{{#if signatures}}
 		<section class="signature">
 			{{> signature.mustache}}
 		</section>
-		{{/signatures}}
-
-		{{#if types}}
-		<section class='primary-options'>
-			{{> types.mustache}}
-		</section>
+		{{else}}
+			{{#if types}}
+			<section class='primary-options'>
+				{{> types.mustache}}
+			</section>
+			{{/if}}
 		{{/if}}
 		
 		{{#if params}}
