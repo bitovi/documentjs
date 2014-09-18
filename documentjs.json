@@ -1,7 +1,7 @@
 {
 	"sites": {
 		"docs": {
-			"pattern": "{docs,tags}/**/*.{js,md}"
+			"glob": "{docs,tags}/**/*.{js,md}"
 		}
 	}
 	
