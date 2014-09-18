@@ -1,9 +1,19 @@
 #!/usr/bin/env node
 
-var document = require("../lib/versions/document");
+var yargs = require("yargs")
+	.alias('v','version')
+	.describe('v','Document a specific version')
+	.alias('s','site')
+	.describe('v','Document a specific site');
 
+
+var document = require("../lib/versions/document");
+console.log(yargs.argv);
+
+/*
 document(process.cwd()).then(function(){}, function(e){
 	setTimeout(function(){
 		throw e;
 	},1);
 });
+*/

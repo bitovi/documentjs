@@ -11,3 +11,4 @@ site/templates/
 lib/generate/test/out/
 lib/versions/tmp/
 lib/versions/test/tmp/
+lib/versions/test/api/
