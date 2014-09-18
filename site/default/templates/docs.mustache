@@ -39,9 +39,11 @@
 		</section>
 
 		{{#if signatures}}
-		<section class="signature">
-			{{> signature.mustache}}
-		</section>
+			{{#signatures}}
+				<section class="signature">
+					{{> signature.mustache}}
+				</section>
+			{{/signatures}}
 		{{else}}
 			{{#if types}}
 			<section class='primary-options'>
