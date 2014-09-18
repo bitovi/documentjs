@@ -1,15 +1,17 @@
 @page DocumentJS
-@group DocumentJS.api apis
-@group DocumentJS.guides guides
+@group DocumentJS.guides 0 guides
+@group DocumentJS.apis.config 2 Configuration APIS
+@group DocumentJS.apis.document 3 Document APIS
+@group DocumentJS.apis.generate 3 Generate APIS
 
-DocumentJS creates detailed and beautiful JavaScript 
-documentation. 
+DocumentJS creates beautiful, articulate, multi-versioned documentation. With DocumentJS, you can:
 
  - Write documentation inline or in markdown files. 
- - Specify it's behavior precisely with JSDoc 
+ - Specify your code's behavior precisely with JSDoc
    and [Google Closure Compiler](https://developers.google.com/closure/compiler/docs/js-for-compiler) 
    annotations.
- - Export it as HTML, a dash-docset, TypeScript definition, or a custom format.
+ - Customize your site's theme and layout.
+ - Generate docs for each version of your code.
 
 ## Quick Start
 

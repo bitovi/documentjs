@@ -2,33 +2,6 @@ var typer = require('./helpers/typer'),
 	tree = require('./helpers/tree'),
 	namer = require('./helpers/namer'),
 	tnd = require('./helpers/typeNameDescription');
-
-	var getOptions = function(param){
-		for(var i =0; i < param.types.length; i++) {
-			if( param.types[i].options ) {
-				return param.types[i].options;
-			}
-		}
-	}
-
-	var getParams = function(param){
-		for(var i =0; i < param.types.length; i++) {
-			if( param.types[i].params ) {
-				return param.types[i].params;
-			}
-		}
-	}
-
-	var getOrMakeOptionByName = function(options, name){
-		for(var i =0; i < options.length; i++) {
-			if( options[i].name === name ) {
-				return options[i];
-			}
-		}
-		var option = {name: name}
-		options.push(option);
-		return option;
-	}
 	
 
 	/**

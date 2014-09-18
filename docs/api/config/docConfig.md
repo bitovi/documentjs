@@ -1,5 +1,5 @@
 @typedef {{}} DocumentJS.docConfig docConfig
-@parent DocumentJS.api
+@parent DocumentJS.apis.config
 
 Configures the behavior of DocumentJS.
 
@@ -14,13 +14,15 @@ to find the latest docs and not `http://site.com/2.0.1/api`.
 @option {String} [defaultDest="."] The location of where the default docs should
 be rendered to.
 
-@option {String} dest The templated directory name of where each version's download
+@option {String} versionDest The templated directory name of where each version's download
 and docs should be created.  The default is `"<%= version%>"`.  This means
 that a _2.0.1_ version name will be downloaded to a _2.0.1_ folder. DocumentJS
 will then look for that version's `documentjs.json` and run that.
 
 @option {Object<String,DocumentJS.siteConfig>} sites A map of site names and
 options that configure their behavior.
+
+@body
 
 ## Use
 

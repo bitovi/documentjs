@@ -1,7 +1,7 @@
 @typedef {{}} DocumentJS.siteConfig siteConfig
-@parent DocumentJS.api
+@parent DocumentJS.apis.config
 
-@option {Glob|Object} [pattern="**/*.{js,md}"] Configures the files search for
+@option {Glob|Object} [glob="**/*.{js,md}"] Configures the files search for
 to find documentation.  By default the pattern `"**/*.{js,md}"` is used, which
 searches for all `.js` and `.md` files within the project.
 

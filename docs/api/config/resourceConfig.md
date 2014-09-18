@@ -1,5 +1,5 @@
 @typedef {{}} DocumentJS.resourceConfig resourceConfig
-@parent DocumentJS.api
+@parent DocumentJS.apis.config
 
 @option {Boolean} [npmInstall=false] Use npm to install resource 
 and all of its dependencies.  By default, this is false.

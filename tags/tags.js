@@ -1,6 +1,6 @@
 /**
  * @property {Object} DocumentJS.tags tags
- * @parent DocumentJS.api
+ * @parent DocumentJS.apis.document 0
  * A tag adds additional information to the comment being processed.
  * For example, if you want the current comment to include the author,
  * include an `@@author` tag.

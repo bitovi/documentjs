@@ -1,6 +1,7 @@
 	/**
 	 * @constructor DocumentJS.tags.plugin @plugin
 	 * @parent DocumentJS.tags
+	 * @hide
 	 * 
 	 * Specifies the parent 
 	 * [documentjs/DocObject DocObject]'s name. The

@@ -1,29 +1,49 @@
+var typer = require('./helpers/typer'),
+	tree = require('./helpers/tree'),
+	namer = require('./helpers/namer'),
+	tnd = require('./helpers/typeNameDescription');
+	
+
 	/**
 	 * @constructor DocumentJS.tags.module @module
-	 * @parent DocumentJS.tags
-	 * @hide
+	 * @tag documentation
+	 * @parent DocumentJS.tags 
 	 * 
-	 * Adds to another plugin. 
+	 * Declares the export value for a module.
 	 * 
-	 * ###Example:
+	 * @signature `@module {TYPE} NAME [TITLE]`
 	 * 
 	 * @codestart
-	 * /**
-	 *  * @tag core
-	 *  * @plugin jquery/controller
-	 *  * @download jquery/dist/jquery.controller.js
-	 *  * @test jquery/controller/qunit.html
-	 *  * ...
-	 *  *|
-	 *  $.Class.extend("jQuery.Controller",
-	 * @codeend
+     * /**
+     *  * @module {{}} lib/componentProps props
+     *  * @option {String} name The name of the component.
+     *  * @option {String} title The title of the component.
+     *  *|
+	 *  @codeend
 	 * 
-	 * ###End Result:
+	 * @param {documentjs/type} [TYPE] A [documentjs/type type expression]. This
+	 * is typically an object specified like: `{{}}` or a function like `{function}`.  
 	 * 
-	 * @image site/images/plugin_tag_example.png
+	 * @param {String} NAME The name of the type.
+	 * 
+	 * @param {String} TITLE The title of the type used for display purposes.
 	 */
 	module.exports = {
 		add: function( line ) {
-			this["module"] = line.match(/@module ([^ ]+)/)[1];
+			var prevParam = this;
+			// start processing
+			
+			var data = tnd(line);
+			if(!data.name){
+				print("LINE: \n" + line + "\n does not match @typedef [{TYPE}] NAME TITLE");
+			}
+			this.type = "module"
+			this.title = data.description;
+			delete data.description
+			
+			for(var prop in data){
+				this[prop] =  data[prop];
+			}
 		}
-	}
+	};
+

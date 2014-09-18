@@ -110,7 +110,7 @@ var typer = require('./helpers/typer'),
 				data = tnd(line);
 			
 			// start processing
-			if(this.type == "typedef"){
+			if(this.type == "typedef" || this.type === "module"){
 				// Typedef's can have option values, but those values can be objects
 				// with options.
 				// So, we should check in options objects first
