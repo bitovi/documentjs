@@ -23,7 +23,8 @@ steal('can/control','jquery','./demo_frame.js',function(Control, $,DemoFrame){
 			// @demo can/control/control.html 400
 			// <div class="demo_wrapper" data-demo-src="can/control/control.html"></div>
 			$('.demo_wrapper', this.element).each(function() {
-				var wrapper = $(this);
+				var wrapper = $(this),
+					iframe = $('<iframe src="../' + wrapper.data('demoSrc') + '">');
 				new DemoFrame(wrapper);
 				
 				if(wrapper.data('demoHeight')) {
