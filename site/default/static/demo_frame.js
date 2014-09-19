@@ -60,7 +60,11 @@ return can.Control.extend({
 				setTimeout( arguments.callee, 1000 )
 			}
 			
-			resizeIframe()
+			if(!self.options.height) {
+				resizeIframe();
+			} else {
+				iFrame.height(self.options.height);
+			}
 			
 			
 			

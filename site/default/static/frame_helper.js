@@ -23,13 +23,10 @@ steal('can/control','jquery','./demo_frame.js',function(Control, $,DemoFrame){
 			// @demo can/control/control.html 400
 			// <div class="demo_wrapper" data-demo-src="can/control/control.html"></div>
 			$('.demo_wrapper', this.element).each(function() {
-				var wrapper = $(this),
-					iframe = $('<iframe src="../' + wrapper.data('demoSrc') + '">');
-				new DemoFrame(wrapper);
-				
-				if(wrapper.data('demoHeight')) {
-					iframe.height(wrapper.data('demoHeight'));
-				}
+				var wrapper = $(this);
+				new DemoFrame(wrapper, {
+					height: wrapper.data('demoHeight')
+				});
 			});
 		}
 	});
