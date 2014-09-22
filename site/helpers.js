@@ -274,17 +274,14 @@ module.exports = function(data, config, getCurrent){
 			}
 		},
 		or: function(){
-			var truthy = false;
-			for(var i = 0 ; i < arguments.length; i++) {
+			var last = arguments.length -1,
+				options = arguments[last];
+			for(var i = 0 ; i < last; i++) {
 				if(arguments[i]) {
-					if(arguments[i].fn) {
-						return arguments[i].inverse(this);
-					} else {
-						return arguments[i].fn(this);
-					}
+					return options.fn(this);
 				}
 			}
-			return arguments[i-1].inverse(this);
+			return options.inverse(this);
 		},
 		notEqual: function( first, second, options ) {
 			if(first !== second){
