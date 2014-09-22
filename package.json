@@ -16,7 +16,7 @@
     "url": "https://github.com/bitovi/documentjs/issues"
   },
   "scripts": {
-    "documentjs" : "./node_modules/.bin/documentjs"
+    "documentjs" : "documentjs"
   },
   "licenses": [
     {

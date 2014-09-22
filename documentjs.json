@@ -2,5 +2,17 @@
 	"versions": {
 		"0.0.0" : "git://github.com/bitovi/documentjs#multi-version"
 	},
-	"defaultVersion" : "0.0.0"
+	"defaultVersion" : "0.0.0",
+	"siteDefaults": {
+		"templates": "theme/templates"
+	},
+	"sites": {
+		"pages": {
+			"glob": "_pages/*.md",
+			"dest": ".",
+			"forceBuild": true,
+			"pageConfig": {"page":"index"},
+			"minifyBuild": false
+		}
+	}
 }
