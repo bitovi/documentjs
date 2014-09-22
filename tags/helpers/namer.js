@@ -1,5 +1,6 @@
 var tree = require('./tree'),
-	typer = require("./typer");
+	typer = require("./typer"),
+	_ = require("underscore");
 
 	
 	/**
@@ -63,20 +64,23 @@ var tree = require('./tree'),
 		} 
 	};
 	
-	
-	var process = function(children, obj){
+	var getAll = function(children, obj){
 		
+	};
+	
+	var process = function(children, obj, state){
+		state = state || {};
 		if(!children || !children.length){
 			return obj;
 		} else {
-
+		
 			switch(children[0].token) {
 				case "=": 
 					obj.optional = true;
 					if(children[1]){
 						obj.defaultValue = children[1].token;
 					}
-					process(children.slice(2), obj);
+					process(children.slice(2), obj,_.extend(state,{inDefaultValue: true}));
 					break;
 				
 				case "?": 
@@ -109,7 +113,7 @@ var tree = require('./tree'),
 							} else {
 								type.params.push(
 									process(typeChildren, {})
-								)
+								);
 							}
 						});
 					}
@@ -140,7 +144,7 @@ var tree = require('./tree'),
 							process(typeChildren.slice(2), option)
 						}
 						type.options.push(option)
-					})
+					});
 					break;
 					
 				case "(": // params
@@ -164,8 +168,19 @@ var tree = require('./tree'),
 					break;
 					
 				default:
-					obj.name = children[0].token;
-					process(children.slice(1), obj);
+					if(state.inDefaultValue) {
+						// once in the default state
+						// add everything to the defaultValue
+						obj.defaultValue += children[0].token;
+						if(children[0].children) {
+							process(children[0].children, obj,state);
+							obj.defaultValue += tree.matches[children[0].token];
+						}
+					} else {
+						obj.name = children[0].token;
+					}
+					
+					process(children.slice(1), obj, state);
 					
 			}
 		} 
@@ -173,7 +188,7 @@ var tree = require('./tree'),
 	};
 
 	module.exports = {
-		tokens: ["\\?", "\\!", "function", "\\.\\.\\.", ",", "\\:", "\\|", "="],
+		tokens: ["\\?", "\\!", "\\=","function", "\\.\\.\\.", ",", "\\:", "\\|", "="],
 		process: process,
 		name: function(str, typeData){
 			return process(this.tree(str), typeData)

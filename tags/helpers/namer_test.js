@@ -81,6 +81,11 @@ describe("documentjs/tags/helpers/namer", function(){
 		assert.deepEqual(namer.name("\\(args\\...\\)",{}),{
 			name: "(args...)"
 		});
+		assert.deepEqual(namer.name("[foo='<%\\=bar%>']",{}),{
+			name: "foo",
+			optional: true,
+			defaultValue: "'<%=bar%>'"
+		});
 		//assert.deepEqual(namer.name("\\...",{}),{
 		//	name: "..."
 		//});

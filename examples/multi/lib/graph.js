@@ -1,5 +1,5 @@
 /**
- * @module {function} multi/lib/graph
+ * @module {function():multi/lib/graph} multi/lib/graph
  * @parent multi.modules
  * @group multi/lib/graph.types types
  * 
@@ -7,7 +7,7 @@
  * 
  * @param {multi/lib/graph.graphData} graphData The data used in the graph.
  * 
- * @return {graph} A graph instance
+ * @return {multi/lib/graph} A graph instance
  * 
  * @body
  * 

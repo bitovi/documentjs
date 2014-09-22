@@ -41,7 +41,7 @@ var makeCounter = function(){
 }
 
 
-module.exports = function(str, tokens, ignore){
+function tree(str, tokens, ignore){
 	
 	
 	var reg = new RegExp("(["+regStr+"])|(\\\\)"+(
@@ -114,5 +114,6 @@ module.exports = function(str, tokens, ignore){
 	return root.children;
 
 };
-	
+tree.matches = matches;
+module.exports = tree;
 	

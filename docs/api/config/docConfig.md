@@ -7,7 +7,7 @@ Configures the behavior of DocumentJS.
 to their location or to a [DocumentJS.resourceConfig resourceConfig] that specifies where and how
 to install the release.
 
-@option {String} defaultVersion The default version that will be copied
+@option {String} [defaultVersion="<%=version%>"] The default version that will be copied
 into the `defaultDest` location. This is so users can go to `http://site.com/api`
 to find the latest docs and not `http://site.com/2.0.1/api`.
 

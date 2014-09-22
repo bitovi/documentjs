@@ -6,7 +6,7 @@ Learn how to document your code.
 @body
 
 This guide walks you through adding the right [DocumentJS.tags tags] to your source
-or markdown files to create documentation useful to your users.
+or markdown files to create documentation useful to your users.  
 
 Every markdown file or comment block like `/** */` gets turned into 
 a [DocumentJS.docObject docObject].  Those `docObjects` are used to render templates
@@ -30,27 +30,38 @@ type.  The following tags are the type tags and what they document:
  - [DocumentJS.tags.prototype @prototype] - Creates a placeholder for prototype properties on a constructor.
  - [DocumentJS.tags.property @property] - Creates a property value on an object.
 
-## Documenting the `parent` page
+A `module` and `typedef` tag can document other types like a function.  For example,
+use `@module` when something is both module and a function.
 
-DocumentJS expects one 
+## Structuring your documentation
 
-## Documenting a project that uses a module loader
+DocumentJS is very flexible about how your modules get organized in the sidebar and how they
+link to each other. The following describes useful patterns for different types of projects:
+
+ - Multi module projects that use a module loader.
+
+### Multi module projects that use a module loader
 
 This section describe how best to document a project or application that
 has many individual modules that you want documented.
 
-For example:
+For this scenario, it's common to use the [DocumentJS.tags.module @module] tag. It can be used
+to document modules that return:
 
- - A server-side node application or client-side CanJS/Angular/Ember application
-   that has many internal modules that you want documented.
- - A client-side open source project that is expected to be used with a module loader like
-   [CanJS](http://canjs.com).
+ - A single function. Ex: `@module {function} module/name`
+ - An object with properties. Ex: `@module {{}} module/name`
+ - A single constructor function. Ex: `@module {function():module/name} module/name`
 
-For this scenario, it's best to use the [DocumentJS.tags.module @module] tag.
+[Here's an example multi-module project](https://github.com/bitovi/documentjs/tree/multi-version/examples/multi) 
+and its [generated docs](../examples/multi/index.html).  It consists of:
 
-[Here's an example](../examples/multi-model-project/index.html).
+ - An overview page with a grouping for modules and guides.
+ - An example of a [constructor function](examples/multi/multi|lib|graph.html).
+ - An example [typedef](../examples/multi/multi|lib|graph.graphData.html) used by the constructor function
+   to document the constructor function's arguments.
+ - An example [function](../examples/multi/multi|util|add.html) module.
+ - An example [object](../multi/multi|util|date-helpers.html) module.
 
-## Documenting a single module
 
 
 
