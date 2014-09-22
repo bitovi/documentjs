@@ -278,13 +278,13 @@ module.exports = function(data, config, getCurrent){
 			for(var i = 0 ; i < arguments.length; i++) {
 				if(arguments[i]) {
 					if(arguments[i].fn) {
-						return options.inverse(this);
+						return arguments[i].inverse(this);
 					} else {
-						return options.fn(this);
+						return arguments[i].fn(this);
 					}
 				}
 			}
-			return options.inverse(this);
+			return arguments[i-1].inverse(this);
 		},
 		notEqual: function( first, second, options ) {
 			if(first !== second){
