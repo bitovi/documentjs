@@ -56,6 +56,8 @@ var getParent = require('./helpers/getParent'),
 						};
 
 				return ["scope", docObject]
+			} else {
+				console.warn("WARN!: did not match @group for ",line);
 			}
 		}
 	};

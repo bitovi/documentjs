@@ -26,7 +26,7 @@ module.exports = {
 	 * 
 	 * Provides the start time of yesterday. 
 	 * 
-	 * @return {Date} returns tomorrows date
+	 * @return {Date} returns yesterday's date
 	 */
 	yesterday: function(){
 		

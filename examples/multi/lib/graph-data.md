@@ -1,8 +1,8 @@
-@typedef {function} graphData
-@parent multi.types
+@typedef {{}} multi/lib/graph.graphData graphData
+@parent multi/lib/graph.types
 
-@option {function} 
+Data passed to the [multi/lib/graph] constructor function.
 
-@param {String} foo
-
-@return {Number} bar
+@option {Array<Number>} data The data to be graphed.
+ 
+@option {Array<String>} columns The column names.
