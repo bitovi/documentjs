@@ -37,13 +37,14 @@ var typer = require('./helpers/typer'),
 			if(!data.name){
 				print("LINE: \n" + line + "\n does not match @typedef [{TYPE}] NAME TITLE");
 			}
-			this.type = "module"
+			this.type = "module";
 			this.title = data.description;
-			delete data.description
+			delete data.description;
 			
 			for(var prop in data){
 				this[prop] =  data[prop];
 			}
+			return ["scope", this];
 		}
 	};
 
