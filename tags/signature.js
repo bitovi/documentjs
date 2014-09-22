@@ -53,7 +53,7 @@
 					code: code,
 					description: description,
 					params: []
-				}
+				};
 				// remove code params
 				delete this._curParam;
 				delete this.params;

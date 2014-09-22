@@ -3,8 +3,8 @@
 		"docs": {
 			"glob": "{docs,tags}/**/*.{js,md}"
 		},
-		"examples/multi-model-project": {
-			"glob": "examples/multi-module-project/**/*.{js,md}"
+		"examples/multi": {
+			"glob": "examples/multi/**/*.{js,md}"
 		}
 	}
 	

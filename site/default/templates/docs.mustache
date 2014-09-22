@@ -52,7 +52,7 @@
 			{{/if}}
 		{{/if}}
 		
-		{{#if params}}
+		{{#or params returns}}
 			<section class="signature">
 				{{> signature.mustache}}
 			</section>

@@ -273,6 +273,19 @@ module.exports = function(data, config, getCurrent){
 				return options.inverse(this);
 			}
 		},
+		or: function(){
+			var truthy = false;
+			for(var i = 0 ; i < arguments.length; i++) {
+				if(arguments[i]) {
+					if(arguments[i].fn) {
+						return options.inverse(this);
+					} else {
+						return options.fn(this);
+					}
+				}
+			}
+			return options.inverse(this);
+		},
 		notEqual: function( first, second, options ) {
 			if(first !== second){
 				return options.fn(this);
@@ -307,7 +320,7 @@ module.exports = function(data, config, getCurrent){
 					// removes can/ because that is not part of 
 					// the url and that identifier comes from the base .github url
 					src.replace(/^\w+\//,"")+
-					(type !== 'page' && type !== 'constructor' && line ? '#L' + line : '')
+					(type !== 'page' && type !== 'constructor' && line ? '#L' + line : '');
 	
 					
 			} else {

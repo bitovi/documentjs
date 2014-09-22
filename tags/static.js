@@ -32,8 +32,8 @@ var getParent = require('./helpers/getParent'),
 			if(scope){
 				
 				var parentAndName = getParent.andName({
-					parents: ["constructor","function"],
-					useName: ["constructor","function"],
+					parents: ["constructor","function","module"],
+					useName: ["constructor","function","module"],
 					scope: scope,
 					docMap: docMap,
 					name: "static",
