@@ -3,6 +3,7 @@
 @group DocumentJS.apis.config 2 Configuration APIS
 @group DocumentJS.apis.document 3 Document APIS
 @group DocumentJS.apis.generate 3 Generate APIS
+@group DocumentJS.apis.customize 3 Customize APIS
 
 DocumentJS creates beautiful, articulate, multi-versioned documentation. With DocumentJS, you can:
 

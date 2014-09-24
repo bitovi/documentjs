@@ -3,18 +3,18 @@
 
 Configures the behavior of DocumentJS.
 
-@option {Object<String,DocumentJS.resourceConfig|String>} versions A map of version names
+@option {Object<String,DocumentJS.resourceConfig|String>} [versions] A map of version names
 to their location or to a [DocumentJS.resourceConfig resourceConfig] that specifies where and how
 to install the release.
 
-@option {String} [defaultVersion="<%=version%>"] The default version that will be copied
+@option {String} [defaultVersion] The default version that will be copied
 into the `defaultDest` location. This is so users can go to `http://site.com/api`
 to find the latest docs and not `http://site.com/2.0.1/api`.
 
 @option {String} [defaultDest="."] The location of where the default docs should
 be rendered to.
 
-@option {String} versionDest The templated directory name of where each version's download
+@option {String} [versionDest="<%\=version%>"] The templated directory name of where each version's download
 and docs should be created.  The default is `"<%= version%>"`.  This means
 that a _2.0.1_ version name will be downloaded to a _2.0.1_ folder. DocumentJS
 will then look for that version's `documentjs.json` and run that.

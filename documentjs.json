@@ -1,10 +1,7 @@
 {
 	"sites": {
 		"docs": {
-			"glob": "{docs,tags}/**/*.{js,md}"
-		},
-		"examples/multi": {
-			"glob": "examples/multi/**/*.{js,md}"
+			"glob": "{docs,tags,lib}/**/*.{js,md}"
 		}
 	}
 	
