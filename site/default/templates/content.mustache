@@ -27,7 +27,7 @@
 					<div class='deprecated warning'>
 						<h3>Deprecated {{version}}</h3>
 						<div class='signature-wrapper'>
-							{{{docLinks description}}}
+							{{{makeLinks description}}}
 						</div>
 					</div>
 				{{/deprecated}}
@@ -35,7 +35,7 @@
 		{{/if}}
 
 		<section class="description">
-			{{{docLinks description}}}
+			{{{makeLinks description}}}
 		</section>
 
 		{{#if signatures}}
@@ -52,22 +52,22 @@
 			{{/if}}
 		{{/if}}
 		
-		{{#or params returns}}
+		{{#ifAny params returns}}
 			<section class="signature">
 				{{> signature.mustache}}
 			</section>
-		{{/or}}
+		{{/ifAny}}
 		
 
 		{{#if body}}
 		<section class="comment">
-			{{{docLinks body}}}
+			{{{makeLinks body}}}
 		</section>
 		{{/if}}
 
 		{{#if api}}
 		<section class="api">
-			{{{apiSection}}}
+			{{{makeApiSection}}}
 		</section>
 		{{/if}}
 	</article>

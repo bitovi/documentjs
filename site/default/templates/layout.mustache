@@ -17,18 +17,13 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>{{parentTitle}} {{#if title}}- {{title}} {{else}} {{#if name}}- {{name}}{{/if}}{{/if}}</title>
+	<title>{{makeParentTitle}} {{#if title}}- {{title}} {{else}} {{#if name}}- {{name}}{{/if}}{{/if}}</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<link rel="stylesheet" type="text/css" 
-		{{#staticLocation}}
-			href="{{.}}static/bundles/static.css"
-		{{else}}
-			href="{{url 'static/bundles/static.css'}}"
-		{{/staticLocation}} />
+	<link rel="stylesheet" type="text/css" href="./static/bundles/static.css">
 	<!--[if lt IE 9]>
-   <script type="text/javascript" src="{{url 'static/html5shiv.js'}}"></script>
+   <script type="text/javascript" src="static/html5shiv.js"></script>
     <!--<![endif]-->
 </head>
 
@@ -37,7 +32,7 @@
 		<nav class="container">
 
 			<div class="logo-menu">
-				<a class="brand" href="{{url 'index.html'}}">JavaScriptMVC</a>
+				<a class="brand" href="./index.html">JavaScriptMVC</a>
 			</div>
 
 			<div class="pull-right">
@@ -67,13 +62,8 @@
 	{{/if}}
 	<script type='text/javascript' 
 			data-main="static"
-	{{#staticLocation}}
-		src="{{.}}steal.js"
-	{{else}}
-		src="./static/steal.production.js"
-	{{/staticLocation}}
-	    bundles-path="bundles"
-		></script>
+			src="./static/steal.production.js"
+	    		bundles-path="bundles"></script>
 </body>
 
 </html>

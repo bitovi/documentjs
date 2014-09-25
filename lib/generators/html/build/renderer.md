@@ -1,7 +1,7 @@
-@typedef {function(documentjs.process.docObject)} documentjs.build.types.renderer(docObject) renderer
-@parent documentjs.build.types
+@typedef {function(documentjs.process.docObject)} documentjs.generators.html.types.renderer(docObject) renderer
+@parent documentjs.generators.html.build.types
 
-A renderer built by [documentjs.build.renderer] that is used to
+A renderer built by [documentjs.generators.html.build.renderer] that is used to
 render each [documentjs.process.docObject docObject].  
 
 @param {documentjs.process.docObject} docObject The [documentjs.tags tag] data
