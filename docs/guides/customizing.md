@@ -1,7 +1,7 @@
 @page DocumentJS.guides.customizing customizing
 @parent DocumentJS.guides 4
 
-Learn how to change the appearence of your generated html documentation.
+Learn how to change the appearence and JavaScript behavior of your generated html documentation.
 
 @body
 
@@ -50,7 +50,7 @@ in `documentjs/site/default/templates`.
  - _active-menu.mustache_ - The part of the sidebar menu that shows the children of the active item.
  - _signature.mustache_ - Shows a "signature" block.  A signature block for a function has the signature of the function and the params listed within it.
  - _title.mustache_ - The header of each rendered page.
- - _types.mustache_ - Convince template that given [documentjs.process.valueData] through each of their [documentjs.process.typeData types] and creates a signature with it.
+ - _types.mustache_ - Given a [documentjs.process.valueData valueData], iterates through each of its [documentjs.process.typeData types] and creates a signature with it.
 
 For example, to make a change to the layout, copy _documentjs/site/default/templates/layout.mustache_
 to _theme/templates_ and make changes in your copy.
@@ -111,15 +111,120 @@ JS files used by the builder.
 
 ### Changing Styles
 
+_documentjs/site/default/static/styles_ contains the default styles. The styles are 
+broken down functionally:
 
+ - _styles.less_ - Loads all other styles.
+ - _config.less_ - Configuration of colors and image location variables.
+ - _api.less_ - Styles for the main content area.  
+ - _base.less_ - Styles for html tags.
+ - _brand.less_ - Styles for the logo `.brand` class.
+ - _code.less_ - Styles for code blocks.
+ - _fonts.less_ - Sets fonts for the page.
+ - _ie.less_- If internet explorer is used, this style is used.
+ - _layout.less_ - Styles for the _layout.mustache_ template.
+ - _reset.less_ - A css reset.
+ - _sidebar.less_ - Styles for the sidebar.
+ 
+To change the default styles, copy one of the `less` files above to your 
+`siteConfig.static`'s _styles_ folder and make changes.
+
+#### Changing Colors
+
+To change colors, copy _config.less_ and change the `@brand-color` options:
+
+     @brand-color-1: #484848;
+     
+Below the `@brand-color` definitions, you can see how they are mapped to
+parts of the application.
+
+#### Adding other styles
+
+To add another style, create the less or css file in 
+your `siteConfig.static`'s _styles_ folder. Then, copy _styles.less_ and import your 
+stylesheet:
+
+    @import 'ie.less';
+    @import 'mystyles.less'
 
 ### Changing Images
 
+To change the default images, add your replacement images 
+to `siteConfig.static`'s _img_ folder.  You probably want to create a:
+
+ - _img/logo.svg_ - Your project's logo.
+ - _img/logo-grey.svg_ Your project's logo in greyscale.
 
 ### Changing JavaScript
 
-Not sure what to show.
+The default builder loads and builds the _documentjs/site/default/static/static.js_ file
+using [StealJS](http://stealjs.com). This imports various modules and initializes
+their behavior.  StealJS supports importing ES6, AMD, and CJS modules.  To add your own 
+behavior:
+
+1. Add your JavaScript files to the `siteConfig.static` folder.
+2. Copy _documentjs/site/default/static/static.js_ to `siteConfig.static` folder.
+3. Edit your copy of `static.js` to import and initialize your JavaScript code:
+
+        steal(
+          "./your_module.js"
+          "./content_list.js",
+	      "./frame_helper.js",
+	      "./versions.js",
+	      "./styles/styles.less!",
+	      "./prettify",function(YourModule, ContentList, FrameHelper, ...){
+	        // call your module
+            YourModule()
+            // leave the rest of the code
+            var codes = document.getElementsByTagName("code");
+	        ...
+	    });
 
 ## Writing your own generator
 
+You can create your own [documentjs.generator generator] module which gives you
+complete control over how a [documentjs.process.docMap docMap] is converted to
+some output.
+
+If you do decide to create your own generator, the best place to do that is within
+its own project that is registered on npm.  To do that, create a github project with
+a `main.js` that exports a [documentjs.generator generator] function like:
+
+    var Q = require('q'),
+        fs = require('fs'),
+        writeFile = Q.denodify(fs.writeFile),
+        path = require('path');
+        
+    module.exports = function(docMapPromise, options){
+       return docMapPromise.then(function(docMap){
+         return writeFile(
+             path.join(options.dest,'docMap.json'), 
+             JSON.stringify(docMap) );
+       });
+    };
+
+Publish this to npm. For this example, we'll assume it's published as "doc-map-json".
+
+In a project that wants to use this generator, make sure it's listed
+as a devDependency in _package.json_:
+
+    {
+      ...
+      "devDependencies": {
+        "documentjs" : ">0.0.0",
+        "doc-map-json": ">0.0.0"
+      }
+    }
+
+In _documentjs.json_, make sure to list that generator and any options it needs in
+your [DocumentJS.siteConfig siteConfigs].
+
+    {
+      "sites": {
+        "api": {
+          "generators": ["html","doc-map-json"],
+          "dest": "docs"
+        }
+      }
+    }
 
