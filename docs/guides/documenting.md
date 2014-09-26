@@ -5,30 +5,30 @@ Learn how to document your code.
 
 @body
 
-This guide walks you through adding the right [DocumentJS.tags tags] to your source
+This guide walks you through adding the right [documentjs.tags tags] to your source
 or markdown files to create documentation useful to your users.  
 
 Every markdown file or comment block like `/** */` gets turned into 
-a [DocumentJS.docObject docObject].  Those `docObjects` are used to render templates
+a [documentjs.process.docObject docObject].  Those `docObjects` are used to render templates
 to generate the output html.  
 
 Tags like `@function` within a markdown file or comment block add or change
-properties on the [DocumentJS.docObject docObject].  Understanding
-the [DocumentJS.tags tags] behavior is the key to making useful documentation.
+properties on the [documentjs.process.docObject docObject].  Understanding
+the [documentjs.tags tags] behavior is the key to making useful documentation.
 
 ## Types
 
-A [DocumentJS.docObject docObject's] most important tag is the one that determines its
+A [documentjs.process.docObject docObject's] most important tag is the one that determines its
 type.  The following tags are the type tags and what they document:
 
- - [DocumentJS.tags.module @module] - A module's export value.
- - [DocumentJS.tags.typedef @typedef] - Defines a custom type.
- - [DocumentJS.tags.page @page] - A page of information.
- - [DocumentJS.tags.function @function] - A JavaScript function.
- - [DocumentJS.tags.constructor @constructor] - A JavaScript function intended to be called with `new`.
- - [DocumentJS.tags.static @static] - Creates a placeholder for static properties on a constructor.
- - [DocumentJS.tags.prototype @prototype] - Creates a placeholder for prototype properties on a constructor.
- - [DocumentJS.tags.property @property] - Creates a property value on an object.
+ - [documentjs.tags.module @module] - A module's export value.
+ - [documentjs.tags.typedef @typedef] - Defines a custom type.
+ - [documentjs.tags.page @page] - A page of information.
+ - [documentjs.tags.function @function] - A JavaScript function.
+ - [documentjs.tags.constructor @constructor] - A JavaScript function intended to be called with `new`.
+ - [documentjs.tags.static @static] - Creates a placeholder for static properties on a constructor.
+ - [documentjs.tags.prototype @prototype] - Creates a placeholder for prototype properties on a constructor.
+ - [documentjs.tags.property @property] - Creates a property value on an object.
 
 A `module` and `typedef` tag can document other types like a function.  For example,
 use `@module` when something is both module and a function.
@@ -45,7 +45,7 @@ link to each other. The following describes useful patterns for different types 
 This section describe how best to document a project or application that
 has many individual modules that you want documented.
 
-For this scenario, it's common to use the [DocumentJS.tags.module @module] tag. It can be used
+For this scenario, it's common to use the [documentjs.tags.module @module] tag. It can be used
 to document modules that return:
 
  - A single function. Ex: `@module {function} module/name`

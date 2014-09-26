@@ -1,8 +1,29 @@
 @typedef {{}} DocumentJS.siteConfig siteConfig
 @parent DocumentJS.apis.config
 
-@option {Glob|Object} [glob="**/*.{js,md}"] Configures the files search for
-to find documentation.  By default the pattern `"**/*.{js,md}"` is used, which
+The collective configuration 
+
+
+@option {String|documentjs.find.globObject} [glob="**/*.{js,md}"] 
+
+Configures the files that will be processed into documentation. The glob
+option either specifies a [minmatch](https://github.com/isaacs/minimatch) 
+pattern like:
+
+    {glob: "*.js"}
+
+Or a [documentjs.find.globObject GlobObject] that specifies the 
+a [minmatch](https://github.com/isaacs/minimatch) pattern and
+other options like:
+
+    {
+      glob: {
+        pattern: "*.js",
+        cwd: __dirname  
+      }
+    }
+
+By default the pattern `"**/*.{js,md}"` is used, which
 searches for all `.js` and `.md` files within the project.
 
 @option {String} [dest] The location of the folder where DocumentJS should
@@ -11,6 +32,29 @@ _documentjs.json_ file. If this is not provided, the site name of the configurat
 is used.
 
 @option {Object} [pageConfig] An object that is made availalbe to the generated HTML pages.
+
+
+@option {moduleName|Array<moduleName>} [generators]
+
+Generators specifies a generator module or array of modules used to create an 
+output for documentation. The default generator is "html" which maps
+to documentjs's internal [documentjs.generators.html html generator].
+
+You can specify other modules which will be passed a promise containing
+the [documentjs.process.docMap docMap] and the `options` and be expected
+to return a promise that resolves when they are complete.
+
+@option {String} static The location of static content used to overwrite or
+add to the default static content.
+
+@option {Boolean} [minifyBuild=true] If set to `false` the build will not 
+be minified. This behavior should be implemented by the "build" module.
+
+@option {Boolean} [forceBuild=false] If set to `true`, rebuilds the 
+static bundle even if it has already been built.
+
+@option {String} [templates] The location of templates used to overwrite or
+add to the default templates.
 
 @body 
 
