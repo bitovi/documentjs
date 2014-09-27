@@ -17,14 +17,11 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>DocumentJS - resourceConfig </title>
+	<title> - resourceConfig </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<link rel="stylesheet" type="text/css" 
-		
-			href="./static/bundles/static.css"
-		 />
+	<link rel="stylesheet" type="text/css" href='./static/bundles/static.css'/>
 	<!--[if lt IE 9]>
    <script type="text/javascript" src="./static/html5shiv.js"></script>
     <!--<![endif]-->
@@ -35,7 +32,7 @@
 		<nav class="container">
 
 			<div class="logo-menu">
-				<a class="brand" href="./index.html">DocumentJS</a>
+				<a class="brand" href="../index.html">DocumentJS</a>
 				<ul class="dropdown-menu">
 		          <li><a href="http://javascriptmvc.com">JavaScriptMVC</a></li>
 		          <li><a href="http://canjs.com">CanJS</a></li>
@@ -46,8 +43,14 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-	          <li class=""><a href="http://documentjs.com">Home</a></li>
-	          <li class="active"><a href="./docs/index.html">Api</a></li>
+			  <li >
+	            <a href="../index.html">Home</a>
+              </li>
+              
+	              <li class="active">
+		            <a href="index.html">Api</a>
+		          </li>
+	          
 	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
 		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
 	        </ul>
@@ -82,10 +85,6 @@
 			</a>
 			
 	<ul>
-		
-			
-		
-			
 		
 			
 				
@@ -149,6 +148,18 @@
 				<li class="search-container">
 					<a class="page" href="DocumentJS.guides.customizing.html" data-search="customizing">
 						customizing
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="page" href="DocumentJS.guides.contributing.html" data-search="contributing">
+						contributing
 					</a>
 				</li>
 				
@@ -231,20 +242,8 @@
 				
 				
 				<li class="search-container">
-					<a class="property" href="DocumentJS.tags.html" data-search="tags">
+					<a class="property" href="documentjs.tags.html" data-search="tags">
 						tags
-					</a>
-				</li>
-				
-			
-			
-		
-			
-				
-				
-				<li class="search-container">
-					<a class="typedef" href="DocumentJS.docObject.html" data-search="docObject">
-						docObject
 					</a>
 				</li>
 				
@@ -275,6 +274,84 @@
 				<li class="search-container">
 					<a class="function" href="DocumentJS.apis.generate.documentjs.html" data-search="documentjs">
 						documentjs
+					</a>
+				</li>
+				
+			
+			
+		
+	</ul>
+
+
+					</li>
+					
+				
+				
+			
+			
+		
+			
+				
+					
+					<li class="heading search-container">
+						<span>Internal APIS</span>
+						
+	<ul>
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.find.html" data-search="find">
+						find
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="function" href="documentjs.generate.html" data-search="generate">
+						generate
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="typedef" href="documentjs.generator.html" data-search="generator">
+						generator
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.generators.html.html" data-search="generators.html">
+						generators.html
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.process.html" data-search="process">
+						process
 					</a>
 				</li>
 				
@@ -331,8 +408,6 @@
 		<li><a href="">source</a></li>
 	
 	
-		
-	
 	
 </ul>
 <br />
@@ -370,8 +445,9 @@
 		<h4>npmInstall<code>=false</code>
 			<code>{Boolean}</code><span class="pull-right optional">Optional</span></h4>
 		<div class="description">
-			<p>Use npm to install resource 
+			<p>Use npm to install resource
 and all of its dependencies.  By default, this is false.</p>
+
 		</div>
 		
 		
@@ -382,8 +458,9 @@ and all of its dependencies.  By default, this is false.</p>
 		<h4>bowerInstall<code>=false</code>
 			<code>{Boolean}</code><span class="pull-right optional">Optional</span></h4>
 		<div class="description">
-			<p>Use bower to install resource's 
+			<p>Use bower to install resource's
 dependencies.  False by default.</p>
+
 		</div>
 		
 		
@@ -422,7 +499,7 @@ dependencies.  False by default.</p>
 </div>
 
 <script type="text/javascript">
-	var docData = {"root":".","page":"docs","showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","dest":"/Users/justin/dev/documentjs.com/docs","parent":"DocumentJS.apis.config","docConfigDest":"../documentjs.json","version":"0.0.0","type":"typedef","name":"DocumentJS.resourceConfig","description":"","title":"resourceConfig","types":[{"type":"Object","options":[{"name":"npmInstall","description":"<p>Use npm to install resource \nand all of its dependencies.  By default, this is false.</p>","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"false"},{"name":"bowerInstall","description":"<p>Use bower to install resource's \ndependencies.  False by default.</p>","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"false"},{"name":"resource","description":"","types":[{"type":"String"}],"optional":true}]}],"src":"docs/api/config/resourceConfig.md"};
+	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.apis.config","docConfigDest":"../documentjs.json","version":"0.0.0","type":"typedef","name":"DocumentJS.resourceConfig","description":"","title":"resourceConfig","types":[{"type":"Object","options":[{"name":"npmInstall","description":"<p>Use npm to install resource\nand all of its dependencies.  By default, this is false.</p>\n","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"false"},{"name":"bowerInstall","description":"<p>Use bower to install resource's\ndependencies.  False by default.</p>\n","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"false"},{"name":"resource","description":"","types":[{"type":"String"}],"optional":true}]}],"src":"docs/api/config/resourceConfig.md"};
 </script>
 
 

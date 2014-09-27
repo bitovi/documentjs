@@ -17,14 +17,11 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>DocumentJS  - changed</title>
+	<title>  - changed</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<link rel="stylesheet" type="text/css" 
-		
-			href="./static/bundles/static.css"
-		 />
+	<link rel="stylesheet" type="text/css" href='./static/bundles/static.css'/>
 	<!--[if lt IE 9]>
    <script type="text/javascript" src="./static/html5shiv.js"></script>
     <!--<![endif]-->
@@ -35,7 +32,7 @@
 		<nav class="container">
 
 			<div class="logo-menu">
-				<a class="brand" href="./index.html">DocumentJS</a>
+				<a class="brand" href="../index.html">DocumentJS</a>
 				<ul class="dropdown-menu">
 		          <li><a href="http://javascriptmvc.com">JavaScriptMVC</a></li>
 		          <li><a href="http://canjs.com">CanJS</a></li>
@@ -46,8 +43,14 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-	          <li class=""><a href="http://documentjs.com">Home</a></li>
-	          <li class="active"><a href="./docs/index.html">Api</a></li>
+			  <li >
+	            <a href="../index.html">Home</a>
+              </li>
+              
+	              <li class="active">
+		            <a href="index.html">Api</a>
+		          </li>
+	          
 	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
 		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
 	        </ul>
@@ -119,8 +122,6 @@
 		<li><a href="">source</a></li>
 	
 	
-		
-	
 	
 </ul>
 <br />
@@ -134,6 +135,7 @@
 
 		<section class="description">
 			<p>var g =  new glob.Glob(, {</p>
+
 		</section>
 
 		
@@ -145,18 +147,15 @@
 
 		
 		<section class="comment">
-			<pre><code> cwd: path.join(__dirname,"..")
+			<pre><code>cwd: path.join(__dirname,&quot;..&quot;)
 </code></pre>
-
 <p>});
 console.log(g.minimatch.makeRe())</p>
-
-<p>g.on("match",function(src){</p>
-
-<pre><code>console.log("FIND:",src);
+<p>g.on(&quot;match&quot;,function(src){</p>
+<pre><code>console.log(&quot;FIND:&quot;,src);
 </code></pre>
-
 <p>});</p>
+
 		</section>
 		
 
@@ -165,7 +164,7 @@ console.log(g.minimatch.makeRe())</p>
 </div>
 
 <script type="text/javascript">
-	var docData = {"root":".","page":"docs","showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","dest":"/Users/justin/dev/documentjs.com/docs","parent":"docs/doc.js","docConfigDest":"../documentjs.json","version":"0.0.0","name":"changed","type":"property","description":"<p>var g =  new glob.Glob(, {</p>","src":"docs/doc.js","line":15};
+	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"docs/doc.js","docConfigDest":"../documentjs.json","version":"0.0.0","name":"changed","type":"property","description":"<p>var g =  new glob.Glob(, {</p>\n","src":"docs/doc.js","line":15};
 </script>
 
 

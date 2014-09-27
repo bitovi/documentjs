@@ -17,14 +17,11 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>DocumentJS - documentjs </title>
+	<title> - documentjs </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<link rel="stylesheet" type="text/css" 
-		
-			href="./static/bundles/static.css"
-		 />
+	<link rel="stylesheet" type="text/css" href='./static/bundles/static.css'/>
 	<!--[if lt IE 9]>
    <script type="text/javascript" src="./static/html5shiv.js"></script>
     <!--<![endif]-->
@@ -35,7 +32,7 @@
 		<nav class="container">
 
 			<div class="logo-menu">
-				<a class="brand" href="./index.html">DocumentJS</a>
+				<a class="brand" href="../index.html">DocumentJS</a>
 				<ul class="dropdown-menu">
 		          <li><a href="http://javascriptmvc.com">JavaScriptMVC</a></li>
 		          <li><a href="http://canjs.com">CanJS</a></li>
@@ -46,8 +43,14 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-	          <li class=""><a href="http://documentjs.com">Home</a></li>
-	          <li class="active"><a href="./docs/index.html">Api</a></li>
+			  <li >
+	            <a href="../index.html">Home</a>
+              </li>
+              
+	              <li class="active">
+		            <a href="index.html">Api</a>
+		          </li>
+	          
 	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
 		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
 	        </ul>
@@ -82,10 +85,6 @@
 			</a>
 			
 	<ul>
-		
-			
-		
-			
 		
 			
 				
@@ -149,6 +148,18 @@
 				<li class="search-container">
 					<a class="page" href="DocumentJS.guides.customizing.html" data-search="customizing">
 						customizing
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="page" href="DocumentJS.guides.contributing.html" data-search="contributing">
+						contributing
 					</a>
 				</li>
 				
@@ -231,20 +242,8 @@
 				
 				
 				<li class="search-container">
-					<a class="property" href="DocumentJS.tags.html" data-search="tags">
+					<a class="property" href="documentjs.tags.html" data-search="tags">
 						tags
-					</a>
-				</li>
-				
-			
-			
-		
-			
-				
-				
-				<li class="search-container">
-					<a class="typedef" href="DocumentJS.docObject.html" data-search="docObject">
-						docObject
 					</a>
 				</li>
 				
@@ -275,6 +274,84 @@
 				<li class="search-container active">
 					<a class="function" href="DocumentJS.apis.generate.documentjs.html" data-search="documentjs">
 						documentjs
+					</a>
+				</li>
+				
+			
+			
+		
+	</ul>
+
+
+					</li>
+					
+				
+				
+			
+			
+		
+			
+				
+					
+					<li class="heading search-container">
+						<span>Internal APIS</span>
+						
+	<ul>
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.find.html" data-search="find">
+						find
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="function" href="documentjs.generate.html" data-search="generate">
+						generate
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="typedef" href="documentjs.generator.html" data-search="generator">
+						generator
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.generators.html.html" data-search="generators.html">
+						generators.html
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.process.html" data-search="process">
+						process
 					</a>
 				</li>
 				
@@ -329,8 +406,6 @@
 		<li><a href="">source</a></li>
 	
 	
-		
-	
 	
 </ul>
 <br />
@@ -344,6 +419,7 @@
 
 		<section class="description">
 			<p>Generates documentation on the command line.</p>
+
 		</section>
 
 		
@@ -353,6 +429,7 @@
 </h2>
 <div class="signature-wrapper">
 <p>Reads the local directory's <code>documentjs.json</code></p>
+
 
 	<h3>Parameters</h3>
 
@@ -364,6 +441,7 @@
 			<div class="description">
 				<p>The name of a version or site that this generation will
 be limited too.</p>
+
 			</div>
 			
 			
@@ -376,6 +454,7 @@ be limited too.</p>
 			<div class="description">
 				<p>The path to the location of a local repository to stand-in for the
 version specified by <code>name</code>.</p>
+
 			</div>
 			
 			
@@ -405,7 +484,7 @@ version specified by <code>name</code>.</p>
 </div>
 
 <script type="text/javascript">
-	var docData = {"root":".","page":"docs","showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","dest":"/Users/justin/dev/documentjs.com/docs","parent":"DocumentJS.apis.generate","docConfigDest":"../documentjs.json","version":"0.0.0","type":"function","name":"DocumentJS.apis.generate.documentjs","description":"<p>Generates documentation on the command line.</p>","title":"documentjs","signatures":[{"code":"documentjs [NAME[@PATH]]","description":"<p>Reads the local directory's <code>documentjs.json</code></p>","params":[{"types":[{"type":"String"}],"optional":true,"name":"NAME","description":"<p>The name of a version or site that this generation will\nbe limited too.</p>"},{"types":[{"type":"String"}],"optional":true,"name":"PATH","description":"<p>The path to the location of a local repository to stand-in for the\nversion specified by <code>name</code>.</p>"}]}],"src":"docs/api/generate/cmd.md"};
+	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.apis.generate","docConfigDest":"../documentjs.json","version":"0.0.0","type":"function","name":"DocumentJS.apis.generate.documentjs","description":"<p>Generates documentation on the command line.</p>\n","title":"documentjs","signatures":[{"code":"documentjs [NAME[@PATH]]","description":"<p>Reads the local directory's <code>documentjs.json</code></p>\n","params":[{"types":[{"type":"String"}],"optional":true,"name":"NAME","description":"<p>The name of a version or site that this generation will\nbe limited too.</p>\n"},{"types":[{"type":"String"}],"optional":true,"name":"PATH","description":"<p>The path to the location of a local repository to stand-in for the\nversion specified by <code>name</code>.</p>\n"}]}],"src":"docs/api/generate/cmd.md"};
 </script>
 
 

@@ -17,14 +17,11 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>DocumentJS - @codeend </title>
+	<title> - @codeend </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<link rel="stylesheet" type="text/css" 
-		
-			href="./static/bundles/static.css"
-		 />
+	<link rel="stylesheet" type="text/css" href='./static/bundles/static.css'/>
 	<!--[if lt IE 9]>
    <script type="text/javascript" src="./static/html5shiv.js"></script>
     <!--<![endif]-->
@@ -35,7 +32,7 @@
 		<nav class="container">
 
 			<div class="logo-menu">
-				<a class="brand" href="./index.html">DocumentJS</a>
+				<a class="brand" href="../index.html">DocumentJS</a>
 				<ul class="dropdown-menu">
 		          <li><a href="http://javascriptmvc.com">JavaScriptMVC</a></li>
 		          <li><a href="http://canjs.com">CanJS</a></li>
@@ -46,8 +43,14 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-	          <li class=""><a href="http://documentjs.com">Home</a></li>
-	          <li class="active"><a href="./docs/index.html">Api</a></li>
+			  <li >
+	            <a href="../index.html">Home</a>
+              </li>
+              
+	              <li class="active">
+		            <a href="index.html">Api</a>
+		          </li>
+	          
 	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
 		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
 	        </ul>
@@ -75,32 +78,26 @@
 		<ul class="api cascading primary-grouping"> 
 	
 		
-		
-			<li class="search-container active">
+		<li class="search-container active parent">
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
+			</a>
+		</li>
+		
+		
+			<li class="search-container active">
+			<a class="sidebar-title" href="documentjs.tags.html" data-search="tags">
+				tags
 			</a>
 			
 	<ul>
 		
 			
-		
-			
-		
-			
-				
-					
-					<li class="heading search-container">
-						<span>guides</span>
-						
-	<ul>
-		
-			
 				
 				
 				<li class="search-container">
-					<a class="page" href="DocumentJS.guides.installing.html" data-search="installing">
-						installing
+					<a class="typedef" href="documentjs.nameExpression.html" data-search="NAME-EXPRESSION">
+						NAME-EXPRESSION
 					</a>
 				</li>
 				
@@ -111,8 +108,8 @@
 				
 				
 				<li class="search-container">
-					<a class="page" href="DocumentJS.guides.configuring.html" data-search="configuring">
-						configuring
+					<a class="constructor" href="documentjs.tags.add.html" data-search="@add ">
+						@add 
 					</a>
 				</li>
 				
@@ -123,8 +120,8 @@
 				
 				
 				<li class="search-container">
-					<a class="page" href="DocumentJS.guides.documenting.html" data-search="documenting">
-						documenting
+					<a class="constructor" href="documentjs.tags.alias.html" data-search="@alias">
+						@alias
 					</a>
 				</li>
 				
@@ -135,8 +132,8 @@
 				
 				
 				<li class="search-container">
-					<a class="page" href="DocumentJS.guides.generating.html" data-search="generating">
-						generating
+					<a class="constructor" href="documentjs.tags.author.html" data-search="@author">
+						@author
 					</a>
 				</li>
 				
@@ -147,38 +144,24 @@
 				
 				
 				<li class="search-container">
-					<a class="page" href="DocumentJS.guides.customizing.html" data-search="customizing">
-						customizing
+					<a class="constructor" href="documentjs.tags.body.html" data-search="@body">
+						@body
 					</a>
 				</li>
 				
 			
 			
 		
-	</ul>
-
-
-					</li>
-					
-				
-				
-			
 			
 		
 			
-				
-					
-					<li class="heading search-container">
-						<span>Configuration APIS</span>
-						
-	<ul>
 		
 			
 				
 				
 				<li class="search-container">
-					<a class="typedef" href="DocumentJS.docConfig.html" data-search="docConfig">
-						docConfig
+					<a class="constructor" href="documentjs.tags.constructor.html" data-search="@constructor">
+						@constructor
 					</a>
 				</li>
 				
@@ -189,8 +172,8 @@
 				
 				
 				<li class="search-container">
-					<a class="typedef" href="DocumentJS.resourceConfig.html" data-search="resourceConfig">
-						resourceConfig
+					<a class="constructor" href="documentjs.tags.demo.html" data-search="@demo">
+						@demo
 					</a>
 				</li>
 				
@@ -201,38 +184,8 @@
 				
 				
 				<li class="search-container">
-					<a class="typedef" href="DocumentJS.siteConfig.html" data-search="siteConfig">
-						siteConfig
-					</a>
-				</li>
-				
-			
-			
-		
-	</ul>
-
-
-					</li>
-					
-				
-				
-			
-			
-		
-			
-				
-					
-					<li class="heading search-container">
-						<span>Document APIS</span>
-						
-	<ul>
-		
-			
-				
-				
-				<li class="search-container">
-					<a class="property" href="DocumentJS.tags.html" data-search="tags">
-						tags
+					<a class="constructor" href="documentjs.tags.deprecated.html" data-search="@deprecated ">
+						@deprecated 
 					</a>
 				</li>
 				
@@ -243,50 +196,258 @@
 				
 				
 				<li class="search-container">
-					<a class="typedef" href="DocumentJS.docObject.html" data-search="docObject">
-						docObject
+					<a class="constructor" href="documentjs.tags.description.html" data-search="@description">
+						@description
 					</a>
 				</li>
 				
 			
 			
-		
-	</ul>
-
-
-					</li>
-					
-				
-				
-			
-			
-		
-			
-				
-					
-					<li class="heading search-container">
-						<span>Generate APIS</span>
-						
-	<ul>
 		
 			
 				
 				
 				<li class="search-container">
-					<a class="function" href="DocumentJS.apis.generate.documentjs.html" data-search="documentjs">
-						documentjs
+					<a class="constructor" href="documentjs.tags.download.html" data-search="@download">
+						@download
 					</a>
 				</li>
 				
 			
 			
 		
-	</ul>
-
-
-					</li>
-					
+			
 				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.function.html" data-search="@function">
+						@function
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="function" href="documentjs.tags.group.html" data-search="@group">
+						@group
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.hide.html" data-search="@hide">
+						@hide
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.iframe.html" data-search="@iframe">
+						@iframe
+					</a>
+				</li>
+				
+			
+			
+		
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.inherits.html" data-search="@inherits">
+						@inherits
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.link.html" data-search="@link">
+						@link
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.module.html" data-search="@module">
+						@module
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.option.html" data-search="@option">
+						@option
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.page.html" data-search="@page">
+						@page
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.param.html" data-search="@param">
+						@param
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.parent.html" data-search="@parent">
+						@parent
+					</a>
+				</li>
+				
+			
+			
+		
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.property.html" data-search="@property">
+						@property
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.prototype.html" data-search="@prototype">
+						@prototype
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.release.html" data-search="@release">
+						@release
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.return.html" data-search="@return">
+						@return
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.signature.html" data-search="@signature">
+						@signature
+					</a>
+				</li>
+				
+			
+			
+		
+			
+		
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.test.html" data-search="@test">
+						@test
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.typedef.html" data-search="@typedef">
+						@typedef
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="typedef" href="documentjs.typeExpression.html" data-search="TYPE-EXPRESSION">
+						TYPE-EXPRESSION
+					</a>
+				</li>
 				
 			
 			
@@ -316,7 +477,7 @@
 <div class="sub-heading">
 	
 	
-		<span class="module">DocumentJS.tags.codeend</span>
+		<span class="module">documentjs.tags.codeend</span>
 	
 	
 	
@@ -328,8 +489,6 @@
 	
 		<li><a href="">source</a></li>
 	
-	
-		
 	
 	
 </ul>
@@ -344,9 +503,7 @@
 
 		<section class="description">
 			<p>Stops a code block.</p>
-
-<h3>Example:</h3>
-
+<p>###Example:</p>
 <pre><code class="lang-javascript">
  /* 
   * @codestart
@@ -378,6 +535,7 @@
   * @codeend
   */
 </code></pre>
+
 		</section>
 
 		
@@ -394,7 +552,7 @@
 </div>
 
 <script type="text/javascript">
-	var docData = {"root":".","page":"docs","showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","dest":"/Users/justin/dev/documentjs.com/docs","parent":"DocumentJS","docConfigDest":"../documentjs.json","version":"0.0.0","name":"DocumentJS.tags.codeend","type":"constructor","description":"<p>Stops a code block.</p>\n\n<h3>Example:</h3>\n\n<pre><code class=\"lang-javascript\">\n /* \n  * @codestart\n  *  /* @class\n  *   * Person represents a human with a name.  Read about the \n  *   * animal class [Animal | here].\n  *   * @constructor\n  *   * You must pass in a name.\n  *   * @param {String} name A person's name\n  *   */\n  *   Person = function(name){\n  *      this.name = name\n  *      Person.count ++;\n  *   }\n  *  /* @Static */\n  *  steal.Object.extend(Person, {\n  *      /* Number of People */\n  *      count: 0\n  *  })\n  *  /* @Prototype */\n  *  Person.prototype = {\n  *     /* Returns a formal name \n  *      * @return {String} the name with \"Mrs.\" added\n  *      */\n  *      fancyName : function(){\n  *         return \"Mrs. \"+this.name;\n  *      }\n  *  }\n  * @codeend\n  */\n</code></pre>","hide":true,"title":"@codeend","tags":["documentation"],"src":"tags/codeend.js","line":0};
+	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","version":"0.0.0","name":"documentjs.tags.codeend","type":"constructor","description":"<p>Stops a code block.</p>\n<p>###Example:</p>\n<pre><code class=\"lang-javascript\">\n /* \n  * @codestart\n  *  /* @class\n  *   * Person represents a human with a name.  Read about the \n  *   * animal class [Animal | here].\n  *   * @constructor\n  *   * You must pass in a name.\n  *   * @param {String} name A person's name\n  *   */\n  *   Person = function(name){\n  *      this.name = name\n  *      Person.count ++;\n  *   }\n  *  /* @Static */\n  *  steal.Object.extend(Person, {\n  *      /* Number of People */\n  *      count: 0\n  *  })\n  *  /* @Prototype */\n  *  Person.prototype = {\n  *     /* Returns a formal name \n  *      * @return {String} the name with \"Mrs.\" added\n  *      */\n  *      fancyName : function(){\n  *         return \"Mrs. \"+this.name;\n  *      }\n  *  }\n  * @codeend\n  */\n</code></pre>\n","hide":true,"title":"@codeend","tags":["documentation"],"src":"lib/tags/codeend.js","line":0};
 </script>
 
 

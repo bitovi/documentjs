@@ -17,14 +17,11 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>DocumentJS - docObject </title>
+	<title> - generator </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<link rel="stylesheet" type="text/css" 
-		
-			href="./static/bundles/static.css"
-		 />
+	<link rel="stylesheet" type="text/css" href='./static/bundles/static.css'/>
 	<!--[if lt IE 9]>
    <script type="text/javascript" src="./static/html5shiv.js"></script>
     <!--<![endif]-->
@@ -35,7 +32,7 @@
 		<nav class="container">
 
 			<div class="logo-menu">
-				<a class="brand" href="./index.html">DocumentJS</a>
+				<a class="brand" href="../index.html">DocumentJS</a>
 				<ul class="dropdown-menu">
 		          <li><a href="http://javascriptmvc.com">JavaScriptMVC</a></li>
 		          <li><a href="http://canjs.com">CanJS</a></li>
@@ -46,8 +43,14 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-	          <li class=""><a href="http://documentjs.com">Home</a></li>
-	          <li class="active"><a href="./docs/index.html">Api</a></li>
+			  <li >
+	            <a href="../index.html">Home</a>
+              </li>
+              
+	              <li class="active">
+		            <a href="index.html">Api</a>
+		          </li>
+	          
 	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
 		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
 	        </ul>
@@ -82,10 +85,6 @@
 			</a>
 			
 	<ul>
-		
-			
-		
-			
 		
 			
 				
@@ -149,6 +148,18 @@
 				<li class="search-container">
 					<a class="page" href="DocumentJS.guides.customizing.html" data-search="customizing">
 						customizing
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="page" href="DocumentJS.guides.contributing.html" data-search="contributing">
+						contributing
 					</a>
 				</li>
 				
@@ -231,20 +242,8 @@
 				
 				
 				<li class="search-container">
-					<a class="property" href="DocumentJS.tags.html" data-search="tags">
+					<a class="property" href="documentjs.tags.html" data-search="tags">
 						tags
-					</a>
-				</li>
-				
-			
-			
-		
-			
-				
-				
-				<li class="search-container active">
-					<a class="typedef" href="DocumentJS.apis.docObject.html" data-search="docObject">
-						docObject
 					</a>
 				</li>
 				
@@ -291,6 +290,84 @@
 			
 			
 		
+			
+				
+					
+					<li class="heading search-container">
+						<span>Internal APIS</span>
+						
+	<ul>
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.find.html" data-search="find">
+						find
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="function" href="documentjs.generate.html" data-search="generate">
+						generate
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container active">
+					<a class="typedef" href="documentjs.generator.html" data-search="generator">
+						generator
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.generators.html.html" data-search="generators.html">
+						generators.html
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.process.html" data-search="process">
+						process
+					</a>
+				</li>
+				
+			
+			
+		
+	</ul>
+
+
+					</li>
+					
+				
+				
+			
+			
+		
 	</ul>
 
 
@@ -305,7 +382,7 @@
 		
 		<section class="title">
 			<div class="heading">
-<h1>docObject</h1>
+<h1>generator</h1>
 	<ul class="tags">
 		<li>typedef</li>
 	</ul>
@@ -316,11 +393,11 @@
 <div class="sub-heading">
 	
 	
-		<span class="module">DocumentJS.apis.docObject</span>
+		<span class="module">documentjs.generator</span>
 	
 	
 	
-	<h2><code>{Object}</code></h2>
+	<h2><code>{function(docMapPromise, The)}</code></h2>
 	
 	<span class="inherits">&nbsp;</span>
 </div>
@@ -330,8 +407,6 @@
 	
 		<li><a href="">source</a></li>
 	
-	
-		
 	
 	
 </ul>
@@ -345,20 +420,65 @@
 		
 
 		<section class="description">
-			
+			<p>A generator module should produce a function that takes the following shape. Generator
+modules are used to produce some form of documentation output.  <a href="documentjs.generators.html.html">generators.html</a>
+is the default and currently only generator packaged with DocumentJS.</p>
+
 		</section>
 
 		
-
-		
-		<section class='primary-options'>
 			
+			<section class='primary-options'>
+				
 
-  <h2 id="sig_">Object
+  <h2 id="sig_">function(docMapPromise, The)
 </h2>
 <div class="signature-wrapper">
 
 
+	<h3>Parameters</h3>
+
+	<ol class="parameters">
+		
+		<li class="parameter">
+			<h4>docMapPromise
+				<code>{Promise&lt;<a href="documentjs.process.docMap.html" >docMap</a>&gt;}</code></h4>
+			<div class="description">
+				<p>A promise that will resolve
+with a map of all <a href="documentjs.process.docObject.html">docObjects</a> keyed by their name.</p>
+
+			</div>
+			
+			
+			
+		</li>
+		
+		<li class="parameter">
+			<h4>The
+				<code>{options}</code></h4>
+			<div class="description">
+				<p>options object passed to <a href="documentjs.generate.html">generate</a>.</p>
+
+			</div>
+			
+			
+			
+		</li>
+		
+	</ol>
+
+
+	<h3>Returns</h3>
+	<div class="returns">
+		<h4><code>{Promise}</code></h4>
+		<div class="description">
+			<p>A module that resolves when the output has been built.</p>
+
+		</div>
+		
+		
+	</div>
+	
 
 
 
@@ -368,12 +488,32 @@
 
   
 
-		</section>
+			</section>
+			
 		
 		
 		
 		
 
+		
+		<section class="comment">
+			<h2>Use</h2>
+<p>The following exports a generator function that builds a JSON output of the docObject:</p>
+<pre><code>var Q = require('q'),
+    fs = require('fs'),
+    writeFile = Q.denodify(fs.writeFile),
+    path = require('path');
+    
+module.exports = function(docMapPromise, options){
+   return docMapPromise.then(function(docMap){
+     return writeFile(
+         path.join(options.dest,'docMap.json'), 
+         JSON.stringify(docMap) );
+   });
+};
+</code></pre>
+
+		</section>
 		
 
 		
@@ -381,7 +521,7 @@
 </div>
 
 <script type="text/javascript">
-	var docData = {"root":".","page":"docs","showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","dest":"/Users/justin/dev/documentjs.com/docs","parent":"DocumentJS.apis.document","docConfigDest":"../documentjs.json","version":"0.0.0","type":"typedef","name":"DocumentJS.apis.docObject","description":"","title":"docObject","types":[{"type":"Object","options":[]}],"order":1,"src":"docs/api/documenting/docObject.md"};
+	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.apis.internal","docConfigDest":"../documentjs.json","version":"0.0.0","type":"typedef","name":"documentjs.generator","description":"<p>A generator module should produce a function that takes the following shape. Generator\nmodules are used to produce some form of documentation output.  [documentjs.generators.html]\nis the default and currently only generator packaged with DocumentJS.</p>\n","title":"generator","types":[{"type":"function","returns":{"types":[{"type":"Promise"}],"description":"<p>A module that resolves when the output has been built.</p>\n"},"params":[{"types":[{"type":"Promise","template":[{"types":[{"type":"documentjs.process.docMap"}]}]}],"name":"docMapPromise","description":"<p>A promise that will resolve\nwith a map of all [documentjs.process.docObject docObjects] keyed by their name.</p>\n"},{"types":[{"type":"options"}],"name":"The","description":"<p>options object passed to [documentjs.generate].</p>\n"}]}],"comment":" ","src":"lib/generate/generator.md"};
 </script>
 
 

@@ -17,14 +17,11 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>DocumentJS - documenting </title>
+	<title> - documenting </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<link rel="stylesheet" type="text/css" 
-		
-			href="./static/bundles/static.css"
-		 />
+	<link rel="stylesheet" type="text/css" href='./static/bundles/static.css'/>
 	<!--[if lt IE 9]>
    <script type="text/javascript" src="./static/html5shiv.js"></script>
     <!--<![endif]-->
@@ -35,7 +32,7 @@
 		<nav class="container">
 
 			<div class="logo-menu">
-				<a class="brand" href="./index.html">DocumentJS</a>
+				<a class="brand" href="../index.html">DocumentJS</a>
 				<ul class="dropdown-menu">
 		          <li><a href="http://javascriptmvc.com">JavaScriptMVC</a></li>
 		          <li><a href="http://canjs.com">CanJS</a></li>
@@ -46,8 +43,14 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-	          <li class=""><a href="http://documentjs.com">Home</a></li>
-	          <li class="active"><a href="./docs/index.html">Api</a></li>
+			  <li >
+	            <a href="../index.html">Home</a>
+              </li>
+              
+	              <li class="active">
+		            <a href="index.html">Api</a>
+		          </li>
+	          
 	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
 		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
 	        </ul>
@@ -82,10 +85,6 @@
 			</a>
 			
 	<ul>
-		
-			
-		
-			
 		
 			
 				
@@ -149,6 +148,18 @@
 				<li class="search-container">
 					<a class="page" href="DocumentJS.guides.customizing.html" data-search="customizing">
 						customizing
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="page" href="DocumentJS.guides.contributing.html" data-search="contributing">
+						contributing
 					</a>
 				</li>
 				
@@ -231,20 +242,8 @@
 				
 				
 				<li class="search-container">
-					<a class="property" href="DocumentJS.tags.html" data-search="tags">
+					<a class="property" href="documentjs.tags.html" data-search="tags">
 						tags
-					</a>
-				</li>
-				
-			
-			
-		
-			
-				
-				
-				<li class="search-container">
-					<a class="typedef" href="DocumentJS.docObject.html" data-search="docObject">
-						docObject
 					</a>
 				</li>
 				
@@ -275,6 +274,84 @@
 				<li class="search-container">
 					<a class="function" href="DocumentJS.apis.generate.documentjs.html" data-search="documentjs">
 						documentjs
+					</a>
+				</li>
+				
+			
+			
+		
+	</ul>
+
+
+					</li>
+					
+				
+				
+			
+			
+		
+			
+				
+					
+					<li class="heading search-container">
+						<span>Internal APIS</span>
+						
+	<ul>
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.find.html" data-search="find">
+						find
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="function" href="documentjs.generate.html" data-search="generate">
+						generate
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="typedef" href="documentjs.generator.html" data-search="generator">
+						generator
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.generators.html.html" data-search="generators.html">
+						generators.html
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.process.html" data-search="process">
+						process
 					</a>
 				</li>
 				
@@ -329,8 +406,6 @@
 		<li><a href="">source</a></li>
 	
 	
-		
-	
 	
 </ul>
 <br />
@@ -344,6 +419,7 @@
 
 		<section class="description">
 			<p>Learn how to document your code.</p>
+
 		</section>
 
 		
@@ -355,62 +431,47 @@
 
 		
 		<section class="comment">
-			<p>This guide walks you through adding the right <a href="DocumentJS.tags.html">tags</a> to your source
-or markdown files to create documentation useful to your users.  </p>
-
-<p>Every markdown file or comment block like <code>/** */</code> gets turned into 
-a <a href="DocumentJS.docObject.html">docObject</a>.  Those <code>docObjects</code> are used to render templates
-to generate the output html.  </p>
-
+			<p>This guide walks you through adding the right <a href="documentjs.tags.html">tags</a> to your source
+or markdown files to create documentation useful to your users.</p>
+<p>Every markdown file or comment block like <code>/** */</code> gets turned into
+a <a href="documentjs.process.docObject.html">docObject</a>.  Those <code>docObjects</code> are used to render templates
+to generate the output html.</p>
 <p>Tags like <code>@function</code> within a markdown file or comment block add or change
-properties on the <a href="DocumentJS.docObject.html">docObject</a>.  Understanding
-the <a href="DocumentJS.tags.html">tags</a> behavior is the key to making useful documentation.</p>
-
+properties on the <a href="documentjs.process.docObject.html">docObject</a>.  Understanding
+the <a href="documentjs.tags.html">tags</a> behavior is the key to making useful documentation.</p>
 <h2>Types</h2>
-
-<p>A <a href="DocumentJS.docObject.html">docObject's</a> most important tag is the one that determines its
+<p>A <a href="documentjs.process.docObject.html">docObject's</a> most important tag is the one that determines its
 type.  The following tags are the type tags and what they document:</p>
-
 <ul>
-<li><a href="DocumentJS.tags.module.html">@module</a> - A module's export value.</li>
-<li><a href="DocumentJS.tags.typedef.html">@typedef</a> - Defines a custom type.</li>
-<li><a href="DocumentJS.tags.page.html">@page</a> - A page of information.</li>
-<li><a href="DocumentJS.tags.function.html">@function</a> - A JavaScript function.</li>
-<li><a href="DocumentJS.tags.constructor.html">@constructor</a> - A JavaScript function intended to be called with <code>new</code>.</li>
-<li><a href="DocumentJS.tags.static.html">@static</a> - Creates a placeholder for static properties on a constructor.</li>
-<li><a href="DocumentJS.tags.prototype.html">@prototype</a> - Creates a placeholder for prototype properties on a constructor.</li>
-<li><a href="DocumentJS.tags.property.html">@property</a> - Creates a property value on an object.</li>
+<li><a href="documentjs.tags.module.html">@module</a> - A module's export value.</li>
+<li><a href="documentjs.tags.typedef.html">@typedef</a> - Defines a custom type.</li>
+<li><a href="documentjs.tags.page.html">@page</a> - A page of information.</li>
+<li><a href="documentjs.tags.function.html">@function</a> - A JavaScript function.</li>
+<li><a href="documentjs.tags.constructor.html">@constructor</a> - A JavaScript function intended to be called with <code>new</code>.</li>
+<li><a href="documentjs.tags.static.html">@static</a> - Creates a placeholder for static properties on a constructor.</li>
+<li><a href="documentjs.tags.prototype.html">@prototype</a> - Creates a placeholder for prototype properties on a constructor.</li>
+<li><a href="documentjs.tags.property.html">@property</a> - Creates a property value on an object.</li>
 </ul>
-
 <p>A <code>module</code> and <code>typedef</code> tag can document other types like a function.  For example,
 use <code>@module</code> when something is both module and a function.</p>
-
 <h2>Structuring your documentation</h2>
-
 <p>DocumentJS is very flexible about how your modules get organized in the sidebar and how they
 link to each other. The following describes useful patterns for different types of projects:</p>
-
 <ul>
 <li>Multi module projects that use a module loader.</li>
 </ul>
-
 <h3>Multi module projects that use a module loader</h3>
-
 <p>This section describe how best to document a project or application that
 has many individual modules that you want documented.</p>
-
-<p>For this scenario, it's common to use the <a href="DocumentJS.tags.module.html">@module</a> tag. It can be used
+<p>For this scenario, it's common to use the <a href="documentjs.tags.module.html">@module</a> tag. It can be used
 to document modules that return:</p>
-
 <ul>
 <li>A single function. Ex: <code>@module {function} module/name</code></li>
 <li>An object with properties. Ex: <code>@module {{}} module/name</code></li>
 <li>A single constructor function. Ex: <code>@module {function():module/name} module/name</code></li>
 </ul>
-
-<p><a href="https://github.com/bitovi/documentjs/tree/multi-version/examples/multi">Here's an example multi-module project</a> 
+<p><a href="https://github.com/bitovi/documentjs/tree/multi-version/examples/multi">Here's an example multi-module project</a>
 and its <a href="../examples/multi/index.html">generated docs</a>.  It consists of:</p>
-
 <ul>
 <li>An overview page with a grouping for modules and guides.</li>
 <li>An example of a <a href="examples/multi/multi|lib|graph.html">constructor function</a>.</li>
@@ -419,6 +480,27 @@ to document the constructor function's arguments.</li>
 <li>An example <a href="../examples/multi/multi|util|add.html">function</a> module.</li>
 <li>An example <a href="../multi/multi|util|date-helpers.html">object</a> module.</li>
 </ul>
+<h2>Linking</h2>
+<p>You can link to documentation pages by their name like <code>[NAME TITLE?]</code>.  For example, a
+function like:</p>
+<pre><code>@function project.math.add
+</code></pre>
+<p>Can be linked to like <code>[project.math.add]</code> in description or body text.  This will create a link like:</p>
+<pre><code>&lt;a href=&quot;project.math.add.html&quot;&gt;project.math.add&lt;/a&gt;
+</code></pre>
+<p>A link title can be provided with a space after the <a href="documentjs.process.docObject.html">docObject</a> name.
+For example <code>[project.math.add add numbers]</code> creates a link like:</p>
+<pre><code>&lt;a href=&quot;project.math.add.html&quot;&gt;add numbers&lt;/a&gt;
+</code></pre>
+<p>A title can be provided for all types.  For example, you can include a <a href="documentjs.tags.function.html">@function</a> title
+like:</p>
+<pre><code>@function project.math.add add
+</code></pre>
+<p>If a title is provided with the type, but not in a link, the type's title will be used.  For example:
+<code>[project.math.add]</code> with the previous function will create:</p>
+<pre><code>&lt;a href=&quot;project.math.add.html&quot;&gt;add&lt;/a&gt;
+</code></pre>
+
 		</section>
 		
 
@@ -427,7 +509,7 @@ to document the constructor function's arguments.</li>
 </div>
 
 <script type="text/javascript">
-	var docData = {"root":".","page":"docs","showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","dest":"/Users/justin/dev/documentjs.com/docs","parent":"DocumentJS.guides","docConfigDest":"../documentjs.json","version":"0.0.0","type":"page","name":"DocumentJS.guides.documenting","description":"<p>Learn how to document your code.</p>","title":"documenting","order":2,"comment":" ","src":"docs/guides/documenting.md"};
+	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.guides","docConfigDest":"../documentjs.json","version":"0.0.0","type":"page","name":"DocumentJS.guides.documenting","description":"<p>Learn how to document your code.</p>\n","title":"documenting","order":2,"comment":" ","src":"docs/guides/documenting.md"};
 </script>
 
 

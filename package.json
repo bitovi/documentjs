@@ -28,6 +28,6 @@
     "node": ">= 0.10.0"
   },
   "dependencies": {
-    "documentjs": "git://github.com/bitovi/documentjs#multi-version"
+    "documentjs": "git://github.com/bitovi/documentjs#cleaned-version"
   }
 }

@@ -17,14 +17,11 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>DocumentJS - installing </title>
+	<title> - installing </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<link rel="stylesheet" type="text/css" 
-		
-			href="./static/bundles/static.css"
-		 />
+	<link rel="stylesheet" type="text/css" href='./static/bundles/static.css'/>
 	<!--[if lt IE 9]>
    <script type="text/javascript" src="./static/html5shiv.js"></script>
     <!--<![endif]-->
@@ -35,7 +32,7 @@
 		<nav class="container">
 
 			<div class="logo-menu">
-				<a class="brand" href="./index.html">DocumentJS</a>
+				<a class="brand" href="../index.html">DocumentJS</a>
 				<ul class="dropdown-menu">
 		          <li><a href="http://javascriptmvc.com">JavaScriptMVC</a></li>
 		          <li><a href="http://canjs.com">CanJS</a></li>
@@ -46,8 +43,14 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-	          <li class=""><a href="http://documentjs.com">Home</a></li>
-	          <li class="active"><a href="./docs/index.html">Api</a></li>
+			  <li >
+	            <a href="../index.html">Home</a>
+              </li>
+              
+	              <li class="active">
+		            <a href="index.html">Api</a>
+		          </li>
+	          
 	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
 		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
 	        </ul>
@@ -82,10 +85,6 @@
 			</a>
 			
 	<ul>
-		
-			
-		
-			
 		
 			
 				
@@ -149,6 +148,18 @@
 				<li class="search-container">
 					<a class="page" href="DocumentJS.guides.customizing.html" data-search="customizing">
 						customizing
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="page" href="DocumentJS.guides.contributing.html" data-search="contributing">
+						contributing
 					</a>
 				</li>
 				
@@ -231,20 +242,8 @@
 				
 				
 				<li class="search-container">
-					<a class="property" href="DocumentJS.tags.html" data-search="tags">
+					<a class="property" href="documentjs.tags.html" data-search="tags">
 						tags
-					</a>
-				</li>
-				
-			
-			
-		
-			
-				
-				
-				<li class="search-container">
-					<a class="typedef" href="DocumentJS.docObject.html" data-search="docObject">
-						docObject
 					</a>
 				</li>
 				
@@ -275,6 +274,84 @@
 				<li class="search-container">
 					<a class="function" href="DocumentJS.apis.generate.documentjs.html" data-search="documentjs">
 						documentjs
+					</a>
+				</li>
+				
+			
+			
+		
+	</ul>
+
+
+					</li>
+					
+				
+				
+			
+			
+		
+			
+				
+					
+					<li class="heading search-container">
+						<span>Internal APIS</span>
+						
+	<ul>
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.find.html" data-search="find">
+						find
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="function" href="documentjs.generate.html" data-search="generate">
+						generate
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="typedef" href="documentjs.generator.html" data-search="generator">
+						generator
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.generators.html.html" data-search="generators.html">
+						generators.html
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.process.html" data-search="process">
+						process
 					</a>
 				</li>
 				
@@ -329,8 +406,6 @@
 		<li><a href="">source</a></li>
 	
 	
-		
-	
 	
 </ul>
 <br />
@@ -344,6 +419,7 @@
 
 		<section class="description">
 			<p>Learn how to install DocumentJS.</p>
+
 		</section>
 
 		
@@ -356,57 +432,40 @@
 		
 		<section class="comment">
 			<p>There are two primary ways to install DocumentJS so it can be used for a project:</p>
-
 <ol>
 <li>Install DocumentJS as a npm package dependency.</li>
 <li>Install DocumentJS globally.</li>
 </ol>
-
 <p>Installing globally allows you to use <a href="DocumentJS.apis.generate.documentjs.html">documentjs</a> command
-from anywhere. However, it will not be installed 
+from anywhere. However, it will not be installed
 automatically for <code>npm</code> projects. For this reason, we encourage people to install it as
 an <code>npm</code> dependency.</p>
-
 <h2>Prerequisites</h2>
-
 <p>Install <a href="http://nodejs.org/">Node.js</a> on your computer.</p>
-
 <h2>Installing as an npm package dependency</h2>
-
 <p>In your node project's parent folder, run:</p>
-
 <pre><code>&gt; npm install documentjs --save-dev
 </code></pre>
-
 <p>Node will copy documentjs's executable to <code>./node_modules/.bin/documentjs</code>. On linux/mac, you
 can run the <a href="DocumentJS.apis.generate.documentjs.html">documentjs command</a> like:</p>
-
 <pre><code>&gt; ./node_modules/.bin/documentjs
 </code></pre>
-
-<p>Alternatively, you can add a <a href="https://www.npmjs.org/doc/misc/npm-scripts.html">npm-script</a> to your 
-<code>package.json</code> to make 
+<p>Alternatively, you can add a <a href="https://www.npmjs.org/doc/misc/npm-scripts.html">npm-script</a> to your
+<code>package.json</code> to make
 it easier to run:</p>
-
-<pre><code>"scripts" : {
-  "documentjs": "documentjs"
+<pre><code>&quot;scripts&quot; : {
+  &quot;documentjs&quot;: &quot;documentjs&quot;
 }
 </code></pre>
-
 <h2>Installing globally</h2>
-
 <p>Run:</p>
-
 <pre><code>&gt; npm install documentjs
 </code></pre>
-
 <h2>Installing for Grunt</h2>
-
 <p>coming soon</p>
-
 <h2>Installing for Gulp</h2>
-
 <p>comming soon</p>
+
 		</section>
 		
 
@@ -415,7 +474,7 @@ it easier to run:</p>
 </div>
 
 <script type="text/javascript">
-	var docData = {"root":".","page":"docs","showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","dest":"/Users/justin/dev/documentjs.com/docs","parent":"DocumentJS.guides","docConfigDest":"../documentjs.json","version":"0.0.0","type":"page","name":"DocumentJS.guides.installing","description":"<p>Learn how to install DocumentJS.</p>","title":"installing","order":0,"comment":" ","src":"docs/guides/installing.md"};
+	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.guides","docConfigDest":"../documentjs.json","version":"0.0.0","type":"page","name":"DocumentJS.guides.installing","description":"<p>Learn how to install DocumentJS.</p>\n","title":"installing","order":0,"comment":" ","src":"docs/guides/installing.md"};
 </script>
 
 

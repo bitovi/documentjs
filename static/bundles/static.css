@@ -1142,13 +1142,6 @@ li.L9 {
 .docs .title ul.links {
   margin-bottom: 16px;
 }
-.docs .sidebar {
-  width: 255px;
-  margin-top: 20px;
-}
-.docs .sidebar li.active {
-  z-index: 20;
-}
 .docs .content.docs {
   width: 662px;
   margin-top: 20px;
@@ -1445,137 +1438,6 @@ li.L9 {
   margin-bottom: 0px;
   padding-bottom: 0px;
 }
-.sidebar .api li.active {
-  z-index: 20;
-}
-.sidebar .api > li.active > a {
-  font-size: 17px;
-  font-weight: normal;
-  line-height: 40px;
-  color: #767676;
-  display: block;
-  border: none;
-}
-.sidebar .api > li > a:hover,
-.sidebar .api.cascading .active > ul > li > a:hover {
-  color: #000;
-}
-.sidebar .api > li.active > a,
-.sidebar .api.cascading > .active > a {
-  color: #fff;
-  background: #484848;
-  border: none;
-}
-.sidebar .api .heading span {
-  text-transform: uppercase;
-  color: #484848;
-  line-height: 24px;
-  display: block;
-  font-weight: bold;
-}
-.sidebar .api li li.parent {
-  text-indent: 30px;
-}
-.sidebar .api li li.parent:before {
-  left: 20px;
-}
-.sidebar .api li li li.parent {
-  text-indent: 40px;
-}
-.sidebar .api li li li.parent li {
-  text-indent: 50px;
-}
-.sidebar .api li.parent:before {
-  content: "";
-  border-color: transparent #636363;
-  border-style: solid;
-  border-width: 0.3em 0 0.3em 0.5em;
-  display: block;
-  height: 0;
-  width: 0;
-  position: absolute;
-  top: 10px;
-  left: 30px;
-}
-.sidebar .api li.parent.expanded:before {
-  -webkit-transform: rotate(90deg);
-  -moz-transform: rotate(90deg);
-  -o-transform: rotate(90deg);
-  -ms-transform: rotate(90deg);
-  transform: rotate(90deg);
-  z-index: 1;
-}
-.sidebar .api li li.active > a,
-.sidebar .api li li.active > a:hover {
-  position: relative;
-  display: block;
-  height: 25px;
-  margin-left: 1px;
-}
-.sidebar .api li li.active > a:hover {
-  background: none;
-}
-/* This is the caret/triangle that points out of the container to the page on active items */
-.sidebar .api li li.active > a:after {
-  position: absolute;
-  content: ' ';
-  right: -12px;
-  top: -7px;
-  height: 14px;
-  width: 14px;
-  z-index: 1;
-  width: 0;
-  height: 0;
-  border-top: 20px solid transparent;
-  border-bottom: 20px solid transparent;
-  border-left: 20px solid #cccccc;
-}
-.sidebar .api li li.active > a:before {
-  position: absolute;
-  content: '';
-  display: block;
-  border-left: 4px solid #484848;
-  width: 5px;
-  height: 20px;
-  left: 20px;
-  top: 4px;
-}
-.sidebar .api.cascading > .parent {
-  z-index: 1;
-  text-indent: 15px;
-  margin-left: 0px;
-  margin-right: 0px;
-}
-/* The caret that points down from an active parent element to the child below */
-.sidebar .api.cascading > .active:before {
-  position: absolute;
-  content: ' ';
-  left: 10px;
-  top: 30px;
-  z-index: -1;
-  width: 0;
-  height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-top: 20px solid #484848;
-}
-.sidebar .api.cascading > .active:nth-child(2):before {
-  position: absolute;
-  content: ' ';
-  left: 10px;
-  top: 30px;
-  z-index: -1;
-  width: 0;
-  height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-top: 20px solid #706f70;
-}
-/*
-.sidebar .api.cascading .active > ul {
-  padding-bottom: 0;
-}
-*/
 #low {
   width: 960px;
   margin: 0 auto;
@@ -1617,11 +1479,16 @@ li.L9 {
   margin-right: 10px;
 }
 .sidebar {
+  width: 255px;
+  margin-top: 20px;
   background-color: #cccccc;
   position: relative;
   z-index: 1;
   margin-bottom: 15px;
   border-radius: 5px 0 0 5px;
+}
+.sidebar li.active {
+  z-index: 20;
 }
 .sidebar ul {
   list-style-type: none;
@@ -1692,6 +1559,135 @@ li.L9 {
   position: absolute;
   right: 5px;
   top: 7px;
+}
+.sidebar .api {
+  /* This is the caret/triangle that points out of the container to the page on active items */
+}
+.sidebar .api li.active {
+  z-index: 20;
+}
+.sidebar .api > li.active > a {
+  font-size: 17px;
+  font-weight: normal;
+  line-height: 40px;
+  color: #767676;
+  display: block;
+  border: none;
+}
+.sidebar .api > li > a:hover,
+.sidebar .api > li > a:hover {
+  color: #000;
+}
+.sidebar .api .heading span {
+  text-transform: uppercase;
+  color: #484848;
+  line-height: 24px;
+  display: block;
+  font-weight: bold;
+}
+.sidebar .api li li.parent {
+  text-indent: 30px;
+}
+.sidebar .api li li li.parent {
+  text-indent: 40px;
+}
+.sidebar .api li li.parent:before {
+  left: 20px;
+}
+.sidebar .api li li li.parent li {
+  text-indent: 50px;
+}
+.sidebar .api li.parent:before {
+  content: "";
+  border-color: transparent #636363;
+  border-style: solid;
+  border-width: 0.3em 0 0.3em 0.5em;
+  display: block;
+  height: 0;
+  width: 0;
+  position: absolute;
+  top: 10px;
+  left: 30px;
+}
+.sidebar .api li.parent.expanded:before {
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+  z-index: 1;
+}
+.sidebar .api li li.active > a,
+.sidebar .api .sidebar .api li li.active > a:hover {
+  position: relative;
+  display: block;
+  height: 25px;
+  margin-left: 1px;
+}
+.sidebar .api li li.active > a:hover {
+  background: none;
+}
+.sidebar .api li li.active > a:after {
+  position: absolute;
+  content: ' ';
+  right: -12px;
+  top: -7px;
+  height: 14px;
+  width: 14px;
+  z-index: 1;
+  width: 0;
+  height: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  border-left: 20px solid #cccccc;
+}
+.sidebar .api li li.active > a:before {
+  position: absolute;
+  content: '';
+  display: block;
+  border-left: 4px solid #484848;
+  width: 5px;
+  height: 20px;
+  left: 20px;
+  top: 4px;
+}
+.sidebar .api.cascading {
+  /* The caret that points down from an active parent element to the child below */
+}
+.sidebar .api.cascading > .active > a {
+  color: #fff;
+  background: #484848;
+  border: none;
+}
+.sidebar .api.cascading > .parent {
+  z-index: 1;
+  text-indent: 15px;
+  margin-left: 0px;
+  margin-right: 0px;
+}
+.sidebar .api.cascading > .active:before {
+  position: absolute;
+  content: ' ';
+  left: 10px;
+  top: 30px;
+  z-index: -1;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #484848;
+}
+.sidebar .api.cascading > .active:nth-child(2):before {
+  position: absolute;
+  content: ' ';
+  left: 10px;
+  top: 30px;
+  z-index: -1;
+  width: 0;
+  height: 0;
+  border-left: 20px solid transparent;
+  border-right: 20px solid transparent;
+  border-top: 20px solid #706f70;
 }
 .sidebar .api.cascading > li:nth-child(1) {
   z-index: 20;

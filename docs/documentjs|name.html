@@ -17,14 +17,11 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>DocumentJS - NAME </title>
+	<title> - NAME </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<link rel="stylesheet" type="text/css" 
-		
-			href="./static/bundles/static.css"
-		 />
+	<link rel="stylesheet" type="text/css" href='./static/bundles/static.css'/>
 	<!--[if lt IE 9]>
    <script type="text/javascript" src="./static/html5shiv.js"></script>
     <!--<![endif]-->
@@ -35,7 +32,7 @@
 		<nav class="container">
 
 			<div class="logo-menu">
-				<a class="brand" href="./index.html">DocumentJS</a>
+				<a class="brand" href="../index.html">DocumentJS</a>
 				<ul class="dropdown-menu">
 		          <li><a href="http://javascriptmvc.com">JavaScriptMVC</a></li>
 		          <li><a href="http://canjs.com">CanJS</a></li>
@@ -46,8 +43,14 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-	          <li class=""><a href="http://documentjs.com">Home</a></li>
-	          <li class="active"><a href="./docs/index.html">Api</a></li>
+			  <li >
+	            <a href="../index.html">Home</a>
+              </li>
+              
+	              <li class="active">
+		            <a href="index.html">Api</a>
+		          </li>
+	          
 	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
 		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
 	        </ul>
@@ -123,8 +126,6 @@
 		<li><a href="">source</a></li>
 	
 	
-		
-	
 	
 </ul>
 <br />
@@ -137,8 +138,9 @@
 		
 
 		<section class="description">
-			<p>Provides the NAME of a [documentjs/tags/param @param] or 
+			<p>Provides the NAME of a [documentjs/tags/param @param] or
 [documentjs/tags/param @option].</p>
+
 		</section>
 
 		
@@ -149,6 +151,7 @@
 <div class="signature-wrapper">
 <p>[success(item)=updater]</p>
 
+
 	<h3>Parameters</h3>
 
 	<ol class="parameters">
@@ -158,6 +161,7 @@
 				<code>{String}</code></h4>
 			<div class="description">
 				<p>Provides the name of the type.</p>
+
 			</div>
 			
 			
@@ -169,6 +173,7 @@
 				<code>{String}</code></h4>
 			<div class="description">
 				<p>Indicates that the option or param is optional.</p>
+
 			</div>
 			
 			
@@ -181,6 +186,7 @@
 			<div class="description">
 				<p>If <code>name</code> is a function,
 <code>()</code> provides the names of each argument.</p>
+
 			</div>
 			
 			
@@ -193,6 +199,7 @@
 			<div class="description">
 				<p>An argument is variable. The argument can
 be given 0 or more times.</p>
+
 			</div>
 			
 			
@@ -205,10 +212,10 @@ be given 0 or more times.</p>
 			<div class="description">
 				<p><code>=default</code> provides
 the default value for the type. For example:</p>
-
 <pre><code class="lang-javascript">/**
  * @param {Number} [age=0]
  */</code></pre>
+
 			</div>
 			
 			
@@ -238,7 +245,7 @@ the default value for the type. For example:</p>
 </div>
 
 <script type="text/javascript">
-	var docData = {"root":".","page":"docs","showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","dest":"/Users/justin/dev/documentjs.com/docs","parent":"tags/helpers/namer.js","docConfigDest":"../documentjs.json","version":"0.0.0","type":"function","name":"documentjs/name","description":"<p>Provides the NAME of a [documentjs/tags/param @param] or \n[documentjs/tags/param @option].</p>","title":"NAME","signatures":[{"code":"[name(args...)=default]","description":"<p>[success(item)=updater]</p>","params":[{"types":[{"type":"String"}],"name":"name","description":"<p>Provides the name of the type.</p>"},{"types":[{"type":"String"}],"name":"[]","description":"<p>Indicates that the option or param is optional.</p>"},{"types":[{"type":"String"}],"name":"(args...)","description":"<p>If <code>name</code> is a function,\n<code>()</code> provides the names of each argument.</p>"},{"types":[{"type":"String"}],"name":"'...'","description":"<p>An argument is variable. The argument can\nbe given 0 or more times.</p>"},{"types":[{"type":"String"}],"name":"=default","description":"<p><code>=default</code> provides\nthe default value for the type. For example:</p>\n\n<pre><code class=\"lang-javascript\">/**\n * @param {Number} [age=0]\n */</code></pre>"}]}],"comment":" ","src":"tags/helpers/namer.js","line":4};
+	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags}/**/*.{js,md}","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS","docConfigDest":"../documentjs.json","version":"0.0.0","name":"documentjs/name","type":"function","description":"<p>Provides the NAME of a [documentjs/tags/param @param] or\n[documentjs/tags/param @option].</p>\n","title":"NAME","signatures":[{"code":"[name(args...)=default]","description":"<p>[success(item)=updater]</p>\n","params":[{"types":[{"type":"String"}],"name":"name","description":"<p>Provides the name of the type.</p>\n"},{"types":[{"type":"String"}],"name":"[]","description":"<p>Indicates that the option or param is optional.</p>\n"},{"types":[{"type":"String"}],"name":"(args...)","description":"<p>If <code>name</code> is a function,\n<code>()</code> provides the names of each argument.</p>\n"},{"types":[{"type":"String"}],"name":"'...'","description":"<p>An argument is variable. The argument can\nbe given 0 or more times.</p>\n"},{"types":[{"type":"String"}],"name":"=default","description":"<p><code>=default</code> provides\nthe default value for the type. For example:</p>\n<pre><code class=\"lang-javascript\">/**\n * @param {Number} [age=0]\n */</code></pre>\n"}]}],"comment":" ","src":"tags/helpers/namer.js","line":5};
 </script>
 
 

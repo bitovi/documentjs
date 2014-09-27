@@ -21,23 +21,18 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<link rel="stylesheet" type="text/css" 
-		{{#staticLocation}}
-			href="{{.}}static/bundles/static.css"
-		{{else}}
-			href="{{url 'static/bundles/static.css'}}"
-		{{/staticLocation}} />
+	<link rel="stylesheet" type="text/css" href='./static/bundles/static.css'/>
 	<!--[if lt IE 9]>
-   <script type="text/javascript" src="{{url 'static/html5shiv.js'}}"></script>
+   <script type="text/javascript" src="./static/html5shiv.js"></script>
     <!--<![endif]-->
 </head>
 
-<body class="{{page}}">
+<body class="docs">
 	<header>
 		<nav class="container">
 
 			<div class="logo-menu">
-				<a class="brand" href="{{url 'index.html'}}">DocumentJS</a>
+				<a class="brand" href="{{urlFromConfig 'index.html'}}">DocumentJS</a>
 				<ul class="dropdown-menu">
 		          <li><a href="http://javascriptmvc.com">JavaScriptMVC</a></li>
 		          <li><a href="http://canjs.com">CanJS</a></li>
@@ -48,8 +43,18 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-	          <li class="{{activePage 'index'}}"><a href="http://documentjs.com">Home</a></li>
-	          <li class="{{activePage 'docs'}}"><a href="{{url 'docs'}}/index.html">Api</a></li>
+			  <li {{#ifCurrentFromConfig "index.html"}}class="active"{{/ifCurrentFromConfig}}>
+	            <a href="{{urlFromConfig 'index.html'}}">Home</a>
+              </li>
+              {{#ifEqual page "index"}}
+		          <li>
+		            <a href="docs/index.html">Api</a>
+		          </li>
+	          {{else}}
+	              <li class="active">
+		            <a href="index.html">Api</a>
+		          </li>
+	          {{/ifEqual}}
 	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
 		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
 	        </ul>

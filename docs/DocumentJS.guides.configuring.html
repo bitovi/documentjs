@@ -17,14 +17,11 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>DocumentJS - configuring </title>
+	<title> - configuring </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<link rel="stylesheet" type="text/css" 
-		
-			href="./static/bundles/static.css"
-		 />
+	<link rel="stylesheet" type="text/css" href='./static/bundles/static.css'/>
 	<!--[if lt IE 9]>
    <script type="text/javascript" src="./static/html5shiv.js"></script>
     <!--<![endif]-->
@@ -35,7 +32,7 @@
 		<nav class="container">
 
 			<div class="logo-menu">
-				<a class="brand" href="./index.html">DocumentJS</a>
+				<a class="brand" href="../index.html">DocumentJS</a>
 				<ul class="dropdown-menu">
 		          <li><a href="http://javascriptmvc.com">JavaScriptMVC</a></li>
 		          <li><a href="http://canjs.com">CanJS</a></li>
@@ -46,8 +43,14 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-	          <li class=""><a href="http://documentjs.com">Home</a></li>
-	          <li class="active"><a href="./docs/index.html">Api</a></li>
+			  <li >
+	            <a href="../index.html">Home</a>
+              </li>
+              
+	              <li class="active">
+		            <a href="index.html">Api</a>
+		          </li>
+	          
 	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
 		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
 	        </ul>
@@ -82,10 +85,6 @@
 			</a>
 			
 	<ul>
-		
-			
-		
-			
 		
 			
 				
@@ -149,6 +148,18 @@
 				<li class="search-container">
 					<a class="page" href="DocumentJS.guides.customizing.html" data-search="customizing">
 						customizing
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="page" href="DocumentJS.guides.contributing.html" data-search="contributing">
+						contributing
 					</a>
 				</li>
 				
@@ -231,20 +242,8 @@
 				
 				
 				<li class="search-container">
-					<a class="property" href="DocumentJS.tags.html" data-search="tags">
+					<a class="property" href="documentjs.tags.html" data-search="tags">
 						tags
-					</a>
-				</li>
-				
-			
-			
-		
-			
-				
-				
-				<li class="search-container">
-					<a class="typedef" href="DocumentJS.docObject.html" data-search="docObject">
-						docObject
 					</a>
 				</li>
 				
@@ -275,6 +274,84 @@
 				<li class="search-container">
 					<a class="function" href="DocumentJS.apis.generate.documentjs.html" data-search="documentjs">
 						documentjs
+					</a>
+				</li>
+				
+			
+			
+		
+	</ul>
+
+
+					</li>
+					
+				
+				
+			
+			
+		
+			
+				
+					
+					<li class="heading search-container">
+						<span>Internal APIS</span>
+						
+	<ul>
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.find.html" data-search="find">
+						find
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="function" href="documentjs.generate.html" data-search="generate">
+						generate
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="typedef" href="documentjs.generator.html" data-search="generator">
+						generator
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.generators.html.html" data-search="generators.html">
+						generators.html
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.process.html" data-search="process">
+						process
 					</a>
 				</li>
 				
@@ -329,8 +406,6 @@
 		<li><a href="">source</a></li>
 	
 	
-		
-	
 	
 </ul>
 <br />
@@ -344,6 +419,7 @@
 
 		<section class="description">
 			<p>Learn how to configure the <code>documentjs.json</code> file for your project.</p>
+
 		</section>
 
 		
@@ -357,125 +433,101 @@
 		<section class="comment">
 			<p>In the root folder of your project, a <code>documentjs.json</code> file is used to configure your project's
 documentation. <a href="DocumentJS.docConfig.html">docConfig</a> specifies the high-level structure and options allowed in
-the <code>documentjs.json</code> file. There are a lot of options.  This guide walks you through the 
+the <code>documentjs.json</code> file. There are a lot of options.  This guide walks you through the
 most common setups.</p>
-
 <h2>Configuring for multiple versions using github pages</h2>
-
 <p>This configuration assumes you:</p>
-
 <ul>
 <li>You are using github pages to host your code's documentation.</li>
 <li>Have <a href="DocumentJS.guides.installing.html">installed</a> <code>documentjs</code> globally</li>
 </ul>
-
 <p>You will setup the code of your project to be documented and then
 setup an empty <code>gh-pages</code> branch to download and document that code.</p>
-
 <ol>
 <li><p>Create a <code>documentjs.json</code> file in your project's root folder.</p>
-
 <p>Specify a <a href="DocumentJS.siteConfig.html">site</a> that will find your project's
 documented files and generate them within a folder. The following will get all <code>.md</code> and
 <code>.js</code> files in the <code>lib</code> and <code>docs</code> folders and put them in an <code>api</code> folder
 next to your project's folder:</p>
-
-<pre><code>{
-  "sites": {
-    "api": {
-      "glob": "{lib,docs}/**/*.{js,md}"
-    }
-  }
-}
+<pre><code> {
+   &quot;sites&quot;: {
+     &quot;api&quot;: {
+       &quot;glob&quot;: &quot;{lib,docs}/**/*.{js,md}&quot;
+     }
+   }
+ }
 </code></pre>
-
-<p>Run <a href="DocumentJS.apis.generate.documentjs.html">documentjs</a> and 
+<p>Run <a href="DocumentJS.apis.generate.documentjs.html">documentjs</a> and
 check that the output looks like:</p>
-
-<pre><code>project&gt; documentjs
-project&gt; cd ../api
-api&gt; open index.html
+<pre><code> project&gt; documentjs
+ project&gt; cd ../api
+ api&gt; open index.html
 </code></pre>
-
 <p>Make sure to commit and push your project's <code>documentjs.json</code> file.</p></li>
 <li><p>Create and clone a gh-pages branch.</p>
-
 <p>Create the branch:</p>
-
-<pre><code>project&gt; git checkout --orphan gh-pages
+<pre><code> project&gt; git checkout --orphan gh-pages
 </code></pre>
-
 <p>Remove files not needed in the static
 site. Commit and push the branch:</p>
-
-<pre><code>project&gt; git rm -rf .
-project&gt; touch documentjs.json
-project&gt; git add documentjs.json
-project&gt; git commit -m "first commit"
-project&gt; git push origin gh-pages
+<pre><code> project&gt; git rm -rf .
+ project&gt; touch documentjs.json
+ project&gt; git add documentjs.json
+ project&gt; git commit -m &quot;first commit&quot;
+ project&gt; git push origin gh-pages
 </code></pre>
-
 <p>Clone the branch so you don't have to switch back and forth constantly:</p>
-
-<pre><code>project&gt; cd ..
-dev&gt; git clone -b gh-pages git://github.com/org/project project.com
-dev&gt; cd project.com
+<pre><code> project&gt; cd ..
+ dev&gt; git clone -b gh-pages git://github.com/org/project project.com
+ dev&gt; cd project.com
 </code></pre></li>
+</ol>
+<ol start="3">
 <li><p><a href="DocumentJS.guides.installing.html">Install DocumentJS as an npm dependency</a></p>
-
-<pre><code>project.com&gt; npm install documentjs --save-dev
+<pre><code> project.com&gt; npm install documentjs --save-dev
 </code></pre></li>
 <li><p>Create a gh-pages <code>documentjs.json</code> file.</p>
-
 <p>List the version number of your project and the branch where
 you added the first <code>documentjs.json</code>:</p>
-
-<pre><code>{
-  "versions": {
-    "1.0.0": "git://github.com/org/project#master"
-  }
-}
+<pre><code> {
+   &quot;versions&quot;: {
+     &quot;1.0.0&quot;: &quot;git://github.com/org/project#master&quot;
+   }
+ }
 </code></pre>
-
 <p>By default, this will download the <code>master</code> into <em>project.com/1.0.0/project</em>
-and then run its <code>documentjs.json</code>, 
+and then run its <code>documentjs.json</code>,
 creating <em>project.com/1.0.0/api/index.html</em>.  For stable linking and SEO, you
-likely want your most recent production documentation 
+likely want your most recent production documentation
 in the same place.  For example, you might always want the latest production
 API docs at <em>project.com/api/index.html</em>.  The <code>defaultVersion</code> lets you specify
-a version that should get put in that location.  </p>
-
+a version that should get put in that location.</p>
 <p>Set <code>defaultVersion</code> to the version number of your project:</p>
-
-<pre><code>{
-  "versions": {
-    "1.0.0": "git://github.com/org/project#master"
-  },
-  "defaultVersion": "1.0.0"
-}
+<pre><code> {
+   &quot;versions&quot;: {
+     &quot;1.0.0&quot;: &quot;git://github.com/org/project#master&quot;
+   },
+   &quot;defaultVersion&quot;: &quot;1.0.0&quot;
+ }
 </code></pre>
-
 <p>Checkout <a href="DocumentJS.docConfig.html">docConfig's documentation</a> for how to change the location
 of the default version, and change the location of other versions, and add
 other behaviors.</p></li>
 <li><p>Generate the docs.</p>
-
-<p>Use <a href="DocumentJS.apis.generate.documentjs.html">documentjs</a> to generate 
+<p>Use <a href="DocumentJS.apis.generate.documentjs.html">documentjs</a> to generate
 the docs:</p>
-
-<p>project.com> node_modules/.bin/documentjs</p>
-
-<p>This will download all versions and generate their docs. This isn't ideal if 
+<pre><code>project.com&gt; node_modules/.bin/documentjs
+</code></pre>
+<p>This will download all versions and generate their docs. This isn't ideal if
 you are trying to document a single version.  You would have to commit and
 push to see changes.  Instead, you can swap a specific version to be read from
 the filesystem like:</p>
-
-<p>project.com> node_modules/.bin/documentjs 1.0.0@../documentjs</p>
-
+<pre><code>project.com&gt; node_modules/.bin/documentjs 1.0.0@../documentjs
+</code></pre>
 <p>This will use the local documentjs folder as the 1.0.0 version.</p></li>
 </ol>
-
 <h2>Configuring for a simple single version.</h2>
+
 		</section>
 		
 
@@ -484,7 +536,7 @@ the filesystem like:</p>
 </div>
 
 <script type="text/javascript">
-	var docData = {"root":".","page":"docs","showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","dest":"/Users/justin/dev/documentjs.com/docs","parent":"DocumentJS.guides","docConfigDest":"../documentjs.json","version":"0.0.0","type":"page","name":"DocumentJS.guides.configuring","description":"<p>Learn how to configure the <code>documentjs.json</code> file for your project.</p>","title":"configuring","order":1,"comment":" ","src":"docs/guides/configuring.md"};
+	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.guides","docConfigDest":"../documentjs.json","version":"0.0.0","type":"page","name":"DocumentJS.guides.configuring","description":"<p>Learn how to configure the <code>documentjs.json</code> file for your project.</p>\n","title":"configuring","order":1,"comment":" ","src":"docs/guides/configuring.md"};
 </script>
 
 

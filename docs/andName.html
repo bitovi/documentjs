@@ -17,14 +17,11 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>DocumentJS  - andName</title>
+	<title>  - andName</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<link rel="stylesheet" type="text/css" 
-		
-			href="./static/bundles/static.css"
-		 />
+	<link rel="stylesheet" type="text/css" href='./static/bundles/static.css'/>
 	<!--[if lt IE 9]>
    <script type="text/javascript" src="./static/html5shiv.js"></script>
     <!--<![endif]-->
@@ -35,7 +32,7 @@
 		<nav class="container">
 
 			<div class="logo-menu">
-				<a class="brand" href="./index.html">DocumentJS</a>
+				<a class="brand" href="../index.html">DocumentJS</a>
 				<ul class="dropdown-menu">
 		          <li><a href="http://javascriptmvc.com">JavaScriptMVC</a></li>
 		          <li><a href="http://canjs.com">CanJS</a></li>
@@ -46,8 +43,14 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-	          <li class=""><a href="http://documentjs.com">Home</a></li>
-	          <li class="active"><a href="./docs/index.html">Api</a></li>
+			  <li >
+	            <a href="../index.html">Home</a>
+              </li>
+              
+	              <li class="active">
+		            <a href="index.html">Api</a>
+		          </li>
+	          
 	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
 		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
 	        </ul>
@@ -119,8 +122,6 @@
 		<li><a href="">source</a></li>
 	
 	
-		
-	
 	
 </ul>
 <br />
@@ -142,7 +143,7 @@
 		
 		
 			<section class="signature">
-				<h2 id="sig_">function(options)
+				<h2 id="sig_">DocumentJS.andName(options)
 </h2>
 <div class="signature-wrapper">
 
@@ -167,6 +168,7 @@
 					</h5>
 					<div class="description">
 						<p>Allowable parents</p>
+
 					</div>
 				</li>
 				
@@ -176,6 +178,7 @@
 					</h5>
 					<div class="description">
 						<p>use the name if parent is one of these items</p>
+
 					</div>
 				</li>
 				
@@ -231,7 +234,7 @@
 </div>
 
 <script type="text/javascript">
-	var docData = {"root":".","page":"docs","showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","dest":"/Users/justin/dev/documentjs.com/docs","parent":"tags/helpers/getParent.js","docConfigDest":"../documentjs.json","version":"0.0.0","type":"function","name":"andName","params":[{"types":[{"type":"Object","options":[{"name":"parents","description":"<p>Allowable parents</p>","types":[{"type":"Array"},{"type":"String"}]},{"name":"useName","description":"<p>use the name if parent is one of these items</p>","types":[{"type":"Array","template":[{"types":[{"type":"String"}]}]}]},{"name":"scope","description":"","types":[{"type":"DocProps"}]},{"name":"docMap","description":"","types":[{"type":"DocMap"}]},{"name":"name","description":"","types":[{"type":"String"}]}]}],"name":"options","description":""}],"description":"","title":"","types":[],"src":"tags/helpers/getParent.js","line":17};
+	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS","docConfigDest":"../documentjs.json","version":"0.0.0","name":"andName","type":"function","description":"","title":"","params":[{"types":[{"type":"Object","options":[{"name":"parents","description":"<p>Allowable parents</p>\n","types":[{"type":"Array"},{"type":"String"}]},{"name":"useName","description":"<p>use the name if parent is one of these items</p>\n","types":[{"type":"Array","template":[{"types":[{"type":"String"}]}]}]},{"name":"scope","description":"","types":[{"type":"DocProps"}]},{"name":"docMap","description":"","types":[{"type":"DocMap"}]},{"name":"name","description":"","types":[{"type":"String"}]}]}],"name":"options","description":""}],"types":[],"src":"lib/tags/helpers/getParent.js","line":17};
 </script>
 
 

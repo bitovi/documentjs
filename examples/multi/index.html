@@ -17,14 +17,11 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>multi  - multi</title>
+	<title>  - multi</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<link rel="stylesheet" type="text/css" 
-		
-			href="./static/bundles/static.css"
-		 />
+	<link rel="stylesheet" type="text/css" href='./static/bundles/static.css'/>
 	<!--[if lt IE 9]>
    <script type="text/javascript" src="./static/html5shiv.js"></script>
     <!--<![endif]-->
@@ -35,7 +32,7 @@
 		<nav class="container">
 
 			<div class="logo-menu">
-				<a class="brand" href="./index.html">DocumentJS</a>
+				<a class="brand" href="../../index.html">DocumentJS</a>
 				<ul class="dropdown-menu">
 		          <li><a href="http://javascriptmvc.com">JavaScriptMVC</a></li>
 		          <li><a href="http://canjs.com">CanJS</a></li>
@@ -46,8 +43,14 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-	          <li class=""><a href="http://documentjs.com">Home</a></li>
-	          <li class="active"><a href="./docs/index.html">Api</a></li>
+			  <li >
+	            <a href="../../index.html">Home</a>
+              </li>
+              
+	              <li class="active">
+		            <a href="index.html">Api</a>
+		          </li>
+	          
 	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
 		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
 	        </ul>
@@ -201,8 +204,6 @@
 		<li><a href="">source</a></li>
 	
 	
-		
-	
 	
 </ul>
 <br />
@@ -227,8 +228,9 @@
 
 		
 		<section class="comment">
-			<p>Welcome to the "multi-module-project".  It is setup like you might setup an
+			<p>Welcome to the &quot;multi-module-project&quot;.  It is setup like you might setup an
 internal NodeJS or client-side application's docs.</p>
+
 		</section>
 		
 
@@ -237,7 +239,7 @@ internal NodeJS or client-side application's docs.</p>
 </div>
 
 <script type="text/javascript">
-	var docData = {"root":".","page":"docs","showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","dest":"/Users/justin/dev/documentjs.com/examples/multi","parent":"multi","docConfigDest":"../../documentjs.json","version":"0.0.0","type":"page","name":"multi","description":"","src":"examples/multi/docs/multi-module.md","children":[{"name":"multi.modules","title":"Modules","type":"group","parent":"multi","description":"","order":0,"children":[{"type":"module","description":"","title":"","types":[{"type":"function","returns":{"types":[{"type":"multi/lib/graph"}]},"params":[]}],"name":"multi/lib/graph","parent":"multi.modules","signatures":[{"code":"new Graph(graphData)","description":"","params":[{"types":[{"type":"multi/lib/graph.graphData"}],"name":"graphData","description":"<p>The data used in the graph.</p>"}],"returns":{"types":[{"type":"multi/lib/graph"}],"description":"<p>A graph instance</p>"}}],"comment":" ","src":"examples/multi/lib/graph.js","line":0,"children":[{"name":"multi/lib/graph.types","title":"types","type":"group","parent":"multi/lib/graph","description":"","order":0,"children":[{"type":"typedef","name":"multi/lib/graph.graphData","description":"<p>Data passed to the [multi/lib/graph] constructor function.</p>","title":"graphData","types":[{"type":"Object","options":[{"name":"data","description":"<p>The data to be graphed.</p>","types":[{"type":"Array","template":[{"types":[{"type":"Number"}]}]}]},{"name":"columns","description":"<p>The column names.</p>","types":[{"type":"Array","template":[{"types":[{"type":"String"}]}]}]}]}],"parent":"multi/lib/graph.types","src":"examples/multi/lib/graph-data.md"}]},{"name":"multi/lib/graph.prototype","type":"prototype","parent":"multi/lib/graph","description":"","src":"examples/multi/lib/graph.js","line":23,"children":[{"type":"function","name":"toChart","params":[],"parent":"multi/lib/graph.prototype","description":"","title":"","src":"examples/multi/lib/graph.js","line":27}]}]},{"name":"multi/util/add","type":"module","description":"<p>Adds two numbers together.</p>","title":"","types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[]}],"parent":"multi.modules","signatures":[{"code":"add(first, second)","description":"","params":[{"types":[{"type":"Number"}],"name":"first","description":"<p>The first number.</p>"},{"types":[{"type":"Number"}],"name":"second","description":"<p>The second number to add.</p>"}],"returns":{"types":[{"type":"Number"}],"description":"<p>The two numbers added together.</p>"}}],"comment":" ","src":"examples/multi/util/add.js","line":0},{"name":"multi/util/date-helpers","type":"module","parent":"multi.modules","description":"<p>Provides an object of date helpers.</p>","title":"","types":[{"type":"Module","description":"<p>An object with date helper methods.</p>"}],"src":"examples/multi/util/date-helpers.js","line":0,"children":[{"type":"function","name":"tomorrow","params":[],"parent":"multi/util/date-helpers","description":"<p>Provides the start time of tomorrow.</p>","title":"","returns":{"types":[{"type":"Date"}],"description":"<p>returns tomorrows date</p>"},"src":"examples/multi/util/date-helpers.js","line":11},{"type":"function","name":"yesterday","params":[],"parent":"multi/util/date-helpers","description":"<p>Provides the start time of yesterday.</p>","title":"","returns":{"types":[{"type":"Date"}],"description":"<p>returns yesterday's date</p>"},"src":"examples/multi/util/date-helpers.js","line":22}]}]},{"name":"multi.guides","title":"Guides","type":"group","parent":"multi","description":"","order":1,"children":[{"type":"page","name":"multi.installing","description":"<p>Some instructions on installing the multi-page.</p>","title":"Installing","parent":"multi.guides","src":"examples/multi/docs/installing.md"}]}]};
+	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"examples/multi/**/*.{js,md}","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/examples/multi","generators":["html"],"parent":"multi","docConfigDest":"../../documentjs.json","version":"0.0.0","type":"page","name":"multi","description":"","src":"examples/multi/docs/multi-module.md","children":[{"name":"multi.modules","title":"Modules","type":"group","parent":"multi","description":"","order":0,"children":[{"type":"module","description":"","title":"","types":[{"type":"function","returns":{"types":[{"type":"multi/lib/graph"}]},"params":[]}],"name":"multi/lib/graph","parent":"multi.modules","signatures":[{"code":"new Graph(graphData)","description":"","params":[{"types":[{"type":"multi/lib/graph.graphData"}],"name":"graphData","description":"<p>The data used in the graph.</p>\n"}],"returns":{"types":[{"type":"multi/lib/graph"}],"description":"<p>A graph instance</p>\n"}}],"comment":" ","src":"examples/multi/lib/graph.js","line":0,"children":[{"name":"multi/lib/graph.types","title":"types","type":"group","parent":"multi/lib/graph","description":"","order":0,"children":[{"type":"typedef","name":"multi/lib/graph.graphData","description":"<p>Data passed to the [multi/lib/graph] constructor function.</p>\n","title":"graphData","types":[{"type":"Object","options":[{"name":"data","description":"<p>The data to be graphed.</p>\n","types":[{"type":"Array","template":[{"types":[{"type":"Number"}]}]}]},{"name":"columns","description":"<p>The column names.</p>\n","types":[{"type":"Array","template":[{"types":[{"type":"String"}]}]}]}]}],"parent":"multi/lib/graph.types","src":"examples/multi/lib/graph-data.md"}]},{"name":"multi/lib/graph.prototype","type":"prototype","parent":"multi/lib/graph","description":"","src":"examples/multi/lib/graph.js","line":23,"children":[{"type":"function","name":"toChart","params":[],"parent":"multi/lib/graph.prototype","description":"","title":"","src":"examples/multi/lib/graph.js","line":27}]}]},{"name":"multi/util/add","type":"module","description":"<p>Adds two numbers together.</p>\n","title":"","types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[]}],"parent":"multi.modules","signatures":[{"code":"add(first, second)","description":"","params":[{"types":[{"type":"Number"}],"name":"first","description":"<p>The first number.</p>\n"},{"types":[{"type":"Number"}],"name":"second","description":"<p>The second number to add.</p>\n"}],"returns":{"types":[{"type":"Number"}],"description":"<p>The two numbers added together.</p>\n"}}],"comment":" ","src":"examples/multi/util/add.js","line":0},{"name":"multi/util/date-helpers","type":"module","parent":"multi.modules","description":"<p>Provides an object of date helpers.</p>\n","title":"","types":[{"type":"Module","description":"<p>An object with date helper methods.</p>\n"}],"src":"examples/multi/util/date-helpers.js","line":0,"children":[{"type":"function","name":"tomorrow","params":[],"parent":"multi/util/date-helpers","description":"<p>Provides the start time of tomorrow.</p>\n","title":"","returns":{"types":[{"type":"Date"}],"description":"<p>returns tomorrows date</p>\n"},"src":"examples/multi/util/date-helpers.js","line":11},{"type":"function","name":"yesterday","params":[],"parent":"multi/util/date-helpers","description":"<p>Provides the start time of yesterday.</p>\n","title":"","returns":{"types":[{"type":"Date"}],"description":"<p>returns yesterday's date</p>\n"},"src":"examples/multi/util/date-helpers.js","line":22}]}]},{"name":"multi.guides","title":"Guides","type":"group","parent":"multi","description":"","order":1,"children":[{"type":"page","name":"multi.installing","description":"<p>Some instructions on installing the multi-page.</p>\n","title":"Installing","parent":"multi.guides","src":"examples/multi/docs/installing.md"}]}]};
 </script>
 
 

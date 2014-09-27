@@ -17,14 +17,11 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>DocumentJS - siteConfig </title>
+	<title> - siteConfig </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<link rel="stylesheet" type="text/css" 
-		
-			href="./static/bundles/static.css"
-		 />
+	<link rel="stylesheet" type="text/css" href='./static/bundles/static.css'/>
 	<!--[if lt IE 9]>
    <script type="text/javascript" src="./static/html5shiv.js"></script>
     <!--<![endif]-->
@@ -35,7 +32,7 @@
 		<nav class="container">
 
 			<div class="logo-menu">
-				<a class="brand" href="./index.html">DocumentJS</a>
+				<a class="brand" href="../index.html">DocumentJS</a>
 				<ul class="dropdown-menu">
 		          <li><a href="http://javascriptmvc.com">JavaScriptMVC</a></li>
 		          <li><a href="http://canjs.com">CanJS</a></li>
@@ -46,8 +43,14 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-	          <li class=""><a href="http://documentjs.com">Home</a></li>
-	          <li class="active"><a href="./docs/index.html">Api</a></li>
+			  <li >
+	            <a href="../index.html">Home</a>
+              </li>
+              
+	              <li class="active">
+		            <a href="index.html">Api</a>
+		          </li>
+	          
 	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
 		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
 	        </ul>
@@ -82,10 +85,6 @@
 			</a>
 			
 	<ul>
-		
-			
-		
-			
 		
 			
 				
@@ -149,6 +148,18 @@
 				<li class="search-container">
 					<a class="page" href="DocumentJS.guides.customizing.html" data-search="customizing">
 						customizing
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="page" href="DocumentJS.guides.contributing.html" data-search="contributing">
+						contributing
 					</a>
 				</li>
 				
@@ -231,20 +242,8 @@
 				
 				
 				<li class="search-container">
-					<a class="property" href="DocumentJS.tags.html" data-search="tags">
+					<a class="property" href="documentjs.tags.html" data-search="tags">
 						tags
-					</a>
-				</li>
-				
-			
-			
-		
-			
-				
-				
-				<li class="search-container">
-					<a class="typedef" href="DocumentJS.docObject.html" data-search="docObject">
-						docObject
 					</a>
 				</li>
 				
@@ -275,6 +274,84 @@
 				<li class="search-container">
 					<a class="function" href="DocumentJS.apis.generate.documentjs.html" data-search="documentjs">
 						documentjs
+					</a>
+				</li>
+				
+			
+			
+		
+	</ul>
+
+
+					</li>
+					
+				
+				
+			
+			
+		
+			
+				
+					
+					<li class="heading search-container">
+						<span>Internal APIS</span>
+						
+	<ul>
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.find.html" data-search="find">
+						find
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="function" href="documentjs.generate.html" data-search="generate">
+						generate
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="typedef" href="documentjs.generator.html" data-search="generator">
+						generator
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.generators.html.html" data-search="generators.html">
+						generators.html
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.process.html" data-search="process">
+						process
 					</a>
 				</li>
 				
@@ -331,8 +408,6 @@
 		<li><a href="">source</a></li>
 	
 	
-		
-	
 	
 </ul>
 <br />
@@ -345,7 +420,8 @@
 		
 
 		<section class="description">
-			
+			<p>The collective configuration</p>
+
 		</section>
 
 		
@@ -368,11 +444,26 @@
 	
 	<li class="parameter">
 		<h4>glob<code>=&quot;**/*.</code>
-			<code>{Glob | Object | Object}</code><span class="pull-right optional">Optional</span></h4>
+			<code>{String | <a href="documentjs.find.globObject.html" >GlobObject</a> | Object}</code><span class="pull-right optional">Optional</span></h4>
 		<div class="description">
-			<p>Configures the files search for
-to find documentation.  By default the pattern <code>"**/*.{js,md}"</code> is used, which
+			<p>Configures the files that will be processed into documentation. The glob
+option either specifies a <a href="https://github.com/isaacs/minimatch">minmatch</a>
+pattern like:</p>
+<pre><code>{glob: &quot;*.js&quot;}
+</code></pre>
+<p>Or a <a href="documentjs.find.globObject.html">GlobObject</a> that specifies the
+a <a href="https://github.com/isaacs/minimatch">minmatch</a> pattern and
+other options like:</p>
+<pre><code>{
+  glob: {
+    pattern: &quot;*.js&quot;,
+    cwd: __dirname  
+  }
+}
+</code></pre>
+<p>By default the pattern <code>&quot;**/*.{js,md}&quot;</code> is used, which
 searches for all <code>.js</code> and <code>.md</code> files within the project.</p>
+
 		</div>
 		
 		
@@ -388,9 +479,10 @@ searches for all <code>.js</code> and <code>.md</code> files within the project.
 			<code>{String}</code><span class="pull-right optional">Optional</span></h4>
 		<div class="description">
 			<p>The location of the folder where DocumentJS should
-write the output. Locations should be relative to the parent folder of the 
+write the output. Locations should be relative to the parent folder of the
 <em>documentjs.json</em> file. If this is not provided, the site name of the configuration
 is used.</p>
+
 		</div>
 		
 		
@@ -402,6 +494,78 @@ is used.</p>
 			<code>{Object}</code><span class="pull-right optional">Optional</span></h4>
 		<div class="description">
 			<p>An object that is made availalbe to the generated HTML pages.</p>
+
+		</div>
+		
+		
+		
+	</li>
+	
+	<li class="parameter">
+		<h4>generators
+			<code>{moduleName | Array&lt;moduleName&gt;}</code><span class="pull-right optional">Optional</span></h4>
+		<div class="description">
+			<p>Generators specifies a generator module or array of modules used to create an
+output for documentation. The default generator is &quot;html&quot; which maps
+to documentjs's internal <a href="documentjs.generators.html.html">html generator</a>.</p>
+<p>You can specify other modules which will be passed a promise containing
+the <a href="documentjs.process.docMap.html">docMap</a> and the <code>options</code> and be expected
+to return a promise that resolves when they are complete.</p>
+
+		</div>
+		
+		
+		
+		
+		
+	</li>
+	
+	<li class="parameter">
+		<h4>static
+			<code>{String}</code></h4>
+		<div class="description">
+			<p>The location of static content used to overwrite or
+add to the default static content.</p>
+
+		</div>
+		
+		
+		
+	</li>
+	
+	<li class="parameter">
+		<h4>minifyBuild<code>=true</code>
+			<code>{Boolean}</code><span class="pull-right optional">Optional</span></h4>
+		<div class="description">
+			<p>If set to <code>false</code> the build will not
+be minified. This behavior should be implemented by the &quot;build&quot; module.</p>
+
+		</div>
+		
+		
+		
+	</li>
+	
+	<li class="parameter">
+		<h4>forceBuild<code>=false</code>
+			<code>{Boolean}</code><span class="pull-right optional">Optional</span></h4>
+		<div class="description">
+			<p>If set to <code>true</code>, rebuilds the
+static bundle even if it has already been built.</p>
+
+		</div>
+		
+		
+		
+	</li>
+	
+	<li class="parameter">
+		<h4>templates
+			<code>{String}</code><span class="pull-right optional">Optional</span></h4>
+		<div class="description">
+			<p>The location of templates used to overwrite or
+add to the default templates.</p>
+
 		</div>
 		
 		
@@ -425,6 +589,7 @@ is used.</p>
 		
 		<section class="comment">
 			<h2>Use</h2>
+
 		</section>
 		
 
@@ -433,7 +598,7 @@ is used.</p>
 </div>
 
 <script type="text/javascript">
-	var docData = {"root":".","page":"docs","showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","dest":"/Users/justin/dev/documentjs.com/docs","parent":"DocumentJS.apis.config","docConfigDest":"../documentjs.json","version":"0.0.0","type":"typedef","name":"DocumentJS.siteConfig","description":"","title":"siteConfig","types":[{"type":"Object","options":[{"name":"glob","description":"<p>Configures the files search for\nto find documentation.  By default the pattern <code>\"**/*.{js,md}\"</code> is used, which\nsearches for all <code>.js</code> and <code>.md</code> files within the project.</p>","types":[{"type":"Glob"},{"type":"Object","options":[]},{"type":"Object","options":[{"name":{"start":35,"end":37,"token":"js"}},{"name":{"start":38,"end":40,"token":"md"}}]}],"optional":true,"defaultValue":"\"**/*."},{"name":"dest","description":"<p>The location of the folder where DocumentJS should\nwrite the output. Locations should be relative to the parent folder of the \n<em>documentjs.json</em> file. If this is not provided, the site name of the configuration\nis used.</p>","types":[{"type":"String"}],"optional":true},{"name":"pageConfig","description":"<p>An object that is made availalbe to the generated HTML pages.</p>","types":[{"type":"Object","options":[]}],"optional":true}]}],"comment":" ","src":"docs/api/config/siteConfig.md"};
+	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.apis.config","docConfigDest":"../documentjs.json","version":"0.0.0","type":"typedef","name":"DocumentJS.siteConfig","description":"<p>The collective configuration</p>\n","title":"siteConfig","types":[{"type":"Object","options":[{"name":"glob","description":"<p>Configures the files that will be processed into documentation. The glob\noption either specifies a <a href=\"https://github.com/isaacs/minimatch\">minmatch</a>\npattern like:</p>\n<pre><code>{glob: &quot;*.js&quot;}\n</code></pre>\n<p>Or a [documentjs.find.globObject GlobObject] that specifies the\na <a href=\"https://github.com/isaacs/minimatch\">minmatch</a> pattern and\nother options like:</p>\n<pre><code>{\n  glob: {\n    pattern: &quot;*.js&quot;,\n    cwd: __dirname  \n  }\n}\n</code></pre>\n<p>By default the pattern <code>&quot;**/*.{js,md}&quot;</code> is used, which\nsearches for all <code>.js</code> and <code>.md</code> files within the project.</p>\n","types":[{"type":"String"},{"type":"documentjs.find.globObject"},{"type":"Object","options":[{"name":{"start":57,"end":59,"token":"js"}},{"name":{"start":60,"end":62,"token":"md"}}]}],"optional":true,"defaultValue":"\"**/*."},{"name":"dest","description":"<p>The location of the folder where DocumentJS should\nwrite the output. Locations should be relative to the parent folder of the\n<em>documentjs.json</em> file. If this is not provided, the site name of the configuration\nis used.</p>\n","types":[{"type":"String"}],"optional":true},{"name":"pageConfig","description":"<p>An object that is made availalbe to the generated HTML pages.</p>\n","types":[{"type":"Object","options":[]}],"optional":true},{"name":"generators","description":"<p>Generators specifies a generator module or array of modules used to create an\noutput for documentation. The default generator is &quot;html&quot; which maps\nto documentjs's internal [documentjs.generators.html html generator].</p>\n<p>You can specify other modules which will be passed a promise containing\nthe [documentjs.process.docMap docMap] and the <code>options</code> and be expected\nto return a promise that resolves when they are complete.</p>\n","types":[{"type":"moduleName"},{"type":"Array","template":[{"types":[{"type":"moduleName"}]}]}],"optional":true},{"name":"static","description":"<p>The location of static content used to overwrite or\nadd to the default static content.</p>\n","types":[{"type":"String"}]},{"name":"minifyBuild","description":"<p>If set to <code>false</code> the build will not\nbe minified. This behavior should be implemented by the &quot;build&quot; module.</p>\n","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"true"},{"name":"forceBuild","description":"<p>If set to <code>true</code>, rebuilds the\nstatic bundle even if it has already been built.</p>\n","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"false"},{"name":"templates","description":"<p>The location of templates used to overwrite or\nadd to the default templates.</p>\n","types":[{"type":"String"}],"optional":true}]}],"comment":" ","src":"docs/api/config/siteConfig.md"};
 </script>
 
 

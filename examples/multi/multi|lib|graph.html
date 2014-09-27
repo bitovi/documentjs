@@ -17,14 +17,11 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>multi  - multi/lib/graph</title>
+	<title>  - multi/lib/graph</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<link rel="stylesheet" type="text/css" 
-		
-			href="./static/bundles/static.css"
-		 />
+	<link rel="stylesheet" type="text/css" href='./static/bundles/static.css'/>
 	<!--[if lt IE 9]>
    <script type="text/javascript" src="./static/html5shiv.js"></script>
     <!--<![endif]-->
@@ -35,7 +32,7 @@
 		<nav class="container">
 
 			<div class="logo-menu">
-				<a class="brand" href="./index.html">DocumentJS</a>
+				<a class="brand" href="../../index.html">DocumentJS</a>
 				<ul class="dropdown-menu">
 		          <li><a href="http://javascriptmvc.com">JavaScriptMVC</a></li>
 		          <li><a href="http://canjs.com">CanJS</a></li>
@@ -46,8 +43,14 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-	          <li class=""><a href="http://documentjs.com">Home</a></li>
-	          <li class="active"><a href="./docs/index.html">Api</a></li>
+			  <li >
+	            <a href="../../index.html">Home</a>
+              </li>
+              
+	              <li class="active">
+		            <a href="index.html">Api</a>
+		          </li>
+	          
 	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
 		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
 	        </ul>
@@ -185,8 +188,6 @@
 		<li><a href="">source</a></li>
 	
 	
-		
-	
 	
 </ul>
 <br />
@@ -219,6 +220,7 @@
 				<code>{<a href="multi|lib|graph.graphData.html" >graphData</a>}</code></h4>
 			<div class="description">
 				<p>The data used in the graph.</p>
+
 			</div>
 			
 			
@@ -233,6 +235,7 @@
 		<h4><code>{<a href="multi|lib|graph.html" >multi/lib/graph</a>}</code></h4>
 		<div class="description">
 			<p>A graph instance</p>
+
 		</div>
 		
 		
@@ -255,10 +258,10 @@
 		
 		<section class="comment">
 			<h2>Use</h2>
-
 <pre><code>import Graph from 'multi/lib/graph'
 graph = new Graph({data: [ ... ], columns: [...]})
 </code></pre>
+
 		</section>
 		
 
@@ -267,7 +270,7 @@ graph = new Graph({data: [ ... ], columns: [...]})
 </div>
 
 <script type="text/javascript">
-	var docData = {"root":".","page":"docs","showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","dest":"/Users/justin/dev/documentjs.com/examples/multi","parent":"multi.modules","docConfigDest":"../../documentjs.json","version":"0.0.0","type":"module","description":"","title":"","types":[{"type":"function","returns":{"types":[{"type":"multi/lib/graph"}]},"params":[]}],"name":"multi/lib/graph","signatures":[{"code":"new Graph(graphData)","description":"","params":[{"types":[{"type":"multi/lib/graph.graphData"}],"name":"graphData","description":"<p>The data used in the graph.</p>"}],"returns":{"types":[{"type":"multi/lib/graph"}],"description":"<p>A graph instance</p>"}}],"comment":" ","src":"examples/multi/lib/graph.js","line":0,"children":[{"name":"multi/lib/graph.types","title":"types","type":"group","parent":"multi/lib/graph","description":"","order":0,"children":[{"type":"typedef","name":"multi/lib/graph.graphData","description":"<p>Data passed to the [multi/lib/graph] constructor function.</p>","title":"graphData","types":[{"type":"Object","options":[{"name":"data","description":"<p>The data to be graphed.</p>","types":[{"type":"Array","template":[{"types":[{"type":"Number"}]}]}]},{"name":"columns","description":"<p>The column names.</p>","types":[{"type":"Array","template":[{"types":[{"type":"String"}]}]}]}]}],"parent":"multi/lib/graph.types","src":"examples/multi/lib/graph-data.md"}]},{"name":"multi/lib/graph.prototype","type":"prototype","parent":"multi/lib/graph","description":"","src":"examples/multi/lib/graph.js","line":23,"children":[{"type":"function","name":"toChart","params":[],"parent":"multi/lib/graph.prototype","description":"","title":"","src":"examples/multi/lib/graph.js","line":27}]}]};
+	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"examples/multi/**/*.{js,md}","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/examples/multi","generators":["html"],"parent":"multi.modules","docConfigDest":"../../documentjs.json","version":"0.0.0","type":"module","description":"","title":"","types":[{"type":"function","returns":{"types":[{"type":"multi/lib/graph"}]},"params":[]}],"name":"multi/lib/graph","signatures":[{"code":"new Graph(graphData)","description":"","params":[{"types":[{"type":"multi/lib/graph.graphData"}],"name":"graphData","description":"<p>The data used in the graph.</p>\n"}],"returns":{"types":[{"type":"multi/lib/graph"}],"description":"<p>A graph instance</p>\n"}}],"comment":" ","src":"examples/multi/lib/graph.js","line":0,"children":[{"name":"multi/lib/graph.types","title":"types","type":"group","parent":"multi/lib/graph","description":"","order":0,"children":[{"type":"typedef","name":"multi/lib/graph.graphData","description":"<p>Data passed to the [multi/lib/graph] constructor function.</p>\n","title":"graphData","types":[{"type":"Object","options":[{"name":"data","description":"<p>The data to be graphed.</p>\n","types":[{"type":"Array","template":[{"types":[{"type":"Number"}]}]}]},{"name":"columns","description":"<p>The column names.</p>\n","types":[{"type":"Array","template":[{"types":[{"type":"String"}]}]}]}]}],"parent":"multi/lib/graph.types","src":"examples/multi/lib/graph-data.md"}]},{"name":"multi/lib/graph.prototype","type":"prototype","parent":"multi/lib/graph","description":"","src":"examples/multi/lib/graph.js","line":23,"children":[{"type":"function","name":"toChart","params":[],"parent":"multi/lib/graph.prototype","description":"","title":"","src":"examples/multi/lib/graph.js","line":27}]}]};
 </script>
 
 

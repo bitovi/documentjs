@@ -17,14 +17,11 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>DocumentJS - docConfig </title>
+	<title> - docConfig </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<link rel="stylesheet" type="text/css" 
-		
-			href="./static/bundles/static.css"
-		 />
+	<link rel="stylesheet" type="text/css" href='./static/bundles/static.css'/>
 	<!--[if lt IE 9]>
    <script type="text/javascript" src="./static/html5shiv.js"></script>
     <!--<![endif]-->
@@ -35,7 +32,7 @@
 		<nav class="container">
 
 			<div class="logo-menu">
-				<a class="brand" href="./index.html">DocumentJS</a>
+				<a class="brand" href="../index.html">DocumentJS</a>
 				<ul class="dropdown-menu">
 		          <li><a href="http://javascriptmvc.com">JavaScriptMVC</a></li>
 		          <li><a href="http://canjs.com">CanJS</a></li>
@@ -46,8 +43,14 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-	          <li class=""><a href="http://documentjs.com">Home</a></li>
-	          <li class="active"><a href="./docs/index.html">Api</a></li>
+			  <li >
+	            <a href="../index.html">Home</a>
+              </li>
+              
+	              <li class="active">
+		            <a href="index.html">Api</a>
+		          </li>
+	          
 	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
 		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
 	        </ul>
@@ -82,10 +85,6 @@
 			</a>
 			
 	<ul>
-		
-			
-		
-			
 		
 			
 				
@@ -149,6 +148,18 @@
 				<li class="search-container">
 					<a class="page" href="DocumentJS.guides.customizing.html" data-search="customizing">
 						customizing
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="page" href="DocumentJS.guides.contributing.html" data-search="contributing">
+						contributing
 					</a>
 				</li>
 				
@@ -231,20 +242,8 @@
 				
 				
 				<li class="search-container">
-					<a class="property" href="DocumentJS.tags.html" data-search="tags">
+					<a class="property" href="documentjs.tags.html" data-search="tags">
 						tags
-					</a>
-				</li>
-				
-			
-			
-		
-			
-				
-				
-				<li class="search-container">
-					<a class="typedef" href="DocumentJS.docObject.html" data-search="docObject">
-						docObject
 					</a>
 				</li>
 				
@@ -275,6 +274,84 @@
 				<li class="search-container">
 					<a class="function" href="DocumentJS.apis.generate.documentjs.html" data-search="documentjs">
 						documentjs
+					</a>
+				</li>
+				
+			
+			
+		
+	</ul>
+
+
+					</li>
+					
+				
+				
+			
+			
+		
+			
+				
+					
+					<li class="heading search-container">
+						<span>Internal APIS</span>
+						
+	<ul>
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.find.html" data-search="find">
+						find
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="function" href="documentjs.generate.html" data-search="generate">
+						generate
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="typedef" href="documentjs.generator.html" data-search="generator">
+						generator
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.generators.html.html" data-search="generators.html">
+						generators.html
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.process.html" data-search="process">
+						process
 					</a>
 				</li>
 				
@@ -331,8 +408,6 @@
 		<li><a href="">source</a></li>
 	
 	
-		
-	
 	
 </ul>
 <br />
@@ -346,6 +421,7 @@
 
 		<section class="description">
 			<p>Configures the behavior of DocumentJS.</p>
+
 		</section>
 
 		
@@ -368,11 +444,12 @@
 	
 	<li class="parameter">
 		<h4>versions
-			<code>{Object&lt;String,<a href="DocumentJS.resourceConfig.html" >resourceConfig</a> | String&gt;}</code></h4>
+			<code>{Object&lt;String,<a href="DocumentJS.resourceConfig.html" >resourceConfig</a> | String&gt;}</code><span class="pull-right optional">Optional</span></h4>
 		<div class="description">
 			<p>A map of version names
 to their location or to a <a href="DocumentJS.resourceConfig.html">resourceConfig</a> that specifies where and how
 to install the release.</p>
+
 		</div>
 		
 		
@@ -381,11 +458,12 @@ to install the release.</p>
 	
 	<li class="parameter">
 		<h4>defaultVersion
-			<code>{String}</code></h4>
+			<code>{String}</code><span class="pull-right optional">Optional</span></h4>
 		<div class="description">
 			<p>The default version that will be copied
 into the <code>defaultDest</code> location. This is so users can go to <code>http://site.com/api</code>
 to find the latest docs and not <code>http://site.com/2.0.1/api</code>.</p>
+
 		</div>
 		
 		
@@ -398,6 +476,7 @@ to find the latest docs and not <code>http://site.com/2.0.1/api</code>.</p>
 		<div class="description">
 			<p>The location of where the default docs should
 be rendered to.</p>
+
 		</div>
 		
 		
@@ -405,13 +484,14 @@ be rendered to.</p>
 	</li>
 	
 	<li class="parameter">
-		<h4>versionDest
-			<code>{String}</code></h4>
+		<h4>versionDest<code>=&quot;&lt;%=version%&gt;&quot;</code>
+			<code>{String}</code><span class="pull-right optional">Optional</span></h4>
 		<div class="description">
 			<p>The templated directory name of where each version's download
-and docs should be created.  The default is <code>"&lt;%= version%&gt;"</code>.  This means
+and docs should be created.  The default is <code>&quot;&lt;%= version%&gt;&quot;</code>.  This means
 that a <em>2.0.1</em> version name will be downloaded to a <em>2.0.1</em> folder. DocumentJS
 will then look for that version's <code>documentjs.json</code> and run that.</p>
+
 		</div>
 		
 		
@@ -424,6 +504,7 @@ will then look for that version's <code>documentjs.json</code> and run that.</p>
 		<div class="description">
 			<p>A map of site names and
 options that configure their behavior.</p>
+
 		</div>
 		
 		
@@ -447,38 +528,34 @@ options that configure their behavior.</p>
 		
 		<section class="comment">
 			<h2>Use</h2>
-
 <p>A <code>docConfig</code> is most commonly found in <code>documentjs.json</code>. It configures
 the behavior of DocumentJS.  There are two main behaviors that <code>docObject</code> controls:</p>
-
 <ul>
 <li>The retrieval of other projects or versions to be documented.</li>
 <li>The documentation behavior of the current project.</li>
 </ul>
-
 <p>A complex configuration, like the one used for <a href="http://github.com/bitovi/canjs.com">producing CanJS.com</a>,
 might looks like:</p>
-
 <pre><code>{
   versions: {
-    "1.1.8" : "https://github.com/bitovi/canjs/tree/1.1-legacy",
-    "2.1.4" : "https://github.com/bitovi/canjs/tree/v2.1.4",
-    "2.2.0-pre" : "https://github.com/bitovi/canjs/tree/minor",
-    "3.0.0-pre" : "https://github.com/bitovi/canjs/tree/major"
+    &quot;1.1.8&quot; : &quot;https://github.com/bitovi/canjs/tree/1.1-legacy&quot;,
+    &quot;2.1.4&quot; : &quot;https://github.com/bitovi/canjs/tree/v2.1.4&quot;,
+    &quot;2.2.0-pre&quot; : &quot;https://github.com/bitovi/canjs/tree/minor&quot;,
+    &quot;3.0.0-pre&quot; : &quot;https://github.com/bitovi/canjs/tree/major&quot;
   },
-  dest: "&lt;%= version %&gt;",
-  defaultVersion: "2.1.4",
-  defaultDest: "."
+  dest: &quot;&lt;%= version %&gt;&quot;,
+  defaultVersion: &quot;2.1.4&quot;,
+  defaultDest: &quot;.&quot;
   sites: {
-      pages: {
-        pattern: "_pages/*.md",
-        dest: "."
-      }
+    pages: {
+      pattern: &quot;_pages/*.md&quot;,
+      dest: &quot;.&quot;
+    }
   }
 }
 </code></pre>
-
 <p>This con</p>
+
 		</section>
 		
 
@@ -487,7 +564,7 @@ might looks like:</p>
 </div>
 
 <script type="text/javascript">
-	var docData = {"root":".","page":"docs","showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","dest":"/Users/justin/dev/documentjs.com/docs","parent":"DocumentJS.apis.config","docConfigDest":"../documentjs.json","version":"0.0.0","type":"typedef","name":"DocumentJS.docConfig","description":"<p>Configures the behavior of DocumentJS.</p>","title":"docConfig","types":[{"type":"Object","options":[{"name":"versions","description":"<p>A map of version names\nto their location or to a [DocumentJS.resourceConfig resourceConfig] that specifies where and how\nto install the release.</p>","types":[{"type":"Object","template":[{"types":[{"type":"String"}]},{"types":[{"type":"DocumentJS.resourceConfig"},{"type":"String"}]}]}]},{"name":"defaultVersion","description":"<p>The default version that will be copied\ninto the <code>defaultDest</code> location. This is so users can go to <code>http://site.com/api</code>\nto find the latest docs and not <code>http://site.com/2.0.1/api</code>.</p>","types":[{"type":"String"}]},{"name":"defaultDest","description":"<p>The location of where the default docs should\nbe rendered to.</p>","types":[{"type":"String"}],"optional":true,"defaultValue":"\".\""},{"name":"versionDest","description":"<p>The templated directory name of where each version's download\nand docs should be created.  The default is <code>\"&lt;%= version%&gt;\"</code>.  This means\nthat a <em>2.0.1</em> version name will be downloaded to a <em>2.0.1</em> folder. DocumentJS\nwill then look for that version's <code>documentjs.json</code> and run that.</p>","types":[{"type":"String"}]},{"name":"sites","description":"<p>A map of site names and\noptions that configure their behavior.</p>","types":[{"type":"Object","template":[{"types":[{"type":"String"}]},{"types":[{"type":"DocumentJS.siteConfig"}]}]}]}]}],"comment":" ","src":"docs/api/config/docConfig.md"};
+	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.apis.config","docConfigDest":"../documentjs.json","version":"0.0.0","type":"typedef","name":"DocumentJS.docConfig","description":"<p>Configures the behavior of DocumentJS.</p>\n","title":"docConfig","types":[{"type":"Object","options":[{"name":"versions","description":"<p>A map of version names\nto their location or to a [DocumentJS.resourceConfig resourceConfig] that specifies where and how\nto install the release.</p>\n","types":[{"type":"Object","template":[{"types":[{"type":"String"}]},{"types":[{"type":"DocumentJS.resourceConfig"},{"type":"String"}]}]}],"optional":true},{"name":"defaultVersion","description":"<p>The default version that will be copied\ninto the <code>defaultDest</code> location. This is so users can go to <code>http://site.com/api</code>\nto find the latest docs and not <code>http://site.com/2.0.1/api</code>.</p>\n","types":[{"type":"String"}],"optional":true},{"name":"defaultDest","description":"<p>The location of where the default docs should\nbe rendered to.</p>\n","types":[{"type":"String"}],"optional":true,"defaultValue":"\".\""},{"name":"versionDest","description":"<p>The templated directory name of where each version's download\nand docs should be created.  The default is <code>&quot;&lt;%= version%&gt;&quot;</code>.  This means\nthat a <em>2.0.1</em> version name will be downloaded to a <em>2.0.1</em> folder. DocumentJS\nwill then look for that version's <code>documentjs.json</code> and run that.</p>\n","types":[{"type":"String"}],"optional":true,"defaultValue":"\"<%=version%>\""},{"name":"sites","description":"<p>A map of site names and\noptions that configure their behavior.</p>\n","types":[{"type":"Object","template":[{"types":[{"type":"String"}]},{"types":[{"type":"DocumentJS.siteConfig"}]}]}]}]}],"comment":" ","src":"docs/api/config/docConfig.md"};
 </script>
 
 
