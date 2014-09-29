@@ -60,3 +60,31 @@ add to the default templates.
 
 ## Use
 
+A `siteConfig` object configures a single call to [documentjs.generate].  It 
+specifies files to be converted to documentation and configures how the output should be 
+generated.  It looks like:
+
+    {
+      glob: "*.js",
+      dest: "../docs",
+      templates: "theme/templates"
+    }
+
+
+A `siteConfig` object is within a [DocumentJS.docConfig]'s `sites` or `siteDefaults`
+objects like:
+
+    {
+      siteDefaults: {
+        templates: "theme/templates"
+      },
+      sites: {
+        "api": {
+          glob: "*.js",
+          dest: "../docs"
+        }
+      }
+    }
+
+
+

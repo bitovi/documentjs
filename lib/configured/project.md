@@ -24,3 +24,5 @@ overwrite is provided.
 @option {Boolean} [npmInstall=false] Use npm to install the resource.
 
 @option {DocumentJS.docConfig} [docConfig] The full docConfig of this project.
+
+@option {Boolean} [watch=false] If true, setup a watch and regenerate.

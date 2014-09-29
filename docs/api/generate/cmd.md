@@ -3,7 +3,7 @@
 
 Generates documentation on the command line.
 
-@signature `documentjs [NAME[@PATH]]`
+@signature `documentjs [NAME[@PATH]] --watch`
 
 Reads the local directory's `documentjs.json`
 
@@ -15,3 +15,9 @@ be limited too.
 version specified by `name`.
 
 
+@param {String} [--watch=false] If watch is specified, the docs will be rerun when a source file 
+changes.
+
+
+@param {String} [--forceBuild=true] If watch is specified, the docs will be rerun when a source file 
+changes.
