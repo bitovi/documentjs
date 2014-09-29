@@ -13,8 +13,4 @@ if(options._.length){
 }
 delete options._;
 
-configured.generateProject({path: process.cwd()}, undefined, options).then(function(){}, function(e){
-	setTimeout(function(){
-		throw e;
-	},1);
-});
+configured.generateProject({path: process.cwd()}, undefined, options).done();

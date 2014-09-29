@@ -1,5 +1,5 @@
 @function DocumentJS.apis.generate.documentjs documentjs
-@parent DocumentJS.apis.generate
+@parent DocumentJS.apis.command-line
 
 Generates documentation on the command line.
 

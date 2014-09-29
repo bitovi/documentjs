@@ -2,7 +2,7 @@
 @group DocumentJS.guides 0 guides
 @group DocumentJS.apis.config 2 Configuration APIS
 @group DocumentJS.apis.document 3 Document APIS
-@group DocumentJS.apis.generate 4 Generate APIS
+@group DocumentJS.apis.command-line 4 Command Line APIS
 
 @group DocumentJS.apis.internal 5 Internal APIS
 
@@ -20,8 +20,8 @@ DocumentJS creates beautiful, articulate, multi-versioned documentation. With Do
 This quick start guide reads through all the `.js`, `.md` and `.markdown` files
 in a folder and creates a sibling `docs` folder with the 
 generated documentation. DocumentJS has many powerful ways of 
-configuring its behavior.  Please read through the [DocumentJS.guides.multi-versioned]
-guide for a more complete example.
+configuring its behavior.  Please read through the
+guides on your left for more complete examples.
 
 ### Install
 
@@ -56,24 +56,24 @@ To customize DocumentJS's default behavior, create a `documentjs.json`
 file in the top level of your project like:
 
     {
-      sites: {
-        docs: {
-          pattern: "src/**/*.{js,md}",
-          parent: "MyProject",
-          out: "api"
+      "sites": {
+        "docs": {
+          "glob": "src/**/*.{js,md}",
+          "out": "api"
         },
-        guides: {
-          pattern: "guides/**/*.md",
-          templates: "./site/templates"
+        "guides": {
+          "glob": "guides/**/*.md",
+          "templates": "./site/templates"
         }
       }
     }
 
-This is the [DocumentJS.docConfig docConfig] object.  Each one of its [siteConfig sites configuration objects]
+This is the [DocumentJS.docConfig docConfig] object.  Each one of 
+its [DocumentJS.siteConfig sites configuration objects]
 configures the output of a site generated from some source.  In this case, all
 JavaScript and Markdown files in `src` are used to generate an `api` site and
 all Markdown files in `guides` are used to generate a `guides` 
-site rendered with custom templates. Read through the [docConfig] API to better 
+site rendered with custom templates. Read through the [DocumentJS.docConfig] API to better 
 understand all the potential options.
 
 ### Document
@@ -88,4 +88,4 @@ add `--watch` and DocumentJS will produce a new site whenever a file is changed:
 
     > documentjs --watch
 
-Read the [commandLineOptions command line option] API for other options.
+Read the [DocumentJS.apis.generate.documentjs command line] API for other options.
