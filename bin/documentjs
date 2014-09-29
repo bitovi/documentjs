@@ -4,7 +4,7 @@ var yargs = require("yargs");
 
 var configured = require("../lib/configured/configured");
 var only = require("../lib/cmd/only");
-var _ = require("underscore");
+var _ = require("lodash");
 
 
 var options = _.extend({}, yargs.argv);
