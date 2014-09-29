@@ -4,7 +4,7 @@
 The collective configuration 
 
 
-@option {String|documentjs.find.globObject} [glob="**/*.{js,md}"] 
+@option {String|documentjs.find.globObject} [glob="**/*.\{js,md\}"] 
 
 Configures the files that will be processed into documentation. The glob
 option either specifies a [minmatch](https://github.com/isaacs/minimatch) 

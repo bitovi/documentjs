@@ -19,9 +19,7 @@ DocumentJS creates beautiful, articulate, multi-versioned documentation. With Do
 
 This quick start guide reads through all the `.js`, `.md` and `.markdown` files
 in a folder and creates a sibling `docs` folder with the 
-generated documentation. DocumentJS has many powerful ways of 
-configuring its behavior.  Please read through the
-guides on your left for more complete examples.
+generated documentation. 
 
 ### Install
 
