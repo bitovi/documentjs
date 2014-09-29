@@ -2,7 +2,7 @@
 
 var yargs = require("yargs");
 
-var document = require("../lib/versions/document");
+var document = require("../lib/configured/configured");
 var only = require("../lib/cmd/only");
 var _ = require("underscore");
 
@@ -13,7 +13,7 @@ if(options._.length){
 }
 delete options._;
 
-document({path: process.cwd()}, undefined, options).then(function(){}, function(e){
+configured.generate({path: process.cwd()}, undefined, options).then(function(){}, function(e){
 	setTimeout(function(){
 		throw e;
 	},1);

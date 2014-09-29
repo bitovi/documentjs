@@ -62,7 +62,31 @@ and its [generated docs](../examples/multi/index.html).  It consists of:
  - An example [function](../examples/multi/multi|util|add.html) module.
  - An example [object](../multi/multi|util|date-helpers.html) module.
 
+## Linking
 
+You can link to documentation pages by their name like `[NAME TITLE?]`.  For example, a
+function like:
+
+    @@function project.math.add
+    
+Can be linked to like `[project.math.add]` in description or body text.  This will create a link like:
+
+    <a href="project.math.add.html">project.math.add</a>
+    
+A link title can be provided with a space after the [documentjs.process.docObject] name.
+For example `[project.math.add add numbers]` creates a link like:
+
+    <a href="project.math.add.html">add numbers</a>
+
+A title can be provided for all types.  For example, you can include a [documentjs.tags.function] title
+like:
+
+    @@function project.math.add add
+    
+If a title is provided with the type, but not in a link, the type's title will be used.  For example:
+`[project.math.add]` with the previous function will create:
+
+    <a href="project.math.add.html">add</a>
 
 
 

@@ -13,8 +13,11 @@
   "bin": {
     "documentjs" : "./bin/documentjs"
   },
+  "scripts": {
+    "test": "./node_modules/.bin/_mocha test.js --reporter spec"
+  },
   "devDependencies": {
-    "mocha": ">= 1.6.0",
+    "mocha": ">= 1.18.0",
     "qunit-mocha-ui": "*",
     "rimraf": "2.1",
     "connect": "^2.14.4",
