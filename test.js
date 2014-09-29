@@ -1,4 +1,4 @@
-
+require("./lib/find/find_test");
 
 require("./lib/tags/tags_tests");
 

@@ -15,3 +15,9 @@ pattern. The following matches all `.js` files:
 
 @option {String} [cwd] The current working directory in which to search. Defaults to process.cwd()
 
+@option {String} [ignore] A pattern to ignore.  For example, to ignore everything in node_modules:
+
+    {
+      pattern: "**/*.js",
+      ignore: "node_modules/**/*"
+    }

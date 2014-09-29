@@ -24,18 +24,17 @@ generated documentation.
 ### Install
 
 Install [Node.js](http://nodejs.org/) on your 
-computer. Open a console. Use [npm](https://www.npmjs.org/) to 
+computer. Open a console to your project. Use [npm](https://www.npmjs.org/) to 
 install DocumentJS:
 
-    > npm install -g documentjs
-
-### Run
-
-Use `cd` to change your working directory to your project. Run
-`documentjs`:
-
     > cd path/to/myproject
-    > documentjs
+    > npm install documentjs --save-dev
+
+### Generate Documentation
+
+Run `./node_modules/.bin/documentjs`:
+
+    > ./node_modules/.bin/documentjs
 
 This will find every file that ends with `.js`, `.md` and `.markdown` and
 try to create documentation from it. 
@@ -84,6 +83,6 @@ comments in your code.
 If you don't want to keep running `documentjs` everytime you make a change,
 add `--watch` and DocumentJS will produce a new site whenever a file is changed:
 
-    > documentjs --watch
+    > ./node_modules/.bin/documentjs --watch
 
 Read the [DocumentJS.apis.generate.documentjs command line] API for other options.
