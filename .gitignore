@@ -9,6 +9,7 @@ site/static/build/
 site/static/dist/
 site/templates/
 lib/generate/test/out/
-lib/versions/tmp/
-lib/versions/test/tmp/
-lib/versions/test/api/
+lib/configured/tmp/
+lib/configured/test/tmp/
+lib/configured/test/api/
+lib/configured/test/docs/
