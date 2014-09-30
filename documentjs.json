@@ -1,7 +1,10 @@
 {
 	"sites": {
 		"docs": {
-			"glob": "{docs,tags,lib}/**/*.{js,md}"
+			"glob": {
+				"pattern": "{docs,tags,lib}/**/*.{js,md}",
+				"ignore": "lib/{configured,generate,find}/test/**/*"
+			}
 		},
 		"examples/multi": {
 			"glob": "examples/multi/**/*.{js,md}"

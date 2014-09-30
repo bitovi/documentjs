@@ -1,7 +1,8 @@
-@typedef {{}} documentjs/tags/tag Tag 
+@typedef {{}} documentjs.Tag Tag 
 An object that describes the behavior of 
 a tag.  
-@parent documentjs/implementation
+@parent documentjs.tags
+@hide
 
 @option {function(String):Boolean|RegExp} codeMatch(code) Returns true
 if the code matches this tag. 

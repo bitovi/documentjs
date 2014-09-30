@@ -133,9 +133,9 @@ To change the default styles, copy one of the `less` files above to your
 
 To change colors, copy _config.less_ and change the `@brand-color` options:
 
-     @brand-color-1: #484848;
+     @@brand-color-1: #484848;
      
-Below the `@brand-color` definitions, you can see how they are mapped to
+Below the `@@brand-color` definitions, you can see how they are mapped to
 parts of the application.
 
 #### Adding other styles
@@ -144,8 +144,8 @@ To add another style, create the less or css file in
 your `siteConfig.static`'s _styles_ folder. Then, copy _styles.less_ and import your 
 stylesheet:
 
-    @import 'ie.less';
-    @import 'mystyles.less'
+    @@import 'ie.less';
+    @@import 'mystyles.less'
 
 ### Changing Images
 
