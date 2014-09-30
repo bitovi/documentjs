@@ -12,6 +12,11 @@ steal("can/control", "can/util","jquery",function(Control, can, $){
 			return first+second;
 		}
 	};
+	var dirname = function(path){
+		var parts = path.split("/");
+		parts.pop();
+		return parts.join("/");
+	};
 	return Control.extend({
 		setup: function(el, options){
 			el = $(el);
@@ -20,7 +25,7 @@ steal("can/control", "can/util","jquery",function(Control, can, $){
 			return Control.prototype.setup.call(this, container, options);
 		},
 		init: function(){
-			if(pageConfig.version) {
+			if(pageConfig.project && pageConfig.project.version) {
 				var self = this;
 				
 				$.ajax(pageConfig.docConfigDest || "../../documentjs.json", {
@@ -45,24 +50,32 @@ steal("can/control", "can/util","jquery",function(Control, can, $){
 			var html = "";
 			can.each(versions, function(version){
 				html += "<option value='"+version+"'"+
-							(version == pageConfig.version ? 
+							(version == pageConfig.project.version ? 
 								" SELECTED" : "") +
 						">"+ version+
 						"</option>";
 			});
 			this.element.html(html).fadeIn();
 		},
-		getVersionedPath: function(version){
-			return this.docConfig.versionDest.replace(/<%=\s*version\s*%>/,""+version);
+		getVersionedParentPath: function(version ){
+			
+			var path = this.docConfig.versionDest.replace(/<%=\s*version\s*%>/,""+version)
+				.replace(/<%=\s*name\s*%>/,""+pageConfig.project.name);
+			return dirname(path);
+		},
+		getDefaultParentPath: function(){
+			var path = this.docConfig.defaultDest.replace(/<%=\s*name\s*%>/,""+pageConfig.project.name);
+			return dirname(path);
 		},
 		'change': function(el, ev) {
 			var newVersion = this.element.val(),
-				version = pageConfig.version,
+				version = pageConfig.project.version,
 				loc = ""+window.location,
 				isVersioned = loc.indexOf("/"+version+"/") >= 0,
 				versions = this.versions,
 				isNewCurrentVersion = false,
-				defaultVersion = this.docConfig.defaultVersion;
+				defaultVersion = this.docConfig.defaultVersion,
+				defaultDest = this.getDefaultParentPath();
 				
 			for(var i =0 ; i < versions.length; i++){
 			
@@ -80,7 +93,7 @@ steal("can/control", "can/util","jquery",function(Control, can, $){
 				var toDocumentJSON = steal.joinURIs(window.location.pathname, 
 					pageConfig.docConfigDest );
 					
-				var toDefaultDest = steal.joinURIs(toDocumentJSON,this.docConfig.defaultDest);
+				var toDefaultDest = steal.joinURIs(toDocumentJSON,defaultDest);
 				
 				window.location = toDefaultDest+afterVersion;
 				
@@ -89,11 +102,11 @@ steal("can/control", "can/util","jquery",function(Control, can, $){
 				// need to preserve where we are
 				var toDocumentJSON = steal.joinURIs(window.location.pathname, 
 					pageConfig.docConfigDest );
-				var toDefaultDest = steal.joinURIs(toDocumentJSON,this.docConfig.defaultDest);
+				var toDefaultDest = steal.joinURIs(toDocumentJSON,defaultDest);
 				// get what's added after the default dest
 				var after = window.location.pathname.replace( toDefaultDest, "");
 				// get the versioned part
-				var versioned = combine(toDocumentJSON, this.getVersionedPath(newVersion));
+				var versioned = combine(toDocumentJSON, this.getVersionedParentPath(newVersion));
 
 				window.location = versioned+after;
 				

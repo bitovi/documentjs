@@ -5,6 +5,6 @@
 		"3.0.0" : "./v3"
 	},
 	"defaultVersion": "2.0.0",
-	"defaultDest": "../tmp/multiple_versions",
-	"versionDest": "../tmp/multiple_versions/<%= version %>"
+	"defaultDest": "../tmp/multiple_versions/project",
+	"versionDest": "../tmp/multiple_versions/<%= version %>/project"
 }

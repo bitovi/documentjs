@@ -30,10 +30,10 @@ using `defaultDest`; otherwise, the project will be installed using `versionDest
 into the `defaultDest` location. This is so users can go to `http://site.com/api`
 to find the latest docs and not `http://site.com/2.0.1/api`.
 
-@option {String} [defaultDest="."] The location of where the default docs should
+@option {String} [defaultDest="./<%\= name %>"] The location of where the default docs should
 be rendered to.
 
-@option {String} [versionDest="<%\=version%>"] The templated directory name of where each version's download
+@option {String} [versionDest="./<%\=version%>/<%\= name %>"] The templated directory name of where each version's download
 and docs should be created.  The default is `"<%= version%>"`.  This means
 that a _2.0.1_ version name will be downloaded to a _2.0.1_ folder. DocumentJS
 will then look for that version's `documentjs.json` and run that.
