@@ -39,7 +39,7 @@
 		          <li><a href="http://jquerypp.com">jQuery++</a></li>
 		          <li><a href="http://stealjs.com">StealJS</a></li>
 		          <li><a href="http://funcunit.com">FuncUnit</a></li>
-		          <li><a href="http://javascriptmvc.com/docs.html#!DocumentJS" class="active">DocumentJS</a></li>
+		          <li><a href="http://documentjs.com" class="active">DocumentJS</a></li>
 		        </ul>
 			</div>
 			<ul class="nav">
@@ -260,6 +260,8 @@
 			
 			
 		
+			
+		
 	</ul>
 
 
@@ -396,7 +398,7 @@ documentjs.process.file(&quot;import $ from 'jquery' ... &quot;,
 </div>
 
 <script type="text/javascript">
-	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.process.methods","docConfigDest":"../documentjs.json","version":"0.0.0","name":"documentjs.process.file","type":"function","description":"<p>Processes a file's source.  Adds created [documentjs.process.docObject docObjects] to docMap.</p>\n","title":"","signatures":[{"code":"documentjs.process.file(source, docMap, [filename])","description":"<p>Processes a file's source and calls [documentjs.process.codeAndComment] accordingly. If\nthe file ends with <code>.js</code>, each comment will be processed individually.  Otherwise,\nit treats the entire source as one big comment.</p>\n","params":[{"types":[{"type":"String"}],"name":"source","description":"<p>A files source</p>\n"},{"types":[{"type":"documentjs.process.docMap"}],"name":"docMap","description":"<p>A map of the name of each DocObject to the DocObject</p>\n"},{"types":[{"type":"String"}],"optional":true,"name":"filename","description":"<p>The filename.  If a filename is not provided,\nthe entire file is treated as one big comment block.  If a filename is provided\nand is not a .md or .markdown file, it is assumed to be a source file.</p>\n"}]}],"comment":" ","src":"lib/process/file.js","line":5};
+	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","ignore":"lib/{configured,generate,find}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.process.methods","docConfigDest":"../documentjs.json","version":"0.0.0","name":"documentjs.process.file","type":"function","description":"<p>Processes a file's source.  Adds created [documentjs.process.docObject docObjects] to docMap.</p>\n","title":"","signatures":[{"code":"documentjs.process.file(source, docMap, [filename])","description":"<p>Processes a file's source and calls [documentjs.process.codeAndComment] accordingly. If\nthe file ends with <code>.js</code>, each comment will be processed individually.  Otherwise,\nit treats the entire source as one big comment.</p>\n","params":[{"types":[{"type":"String"}],"name":"source","description":"<p>A files source</p>\n"},{"types":[{"type":"documentjs.process.docMap"}],"name":"docMap","description":"<p>A map of the name of each DocObject to the DocObject</p>\n"},{"types":[{"type":"String"}],"optional":true,"name":"filename","description":"<p>The filename.  If a filename is not provided,\nthe entire file is treated as one big comment block.  If a filename is provided\nand is not a .md or .markdown file, it is assumed to be a source file.</p>\n"}]}],"comment":" ","src":"lib/process/file.js","line":5};
 </script>
 
 

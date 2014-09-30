@@ -39,7 +39,7 @@
 		          <li><a href="http://jquerypp.com">jQuery++</a></li>
 		          <li><a href="http://stealjs.com">StealJS</a></li>
 		          <li><a href="http://funcunit.com">FuncUnit</a></li>
-		          <li><a href="http://javascriptmvc.com/docs.html#!DocumentJS" class="active">DocumentJS</a></li>
+		          <li><a href="http://documentjs.com" class="active">DocumentJS</a></li>
 		        </ul>
 			</div>
 			<ul class="nav">
@@ -200,8 +200,8 @@
 				
 				
 				<li class="search-container">
-					<a class="typedef" href="DocumentJS.resourceConfig.html" data-search="resourceConfig">
-						resourceConfig
+					<a class="typedef" href="DocumentJS.projectConfig.html" data-search="projectConfig">
+						projectConfig
 					</a>
 				</li>
 				
@@ -264,7 +264,7 @@
 				
 					
 					<li class="heading search-container">
-						<span>Generate APIS</span>
+						<span>Command Line APIS</span>
 						
 	<ul>
 		
@@ -297,6 +297,18 @@
 						<span>Internal APIS</span>
 						
 	<ul>
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.configured.html" data-search="configured">
+						configured
+					</a>
+				</li>
+				
+			
+			
 		
 			
 				
@@ -420,7 +432,8 @@
 		
 
 		<section class="description">
-			<p>Configures the behavior of DocumentJS.</p>
+			<p>Configures the behavior of DocumentJS.  The following are values found within
+a <code>documentjs.json</code>.</p>
 
 		</section>
 
@@ -444,11 +457,27 @@
 	
 	<li class="parameter">
 		<h4>versions
-			<code>{Object&lt;String,<a href="DocumentJS.resourceConfig.html" >resourceConfig</a> | String&gt;}</code><span class="pull-right optional">Optional</span></h4>
+			<code>{Object&lt;String,<a href="DocumentJS.projectConfig.html" >projectConfig</a> | String&gt;}</code><span class="pull-right optional">Optional</span></h4>
 		<div class="description">
 			<p>A map of version names
-to their location or to a <a href="DocumentJS.resourceConfig.html">resourceConfig</a> that specifies where and how
-to install the release.</p>
+to their source or to a <a href="DocumentJS.projectConfig.html">projectConfig</a> that specifies where and how
+to install the release. For example:</p>
+<pre><code>{
+  &quot;versions&quot; : {
+    &quot;1.8.4&quot;: &quot;https://github.com/org/project/tree/v1.8.4&quot;,
+    &quot;2.0.9&quot;: &quot;https://github.com/org/project/tree/v2.0.9&quot;
+    &quot;3.0.0-pre&quot;: {
+      &quot;source&quot;: &quot;https://github.com/org/project#major&quot;,
+      &quot;npmInstall&quot;: true
+    }
+  }
+}
+</code></pre>
+<p>Each versions key is a version name and the value is either a <a href="DocumentJS.projectConfig.html">projectConfig</a> or
+will be made into a <a href="DocumentJS.projectConfig.html">projectConfig</a>'s source.</p>
+<p>Each version will be downloaded to a location depending on <code>versionDest</code>, <code>defaultDest</code> and
+<code>defaultVersion</code>.  If the version key equals <code>defaultVersion</code> the project will be installed
+using <code>defaultDest</code>; otherwise, the project will be installed using <code>versionDest</code>.</p>
 
 		</div>
 		
@@ -511,6 +540,18 @@ options that configure their behavior.</p>
 		
 	</li>
 	
+	<li class="parameter">
+		<h4>siteDefaults
+			<code>{<a href="DocumentJS.siteConfig.html" >siteConfig</a>}</code></h4>
+		<div class="description">
+			<p>Default values for any sites configs.</p>
+
+		</div>
+		
+		
+		
+	</li>
+	
 </ol>
 
 
@@ -541,11 +582,17 @@ might looks like:</p>
     &quot;1.1.8&quot; : &quot;https://github.com/bitovi/canjs/tree/1.1-legacy&quot;,
     &quot;2.1.4&quot; : &quot;https://github.com/bitovi/canjs/tree/v2.1.4&quot;,
     &quot;2.2.0-pre&quot; : &quot;https://github.com/bitovi/canjs/tree/minor&quot;,
-    &quot;3.0.0-pre&quot; : &quot;https://github.com/bitovi/canjs/tree/major&quot;
+    &quot;3.0.0-pre&quot; : {
+      &quot;source&quot;: &quot;https://github.com/bitovi/canjs/tree/major&quot;,
+      &quot;npmInstall&quot; : true
+    }
   },
-  dest: &quot;&lt;%= version %&gt;&quot;,
+  versionDest: &quot;&lt;%= version %&gt;&quot;,
   defaultVersion: &quot;2.1.4&quot;,
-  defaultDest: &quot;.&quot;
+  defaultDest: &quot;.&quot;,
+  siteDefaults: {
+    &quot;templates&quot; : &quot;theme/templates&quot;
+  },
   sites: {
     pages: {
       pattern: &quot;_pages/*.md&quot;,
@@ -554,7 +601,9 @@ might looks like:</p>
   }
 }
 </code></pre>
-<p>This con</p>
+<p>This configuration will download the listed <code>versions</code> into &quot;./&lt;%= version %&gt;/canjs&quot; except for
+2.1.4, which be downloaded to &quot;./canjs&quot;.  Then each version's <code>documentjs.json</code> will be
+generated. Finally, all markdown files in <code>_pages</code> will be generated to &quot;.&quot;.</p>
 
 		</section>
 		
@@ -564,7 +613,7 @@ might looks like:</p>
 </div>
 
 <script type="text/javascript">
-	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.apis.config","docConfigDest":"../documentjs.json","version":"0.0.0","type":"typedef","name":"DocumentJS.docConfig","description":"<p>Configures the behavior of DocumentJS.</p>\n","title":"docConfig","types":[{"type":"Object","options":[{"name":"versions","description":"<p>A map of version names\nto their location or to a [DocumentJS.resourceConfig resourceConfig] that specifies where and how\nto install the release.</p>\n","types":[{"type":"Object","template":[{"types":[{"type":"String"}]},{"types":[{"type":"DocumentJS.resourceConfig"},{"type":"String"}]}]}],"optional":true},{"name":"defaultVersion","description":"<p>The default version that will be copied\ninto the <code>defaultDest</code> location. This is so users can go to <code>http://site.com/api</code>\nto find the latest docs and not <code>http://site.com/2.0.1/api</code>.</p>\n","types":[{"type":"String"}],"optional":true},{"name":"defaultDest","description":"<p>The location of where the default docs should\nbe rendered to.</p>\n","types":[{"type":"String"}],"optional":true,"defaultValue":"\".\""},{"name":"versionDest","description":"<p>The templated directory name of where each version's download\nand docs should be created.  The default is <code>&quot;&lt;%= version%&gt;&quot;</code>.  This means\nthat a <em>2.0.1</em> version name will be downloaded to a <em>2.0.1</em> folder. DocumentJS\nwill then look for that version's <code>documentjs.json</code> and run that.</p>\n","types":[{"type":"String"}],"optional":true,"defaultValue":"\"<%=version%>\""},{"name":"sites","description":"<p>A map of site names and\noptions that configure their behavior.</p>\n","types":[{"type":"Object","template":[{"types":[{"type":"String"}]},{"types":[{"type":"DocumentJS.siteConfig"}]}]}]}]}],"comment":" ","src":"docs/api/config/docConfig.md"};
+	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","ignore":"lib/{configured,generate,find}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.apis.config","docConfigDest":"../documentjs.json","version":"0.0.0","type":"typedef","name":"DocumentJS.docConfig","description":"<p>Configures the behavior of DocumentJS.  The following are values found within\na <code>documentjs.json</code>.</p>\n","title":"docConfig","types":[{"type":"Object","options":[{"name":"versions","description":"<p>A map of version names\nto their source or to a [DocumentJS.projectConfig projectConfig] that specifies where and how\nto install the release. For example:</p>\n<pre><code>{\n  &quot;versions&quot; : {\n    &quot;1.8.4&quot;: &quot;https://github.com/org/project/tree/v1.8.4&quot;,\n    &quot;2.0.9&quot;: &quot;https://github.com/org/project/tree/v2.0.9&quot;\n    &quot;3.0.0-pre&quot;: {\n      &quot;source&quot;: &quot;https://github.com/org/project#major&quot;,\n      &quot;npmInstall&quot;: true\n    }\n  }\n}\n</code></pre>\n<p>Each versions key is a version name and the value is either a [DocumentJS.projectConfig] or\nwill be made into a [DocumentJS.projectConfig]'s source.</p>\n<p>Each version will be downloaded to a location depending on <code>versionDest</code>, <code>defaultDest</code> and\n<code>defaultVersion</code>.  If the version key equals <code>defaultVersion</code> the project will be installed\nusing <code>defaultDest</code>; otherwise, the project will be installed using <code>versionDest</code>.</p>\n","types":[{"type":"Object","template":[{"types":[{"type":"String"}]},{"types":[{"type":"DocumentJS.projectConfig"},{"type":"String"}]}]}],"optional":true},{"name":"defaultVersion","description":"<p>The default version that will be copied\ninto the <code>defaultDest</code> location. This is so users can go to <code>http://site.com/api</code>\nto find the latest docs and not <code>http://site.com/2.0.1/api</code>.</p>\n","types":[{"type":"String"}],"optional":true},{"name":"defaultDest","description":"<p>The location of where the default docs should\nbe rendered to.</p>\n","types":[{"type":"String"}],"optional":true,"defaultValue":"\".\""},{"name":"versionDest","description":"<p>The templated directory name of where each version's download\nand docs should be created.  The default is <code>&quot;&lt;%= version%&gt;&quot;</code>.  This means\nthat a <em>2.0.1</em> version name will be downloaded to a <em>2.0.1</em> folder. DocumentJS\nwill then look for that version's <code>documentjs.json</code> and run that.</p>\n","types":[{"type":"String"}],"optional":true,"defaultValue":"\"<%=version%>\""},{"name":"sites","description":"<p>A map of site names and\noptions that configure their behavior.</p>\n","types":[{"type":"Object","template":[{"types":[{"type":"String"}]},{"types":[{"type":"DocumentJS.siteConfig"}]}]}]},{"name":"siteDefaults","description":"<p>Default values for any sites configs.</p>\n","types":[{"type":"DocumentJS.siteConfig"}]}]}],"comment":" ","src":"docs/api/config/docConfig.md"};
 </script>
 
 

@@ -39,7 +39,7 @@
 		          <li><a href="http://jquerypp.com">jQuery++</a></li>
 		          <li><a href="http://stealjs.com">StealJS</a></li>
 		          <li><a href="http://funcunit.com">FuncUnit</a></li>
-		          <li><a href="http://javascriptmvc.com/docs.html#!DocumentJS" class="active">DocumentJS</a></li>
+		          <li><a href="http://documentjs.com" class="active">DocumentJS</a></li>
 		        </ul>
 			</div>
 			<ul class="nav">
@@ -260,6 +260,8 @@
 			
 			
 		
+			
+		
 	</ul>
 
 
@@ -372,7 +374,7 @@ no docObject is created, <code>newDoc</code> will be null.</p>
 </div>
 
 <script type="text/javascript">
-	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.process.methods","docConfigDest":"../documentjs.json","version":"0.0.0","name":"documentjs.process.codeAndComment","type":"function","description":"","title":"","signatures":[{"code":"documentjs.process.codeAndComment(options, callback)","description":"<p>Processes a code suggestion and then a comment and produces a docObject.</p>\n","params":[{"types":[{"type":"documentjs.process.processOptions"}],"name":"options","description":"<p>An options object that contains\nthe code and comment to process.</p>\n"},{"types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[{"types":[{"type":"documentjs.process.docObject"}],"name":"newDoc","description":"<p>the new documentation object</p>\n"},{"types":[{"type":"documentjs.process.docObject"}],"name":"newScope","description":"<p>the new scope</p>\n"}]}],"name":"callback","description":"<p>A function that is called back with a docObject created from the code and the scope\n<code>docObject</code>.  If\nno docObject is created, <code>newDoc</code> will be null.</p>\n"}]}],"src":"lib/process/code_and_comment.js","line":4};
+	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","ignore":"lib/{configured,generate,find}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.process.methods","docConfigDest":"../documentjs.json","version":"0.0.0","name":"documentjs.process.codeAndComment","type":"function","description":"","title":"","signatures":[{"code":"documentjs.process.codeAndComment(options, callback)","description":"<p>Processes a code suggestion and then a comment and produces a docObject.</p>\n","params":[{"types":[{"type":"documentjs.process.processOptions"}],"name":"options","description":"<p>An options object that contains\nthe code and comment to process.</p>\n"},{"types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[{"types":[{"type":"documentjs.process.docObject"}],"name":"newDoc","description":"<p>the new documentation object</p>\n"},{"types":[{"type":"documentjs.process.docObject"}],"name":"newScope","description":"<p>the new scope</p>\n"}]}],"name":"callback","description":"<p>A function that is called back with a docObject created from the code and the scope\n<code>docObject</code>.  If\nno docObject is created, <code>newDoc</code> will be null.</p>\n"}]}],"src":"lib/process/code_and_comment.js","line":4};
 </script>
 
 

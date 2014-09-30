@@ -39,7 +39,7 @@
 		          <li><a href="http://jquerypp.com">jQuery++</a></li>
 		          <li><a href="http://stealjs.com">StealJS</a></li>
 		          <li><a href="http://funcunit.com">FuncUnit</a></li>
-		          <li><a href="http://javascriptmvc.com/docs.html#!DocumentJS" class="active">DocumentJS</a></li>
+		          <li><a href="http://documentjs.com" class="active">DocumentJS</a></li>
 		        </ul>
 			</div>
 			<ul class="nav">
@@ -200,8 +200,8 @@
 				
 				
 				<li class="search-container">
-					<a class="typedef" href="DocumentJS.resourceConfig.html" data-search="resourceConfig">
-						resourceConfig
+					<a class="typedef" href="DocumentJS.projectConfig.html" data-search="projectConfig">
+						projectConfig
 					</a>
 				</li>
 				
@@ -264,7 +264,7 @@
 				
 					
 					<li class="heading search-container">
-						<span>Generate APIS</span>
+						<span>Command Line APIS</span>
 						
 	<ul>
 		
@@ -297,6 +297,18 @@
 						<span>Internal APIS</span>
 						
 	<ul>
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.configured.html" data-search="configured">
+						configured
+					</a>
+				</li>
+				
+			
+			
 		
 			
 				
@@ -425,7 +437,7 @@
 		
 			
 				<section class="signature">
-					<h2 id="sig_documentjs_NAME__PATH__">documentjs [NAME[@PATH]]
+					<h2 id="sig_documentjs_NAME__PATH____watch">documentjs [NAME[@PATH]] --watch
 </h2>
 <div class="signature-wrapper">
 <p>Reads the local directory's <code>documentjs.json</code></p>
@@ -461,6 +473,32 @@ version specified by <code>name</code>.</p>
 			
 		</li>
 		
+		<li class="parameter">
+			<h4>--watch<code>=false</code>
+				<code>{String}</code><span class="pull-right optional">Optional</span></h4>
+			<div class="description">
+				<p>If watch is specified, the docs will be rerun when a source file
+changes.</p>
+
+			</div>
+			
+			
+			
+		</li>
+		
+		<li class="parameter">
+			<h4>--forceBuild<code>=true</code>
+				<code>{String}</code><span class="pull-right optional">Optional</span></h4>
+			<div class="description">
+				<p>If watch is specified, the docs will be rerun when a source file
+changes.</p>
+
+			</div>
+			
+			
+			
+		</li>
+		
 	</ol>
 
 
@@ -484,7 +522,7 @@ version specified by <code>name</code>.</p>
 </div>
 
 <script type="text/javascript">
-	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.apis.generate","docConfigDest":"../documentjs.json","version":"0.0.0","type":"function","name":"DocumentJS.apis.generate.documentjs","description":"<p>Generates documentation on the command line.</p>\n","title":"documentjs","signatures":[{"code":"documentjs [NAME[@PATH]]","description":"<p>Reads the local directory's <code>documentjs.json</code></p>\n","params":[{"types":[{"type":"String"}],"optional":true,"name":"NAME","description":"<p>The name of a version or site that this generation will\nbe limited too.</p>\n"},{"types":[{"type":"String"}],"optional":true,"name":"PATH","description":"<p>The path to the location of a local repository to stand-in for the\nversion specified by <code>name</code>.</p>\n"}]}],"src":"docs/api/generate/cmd.md"};
+	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","ignore":"lib/{configured,generate,find}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.apis.command-line","docConfigDest":"../documentjs.json","version":"0.0.0","type":"function","name":"DocumentJS.apis.generate.documentjs","description":"<p>Generates documentation on the command line.</p>\n","title":"documentjs","signatures":[{"code":"documentjs [NAME[@PATH]] --watch","description":"<p>Reads the local directory's <code>documentjs.json</code></p>\n","params":[{"types":[{"type":"String"}],"optional":true,"name":"NAME","description":"<p>The name of a version or site that this generation will\nbe limited too.</p>\n"},{"types":[{"type":"String"}],"optional":true,"name":"PATH","description":"<p>The path to the location of a local repository to stand-in for the\nversion specified by <code>name</code>.</p>\n"},{"types":[{"type":"String"}],"optional":true,"name":"--watch","defaultValue":"false","description":"<p>If watch is specified, the docs will be rerun when a source file\nchanges.</p>\n"},{"types":[{"type":"String"}],"optional":true,"name":"--forceBuild","defaultValue":"true","description":"<p>If watch is specified, the docs will be rerun when a source file\nchanges.</p>\n"}]}],"src":"docs/api/generate/cmd.md"};
 </script>
 
 

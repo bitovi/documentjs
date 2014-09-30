@@ -39,7 +39,7 @@
 		          <li><a href="http://jquerypp.com">jQuery++</a></li>
 		          <li><a href="http://stealjs.com">StealJS</a></li>
 		          <li><a href="http://funcunit.com">FuncUnit</a></li>
-		          <li><a href="http://javascriptmvc.com/docs.html#!DocumentJS" class="active">DocumentJS</a></li>
+		          <li><a href="http://documentjs.com" class="active">DocumentJS</a></li>
 		        </ul>
 			</div>
 			<ul class="nav">
@@ -200,8 +200,8 @@
 				
 				
 				<li class="search-container">
-					<a class="typedef" href="DocumentJS.resourceConfig.html" data-search="resourceConfig">
-						resourceConfig
+					<a class="typedef" href="DocumentJS.projectConfig.html" data-search="projectConfig">
+						projectConfig
 					</a>
 				</li>
 				
@@ -264,7 +264,7 @@
 				
 					
 					<li class="heading search-container">
-						<span>Generate APIS</span>
+						<span>Command Line APIS</span>
 						
 	<ul>
 		
@@ -297,6 +297,18 @@
 						<span>Internal APIS</span>
 						
 	<ul>
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.configured.html" data-search="configured">
+						configured
+					</a>
+				</li>
+				
+			
+			
 		
 			
 				
@@ -521,7 +533,7 @@ module.exports = function(docMapPromise, options){
 </div>
 
 <script type="text/javascript">
-	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.apis.internal","docConfigDest":"../documentjs.json","version":"0.0.0","type":"typedef","name":"documentjs.generator","description":"<p>A generator module should produce a function that takes the following shape. Generator\nmodules are used to produce some form of documentation output.  [documentjs.generators.html]\nis the default and currently only generator packaged with DocumentJS.</p>\n","title":"generator","types":[{"type":"function","returns":{"types":[{"type":"Promise"}],"description":"<p>A module that resolves when the output has been built.</p>\n"},"params":[{"types":[{"type":"Promise","template":[{"types":[{"type":"documentjs.process.docMap"}]}]}],"name":"docMapPromise","description":"<p>A promise that will resolve\nwith a map of all [documentjs.process.docObject docObjects] keyed by their name.</p>\n"},{"types":[{"type":"options"}],"name":"The","description":"<p>options object passed to [documentjs.generate].</p>\n"}]}],"comment":" ","src":"lib/generate/generator.md"};
+	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","ignore":"lib/{configured,generate,find}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.apis.internal","docConfigDest":"../documentjs.json","version":"0.0.0","type":"typedef","name":"documentjs.generator","description":"<p>A generator module should produce a function that takes the following shape. Generator\nmodules are used to produce some form of documentation output.  [documentjs.generators.html]\nis the default and currently only generator packaged with DocumentJS.</p>\n","title":"generator","types":[{"type":"function","returns":{"types":[{"type":"Promise"}],"description":"<p>A module that resolves when the output has been built.</p>\n"},"params":[{"types":[{"type":"Promise","template":[{"types":[{"type":"documentjs.process.docMap"}]}]}],"name":"docMapPromise","description":"<p>A promise that will resolve\nwith a map of all [documentjs.process.docObject docObjects] keyed by their name.</p>\n"},{"types":[{"type":"options"}],"name":"The","description":"<p>options object passed to [documentjs.generate].</p>\n"}]}],"comment":" ","src":"lib/generate/generator.md"};
 </script>
 
 

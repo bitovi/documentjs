@@ -39,7 +39,7 @@
 		          <li><a href="http://jquerypp.com">jQuery++</a></li>
 		          <li><a href="http://stealjs.com">StealJS</a></li>
 		          <li><a href="http://funcunit.com">FuncUnit</a></li>
-		          <li><a href="http://javascriptmvc.com/docs.html#!DocumentJS" class="active">DocumentJS</a></li>
+		          <li><a href="http://documentjs.com" class="active">DocumentJS</a></li>
 		        </ul>
 			</div>
 			<ul class="nav">
@@ -260,6 +260,8 @@
 			
 			
 		
+			
+		
 	</ul>
 
 
@@ -406,7 +408,7 @@ that produces events that correlate to files that should be processed.</p>
 </div>
 
 <script type="text/javascript">
-	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.process.types","docConfigDest":"../documentjs.json","version":"0.0.0","type":"typedef","name":"documentjs.process.types.FileEventEmitter","description":"<p>A node <a href=\"http://nodejs.org/api/events.html#events_class_events_eventemitter\">event emitter</a>\nthat produces events that correlate to files that should be processed.</p>\n","title":"fileEventEmitter","types":[{"type":"Object","options":[{"name":"on","types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[{"name":"event"},{"name":"listener"}]}],"description":"<p>Registers an event listener.  File event emitters should dispatch:</p>\n<ul>\n<li><code>&quot;match&quot;</code> events that call listener with the matched path.</li>\n<li><code>&quot;end&quot;</code> events that call listener when there are no more matches.</li>\n</ul>\n"},{"name":"cwd","types":[{"type":"String"}],"description":"<p>The root directory where &quot;match&quot; events are relative to.</p>\n"}]}],"src":"lib/process/file_event_emitter.md"};
+	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","ignore":"lib/{configured,generate,find}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.process.types","docConfigDest":"../documentjs.json","version":"0.0.0","type":"typedef","name":"documentjs.process.types.FileEventEmitter","description":"<p>A node <a href=\"http://nodejs.org/api/events.html#events_class_events_eventemitter\">event emitter</a>\nthat produces events that correlate to files that should be processed.</p>\n","title":"fileEventEmitter","types":[{"type":"Object","options":[{"name":"on","types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[{"name":"event"},{"name":"listener"}]}],"description":"<p>Registers an event listener.  File event emitters should dispatch:</p>\n<ul>\n<li><code>&quot;match&quot;</code> events that call listener with the matched path.</li>\n<li><code>&quot;end&quot;</code> events that call listener when there are no more matches.</li>\n</ul>\n"},{"name":"cwd","types":[{"type":"String"}],"description":"<p>The root directory where &quot;match&quot; events are relative to.</p>\n"}]}],"src":"lib/process/file_event_emitter.md"};
 </script>
 
 

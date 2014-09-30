@@ -39,7 +39,7 @@
 		          <li><a href="http://jquerypp.com">jQuery++</a></li>
 		          <li><a href="http://stealjs.com">StealJS</a></li>
 		          <li><a href="http://funcunit.com">FuncUnit</a></li>
-		          <li><a href="http://javascriptmvc.com/docs.html#!DocumentJS" class="active">DocumentJS</a></li>
+		          <li><a href="http://documentjs.com" class="active">DocumentJS</a></li>
 		        </ul>
 			</div>
 			<ul class="nav">
@@ -200,8 +200,8 @@
 				
 				
 				<li class="search-container">
-					<a class="typedef" href="DocumentJS.resourceConfig.html" data-search="resourceConfig">
-						resourceConfig
+					<a class="typedef" href="DocumentJS.projectConfig.html" data-search="projectConfig">
+						projectConfig
 					</a>
 				</li>
 				
@@ -264,7 +264,7 @@
 				
 					
 					<li class="heading search-container">
-						<span>Generate APIS</span>
+						<span>Command Line APIS</span>
 						
 	<ul>
 		
@@ -297,6 +297,18 @@
 						<span>Internal APIS</span>
 						
 	<ul>
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.configured.html" data-search="configured">
+						configured
+					</a>
+				</li>
+				
+			
+			
 		
 			
 				
@@ -537,12 +549,17 @@ broken down functionally:</p>
 <code>siteConfig.static</code>'s <em>styles</em> folder and make changes.</p>
 <h4>Changing Colors</h4>
 <p>To change colors, copy <em>config.less</em> and change the <code>@brand-color</code> options:</p>
+<pre><code> @brand-color-1: #484848;
+</code></pre>
 <p>Below the <code>@brand-color</code> definitions, you can see how they are mapped to
 parts of the application.</p>
 <h4>Adding other styles</h4>
 <p>To add another style, create the less or css file in
 your <code>siteConfig.static</code>'s <em>styles</em> folder. Then, copy <em>styles.less</em> and import your
 stylesheet:</p>
+<pre><code>@import 'ie.less';
+@import 'mystyles.less'
+</code></pre>
 <h3>Changing Images</h3>
 <p>To change the default images, add your replacement images
 to <code>siteConfig.static</code>'s <em>img</em> folder.  You probably want to create a:</p>
@@ -625,7 +642,7 @@ your <a href="DocumentJS.siteConfig.html">siteConfigs</a>.</p>
 </div>
 
 <script type="text/javascript">
-	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.guides","docConfigDest":"../documentjs.json","version":"0.0.0","type":"page","name":"DocumentJS.guides.customizing","description":"<p>Learn how to change the appearence and JavaScript behavior of your generated html documentation.</p>\n","title":"customizing","order":4,"comment":"      @brand-color-1: #484848;\n    @import 'ie.less';\n    @import 'mystyles.less'\n","src":"docs/guides/customizing.md"};
+	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","ignore":"lib/{configured,generate,find}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.guides","docConfigDest":"../documentjs.json","version":"0.0.0","type":"page","name":"DocumentJS.guides.customizing","description":"<p>Learn how to change the appearence and JavaScript behavior of your generated html documentation.</p>\n","title":"customizing","order":4,"comment":" ","src":"docs/guides/customizing.md"};
 </script>
 
 
