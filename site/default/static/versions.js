@@ -19,9 +19,15 @@ steal("can/control", "can/util","jquery",function(Control, can, $){
 	};
 	return Control.extend({
 		setup: function(el, options){
+			var container;
 			el = $(el);
-			var container = $("<select class='versions'/>").hide();
-			el.after(container);
+			if(el.attr("id") === "versions" && el[0].nodeName.toLowerCase() === "select") {
+				container = el;
+			} else {
+				container = $("<select id='versions'/>").hide();
+				el.after(container);
+			}
+			
 			return Control.prototype.setup.call(this, container, options);
 		},
 		init: function(){
@@ -47,15 +53,21 @@ steal("can/control", "can/util","jquery",function(Control, can, $){
 		},
 		addOptions: function(versions){
 			this.versions = versions;
-			var html = "";
+			var html = "",
+				self = this;
 			can.each(versions, function(version){
 				html += "<option value='"+version+"'"+
 							(version == pageConfig.project.version ? 
 								" SELECTED" : "") +
-						">"+ version+
+						">"+ self.getVersionSelectText(version)+
 						"</option>";
 			});
 			this.element.html(html).fadeIn();
+		},
+		getVersionSelectText: function(version){
+			return pageConfig.versionsSelectText ? 
+				pageConfig.versionsSelectText.replace(/<%=\s*version\s*%>/,""+version) : 
+				version;
 		},
 		getVersionedParentPath: function(version ){
 			

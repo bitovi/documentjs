@@ -14,5 +14,5 @@ steal("./content_list.js",
 	
 	new ContentList(".contents");
 	new FrameHelper(".docs");
-	new Versions( $(".sidebar-title:first") );
+	new Versions( $("#versions, .sidebar-title:first") );
 });
