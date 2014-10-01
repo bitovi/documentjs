@@ -26,7 +26,10 @@ module.exports = function(options, folders){
 		minify: options.minifyBuild === false ? false : true,
 		quiet: true
 	}).then(function(){
-		console.log("BUILD: Copying build to dist.");
+		if(options.debug) {
+			console.log("BUILD: Copying build to dist.");
+		}
+		
 		// copy everything to DIST
 		return Q.all([
 			fsx.mkdirs( path.join(folders.dist,"bundles") ).then(function(){
