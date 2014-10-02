@@ -1,5 +1,5 @@
 (function () {
-
+	var isClient = typeof window !== "undefined";
 	System.config({
 		map: {
 			"jquery/jquery": "jquery",
@@ -8,8 +8,8 @@
 			"mustache": "can/view/mustache/system"
 		},
 		paths: {
-			"jquery": "../../../../node_modules/canjs/lib/jquery.1.10.2.js",
-			"can/*": "../../../../node_modules/canjs/*.js"
+			"jquery": isClient ? "can/lib/jquery.1.10.2.js" : "../../../../node_modules/canjs/lib/jquery.1.10.2.js",
+			"can/*": isClient ? "can/*.js" : "../../../../node_modules/canjs/*.js"
 		},
 		meta: {
 			jquery: {

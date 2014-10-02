@@ -5,6 +5,7 @@ production.js
 docs.html
 tmp
 node_modules
+site/static/
 site/static/build/
 site/static/dist/
 site/templates/
@@ -13,4 +14,4 @@ lib/configured/tmp/
 lib/configured/test/tmp/
 lib/configured/test/api/
 lib/configured/test/docs/
-lib/generators/html/tmp/
+lib/generators/html/test/tmp/

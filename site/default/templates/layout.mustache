@@ -20,8 +20,9 @@
 	<title>{{makeParentTitle}} {{#if title}}- {{title}} {{else}} {{#if name}}- {{name}}{{/if}}{{/if}}</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
-
+	{{^devBuild}}
 	<link rel="stylesheet" type="text/css" href="./static/bundles/static.css">
+	{{/devBuild}}
 	<!--[if lt IE 9]>
    <script type="text/javascript" src="static/html5shiv.js"></script>
     <!--<![endif]-->
@@ -60,10 +61,17 @@
 		</nav>
 	</footer>
 	{{/if}}
-	<script type='text/javascript' 
-			data-main="static"
-			src="./static/steal.production.js"
-	    		bundles-path="bundles"></script>
+	{{#if devBuild}}
+		<script type='text/javascript' 
+				data-main="static"
+				data-config="./static/config.js"
+				src="./static/steal/steal.js"></script>
+	{{else}}
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	{{/if}}
 </body>
 
 </html>
