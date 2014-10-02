@@ -24,7 +24,8 @@ module.exports = function(options, folders){
 		bundlesPath: __dirname+"/bundles",
 	},{
 		minify: options.minifyBuild === false ? false : true,
-		quiet: true
+		quiet: options.debug ? false : true,
+		debug: options.debug ?  true : false
 	}).then(function(){
 		if(options.debug) {
 			console.log("BUILD: Copying build to dist.");
