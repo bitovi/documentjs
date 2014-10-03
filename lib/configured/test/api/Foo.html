@@ -20,8 +20,9 @@
 	<title>mylib  - Foo</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
-
+	
 	<link rel="stylesheet" type="text/css" href="./static/bundles/static.css">
+	
 	<!--[if lt IE 9]>
    <script type="text/javascript" src="static/html5shiv.js"></script>
     <!--<![endif]-->
@@ -172,7 +173,7 @@
 </div>
 
 <script type="text/javascript">
-	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"parent":"mylib","glob":{"pattern":"**/*.{js,md}","cwd":"/Users/justin/dev/documentjs/lib/configured/test/example_project"},"dest":"/Users/justin/dev/documentjs/lib/configured/test/api","generators":["html"],"docConfigDest":"../example_project/documentjs.json","project":{},"type":"constructor","description":"","name":"Foo","title":"","comment":" ","src":"foo.js","line":7,"children":[{"name":"Foo.prototype","type":"prototype","parent":"Foo","description":"","src":"foo.js","line":17,"children":[{"type":"function","name":"Foo.prototype.bar","params":[],"parent":"Foo.prototype","description":"","title":"bar","src":"foo.js","line":21}]}]};
+	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"parent":"mylib","glob":{"pattern":"**/*.{md,js}","cwd":"/Users/justin/dev/documentjs/lib/configured/test/example_project"},"dest":"/Users/justin/dev/documentjs/lib/configured/test/api","generators":["html"],"docConfigDest":"../example_project/documentjs.json","project":{},"type":"constructor","description":"","name":"Foo","title":"","comment":" ","src":"foo.js","children":[{"name":"Foo.prototype","type":"prototype","parent":"Foo","description":"","src":"foo.js","children":[{"type":"function","name":"Foo.prototype.bar","params":[],"parent":"Foo.prototype","description":"","title":"bar","src":"foo.js"}]}]};
 </script>
 
 
@@ -183,10 +184,12 @@
 		</nav>
 	</footer>
 	
-	<script type='text/javascript' 
-			data-main="static"
-			src="./static/steal.production.js"
-	    		bundles-path="bundles"></script>
+	
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	
 </body>
 
 </html>
