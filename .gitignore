@@ -15,3 +15,5 @@ lib/configured/test/tmp/
 lib/configured/test/api/
 lib/configured/test/docs/
 lib/generators/html/test/tmp/
+.DS_Store
+.DS_Store?

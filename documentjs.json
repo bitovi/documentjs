@@ -3,7 +3,7 @@
 		"docs": {
 			"glob": {
 				"pattern": "{docs,tags,lib}/**/*.{js,md}",
-				"ignore": "lib/{configured,generate,find}/test/**/*"
+				"ignore": "lib/{configured,generate,find,generators/html}/test/**/*"
 			}
 		},
 		"examples/multi": {
