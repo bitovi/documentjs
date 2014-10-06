@@ -1,5 +1,7 @@
+{{#unless hideContainer}}
 <div class="container api">
-	{{#if showSidebar}}
+{{/unless}}
+	{{#unless hideSidebar}}
 	<nav class="sidebar">
 		{{#if enableSearch}}
 		<div class="search-wrapper">
@@ -10,17 +12,23 @@
 		{{/if}}
 		{{> menu.mustache}}
 	</nav>
-	{{/if}}
+	{{/unless}}
+	
+	{{#unless hideArticle}}
 	<article class="content docs">
-		{{#if showTitle}}
+	{{/unless}}
+	
+		{{#unless hideTitle}}
 		<section class="title">
 			{{> title.mustache}}
 		</section>
-		{{/if}}
-
+		{{/unless}}
+		
+		{{#unless hideArticle}}
 		<section class="contents">
 		</section>
-
+		{{/unless}}
+		
 		{{#if deprecated.length}}
 			<section class='warnings'>
 				{{#deprecated}}
@@ -34,9 +42,11 @@
 			</section>
 		{{/if}}
 
+		{{#if description}}
 		<section class="description">
 			{{{makeLinks description}}}
 		</section>
+		{{/if}}
 
 		{{#if signatures}}
 			{{#signatures}}
@@ -64,14 +74,23 @@
 			{{{makeLinks body}}}
 		</section>
 		{{/if}}
+		{{#if htmlBody}}
+			{{{htmlBody}}}
+		{{/if}}
 
 		{{#if api}}
 		<section class="api">
 			{{{makeApiSection}}}
 		</section>
 		{{/if}}
+	
+	{{#unless hideArticle}}
 	</article>
+	{{/unless}}
+	
+{{#unless hideContainer}}
 </div>
+{{/unless}}
 
 <script type="text/javascript">
 	var docObject = {{{docObjectString}}};

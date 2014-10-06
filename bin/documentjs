@@ -16,12 +16,15 @@ var argv = yargs
 	
 	.alias("w","watch")
 	.describe("w","Watch files and regenerate on changes")
+	.boolean("w")
 	
 	.alias("f","forceBuild")
 	.describe("f","Force rebuilding the templates, js, and css.")
+	.boolean("f")
 	
 	.alias("d","debug")
 	.describe("d","Turn on debugging output.")
+	.boolean("d")
 	
 	.alias("h","help")
 	.help("h")
