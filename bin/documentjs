@@ -32,7 +32,9 @@ var argv = yargs
 
 var options = _.extend({}, argv);
 if(options._.length){
-	options.only = only(options._);
+	options.only = only(options._).map(function(value){
+		return ""+value;
+	});
 }
 delete options._;
 
