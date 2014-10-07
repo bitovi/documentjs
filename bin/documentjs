@@ -14,6 +14,8 @@ var argv = yargs
 	.example("documentjs api 2.0.0","Generate the api site and the 2.0.0 version.")
 	.example("documentjs 2.0.0@../dir","Only the 2.0.0 version but loaded from ../dir.")
 	
+	.string("_")
+	
 	.alias("w","watch")
 	.describe("w","Watch files and regenerate on changes")
 	.boolean("w")
@@ -37,6 +39,5 @@ if(options._.length){
 	}));
 }
 delete options._;
-
 
 configured.generateProject({path: process.cwd()}, undefined, options).done();
