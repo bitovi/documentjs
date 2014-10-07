@@ -1,6 +1,10 @@
 steal("can/control", "can/util","jquery",function(Control, can, $){
 	var pageConfig = window.docObject || {};
 	
+	var endsWithSlash = function(path){
+		return path[path.length -1] === "/";
+	};
+	
 	var combine = function(first, second){
 		var right = first[first.length -1],
 			left = second[0];
@@ -16,6 +20,13 @@ steal("can/control", "can/util","jquery",function(Control, can, $){
 		var parts = path.split("/");
 		parts.pop();
 		return parts.join("/");
+	};
+	var removeTrailingSlash = function(path){
+		if(endsWithSlash(path)) {
+			return path.substr(0, path.length -1);
+		} else {
+			return path;
+		}
 	};
 	return Control.extend({
 		setup: function(el, options){
@@ -106,7 +117,7 @@ steal("can/control", "can/util","jquery",function(Control, can, $){
 					pageConfig.docConfigDest );
 					
 				var toDefaultDest = steal.joinURIs(toDocumentJSON,defaultDest);
-				
+				toDefaultDest = removeTrailingSlash(toDefaultDest);
 				window.location = toDefaultDest+afterVersion;
 				
 			// going new to old
@@ -115,6 +126,7 @@ steal("can/control", "can/util","jquery",function(Control, can, $){
 				var toDocumentJSON = steal.joinURIs(window.location.pathname, 
 					pageConfig.docConfigDest );
 				var toDefaultDest = steal.joinURIs(toDocumentJSON,defaultDest);
+				toDefaultDest = removeTrailingSlash(toDefaultDest);
 				// get what's added after the default dest
 				var after = window.location.pathname.replace( toDefaultDest, "");
 				// get the versioned part
