@@ -31,6 +31,9 @@ write the output. Locations should be relative to the parent folder of the
 _documentjs.json_ file. If this is not provided, the site name of the configuration
 is used.
 
+@option {String} [parent] The primary page which will be treated as the documentation's 
+homepage.  If one is not provided, one will be attempted to be found by:
+
 @option {Object} [pageConfig] An object that is made availalbe to the generated HTML pages.
 
 
