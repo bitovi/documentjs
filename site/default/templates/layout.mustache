@@ -72,6 +72,13 @@
 				data-config="./static/config.js"
 				src="./static/steal/steal.js"></script>
 	{{else}}
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
 		<script type='text/javascript' 
 				data-main="static"
 				src="./static/steal.production.js"
