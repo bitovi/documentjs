@@ -2,7 +2,7 @@ var configured = require("../lib/configured/configured");
 
 module.exports = function(grunt) {
 	var _ = grunt.util._;
-
+	
 	grunt.registerTask('documentjs', 'Generates documentation', function(only) {
 		var done = this.async();
 		var options = {};
@@ -11,8 +11,9 @@ module.exports = function(grunt) {
 				return {name: name};
 			});
 		}
-		var docConfig = grunt.config.get(this.name);
-		options.debug = true;
+
+		var docConfig = grunt.config.getRaw(this.name);
+		
 		configured.generateProject({
 			path: process.cwd(),
 			docConfig: docConfig
