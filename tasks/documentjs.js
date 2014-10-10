@@ -7,14 +7,20 @@ module.exports = function(grunt) {
 		var done = this.async();
 		var options = {};
 		if(arguments.length) {
-			options.only = [].slice.call(arguments);
+			options.only = [].slice.call(arguments).map(function(name){
+				return {name: name};
+			});
 		}
-		
+		var docConfig = grunt.config.get(this.name);
+		options.debug = true;
 		configured.generateProject({
 			path: process.cwd(),
-			docObject: this.data
+			docConfig: docConfig
 		}, undefined, options)
-			.then(done,done);
+			.then(done,function(err){
+				console.log(err);
+				done(err);
+			});
 		
 	});
 };
