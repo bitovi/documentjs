@@ -15,13 +15,12 @@ DocumentJS creates beautiful, articulate, multi-versioned documentation. With Do
  - Customize your site's theme and layout.
  - Generate docs for each version of your code.
 
-## Quick Start
-
-This quick start guide reads through all the `.js`, `.md` and `.markdown` files
+The remainder of this page walks you through a "Quick Start Guide" that
+reads through all the `.js`, `.md` and `.markdown` files
 in a folder and creates a sibling `docs` folder with the 
 generated documentation. 
 
-### Install
+## Install
 
 Install [Node.js](http://nodejs.org/) on your 
 computer. Open a console to your project. Use [npm](https://www.npmjs.org/) to 
@@ -30,7 +29,7 @@ install DocumentJS:
     > cd path/to/myproject
     > npm install documentjs --save-dev
 
-### Generate Documentation
+## Generate Documentation
 
 Run `./node_modules/.bin/documentjs`:
 
@@ -39,7 +38,7 @@ Run `./node_modules/.bin/documentjs`:
 This will find every file that ends with `.js`, `.md` and `.markdown` and
 try to create documentation from it. 
 
-### Configure
+## Configure
 
 You probably don't want to document everything, and 
 might want to configure the behavior of things like:
@@ -73,12 +72,83 @@ all Markdown files in `guides` are used to generate a `guides`
 site rendered with custom templates. Read through the [DocumentJS.docConfig] API to better 
 understand all the potential options.
 
-### Document
+## Document
 
-DocumentJS supports a large amount of [DocumentJS.tags tags] used to mark up the
-comments in your code.
+DocumentJS supports a large amount of [documentjs.tags tags] used to mark up the
+comments in your code. The following demonstrates some common examples:
 
-### Run Automatically
+### Document modules that export multiple values
+
+Document a module that exports a function an an object of constants like:
+
+```
+/**
+ * @module {Module} utils/math
+ * @parent utils
+ *
+ * The module's description is the first paragraph.
+ *
+ * The body of the module's documentation.
+ */
+import _ from 'lodash';
+
+/**
+ * @function
+ * 
+ * This function's description is the first
+ * paragraph.
+ *
+ * This starts the body.  This text comes after the signature. 
+ *
+ * @param {Number} first This param's description.
+ * @param {Number} second This param's description.
+ * @return {Number} This return value's description.
+ */
+export function sum(first, second){ ... };
+
+/**
+ * @property {{}} 
+ * 
+ * This function's description is the first
+ * paragraph.
+ *
+ * @option {Number} pi The description of pi.
+ *
+ * @option {Number} e The description of e.
+ */
+export var constants = {
+  pi: 3.14159265359,
+  e: 2.71828
+};
+```
+
+This will create three pages: `utils/math.html` which will be the parent
+of `utils/math.sum.html` and `utils/math.constants.html`.
+
+### Document modules that export a single value
+
+The following documents a module that exports a single function so the module
+and the function are documented on the same page:
+
+```
+/**
+ * @module {function} utils/add
+ * @parent utils
+ * 
+ * The module's description is the first paragraph.
+ * 
+ * The body of the module's documentation.
+ * 
+ * @param {Number} first This param's description.
+ * @param {Number} second This param's description.
+ * @return {Number} This return value's description.
+ */
+export default function(){ ... };
+```
+
+This exports a single `utils/add.html` page.
+
+## Run Automatically
 
 If you don't want to keep running `documentjs` everytime you make a change,
 add `--watch` and DocumentJS will produce a new site whenever a file is changed:

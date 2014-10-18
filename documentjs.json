@@ -2,7 +2,7 @@
 	"sites": {
 		"docs": {
 			"glob": {
-				"pattern": "{docs,tags,lib}/**/*.{js,md}",
+				"pattern": "{docs,tags,lib,tasks}/**/*.{js,md}",
 				"ignore": "lib/{configured,generate,find,generators/html}/test/**/*"
 			}
 		},
