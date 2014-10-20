@@ -31,14 +31,6 @@ can run the [DocumentJS.apis.generate.documentjs documentjs command] like:
 
     > ./node_modules/.bin/documentjs
 
-Alternatively, you can add a [npm-script](https://www.npmjs.org/doc/misc/npm-scripts.html) to your 
-`package.json` to make 
-it easier to run:
-
-    "scripts" : {
-      "documentjs": "documentjs"
-    }
-
 
 ## Installing globally
 
@@ -50,7 +42,20 @@ Run:
 
 ## Installing for Grunt
 
-coming soon
+DocumentJS comes with a Grunt task. Simply import it in your `Gruntfile.js` and
+configure the `documentjs` task with the [DocumentJS.docConfig]:
+
+    // Gruntfile.js
+    module.exports = function(grunt){
+      grunt.loadNpmTasks('documentjs');
+      grunt.initConfig({
+        documentjs: {
+          versions: { ... },
+          sites: { ... }
+        }
+      });
+    };
+
 
 ## Installing for Gulp
 

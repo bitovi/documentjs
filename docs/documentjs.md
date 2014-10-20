@@ -13,12 +13,12 @@ DocumentJS creates beautiful, articulate, multi-versioned documentation. With Do
    and [Google Closure Compiler](https://developers.google.com/closure/compiler/docs/js-for-compiler) 
    annotations.
  - Customize your site's theme and layout.
- - Generate docs for each version of your code.
+ - Generate multi-version documentation.
 
 The remainder of this page walks you through a "Quick Start Guide" that
 reads through all the `.js`, `.md` and `.markdown` files
 in a folder and creates a sibling `docs` folder with the 
-generated documentation. 
+generated documentation. Read the other guides for more detailed instructions.
 
 ## Install
 
