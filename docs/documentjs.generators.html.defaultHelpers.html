@@ -71,7 +71,9 @@
 		</nav>
 	</header>
 
-	<div class="container api">
+	
+<div class="container api">
+
 	
 	<nav class="sidebar">
 		
@@ -376,7 +378,11 @@
 
 	</nav>
 	
+	
+	
 	<article class="content docs">
+	
+	
 		
 		<section class="title">
 			<div class="heading">
@@ -409,40 +415,39 @@
 <br />
 		</section>
 		
-
+		
+		
 		<section class="contents">
 		</section>
+		
+		
+		
 
 		
 
-		<section class="description">
+		
 			
-		</section>
-
-		
-			
 		
 		
 		
 		
 
 		
+		
 
 		
+	
+	
 	</article>
+	
+	
+
 </div>
 
-<script type="text/javascript">
-	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","ignore":"lib/{configured,generate,find}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.generators.html","docConfigDest":"../documentjs.json","version":"0.0.0","name":"documentjs.generators.html.defaultHelpers","title":"default helpers","type":"group","description":"","order":2,"src":"lib/generators/html/build/make_default_helpers.js","line":113,"children":[{"type":"function","name":"documentjs.generators.html.defaultHelpers.ifEqual","params":[{"name":"first","types":[{"type":"*"}]},{"name":"second","types":[{"type":"*"}]},{"name":"options","types":[{"type":"*"}]}],"parent":"documentjs.generators.html.defaultHelpers","description":"","title":"","src":"lib/generators/html/build/make_default_helpers.js","line":120},{"type":"function","name":"documentjs.generators.html.defaultHelpers.ifAny","params":[],"parent":"documentjs.generators.html.defaultHelpers","description":"","title":"","src":"lib/generators/html/build/make_default_helpers.js","line":130},{"type":"function","name":"documentjs.generators.html.defaultHelpers.ifNotEqual","params":[{"name":"first","types":[{"type":"*"}]},{"name":"second","types":[{"type":"*"}]},{"name":"options","types":[{"type":"*"}]}],"parent":"documentjs.generators.html.defaultHelpers","description":"","title":"","src":"lib/generators/html/build/make_default_helpers.js","line":143},{"type":"function","name":"documentjs.generators.html.defaultHelpers.makeTitle","params":[],"parent":"documentjs.generators.html.defaultHelpers","description":"<p>Given the docObject context, returns a &quot;pretty&quot; name that is used\nin the sidebar and the page header.</p>\n","title":"","src":"lib/generators/html/build/make_default_helpers.js","line":186},{"type":"function","name":"documentjs.generators.html.defaultHelpers.ifGroup","params":[{"name":"options","types":[{"type":"*"}]}],"parent":"documentjs.generators.html.defaultHelpers","description":"<p>Renders the section if the current context is a group type like\n&quot;group&quot;, &quot;prototype&quot;, or &quot;static&quot;.</p>\n","title":"","src":"lib/generators/html/build/make_default_helpers.js","line":214},{"type":"function","name":"documentjs.generators.html.defaultHelpers.makeParamsString","params":[{"types":[{"type":"Array","template":[{"types":[{"type":"documentjs.process.valueData"}]}]}],"name":"params","description":""}],"parent":"documentjs.generators.html.defaultHelpers","description":"<p>Given the parameters of a function valueData object, create a string that\nrepresents the arguments.</p>\n","title":"","hide":true,"src":"lib/generators/html/build/make_default_helpers.js","line":233},{"type":"function","name":"documentjs.generators.html.defaultHelpers.makeType","params":[{"types":[{"type":"Array","template":[{"types":[{"type":"documentjs.process.typeData"}]}]}],"name":"t","description":""}],"parent":"documentjs.generators.html.defaultHelpers","description":"<p>Given an invidual type object, create something that represents it.</p>\n","title":"","hide":true,"src":"lib/generators/html/build/make_default_helpers.js","line":254},{"type":"function","name":"documentjs.generators.html.defaultHelpers.makeTypesString","params":[{"types":[{"type":"Array","template":[{"types":[{"type":"documentjs.process.typeData"}]}]}],"name":"types","description":""}],"parent":"documentjs.generators.html.defaultHelpers","description":"<p>Converts an array of [documentjs.process.typeData typeData]\nto a readable string surrounded by {}.</p>\n","title":"","returns":{"types":[{"type":"String"}],"description":""},"comment":" ","src":"lib/generators/html/build/make_default_helpers.js","line":306},{"type":"function","name":"documentjs.generators.html.defaultHelpers.makeLinks","params":[{"name":"text","types":[{"type":"*"}]}],"parent":"documentjs.generators.html.defaultHelpers","description":"<p>Looks for links like [].</p>\n","title":"","src":"lib/generators/html/build/make_default_helpers.js","line":347},{"type":"function","name":"documentjs.generators.html.defaultHelpers.urlFromConfig","params":[{"name":"url","types":[{"type":"*"}]}],"parent":"documentjs.generators.html.defaultHelpers","description":"<p>Returns a url that is joined from the most parent <code>documentjs.json</code>.</p>\n","title":"","src":"lib/generators/html/build/make_default_helpers.js","line":380},{"type":"function","name":"documentjs.generators.html.defaultHelpers.urlTo","params":[{"name":"name","types":[{"type":"*"}]}],"parent":"documentjs.generators.html.defaultHelpers","description":"<p>Returns a url that links to a docObject's name.</p>\n","title":"","src":"lib/generators/html/build/make_default_helpers.js","line":389},{"type":"function","name":"documentjs.generators.html.defaultHelpers.urlDownload","params":[{"name":"docObject","types":[{"type":"*"}]}],"parent":"documentjs.generators.html.defaultHelpers","description":"<p>Returns the [documentjs.tags.download @download] value relative to\nthe root <code>documentjs.json</code> file with any <code>&lt;%= version %&gt;</code> replaced by the\ncurrent version being written out.</p>\n","title":"","src":"lib/generators/html/build/make_default_helpers.js","line":397},{"type":"function","name":"documentjs.generators.html.defaultHelpers.urlSource","params":[{"name":"src","types":[{"type":"*"}]},{"name":"type","types":[{"type":"*"}]},{"name":"line","types":[{"type":"*"}]}],"parent":"documentjs.generators.html.defaultHelpers","description":"<p>Returns the source for the comment or code.</p>\n","title":"","src":"lib/generators/html/build/make_default_helpers.js","line":411},{"type":"function","name":"documentjs.generators.html.defaultHelpers.urlTest","params":[{"name":"docObject","types":[{"type":"*"}]}],"parent":"documentjs.generators.html.defaultHelpers","description":"<p>Returns the url for the docObject's test</p>\n","title":"","src":"lib/generators/html/build/make_default_helpers.js","line":432},{"type":"function","name":"documentjs.generators.html.defaultHelpers.getTypesWithDescriptions","params":[{"name":"types","types":[{"type":"*"}]},{"name":"options","types":[{"type":"*"}]}],"parent":"documentjs.generators.html.defaultHelpers","description":"","title":"","src":"lib/generators/html/build/make_default_helpers.js","line":444},{"type":"function","name":"documentjs.generators.html.defaultHelpers.getActiveAndParents","params":[{"name":"options","types":[{"type":"*"}]}],"parent":"documentjs.generators.html.defaultHelpers","description":"<p>Renders its sub-section with a <code>parents</code> array of docObjects and the\nlast parent menu as the &quot;active&quot; item.</p>\n","title":"","comment":" ","src":"lib/generators/html/build/make_default_helpers.js","line":471},{"type":"function","name":"documentjs.generators.html.defaultHelpers.eachFirstLevelChildren","params":[{"name":"options","types":[{"type":"*"}]}],"parent":"documentjs.generators.html.defaultHelpers","description":"<p>Goes through the parent object's children.</p>\n","title":"","src":"lib/generators/html/build/make_default_helpers.js","line":527},{"type":"function","name":"documentjs.generators.html.defaultHelpers.eachOrderedChildren","params":[{"name":"children","types":[{"type":"*"}]},{"name":"options","types":[{"type":"*"}]}],"parent":"documentjs.generators.html.defaultHelpers","description":"<p>Goes through each <code>children</code> in the sorted order.</p>\n","title":"","src":"lib/generators/html/build/make_default_helpers.js","line":539},{"type":"function","name":"documentjs.generators.html.defaultHelpers.ifActive","params":[{"types":[{"type":"HandlebarsOptions"}],"name":"options","description":""}],"parent":"documentjs.generators.html.defaultHelpers","description":"<p>Renders the truthy section if the current item's name matches\nthe current docObject being rendered</p>\n","title":"","src":"lib/generators/html/build/make_default_helpers.js","line":553},{"type":"function","name":"documentjs.generators.html.defaultHelpers.ifHasActive","params":[{"types":[{"type":"Object","options":[]}],"name":"options","description":""}],"parent":"documentjs.generators.html.defaultHelpers","description":"<p>Renders the truthy section if the current docObject being\nrendered has a parent that is the current context.</p>\n","title":"","src":"lib/generators/html/build/make_default_helpers.js","line":569},{"type":"function","name":"documentjs.generators.html.defaultHelpers.ifHasOrIsActive","params":[{"types":[{"type":"Object","options":[]}],"name":"options","description":""}],"parent":"documentjs.generators.html.defaultHelpers","description":"<p>Renders the truthy section if the current docObject being\nrendered has a parent that is the current context or is the\ncurrent context.</p>\n","title":"","src":"lib/generators/html/build/make_default_helpers.js","line":591},{"type":"function","name":"documentjs.generators.html.defaultHelpers.ifFirstLevelChild","params":[{"types":[{"type":"Object","options":[]}],"name":"options","description":""}],"parent":"documentjs.generators.html.defaultHelpers","description":"<p>Renders the truthy section if the current context is a first level\nchild of the parent object.</p>\n","title":"","src":"lib/generators/html/build/make_default_helpers.js","line":607},{"type":"function","name":"documentjs.generators.html.defaultHelpers.makeSignature","params":[{"types":[{"type":"Object","options":[]}],"name":"code","description":""}],"parent":"documentjs.generators.html.defaultHelpers","description":"<p>Makes the signature title html for a [documentjs.tags.signature @signature].</p>\n","title":"","src":"lib/generators/html/build/make_default_helpers.js","line":675},{"type":"function","name":"documentjs.generators.html.defaultHelpers.makeParentTitle","params":[],"parent":"documentjs.generators.html.defaultHelpers","description":"<p>Returns the parent docObject's title.</p>\n","title":"","src":"lib/generators/html/build/make_default_helpers.js","line":722}]};
-</script>
 
 
-	
-	<footer>
-		<nav class="container">
-			<a class="brand javascriptmvc" href="index.html"></a>
-		</nav>
-	</footer>
+
+
 	
 	<script type='text/javascript' 
 			data-main="static"

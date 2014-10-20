@@ -71,7 +71,9 @@
 		</nav>
 	</header>
 
-	<div class="container api">
+	
+<div class="container api">
+
 	
 	<nav class="sidebar">
 		
@@ -390,7 +392,11 @@
 
 	</nav>
 	
+	
+	
 	<article class="content docs">
+	
+	
 		
 		<section class="title">
 			<div class="heading">
@@ -425,17 +431,21 @@
 <br />
 		</section>
 		
-
+		
+		
 		<section class="contents">
 		</section>
-
+		
+		
 		
 
+		
 		<section class="description">
 			<p>Configures the behavior of DocumentJS.  The following are values found within
 a <code>documentjs.json</code>.</p>
 
 		</section>
+		
 
 		
 			
@@ -500,7 +510,7 @@ to find the latest docs and not <code>http://site.com/2.0.1/api</code>.</p>
 	</li>
 	
 	<li class="parameter">
-		<h4>defaultDest<code>=&quot;.&quot;</code>
+		<h4>defaultDest<code>=&quot;./&lt;%=name%&gt;&quot;</code>
 			<code>{String}</code><span class="pull-right optional">Optional</span></h4>
 		<div class="description">
 			<p>The location of where the default docs should
@@ -513,7 +523,7 @@ be rendered to.</p>
 	</li>
 	
 	<li class="parameter">
-		<h4>versionDest<code>=&quot;&lt;%=version%&gt;&quot;</code>
+		<h4>versionDest<code>=&quot;./&lt;%=version%&gt;/&lt;%=name%&gt;&quot;</code>
 			<code>{String}</code><span class="pull-right optional">Optional</span></h4>
 		<div class="description">
 			<p>The templated directory name of where each version's download
@@ -607,22 +617,21 @@ generated. Finally, all markdown files in <code>_pages</code> will be generated 
 
 		</section>
 		
+		
 
 		
+	
+	
 	</article>
+	
+	
+
 </div>
 
-<script type="text/javascript">
-	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","ignore":"lib/{configured,generate,find}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.apis.config","docConfigDest":"../documentjs.json","version":"0.0.0","type":"typedef","name":"DocumentJS.docConfig","description":"<p>Configures the behavior of DocumentJS.  The following are values found within\na <code>documentjs.json</code>.</p>\n","title":"docConfig","types":[{"type":"Object","options":[{"name":"versions","description":"<p>A map of version names\nto their source or to a [DocumentJS.projectConfig projectConfig] that specifies where and how\nto install the release. For example:</p>\n<pre><code>{\n  &quot;versions&quot; : {\n    &quot;1.8.4&quot;: &quot;https://github.com/org/project/tree/v1.8.4&quot;,\n    &quot;2.0.9&quot;: &quot;https://github.com/org/project/tree/v2.0.9&quot;\n    &quot;3.0.0-pre&quot;: {\n      &quot;source&quot;: &quot;https://github.com/org/project#major&quot;,\n      &quot;npmInstall&quot;: true\n    }\n  }\n}\n</code></pre>\n<p>Each versions key is a version name and the value is either a [DocumentJS.projectConfig] or\nwill be made into a [DocumentJS.projectConfig]'s source.</p>\n<p>Each version will be downloaded to a location depending on <code>versionDest</code>, <code>defaultDest</code> and\n<code>defaultVersion</code>.  If the version key equals <code>defaultVersion</code> the project will be installed\nusing <code>defaultDest</code>; otherwise, the project will be installed using <code>versionDest</code>.</p>\n","types":[{"type":"Object","template":[{"types":[{"type":"String"}]},{"types":[{"type":"DocumentJS.projectConfig"},{"type":"String"}]}]}],"optional":true},{"name":"defaultVersion","description":"<p>The default version that will be copied\ninto the <code>defaultDest</code> location. This is so users can go to <code>http://site.com/api</code>\nto find the latest docs and not <code>http://site.com/2.0.1/api</code>.</p>\n","types":[{"type":"String"}],"optional":true},{"name":"defaultDest","description":"<p>The location of where the default docs should\nbe rendered to.</p>\n","types":[{"type":"String"}],"optional":true,"defaultValue":"\".\""},{"name":"versionDest","description":"<p>The templated directory name of where each version's download\nand docs should be created.  The default is <code>&quot;&lt;%= version%&gt;&quot;</code>.  This means\nthat a <em>2.0.1</em> version name will be downloaded to a <em>2.0.1</em> folder. DocumentJS\nwill then look for that version's <code>documentjs.json</code> and run that.</p>\n","types":[{"type":"String"}],"optional":true,"defaultValue":"\"<%=version%>\""},{"name":"sites","description":"<p>A map of site names and\noptions that configure their behavior.</p>\n","types":[{"type":"Object","template":[{"types":[{"type":"String"}]},{"types":[{"type":"DocumentJS.siteConfig"}]}]}]},{"name":"siteDefaults","description":"<p>Default values for any sites configs.</p>\n","types":[{"type":"DocumentJS.siteConfig"}]}]}],"comment":" ","src":"docs/api/config/docConfig.md"};
-</script>
 
 
-	
-	<footer>
-		<nav class="container">
-			<a class="brand javascriptmvc" href="index.html"></a>
-		</nav>
-	</footer>
+
+
 	
 	<script type='text/javascript' 
 			data-main="static"

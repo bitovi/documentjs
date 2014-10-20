@@ -71,7 +71,9 @@
 		</nav>
 	</header>
 
-	<div class="container api">
+	
+<div class="container api">
+
 	
 	<nav class="sidebar">
 		
@@ -466,7 +468,11 @@
 
 	</nav>
 	
+	
+	
 	<article class="content docs">
+	
+	
 		
 		<section class="title">
 			<div class="heading">
@@ -501,18 +507,22 @@
 <br />
 		</section>
 		
-
+		
+		
 		<section class="contents">
 		</section>
-
+		
+		
 		
 
+		
 		<section class="description">
 			<p>Adds the <code>name</code> and other properties to <a href="documentjs.process.valueData.html">valueData</a> in
 using the <a href="documentjs.tags.param.html">@param</a> or
 <a href="documentjs.tags.param.html">@option</a> tags.</p>
 
 		</section>
+		
 
 		
 			
@@ -585,9 +595,10 @@ be given 0 or more times.</p>
 			<div class="description">
 				<p><code>=default</code> provides
 the default value for the type. For example:</p>
-<pre><code class="lang-javascript">/**
+<pre><code class="language-js">/**
  * @param {Number} [age=0]
- */</code></pre>
+ *|
+</code></pre>
 
 			</div>
 			
@@ -612,22 +623,21 @@ the default value for the type. For example:</p>
 		
 
 		
+		
 
 		
+	
+	
 	</article>
+	
+	
+
 </div>
 
-<script type="text/javascript">
-	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","ignore":"lib/{configured,generate,find}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","version":"0.0.0","name":"documentjs.nameExpression","type":"typedef","description":"<p>Adds the <code>name</code> and other properties to [documentjs.process.valueData valueData] in\nusing the [documentjs.tags.param @param] or\n[documentjs.tags.param @option] tags.</p>\n","title":"NAME-EXPRESSION","types":[{"type":"STRING"}],"signatures":[{"code":"[name(args...)=default]","description":"<p>Example:</p>\n<pre><code>[success(item)=updater]\n</code></pre>\n","params":[{"types":[{"type":"String"}],"name":"name","description":"<p>Provides the name of the type.</p>\n"},{"types":[{"type":"String"}],"name":"[]","description":"<p>Indicates that the option or param is optional.</p>\n"},{"types":[{"type":"String"}],"name":"(args...)","description":"<p>If <code>name</code> is a function,\n<code>()</code> provides the names of each argument.</p>\n"},{"types":[{"type":"String"}],"name":"'...'","description":"<p>An argument is variable. The argument can\nbe given 0 or more times.</p>\n"},{"types":[{"type":"String"}],"name":"=default","description":"<p><code>=default</code> provides\nthe default value for the type. For example:</p>\n<pre><code class=\"lang-javascript\">/**\n * @param {Number} [age=0]\n */</code></pre>\n"}]}],"comment":" ","src":"lib/tags/helpers/namer.js","line":4};
-</script>
 
 
-	
-	<footer>
-		<nav class="container">
-			<a class="brand javascriptmvc" href="index.html"></a>
-		</nav>
-	</footer>
+
+
 	
 	<script type='text/javascript' 
 			data-main="static"

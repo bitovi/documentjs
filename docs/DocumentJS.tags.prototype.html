@@ -71,7 +71,9 @@
 		</nav>
 	</header>
 
-	<div class="container api">
+	
+<div class="container api">
+
 	
 	<nav class="sidebar">
 		
@@ -466,7 +468,11 @@
 
 	</nav>
 	
+	
+	
 	<article class="content docs">
+	
+	
 		
 		<section class="title">
 			<div class="heading">
@@ -499,12 +505,15 @@
 <br />
 		</section>
 		
-
+		
+		
 		<section class="contents">
 		</section>
-
+		
+		
 		
 
+		
 		<section class="description">
 			<p>Declares that [documentjs/tags/property @property] and
 [documentjs/tags/function @function] tags belong
@@ -512,6 +521,7 @@ to the preceeding [documentjs/tags/function @constructor]'s
 prototype object.</p>
 
 		</section>
+		
 
 		
 			
@@ -519,18 +529,19 @@ prototype object.</p>
 					<h2 id="sig__prototype">@prototype
 </h2>
 <div class="signature-wrapper">
-<pre><code class="lang-javascript">/**
+<pre><code class="language-js">/**
  * @constructor
  * Creates an Animal
- */
+ *|
 Animal = function(){ ... }
-/** @prototype */
+/** @prototype *|
 Animal.prototype = {
    /**
     * Eats another animal.
-    */
+    *|
     eat: function(animal){ ... }
-}</code></pre>
+}
+</code></pre>
 
 
 
@@ -548,22 +559,21 @@ Animal.prototype = {
 		
 
 		
+		
 
 		
+	
+	
 	</article>
+	
+	
+
 </div>
 
-<script type="text/javascript">
-	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","ignore":"lib/{configured,generate,find}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","version":"0.0.0","name":"documentjs.tags.prototype","type":"constructor","description":"<p>Declares that [documentjs/tags/property @property] and\n[documentjs/tags/function @function] tags belong\nto the preceeding [documentjs/tags/function @constructor]'s\nprototype object.</p>\n","title":"@prototype","signatures":[{"code":"@prototype","description":"<pre><code class=\"lang-javascript\">/**\n * @constructor\n * Creates an Animal\n */\nAnimal = function(){ ... }\n/** @prototype */\nAnimal.prototype = {\n   /**\n    * Eats another animal.\n    */\n    eat: function(animal){ ... }\n}</code></pre>\n","params":[]}],"src":"lib/tags/prototype.js","line":3};
-</script>
 
 
-	
-	<footer>
-		<nav class="container">
-			<a class="brand javascriptmvc" href="index.html"></a>
-		</nav>
-	</footer>
+
+
 	
 	<script type='text/javascript' 
 			data-main="static"

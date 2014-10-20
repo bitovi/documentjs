@@ -71,7 +71,9 @@
 		</nav>
 	</header>
 
-	<div class="container api">
+	
+<div class="container api">
+
 	
 	<nav class="sidebar">
 		
@@ -390,7 +392,11 @@
 
 	</nav>
 	
+	
+	
 	<article class="content docs">
+	
+	
 		
 		<section class="title">
 			<div class="heading">
@@ -425,18 +431,22 @@
 <br />
 		</section>
 		
-
+		
+		
 		<section class="contents">
 		</section>
-
+		
+		
 		
 
+		
 		<section class="description">
 			<p>A generator module should produce a function that takes the following shape. Generator
 modules are used to produce some form of documentation output.  <a href="documentjs.generators.html.html">generators.html</a>
 is the default and currently only generator packaged with DocumentJS.</p>
 
 		</section>
+		
 
 		
 			
@@ -527,22 +537,21 @@ module.exports = function(docMapPromise, options){
 
 		</section>
 		
+		
 
 		
+	
+	
 	</article>
+	
+	
+
 </div>
 
-<script type="text/javascript">
-	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","ignore":"lib/{configured,generate,find}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.apis.internal","docConfigDest":"../documentjs.json","version":"0.0.0","type":"typedef","name":"documentjs.generator","description":"<p>A generator module should produce a function that takes the following shape. Generator\nmodules are used to produce some form of documentation output.  [documentjs.generators.html]\nis the default and currently only generator packaged with DocumentJS.</p>\n","title":"generator","types":[{"type":"function","returns":{"types":[{"type":"Promise"}],"description":"<p>A module that resolves when the output has been built.</p>\n"},"params":[{"types":[{"type":"Promise","template":[{"types":[{"type":"documentjs.process.docMap"}]}]}],"name":"docMapPromise","description":"<p>A promise that will resolve\nwith a map of all [documentjs.process.docObject docObjects] keyed by their name.</p>\n"},{"types":[{"type":"options"}],"name":"The","description":"<p>options object passed to [documentjs.generate].</p>\n"}]}],"comment":" ","src":"lib/generate/generator.md"};
-</script>
 
 
-	
-	<footer>
-		<nav class="container">
-			<a class="brand javascriptmvc" href="index.html"></a>
-		</nav>
-	</footer>
+
+
 	
 	<script type='text/javascript' 
 			data-main="static"

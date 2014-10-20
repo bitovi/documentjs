@@ -71,7 +71,9 @@
 		</nav>
 	</header>
 
-	<div class="container api">
+	
+<div class="container api">
+
 	
 	<nav class="sidebar">
 		
@@ -228,7 +230,11 @@
 
 	</nav>
 	
+	
+	
 	<article class="content docs">
+	
+	
 		
 		<section class="title">
 			<div class="heading">
@@ -257,17 +263,21 @@
 <br />
 		</section>
 		
-
+		
+		
 		<section class="contents">
 		</section>
-
+		
+		
 		
 
+		
 		<section class="description">
 			<p>Creates a renderer function used to generate
 the documentation.</p>
 
 		</section>
+		
 
 		
 			
@@ -286,7 +296,7 @@ renders the <code>content.mustache</code> template within the <code>layout.musta
 		
 		<li class="parameter">
 			<h4>buildTemplatesPromise
-				<code>{Promise}</code></h4>
+				<code>{Promise&lt;Handlebars&gt;}</code></h4>
 			<div class="description">
 				<p>The result of calling
 <a href="documentjs.generators.html.build.templates.html">documentjs.generators.html.build.templates</a>. Building the renderer
@@ -341,22 +351,21 @@ resolves with the renderer function.</p>
 		
 
 		
+		
 
 		
+	
+	
 	</article>
+	
+	
+
 </div>
 
-<script type="text/javascript">
-	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","ignore":"lib/{configured,generate,find}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.generators.html.build.methods","docConfigDest":"../documentjs.json","version":"0.0.0","name":"documentjs.generators.html.build.renderer","type":"function","description":"<p>Creates a renderer function used to generate\nthe documentation.</p>\n","title":"","signatures":[{"code":".build.renderer(buildTemplatesPromise, options)","description":"<p>Registers all <code>.mustache</code> files in the <em>documentjs/site/templates</em> folder as\npartials and creates a [documentjs.generators.html.types.renderer renderer] function that\nrenders the <code>content.mustache</code> template within the <code>layout.mustache</code> template.</p>\n","params":[{"types":[{"type":"Promise"}],"name":"buildTemplatesPromise","description":"<p>The result of calling\n[documentjs.generators.html.build.templates]. Building the renderer\nmust happen after the templates have been copied over. Passing this\nargument enforces that.</p>\n"},{"types":[{"type":"Object","options":[]}],"name":"options","description":"<p>Options used to configure the behavior of the renderer.</p>\n"}],"returns":{"types":[{"type":"Promise","template":[{"types":[{"type":"documentjs.generators.html.types.renderer"}]}]}],"description":"<p>A promise that\nresolves with the renderer function.</p>\n"}}],"src":"lib/generators/html/build/renderer.js","line":9};
-</script>
 
 
-	
-	<footer>
-		<nav class="container">
-			<a class="brand javascriptmvc" href="index.html"></a>
-		</nav>
-	</footer>
+
+
 	
 	<script type='text/javascript' 
 			data-main="static"

@@ -71,7 +71,9 @@
 		</nav>
 	</header>
 
-	<div class="container api">
+	
+<div class="container api">
+
 	
 	<nav class="sidebar">
 		
@@ -466,7 +468,11 @@
 
 	</nav>
 	
+	
+	
 	<article class="content docs">
+	
+	
 		
 		<section class="title">
 			<div class="heading">
@@ -499,12 +505,15 @@
 <br />
 		</section>
 		
-
+		
+		
 		<section class="contents">
 		</section>
-
+		
+		
 		
 
+		
 		<section class="description">
 			<p>Sets a [documentjs/DocObject DocObject] as the
 current scope. [DocumentJS.tags.function Functions]
@@ -513,6 +522,7 @@ without a name will use their code block and
 the scope to guess the name.</p>
 
 		</section>
+		
 
 		
 			
@@ -520,13 +530,14 @@ the scope to guess the name.</p>
 					<h2 id="sig__addNAME">@add NAME
 </h2>
 <div class="signature-wrapper">
-<pre><code class="lang-javascript">/** @add lib.Component.prototype */
+<pre><code class="language-js">/** @add lib.Component.prototype *|
 lib.extend(lib.Component.prototype,{
   /**
    *  A plugin method on [lib.Component]
-   */
+   *|
   plugin: function(){}
-})</code></pre>
+})
+</code></pre>
 
 
 	<h3>Parameters</h3>
@@ -563,22 +574,21 @@ to set as the scope.</p>
 		
 
 		
+		
 
 		
+	
+	
 	</article>
+	
+	
+
 </div>
 
-<script type="text/javascript">
-	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","ignore":"lib/{configured,generate,find}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","version":"0.0.0","name":"documentjs.tags.add","type":"constructor","description":"<p>Sets a [documentjs/DocObject DocObject] as the\ncurrent scope. [DocumentJS.tags.function Functions]\nor [DocumentJS.tags.property properties] created\nwithout a name will use their code block and\nthe scope to guess the name.</p>\n","title":"@add ","signatures":[{"code":"@add NAME","description":"<pre><code class=\"lang-javascript\">/** @add lib.Component.prototype */\nlib.extend(lib.Component.prototype,{\n  /**\n   *  A plugin method on [lib.Component]\n   */\n  plugin: function(){}\n})</code></pre>\n","params":[{"types":[{"type":"STRING"}],"name":"NAME","description":"<p>the name of [documentjs/DocObject DocObject]\nto set as the scope.</p>\n"}]}],"comment":" ","src":"lib/tags/add.js","line":0};
-</script>
 
 
-	
-	<footer>
-		<nav class="container">
-			<a class="brand javascriptmvc" href="index.html"></a>
-		</nav>
-	</footer>
+
+
 	
 	<script type='text/javascript' 
 			data-main="static"

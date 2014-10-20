@@ -71,7 +71,9 @@
 		</nav>
 	</header>
 
-	<div class="container api">
+	
+<div class="container api">
+
 	
 	<nav class="sidebar">
 		
@@ -228,7 +230,11 @@
 
 	</nav>
 	
+	
+	
 	<article class="content docs">
+	
+	
 		
 		<section class="title">
 			<div class="heading">
@@ -257,17 +263,21 @@
 <br />
 		</section>
 		
-
+		
+		
 		<section class="contents">
 		</section>
-
+		
+		
 		
 
+		
 		<section class="description">
 			<p>Gets the default helpers and helpers in the <em>documentjs/site/templates</em> folder and
 registers them with Handlebars.</p>
 
 		</section>
+		
 
 		
 			
@@ -284,7 +294,7 @@ registers them with Handlebars.</p>
 		
 		<li class="parameter">
 			<h4>buildTemplatesPromise
-				<code>{Promise}</code></h4>
+				<code>{Promise&lt;Handlebars&gt;}</code></h4>
 			<div class="description">
 				<p>The result of calling
 <a href="documentjs.generators.html.build.templates.html">documentjs.generators.html.build.templates</a>. Building the helpers
@@ -363,22 +373,21 @@ generated.</p>
 		
 
 		
+		
 
 		
+	
+	
 	</article>
+	
+	
+
 </div>
 
-<script type="text/javascript">
-	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","ignore":"lib/{configured,generate,find}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.generators.html.build.methods","docConfigDest":"../documentjs.json","version":"0.0.0","name":"documentjs.generators.html.build.helpers","type":"function","description":"<p>Gets the default helpers and helpers in the <em>documentjs/site/templates</em> folder and\nregisters them with Handlebars.</p>\n","title":"","signatures":[{"code":".build.helpers(buildTemplatesPromise, docMap, options, getCurrent)","description":"<p>Registers helpers</p>\n","params":[{"types":[{"type":"Promise"}],"name":"buildTemplatesPromise","description":"<p>The result of calling\n[documentjs.generators.html.build.templates]. Building the helpers\nmust happen after the templates have been copied over. Passing this\nargument enforces that.</p>\n"},{"types":[{"type":"documentjs.process.docMap"}],"name":"docMap","description":"<p>The docMap which contains all\ndocObjects that will be documented.</p>\n"},{"types":[{"type":"Object","options":[]}],"name":"options","description":""},{"types":[{"type":"function","returns":{"types":[{"type":"documentjs.process.docObject"}]},"params":[]}],"name":"getCurrent","description":"<p>A function that when called, returns the <code>docObject</code> currently being\ngenerated.</p>\n"}],"returns":{"types":[{"type":"Promise"}],"description":"<p>A promise that resolves when helpers have been added to Handlebars.</p>\n"}}],"comment":" ","src":"lib/generators/html/build/helpers.js","line":9};
-</script>
 
 
-	
-	<footer>
-		<nav class="container">
-			<a class="brand javascriptmvc" href="index.html"></a>
-		</nav>
-	</footer>
+
+
 	
 	<script type='text/javascript' 
 			data-main="static"

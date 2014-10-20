@@ -71,7 +71,9 @@
 		</nav>
 	</header>
 
-	<div class="container api">
+	
+<div class="container api">
+
 	
 	<nav class="sidebar">
 		
@@ -466,7 +468,11 @@
 
 	</nav>
 	
+	
+	
 	<article class="content docs">
+	
+	
 		
 		<section class="title">
 			<div class="heading">
@@ -499,12 +505,15 @@
 <br />
 		</section>
 		
-
+		
+		
 		<section class="contents">
 		</section>
-
+		
+		
 		
 
+		
 		<section class="description">
 			<p>Specifies the release of a [DocumentJS.tags.param @param],
 [documentjs/tags/signature @signature],
@@ -512,6 +521,7 @@
 [documentjs/tags/property @property].</p>
 
 		</section>
+		
 
 		
 			
@@ -519,11 +529,12 @@
 					<h2 id="sig__releaseRELEASE">@release RELEASE
 </h2>
 <div class="signature-wrapper">
-<pre><code class="lang-javascript">/**
+<pre><code class="language-js">/**
  * Retrieves a list of orders.
  * @release 3.2
- */
- find: function( params, success ) {</code></pre>
+ *|
+ find: function( params, success ) {
+</code></pre>
 
 
 	<h3>Parameters</h3>
@@ -563,41 +574,42 @@
 			<h2>Release for a param</h2>
 <p>Put <code>@release</code> after <code>@param</code> to tag the param
 with a release number:</p>
-<pre><code class="lang-javascript">/**
+<pre><code class="language-js">/**
  * Retrieves a list of orders.
  * @param {{}} params Parameters to filter orders.
  * @release 3.2.1
- */
- find: function( params, success ) {</code></pre>
-## Release for a signature
+ *|
+ find: function( params, success ) {
+</code></pre>
+<h2>Release for a signature</h2>
 <p>Put <code>@release</code> after <code>@signature</code> to tag the param
 with a release number:</p>
-<pre><code class="lang-javascript">/**
+<pre><code class="language-js">/**
  * Retrieves a list of orders.
  * @signature `Order.find(params, success)`
  * @release 3.2
  * @param {{}} params Parameters to filter orders.
- */
- find: function( params, success ) {</code></pre>
+ *|
+ find: function( params, success ) {
+</code></pre>
 
 		</section>
 		
+		
 
 		
+	
+	
 	</article>
+	
+	
+
 </div>
 
-<script type="text/javascript">
-	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","ignore":"lib/{configured,generate,find}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","version":"0.0.0","name":"documentjs.tags.release","type":"constructor","description":"<p>Specifies the release of a [DocumentJS.tags.param @param],\n[documentjs/tags/signature @signature],\n[documentjs/tags/function @function] or\n[documentjs/tags/property @property].</p>\n","title":"@release","release":"3.3","signatures":[{"code":"@release RELEASE","description":"<pre><code class=\"lang-javascript\">/**\n * Retrieves a list of orders.\n * @release 3.2\n */\n find: function( params, success ) {</code></pre>\n","params":[{"types":[{"type":"String"}],"name":"RELASE","description":"<p>A release number like: <code>1.2.3</code>.</p>\n"}]}],"comment":" ","src":"lib/tags/release.js","line":0};
-</script>
 
 
-	
-	<footer>
-		<nav class="container">
-			<a class="brand javascriptmvc" href="index.html"></a>
-		</nav>
-	</footer>
+
+
 	
 	<script type='text/javascript' 
 			data-main="static"

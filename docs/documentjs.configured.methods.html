@@ -71,7 +71,9 @@
 		</nav>
 	</header>
 
-	<div class="container api">
+	
+<div class="container api">
+
 	
 	<nav class="sidebar">
 		
@@ -156,7 +158,11 @@
 
 	</nav>
 	
+	
+	
 	<article class="content docs">
+	
+	
 		
 		<section class="title">
 			<div class="heading">
@@ -187,40 +193,39 @@
 <br />
 		</section>
 		
-
+		
+		
 		<section class="contents">
 		</section>
+		
+		
+		
 
 		
 
-		<section class="description">
+		
 			
-		</section>
-
-		
-			
 		
 		
 		
 		
 
 		
+		
 
 		
+	
+	
 	</article>
+	
+	
+
 </div>
 
-<script type="text/javascript">
-	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","ignore":"lib/{configured,generate,find}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.configured","docConfigDest":"../documentjs.json","version":"0.0.0","name":"documentjs.configured.methods","title":"methods","type":"group","description":"","order":0,"children":[{"type":"function","description":"<p>Generates a project's documentation from its <code>documentjs.json</code>.</p>\n","title":"generate","name":"documentjs.configured.generate","parent":"documentjs.configured.methods","params":[{"types":[{"type":"Object","options":[{"name":"path","description":"<p>The path of a project.</p>\n","types":[{"type":"String"}]}]}],"name":"project","description":"<p>A [documentjs.configured.projectConfig] configured with at least:</p>\n"},{"types":[{"type":"documentjs.configured.projectConfig"}],"optional":true,"name":"parent","description":"<p>An optional\nparent project that can be used to configure the behavior of this project.</p>\n"},{"types":[{"type":"Object","options":[]}],"optional":true,"name":"options","description":""}],"types":[],"returns":{"types":[{"type":"Promise"}],"description":"<p>A promise that resolves when the the project is documented.</p>\n"},"comment":" ","src":"lib/configured/generate_project.js","line":13},{"name":"documentjs.configured.getAndGenerateProject","type":"function","description":"<p>Gets a resource with a version name and copys it to a location, and documents it.</p>\n","title":"","parent":"documentjs.configured.methods","params":[{"types":[{"type":"Object","options":[{"name":"path","description":"","types":[{"type":"String"}]}]}],"name":"project","description":""},{"types":[{"type":"Object","options":[]}],"name":"parent","description":""}],"types":[],"src":"lib/configured/get_and_generate_project.js","line":10},{"name":"documentjs.configured.getProject","type":"function","description":"<p>Copies or downloads a project to <code>project.path</code>.</p>\n","title":"","parent":"documentjs.configured.methods","signatures":[{"code":"documentjs.configured.getProject( project )","description":"","params":[{"types":[{"type":"Object","options":[{"name":"source","description":"<p>A path to a file, a url to a git repository, or a\n<a href=\"https://www.npmjs.org/doc/cli/npm-install.html\">npm install</a> target.</p>\n","types":[{"type":"String"}]},{"name":"npmInstall","description":"<p>Set to <code>true</code> to use npm to install\nthe resource.</p>\n","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"false"},{"name":"path","description":"<p>The path to install the project.</p>\n","types":[{"type":"String"}]}]}],"name":"project","description":"<p>A [documentjs.configured.projectConfig] object with the following properties:</p>\n"}],"returns":{"types":[{"type":"Promise"}],"description":"<p>A promise that resolves when the resource has been retrieved successfully.</p>\n"}}],"types":[],"comment":" ","src":"lib/configured/get_project.js","line":11},{"name":"documentjs.configured.makeFinalDocConfig","type":"function","parent":"documentjs.configured.methods","description":"","title":"","signatures":[{"code":".configured.makeFinalDocConfig(docConfig, project, parent, options)","description":"<p>Cleans up the docConfig so all default values are added and the\nversions and sites allowed by <code>options</code> are present.</p>\n","params":[{"types":[{"type":"DocumentJS.docConfig"}],"name":"docConfig","description":"<p>The docConfig that will be cleaned up.</p>\n"},{"types":[{"type":"Object","options":[{"name":"path","description":"<p>The path of the project that contains this docConfig.</p>\n","types":[{"type":"String"}]},{"name":"simulatedPath","description":"<p>Where the project appears to be installed if it is not being\ncopied to that location.  This is typically set autmatically when a command line\noverwrite is provided.</p>\n","types":[{"type":"String"}],"optional":true}]}],"name":"project","description":"<p>A [documentjs.configured.projectConfig]</p>\n"},{"types":[{"type":"Object","options":[{"name":"path","description":"<p>The path of the parent project.</p>\n","types":[{"type":"String"}]},{"name":"docConfig","description":"<p>The project's docConfig.  It is used\nfor its <code>.siteDefaults</code>.</p>\n","types":[{"type":"DocumentJS.docConfig"}]}]}],"optional":true,"name":"parent","description":"<p>A [documentjs.configured.projectConfig]</p>\n"},{"types":[{"type":"Object","options":[{"name":"only","description":"<p>An array of the versions or sites that should\nbe produced.</p>\n","types":[{"type":"Array","template":[{"types":[{"type":"Object","options":[{"name":"name","types":[{"type":"String"}]}]}]}]}],"optional":true},{"name":"watch","description":"<p>If true, indicates that a filesystem watch will be setup\nand the documentation regenerated on changes.</p>\n","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"false"}]}],"name":"options","description":""}],"returns":{"types":[{"type":"DocumentJS.docConfig"}],"description":"<p>A cleaned copy of the first argument.</p>\n"}}],"types":[],"src":"lib/configured/make_final_doc_config.js","line":4}]};
-</script>
 
 
-	
-	<footer>
-		<nav class="container">
-			<a class="brand javascriptmvc" href="index.html"></a>
-		</nav>
-	</footer>
+
+
 	
 	<script type='text/javascript' 
 			data-main="static"

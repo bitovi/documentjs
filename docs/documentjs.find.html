@@ -71,7 +71,9 @@
 		</nav>
 	</header>
 
-	<div class="container api">
+	
+<div class="container api">
+
 	
 	<nav class="sidebar">
 		
@@ -162,7 +164,11 @@
 
 	</nav>
 	
+	
+	
 	<article class="content docs">
+	
+	
 		
 		<section class="title">
 			<div class="heading">
@@ -197,15 +203,15 @@
 <br />
 		</section>
 		
-
+		
+		
 		<section class="contents">
 		</section>
-
+		
+		
 		
 
-		<section class="description">
-			
-		</section>
+		
 
 		
 			
@@ -239,22 +245,21 @@
 
 		</section>
 		
+		
 
 		
+	
+	
 	</article>
+	
+	
+
 </div>
 
-<script type="text/javascript">
-	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","ignore":"lib/{configured,generate,find}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.apis.internal","docConfigDest":"../documentjs.json","version":"0.0.0","name":"documentjs.find","type":"property","description":"","types":[{"type":"Object","options":[]}],"title":"find","comment":" ","src":"lib/find/find.js","line":0,"children":[{"name":"documentjs.find.methods","title":"methods","type":"group","parent":"documentjs.find","description":"","order":0,"children":[{"name":"documentjs.find.files","type":"function","description":"","title":"","parent":"documentjs.find.methods","signatures":[{"code":".find.files(options)","description":"","params":[{"types":[{"type":"Object","options":[{"name":"glob","description":"<p>The glob\noption either specifies a <a href=\"https://github.com/isaacs/minimatch\">minmatch</a>\npattern like:</p>\n<pre><code>documentjs.find.files({glob: &quot;*.js&quot;})\n</code></pre>\n<p>Or a [documentjs.find.globObject GlobObject] that specifies the\na <a href=\"https://github.com/isaacs/minimatch\">minmatch</a> pattern and\nother options like:</p>\n<pre><code>documentjs.find.files({\n  glob: {\n    pattern: &quot;*.js&quot;,\n    cwd: __dirname  \n  }\n})\n</code></pre>\n","types":[{"type":"String"},{"type":"documentjs.find.globObject"}]}]}],"name":"options","description":"<p>Options that configure the behavior of the\nfiles that will be processed.</p>\n"}],"returns":{"types":[{"type":"documentjs.process.types.FileEventEmitter"}],"description":"<p>An event emitter that\nemits events for matched files.</p>\n"}}],"src":"lib/find/files.js","line":4}]},{"name":"documentjs.find.types","title":"types","type":"group","parent":"documentjs.find","description":"","order":1,"children":[{"type":"typedef","name":"documentjs.find.globObject","description":"<p>An options object that configures the behavior\nof [documentjs.find.files]. It supports all of the\noptions object of <a href=\"https://github.com/isaacs/node-glob\">node-glob</a>\nplus a pattern option that is used as <code>node-glob</code>'s first argument. Only the\nmost commonly used options are specified below:</p>\n","title":"GlobObject","types":[{"type":"Object","options":[{"name":"pattern","description":"<p>A <a href=\"https://github.com/isaacs/minimatch\">minmatch</a>\npattern. The following matches all <code>.js</code> files:</p>\n<pre><code>&quot;**/*.js&quot;\n</code></pre>\n","types":[{"type":"String"}]},{"name":"cwd","description":"<p>The current working directory in which to search. Defaults to process.cwd()</p>\n","types":[{"type":"String"}],"optional":true},{"name":"ignore","description":"<p>A pattern to ignore.  For example, to ignore everything in node_modules:</p>\n<pre><code>{\n  pattern: &quot;**/*.js&quot;,\n  ignore: &quot;node_modules/**/*&quot;\n}\n</code></pre>\n","types":[{"type":"String"}],"optional":true}]}],"parent":"documentjs.find.types","src":"lib/find/glob_object.md"}]}]};
-</script>
 
 
-	
-	<footer>
-		<nav class="container">
-			<a class="brand javascriptmvc" href="index.html"></a>
-		</nav>
-	</footer>
+
+
 	
 	<script type='text/javascript' 
 			data-main="static"

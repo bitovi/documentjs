@@ -71,7 +71,9 @@
 		</nav>
 	</header>
 
-	<div class="container api">
+	
+<div class="container api">
+
 	
 	<nav class="sidebar">
 		
@@ -466,7 +468,11 @@
 
 	</nav>
 	
+	
+	
 	<article class="content docs">
+	
+	
 		
 		<section class="title">
 			<div class="heading">
@@ -499,17 +505,21 @@
 <br />
 		</section>
 		
-
+		
+		
 		<section class="contents">
 		</section>
-
+		
+		
 		
 
+		
 		<section class="description">
 			<p>Declares that other tags belong to a group within
 the current <code>docObject</code>.</p>
 
 		</section>
+		
 
 		
 			
@@ -579,30 +589,31 @@ the current <code>docObject</code>.</p>
 		<section class="comment">
 			<h2>Use</h2>
 <p>For example, in <code>myapp.md</code>, the following will create a &quot;Guides&quot; grouping:</p>
-<pre><code class="lang-javascript">@page MyApp
-@group MyApp.guides 0 Guides</code></pre>
-And in `guides/installing.md`, the following will add an Installing page to the "Guides" grouping:
-<pre><code class="lang-javascript">@page Installing
-@parent MyApp.guides</code></pre>
+<pre><code class="language-js">@page MyApp
+@group MyApp.guides 0 Guides
+</code></pre>
+<p>And in <code>guides/installing.md</code>, the following will add an Installing page to the &quot;Guides&quot; grouping:</p>
+<pre><code class="language-js">@page Installing
+@parent MyApp.guides
+</code></pre>
 
 		</section>
 		
+		
 
 		
+	
+	
 	</article>
+	
+	
+
 </div>
 
-<script type="text/javascript">
-	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","ignore":"lib/{configured,generate,find}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","version":"0.0.0","name":"documentjs.tags.group","type":"function","description":"<p>Declares that other tags belong to a group within\nthe current <code>docObject</code>.</p>\n","title":"@group","signatures":[{"code":"@group name [ORDER] title","description":"","params":[{"types":[{"type":"String"}],"name":"name","description":"<p>The unique name of the group.</p>\n"},{"types":[{"type":"Number"}],"optional":true,"name":"order","description":"<p>The placement of this group in the parent's list of children.</p>\n"},{"types":[{"type":"String"}],"name":"title","description":"<p>The title that should be shown in the sidebar.</p>\n"}]}],"comment":" ","src":"lib/tags/group.js","line":2};
-</script>
 
 
-	
-	<footer>
-		<nav class="container">
-			<a class="brand javascriptmvc" href="index.html"></a>
-		</nav>
-	</footer>
+
+
 	
 	<script type='text/javascript' 
 			data-main="static"

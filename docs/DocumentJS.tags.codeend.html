@@ -71,7 +71,9 @@
 		</nav>
 	</header>
 
-	<div class="container api">
+	
+<div class="container api">
+
 	
 	<nav class="sidebar">
 		
@@ -466,7 +468,11 @@
 
 	</nav>
 	
+	
+	
 	<article class="content docs">
+	
+	
 		
 		<section class="title">
 			<div class="heading">
@@ -499,16 +505,19 @@
 <br />
 		</section>
 		
-
+		
+		
 		<section class="contents">
 		</section>
-
+		
+		
 		
 
+		
 		<section class="description">
 			<p>Stops a code block.</p>
 <p>###Example:</p>
-<pre><code class="lang-javascript">
+<pre><code class="language-js">
  /* 
   * @codestart
   *  /* @class
@@ -517,30 +526,32 @@
   *   * @constructor
   *   * You must pass in a name.
   *   * @param {String} name A person's name
-  *   */
+  *   *|
   *   Person = function(name){
   *      this.name = name
   *      Person.count ++;
   *   }
-  *  /* @Static */
+  *  /* @Static *|
   *  steal.Object.extend(Person, {
-  *      /* Number of People */
+  *      /* Number of People *|
   *      count: 0
   *  })
-  *  /* @Prototype */
+  *  /* @Prototype *|
   *  Person.prototype = {
   *     /* Returns a formal name 
-  *      * @return {String} the name with "Mrs." added
-  *      */
+  *      * @return {String} the name with &quot;Mrs.&quot; added
+  *      *|
   *      fancyName : function(){
-  *         return "Mrs. "+this.name;
+  *         return &quot;Mrs. &quot;+this.name;
   *      }
   *  }
   * @codeend
-  */
+  *|
+
 </code></pre>
 
 		</section>
+		
 
 		
 			
@@ -550,22 +561,21 @@
 		
 
 		
+		
 
 		
+	
+	
 	</article>
+	
+	
+
 </div>
 
-<script type="text/javascript">
-	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","ignore":"lib/{configured,generate,find}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","version":"0.0.0","name":"documentjs.tags.codeend","type":"constructor","description":"<p>Stops a code block.</p>\n<p>###Example:</p>\n<pre><code class=\"lang-javascript\">\n /* \n  * @codestart\n  *  /* @class\n  *   * Person represents a human with a name.  Read about the \n  *   * animal class [Animal | here].\n  *   * @constructor\n  *   * You must pass in a name.\n  *   * @param {String} name A person's name\n  *   */\n  *   Person = function(name){\n  *      this.name = name\n  *      Person.count ++;\n  *   }\n  *  /* @Static */\n  *  steal.Object.extend(Person, {\n  *      /* Number of People */\n  *      count: 0\n  *  })\n  *  /* @Prototype */\n  *  Person.prototype = {\n  *     /* Returns a formal name \n  *      * @return {String} the name with \"Mrs.\" added\n  *      */\n  *      fancyName : function(){\n  *         return \"Mrs. \"+this.name;\n  *      }\n  *  }\n  * @codeend\n  */\n</code></pre>\n","hide":true,"title":"@codeend","tags":["documentation"],"src":"lib/tags/codeend.js","line":0};
-</script>
 
 
-	
-	<footer>
-		<nav class="container">
-			<a class="brand javascriptmvc" href="index.html"></a>
-		</nav>
-	</footer>
+
+
 	
 	<script type='text/javascript' 
 			data-main="static"

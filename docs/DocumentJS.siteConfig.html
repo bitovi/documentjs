@@ -71,7 +71,9 @@
 		</nav>
 	</header>
 
-	<div class="container api">
+	
+<div class="container api">
+
 	
 	<nav class="sidebar">
 		
@@ -390,7 +392,11 @@
 
 	</nav>
 	
+	
+	
 	<article class="content docs">
+	
+	
 		
 		<section class="title">
 			<div class="heading">
@@ -425,16 +431,20 @@
 <br />
 		</section>
 		
-
+		
+		
 		<section class="contents">
 		</section>
-
+		
+		
 		
 
+		
 		<section class="description">
 			<p>The collective configuration</p>
 
 		</section>
+		
 
 		
 			
@@ -492,6 +502,19 @@ searches for all <code>.js</code> and <code>.md</code> files within the project.
 write the output. Locations should be relative to the parent folder of the
 <em>documentjs.json</em> file. If this is not provided, the site name of the configuration
 is used.</p>
+
+		</div>
+		
+		
+		
+	</li>
+	
+	<li class="parameter">
+		<h4>parent
+			<code>{String}</code><span class="pull-right optional">Optional</span></h4>
+		<div class="description">
+			<p>The primary page which will be treated as the documentation's
+homepage.  If one is not provided, one will be attempted to be found by:</p>
 
 		</div>
 		
@@ -625,22 +648,21 @@ objects like:</p>
 
 		</section>
 		
+		
 
 		
+	
+	
 	</article>
+	
+	
+
 </div>
 
-<script type="text/javascript">
-	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","ignore":"lib/{configured,generate,find}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.apis.config","docConfigDest":"../documentjs.json","version":"0.0.0","type":"typedef","name":"DocumentJS.siteConfig","description":"<p>The collective configuration</p>\n","title":"siteConfig","types":[{"type":"Object","options":[{"name":"glob","description":"<p>Configures the files that will be processed into documentation. The glob\noption either specifies a <a href=\"https://github.com/isaacs/minimatch\">minmatch</a>\npattern like:</p>\n<pre><code>{glob: &quot;*.js&quot;}\n</code></pre>\n<p>Or a [documentjs.find.globObject GlobObject] that specifies the\na <a href=\"https://github.com/isaacs/minimatch\">minmatch</a> pattern and\nother options like:</p>\n<pre><code>{\n  glob: {\n    pattern: &quot;*.js&quot;,\n    cwd: __dirname  \n  }\n}\n</code></pre>\n<p>By default the pattern <code>&quot;**/*.{js,md}&quot;</code> is used, which\nsearches for all <code>.js</code> and <code>.md</code> files within the project.</p>\n","types":[{"type":"String"},{"type":"documentjs.find.globObject"}],"optional":true,"defaultValue":"\"**/*.{js,md}\""},{"name":"dest","description":"<p>The location of the folder where DocumentJS should\nwrite the output. Locations should be relative to the parent folder of the\n<em>documentjs.json</em> file. If this is not provided, the site name of the configuration\nis used.</p>\n","types":[{"type":"String"}],"optional":true},{"name":"pageConfig","description":"<p>An object that is made availalbe to the generated HTML pages.</p>\n","types":[{"type":"Object","options":[]}],"optional":true},{"name":"generators","description":"<p>Generators specifies a generator module or array of modules used to create an\noutput for documentation. The default generator is &quot;html&quot; which maps\nto documentjs's internal [documentjs.generators.html html generator].</p>\n<p>You can specify other modules which will be passed a promise containing\nthe [documentjs.process.docMap docMap] and the <code>options</code> and be expected\nto return a promise that resolves when they are complete.</p>\n","types":[{"type":"moduleName"},{"type":"Array","template":[{"types":[{"type":"moduleName"}]}]}],"optional":true},{"name":"static","description":"<p>The location of static content used to overwrite or\nadd to the default static content.</p>\n","types":[{"type":"String"}]},{"name":"minifyBuild","description":"<p>If set to <code>false</code> the build will not\nbe minified. This behavior should be implemented by the &quot;build&quot; module.</p>\n","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"true"},{"name":"forceBuild","description":"<p>If set to <code>true</code>, rebuilds the\nstatic bundle even if it has already been built.</p>\n","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"false"},{"name":"templates","description":"<p>The location of templates used to overwrite or\nadd to the default templates.</p>\n","types":[{"type":"String"}],"optional":true}]}],"comment":" ","src":"docs/api/config/siteConfig.md"};
-</script>
 
 
-	
-	<footer>
-		<nav class="container">
-			<a class="brand javascriptmvc" href="index.html"></a>
-		</nav>
-	</footer>
+
+
 	
 	<script type='text/javascript' 
 			data-main="static"

@@ -71,7 +71,9 @@
 		</nav>
 	</header>
 
-	<div class="container api">
+	
+<div class="container api">
+
 	
 	<nav class="sidebar">
 		
@@ -168,7 +170,11 @@
 
 	</nav>
 	
+	
+	
 	<article class="content docs">
+	
+	
 		
 		<section class="title">
 			<div class="heading">
@@ -199,40 +205,39 @@
 <br />
 		</section>
 		
-
+		
+		
 		<section class="contents">
 		</section>
+		
+		
+		
 
 		
 
-		<section class="description">
+		
 			
-		</section>
-
-		
-			
 		
 		
 		
 		
 
 		
+		
 
 		
+	
+	
 	</article>
+	
+	
+
 </div>
 
-<script type="text/javascript">
-	var docObject = {"showSidebar":true,"showTitle":true,"showFooter":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib}/**/*.{js,md}","ignore":"lib/{configured,generate,find}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.process","docConfigDest":"../documentjs.json","version":"0.0.0","name":"documentjs.process.methods","title":"methods","type":"group","description":"","order":0,"children":[{"name":"documentjs.process.code","type":"function","description":"<p>Process a code hint into properties on a <code>docObject</code>.</p>\n","title":"","parent":"documentjs.process.methods","signatures":[{"code":"documentjs.process.code(options, callback)","description":"<p>Using the <code>options.code</code>, and <code>options.tags</code>, processes the code\ninto properties on a docObject.  The <code>callback</code> is called with the new docObject.</p>\n","params":[{"types":[{"type":"documentjs.process.processOptions"}],"name":"options","description":"<p>An options object that contains\nthe code to process.</p>\n"},{"types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[{"types":[{"type":"documentjs.process.docObject"}],"name":"newDoc"},{"types":[{"type":"documentjs.process.docObject"}],"name":"newScope"}]}],"name":"callback","description":"<p>A function that is called back with a docObject created from the code and the scope\n<code>docObject</code>.  If\nno docObject is created, <code>newDoc</code> will be null.</p>\n"}]}],"comment":" ","src":"lib/process/code.js","line":0},{"name":"documentjs.process.codeAndComment","type":"function","description":"","title":"","parent":"documentjs.process.methods","signatures":[{"code":"documentjs.process.codeAndComment(options, callback)","description":"<p>Processes a code suggestion and then a comment and produces a docObject.</p>\n","params":[{"types":[{"type":"documentjs.process.processOptions"}],"name":"options","description":"<p>An options object that contains\nthe code and comment to process.</p>\n"},{"types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[{"types":[{"type":"documentjs.process.docObject"}],"name":"newDoc","description":"<p>the new documentation object</p>\n"},{"types":[{"type":"documentjs.process.docObject"}],"name":"newScope","description":"<p>the new scope</p>\n"}]}],"name":"callback","description":"<p>A function that is called back with a docObject created from the code and the scope\n<code>docObject</code>.  If\nno docObject is created, <code>newDoc</code> will be null.</p>\n"}]}],"src":"lib/process/code_and_comment.js","line":4},{"name":"documentjs.process.comment","type":"function","description":"","title":"","parent":"documentjs.process.methods","signatures":[{"code":"documentjs.process.comment(options, callback)","description":"<p>Processes a comment and produces a docObject.</p>\n","params":[{"types":[{"type":"documentjs.process.processOptions"}],"name":"options","description":"<p>An options object that contains\nthe code and comment to process.</p>\n"},{"types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[{"types":[{"type":"documentjs.process.docObject"}],"name":"newDoc"},{"types":[{"type":"documentjs.process.docObject"}],"name":"newScope"}]}],"name":"callback","description":"<p>A function that is called back with a docObject created from the code and the scope\n<code>docObject</code>.  If\nno docObject is created, <code>newDoc</code> will be null.</p>\n"}]}],"src":"lib/process/comment.js","line":4},{"name":"documentjs.process.file","type":"function","parent":"documentjs.process.methods","description":"<p>Processes a file's source.  Adds created [documentjs.process.docObject docObjects] to docMap.</p>\n","title":"","signatures":[{"code":"documentjs.process.file(source, docMap, [filename])","description":"<p>Processes a file's source and calls [documentjs.process.codeAndComment] accordingly. If\nthe file ends with <code>.js</code>, each comment will be processed individually.  Otherwise,\nit treats the entire source as one big comment.</p>\n","params":[{"types":[{"type":"String"}],"name":"source","description":"<p>A files source</p>\n"},{"types":[{"type":"documentjs.process.docMap"}],"name":"docMap","description":"<p>A map of the name of each DocObject to the DocObject</p>\n"},{"types":[{"type":"String"}],"optional":true,"name":"filename","description":"<p>The filename.  If a filename is not provided,\nthe entire file is treated as one big comment block.  If a filename is provided\nand is not a .md or .markdown file, it is assumed to be a source file.</p>\n"}]}],"comment":" ","src":"lib/process/file.js","line":5},{"name":"documentjs.process.fileEventEmitter","type":"function","description":"<p>Processes a file's source.  Adds created [documentjs.process.docObject docObjects] to docMap.</p>\n","title":"","parent":"documentjs.process.methods","signatures":[{"code":"documentjs.process.file(source, docMap, [filename])","description":"<p>Processes files &quot;matched&quot; from a file event emitter into a [documentjs.process.docMap docMap].</p>\n","params":[{"types":[{"type":"documentjs.process.types.FileEventEmitter"}],"name":"fileEventEmitter","description":"<p>An event emitter that dispatches events\nwith files to process.</p>\n"},{"types":[{"type":"Object","options":[]}],"name":"options","description":"<p>An options object used to configure the behavior of documentjs.</p>\n"}],"returns":{"types":[{"type":"Promise","template":[{"types":[{"type":"documentjs.process.docMap"}]}]}],"description":"<p>A docMap that contains the docObjects\ncreated from the matched files.</p>\n"}}],"comment":" ","src":"lib/process/file_event_emitter.js","line":5}]};
-</script>
 
 
-	
-	<footer>
-		<nav class="container">
-			<a class="brand javascriptmvc" href="index.html"></a>
-		</nav>
-	</footer>
+
+
 	
 	<script type='text/javascript' 
 			data-main="static"
