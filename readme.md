@@ -10,3 +10,5 @@ DocumentJS creates beautiful, articulate, multi-versioned documentation. With Do
    annotations.
  - Customize your site's theme and layout.
  - Generate multi-version documentation.
+
+Go to [documentjs.com](http://documentjs.com) for guides and documentation.
