@@ -1,3 +1,7 @@
+/* Hack for chrome so we can change the size*/
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+ .sidebar #versions { border-color:#999;  }
+}
 
 
 
@@ -88,6 +92,10 @@
     position: absolute;
     right: 5px;
     top: 7px;
+    font-size: 15px;
+    option {
+      font-size: 15px;
+    }
   }
   .api {
     li.active  {

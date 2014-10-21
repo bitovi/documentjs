@@ -15,8 +15,8 @@ most common setups.
 
 This configuration assumes you:
 
-- You are using github pages to host your code's documentation.
-- Have [DocumentJS.guides.installing installed] `documentjs` globally
+- Are using github pages to host your code's documentation.
+- Have [DocumentJS.guides.installing installed] as an npm dependency.
 
 You will setup the code of your project to be documented and then
 setup an empty `gh-pages` branch to download and document that code.
@@ -39,7 +39,7 @@ setup an empty `gh-pages` branch to download and document that code.
    Run [DocumentJS.apis.generate.documentjs documentjs] and 
    check that the output looks like:
    
-        project> documentjs
+        project> ./node_modules/.bin/documentjs
         project> cd ../api
         api> open index.html
         
@@ -108,7 +108,7 @@ setup an empty `gh-pages` branch to download and document that code.
    Use [DocumentJS.apis.generate.documentjs documentjs] to generate 
    the docs:
    
-       project.com> node_modules/.bin/documentjs
+       project.com> ./node_modules/.bin/documentjs
    
    This will download all versions and generate their docs. This isn't ideal if 
    you are trying to document a single version.  You would have to commit and
@@ -120,3 +120,5 @@ setup an empty `gh-pages` branch to download and document that code.
    This will use the local documentjs folder as the 1.0.0 version.
    
 ## Configuring for a simple single version.
+
+Coming soon.

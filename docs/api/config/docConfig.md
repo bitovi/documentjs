@@ -2,7 +2,7 @@
 @parent DocumentJS.apis.config
 
 Configures the behavior of DocumentJS.  The following are values found within
-a `documentjs.json`.
+a _documentjs.json_ or the [DocumentJS.apis.generate.grunt] configuration.
 
 @option {Object<String,DocumentJS.projectConfig|String>} [versions] A map of version names
 to their source or to a [DocumentJS.projectConfig projectConfig] that specifies where and how
