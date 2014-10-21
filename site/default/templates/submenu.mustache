@@ -1,13 +1,13 @@
 {{#if children.length}}
 <ul>
-	{{#orderedChildren children}}
+	{{#eachOrderedChildren children}}
 	{{^if hide}}
 	<li class="search-container{{#if active}} active{{#children.length}} parent{{/children.length}}{{/if}}">
-		<a class="{{type}}" href="{{makeHref name}}" data-search="{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}">
-			{{getTitle}}
+		<a class="{{type}}" href="{{urlTo name}}" data-search="{{#if title}}{{title}}{{else}}{{{name}}}{{/if}}">
+			{{makeTitle}}
 		</a>
 	</li>
 	{{/if}}
-	{{/orderedChildren}}
+	{{/eachOrderedChildren}}
 </ul>
 {{/if}}

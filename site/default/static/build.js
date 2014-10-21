@@ -1,66 +1,61 @@
-(function(){
 
-var hadSteal = true;
+var stealTools = require("steal-tools"),
+	fsx = require('../../../../lib/fs_extras'),
+	Q = require('q'),
+	path = require("path");
 
-if(typeof steal === "undefined"){
-	hadSteal = false;
-	load('steal/rhino/rhino.js')
-}
 
-steal('steal','steal/build',function(steal){
+module.exports = function(options, folders){
 	
-	var builder = function(options, done){
-		
-		steal.build("documentjs/site/static/build/static.js",{
-			// have to send it here so paths to images work
-			to: "documentjs/site/static/build",
-			done: function(){
-				
-				// copy production.js and production.css
-				steal.File("documentjs/site/static/dist/production.js")
-					.save(readFile("documentjs/site/static/build/production.js"))
-				
-				steal.File("documentjs/site/static/dist/production.css")
-					.save(readFile("documentjs/site/static/build/production.css"))
-				
-				
-				// copy steal and html5shiv.js
-				steal.File("documentjs/site/static/dist/steal.production.js")
-					.save(readFile("steal/steal.production.js"))
-				
-				steal.File("documentjs/site/static/dist/html5shiv.js")
-					.save(readFile("documentjs/site/static/build/html5shiv.js"))
-				
-				// copy fonts and images
-				steal.URI("documentjs/site/static/dist/fonts").mkdirs();
-				steal.URI("documentjs/site/static/dist/img").mkdirs();
-				steal.URI("documentjs/site/static/dist/templates").mkdirs();
-				
-				steal.URI("documentjs/site/static/build/fonts")
-					.copyTo("documentjs/site/static/dist/fonts");
-				steal.URI("documentjs/site/static/build/img")
-					.copyTo("documentjs/site/static/dist/img")
-				
-				if( steal.URI("documentjs/site/static/build/templates").exists() ){
-					// not used by main documentjs, but canjs.com buid
-					steal.URI("documentjs/site/static/build/templates")
-						.copyTo("documentjs/site/static/dist/templates")
+	var copyDir = function(name){
+		return fsx.mkdirs( path.join(folders.dist,name) ).then(function(){
+			return fsx.exists(path.join(folders.build,name)).then(function(exists){
+				if(exists) {
+					return fsx.copy( path.join(folders.build,name), path.join(folders.dist,name) );
 				}
-				done && done()
-			},
-			minify: options.minifyBuild === false ? false : true
-		})
-		
-		
-		
+			});
+		});
+	};
+	if(options.devBuild) {
+		// copy everything and steal.js
+		return Q.all([
+			fsx.copy(path.join(folders.build), path.join(folders.dist) ),
+			fsx.copy("documentjs/node_modules/steal", path.join(folders.dist,"steal") ),
+			fsx.copy("documentjs/node_modules/canjs", path.join(folders.dist,"can") )
+		]);
+	} else {
+		// makes sure can is not added to the global so we can build nicely.
+		global.GLOBALCAN = false;
+		return stealTools.build({
+			main: "static",
+			config: __dirname+"/config.js",
+			bundlesPath: __dirname+"/bundles",
+		},{
+			minify: options.minifyBuild === false ? false : true,
+			quiet: options.debug ? false : true,
+			debug: options.debug ?  true : false
+		}).then(function(){
+			if(options.debug) {
+				console.log("BUILD: Copying build to dist.");
+			}
+			
+			// copy everything to DIST
+			return Q.all([
+				fsx.mkdirs( path.join(folders.dist,"bundles") ).then(function(){
+					return fsx.copy(path.join(folders.build,"bundles"), path.join(folders.dist,"bundles") );
+				}),
+				fsx.copy("documentjs/node_modules/steal/steal.production.js", path.join(folders.dist,"steal.production.js") ),
+				fsx.copy( path.join(folders.build,"html5shiv.js"), path.join(folders.dist,"html5shiv.js")),
+					
+				copyDir("fonts"),
+				
+				copyDir("img"),
+				copyDir("templates")
+			]);
+	
+		});
 	}
 	
-	if(!hadSteal){
-		builder();
-	}
-	return builder;
 	
-})
-
-
-})()
+	
+};
