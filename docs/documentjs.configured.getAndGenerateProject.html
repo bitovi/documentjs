@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>  - documentjs.configured.getAndGenerateProject</title>
+	<title>DocumentJS  - documentjs.configured.getAndGenerateProject</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -329,13 +329,23 @@
 
 
 	
-	<script type='text/javascript' 
-			data-main="static"
+		<script type="text/javascript">
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.configured.methods","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"name":"documentjs.configured.getAndGenerateProject","type":"function","description":"<p>Gets a resource with a version name and copys it to a location, and documents it.</p>\n","title":"","params":[{"types":[{"type":"Object","options":[{"name":"path","description":"","types":[{"type":"String"}]}]}],"name":"project","description":""},{"types":[{"type":"Object","options":[]}],"name":"parent","description":""}],"types":[],"src":"lib/configured/get_and_generate_project.js"};
+	</script>
 	
-		src="./static/steal.production.js"
 	
-	    bundles-path="bundles"
-		></script>
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	
 </body>
 
 </html>

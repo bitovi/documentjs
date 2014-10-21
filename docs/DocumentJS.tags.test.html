@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title> - @test </title>
+	<title>DocumentJS - @test </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -583,13 +583,23 @@ lib.Component = function( name ) { ... }
 
 
 	
-	<script type='text/javascript' 
-			data-main="static"
+		<script type="text/javascript">
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"name":"documentjs.tags.test","type":"constructor","description":"<p>Link to test page.</p>\n","title":"@test","signatures":[{"code":"@test URL","description":"<pre><code class=\"language-js\">/**\n * A component for the lib library.\n * @test lib/component/component.test\n *|\nlib.Component = function( name ) { ... }\n</code></pre>\n","params":[{"types":[{"type":"String"}],"name":"URL","description":"<p>The url of the test page.</p>\n"}]}],"src":"lib/tags/api.js"};
+	</script>
 	
-		src="./static/steal.production.js"
 	
-	    bundles-path="bundles"
-		></script>
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	
 </body>
 
 </html>

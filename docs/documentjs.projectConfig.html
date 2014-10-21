@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title> - projectConfig </title>
+	<title>DocumentJS - projectConfig </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -276,6 +276,18 @@
 				<li class="search-container">
 					<a class="function" href="DocumentJS.apis.generate.documentjs.html" data-search="documentjs">
 						documentjs
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="function" href="DocumentJS.apis.generate.grunt.html" data-search="grunt">
+						grunt
 					</a>
 				</li>
 				
@@ -545,13 +557,23 @@ installed. The default is to use <a href="DocumentJS.docConfig.html">docConfig</
 
 
 	
-	<script type='text/javascript' 
-			data-main="static"
+		<script type="text/javascript">
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.apis.config","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"typedef","name":"DocumentJS.projectConfig","description":"<p>The configuration options for a project to retrieve and document.</p>\n","title":"projectConfig","types":[{"type":"Object","options":[{"name":"source","description":"<p>The source location of the project.</p>\n","types":[{"type":"String"}]},{"name":"version","description":"<p>The version name of the project. The default value is\nthis project config's <code>versions</code> key.</p>\n","types":[{"type":"String"}],"optional":true},{"name":"path","description":"<p>The location of where the project should be\ninstalled. The default is to use [DocumentJS.docConfig]'s <code>versionDest</code>.</p>\n","types":[{"type":"String"}],"optional":true},{"name":"npmInstall","description":"<p>Use npm to install the resource.</p>\n","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"false"}]}],"src":"docs/api/config/projectConfig.md"};
+	</script>
 	
-		src="./static/steal.production.js"
 	
-	    bundles-path="bundles"
-		></script>
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	
 </body>
 
 </html>

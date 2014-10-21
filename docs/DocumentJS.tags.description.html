@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title> - @description </title>
+	<title>DocumentJS - @description </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -574,13 +574,23 @@ can be used to escape a multi-line <code>@</code> directive.</p>
 
 
 	
-	<script type='text/javascript' 
-			data-main="static"
+		<script type="text/javascript">
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"name":"documentjs.tags.description","type":"constructor","description":"<p>Provide a short description.</p>\n","title":"@description","tags":["documentation"],"signatures":[{"code":"@description CONTENT","description":"<pre><code class=\"language-js\">/**\n * @signature `new lib.Component(name)`\n * @description A component for the lib library.\n *|\nlib.Component = function(name){}\n</code></pre>\n","params":[]}],"comment":" ","src":"lib/tags/description.js"};
+	</script>
 	
-		src="./static/steal.production.js"
 	
-	    bundles-path="bundles"
-		></script>
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	
 </body>
 
 </html>

@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>  - DocumentJS</title>
+	<title>DocumentJS  - DocumentJS</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -282,6 +282,18 @@
 			
 			
 		
+			
+				
+				
+				<li class="search-container">
+					<a class="function" href="DocumentJS.apis.generate.grunt.html" data-search="grunt">
+						grunt
+					</a>
+				</li>
+				
+			
+			
+		
 	</ul>
 
 
@@ -451,12 +463,12 @@
 and <a href="https://developers.google.com/closure/compiler/docs/js-for-compiler">Google Closure Compiler</a>
 annotations.</li>
 <li>Customize your site's theme and layout.</li>
-<li>Generate docs for each version of your code.</li>
+<li>Generate multi-version documentation.</li>
 </ul>
 <p>The remainder of this page walks you through a &quot;Quick Start Guide&quot; that
 reads through all the <code>.js</code>, <code>.md</code> and <code>.markdown</code> files
 in a folder and creates a sibling <code>docs</code> folder with the
-generated documentation.</p>
+generated documentation. Read the other guides for more detailed instructions.</p>
 <h2>Install</h2>
 <p>Install <a href="http://nodejs.org/">Node.js</a> on your
 computer. Open a console to your project. Use <a href="https://www.npmjs.org/">npm</a> to
@@ -590,13 +602,23 @@ add <code>--watch</code> and DocumentJS will produce a new site whenever a file 
 
 
 	
-	<script type='text/javascript' 
-			data-main="static"
+		<script type="text/javascript">
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"page","name":"DocumentJS","description":"","src":"docs/documentjs.md"};
+	</script>
 	
-		src="./static/steal.production.js"
 	
-	    bundles-path="bundles"
-		></script>
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	
 </body>
 
 </html>

@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title> - @release </title>
+	<title>DocumentJS - @release </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -611,13 +611,23 @@ with a release number:</p>
 
 
 	
-	<script type='text/javascript' 
-			data-main="static"
+		<script type="text/javascript">
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"name":"documentjs.tags.release","type":"constructor","description":"<p>Specifies the release of a [DocumentJS.tags.param @param],\n[documentjs/tags/signature @signature],\n[documentjs/tags/function @function] or\n[documentjs/tags/property @property].</p>\n","title":"@release","release":"3.3","signatures":[{"code":"@release RELEASE","description":"<pre><code class=\"language-js\">/**\n * Retrieves a list of orders.\n * @release 3.2\n *|\n find: function( params, success ) {\n</code></pre>\n","params":[{"types":[{"type":"String"}],"name":"RELASE","description":"<p>A release number like: <code>1.2.3</code>.</p>\n"}]}],"comment":" ","src":"lib/tags/release.js"};
+	</script>
 	
-		src="./static/steal.production.js"
 	
-	    bundles-path="bundles"
-		></script>
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	
 </body>
 
 </html>

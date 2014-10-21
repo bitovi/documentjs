@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>  - documentjs.generators.html.defaultHelpers.makeParentTitle</title>
+	<title>DocumentJS  - documentjs.generators.html.defaultHelpers.makeParentTitle</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -550,13 +550,23 @@
 
 
 	
-	<script type='text/javascript' 
-			data-main="static"
+		<script type="text/javascript">
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.generators.html.defaultHelpers","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"function","name":"documentjs.generators.html.defaultHelpers.makeParentTitle","params":[],"description":"<p>Returns the parent docObject's title.</p>\n","title":"","src":"lib/generators/html/build/make_default_helpers.js"};
+	</script>
 	
-		src="./static/steal.production.js"
 	
-	    bundles-path="bundles"
-		></script>
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	
 </body>
 
 </html>

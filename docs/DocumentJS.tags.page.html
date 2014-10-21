@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title> - @page </title>
+	<title>DocumentJS - @page </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -602,13 +602,23 @@ application structure.</p>
 
 
 	
-	<script type='text/javascript' 
-			data-main="static"
+		<script type="text/javascript">
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"name":"documentjs.tags.page","type":"constructor","description":"<p>Declares this comment as a page. Use pages to\nrepresent content that doesn't belong to part of the\napplication structure.</p>\n","title":"@page","signatures":[{"code":"@page NAME [TITLE]","description":"<pre><code class=\"language-js\">/**\n * @page lib/faq FAQ\n * @parent lib\n * \n * Checkout these frequently asked questions \n *\n * @body\n *\n * ## How to contribute to DocumentJS\n *|\n</code></pre>\n","params":[{"types":[{"type":"String"}],"name":"NAME","description":"<p>The unique name of the page.</p>\n"},{"types":[{"type":"String"}],"optional":true,"name":"TITLE","description":"<p>The title of the article used for display purposes.</p>\n"}]}],"src":"lib/tags/page.js"};
+	</script>
 	
-		src="./static/steal.production.js"
 	
-	    bundles-path="bundles"
-		></script>
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	
 </body>
 
 </html>

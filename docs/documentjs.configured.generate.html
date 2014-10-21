@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title> - generate </title>
+	<title>DocumentJS - generate </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -372,13 +372,23 @@ documentjs.configured.generate({
 
 
 	
-	<script type='text/javascript' 
-			data-main="static"
+		<script type="text/javascript">
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.configured.methods","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"function","name":"documentjs.configured.generate","params":[{"types":[{"type":"Object","options":[{"name":"path","description":"<p>The path of a project.</p>\n","types":[{"type":"String"}]}]}],"name":"project","description":"<p>A [documentjs.configured.projectConfig] configured with at least:</p>\n"},{"types":[{"type":"documentjs.configured.projectConfig"}],"optional":true,"name":"parent","description":"<p>An optional\nparent project that can be used to configure the behavior of this project.</p>\n"},{"types":[{"type":"Object","options":[]}],"optional":true,"name":"options","description":""}],"description":"<p>Generates a project's documentation from its <code>documentjs.json</code>.</p>\n","title":"generate","types":[],"returns":{"types":[{"type":"Promise"}],"description":"<p>A promise that resolves when the the project is documented.</p>\n"},"comment":" ","src":"lib/configured/generate_project.js"};
+	</script>
 	
-		src="./static/steal.production.js"
 	
-	    bundles-path="bundles"
-		></script>
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	
 </body>
 
 </html>

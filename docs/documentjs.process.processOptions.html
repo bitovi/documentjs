@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title> - processOptions </title>
+	<title>DocumentJS - processOptions </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -450,13 +450,23 @@ be used as the docObject.  This is useful for adding properties to an existing o
 
 
 	
-	<script type='text/javascript' 
-			data-main="static"
+		<script type="text/javascript">
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.process.types","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"typedef","name":"documentjs.process.processOptions","description":"<p>An options object passed to several of the [documentjs.process] methods.</p>\n","title":"processOptions","types":[{"type":"Object","options":[{"name":"tags","description":"<p>The tag collection to be used to process the comment.</p>\n","types":[{"type":"documentjs.tags"}]},{"name":"comment","description":"<p>The comment to be converted</p>\n","types":[{"type":"String"}]},{"name":"scope","description":"<p>A docObject that can be a parent to the current docObject.</p>\n","types":[{"type":"documentjs.process.docObject"}]},{"name":"docMap","description":"<p>The map of all docObjects.</p>\n","types":[{"type":"documentjs.process.docMap"}]},{"name":"docObject","description":"<p>If provided, this will\nbe used as the docObject.  This is useful for adding properties to an existing object.</p>\n","types":[{"type":"documentjs.process.docObject"}],"optional":true},{"name":"code","description":"<p>The code immediately preceeding the comment.</p>\n","types":[{"type":"String"}],"optional":true}]}],"src":"lib/process/process_options.md"};
+	</script>
 	
-		src="./static/steal.production.js"
 	
-	    bundles-path="bundles"
-		></script>
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	
 </body>
 
 </html>

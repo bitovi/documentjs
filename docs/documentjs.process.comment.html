@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>  - documentjs.process.comment</title>
+	<title>DocumentJS  - documentjs.process.comment</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -390,13 +390,23 @@ no docObject is created, <code>newDoc</code> will be null.</p>
 
 
 	
-	<script type='text/javascript' 
-			data-main="static"
+		<script type="text/javascript">
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.process.methods","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"name":"documentjs.process.comment","type":"function","description":"","title":"","signatures":[{"code":"documentjs.process.comment(options, callback)","description":"<p>Processes a comment and produces a docObject.</p>\n","params":[{"types":[{"type":"documentjs.process.processOptions"}],"name":"options","description":"<p>An options object that contains\nthe code and comment to process.</p>\n"},{"types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[{"types":[{"type":"documentjs.process.docObject"}],"name":"newDoc"},{"types":[{"type":"documentjs.process.docObject"}],"name":"newScope"}]}],"name":"callback","description":"<p>A function that is called back with a docObject created from the code and the scope\n<code>docObject</code>.  If\nno docObject is created, <code>newDoc</code> will be null.</p>\n"}]}],"src":"lib/process/comment.js"};
+	</script>
 	
-		src="./static/steal.production.js"
 	
-	    bundles-path="bundles"
-		></script>
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	
 </body>
 
 </html>

@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title> - @codeend </title>
+	<title>DocumentJS - @codeend </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -577,13 +577,23 @@
 
 
 	
-	<script type='text/javascript' 
-			data-main="static"
+		<script type="text/javascript">
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"name":"documentjs.tags.codeend","type":"constructor","description":"<p>Stops a code block.</p>\n<p>###Example:</p>\n<pre><code class=\"language-js\">\n /* \n  * @codestart\n  *  /* @class\n  *   * Person represents a human with a name.  Read about the \n  *   * animal class [Animal | here].\n  *   * @constructor\n  *   * You must pass in a name.\n  *   * @param {String} name A person's name\n  *   *|\n  *   Person = function(name){\n  *      this.name = name\n  *      Person.count ++;\n  *   }\n  *  /* @Static *|\n  *  steal.Object.extend(Person, {\n  *      /* Number of People *|\n  *      count: 0\n  *  })\n  *  /* @Prototype *|\n  *  Person.prototype = {\n  *     /* Returns a formal name \n  *      * @return {String} the name with &quot;Mrs.&quot; added\n  *      *|\n  *      fancyName : function(){\n  *         return &quot;Mrs. &quot;+this.name;\n  *      }\n  *  }\n  * @codeend\n  *|\n\n</code></pre>\n","hide":true,"title":"@codeend","tags":["documentation"],"src":"lib/tags/codeend.js"};
+	</script>
 	
-		src="./static/steal.production.js"
 	
-	    bundles-path="bundles"
-		></script>
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	
 </body>
 
 </html>

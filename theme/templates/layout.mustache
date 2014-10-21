@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>{{parentTitle}} {{#if title}}- {{title}} {{else}} {{#if name}}- {{name}}{{/if}}{{/if}}</title>
+	<title>DocumentJS {{#if title}}- {{title}} {{else}} {{#if name}}- {{name}}{{/if}}{{/if}}</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -83,15 +83,28 @@
 		</nav>
 	</footer>
 	{{/if}}
-	<script type='text/javascript' 
-			data-main="static"
-	{{#staticLocation}}
-		src="{{.}}steal.js"
+		<script type="text/javascript">
+		var docObject = {{{docObjectString}}};
+	</script>
+	
+	{{#if devBuild}}
+		<script type='text/javascript' 
+				data-main="static"
+				data-config="./static/config.js"
+				src="./static/steal/steal.js"></script>
 	{{else}}
-		src="./static/steal.production.js"
-	{{/staticLocation}}
-	    bundles-path="bundles"
-		></script>
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	{{/if}}
 </body>
 
 </html>

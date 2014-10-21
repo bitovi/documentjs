@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>DocumentJS - contributing </title>
+	<title>DocumentJS - grunt </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -159,7 +159,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container">
 					<a class="page" href="DocumentJS.guides.contributing.html" data-search="contributing">
 						contributing
 					</a>
@@ -285,7 +285,7 @@
 			
 				
 				
-				<li class="search-container">
+				<li class="search-container active">
 					<a class="function" href="DocumentJS.apis.generate.grunt.html" data-search="grunt">
 						grunt
 					</a>
@@ -412,9 +412,9 @@
 		
 		<section class="title">
 			<div class="heading">
-<h1>contributing</h1>
+<h1>grunt</h1>
 	<ul class="tags">
-		<li>page</li>
+		<li>function</li>
 	</ul>
 	
 	
@@ -423,7 +423,7 @@
 <div class="sub-heading">
 	
 	
-		<span class="module">DocumentJS.guides.contributing</span>
+		<span class="module">DocumentJS.apis.generate.grunt</span>
 	
 	
 	
@@ -451,12 +451,61 @@
 
 		
 		<section class="description">
-			<p>Learn how to contribute to DocumentJS.</p>
+			<p>Run the DocumentJS Grunt task.</p>
 
 		</section>
 		
 
 		
+			
+				<section class="signature">
+					<h2 id="sig_gruntdocumentjs__NAME__PATH__">grunt documentjs[:NAME[@PATH]]
+</h2>
+<div class="signature-wrapper">
+<p>Calls the configured grunt task.  If no name or path is given, all
+versions and sites will be generated.</p>
+
+
+	<h3>Parameters</h3>
+
+	<ol class="parameters">
+		
+		<li class="parameter">
+			<h4>NAME
+				<code>{String}</code><span class="pull-right optional">Optional</span></h4>
+			<div class="description">
+				<p>The name of a version or site that this generation will
+be limited too.</p>
+
+			</div>
+			
+			
+			
+		</li>
+		
+		<li class="parameter">
+			<h4>PATH
+				<code>{String}</code><span class="pull-right optional">Optional</span></h4>
+			<div class="description">
+				<p>The path to the location of a local repository to stand-in for the
+version specified by <code>name</code>.</p>
+
+			</div>
+			
+			
+			
+		</li>
+		
+	</ol>
+
+
+
+
+
+
+</div>
+
+				</section>
 			
 		
 		
@@ -465,70 +514,37 @@
 
 		
 		<section class="comment">
-			<h2>Developing</h2>
-<p>To develop DocumentJS, fork and clone <a href="http://github.com/bitovi/documentjs">DocumentJS</a>. Make sure you
-have NodeJS installed.  Then:</p>
-<ol>
-<li><p>Install npm modules</p>
-<pre><code>&gt; npm install
-</code></pre></li>
-<li><p>Run tests:</p>
-<pre><code>&gt; npm test
-</code></pre></li>
-</ol>
-<h2>Code Organization</h2>
-<p>DocumentJS's functionality and code are broken down into the following folders within <code>documentjs/lib</code>:</p>
-<ul>
-<li><p>find - Gets each file that should be processed.</p></li>
-<li><p><a href="documentjs.process.html">process</a> - Converts comments and files
-into a <a href="documentjs.process.docObject.html">docObject</a> and puts every docObject in
-the <a href="documentjs.process.docMap.html">docMap</a>.</p></li>
-<li><p><a href="documentjs.tags.html">tags</a> - Tags used by <a href="documentjs.process.html">process</a> to add properties to a <a href="documentjs.process.docObject.html">docObject</a>.</p></li>
-<li><p><a href="documentjs.generators.html.html">generators/html</a> - Generates an HTML
-site given a <a href="documentjs.process.docMap.html">docMap</a>. This process is futher broken down into:</p>
-<ul>
-<li><a href="documentjs.generators.html.build.html">generators/html/build</a> - Compile the templates, static resources, and mustache helpers used to generate the site.</li>
-<li><a href="documentjs.generators.html.write.html">generators/html/write</a> - Uses the compiled templates, static resources, and helpers to write out the site.</li>
-</ul></li>
-<li><p><a href="documentjs.generate.html">generate</a> - Given <code>options</code>, coordinates between <a href="documentjs.find.html">find</a> and the <a href="documentjs.generators.html.html">html generator</a> to
-produce a site.</p></li>
-<li><p>configure - Reads <code>documentjs.json</code> and calls out to modules in the previous folders.</p></li>
-</ul>
-<h2>Testing</h2>
-<p>To run all tests, run:</p>
-<pre><code>&gt; npm test
+			<h2>Examples</h2>
+<p>Given a <code>Gruntfile.js</code> like:</p>
+<pre><code>module.exports = function(grunt){
+  grunt.loadNpmTasks('documentjs');
+  grunt.initConfig({
+    documentjs: {
+      versions: {
+        &quot;1.0&quot; : &quot;...&quot;,
+        &quot;1.1&quot; : &quot;...&quot;,
+        &quot;2.0&quot; : &quot;...&quot;
+      },
+      sites: {
+        &quot;pages&quot; : { ... }  
+      },
+      ...
+    }
+  });
+};
 </code></pre>
-<p>This runs mocha on <code>test.js</code> like:</p>
-<pre><code>&gt; mocha test.js --reporter spec
+<p>Generate all versions and sites like:</p>
+<pre><code>&gt; grunt documentjs
 </code></pre>
-<p><code>test.js</code> require's other test files within lib.</p>
-<h2>Website and Documentation</h2>
-<p>DocumentJS's <a href="https://github.com/bitovi/documentjs/tree/gh-pages">gh-pages branch</a> contains
-documentjs.com's code. It uses DocumentJS to produce the website. The best way to
-edit the docs it to:</p>
-<ol>
-<li><p>Fork/Clone https://github.com/bitovi/documentjs/tree/gh-pages next to the version
-of <code>documentjs</code> you want to be documented:</p>
-<pre><code>documentjs&gt; cd ..
-&gt; git clone git@github.com:bitovi/documentjs -b gh-pages documentjs.com
-</code></pre></li>
-<li><p>Install NPM dependencies:</p>
-<pre><code>&gt; cd documentjs.com
-documentjs.com&gt; npm install
-</code></pre></li>
-<li><p>Generate site the entire site with:</p>
-<pre><code>documentjs.com&gt; npm run-script documentjs
-</code></pre></li>
-<li><p>Update the site with changes in your local <code>documentjs</code>. Change the version number <code>0.0.0</code> accordingly:</p>
-<pre><code>documentjs.com&gt; node node_modules/.bin/documentjs 0.0.0@../documentjs
-</code></pre></li>
-<li><p>Edit source in <code>documentjs</code>.</p></li>
-<li><p>Regenerate site and check changes</p>
-<pre><code>documentjs.com&gt; node node_modules/.bin/documentjs 0.0.0@../documentjs
-</code></pre></li>
-<li><p>Checkin and push changes to documentjs.</p></li>
-<li><p>Checkin and push gh-pages branch changes.</p></li>
-</ol>
+<p>Generate the &quot;pages&quot; site like:</p>
+<pre><code>&gt; grunt documentjs:pages
+</code></pre>
+<p>Generate the 1.0 docs like:</p>
+<pre><code>&gt; grunt documentjs:1.0
+</code></pre>
+<p>Generate the 1.0 docs from a local project like:</p>
+<pre><code>&gt; grunt documentjs:1.0@../local
+</code></pre>
 
 		</section>
 		
@@ -549,7 +565,7 @@ documentjs.com&gt; npm install
 
 	
 		<script type="text/javascript">
-		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.guides","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"page","name":"DocumentJS.guides.contributing","description":"<p>Learn how to contribute to DocumentJS.</p>\n","title":"contributing","order":5,"comment":" ","src":"docs/guides/contributing.md"};
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.apis.command-line","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"function","description":"<p>Run the DocumentJS Grunt task.</p>\n","title":"grunt","name":"DocumentJS.apis.generate.grunt","signatures":[{"code":"grunt documentjs[:NAME[@PATH]]","description":"<p>Calls the configured grunt task.  If no name or path is given, all\nversions and sites will be generated.</p>\n","params":[{"types":[{"type":"String"}],"optional":true,"name":"NAME","description":"<p>The name of a version or site that this generation will\nbe limited too.</p>\n"},{"types":[{"type":"String"}],"optional":true,"name":"PATH","description":"<p>The path to the location of a local repository to stand-in for the\nversion specified by <code>name</code>.</p>\n"}]}],"comment":" ","src":"tasks/documentjs.js"};
 	</script>
 	
 	

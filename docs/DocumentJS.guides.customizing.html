@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title> - customizing </title>
+	<title>DocumentJS - customizing </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -276,6 +276,18 @@
 				<li class="search-container">
 					<a class="function" href="DocumentJS.apis.generate.documentjs.html" data-search="documentjs">
 						documentjs
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="function" href="DocumentJS.apis.generate.grunt.html" data-search="grunt">
+						grunt
 					</a>
 				</li>
 				
@@ -662,13 +674,23 @@ your <a href="DocumentJS.siteConfig.html">siteConfigs</a>.</p>
 
 
 	
-	<script type='text/javascript' 
-			data-main="static"
+		<script type="text/javascript">
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.guides","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"page","name":"DocumentJS.guides.customizing","description":"<p>Learn how to change the appearence and JavaScript behavior of your generated html documentation.</p>\n","title":"customizing","order":4,"comment":" ","src":"docs/guides/customizing.md"};
+	</script>
 	
-		src="./static/steal.production.js"
 	
-	    bundles-path="bundles"
-		></script>
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	
 </body>
 
 </html>

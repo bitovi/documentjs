@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title> - GlobObject </title>
+	<title>DocumentJS - GlobObject </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -315,13 +315,23 @@ pattern. The following matches all <code>.js</code> files:</p>
 
 
 	
-	<script type='text/javascript' 
-			data-main="static"
+		<script type="text/javascript">
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.find.types","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"typedef","name":"documentjs.find.globObject","description":"<p>An options object that configures the behavior\nof [documentjs.find.files]. It supports all of the\noptions object of <a href=\"https://github.com/isaacs/node-glob\">node-glob</a>\nplus a pattern option that is used as <code>node-glob</code>'s first argument. Only the\nmost commonly used options are specified below:</p>\n","title":"GlobObject","types":[{"type":"Object","options":[{"name":"pattern","description":"<p>A <a href=\"https://github.com/isaacs/minimatch\">minmatch</a>\npattern. The following matches all <code>.js</code> files:</p>\n<pre><code>&quot;**/*.js&quot;\n</code></pre>\n","types":[{"type":"String"}]},{"name":"cwd","description":"<p>The current working directory in which to search. Defaults to process.cwd()</p>\n","types":[{"type":"String"}],"optional":true},{"name":"ignore","description":"<p>A pattern to ignore.  For example, to ignore everything in node_modules:</p>\n<pre><code>{\n  pattern: &quot;**/*.js&quot;,\n  ignore: &quot;node_modules/**/*&quot;\n}\n</code></pre>\n","types":[{"type":"String"}],"optional":true}]}],"src":"lib/find/glob_object.md"};
+	</script>
 	
-		src="./static/steal.production.js"
 	
-	    bundles-path="bundles"
-		></script>
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	
 </body>
 
 </html>

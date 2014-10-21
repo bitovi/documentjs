@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title> - generate </title>
+	<title>DocumentJS - generate </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -276,6 +276,18 @@
 				<li class="search-container">
 					<a class="function" href="DocumentJS.apis.generate.documentjs.html" data-search="documentjs">
 						documentjs
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="function" href="DocumentJS.apis.generate.grunt.html" data-search="grunt">
+						grunt
 					</a>
 				</li>
 				
@@ -547,13 +559,23 @@ has been successfully created.</p>
 
 
 	
-	<script type='text/javascript' 
-			data-main="static"
+		<script type="text/javascript">
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.apis.internal","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"function","name":"documentjs.generate","description":"","title":"generate","signatures":[{"code":".generate(options)","description":"<p>Generates documenation using specified generators.</p>\n","params":[{"types":[{"type":"Object","options":[{"name":"generators","description":"<p>Generators specifies a generator module or array of modules used to create an\noutput for documentation. The default generator is &quot;html&quot; which maps\nto documentjs's internal [documentjs.generators.html html generator].</p>\n<p>You can specify other modules which will be passed a promise containing\nthe [documentjs.process.docMap docMap] and the <code>options</code> and be expected\nto return a promise that resolves when they are complete.</p>\n","types":[{"type":"moduleName"},{"type":"Array","template":[{"types":[{"type":"moduleName"}]}]}],"optional":true},{"name":"watch","description":"<p>If true, regenerates all generators when\na file matched  by <code>options.glob</code> is changed.</p>\n","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"false"}]}],"name":"options","description":"<p>Options that configure the [documentjs.find.files files]\nprocessed, how they are [documentjs.process procssed], and\nhow the output is generated.</p>\n"}],"returns":{"types":[{"type":"Promise"}],"description":"<p>A promise that resolves when the documentation\nhas been successfully created.</p>\n"}}],"types":[],"comment":" ","src":"lib/generate/generate.js"};
+	</script>
 	
-		src="./static/steal.production.js"
 	
-	    bundles-path="bundles"
-		></script>
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	
 </body>
 
 </html>

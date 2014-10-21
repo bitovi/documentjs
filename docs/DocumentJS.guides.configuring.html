@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title> - configuring </title>
+	<title>DocumentJS - configuring </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -282,6 +282,18 @@
 			
 			
 		
+			
+				
+				
+				<li class="search-container">
+					<a class="function" href="DocumentJS.apis.generate.grunt.html" data-search="grunt">
+						grunt
+					</a>
+				</li>
+				
+			
+			
+		
 	</ul>
 
 
@@ -460,8 +472,8 @@ most common setups.</p>
 <h2>Configuring for multiple versions using github pages</h2>
 <p>This configuration assumes you:</p>
 <ul>
-<li>You are using github pages to host your code's documentation.</li>
-<li>Have <a href="DocumentJS.guides.installing.html">installed</a> <code>documentjs</code> globally</li>
+<li>Are using github pages to host your code's documentation.</li>
+<li>Have <a href="DocumentJS.guides.installing.html">installed</a> as an npm dependency.</li>
 </ul>
 <p>You will setup the code of your project to be documented and then
 setup an empty <code>gh-pages</code> branch to download and document that code.</p>
@@ -481,7 +493,7 @@ next to your project's folder:</p>
 </code></pre>
 <p>Run <a href="DocumentJS.apis.generate.documentjs.html">documentjs</a> and
 check that the output looks like:</p>
-<pre><code> project&gt; documentjs
+<pre><code> project&gt; ./node_modules/.bin/documentjs
  project&gt; cd ../api
  api&gt; open index.html
 </code></pre>
@@ -538,7 +550,7 @@ other behaviors.</p></li>
 <li><p>Generate the docs.</p>
 <p>Use <a href="DocumentJS.apis.generate.documentjs.html">documentjs</a> to generate
 the docs:</p>
-<pre><code>project.com&gt; node_modules/.bin/documentjs
+<pre><code>project.com&gt; ./node_modules/.bin/documentjs
 </code></pre>
 <p>This will download all versions and generate their docs. This isn't ideal if
 you are trying to document a single version.  You would have to commit and
@@ -549,6 +561,7 @@ the filesystem like:</p>
 <p>This will use the local documentjs folder as the 1.0.0 version.</p></li>
 </ol>
 <h2>Configuring for a simple single version.</h2>
+<p>Coming soon.</p>
 
 		</section>
 		
@@ -568,13 +581,23 @@ the filesystem like:</p>
 
 
 	
-	<script type='text/javascript' 
-			data-main="static"
+		<script type="text/javascript">
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.guides","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"page","name":"DocumentJS.guides.configuring","description":"<p>Learn how to configure the <code>documentjs.json</code> file for your project.</p>\n","title":"configuring","order":1,"comment":" ","src":"docs/guides/configuring.md"};
+	</script>
 	
-		src="./static/steal.production.js"
 	
-	    bundles-path="bundles"
-		></script>
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	
 </body>
 
 </html>

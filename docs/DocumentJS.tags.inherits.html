@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title> - @inherits </title>
+	<title>DocumentJS - @inherits </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -584,13 +584,23 @@
 
 
 	
-	<script type='text/javascript' 
-			data-main="static"
+		<script type="text/javascript">
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"name":"documentjs.tags.inherits","type":"constructor","description":"<p>Indicates that the current [documentjs/DocObject DocObject] inherits from another [documentjs/DocObject DocObject].</p>\n","title":"@inherits","tags":["documentation"],"signatures":[{"code":"@inherits NAME","description":"<pre><code class=\"language-js\">/*\n * @constructor Client\n * @inherits Person\n * ...\n *|\n var Client = Person.extend({})\n</code></pre>\n","params":[{"types":[{"type":"String"}],"name":"NAME","description":"<p>The name of DocObject the current DocObject inherits from.</p>\n"}]}],"src":"lib/tags/inherits.js"};
+	</script>
 	
-		src="./static/steal.production.js"
 	
-	    bundles-path="bundles"
-		></script>
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	
 </body>
 
 </html>

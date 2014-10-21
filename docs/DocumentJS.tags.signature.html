@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title> - @signature </title>
+	<title>DocumentJS - @signature </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -603,13 +603,23 @@ of the signature.</p>
 
 
 	
-	<script type='text/javascript' 
-			data-main="static"
+		<script type="text/javascript">
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"name":"documentjs.tags.signature","type":"constructor","description":"<p>Specifies a signature for a [documentjs/tags/function @function]\nbut can work with any other tag.</p>\n","title":"@signature","signatures":[{"code":"@signature `SIGNATURE` DESCRIPTION","description":"<pre><code class=\"language-js\">/**\n * Capitalizes a string.\n * @signature `can.capitalize(s)` Example:\n *\n *     can.capitalize(&quot;foo&quot;) //-&gt; &quot;Bar&quot;\n * \n * @param {String} s the string to be lowercased.\n * @return {String} a string with the first character capitalized, \n * and everything else lowercased\n *|\ncapitalize: function( s ) { ... }\n</code></pre>\n","params":[{"types":[{"type":"String"}],"name":"SIGNATURE","description":"<p>Code that describes how a method should be called.</p>\n"},{"types":[{"type":"String"}],"optional":true,"name":"DESCRIPTION","description":"<p>Describes the behavior\nof the signature.</p>\n"}]}],"src":"lib/tags/signature.js"};
+	</script>
 	
-		src="./static/steal.production.js"
 	
-	    bundles-path="bundles"
-		></script>
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	
 </body>
 
 </html>

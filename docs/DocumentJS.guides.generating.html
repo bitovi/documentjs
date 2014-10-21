@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title> - generating </title>
+	<title>DocumentJS - generating </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -282,6 +282,18 @@
 			
 			
 		
+			
+				
+				
+				<li class="search-container">
+					<a class="function" href="DocumentJS.apis.generate.grunt.html" data-search="grunt">
+						grunt
+					</a>
+				</li>
+				
+			
+			
+		
 	</ul>
 
 
@@ -453,10 +465,11 @@
 
 		
 		<section class="comment">
-			<p>To generate your docs, if you installed DocumentJS globally, run:</p>
+			<h2>Generating With Command Line</h2>
+<p>To generate your docs, if you installed DocumentJS globally, run:</p>
 <pre><code> &gt; documentjs
 </code></pre>
-<p>Otherwise, you can run:</p>
+<p>Otherwise, you run:</p>
 <pre><code> &gt; ./node_modules/.bin/documentjs
 </code></pre>
 <p>You can specify a version or site to run like:</p>
@@ -464,6 +477,33 @@
 </code></pre>
 <p>You can also specify a local repository to find a version like:</p>
 <pre><code> &gt; ./node_modules/.bin/documentjs 1.0.0@../documentjs
+</code></pre>
+<h3>Command Line Options</h3>
+<p>The command line supports the following options that map to various properties
+in <a href="DocumentJS.docConfig.html">docConfig</a>, <a href="DocumentJS.projectConfig.html">projectConfig</a>, or <a href="DocumentJS.siteConfig.html">siteConfig</a>:</p>
+<ul>
+<li><strong>watch</strong> - regenerate on changes</li>
+<li><strong>forceBuild</strong> - rebuild templates and static distributable</li>
+<li><strong>debug</strong> - turn on debug messages</li>
+<li><strong>help</strong> - command line information</li>
+</ul>
+<p>You can turn on these options like:</p>
+<pre><code>&gt; ./node_modules/.bin/documentjs --watch
+</code></pre>
+<p>They are aliased to single characters and groupable so you can turn on watch, forceBuild and
+debug like:</p>
+<pre><code>&gt; ./node_modules/.bin/documentjs --wfd
+</code></pre>
+<h2>Generating With Grunt</h2>
+<p>To generate with grunt run:</p>
+<pre><code>&gt; grunt documentjs
+</code></pre>
+<p>This will generate all configured versions and sites. To run a specific site or version
+add a <code>:NAME</code> where <em>NAME</em> is the version or site name like:</p>
+<pre><code>&gt; grunt documentjs:2.0
+</code></pre>
+<p>You can point a version to a local copy like:</p>
+<pre><code>&gt; grunt documentjs:2.0@../myproject
 </code></pre>
 
 		</section>
@@ -484,13 +524,23 @@
 
 
 	
-	<script type='text/javascript' 
-			data-main="static"
+		<script type="text/javascript">
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.guides","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"page","name":"DocumentJS.guides.generating","description":"<p>Learn how to generate your documentation.</p>\n","title":"generating","order":3,"comment":" ","src":"docs/guides/generating.md"};
+	</script>
 	
-		src="./static/steal.production.js"
 	
-	    bundles-path="bundles"
-		></script>
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	
 </body>
 
 </html>

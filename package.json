@@ -1,6 +1,6 @@
 {
   "name": "documentjs.com",
-  "description": "We can do JS better.",
+  "description": "DocumentJS's website.",
   "version": "0.0.0",
   "homepage": "http://documentjs.com",
   "author": {
@@ -28,6 +28,6 @@
     "node": ">= 0.10.0"
   },
   "dependencies": {
-    "documentjs": "git://github.com/bitovi/documentjs#cleaned-version"
+    "documentjs": "git://github.com/bitovi/documentjs#master"
   }
 }

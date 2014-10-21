@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title> - @add  </title>
+	<title>DocumentJS - @add  </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -590,13 +590,23 @@ to set as the scope.</p>
 
 
 	
-	<script type='text/javascript' 
-			data-main="static"
+		<script type="text/javascript">
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"name":"documentjs.tags.add","type":"constructor","description":"<p>Sets a [documentjs/DocObject DocObject] as the\ncurrent scope. [DocumentJS.tags.function Functions]\nor [DocumentJS.tags.property properties] created\nwithout a name will use their code block and\nthe scope to guess the name.</p>\n","title":"@add ","signatures":[{"code":"@add NAME","description":"<pre><code class=\"language-js\">/** @add lib.Component.prototype *|\nlib.extend(lib.Component.prototype,{\n  /**\n   *  A plugin method on [lib.Component]\n   *|\n  plugin: function(){}\n})\n</code></pre>\n","params":[{"types":[{"type":"STRING"}],"name":"NAME","description":"<p>the name of [documentjs/DocObject DocObject]\nto set as the scope.</p>\n"}]}],"comment":" ","src":"lib/tags/add.js"};
+	</script>
 	
-		src="./static/steal.production.js"
 	
-	    bundles-path="bundles"
-		></script>
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	
 </body>
 
 </html>

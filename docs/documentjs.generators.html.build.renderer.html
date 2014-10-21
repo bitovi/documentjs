@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>  - documentjs.generators.html.build.renderer</title>
+	<title>DocumentJS  - documentjs.generators.html.build.renderer</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -367,13 +367,23 @@ resolves with the renderer function.</p>
 
 
 	
-	<script type='text/javascript' 
-			data-main="static"
+		<script type="text/javascript">
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.generators.html.build.methods","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"name":"documentjs.generators.html.build.renderer","type":"function","description":"<p>Creates a renderer function used to generate\nthe documentation.</p>\n","title":"","signatures":[{"code":".build.renderer(buildTemplatesPromise, options)","description":"<p>Registers all <code>.mustache</code> files in the <em>documentjs/site/templates</em> folder as\npartials and creates a [documentjs.generators.html.types.renderer renderer] function that\nrenders the <code>content.mustache</code> template within the <code>layout.mustache</code> template.</p>\n","params":[{"types":[{"type":"Promise","template":[{"types":[{"type":"Handlebars"}]}]}],"name":"buildTemplatesPromise","description":"<p>The result of calling\n[documentjs.generators.html.build.templates]. Building the renderer\nmust happen after the templates have been copied over. Passing this\nargument enforces that.</p>\n"},{"types":[{"type":"Object","options":[]}],"name":"options","description":"<p>Options used to configure the behavior of the renderer.</p>\n"}],"returns":{"types":[{"type":"Promise","template":[{"types":[{"type":"documentjs.generators.html.types.renderer"}]}]}],"description":"<p>A promise that\nresolves with the renderer function.</p>\n"}}],"src":"lib/generators/html/build/renderer.js"};
+	</script>
 	
-		src="./static/steal.production.js"
 	
-	    bundles-path="bundles"
-		></script>
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	
 </body>
 
 </html>

@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title> - @function </title>
+	<title>DocumentJS - @function </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -614,13 +614,23 @@ bar = function(){}
 
 
 	
-	<script type='text/javascript' 
-			data-main="static"
+		<script type="text/javascript">
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"name":"documentjs.tags.function","type":"constructor","description":"<p>Specifies the comment is for a function. Use [DocumentJS.tags.param @param] to specify the arguments of a function.</p>\n","title":"@function","signatures":[{"code":"@function [NAME] [TITLE]","description":"<pre><code class=\"language-js\">/**\n * @function lib.Component.prototype.update update\n * @parent lib.Component\n *|\nC.p.update = function(){\n     \n}\n</code></pre>\n","params":[{"types":[{"type":"String"}],"optional":true,"name":"NAME","description":"<p>The name of the function. It should\nbe supplied if it can not be determined from the code block\nfollowing the comment.</p>\n"},{"types":[{"type":"String"}],"optional":true,"name":"TITLE","description":"<p>The title to be used for display purposes.</p>\n"}]}],"comment":" ","src":"lib/tags/function.js"};
+	</script>
 	
-		src="./static/steal.production.js"
 	
-	    bundles-path="bundles"
-		></script>
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	
 </body>
 
 </html>

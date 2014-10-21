@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>  - documentjs.process.docMapInfo</title>
+	<title>DocumentJS  - documentjs.process.docMapInfo</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -404,13 +404,23 @@
 
 
 	
-	<script type='text/javascript' 
-			data-main="static"
+		<script type="text/javascript">
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.process","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"name":"documentjs.process.docMapInfo","type":"function","description":"<p>Gives some useful info about a docMap and the structure of the docObjects within it.</p>\n","title":"","hide":true,"params":[{"types":[{"type":"Object","options":[]}],"name":"docMap","description":""}],"returns":{"types":[{"type":"Object","options":[{"name":"maxName","description":"<p>The name of the docObject who has the largest number of childDocObjects</p>\n","types":[{"type":"String"}]},{"name":"maxParent","description":"","types":[{"type":"String"}]}],"description":"<p>parentHeightMap</p>\n","template":[{"types":[{"type":"String"}]},{"types":[{"type":"Number"}]}]}],"description":""},"types":[],"src":"lib/process/doc_map_info.js"};
+	</script>
 	
-		src="./static/steal.production.js"
 	
-	    bundles-path="bundles"
-		></script>
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	
 </body>
 
 </html>

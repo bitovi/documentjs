@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title> - generator </title>
+	<title>DocumentJS - generator </title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -276,6 +276,18 @@
 				<li class="search-container">
 					<a class="function" href="DocumentJS.apis.generate.documentjs.html" data-search="documentjs">
 						documentjs
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="function" href="DocumentJS.apis.generate.grunt.html" data-search="grunt">
+						grunt
 					</a>
 				</li>
 				
@@ -553,13 +565,23 @@ module.exports = function(docMapPromise, options){
 
 
 	
-	<script type='text/javascript' 
-			data-main="static"
+		<script type="text/javascript">
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.apis.internal","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"typedef","name":"documentjs.generator","description":"<p>A generator module should produce a function that takes the following shape. Generator\nmodules are used to produce some form of documentation output.  [documentjs.generators.html]\nis the default and currently only generator packaged with DocumentJS.</p>\n","title":"generator","types":[{"type":"function","returns":{"types":[{"type":"Promise"}],"description":"<p>A module that resolves when the output has been built.</p>\n"},"params":[{"types":[{"type":"Promise","template":[{"types":[{"type":"documentjs.process.docMap"}]}]}],"name":"docMapPromise","description":"<p>A promise that will resolve\nwith a map of all [documentjs.process.docObject docObjects] keyed by their name.</p>\n"},{"types":[{"type":"options"}],"name":"The","description":"<p>options object passed to [documentjs.generate].</p>\n"}]}],"comment":" ","src":"lib/generate/generator.md"};
+	</script>
 	
-		src="./static/steal.production.js"
 	
-	    bundles-path="bundles"
-		></script>
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	
 </body>
 
 </html>
