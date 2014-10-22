@@ -8,6 +8,9 @@
 		},
 		"examples/multi": {
 			"glob": "examples/multi/**/*.{js,md}"
+		},
+		"examples/simple": {
+			"glob": "examples/simple/**/*.{js,md}"
 		}
 	}
 }
