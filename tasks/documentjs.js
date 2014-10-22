@@ -10,8 +10,13 @@ module.exports = function(grunt) {
 	 * 
 	 * @signature `grunt documentjs[:NAME[@PATH]]`
 	 * 
-	 * Calls the configured grunt task.  If no name or path is given, all
-	 * versions and sites will be generated.
+	 * Calls the configured grunt task.  
+	 * 
+	 * If no name or path is given, all
+	 * versions and sites will be generated. 
+	 * 
+	 * If no `documentjs` task is configured, the grunt task will read from 
+	 * a local _documentjs.json_.
 	 * 
 	 * @param {String} [NAME] The name of a version or site that this generation will
 	 * be limited too.
@@ -68,13 +73,15 @@ module.exports = function(grunt) {
 				return {name: name};
 			});
 		}
-
-		var docConfig = grunt.config.getRaw(this.name);
-		
-		configured.generateProject({
-			path: process.cwd(),
-			docConfig: docConfig
-		}, undefined, options)
+		var project = {
+			path: process.cwd()
+		},
+			docConfig = grunt.config.getRaw(this.name);
+			
+		if(docConfig) {
+			project.docConfig = docConfig;
+		}
+		configured.generateProject(project, undefined, options)
 			.then(done,function(err){
 				console.log(err);
 				done(err);
