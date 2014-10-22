@@ -24,7 +24,9 @@ other options like:
     }
 
 By default the pattern `"**/*.{js,md}"` is used, which
-searches for all `.js` and `.md` files within the project.
+searches for all `.js` and `.md` files within the project. And
+the default ignore is `"{node_modules,bower_components}/**/*"` which
+ignores everything in the _node_modules_ and _bower_components_  folder.
 
 @option {String} [dest] The location of the folder where DocumentJS should
 write the output. Locations should be relative to the parent folder of the 
