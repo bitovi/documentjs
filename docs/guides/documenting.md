@@ -25,7 +25,6 @@ type.  The following tags are the type tags and what they document:
  - [documentjs.tags.typedef @typedef] - Defines a custom type.
  - [documentjs.tags.page @page] - A page of information.
  - [documentjs.tags.function @function] - A JavaScript function.
- - [documentjs.tags.constructor @constructor] - A JavaScript function intended to be called with `new`.
  - [documentjs.tags.static @static] - Creates a placeholder for static properties on a constructor.
  - [documentjs.tags.prototype @prototype] - Creates a placeholder for prototype properties on a constructor.
  - [documentjs.tags.property @property] - Creates a property value on an object.
@@ -52,7 +51,7 @@ to document modules that return:
  - An object with properties. Ex: `@module {{}} module/name`
  - A single constructor function. Ex: `@module {function():module/name} module/name`
 
-[Here's an example multi-module project](https://github.com/bitovi/documentjs/tree/multi-version/examples/multi) 
+[Here's an example multi-module project](https://github.com/bitovi/documentjs/tree/master/examples/multi) 
 and its [generated docs](../examples/multi/index.html).  It consists of:
 
  - An overview page with a grouping for modules and guides.

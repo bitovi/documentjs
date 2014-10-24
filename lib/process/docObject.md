@@ -20,9 +20,21 @@ the type of the object being documented:
  - typedef
  - module
 
-@option {String} parent The parent 
+@option {String} parent The name of the parent [documentjs.process.docObject].
+
+@option {String} description The description html content specified by [documentjs.tags.description].
+This should typically be one or two sentences.
+
+@option {String} body The body html content specified by [documentjs.tags.body].
+
+
+
 @option {Array.<String>} children An array of children names. This typically gets
 added by the system based on the `parent` property.
+
+@option {Array<{version: String, description:String}>} deprecated An array
+of deprecated warnings created by [documentjs.tags.deprecated].
+
 
 @body
 
