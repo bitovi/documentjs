@@ -8,5 +8,5 @@ module.exports = {
 		html : require("./lib/generators/html/html")
 	},
 	process: require("./lib/process/process"),
-	tag: require("./libs/tags/tags")
+	tag: require("./lib/tags/tags")
 };
