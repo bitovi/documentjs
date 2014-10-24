@@ -52,11 +52,14 @@ to return a promise that resolves when they are complete.
 @option {String} static The location of static content used to overwrite or
 add to the default static content.
 
+@option {Boolean} [forceBuild=false] If set to `true`, rebuilds the 
+static bundle even if it has already been built.
+
 @option {Boolean} [minifyBuild=true] If set to `false` the build will not 
 be minified. This behavior should be implemented by the "build" module.
 
-@option {Boolean} [forceBuild=false] If set to `true`, rebuilds the 
-static bundle even if it has already been built.
+@option {Boolean} [devBuild=false] If set to `true` the build will not be built
+so that individual files will be loaded. This behavior should be implemented by the "build" module.
 
 @option {String} [templates] The location of templates used to overwrite or
 add to the default templates.
