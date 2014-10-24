@@ -72,29 +72,16 @@
 	</header>
 
 	
-<div class="container api">
-
 	
 	
-	
-	<article class="content docs">
 	
 	
 		
 		
-		
-		<section class="contents">
-		</section>
 		
 		
 		
 
-		
-		<section class="description">
-			<p>Sophisticated JavaScript documentation engine.  Create
-beautiful, articulate, multi-versioned documentation.</p>
-
-		</section>
 		
 
 		
@@ -106,8 +93,58 @@ beautiful, articulate, multi-versioned documentation.</p>
 
 		
 		<section class="comment">
-			<pre><code>&gt; npm install documentjs -S
+			<section style="width: 800px; margin:100px auto 20px auto; overflow:hidden;">
+<div style="border-right: 1px solid #ccc; padding-right:20px; margin-right:50px; float:left;">
+<img src="theme/docjs-landing-page-logo.png" alt="StealJS Logo" />
+</div>  
+<div style="float:left; width: 340px; padding-top: 36px;">
+<p style="-webkit-font-smoothing: antialiased; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; font-weight: 300; ">Sophisticated JavaScript documentation engine. Create beautiful, articulate, multi-versioned documentation.
+<br><small>(new site coming soon)</small></p>
+</div>
+</section>
+<section style="width: 800px; margin:0 auto; overflow:hidden;">
+<p>Install</p>
+<pre> > npm install documentjs -S</pre>
+</section>  
+<section style="width: 800px; margin:0 auto; overflow:hidden;">
+<p>Configure <a href="/docs/DocumentJS.docConfig.html">documentjs.json</a></p>
+<pre><code>{
+  &quot;sites&quot;: {
+    &quot;docs&quot;: {
+      &quot;glob&quot; : &quot;**/*.{js,md}&quot;
+    }
+  }
+}
 </code></pre>
+</section>  
+<section style="width: 800px; margin:0 auto; overflow:hidden;">
+<p>Document with <a href="/docs/documentjs.tags.html">tags</a></p>
+<pre><code>/**
+ * @module {function(new:lib/graph)} lib/graph
+ * 
+ * @signature `new Graph(graphData)`
+ * @param {Object} graphData
+ * @return {lib/graph}
+ */
+function Graph(graphData){ … }
+/**
+ * @prototype
+ */
+Graph.prototype = {
+    /**
+     * Converts the graph to a chart.
+     * @param {String} type
+     */
+    toChart: function(type){ ... }
+};
+module.exports = Graph;
+</code></pre>
+</section>  
+<section style="width: 800px; margin:0 auto; overflow:hidden;">
+<p><a href="/docs/DocumentJS.apis.generate.documentjs.html">Generate your docs</a> and watch for changes</p>
+<pre><code>&gt; ./node_modules/.bin/documentjs --watch
+</code></pre>
+</section>
 
 		</section>
 		
@@ -116,11 +153,7 @@ beautiful, articulate, multi-versioned documentation.</p>
 		
 	
 	
-	</article>
 	
-	
-
-</div>
 
 
 
@@ -128,7 +161,7 @@ beautiful, articulate, multi-versioned documentation.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"_pages/*.md","cwd":"/Users/justin/dev/documentjs.com"},"dest":"/Users/justin/dev/documentjs.com","forceBuild":true,"minifyBuild":false,"generators":["html"],"parent":"home","page":"index","docConfigDest":"documentjs.json","project":{},"type":"page","name":"home","description":"<p>Sophisticated JavaScript documentation engine.  Create\nbeautiful, articulate, multi-versioned documentation.</p>\n","hideSidebar":true,"hideTitle":true,"hideFooter":true,"src":"_pages/index.md"};
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"_pages/*.md","ignore":"{node_modules,bower_components}/**/*","cwd":"/Users/justin/dev/documentjs.com"},"dest":"/Users/justin/dev/documentjs.com","forceBuild":true,"minifyBuild":false,"watch":true,"debug":true,"generators":["html"],"parent":"home","page":"index","docConfigDest":"documentjs.json","project":{},"type":"page","name":"home","description":"","hideSidebar":true,"hideTitle":true,"hideFooter":true,"hideContainer":true,"hideArticle":true,"comment":" ","src":"_pages/index.md"};
 	</script>
 	
 	

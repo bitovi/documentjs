@@ -1478,6 +1478,12 @@ li.L9 {
   margin-left: 10px;
   margin-right: 10px;
 }
+/* Hack for chrome so we can change the size*/
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .sidebar #versions {
+    border-color: #999;
+  }
+}
 .sidebar {
   width: 255px;
   margin-top: 20px;
@@ -1560,6 +1566,11 @@ li.L9 {
   position: absolute;
   right: 5px;
   top: 7px;
+  font-size: 15px;
+}
+.sidebar .versions option,
+.sidebar #versions option {
+  font-size: 15px;
 }
 .sidebar .api {
   /* This is the caret/triangle that points out of the container to the page on active items */
