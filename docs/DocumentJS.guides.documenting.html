@@ -481,7 +481,6 @@ type.  The following tags are the type tags and what they document:</p>
 <li><a href="documentjs.tags.typedef.html">@typedef</a> - Defines a custom type.</li>
 <li><a href="documentjs.tags.page.html">@page</a> - A page of information.</li>
 <li><a href="documentjs.tags.function.html">@function</a> - A JavaScript function.</li>
-<li><a href="documentjs.tags.constructor.html">@constructor</a> - A JavaScript function intended to be called with <code>new</code>.</li>
 <li><a href="documentjs.tags.static.html">@static</a> - Creates a placeholder for static properties on a constructor.</li>
 <li><a href="documentjs.tags.prototype.html">@prototype</a> - Creates a placeholder for prototype properties on a constructor.</li>
 <li><a href="documentjs.tags.property.html">@property</a> - Creates a property value on an object.</li>
@@ -504,7 +503,7 @@ to document modules that return:</p>
 <li>An object with properties. Ex: <code>@module {{}} module/name</code></li>
 <li>A single constructor function. Ex: <code>@module {function():module/name} module/name</code></li>
 </ul>
-<p><a href="https://github.com/bitovi/documentjs/tree/multi-version/examples/multi">Here's an example multi-module project</a>
+<p><a href="https://github.com/bitovi/documentjs/tree/master/examples/multi">Here's an example multi-module project</a>
 and its <a href="../examples/multi/index.html">generated docs</a>.  It consists of:</p>
 <ul>
 <li>An overview page with a grouping for modules and guides.</li>
@@ -554,7 +553,7 @@ like:</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.guides","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"page","name":"DocumentJS.guides.documenting","description":"<p>Learn how to document your code.</p>\n","title":"documenting","order":2,"comment":" ","src":"docs/guides/documenting.md"};
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.guides","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"page","name":"DocumentJS.guides.documenting","description":"<p>Learn how to document your code.</p>\n","title":"documenting","order":2,"comment":" ","src":"docs/guides/documenting.md"};
 	</script>
 	
 	

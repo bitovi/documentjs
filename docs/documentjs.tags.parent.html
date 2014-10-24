@@ -121,16 +121,6 @@
 			
 		
 			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.alias.html" data-search="@alias">
-						@alias
-					</a>
-				</li>
-				
-			
-			
 		
 			
 				
@@ -160,16 +150,6 @@
 		
 			
 		
-			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.constructor.html" data-search="@constructor">
-						@constructor
-					</a>
-				</li>
-				
-			
 			
 		
 			
@@ -208,16 +188,6 @@
 			
 			
 		
-			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.download.html" data-search="@download">
-						@download
-					</a>
-				</li>
-				
-			
 			
 		
 			
@@ -423,16 +393,6 @@
 			
 		
 			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.test.html" data-search="@test">
-						@test
-					</a>
-				</li>
-				
-			
-			
 		
 			
 				
@@ -516,8 +476,8 @@
 		
 		<section class="description">
 			<p>Specifies the parent
-[documentjs/DocObject DocObject]'s name. The
-current DocObject will be displayed under the
+<a href="documentjs.process.docObject.html">docObject</a>'s name. The
+current docObject will be displayed under the
 the parent in the navigation.</p>
 
 		</section>
@@ -526,14 +486,14 @@ the parent in the navigation.</p>
 		
 			
 				<section class="signature">
-					<h2 id="sig__signatureNAME">@signature NAME
+					<h2 id="sig__parentNAME">@parent NAME
 </h2>
 <div class="signature-wrapper">
-<pre><code class="language-js">/**
+<pre><code class="language-javascript">/**
  * @constructor jQuery.Drag
  * @parent specialevents
  * ...
- *|
+ */
  $.Drag = function(){}
 </code></pre>
 
@@ -547,7 +507,7 @@ the parent in the navigation.</p>
 				<code>{String}</code></h4>
 			<div class="description">
 				<p>The name of the parent
-[documentjs/DocObject DocObject].</p>
+<a href="documentjs.process.docObject.html">docObject</a>.</p>
 
 			</div>
 			
@@ -572,6 +532,13 @@ the parent in the navigation.</p>
 		
 
 		
+		<section class="comment">
+			<h2>Use</h2>
+<p><a href="documentjs.tags.function.html">@function</a> and <a href="documentjs.tags.property.html">@property</a> tags can infer
+their parent from the current scope.</p>
+
+		</section>
+		
 		
 
 		
@@ -589,7 +556,7 @@ the parent in the navigation.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"constructor","description":"<p>Specifies the parent\n[documentjs/DocObject DocObject]'s name. The\ncurrent DocObject will be displayed under the\nthe parent in the navigation.</p>\n","name":"documentjs.tags.parent","title":"@parent","signatures":[{"code":"@signature NAME","description":"<pre><code class=\"language-js\">/**\n * @constructor jQuery.Drag\n * @parent specialevents\n * ...\n *|\n $.Drag = function(){}\n</code></pre>\n","params":[{"types":[{"type":"String"}],"name":"NAME","description":"<p>The name of the parent\n[documentjs/DocObject DocObject].</p>\n"}]}],"src":"lib/tags/parent.js"};
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"constructor","description":"<p>Specifies the parent\n[documentjs.process.docObject]'s name. The\ncurrent docObject will be displayed under the\nthe parent in the navigation.</p>\n","name":"documentjs.tags.parent","title":"@parent","signatures":[{"code":"@parent NAME","description":"<pre><code class=\"language-javascript\">/**\n * @constructor jQuery.Drag\n * @parent specialevents\n * ...\n */\n $.Drag = function(){}\n</code></pre>\n","params":[{"types":[{"type":"String"}],"name":"NAME","description":"<p>The name of the parent\n[documentjs.process.docObject].</p>\n"}]}],"comment":" ","src":"lib/tags/parent.js"};
 	</script>
 	
 	

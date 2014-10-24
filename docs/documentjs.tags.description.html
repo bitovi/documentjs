@@ -121,16 +121,6 @@
 			
 		
 			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.alias.html" data-search="@alias">
-						@alias
-					</a>
-				</li>
-				
-			
-			
 		
 			
 				
@@ -160,16 +150,6 @@
 		
 			
 		
-			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.constructor.html" data-search="@constructor">
-						@constructor
-					</a>
-				</li>
-				
-			
 			
 		
 			
@@ -208,16 +188,6 @@
 			
 			
 		
-			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.download.html" data-search="@download">
-						@download
-					</a>
-				</li>
-				
-			
 			
 		
 			
@@ -423,16 +393,6 @@
 			
 		
 			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.test.html" data-search="@test">
-						@test
-					</a>
-				</li>
-				
-			
-			
 		
 			
 				
@@ -515,7 +475,7 @@
 
 		
 		<section class="description">
-			<p>Provide a short description.</p>
+			<p>Markdown content placed before all signature and API content.</p>
 
 		</section>
 		
@@ -523,15 +483,13 @@
 		
 			
 				<section class="signature">
-					<h2 id="sig__descriptionCONTENT">@description CONTENT
+					<h2 id="sig__description">@description
 </h2>
 <div class="signature-wrapper">
-<pre><code class="language-js">/**
- * @signature `new lib.Component(name)`
- * @description A component for the lib library.
- *|
-lib.Component = function(name){}
-</code></pre>
+<p>Content after the <code>@description</code> tag appears after
+the title, but before signature and API content.</p>
+<p><code>@description</code> tag content is treated as markdown and set as
+the <a href="documentjs.process.docObject.html">docObject</a>'s <code>description</code> property.</p>
 
 
 
@@ -550,11 +508,45 @@ lib.Component = function(name){}
 
 		
 		<section class="comment">
-			<p>The text following <code>@description</code> is added at the top
-of the documentation page. By default any text
-in a comment that isn't after a multi-line <code>@</code> directive is added to
-the <code>description</code> of the [documentjs/DocObject DocObject]. <code>@description</code>
-can be used to escape a multi-line <code>@</code> directive.</p>
+			<h2>Use</h2>
+<p>The description of a <a href="documentjs.process.docObject.html">docObject</a> is displayed at the top
+of an html page generated with
+the <a href="documentjs.generators.html.html">default html generator</a>.</p>
+<p>In the following example, <code>@description</code> stops content from being added to <a href="documentjs.tags.param.html">@param</a>,
+and instead makes content be added to the description property.</p>
+<pre><code class="language-javascript">/**
+ * @param {String} name The name of the
+ * component.
+ * 
+ * @description
+ * A component for lib.
+ */
+lib.Component = function(name){}
+</code></pre>
+<p>By default
+the first paragraph of content that is not after a multi-line tag like <a href="documentjs.tags.signature.html">@signature</a>,
+<a href="documentjs.tags.param.html">@param</a>, etc, is set as the <a href="documentjs.tags.description.html">@description</a>.  All content
+after the first paragraph is set as the body content.</p>
+<p>You can see what is treated as description and body by default in the following example:</p>
+<pre><code class="language-javascript">/**
+ * @function 
+ * 
+ * DESCRIPTION DESCRIPTION
+ * DESCRIPTION DESCRIPTION
+ * 
+ * BODY BODY
+ * BODY BODY
+ * 
+ * BODY BODY
+ * 
+ * @signature `.cols(cols)` SIGNATURE_DESCRIPTION
+ * SIGNATURE_DESCRIPTION SIGNATURE_DESCRIPTION
+ *
+ * @body
+ * BODY BODY
+ */
+Graph.prototype.cols = function(cols){ ... }
+</code></pre>
 
 		</section>
 		
@@ -575,7 +567,7 @@ can be used to escape a multi-line <code>@</code> directive.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"name":"documentjs.tags.description","type":"constructor","description":"<p>Provide a short description.</p>\n","title":"@description","tags":["documentation"],"signatures":[{"code":"@description CONTENT","description":"<pre><code class=\"language-js\">/**\n * @signature `new lib.Component(name)`\n * @description A component for the lib library.\n *|\nlib.Component = function(name){}\n</code></pre>\n","params":[]}],"comment":" ","src":"lib/tags/description.js"};
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"name":"documentjs.tags.description","type":"constructor","description":"<p>Markdown content placed before all signature and API content.</p>\n","title":"@description","signatures":[{"code":"@description","description":"<p>Content after the <code>@description</code> tag appears after\nthe title, but before signature and API content.</p>\n<p><code>@description</code> tag content is treated as markdown and set as\nthe [documentjs.process.docObject]'s <code>description</code> property.</p>\n","params":[]}],"comment":" ","src":"lib/tags/description.js"};
 	</script>
 	
 	

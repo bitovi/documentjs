@@ -121,16 +121,6 @@
 			
 		
 			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.alias.html" data-search="@alias">
-						@alias
-					</a>
-				</li>
-				
-			
-			
 		
 			
 				
@@ -160,16 +150,6 @@
 		
 			
 		
-			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.constructor.html" data-search="@constructor">
-						@constructor
-					</a>
-				</li>
-				
-			
 			
 		
 			
@@ -208,16 +188,6 @@
 			
 			
 		
-			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.download.html" data-search="@download">
-						@download
-					</a>
-				</li>
-				
-			
 			
 		
 			
@@ -423,16 +393,6 @@
 			
 		
 			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.test.html" data-search="@test">
-						@test
-					</a>
-				</li>
-				
-			
-			
 		
 			
 				
@@ -540,9 +500,9 @@
 		
 		<li class="parameter">
 			<h4>TYPE
-				<code>{documentjs/type}</code><span class="pull-right optional">Optional</span></h4>
+				<code>{<a href="documentjs.typeExpression.html" >TYPE-EXPRESSION</a>}</code><span class="pull-right optional">Optional</span></h4>
 			<div class="description">
-				<p>A [documentjs/type type expression]. This
+				<p>A <a href="documentjs.typeExpression.html">type expression</a>. This
 is typically an object specified like: <code>{{}}</code> or a function like <code>{function}</code>.</p>
 
 			</div>
@@ -592,6 +552,70 @@ is typically an object specified like: <code>{{}}</code> or a function like <cod
 		
 
 		
+		<section class="comment">
+			<h2>Use</h2>
+<p>Use <code>@module</code> to specify what a module exports.  Depending on what the module
+exports you might use as one of the following:</p>
+<h4>A single function export</h4>
+<pre><code>/**
+ * @module {function} multi/util/add
+ * @parent multi.modules
+ * 
+ * Adds two numbers together.
+ * 
+ * @signature `add(first, second)`
+ * 
+ * @param {Number} first The first number.
+ * @param {Number} second The second number to add.
+ * @return {Number} The two numbers added together.
+ * 
+ */
+module.exports = function(first, second){
+    return first+second;
+};
+</code></pre>
+<h4>Multiple export values</h4>
+<pre><code>/**
+ * @module {Module} multi/util/date-helpers
+ * @parent multi.modules
+ * 
+ * Provides an object of date helpers.
+ */
+// 
+/**
+ * @function tomorrow
+ * Provides the start time of tomorrow. 
+ */
+exports.tomorrow = function(){ };
+/**
+ * @function yesterday
+ * Provides the start time of yesterday. 
+ */
+exports.yesterday = function(){ };
+</code></pre>
+<h4>A single constructor function export</h4>
+<pre><code>/**
+ * @module {function(new:multi/lib/graph)} multi/lib/graph
+ * @parent multi.modules
+ * 
+ * @signature `new Graph(graphData)`
+ * @param {Object} graphData
+ */
+function Graph(graphData){ … }
+/**
+ * @prototype
+ */
+Graph.prototype = {
+    /**
+     * @function toChart
+     */
+    toChart: function(){}
+};
+module.exports = Graph;
+</code></pre>
+
+		</section>
+		
 		
 
 		
@@ -609,7 +633,7 @@ is typically an object specified like: <code>{{}}</code> or a function like <cod
 
 	
 		<script type="text/javascript">
-		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"name":"documentjs.tags.module","type":"constructor","description":"<p>Declares the export value for a module.</p>\n","title":"@module","tags":["documentation"],"signatures":[{"code":"@module {TYPE} NAME [TITLE]","description":"<pre><code class=\"language-js\">/**\n * @module {{}} lib/componentProps props\n * @option {String} name The name of the component.\n * @option {String} title The title of the component.\n *|\n</code></pre>\n","params":[{"types":[{"type":"documentjs/type"}],"optional":true,"name":"TYPE","description":"<p>A [documentjs/type type expression]. This\nis typically an object specified like: <code>{{}}</code> or a function like <code>{function}</code>.</p>\n"},{"types":[{"type":"String"}],"name":"NAME","description":"<p>The name of the type.</p>\n"},{"types":[{"type":"String"}],"name":"TITLE","description":"<p>The title of the type used for display purposes.</p>\n"}]}],"src":"lib/tags/module.js"};
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"constructor","name":"documentjs.tags.module","description":"<p>Declares the export value for a module.</p>\n","title":"@module","tags":["documentation"],"signatures":[{"code":"@module {TYPE} NAME [TITLE]","description":"<pre><code class=\"language-js\">/**\n * @module {{}} lib/componentProps props\n * @option {String} name The name of the component.\n * @option {String} title The title of the component.\n *|\n</code></pre>\n","params":[{"types":[{"type":"documentjs.typeExpression"}],"optional":true,"name":"TYPE","description":"<p>A [documentjs.typeExpression type expression]. This\nis typically an object specified like: <code>{{}}</code> or a function like <code>{function}</code>.</p>\n"},{"types":[{"type":"String"}],"name":"NAME","description":"<p>The name of the type.</p>\n"},{"types":[{"type":"String"}],"name":"TITLE","description":"<p>The title of the type used for display purposes.</p>\n"}]}],"comment":" ","src":"lib/tags/module.md"};
 	</script>
 	
 	

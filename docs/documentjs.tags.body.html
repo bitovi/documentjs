@@ -121,16 +121,6 @@
 			
 		
 			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.alias.html" data-search="@alias">
-						@alias
-					</a>
-				</li>
-				
-			
-			
 		
 			
 				
@@ -160,16 +150,6 @@
 		
 			
 		
-			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.constructor.html" data-search="@constructor">
-						@constructor
-					</a>
-				</li>
-				
-			
 			
 		
 			
@@ -208,16 +188,6 @@
 			
 			
 		
-			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.download.html" data-search="@download">
-						@download
-					</a>
-				</li>
-				
-			
 			
 		
 			
@@ -423,16 +393,6 @@
 			
 		
 			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.test.html" data-search="@test">
-						@test
-					</a>
-				</li>
-				
-			
-			
 		
 			
 				
@@ -515,8 +475,7 @@
 
 		
 		<section class="description">
-			<p>Content after the <code>@body</code> tag appears after
-the title and signature content.</p>
+			<p>Markdown content placed after all signature and API content.</p>
 
 		</section>
 		
@@ -527,18 +486,10 @@ the title and signature content.</p>
 					<h2 id="sig__body">@body
 </h2>
 <div class="signature-wrapper">
-<pre><code class="language-js">/**
- * A component for lib.
- * @param {String} name
- * 
- * @body
- * 
- * ## Creating a lib.Component
- *
- *     new lib.Component(&quot;name&quot;)
- *|
-lib.Component = function(name){}
-</code></pre>
+<p>Content after the <code>@body</code> tag appears after
+the title, description, signature and API content.</p>
+<p><code>@body</code> tag content is treated as markdown and set as
+the <a href="documentjs.process.docObject.html">docObject</a>'s <code>body</code> property.</p>
 
 
 
@@ -555,6 +506,56 @@ lib.Component = function(name){}
 		
 		
 
+		
+		<section class="comment">
+			<h2>Use</h2>
+<p>The body of a <a href="documentjs.process.docObject.html">docObject</a> is displayed at the bottom
+of an html page generated with
+the <a href="documentjs.generators.html.html">default html generator</a>.</p>
+<p>In the following example, <code>@body</code> stops content from being added to <a href="documentjs.tags.param.html">@param</a>,
+and instead makes content be added to the body property.</p>
+<pre><code class="language-javascript">/**
+ * A component for lib.
+ * 
+ * @param {String} name The name of the
+ * component.
+ * 
+ * @body
+ * 
+ * ## Use
+ * 
+ * ```
+ * new lib.Component(&quot;name&quot;)
+ * ```
+ */
+lib.Component = function(name){}
+</code></pre>
+<p>By default
+the first paragraph of content that is not after a multi-line tag like <a href="documentjs.tags.signature.html">@signature</a>,
+<a href="documentjs.tags.param.html">@param</a>, etc, is set as the <a href="documentjs.tags.description.html">@description</a>.  All content
+after the first paragraph is set as the body content.</p>
+<p>You can see what is treated as description and body by default in the following example:</p>
+<pre><code class="language-javascript">/**
+ * @function 
+ * 
+ * DESCRIPTION DESCRIPTION
+ * DESCRIPTION DESCRIPTION
+ * 
+ * BODY BODY
+ * BODY BODY
+ * 
+ * BODY BODY
+ * 
+ * @signature `.cols(cols)` SIGNATURE_DESCRIPTION
+ * SIGNATURE_DESCRIPTION SIGNATURE_DESCRIPTION
+ *
+ * @body
+ * BODY BODY
+ */
+Graph.prototype.cols = function(cols){ ... }
+</code></pre>
+
+		</section>
 		
 		
 
@@ -573,7 +574,7 @@ lib.Component = function(name){}
 
 	
 		<script type="text/javascript">
-		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"name":"documentjs.tags.body","type":"constructor","description":"<p>Content after the <code>@body</code> tag appears after\nthe title and signature content.</p>\n","title":"@body","signatures":[{"code":"@body","description":"<pre><code class=\"language-js\">/**\n * A component for lib.\n * @param {String} name\n * \n * @body\n * \n * ## Creating a lib.Component\n *\n *     new lib.Component(&quot;name&quot;)\n *|\nlib.Component = function(name){}\n</code></pre>\n","params":[]}],"src":"lib/tags/body.js"};
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"name":"documentjs.tags.body","type":"constructor","description":"<p>Markdown content placed after all signature and API content.</p>\n","title":"@body","signatures":[{"code":"@body","description":"<p>Content after the <code>@body</code> tag appears after\nthe title, description, signature and API content.</p>\n<p><code>@body</code> tag content is treated as markdown and set as\nthe [documentjs.process.docObject]'s <code>body</code> property.</p>\n","params":[]}],"comment":" ","src":"lib/tags/body.js"};
 	</script>
 	
 	

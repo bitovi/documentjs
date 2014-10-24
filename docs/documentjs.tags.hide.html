@@ -121,16 +121,6 @@
 			
 		
 			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.alias.html" data-search="@alias">
-						@alias
-					</a>
-				</li>
-				
-			
-			
 		
 			
 				
@@ -160,16 +150,6 @@
 		
 			
 		
-			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.constructor.html" data-search="@constructor">
-						@constructor
-					</a>
-				</li>
-				
-			
 			
 		
 			
@@ -208,16 +188,6 @@
 			
 			
 		
-			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.download.html" data-search="@download">
-						@download
-					</a>
-				</li>
-				
-			
 			
 		
 			
@@ -423,16 +393,6 @@
 			
 		
 			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.test.html" data-search="@test">
-						@test
-					</a>
-				</li>
-				
-			
-			
 		
 			
 				
@@ -526,11 +486,11 @@
 					<h2 id="sig__hide">@hide
 </h2>
 <div class="signature-wrapper">
-<pre><code class="language-js">/**
+<pre><code class="language-javascript">/**
  * Checks if there is a set_property value.  
  * If it returns true, lets it handle; otherwise saves it.
  * @hide
- *|
+ */
  _setProperty: function( prop ) {
 </code></pre>
 
@@ -548,8 +508,17 @@
 					<h2 id="sig__hideSECTION">@hide SECTION
 </h2>
 <div class="signature-wrapper">
-<p>Hides some section.  To hide the sidebar
-write: <code>@hide sidebar</code>. To hide the title write <code>@hide title</code>.</p>
+<p>Hides some section of the generated output.  The default layout supports:</p>
+<pre><code class="language-javascript">/**
+ * @hide sidebar
+ * @hide title
+ * @hide footer
+ * @hide article
+ * @hide container
+ */
+</code></pre>
+<p>This a <code>hideSection</code> property to <a href="documentjs.process.docObject.html">docObject</a> where <code>Section</code> is the
+capitalized <code>SECTION</code> name passed to <code>@hide</code>.</p>
 
 
 
@@ -584,7 +553,7 @@ write: <code>@hide sidebar</code>. To hide the title write <code>@hide title</co
 
 	
 		<script type="text/javascript">
-		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"name":"documentjs.tags.hide","type":"constructor","description":"<p>Hides the comment from the navigation.</p>\n","title":"@hide","signatures":[{"code":"@hide","description":"<pre><code class=\"language-js\">/**\n * Checks if there is a set_property value.  \n * If it returns true, lets it handle; otherwise saves it.\n * @hide\n *|\n _setProperty: function( prop ) {\n</code></pre>\n","params":[]},{"code":"@hide SECTION","description":"<p>Hides some section.  To hide the sidebar\nwrite: <code>@hide sidebar</code>. To hide the title write <code>@hide title</code>.</p>\n","params":[]}],"src":"lib/tags/hide.js"};
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"name":"documentjs.tags.hide","type":"constructor","description":"<p>Hides the comment from the navigation.</p>\n","title":"@hide","signatures":[{"code":"@hide","description":"<pre><code class=\"language-javascript\">/**\n * Checks if there is a set_property value.  \n * If it returns true, lets it handle; otherwise saves it.\n * @hide\n */\n _setProperty: function( prop ) {\n</code></pre>\n","params":[]},{"code":"@hide SECTION","description":"<p>Hides some section of the generated output.  The default layout supports:</p>\n<pre><code class=\"language-javascript\">/**\n * @hide sidebar\n * @hide title\n * @hide footer\n * @hide article\n * @hide container\n */\n</code></pre>\n<p>This a <code>hideSection</code> property to [documentjs.process.docObject] where <code>Section</code> is the\ncapitalized <code>SECTION</code> name passed to <code>@hide</code>.</p>\n","params":[]}],"src":"lib/tags/hide.js"};
 	</script>
 	
 	

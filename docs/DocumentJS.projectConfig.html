@@ -526,6 +526,19 @@ installed. The default is to use <a href="DocumentJS.docConfig.html">docConfig</
 		
 	</li>
 	
+	<li class="parameter">
+		<h4>sites
+			<code>{Object&lt;String,<a href="DocumentJS.siteConfig.html" >siteConfig</a>&gt;}</code><span class="pull-right optional">Optional</span></h4>
+		<div class="description">
+			<p>The sites that should be created for the
+project if the project does not contain its own <em>documentjs.json</em>.</p>
+
+		</div>
+		
+		
+		
+	</li>
+	
 </ol>
 
 
@@ -540,6 +553,34 @@ installed. The default is to use <a href="DocumentJS.docConfig.html">docConfig</
 		
 		
 
+		
+		<section class="comment">
+			<h2>Use</h2>
+<p>A projectConfig object is used to configure the behavior of a project.  These objects are found
+within a <a href="DocumentJS.docConfig.html">docConfig</a>'s <code>versions</code> property.  For example:</p>
+<pre><code>{
+  versions: {
+    &quot;1.1&quot;: 
+    // projectConfig start
+    {
+      &quot;source&quot;: &quot;git://github.com/bitovi/canjs#1.1-legacy&quot;,
+      &quot;sites&quot;: {
+        &quot;docs&quot;: {
+          &quot;parent&quot; : &quot;canjs&quot;
+        }
+      },
+      &quot;path&quot;: &quot;./old/1.1/can&quot;,
+      &quot;npmInstall&quot;: false
+    }
+    // projectConfig end
+  },
+  ...
+}
+</code></pre>
+<p>A projectConfig specifies where and how to retrieve a project, where to install it, and sometimes includes
+a &quot;sites&quot; object if the project being retrieved does not contain its own <code>documentjs.json</code>.</p>
+
+		</section>
 		
 		
 
@@ -558,7 +599,7 @@ installed. The default is to use <a href="DocumentJS.docConfig.html">docConfig</
 
 	
 		<script type="text/javascript">
-		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.apis.config","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"typedef","name":"DocumentJS.projectConfig","description":"<p>The configuration options for a project to retrieve and document.</p>\n","title":"projectConfig","types":[{"type":"Object","options":[{"name":"source","description":"<p>The source location of the project.</p>\n","types":[{"type":"String"}]},{"name":"version","description":"<p>The version name of the project. The default value is\nthis project config's <code>versions</code> key.</p>\n","types":[{"type":"String"}],"optional":true},{"name":"path","description":"<p>The location of where the project should be\ninstalled. The default is to use [DocumentJS.docConfig]'s <code>versionDest</code>.</p>\n","types":[{"type":"String"}],"optional":true},{"name":"npmInstall","description":"<p>Use npm to install the resource.</p>\n","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"false"}]}],"src":"docs/api/config/projectConfig.md"};
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.apis.config","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"typedef","name":"DocumentJS.projectConfig","description":"<p>The configuration options for a project to retrieve and document.</p>\n","title":"projectConfig","types":[{"type":"Object","options":[{"name":"source","description":"<p>The source location of the project.</p>\n","types":[{"type":"String"}]},{"name":"version","description":"<p>The version name of the project. The default value is\nthis project config's <code>versions</code> key.</p>\n","types":[{"type":"String"}],"optional":true},{"name":"path","description":"<p>The location of where the project should be\ninstalled. The default is to use [DocumentJS.docConfig]'s <code>versionDest</code>.</p>\n","types":[{"type":"String"}],"optional":true},{"name":"npmInstall","description":"<p>Use npm to install the resource.</p>\n","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"false"},{"name":"sites","description":"<p>The sites that should be created for the\nproject if the project does not contain its own <em>documentjs.json</em>.</p>\n","types":[{"type":"Object","template":[{"types":[{"type":"String"}]},{"types":[{"type":"DocumentJS.siteConfig"}]}]}],"optional":true}]}],"comment":" ","src":"docs/api/config/projectConfig.md"};
 	</script>
 	
 	

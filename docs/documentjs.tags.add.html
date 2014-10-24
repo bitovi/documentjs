@@ -121,16 +121,6 @@
 			
 		
 			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.alias.html" data-search="@alias">
-						@alias
-					</a>
-				</li>
-				
-			
-			
 		
 			
 				
@@ -160,16 +150,6 @@
 		
 			
 		
-			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.constructor.html" data-search="@constructor">
-						@constructor
-					</a>
-				</li>
-				
-			
 			
 		
 			
@@ -208,16 +188,6 @@
 			
 			
 		
-			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.download.html" data-search="@download">
-						@download
-					</a>
-				</li>
-				
-			
 			
 		
 			
@@ -423,16 +393,6 @@
 			
 		
 			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.test.html" data-search="@test">
-						@test
-					</a>
-				</li>
-				
-			
-			
 		
 			
 				
@@ -515,11 +475,8 @@
 
 		
 		<section class="description">
-			<p>Sets a [documentjs/DocObject DocObject] as the
-current scope. [DocumentJS.tags.function Functions]
-or [DocumentJS.tags.property properties] created
-without a name will use their code block and
-the scope to guess the name.</p>
+			<p>Sets a <a href="documentjs.process.docObject.html">docObject</a> as the
+current scope.</p>
 
 		</section>
 		
@@ -530,14 +487,6 @@ the scope to guess the name.</p>
 					<h2 id="sig__addNAME">@add NAME
 </h2>
 <div class="signature-wrapper">
-<pre><code class="language-js">/** @add lib.Component.prototype *|
-lib.extend(lib.Component.prototype,{
-  /**
-   *  A plugin method on [lib.Component]
-   *|
-  plugin: function(){}
-})
-</code></pre>
 
 
 	<h3>Parameters</h3>
@@ -548,7 +497,7 @@ lib.extend(lib.Component.prototype,{
 			<h4>NAME
 				<code>{STRING}</code></h4>
 			<div class="description">
-				<p>the name of [documentjs/DocObject DocObject]
+				<p>The name of <a href="documentjs.process.docObject.html">docObject</a>
 to set as the scope.</p>
 
 			</div>
@@ -574,6 +523,32 @@ to set as the scope.</p>
 		
 
 		
+		<section class="comment">
+			<h2>Use</h2>
+<p><a href="documentjs.tags.function.html">@function</a>
+or <a href="documentjs.tags.property.html">@property</a> tags created
+without a name, or with a &quot;short name&quot; will use the current
+scope to guess their full name and parent. <code>@add</code> can set the scope,
+allowing comments to not have to write out a full name and <a href="documentjs.tags.parent.html">@parent</a> tag.</p>
+<p>In the following example, a docObject named <code>lib.Component.prototype.plugin</code>
+and <code>lib.Component.prototype.draw</code> will be created, each with <code>lib.Component.prototype</code>
+as their parent.</p>
+<pre><code class="language-javascript">/** @add lib.Component.prototype */
+lib.extend(lib.Component.prototype,{
+  /**
+   * A plugin method on [lib.Component]
+   */
+  plugin: function(){},
+  /**
+   * @property draw
+   * A plugin method on [lib.Component]
+   */
+  draw: {}
+})
+</code></pre>
+
+		</section>
+		
 		
 
 		
@@ -591,7 +566,7 @@ to set as the scope.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"name":"documentjs.tags.add","type":"constructor","description":"<p>Sets a [documentjs/DocObject DocObject] as the\ncurrent scope. [DocumentJS.tags.function Functions]\nor [DocumentJS.tags.property properties] created\nwithout a name will use their code block and\nthe scope to guess the name.</p>\n","title":"@add ","signatures":[{"code":"@add NAME","description":"<pre><code class=\"language-js\">/** @add lib.Component.prototype *|\nlib.extend(lib.Component.prototype,{\n  /**\n   *  A plugin method on [lib.Component]\n   *|\n  plugin: function(){}\n})\n</code></pre>\n","params":[{"types":[{"type":"STRING"}],"name":"NAME","description":"<p>the name of [documentjs/DocObject DocObject]\nto set as the scope.</p>\n"}]}],"comment":" ","src":"lib/tags/add.js"};
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"name":"documentjs.tags.add","type":"constructor","description":"<p>Sets a [documentjs.process.docObject] as the\ncurrent scope.</p>\n","title":"@add ","signatures":[{"code":"@add NAME","description":"","params":[{"types":[{"type":"STRING"}],"name":"NAME","description":"<p>The name of [documentjs.process.docObject]\nto set as the scope.</p>\n"}]}],"comment":" ","src":"lib/tags/add.js"};
 	</script>
 	
 	

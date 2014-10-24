@@ -121,16 +121,6 @@
 			
 		
 			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.alias.html" data-search="@alias">
-						@alias
-					</a>
-				</li>
-				
-			
-			
 		
 			
 				
@@ -160,16 +150,6 @@
 		
 			
 		
-			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.constructor.html" data-search="@constructor">
-						@constructor
-					</a>
-				</li>
-				
-			
 			
 		
 			
@@ -208,16 +188,6 @@
 			
 			
 		
-			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.download.html" data-search="@download">
-						@download
-					</a>
-				</li>
-				
-			
 			
 		
 			
@@ -423,16 +393,6 @@
 			
 		
 			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.test.html" data-search="@test">
-						@test
-					</a>
-				</li>
-				
-			
-			
 		
 			
 				
@@ -528,12 +488,12 @@
 </h2>
 <div class="signature-wrapper">
 <p>Example:</p>
-<pre><code class="language-js">/**
+<pre><code class="language-javascript">/**
  * Finds an order by id.
  * @param {String} [id=0] Order identification number.
  * @param {function(Order)} [success(order)] Filter 
  * order search by this date.
- *|
+ */
  findById: function( id, success ) {
 </code></pre>
 <p>Use <code>@param</code> within a <a href="documentjs.tags.function.html">@function</a> comment block or after
@@ -590,11 +550,11 @@ object's properties.</p>
 		<section class="comment">
 			<h2>@param within a function comment</h2>
 <p>If using a comment preceeds a function like ...</p>
-<pre><code class="language-js">/**
+<pre><code class="language-javascript">/**
  * Finds an order by id.
  * @param {String} [id=0] Order identification number.
  * @param {function(Order)} [success(order)] Filter order search by this date.
- *|
+ */
  findById: function( id, success ) {
 </code></pre>
 <p>... DocumentJS will automatically
@@ -605,14 +565,14 @@ params that specifies a name that isn't present is added at the end of
 the arguments.</p>
 <h2>@param within a signature</h2>
 <p>Use <code>@param</code> to specify the params in a signature.</p>
-<pre><code class="language-js">/**
+<pre><code class="language-javascript">/**
  * Finds an order by id.
  * 
  * @signature `Order.findById(id=0,[success])`
  * 
  * @param {String} [id=0] Order identification number.
  * @param {function(Order)} [success(order)] Filter order search by this date.
- *|
+ */
 findById: function( id, success ) {
 </code></pre>
 <p>When a <code>@signature</code> is used, any params automatically created from code
@@ -637,7 +597,7 @@ are overwritten.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"name":"documentjs.tags.param","type":"constructor","description":"<p>Adds parameter information to a [documentjs/tags/function @function] or\n[documentjs/tags/signature @signature].</p>\n","title":"@param","tags":["documentation"],"signatures":[{"code":"@param {TYPE} NAME [DESCRIPTION]","description":"<p>Example:</p>\n<pre><code class=\"language-js\">/**\n * Finds an order by id.\n * @param {String} [id=0] Order identification number.\n * @param {function(Order)} [success(order)] Filter \n * order search by this date.\n *|\n findById: function( id, success ) {\n</code></pre>\n<p>Use <code>@param</code> within a [documentjs.tags.function @function] comment block or after\na [documentjs.tags.signature @signature] tag.</p>\n","params":[{"types":[{"type":"documentjs.typeExpression"}],"name":"TYPE","description":"<p>A [documentjs.typeExpression type expression].</p>\n<p>Use [documentjs.tags.option @option] to detail a function's arguments or an\nobject's properties.</p>\n"},{"types":[{"type":"documentjs.nameExpression"}],"name":"NAME","description":"<p>A [documentjs.nameExpression name expression].</p>\n"}]}],"comment":" ","src":"lib/tags/param.js"};
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"name":"documentjs.tags.param","type":"constructor","description":"<p>Adds parameter information to a [documentjs/tags/function @function] or\n[documentjs/tags/signature @signature].</p>\n","title":"@param","tags":["documentation"],"signatures":[{"code":"@param {TYPE} NAME [DESCRIPTION]","description":"<p>Example:</p>\n<pre><code class=\"language-javascript\">/**\n * Finds an order by id.\n * @param {String} [id=0] Order identification number.\n * @param {function(Order)} [success(order)] Filter \n * order search by this date.\n */\n findById: function( id, success ) {\n</code></pre>\n<p>Use <code>@param</code> within a [documentjs.tags.function @function] comment block or after\na [documentjs.tags.signature @signature] tag.</p>\n","params":[{"types":[{"type":"documentjs.typeExpression"}],"name":"TYPE","description":"<p>A [documentjs.typeExpression type expression].</p>\n<p>Use [documentjs.tags.option @option] to detail a function's arguments or an\nobject's properties.</p>\n"},{"types":[{"type":"documentjs.nameExpression"}],"name":"NAME","description":"<p>A [documentjs.nameExpression name expression].</p>\n"}]}],"comment":" ","src":"lib/tags/param.js"};
 	</script>
 	
 	

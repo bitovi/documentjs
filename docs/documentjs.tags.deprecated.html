@@ -121,16 +121,6 @@
 			
 		
 			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.alias.html" data-search="@alias">
-						@alias
-					</a>
-				</li>
-				
-			
-			
 		
 			
 				
@@ -160,16 +150,6 @@
 		
 			
 		
-			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.constructor.html" data-search="@constructor">
-						@constructor
-					</a>
-				</li>
-				
-			
 			
 		
 			
@@ -208,16 +188,6 @@
 			
 			
 		
-			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.download.html" data-search="@download">
-						@download
-					</a>
-				</li>
-				
-			
 			
 		
 			
@@ -423,16 +393,6 @@
 			
 		
 			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.test.html" data-search="@test">
-						@test
-					</a>
-				</li>
-				
-			
-			
 		
 			
 				
@@ -515,7 +475,7 @@
 
 		
 		<section class="description">
-			<p>Marks some comment as deprecated.</p>
+			<p>Marks a comment as deprecated.</p>
 
 		</section>
 		
@@ -526,6 +486,9 @@
 					<h2 id="sig__deprecated_VERSION_DESCRIPTION">@deprecated {VERSION} DESCRIPTION
 </h2>
 <div class="signature-wrapper">
+<p>Specifies a deprecation warning for a particular version.  Multiple
+<code>@deprecated</code> tags can be used on a single comment.</p>
+<p>This warnings add to the deprecated tag on <a href="documentjs.process.docObject.html">docObject</a>s.</p>
 
 
 	<h3>Parameters</h3>
@@ -575,6 +538,19 @@ the deprecation.</p>
 		
 
 		
+		<section class="comment">
+			<h2>Use</h2>
+<pre><code class="language-javascript">/**
+ * @function
+ * @deprecated {1.0} This method has been replaced 
+ * by [can.Model.parseModel].
+ *
+ * @param {String} name
+ */
+</code></pre>
+
+		</section>
+		
 		
 
 		
@@ -592,7 +568,7 @@ the deprecation.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"name":"documentjs.tags.deprecated","type":"constructor","description":"<p>Marks some comment as deprecated.</p>\n","title":"@deprecated ","signatures":[{"code":"@deprecated {VERSION} DESCRIPTION","description":"","params":[{"types":[{"type":"STRING"}],"name":"VERSION","description":"<p>The version the\ndeprecation occured within.</p>\n"},{"types":[{"type":"STRING"}],"name":"DESCRIPTION","description":"<p>Text describing\nthe deprecation.</p>\n"}]}],"comment":" ","src":"lib/tags/deprecated.js"};
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"name":"documentjs.tags.deprecated","type":"constructor","description":"<p>Marks a comment as deprecated.</p>\n","title":"@deprecated ","signatures":[{"code":"@deprecated {VERSION} DESCRIPTION","description":"<p>Specifies a deprecation warning for a particular version.  Multiple\n<code>@deprecated</code> tags can be used on a single comment.</p>\n<p>This warnings add to the deprecated tag on [documentjs.process.docObject]s.</p>\n","params":[{"types":[{"type":"STRING"}],"name":"VERSION","description":"<p>The version the\ndeprecation occured within.</p>\n"},{"types":[{"type":"STRING"}],"name":"DESCRIPTION","description":"<p>Text describing\nthe deprecation.</p>\n"}]}],"comment":" ","src":"lib/tags/deprecated.js"};
 	</script>
 	
 	

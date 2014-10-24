@@ -121,16 +121,6 @@
 			
 		
 			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.alias.html" data-search="@alias">
-						@alias
-					</a>
-				</li>
-				
-			
-			
 		
 			
 				
@@ -160,16 +150,6 @@
 		
 			
 		
-			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.constructor.html" data-search="@constructor">
-						@constructor
-					</a>
-				</li>
-				
-			
 			
 		
 			
@@ -208,16 +188,6 @@
 			
 			
 		
-			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.download.html" data-search="@download">
-						@download
-					</a>
-				</li>
-				
-			
 			
 		
 			
@@ -423,16 +393,6 @@
 			
 		
 			
-				
-				
-				<li class="search-container">
-					<a class="constructor" href="documentjs.tags.test.html" data-search="@test">
-						@test
-					</a>
-				</li>
-				
-			
-			
 		
 			
 				
@@ -595,9 +555,9 @@ be given 0 or more times.</p>
 			<div class="description">
 				<p><code>=default</code> provides
 the default value for the type. For example:</p>
-<pre><code class="language-js">/**
+<pre><code class="language-javascript">/**
  * @param {Number} [age=0]
- *|
+ */
 </code></pre>
 
 			</div>
@@ -623,6 +583,17 @@ the default value for the type. For example:</p>
 		
 
 		
+		<section class="comment">
+			<h2>Examples</h2>
+<ul>
+<li><code>eventType</code> The param is named &quot;eventType&quot;.</li>
+<li><code>[eventType]</code> The param is optional.</li>
+<li><code>[eventType=&quot;change&quot;]</code> The param is optional and has a default value of &quot;change&quot;.</li>
+<li><code>handler(foo,bar)</code> The param is named &quot;handler&quot; and takes a foo and bar argument.</li>
+</ul>
+
+		</section>
+		
 		
 
 		
@@ -640,7 +611,7 @@ the default value for the type. For example:</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"typedef","name":"documentjs.nameExpression","description":"<p>Adds the <code>name</code> and other properties to [documentjs.process.valueData valueData] in\nusing the [documentjs.tags.param @param] or\n[documentjs.tags.param @option] tags.</p>\n","title":"NAME-EXPRESSION","types":[{"type":"STRING"}],"signatures":[{"code":"[name(args...)=default]","description":"<p>Example:</p>\n<pre><code>[success(item)=updater]\n</code></pre>\n","params":[{"types":[{"type":"String"}],"name":"name","description":"<p>Provides the name of the type.</p>\n"},{"types":[{"type":"String"}],"name":"[]","description":"<p>Indicates that the option or param is optional.</p>\n"},{"types":[{"type":"String"}],"name":"(args...)","description":"<p>If <code>name</code> is a function,\n<code>()</code> provides the names of each argument.</p>\n"},{"types":[{"type":"String"}],"name":"'...'","description":"<p>An argument is variable. The argument can\nbe given 0 or more times.</p>\n"},{"types":[{"type":"String"}],"name":"=default","description":"<p><code>=default</code> provides\nthe default value for the type. For example:</p>\n<pre><code class=\"language-js\">/**\n * @param {Number} [age=0]\n *|\n</code></pre>\n"}]}],"comment":" ","src":"lib/tags/helpers/namer.js"};
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.tags","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"typedef","name":"documentjs.nameExpression","description":"<p>Adds the <code>name</code> and other properties to [documentjs.process.valueData valueData] in\nusing the [documentjs.tags.param @param] or\n[documentjs.tags.param @option] tags.</p>\n","title":"NAME-EXPRESSION","types":[{"type":"STRING"}],"signatures":[{"code":"[name(args...)=default]","description":"<p>Example:</p>\n<pre><code>[success(item)=updater]\n</code></pre>\n","params":[{"types":[{"type":"String"}],"name":"name","description":"<p>Provides the name of the type.</p>\n"},{"types":[{"type":"String"}],"name":"[]","description":"<p>Indicates that the option or param is optional.</p>\n"},{"types":[{"type":"String"}],"name":"(args...)","description":"<p>If <code>name</code> is a function,\n<code>()</code> provides the names of each argument.</p>\n"},{"types":[{"type":"String"}],"name":"'...'","description":"<p>An argument is variable. The argument can\nbe given 0 or more times.</p>\n"},{"types":[{"type":"String"}],"name":"=default","description":"<p><code>=default</code> provides\nthe default value for the type. For example:</p>\n<pre><code class=\"language-javascript\">/**\n * @param {Number} [age=0]\n */\n</code></pre>\n"}]}],"comment":" ","src":"lib/tags/helpers/namer.js"};
 	</script>
 	
 	
