@@ -17,7 +17,7 @@
 <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>DocumentJS  - documentjs.generators.html.build.renderer</title>
+	<title>DocumentJS  - documentjs.generators.html.build.buildHash</title>
 	<meta name="description" content="">
 	<meta name="author" content="">
 
@@ -111,7 +111,7 @@
 			
 				
 				
-				<li class="search-container">
+				<li class="search-container active">
 					<a class="function" href="documentjs.generators.html.build.buildHash.html" data-search="documentjs.generators.html.build.buildHash">
 						buildHash
 					</a>
@@ -135,7 +135,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container">
 					<a class="function" href="documentjs.generators.html.build.renderer.html" data-search="documentjs.generators.html.build.renderer">
 						renderer
 					</a>
@@ -250,7 +250,7 @@
 		
 		<section class="title">
 			<div class="heading">
-<h1>renderer</h1>
+<h1>buildHash</h1>
 	<ul class="tags">
 		<li>function</li>
 	</ul>
@@ -285,8 +285,7 @@
 
 		
 		<section class="description">
-			<p>Creates a renderer function used to generate
-the documentation.</p>
+			<p>Returns a unique hash for the options that control the build.</p>
 
 		</section>
 		
@@ -294,12 +293,9 @@ the documentation.</p>
 		
 			
 				<section class="signature">
-					<h2 id="sig__build_renderer_buildTemplatesPromise_options_">.build.renderer(buildTemplatesPromise, options)
+					<h2 id="sig__build_buildHash_options_">.build.buildHash(options)
 </h2>
 <div class="signature-wrapper">
-<p>Registers all <code>.mustache</code> files in the <em>documentjs/site/templates</em> folder as
-partials and creates a <a href="documentjs.generators.html.types.renderer.html">renderer</a> function that
-renders the <code>content.mustache</code> template within the <code>layout.mustache</code> template.</p>
 
 
 	<h3>Parameters</h3>
@@ -307,28 +303,61 @@ renders the <code>content.mustache</code> template within the <code>layout.musta
 	<ol class="parameters">
 		
 		<li class="parameter">
-			<h4>buildTemplatesPromise
-				<code>{Promise&lt;Handlebars&gt;}</code></h4>
-			<div class="description">
-				<p>The result of calling
-<a href="documentjs.generators.html.build.templates.html">documentjs.generators.html.build.templates</a>. Building the renderer
-must happen after the templates have been copied over. Passing this
-argument enforces that.</p>
-
-			</div>
-			
-			
-			
-		</li>
-		
-		<li class="parameter">
 			<h4>options
 				<code>{Object}</code></h4>
 			<div class="description">
-				<p>Options used to configure the behavior of the renderer.</p>
+				<p>Options that might change the characteristic of the build:</p>
 
 			</div>
 			
+			
+			<ul class="options">
+				
+				<li class="option">
+					<h5>minifyBuild 
+						<code>{Boolean}</code>
+					</h5>
+					<div class="description">
+						<p>If set to <code>false</code> the build will not
+be minified. This behavior should be implemented by the &quot;build&quot; module.</p>
+
+					</div>
+				</li>
+				
+				<li class="option">
+					<h5>devBuild 
+						<code>{Boolean}</code>
+					</h5>
+					<div class="description">
+						<p>If set to <code>true</code> the build will not be built
+and copied in &quot;development&quot; mode.</p>
+
+					</div>
+				</li>
+				
+				<li class="option">
+					<h5>static 
+						<code>{String}</code>
+					</h5>
+					<div class="description">
+						<p>The location of static content used to overwrite or
+add to the default static content.</p>
+
+					</div>
+				</li>
+				
+				<li class="option">
+					<h5>templates 
+						<code>{String}</code>
+					</h5>
+					<div class="description">
+						<p>The location of templates used to overwrite or
+add to the default templates.</p>
+
+					</div>
+				</li>
+				
+			</ul>
 			
 			
 		</li>
@@ -338,10 +367,9 @@ argument enforces that.</p>
 
 	<h3>Returns</h3>
 	<div class="returns">
-		<h4><code>{Promise&lt;<a href="documentjs.generators.html.types.renderer.html" >renderer</a>(<a href="documentjs.process.docObject.html" >docObject</a>)&gt;}</code></h4>
+		<h4><code>{String}</code></h4>
 		<div class="description">
-			<p>A promise that
-resolves with the renderer function.</p>
+			<p>a hash that represents this build.</p>
 
 		</div>
 		
@@ -380,7 +408,7 @@ resolves with the renderer function.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.generators.html.build.methods","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"function","name":"documentjs.generators.html.build.renderer","description":"<p>Creates a renderer function used to generate\nthe documentation.</p>\n","title":"","signatures":[{"code":".build.renderer(buildTemplatesPromise, options)","description":"<p>Registers all <code>.mustache</code> files in the <em>documentjs/site/templates</em> folder as\npartials and creates a [documentjs.generators.html.types.renderer renderer] function that\nrenders the <code>content.mustache</code> template within the <code>layout.mustache</code> template.</p>\n","params":[{"types":[{"type":"Promise","template":[{"types":[{"type":"Handlebars"}]}]}],"name":"buildTemplatesPromise","description":"<p>The result of calling\n[documentjs.generators.html.build.templates]. Building the renderer\nmust happen after the templates have been copied over. Passing this\nargument enforces that.</p>\n"},{"types":[{"type":"Object","options":[]}],"name":"options","description":"<p>Options used to configure the behavior of the renderer.</p>\n"}],"returns":{"types":[{"type":"Promise","template":[{"types":[{"type":"documentjs.generators.html.types.renderer"}]}]}],"description":"<p>A promise that\nresolves with the renderer function.</p>\n"}}],"src":"lib/generators/html/build/renderer.js"};
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.generators.html.build.methods","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"function","name":"documentjs.generators.html.build.buildHash","description":"<p>Returns a unique hash for the options that control the build.</p>\n","title":"","signatures":[{"code":".build.buildHash(options)","description":"","params":[{"types":[{"type":"Object","options":[{"name":"minifyBuild","description":"<p>If set to <code>false</code> the build will not\nbe minified. This behavior should be implemented by the &quot;build&quot; module.</p>\n","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"true"},{"name":"devBuild","description":"<p>If set to <code>true</code> the build will not be built\nand copied in &quot;development&quot; mode.</p>\n","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"false"},{"name":"static","description":"<p>The location of static content used to overwrite or\nadd to the default static content.</p>\n","types":[{"type":"String"}]},{"name":"templates","description":"<p>The location of templates used to overwrite or\nadd to the default templates.</p>\n","types":[{"type":"String"}],"optional":true}]}],"name":"options","description":"<p>Options that might change the characteristic of the build:</p>\n"}],"returns":{"types":[{"type":"String"}],"description":"<p>a hash that represents this build.</p>\n"}}],"types":[],"src":"lib/generators/html/build/build_hash.js"};
 	</script>
 	
 	

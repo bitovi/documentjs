@@ -88,10 +88,110 @@
 		
 		
 			<li class="search-container active">
-			<a class="sidebar-title" href="documentjs.configured.generateProject.html" data-search="generateProject">
-				generateProject
+			<a class="sidebar-title" href="documentjs.configured.html" data-search="configured">
+				configured
 			</a>
 			
+	<ul>
+		
+			
+				
+					
+					<li class="heading search-container">
+						<span>methods</span>
+						
+	<ul>
+		
+			
+				
+				
+				<li class="search-container active">
+					<a class="function" href="documentjs.configured.generateProject.html" data-search="generateProject">
+						generateProject
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="function" href="documentjs.configured.getAndGenerateProject.html" data-search="documentjs.configured.getAndGenerateProject">
+						getAndGenerateProject
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="function" href="documentjs.configured.getProject.html" data-search="documentjs.configured.getProject">
+						getProject
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="function" href="documentjs.configured.makeFinalDocConfig.html" data-search="documentjs.configured.makeFinalDocConfig">
+						makeFinalDocConfig
+					</a>
+				</li>
+				
+			
+			
+		
+	</ul>
+
+
+					</li>
+					
+				
+				
+			
+			
+		
+			
+				
+					
+					<li class="heading search-container">
+						<span>types</span>
+						
+	<ul>
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="typedef" href="documentjs.configured.projectConfig.html" data-search="projectConfig">
+						projectConfig
+					</a>
+				</li>
+				
+			
+			
+		
+	</ul>
+
+
+					</li>
+					
+				
+				
+			
+			
+		
+	</ul>
+
 
 		</li>
 		
@@ -146,14 +246,16 @@
 		
 
 		
+		<section class="description">
+			<p>Generates a project's documentation from its <code>documentjs.json</code></p>
+
+		</section>
+		
 
 		
 			
-		
-		
-		
-			<section class="signature">
-				<h2 id="sig_">function(docConfig, project, parent, options, parentProject)
+				<section class="signature">
+					<h2 id="sig__configured_generateProject_project_parent_options_">.configured.generateProject( project, parent, options)
 </h2>
 <div class="signature-wrapper">
 
@@ -163,23 +265,10 @@
 	<ol class="parameters">
 		
 		<li class="parameter">
-			<h4>docConfig
-				<code>{Object}</code></h4>
-			<div class="description">
-				<p>A docConfig loaded from <code>{project.path}/documentjs.json</code>.</p>
-
-			</div>
-			
-			
-			
-		</li>
-		
-		<li class="parameter">
 			<h4>project
 				<code>{Object}</code></h4>
 			<div class="description">
-				<p>A <a href="documentjs.configured.projectConfig.html">projectConfig</a> object with data about
-the project being documented.</p>
+				<p>A <a href="documentjs.configured.projectConfig.html">projectConfig</a> configured with at least:</p>
 
 			</div>
 			
@@ -191,7 +280,7 @@ the project being documented.</p>
 						<code>{String}</code>
 					</h5>
 					<div class="description">
-						<p>The location of the project being documented.</p>
+						<p>The path of a project.</p>
 
 					</div>
 				</li>
@@ -203,9 +292,11 @@ the project being documented.</p>
 		
 		<li class="parameter">
 			<h4>parent
-				<code>{*}</code></h4>
+				<code>{<a href="documentjs.configured.projectConfig.html" >projectConfig</a>}</code><span class="pull-right optional">Optional</span></h4>
 			<div class="description">
-				
+				<p>An optional
+parent project that can be used to configure the behavior of this project.</p>
+
 			</div>
 			
 			
@@ -214,49 +305,11 @@ the project being documented.</p>
 		
 		<li class="parameter">
 			<h4>options
-				<code>{Object}</code></h4>
+				<code>{Object}</code><span class="pull-right optional">Optional</span></h4>
 			<div class="description">
-				<p>command line overwrites.</p>
-
+				
 			</div>
 			
-			
-			
-		</li>
-		
-		<li class="parameter">
-			<h4>parentProject
-				<code>{Object}</code></h4>
-			<div class="description">
-				<p>A <a href="documentjs.configured.projectConfig.html">projectConfig</a> object with data about
-the most parent project being documented.</p>
-
-			</div>
-			
-			
-			<ul class="options">
-				
-				<li class="option">
-					<h5>path 
-						<code>{String}</code>
-					</h5>
-					<div class="description">
-						<p>The location of the most parent project being documented.</p>
-
-					</div>
-				</li>
-				
-				<li class="option">
-					<h5>The 
-						<code>{<a href="DocumentJS.docConfig.html" >docConfig</a>}</code>
-					</h5>
-					<div class="description">
-						<p>docConfig loaded from that project.</p>
-
-					</div>
-				</li>
-				
-			</ul>
 			
 			
 		</li>
@@ -264,16 +317,56 @@ the most parent project being documented.</p>
 	</ol>
 
 
+	<h3>Returns</h3>
+	<div class="returns">
+		<h4><code>{Promise}</code></h4>
+		<div class="description">
+			<p>A promise that resolves when the the project is documented.</p>
+
+		</div>
+		
+		
+	</div>
+	
+
 
 
 
 
 </div>
 
-			</section>
+				</section>
+			
+		
+		
 		
 		
 
+		
+		<section class="comment">
+			<h2>Use</h2>
+<p><code>generateProject</code> is used to generate an application based on a <a href="DocumentJS.docConfig.html">docConfig</a>.
+The following reads from <code>__dirname + &quot;/documentjs.json&quot;</code> and generates a site:</p>
+<pre><code>var documentjs = require(&quot;documentjs&quot;);
+documentjs.configured.generateProject({
+  path: __dirname
+}).then(function(){
+  // documentjs produced
+});
+</code></pre>
+<p>You can provide a <a href="DocumentJS.docConfig.html">docConfig</a> if you don't want it read from the filesystem:</p>
+<pre><code>var documentjs = require(&quot;documentjs&quot;);
+documentjs.configured.generateProject({
+  path: __dirname,
+  docConfig: {
+       sites: {docs: {}}
+  }
+}).then(function(){
+  // documentjs produced
+});
+</code></pre>
+
+		</section>
 		
 		
 
@@ -292,7 +385,7 @@ the most parent project being documented.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"lib/configured/generate_project.js","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"function","name":"documentjs.configured.generateProject","params":[{"types":[{"type":"Object","options":[]}],"name":"docConfig","description":"<p>A docConfig loaded from <code>{project.path}/documentjs.json</code>.</p>\n"},{"types":[{"type":"Object","options":[{"name":"path","description":"<p>The location of the project being documented.</p>\n","types":[{"type":"String"}]}]}],"name":"project","description":"<p>A [documentjs.configured.projectConfig] object with data about\nthe project being documented.</p>\n"},{"name":"parent","types":[{"type":"*"}]},{"types":[{"type":"Object","options":[]}],"name":"options","description":"<p>command line overwrites.</p>\n"},{"types":[{"type":"Object","options":[{"name":"path","description":"<p>The location of the most parent project being documented.</p>\n","types":[{"type":"String"}]},{"name":"The","description":"<p>docConfig loaded from that project.</p>\n","types":[{"type":"DocumentJS.docConfig"}]}]}],"name":"parentProject","description":"<p>A [documentjs.configured.projectConfig] object with data about\nthe most parent project being documented.</p>\n"}],"description":"","title":"generateProject","hide":true,"types":[],"src":"lib/configured/generate_project.js"};
+		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.configured.methods","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"function","name":"documentjs.configured.generateProject","description":"<p>Generates a project's documentation from its <code>documentjs.json</code></p>\n","title":"generateProject","signatures":[{"code":".configured.generateProject( project, parent, options)","description":"","params":[{"types":[{"type":"Object","options":[{"name":"path","description":"<p>The path of a project.</p>\n","types":[{"type":"String"}]}]}],"name":"project","description":"<p>A [documentjs.configured.projectConfig] configured with at least:</p>\n"},{"types":[{"type":"documentjs.configured.projectConfig"}],"optional":true,"name":"parent","description":"<p>An optional\nparent project that can be used to configure the behavior of this project.</p>\n"},{"types":[{"type":"Object","options":[]}],"optional":true,"name":"options","description":""}],"returns":{"types":[{"type":"Promise"}],"description":"<p>A promise that resolves when the the project is documented.</p>\n"}}],"types":[],"comment":" ","src":"lib/configured/generate_project.js"};
 	</script>
 	
 	

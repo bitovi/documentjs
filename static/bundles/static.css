@@ -1660,8 +1660,11 @@ li.L9 {
   border-left: 4px solid #484848;
   width: 5px;
   height: 20px;
-  left: 20px;
+  left: 5px;
   top: 4px;
+}
+.sidebar .api li li li.active > a:before {
+  left: 20px;
 }
 .sidebar .api.cascading {
   /* The caret that points down from an active parent element to the child below */
