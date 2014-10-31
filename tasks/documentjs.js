@@ -1,5 +1,5 @@
 var configured = require("../lib/configured/configured"),
-	only = require("../cmd/only");
+	only = require("../lib/cmd/only");
 
 module.exports = function(grunt) {
 	var _ = grunt.util._;
