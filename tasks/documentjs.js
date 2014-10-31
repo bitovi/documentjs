@@ -66,7 +66,7 @@ module.exports = function(grunt) {
 	 * 
 	 *     > grunt documentjs:1.0@../local
 	 */
-	grunt.registerTask('documentjs', 'Generates documentation', function(only) {
+	grunt.registerTask('documentjs', 'Generates documentation', function() {
 		var done = this.async();
 		var options = {};
 		if(arguments.length) {
