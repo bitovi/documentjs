@@ -23,6 +23,8 @@ overwrite is provided.
 
 @option {Boolean} [npmInstall=false] Use npm to install the resource.
 
-@option {DocumentJS.docConfig} [docConfig] The full docConfig of this project.
+@option {DocumentJS.docConfig} [docConfig] The full docConfig of this project. If
+provided, `documentjs.json` will not be read.
+
 
 @option {Boolean} [watch=false] If true, setup a watch and regenerate.

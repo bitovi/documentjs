@@ -1,4 +1,5 @@
-var configured = require("../lib/configured/configured");
+var configured = require("../lib/configured/configured"),
+	only = require("../cmd/only");
 
 module.exports = function(grunt) {
 	var _ = grunt.util._;
@@ -69,9 +70,7 @@ module.exports = function(grunt) {
 		var done = this.async();
 		var options = {};
 		if(arguments.length) {
-			options.only = [].slice.call(arguments).map(function(name){
-				return {name: name};
-			});
+			options.only = only([].slice.call(arguments));
 		}
 		var project = {
 			path: process.cwd()
