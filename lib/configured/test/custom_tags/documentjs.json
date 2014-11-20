@@ -1,0 +1,12 @@
+{
+	"sites": {
+		"custom_tags": {
+			"parent": "_",
+			"tags": "tags/tags",
+			"glob": "lodash-sample.js",
+			"dest": "../tmp/custom_tags",
+			"debug" :  true
+		}
+	}
+	
+}
