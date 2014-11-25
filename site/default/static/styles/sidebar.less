@@ -61,12 +61,28 @@
       border-radius: 5px 0 0 0;
       margin-bottom:20px;
     }
-    li.active:nth-child(2) > a.sidebar-title {
+    li.active:nth-child(2) > a.sidebar-title,
+    li.active:nth-child(3) > a.sidebar-title,
+    li.active:nth-child(4) > a.sidebar-title,
+    li.active:nth-child(5) > a.sidebar-title {
       font-size: 18px;
-      background: @brand-color-5;
       border-radius: 0;
       margin:-20px 0 20px 0;      
     } 
+    li.active:nth-child(2) > a.sidebar-title {
+      background: lighten(@brand-color-1, 10%);
+    } 
+    li.active:nth-child(3) > a.sidebar-title {
+      background: lighten(@brand-color-1, 20%);   
+    }
+    li.active:nth-child(4) > a.sidebar-title {
+      background: lighten(@brand-color-1, 30%);   
+    }        
+    li.active:nth-child(5) > a.sidebar-title {
+      background: lighten(@brand-color-1, 40%);   
+    }  
+
+
     li.active.collapsed > :not(a) {
       display:none;
     }
@@ -201,7 +217,11 @@
       margin-right: 0px;
     }
     /* The caret that points down from an active parent element to the child below */
-    > .active:before {
+    > .active:before,
+    > .active:nth-child(2):before,
+    > .active:nth-child(3):before,
+    > .active:nth-child(4):before,
+    > .active:nth-child(5):before   {
       position:absolute;
       content : ' ';
       left:10px;
@@ -214,17 +234,17 @@
       border-top: 20px solid @brand-color-1;
     }
     > .active:nth-child(2):before {
-      position:absolute;
-      content : ' ';
-      left:10px;
-      top:30px;
-      z-index : -1;
-      width: 0; 
-      height: 0; 
-      border-left: 20px solid transparent;
-      border-right: 20px solid transparent;
-      border-top: 20px solid @brand-color-5;
+      border-top: 20px solid lighten(@brand-color-1, 10%);
     }
+    > .active:nth-child(3):before {
+      border-top: 20px solid lighten(@brand-color-1, 20%);
+    }   
+    > .active:nth-child(4):before {
+      border-top: 20px solid lighten(@brand-color-1, 30%);
+    }
+    > .active:nth-child(5):before {
+      border-top: 20px solid lighten(@brand-color-1, 40%);
+    }               
   }
   
 }
