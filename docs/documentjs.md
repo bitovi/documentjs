@@ -3,7 +3,6 @@
 @group DocumentJS.apis.config 2 Configuration APIS
 @group DocumentJS.apis.document 3 Document APIS
 @group DocumentJS.apis.command-line 4 Command Line APIS
-
 @group DocumentJS.apis.internal 5 Internal APIS
 
 DocumentJS creates beautiful, articulate, multi-versioned documentation. With DocumentJS, you can:
