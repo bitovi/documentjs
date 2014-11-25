@@ -9,6 +9,11 @@ every [documentjs.process.docObject docObject] keyed by its name.
 @param {function():documentjs.process.docObject} getCurrent Returns the 
 current [documentjs.process.docObject docObject] being rendered.
 
+@param {documentjs.generators.html} helpers The default helpers object that
+the return value will be added to.
+
+
+
 @return {Object<String,function>} A map of Handlebars function helpers 
 that will be registered.
 
