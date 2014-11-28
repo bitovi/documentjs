@@ -234,8 +234,9 @@ dl dd {
 strong {
   -webkit-font-smoothing: antialiased;
 }
-strong strong {
-  font-weight: normal;
+strong,
+b {
+  font-weight: bolder;
 }
 em,
 cite {
@@ -1537,11 +1538,25 @@ li.L9 {
   border-radius: 5px 0 0 0;
   margin-bottom: 20px;
 }
-.sidebar .api li.active:nth-child(2) > a.sidebar-title {
+.sidebar .api li.active:nth-child(2) > a.sidebar-title,
+.sidebar .api li.active:nth-child(3) > a.sidebar-title,
+.sidebar .api li.active:nth-child(4) > a.sidebar-title,
+.sidebar .api li.active:nth-child(5) > a.sidebar-title {
   font-size: 18px;
-  background: #706f70;
   border-radius: 0;
   margin: -20px 0 20px 0;
+}
+.sidebar .api li.active:nth-child(2) > a.sidebar-title {
+  background: #626262;
+}
+.sidebar .api li.active:nth-child(3) > a.sidebar-title {
+  background: #7b7b7b;
+}
+.sidebar .api li.active:nth-child(4) > a.sidebar-title {
+  background: #949494;
+}
+.sidebar .api li.active:nth-child(5) > a.sidebar-title {
+  background: #aeaeae;
 }
 .sidebar .api li.active.collapsed > :not(a) {
   display: none;
@@ -1680,7 +1695,11 @@ li.L9 {
   margin-left: 0px;
   margin-right: 0px;
 }
-.sidebar .api.cascading > .active:before {
+.sidebar .api.cascading > .active:before,
+.sidebar .api.cascading > .active:nth-child(2):before,
+.sidebar .api.cascading > .active:nth-child(3):before,
+.sidebar .api.cascading > .active:nth-child(4):before,
+.sidebar .api.cascading > .active:nth-child(5):before {
   position: absolute;
   content: ' ';
   left: 10px;
@@ -1693,16 +1712,16 @@ li.L9 {
   border-top: 20px solid #484848;
 }
 .sidebar .api.cascading > .active:nth-child(2):before {
-  position: absolute;
-  content: ' ';
-  left: 10px;
-  top: 30px;
-  z-index: -1;
-  width: 0;
-  height: 0;
-  border-left: 20px solid transparent;
-  border-right: 20px solid transparent;
-  border-top: 20px solid #706f70;
+  border-top: 20px solid #626262;
+}
+.sidebar .api.cascading > .active:nth-child(3):before {
+  border-top: 20px solid #7b7b7b;
+}
+.sidebar .api.cascading > .active:nth-child(4):before {
+  border-top: 20px solid #949494;
+}
+.sidebar .api.cascading > .active:nth-child(5):before {
+  border-top: 20px solid #aeaeae;
 }
 .sidebar .api.cascading > li:nth-child(1) {
   z-index: 20;

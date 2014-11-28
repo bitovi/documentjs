@@ -453,7 +453,7 @@
 
 		
 		<section class="description">
-			<p>The collective configuration</p>
+			<p>The configuration options within a <a href="DocumentJS.docConfig.html">docConfig</a>'s <code>sites</code> objects or <code>sitesDefaults</code> object.</p>
 
 		</section>
 		
@@ -491,7 +491,8 @@ other options like:</p>
 <pre><code>{
   glob: {
     pattern: &quot;*.js&quot;,
-    cwd: __dirname  
+    cwd: __dirname,
+    ignore: &quot;{some_folder}/**/*&quot; 
   }
 }
 </code></pre>
@@ -527,8 +528,14 @@ is used.</p>
 		<h4>parent
 			<code>{String}</code><span class="pull-right optional">Optional</span></h4>
 		<div class="description">
-			<p>The primary page which will be treated as the documentation's
-homepage.  If one is not provided, one will be attempted to be found by:</p>
+			<p>The name of the <a href="documentjs.process.docObject.html">docObject</a> that will be
+shown at <code>index.html</code>. If one is not provided, one will be attempted to be found by:</p>
+<ul>
+<li>Trying to find the docObject that is parent of every other docObject.</li>
+<li>Trying to find the docObject that has the most children.</li>
+</ul>
+<p>If that fails, an &quot;index&quot; docObject might be created and set as the parent of
+every other docObject that does not have a parent.</p>
 
 		</div>
 		
@@ -543,25 +550,6 @@ homepage.  If one is not provided, one will be attempted to be found by:</p>
 			<p>An object that is made availalbe to the generated HTML pages.</p>
 
 		</div>
-		
-		
-		
-	</li>
-	
-	<li class="parameter">
-		<h4>generators
-			<code>{moduleName | Array&lt;moduleName&gt;}</code><span class="pull-right optional">Optional</span></h4>
-		<div class="description">
-			<p>Generators specifies a generator module or array of modules used to create an
-output for documentation. The default generator is &quot;html&quot; which maps
-to documentjs's internal <a href="documentjs.generators.html.html">html generator</a>.</p>
-<p>You can specify other modules which will be passed a promise containing
-the <a href="documentjs.process.docMap.html">docMap</a> and the <code>options</code> and be expected
-to return a promise that resolves when they are complete.</p>
-
-		</div>
-		
-		
 		
 		
 		
@@ -632,6 +620,66 @@ add to the default templates.</p>
 		
 	</li>
 	
+	<li class="parameter">
+		<h4>tags
+			<code>{String}</code><span class="pull-right optional">Optional</span></h4>
+		<div class="description">
+			<p>A path to a module that determines which tags will be used
+to process the site. The module must export a function that takes the default <a href="documentjs.tags.html">tags</a> object and returns
+the tags that will be used.</p>
+<p>Example use:</p>
+<pre><code>tags: &quot;./theme/tags&quot;
+</code></pre>
+<p>Example module:</p>
+<pre><code class="language-js">// theme/tags.js
+module.exports = function(defaultTags) {
+    tags = _.extend({},defaultTags);
+    tags.customTag = {add: function(){}, ...}
+    return tags;
+};
+</code></pre>
+
+		</div>
+		
+		
+		
+	</li>
+	
+	<li class="parameter">
+		<h4>generators
+			<code>{moduleName | Array&lt;moduleName&gt;}</code><span class="pull-right optional">Optional</span></h4>
+		<div class="description">
+			<p>Generators specifies a generator module or array of modules used to create an
+output for documentation. The default generator is &quot;html&quot; which maps
+to documentjs's internal <a href="documentjs.generators.html.html">html generator</a>.</p>
+<p>You can specify other modules which will be passed a promise containing
+the <a href="documentjs.process.docMap.html">docMap</a> and the <code>options</code> and be expected
+to return a promise that resolves when they are complete.</p>
+
+		</div>
+		
+		
+		
+		
+		
+	</li>
+	
+	<li class="parameter">
+		<h4>singlePage<code>=false</code>
+			<code>{Boolean}</code><span class="pull-right optional">Optional</span></h4>
+		<div class="description">
+			<p>If <code>true</code> only a single HTML page will be written out. The
+<code>parent</code> docObject will be <a href="documentjs.generators.html.build.renderer.html">rendered</a> with an
+additional <code>.docMap</code> property set to the <a href="documentjs.process.docMap.html">docMap</a>.  If you set this,
+the default templates are not designed to work with this.  Make sure you set <code>templates</code> to
+overwrite them.</p>
+
+		</div>
+		
+		
+		
+	</li>
+	
 </ol>
 
 
@@ -692,7 +740,7 @@ objects like:</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"DocumentJS.apis.config","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"typedef","name":"DocumentJS.siteConfig","description":"<p>The collective configuration</p>\n","title":"siteConfig","types":[{"type":"Object","options":[{"name":"glob","description":"<p>Configures the files that will be processed into documentation. The glob\noption either specifies a <a href=\"https://github.com/isaacs/minimatch\">minmatch</a>\npattern like:</p>\n<pre><code>{glob: &quot;*.js&quot;}\n</code></pre>\n<p>Or a [documentjs.find.globObject GlobObject] that specifies the\na <a href=\"https://github.com/isaacs/minimatch\">minmatch</a> pattern and\nother options like:</p>\n<pre><code>{\n  glob: {\n    pattern: &quot;*.js&quot;,\n    cwd: __dirname  \n  }\n}\n</code></pre>\n<p>By default the pattern <code>&quot;**/*.{js,md}&quot;</code> is used, which\nsearches for all <code>.js</code> and <code>.md</code> files within the project. And\nthe default ignore is <code>&quot;{node_modules,bower_components}/**/*&quot;</code> which\nignores everything in the <em>node_modules</em> and <em>bower_components</em>  folder.</p>\n","types":[{"type":"String"},{"type":"documentjs.find.globObject"}],"optional":true,"defaultValue":"\"**/*.{js,md}\""},{"name":"dest","description":"<p>The location of the folder where DocumentJS should\nwrite the output. Locations should be relative to the parent folder of the\n<em>documentjs.json</em> file. If this is not provided, the site name of the configuration\nis used.</p>\n","types":[{"type":"String"}],"optional":true},{"name":"parent","description":"<p>The primary page which will be treated as the documentation's\nhomepage.  If one is not provided, one will be attempted to be found by:</p>\n","types":[{"type":"String"}],"optional":true},{"name":"pageConfig","description":"<p>An object that is made availalbe to the generated HTML pages.</p>\n","types":[{"type":"Object","options":[]}],"optional":true},{"name":"generators","description":"<p>Generators specifies a generator module or array of modules used to create an\noutput for documentation. The default generator is &quot;html&quot; which maps\nto documentjs's internal [documentjs.generators.html html generator].</p>\n<p>You can specify other modules which will be passed a promise containing\nthe [documentjs.process.docMap docMap] and the <code>options</code> and be expected\nto return a promise that resolves when they are complete.</p>\n","types":[{"type":"moduleName"},{"type":"Array","template":[{"types":[{"type":"moduleName"}]}]}],"optional":true},{"name":"static","description":"<p>The location of static content used to overwrite or\nadd to the default static content.</p>\n","types":[{"type":"String"}]},{"name":"forceBuild","description":"<p>If set to <code>true</code>, rebuilds the\nstatic bundle even if it has already been built.</p>\n","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"false"},{"name":"minifyBuild","description":"<p>If set to <code>false</code> the build will not\nbe minified. This behavior should be implemented by the &quot;build&quot; module.</p>\n","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"true"},{"name":"devBuild","description":"<p>If set to <code>true</code> the build will not be built\nso that individual files will be loaded. This behavior should be implemented by the &quot;build&quot; module.</p>\n","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"false"},{"name":"templates","description":"<p>The location of templates used to overwrite or\nadd to the default templates.</p>\n","types":[{"type":"String"}],"optional":true}]}],"comment":" ","src":"docs/api/config/siteConfig.md"};
+		var docObject = {"type":"typedef","name":"DocumentJS.siteConfig","src":"docs/api/config/siteConfig.md","description":"<p>The configuration options within a [DocumentJS.docConfig]'s <code>sites</code> objects or <code>sitesDefaults</code> object.</p>\n","title":"siteConfig","types":[{"type":"Object","options":[{"name":"glob","description":"<p>Configures the files that will be processed into documentation. The glob\noption either specifies a <a href=\"https://github.com/isaacs/minimatch\">minmatch</a>\npattern like:</p>\n<pre><code>{glob: &quot;*.js&quot;}\n</code></pre>\n<p>Or a [documentjs.find.globObject GlobObject] that specifies the\na <a href=\"https://github.com/isaacs/minimatch\">minmatch</a> pattern and\nother options like:</p>\n<pre><code>{\n  glob: {\n    pattern: &quot;*.js&quot;,\n    cwd: __dirname,\n    ignore: &quot;{some_folder}/**/*&quot; \n  }\n}\n</code></pre>\n<p>By default the pattern <code>&quot;**/*.{js,md}&quot;</code> is used, which\nsearches for all <code>.js</code> and <code>.md</code> files within the project. And\nthe default ignore is <code>&quot;{node_modules,bower_components}/**/*&quot;</code> which\nignores everything in the <em>node_modules</em> and <em>bower_components</em>  folder.</p>\n","types":[{"type":"String"},{"type":"documentjs.find.globObject"}],"optional":true,"defaultValue":"\"**/*.{js,md}\""},{"name":"dest","description":"<p>The location of the folder where DocumentJS should\nwrite the output. Locations should be relative to the parent folder of the\n<em>documentjs.json</em> file. If this is not provided, the site name of the configuration\nis used.</p>\n","types":[{"type":"String"}],"optional":true},{"name":"parent","description":"<p>The name of the [documentjs.process.docObject] that will be\nshown at <code>index.html</code>. If one is not provided, one will be attempted to be found by:</p>\n<ul>\n<li>Trying to find the docObject that is parent of every other docObject.</li>\n<li>Trying to find the docObject that has the most children.</li>\n</ul>\n<p>If that fails, an &quot;index&quot; docObject might be created and set as the parent of\nevery other docObject that does not have a parent.</p>\n","types":[{"type":"String"}],"optional":true},{"name":"pageConfig","description":"<p>An object that is made availalbe to the generated HTML pages.</p>\n","types":[{"type":"Object","options":[]}],"optional":true},{"name":"static","description":"<p>The location of static content used to overwrite or\nadd to the default static content.</p>\n","types":[{"type":"String"}]},{"name":"forceBuild","description":"<p>If set to <code>true</code>, rebuilds the\nstatic bundle even if it has already been built.</p>\n","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"false"},{"name":"minifyBuild","description":"<p>If set to <code>false</code> the build will not\nbe minified. This behavior should be implemented by the &quot;build&quot; module.</p>\n","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"true"},{"name":"devBuild","description":"<p>If set to <code>true</code> the build will not be built\nso that individual files will be loaded. This behavior should be implemented by the &quot;build&quot; module.</p>\n","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"false"},{"name":"templates","description":"<p>The location of templates used to overwrite or\nadd to the default templates.</p>\n","types":[{"type":"String"}],"optional":true},{"name":"tags","description":"<p>A path to a module that determines which tags will be used\nto process the site. The module must export a function that takes the default [documentjs.tags] object and returns\nthe tags that will be used.</p>\n<p>Example use:</p>\n<pre><code>tags: &quot;./theme/tags&quot;\n</code></pre>\n<p>Example module:</p>\n<pre><code class=\"language-js\">// theme/tags.js\nmodule.exports = function(defaultTags) {\n    tags = _.extend({},defaultTags);\n    tags.customTag = {add: function(){}, ...}\n    return tags;\n};\n</code></pre>\n","types":[{"type":"String"}],"optional":true},{"name":"generators","description":"<p>Generators specifies a generator module or array of modules used to create an\noutput for documentation. The default generator is &quot;html&quot; which maps\nto documentjs's internal [documentjs.generators.html html generator].</p>\n<p>You can specify other modules which will be passed a promise containing\nthe [documentjs.process.docMap docMap] and the <code>options</code> and be expected\nto return a promise that resolves when they are complete.</p>\n","types":[{"type":"moduleName"},{"type":"Array","template":[{"types":[{"type":"moduleName"}]}]}],"optional":true},{"name":"singlePage","description":"<p>If <code>true</code> only a single HTML page will be written out. The\n<code>parent</code> docObject will be [documentjs.generators.html.build.renderer rendered] with an\nadditional <code>.docMap</code> property set to the [documentjs.process.docMap].  If you set this,\nthe default templates are not designed to work with this.  Make sure you set <code>templates</code> to\noverwrite them.</p>\n","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"false"}]}],"parent":"DocumentJS.apis.config","comment":" ","templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
 	</script>
 	
 	

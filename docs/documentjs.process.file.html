@@ -375,6 +375,18 @@ and is not a .md or .markdown file, it is assumed to be a source file.</p>
 			
 		</li>
 		
+		<li class="parameter">
+			<h4>options
+				<code>{Object}</code><span class="pull-right optional">Optional</span></h4>
+			<div class="description">
+				<p>An options object. Currently only the <code>tags</code> option is used.</p>
+
+			</div>
+			
+			
+			
+		</li>
+		
 	</ol>
 
 
@@ -419,7 +431,7 @@ documentjs.process.file(&quot;import $ from 'jquery' ... &quot;,
 
 	
 		<script type="text/javascript">
-		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.process.methods","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"function","name":"documentjs.process.file","description":"<p>Processes a file's source.  Adds created [documentjs.process.docObject docObjects] to docMap.</p>\n","title":"","signatures":[{"code":"documentjs.process.file(source, docMap, [filename])","description":"<p>Processes a file's source and calls [documentjs.process.codeAndComment] accordingly. If\nthe file ends with <code>.js</code>, each comment will be processed individually.  Otherwise,\nit treats the entire source as one big comment.</p>\n","params":[{"types":[{"type":"String"}],"name":"source","description":"<p>A files source</p>\n"},{"types":[{"type":"documentjs.process.docMap"}],"name":"docMap","description":"<p>A map of the name of each DocObject to the DocObject</p>\n"},{"types":[{"type":"String"}],"optional":true,"name":"filename","description":"<p>The filename.  If a filename is not provided,\nthe entire file is treated as one big comment block.  If a filename is provided\nand is not a .md or .markdown file, it is assumed to be a source file.</p>\n"}]}],"comment":" ","src":"lib/process/file.js"};
+		var docObject = {"type":"function","name":"documentjs.process.file","parent":"documentjs.process.methods","src":"lib/process/file.js","line":7,"codeLine":42,"description":"<p>Processes a file's source.  Adds created [documentjs.process.docObject docObjects] to docMap.</p>\n","title":"","signatures":[{"code":"documentjs.process.file(source, docMap, [filename])","description":"<p>Processes a file's source and calls [documentjs.process.codeAndComment] accordingly. If\nthe file ends with <code>.js</code>, each comment will be processed individually.  Otherwise,\nit treats the entire source as one big comment.</p>\n","params":[{"types":[{"type":"String"}],"name":"source","description":"<p>A files source</p>\n"},{"types":[{"type":"documentjs.process.docMap"}],"name":"docMap","description":"<p>A map of the name of each DocObject to the DocObject</p>\n"},{"types":[{"type":"String"}],"optional":true,"name":"filename","description":"<p>The filename.  If a filename is not provided,\nthe entire file is treated as one big comment block.  If a filename is provided\nand is not a .md or .markdown file, it is assumed to be a source file.</p>\n"},{"types":[{"type":"Object","options":[],"description":"<p>tags A collection of tags.  If <code>options</code> or <code>options.tags</code> is not\nprovided, the default tags will be used.</p>\n"}],"optional":true,"name":"options","description":"<p>An options object. Currently only the <code>tags</code> option is used.</p>\n"}]}],"comment":" ","templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
 	</script>
 	
 	

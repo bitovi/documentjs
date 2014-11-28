@@ -1,8 +1,9 @@
 {
 	"versions": {
-		"0.1" : "git://github.com/bitovi/documentjs#master"
+		"0.1" : "git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c",
+		"0.2" : "git://github.com/bitovi/documentjs#master"
 	},
-	"defaultVersion" : "0.1",
+	"defaultVersion" : "0.2",
 	"siteDefaults": {
 		"templates": "theme/templates"
 	},

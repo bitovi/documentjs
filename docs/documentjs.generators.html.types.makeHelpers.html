@@ -265,7 +265,7 @@
 	
 	
 	
-	<h2><code>{function(<a href="documentjs.process.docMap.html" >docMap</a>, options, getCurrent)}</code></h2>
+	<h2><code>{function(<a href="documentjs.process.docMap.html" >docMap</a>, options, getCurrent, <a href="documentjs.generators.html.html" >helpers</a>)}</code></h2>
 	
 	<span class="inherits">&nbsp;</span>
 </div>
@@ -296,7 +296,7 @@
 			<section class='primary-options'>
 				
 
-  <h2 id="sig_">function(<a href="documentjs.process.docMap.html" >docMap</a>, options, getCurrent)
+  <h2 id="sig_">function(<a href="documentjs.process.docMap.html" >docMap</a>, options, getCurrent, <a href="documentjs.generators.html.html" >helpers</a>)
 </h2>
 <div class="signature-wrapper">
 
@@ -336,6 +336,19 @@ every <a href="documentjs.process.docObject.html">docObject</a> keyed by its nam
 			<div class="description">
 				<p>Returns the
 current <a href="documentjs.process.docObject.html">docObject</a> being rendered.</p>
+
+			</div>
+			
+			
+			
+		</li>
+		
+		<li class="parameter">
+			<h4>helpers
+				<code>{<a href="documentjs.generators.html.html" >generators.html</a>}</code></h4>
+			<div class="description">
+				<p>The default helpers object that
+the return value will be added to.</p>
 
 			</div>
 			
@@ -412,7 +425,7 @@ the current page's name:</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs"},"watch":true,"debug":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"parent":"documentjs.generators.html.build.types","docConfigDest":"../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"},"type":"typedef","name":"documentjs.generators.html.types.makeHelpers","description":"","title":"makeHelpers","types":[{"type":"function","returns":{"types":[{"type":"Object","template":[{"types":[{"type":"String"}]},{"types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[]}]}]}],"description":"<p>A map of Handlebars function helpers\nthat will be registered.</p>\n"},"params":[{"types":[{"type":"documentjs.process.docMap"}],"name":"docMap","description":"<p>Contains\nevery [documentjs.process.docObject docObject] keyed by its name.</p>\n"},{"types":[{"type":"Object","options":[]}],"name":"options","description":"<p>The options passed to [documentjs.generate].</p>\n"},{"types":[{"type":"function","returns":{"types":[{"type":"documentjs.process.docObject"}]},"params":[]}],"name":"getCurrent","description":"<p>Returns the\ncurrent [documentjs.process.docObject docObject] being rendered.</p>\n"}]}],"comment":" ","src":"lib/generators/html/build/make_helpers.md"};
+		var docObject = {"type":"typedef","name":"documentjs.generators.html.types.makeHelpers","src":"lib/generators/html/build/make_helpers.md","description":"","title":"makeHelpers","types":[{"type":"function","returns":{"types":[{"type":"Object","template":[{"types":[{"type":"String"}]},{"types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[]}]}]}],"description":"<p>A map of Handlebars function helpers\nthat will be registered.</p>\n"},"params":[{"types":[{"type":"documentjs.process.docMap"}],"name":"docMap","description":"<p>Contains\nevery [documentjs.process.docObject docObject] keyed by its name.</p>\n"},{"types":[{"type":"Object","options":[]}],"name":"options","description":"<p>The options passed to [documentjs.generate].</p>\n"},{"types":[{"type":"function","returns":{"types":[{"type":"documentjs.process.docObject"}]},"params":[]}],"name":"getCurrent","description":"<p>Returns the\ncurrent [documentjs.process.docObject docObject] being rendered.</p>\n"},{"types":[{"type":"documentjs.generators.html"}],"name":"helpers","description":"<p>The default helpers object that\nthe return value will be added to.</p>\n"}]}],"parent":"documentjs.generators.html.build.types","comment":" ","templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
 	</script>
 	
 	
