@@ -3,9 +3,7 @@
 
 An object that represents something that is documented. Any 
 property added to a docObject is available to the templates and the
-client.
-
-The following lists the important, near
+client. The following lists the important, near
 universal properties:
 
 @option {String} name The unique name of the object being documented. 

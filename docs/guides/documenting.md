@@ -87,6 +87,15 @@ If a title is provided with the type, but not in a link, the type's title will b
 
     <a href="project.math.add.html">add</a>
 
+## Custom Tags
+
+You can supply custom tags that modify [documentjs.process.docObject]s.  By default any tag that is not
+matched follows the [documentjs.tags._default] tag rules. This, combined with custom templates and helpers
+is usually enough for adding and showing additional information.  
+
+For richer behavior, [DocumentJS.siteConfig] supports a `tags` property that points to a module
+that specifies which [documentjs.tags] will be used to process files.
+
 
 
 

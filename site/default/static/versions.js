@@ -82,12 +82,12 @@ steal("can/control", "can/util","jquery",function(Control, can, $){
 		},
 		getVersionedParentPath: function(version ){
 			
-			var path = this.docConfig.versionDest.replace(/<%=\s*version\s*%>/,""+version)
+			var path = (this.docConfig.versionDest || "./<%= version %>/<%= name %>").replace(/<%=\s*version\s*%>/,""+version)
 				.replace(/<%=\s*name\s*%>/,""+pageConfig.project.name);
 			return dirname(path);
 		},
 		getDefaultParentPath: function(){
-			var path = this.docConfig.defaultDest.replace(/<%=\s*name\s*%>/,""+pageConfig.project.name);
+			var path = (this.docConfig.defaultDest || "./<%= name %>").replace(/<%=\s*name\s*%>/,""+pageConfig.project.name);
 			return dirname(path);
 		},
 		'change': function(el, ev) {
