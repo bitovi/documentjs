@@ -24,7 +24,7 @@ that will be registered.
 To create a helper that loops through every function's name excluding
 the current page's name:
 
-    module.exports = function(docMap,options,getCurrent){
+    module.exports = function(docMap,options,getCurrent, defaultHelpers, Handlebars){
       return {
         eachFunction: function(options){
           for(var name in docMap) {
