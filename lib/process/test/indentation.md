@@ -6,6 +6,7 @@ param description
   option description
   
     @this {{}} An object
+    a
 
     @param {String} newName newName description.
 
