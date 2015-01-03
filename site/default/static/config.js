@@ -8,8 +8,8 @@
 			"mustache": "can/view/mustache/system"
 		},
 		paths: {
-			"jquery": isClient ? "can/lib/jquery.1.10.2.js" : "../../../../node_modules/canjs/lib/jquery.1.10.2.js",
-			"can/*": isClient ? "can/*.js" : "../../../../node_modules/canjs/*.js"
+			"jquery": isClient ? "can/lib/jquery.1.10.2.js" : "../../../../node_modules/can/lib/jquery.1.10.2.js",
+			"can/*": isClient ? "can/*.js" : "../../../../node_modules/can/*.js"
 		},
 		meta: {
 			jquery: {
