@@ -21,9 +21,11 @@ module.exports = function(options, folders){
 		return Q.all([
 			fsx.copy(path.join(folders.build), path.join(folders.dist) ),
 			fsx.copy("documentjs/node_modules/steal", path.join(folders.dist,"steal") ),
-			fsx.copy("documentjs/node_modules/can", path.join(folders.dist,"can") )
+			fsx.copy("documentjs/node_modules/can", path.join(folders.dist,"can") ),
+			fsx.copy("documentjs/node_modules/jquery", path.join(folders.dist,"jquery") )
 		]);
 	} else {
+
 		// makes sure can is not added to the global so we can build nicely.
 		global.GLOBALCAN = false;
 		return stealTools.build({
