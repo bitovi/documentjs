@@ -29,6 +29,7 @@
 </head>
 
 <body class="docs">
+	{{#unless hideHeader}}
 	<header>
 		<nav class="container">
 
@@ -52,6 +53,7 @@
 			</div>
 		</nav>
 	</header>
+	{{/unless}}
 
 	{{{content}}}
 	{{^hideFooter}}
