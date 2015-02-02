@@ -23,9 +23,9 @@
     {{#links}}
         <li><a href="{{href}}">{{title}}</a></li>
     {{/links}}
-	{{#if src}}
+	{{#hasValidSource src}}
 		<li><a href="{{urlSource src type line}}">source</a></li>
-	{{/if}}
+	{{/hasValidSource}}
 	{{#if download}}
 		<li><a href="{{urlDownload .}}">download</a></li>
 	{{/if}}
