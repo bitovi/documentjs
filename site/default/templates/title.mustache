@@ -20,12 +20,12 @@
 </div>
 
 <ul class="links">
-    {{#links}}
-        <li><a href="{{href}}">{{title}}</a></li>
-    {{/links}}
-	{{#hasValidSource src}}
+	{{#links}}
+		<li><a href="{{href}}">{{title}}</a></li>
+	{{/links}}
+	{{#ifValidSource src}}
 		<li><a href="{{urlSource src type line}}">source</a></li>
-	{{/hasValidSource}}
+	{{/ifValidSource}}
 	{{#if download}}
 		<li><a href="{{urlDownload .}}">download</a></li>
 	{{/if}}
