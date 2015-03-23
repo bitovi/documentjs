@@ -5,7 +5,8 @@
 	},
 	"defaultVersion" : "0.2",
 	"siteDefaults": {
-		"templates": "theme/templates"
+		"templates": "theme/templates",
+		"ignoreTemplateRender": true
 	},
 	"sites": {
 		"pages": {
