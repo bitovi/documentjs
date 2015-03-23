@@ -1,6 +1,13 @@
-.text-smoothing, .font-smoothing {
-	-webkit-font-smoothing: antialiased;
-}
+/**
+@style Style Resets
+@parent Baseline Elements
+
+@description 
+This file resolves discrepencies between browser defaults. It's not intended for any custom styling, simply to level the 'play fields' of browser support.
+This file lives at `styles/reset.less`
+
+**/
+
 body {
 	margin: 0;
 	padding: 0;
@@ -111,20 +118,4 @@ textarea {
 br {
 	float: none;
 	clear: both;
-}
-.border-radius (@radius: 2px) {
-  border-radius: @radius;
-  -moz-border-radius: @radius;
-  -webkit-border-radius: @radius;
-}
-.border-box {
-	box-sizing:border-box;
-	-moz-box-sizing:border-box; /* Firefox */
-	-webkit-box-sizing:border-box; /* Safari */
-}
-.text-shadow(@opacity: .5) {
-	text-shadow: 0 -1px 0 rgba(0,0,0,@opacity);
-}
-.text-shadow-light {
-	text-shadow: 0 1px 0 #ffffff;
 }
