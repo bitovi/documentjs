@@ -43,21 +43,18 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li {{#ifCurrentFromConfig "index.html"}}class="active"{{/ifCurrentFromConfig}}>
-	            <a href="{{urlFromConfig 'index.html'}}">Home</a>
-              </li>
-              {{#ifEqual page "index"}}
-		          <li>
-		            <a href="docs/index.html">Api</a>
-		          </li>
-	          {{else}}
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          {{/ifEqual}}
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li {{#ifCurrentFromConfig "index.html"}}class="active"{{/ifCurrentFromConfig}}>
+        	<a href="{{urlFromConfig 'index.html'}}">Home</a>
+        </li>
+        <li {{#ifEqual page "index"}}class='active'{{/ifEqual}}>
+          <a href="{{urlFromConfig 'index.html'}}">Api</a>
+        </li>
+        <li {{#ifEqual page "styles"}}class='active'{{/ifEqual}}>
+        	<a href="{{urlFromConfig 'styles.html'}}">Styles</a>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
