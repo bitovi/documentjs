@@ -1,5 +1,12 @@
-.ie {
+/**
+@styles IE specific
+@parent Baseline Elements
 
+@description
+These styles are to correct the display mistakes made by the rendering engineers at Microsoft. Hopefully they remain short and eventually deprecate themselves.
+*/
+
+.ie {
 	.search:before {
 	  font-family: Bitstrap;
 	  content: "\e012";
@@ -8,7 +15,6 @@
 	  left: 17px;
 	  color: #ccc;
 	} 
-	
 	.sidebar .api li li.active > a, 
 	.sidebar .api li li.active > a:hover,
 	.sidebar .api li li.active > a:before,
