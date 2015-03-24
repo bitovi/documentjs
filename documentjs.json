@@ -9,14 +9,17 @@
 		},
 		"styles": {
 			"parent": "Styles",
+			"ignoreTemplateRender": "false",
 			"glob": {
-				"pattern": "styles/**/*.{less,css,md}"
+				"pattern": "{styles,site/default/static/styles}/**/*.{less,css,md}"
 			}
 		},
 		"examples/multi": {
+			"parent": "multi",
 			"glob": "examples/multi/**/*.{js,md}"
 		},
 		"examples/simple": {
+			"parent": "myproject",
 			"glob": "examples/simple/**/*.{js,md}"
 		}
 	}
