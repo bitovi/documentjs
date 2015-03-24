@@ -29,65 +29,73 @@ header {
 	}
 }
 	
-header {
-	.nav {
-		list-style-type: none;
-		padding: 0;
-		margin: 0 0 0 15px;
+
+/**
+* @styles header-nav Header Nav
+
+* @description
+* Styles the horizontal navigation used on the header.
+**/
+header .nav {
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 15px;
+	display: inline-block;
+	position: relative;
+	top: -2px;
+	> li {
 		display: inline-block;
+		line-height: @headerHeight;
 		position: relative;
-		top: -2px;
-		> li {
-			display: inline-block;
-			line-height: @headerHeight;
-			position: relative;
-			> a {
-				text-transform: uppercase;
-				text-decoration: none;
-				font-weight: bold;
-				font-size: 12px;
-				color: @brand-color-7;
-				.text-shadow;
-				padding: 5px 10px;
-				border: 1px solid @brand-color-7;
-			}
-			&:hover > a {
-				background-color: rgba(0, 0, 0, 0.1);
-				border: 1px solid rgba(0, 0, 0, 0.3);
-				.border-radius(2px);
-			}
-			&.active > a {
-				background-color: rgba(0, 0, 0, 0.35);
-				border: 1px solid rgba(0, 0, 0, 0.6);
-				.border-radius(2px);
-			}
+		> a {
+			text-transform: uppercase;
+			text-decoration: none;
+			font-weight: bold;
+			font-size: 12px;
+			color: @brand-color-7;
+			.text-shadow;
+			padding: 5px 10px;
+			border: 1px solid @brand-color-7;
+		}
+		&:hover > a {
+			background-color: rgba(0, 0, 0, 0.1);
+			border: 1px solid rgba(0, 0, 0, 0.3);
+			.border-radius(2px);
+		}
+		&.active > a {
+			background-color: rgba(0, 0, 0, 0.35);
+			border: 1px solid rgba(0, 0, 0, 0.6);
+			.border-radius(2px);
+		}
+		dropdown-menu:before {
+			position:absolute;
+			content : '';
+			height : 15px;
+			width: 15px;
+			background: @brand-color-7;
+			-moz-transform : rotateZ(-45deg) skewY(5deg) skewX(5deg);
+			-o-transform : rotateZ(-45deg) skewY(5deg) skewX(5deg);
+			-webkit-transform : rotateZ(-45deg) skewY(5deg) skewX(5deg);
+			-ms-transform: rotate(-45deg);
+			transform : rotateZ(-45deg) skewY(5deg) skewX(5deg);
+			border: 1px solid #dedbdb;
+			top: -8px;
+			z-index: -1;
+			display: block;
+			left: 40px;
+			border-left-style: none;
+			border-bottom-style: none;
 		}
 	}
 }	
 
-header .nav > li {
-	dropdown-menu:before {
-		position:absolute;
-		content : '';
-		height : 15px;
-		width: 15px;
-		background: @brand-color-7;
-		-moz-transform : rotateZ(-45deg) skewY(5deg) skewX(5deg);
-		-o-transform : rotateZ(-45deg) skewY(5deg) skewX(5deg);
-		-webkit-transform : rotateZ(-45deg) skewY(5deg) skewX(5deg);
-		-ms-transform: rotate(-45deg);
-		transform : rotateZ(-45deg) skewY(5deg) skewX(5deg);
-		border: 1px solid #dedbdb;
-		top: -8px;
-		z-index: -1;
-		display: block;
-		left: 40px;
-		border-left-style: none;
-		border-bottom-style: none;
-	}
-}
 
+/**
+* @styles header-dropdown Header Dropdown Menu
 
+* @description
+* Styles the dropdown menus that show on hover on the header.
+**/
 header {
 	.dropdown-menu {
 		display: none;
@@ -128,6 +136,9 @@ header {
 }
 
 header {
+	.bitovi-menu {
+		display: inline-block;
+	}
 	.bitovi.icon-bits {
 		color: @brand-color-7;
 		text-shadow: 0 -1px 0 rgba(0, 4, 159, 0.49);
@@ -138,7 +149,6 @@ header {
 		text-align: center;
 		width: 50px;
 		height: 54px;
-		
 		&:before {
 			position: absolute;
 			left: 13px;
@@ -157,7 +167,8 @@ header {
 		display: inline-block;
 	}
 
-	.bitovi-menu:hover .dropdown-menu, .logo-menu:hover .dropdown-menu {
+	.bitovi-menu:hover .dropdown-menu, 
+	.logo-menu:hover .dropdown-menu {
 		display: block;
 		visibility: visible;
 	}
@@ -170,9 +181,7 @@ header {
 		right: 0;
 		top: 0;
 	}
-	.bitovi-menu {
-		display: inline-block;
-	}
+	
 }
 /* end */
 
