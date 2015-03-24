@@ -1,9 +1,16 @@
 {
 	"sites": {
 		"docs": {
+			"parent": "DocumentJS",
 			"glob": {
 				"pattern": "{docs,tags,lib,tasks}/**/*.{js,md}",
 				"ignore": "lib/{configured,generate,find,generators/html}/test/**/*"
+			}
+		},
+		"styles": {
+			"parent": "Styles",
+			"glob": {
+				"pattern": "styles/**/*.{less,css,md}"
 			}
 		},
 		"examples/multi": {
