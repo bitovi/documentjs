@@ -25,3 +25,33 @@
 .brand-color-9 {
   background-color: #f7f8c3;
 }
+.brand-color-10 {
+  background-color: #eeeeee;
+}
+.brand-color-11 {
+  background-color: #666666;
+}
+.brand-color-12 {
+  background-color: #7b7b7a;
+}
+
+/*Temp*/
+.swatches-list {
+  list-style: none;
+}
+
+.swatches-list li {
+  width: 20%;
+  float: left;
+  height: 100px;
+  text-align: center;
+  margin: 1px;
+}
+
+.swatch-color {
+  width: 100%;
+  height: 50px;
+  display: block;
+  margin-bottom: 5px;
+}
+
