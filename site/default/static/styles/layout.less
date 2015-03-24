@@ -1,20 +1,35 @@
-@footerHeight: 80px;
-@headerHeight: 54px;
-@light: #fff;
+/**
+* @stylesheet Layout
+* @parent style.baseline-elements
+
+* @description
+* Styles used to structure the main parts of a page.
+**/
 
 
+/**
+* @styles header Header
+
+* @description
+* Variables used to set the font appearance.
+**/
 header {
 	display: block;
 	background-color: @colorHeader;
-	color: #fff;
+	color: @brand-color-7;
 	position: relative;
-	z-index: 2;
-	
+}
+
+
+header {
 	.container {
 		position: relative;
 		height: @headerHeight;
 		text-align: left;
 	}
+}
+	
+header {
 	.nav {
 		list-style-type: none;
 		padding: 0;
@@ -22,22 +37,38 @@ header {
 		display: inline-block;
 		position: relative;
 		top: -2px;
-	}
-	.nav > li {
-		display: inline-block;
-		line-height: @headerHeight;
-		position: relative;
-		
-		> a {
-			text-transform: uppercase;
-			text-decoration: none;
-			font-weight: bold;
-			font-size: 12px;
-			color: #ffffff;
-			.text-shadow;
-			padding: 5px 10px;
-			border: 1px solid rgba(255, 255, 255, 0);
+		> li {
+			display: inline-block;
+			line-height: @headerHeight;
+			position: relative;
+			> a {
+				text-transform: uppercase;
+				text-decoration: none;
+				font-weight: bold;
+				font-size: 12px;
+				color: @brand-color-7;
+				.text-shadow;
+				padding: 5px 10px;
+				border: 1px solid @brand-color-7;
+			}
+			&:hover > a {
+				background-color: rgba(0, 0, 0, 0.1);
+				border: 1px solid rgba(0, 0, 0, 0.3);
+				.border-radius(2px);
+			}
+			&.active > a {
+				background-color: rgba(0, 0, 0, 0.35);
+				border: 1px solid rgba(0, 0, 0, 0.6);
+				.border-radius(2px);
+			}
 		}
+	}
+}	
+
+header {
+
+	.nav > li {
+		
 		.dropdown-menu:before {
 			position:absolute;
 			content : '';
@@ -59,18 +90,9 @@ header {
 		}
 	}
 	
-	.nav > li:hover > a {
-		background-color: rgba(0, 0, 0, 0.1);
-		border: 1px solid rgba(0, 0, 0, 0.3);
-		.border-radius(2px);
-	}
-	.nav > li.active > a {
-		background-color: rgba(0, 0, 0, 0.35);
-		border: 1px solid rgba(0, 0, 0, 0.6);
-		.border-radius(2px);
-	}
+	
 	.bitovi.icon-bits {
-		color: #ffffff;
+		color: @brand-color-7;
 		text-shadow: 0 -1px 0 rgba(0, 4, 159, 0.49);
 		display: block;
 		opacity: .2;
@@ -90,7 +112,7 @@ header {
 		}
 	}
 	.bitovi-menu:hover .bitovi.icon-bits {
-		background-color: #fff;
+		background-color: @brand-color-7;
 		border-left: 1px solid #d5d5d5;
 		border-right: 1px solid #d5d5d5;
 		color: @colorHeader;
@@ -106,7 +128,7 @@ header {
 		visibility: collapse;
 		position: absolute;
 		left: 0;
-		background-color: #fff;
+		background-color: @brand-color-7;
 		border: 1px solid #d5d5d5;
 		border-top: none;
 		z-index: 5;
@@ -199,4 +221,9 @@ footer {
 	li {
 		display: inline-block;
 	}
+}
+
+.container {
+	width: 960px;
+	margin: 0 auto;
 }
