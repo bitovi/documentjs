@@ -38,6 +38,19 @@ header {
 		position: relative;
 		top: -2px;
 		> li {
+			display: inline-block;
+			line-height: @headerHeight;
+			position: relative;
+			> a {
+				text-transform: uppercase;
+				text-decoration: none;
+				font-weight: bold;
+				font-size: 12px;
+				color: @brand-color-7;
+				.text-shadow;
+				padding: 5px 10px;
+				border: 1px solid @brand-color-7;
+			}
 			&:hover > a {
 				background-color: rgba(0, 0, 0, 0.1);
 				border: 1px solid rgba(0, 0, 0, 0.3);
@@ -53,24 +66,9 @@ header {
 }	
 
 header {
-	.nav > li .dropdown-menu:before {
 
-	}
 	.nav > li {
-		display: inline-block;
-		line-height: @headerHeight;
-		position: relative;
 		
-		> a {
-			text-transform: uppercase;
-			text-decoration: none;
-			font-weight: bold;
-			font-size: 12px;
-			color: @brand-color-7;
-			.text-shadow;
-			padding: 5px 10px;
-			border: 1px solid @brand-color-7;
-		}
 		.dropdown-menu:before {
 			position:absolute;
 			content : '';
