@@ -1,21 +1,44 @@
-@logo: "../img/logo.svg";
-@logoFooter: "../img/logo-grey.svg";
-@logoWidth: 170px;
-@pageBackground: @brand-color-3;
+/**
+* @styles Variables
+* @parent Theme
 
+* @body
+* ## Font
+
+* @description
+* Variables used to set the font appearance.
+**/
 @defaultFontFamily: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 @defautFontWeight: 300;
 
+
+/**
+* @body
+* ## Color Palette
+
+* @description
+* Variables used to define the site's color palette.
+
+* @demo demos/variables/color-palette/demo.html
+**/
 @brand-color-1: #484848;
 @brand-color-2: #545454;
 @brand-color-3: #f0f0f0;
 @brand-color-4: #3b3b3b;
 @brand-color-5: #706f70;
-@brand-color-6: #CCCCCC;
-@brand-color-7: #FFFFFF;
+@brand-color-6: #cccccc;
+@brand-color-7: #ffffff;
 @brand-color-8: #1f54c6;
 @brand-color-9: #f7f8c3;
 
+
+/**
+* @body
+* ## Text Color
+
+* @description
+* Variables used to define color on text elements.
+**/
 @colorHeader: @brand-color-1;
 @colorLinks: @brand-color-8;
 @colorCode: @brand-color-9;
@@ -23,11 +46,29 @@
 @colorSignature: @brand-color-1;
 @colorParamsReturns: @brand-color-1;
 @fontColorParamsReturns: @brand-color-3;
-@colorTags: @brand-color-4;
+
+
+/**
+* @body
+* ## Other Variables
+
+* @description
+* Variables used to set the color on containers and other elements.
+**/
+@pageBackground: @brand-color-3;
 @sidebarBackground: @brand-color-6;
+@colorTags: @brand-color-4;
+@footerHeight: 80px;
+@headerHeight: 54px;
 
 
-// Prettify Code Syntax Highlighter Style
+/**
+* @body
+* ## Prettify Code Syntax Highlighter
+
+* @description
+* Variables used to set the color on code syntax.
+**/
 
 @pp-bg: @brand-color-3;
 
@@ -48,6 +89,14 @@
 
 // Print and Projection
 
+/**
+* @body
+* ## Print and Projection
+
+* @description
+* Variables used to set the color on elements when printed or projected.
+**/
+
 @str-color-pp: #006600;
 @kwd-color-pp: #006;
 @com-color-pp: #600;
@@ -60,6 +109,18 @@
 @atn-color-pp:  #440044;
 @atv-color-pp: #006600;
 
+
+/**
+* @body
+* ## Logo
+
+@description
+Variables used to set a logo on the header and on the footer
+**/
+
+@logo: "../img/logo.svg";
+@logoFooter: "../img/logo-grey.svg";
+@logoWidth: 170px;
 
 
  
