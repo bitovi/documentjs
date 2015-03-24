@@ -9,7 +9,6 @@
 		},
 		"styles": {
 			"parent": "Styles",
-			"ignoreTemplateRender": "false",
 			"glob": {
 				"pattern": "{styles,site/default/static/styles}/**/*.{less,css,md}"
 			}

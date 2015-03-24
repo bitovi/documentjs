@@ -3,13 +3,7 @@
 
 @description
 
-#Hi
-
-@body
-
-#Hi
-
-@iframe '../index.html'
+# Hi
 
 _foo_ [a](b)
 
