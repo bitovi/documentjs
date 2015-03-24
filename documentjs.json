@@ -4,7 +4,7 @@
 			"parent": "DocumentJS",
 			"glob": {
 				"pattern": "{docs,tags,lib,tasks}/**/*.{js,md}",
-				"ignore": "lib/{configured,generate,find,generators/html}/test/**/*"
+				"ignore": "lib/{configured,process,generate,find,generators/html}/test/**/*"
 			}
 		},
 		"styles": {
