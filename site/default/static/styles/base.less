@@ -1,15 +1,17 @@
+/**
+* @stylesheet Base Styles
+* @parent Styles.baseline-elements
+*
+* @description 
+* Styles on base-level tags should live here, examples include heading sizes, global adjustments, and list formatting. Styles for specific elements or helper classes should go in their separate, respective, files.
+**/
 * {
 	font-family: @defaultFontFamily;
 	font-weight: @defaultFontWeight;
 	-webkit-font-smoothing: antialiased;
-	color: orange;
 }
 body {
 	background: @pageBackground;
-}
-.container {
-	width: 960px;
-	margin: 0 auto;
 }
 section {
 	margin-bottom: 15px;
@@ -22,19 +24,10 @@ a {
 	}
 	cursor: pointer;
 }
-
-.pull-right, .pullright, .float-right, .floatright {
-	float: right;
-}
-.pull-left, .pullleft, .float-left, .float-right {
-	float: left;
-}
-
 h1,h2,h3,h4,h5,h6{
 	margin: 0;
 	margin-bottom: 10px;
 }
-
 	h1 { font-size: 2.5em; }
 	h2 { font-size: 2em; }
 	h3 { font-size: 1.5em; }
@@ -58,18 +51,18 @@ ul{
 ol{
 	list-style-type:decimal;
 	margin:0 0 21px 3em;
-}
-ol ol{
-	list-style:upper-roman;
-}
-ol ol ol{
-	list-style:lower-roman;
-}
-ol ol ol ol{
-	list-style:upper-alpha;
-}
-ol ol ol ol ol{
-	list-style:lower-alpha;
+	ol{
+		list-style:upper-roman;
+		ol{
+			list-style:lower-roman;
+			ol{
+				list-style:upper-alpha;
+				ol{
+					list-style:lower-alpha;
+				}
+			}
+		}
+	}
 }
 ul ul,ol ol,ul ol,ol ul{
 	margin-bottom:0;
@@ -122,8 +115,7 @@ address{
 	margin:0 0 21px 0;
 }
 li address,dd address{
-margin:0;
-
+	margin:0;
 }
 blockquote{
 	margin:0 2.5em;
@@ -148,7 +140,7 @@ a img{
 .content img {
 	background-color: #eee;
 	padding: 3px;
-	border: 1px solid #ccc;
+	border: 1px solid @brand-color-6;
 	margin-bottom: 10px;
 }
 ins,dfn{
@@ -183,9 +175,9 @@ table {
 	margin-bottom:21px;
 	width:100%;
 	border-collapse:separate;
-	border-top:1px solid #ccc;
-	border-left:1px solid #ccc;
-	background: #fff;
+	border-top:1px solid @brand-color-6;
+	border-left:1px solid @brand-color-6;
+	background: @brand-color-7;
 	.border-radius(2px);
 }
 caption{
@@ -195,28 +187,26 @@ caption{
 }
 td,th{
 	padding:3px 6px;
-	border-bottom:1px solid #ccc;
-	border-right:1px solid #ccc;
+	border-bottom:1px solid @brand-color-6;
+	border-right:1px solid @brand-color-6;
 	.text-shadow-light;
 }
 th{
 	background:#eee;
 }
-
 hr {
 	height:1px;
 	margin-bottom:20px;
-	background: #ccc;
+	background: @brand-color-6;
 	border: none;
 }
 iframe {
 	margin-bottom: 20px;
 }
-
 button, .button {
 	background-color: @colorLinks;
 	border: 1px solid darken(@colorLinks, 10%);
-	color: #fff;
+	color: @brand-color-7;
 	.text-shadow;
 	.border-radius(2px);
 	padding: 5px 15px;
@@ -226,62 +216,5 @@ button, .button {
 	text-decoration: none;
 	&:hover, &.active {
 		background-color: darken(@colorLinks, 10%);
-	}
-}
-.center {
-	margin-right: auto;
-	margin-left: auto;
-	text-align: center;
-}
-a.next {
-	text-transform: uppercase;
-	color: #7b7b7a;
-	font-weight: bold;
-	font-size: 12px;
-	line-height: 14px;
-	text-decoration: none;
-	
-	&:hover {
-		text-decoration: underline;
-	}
-	
-	&:after {
-		content: '\e015';
-		text-decoration: inherit;
-		display: inline;
-		font: normal normal 18px/12px Bitstrap;
-	}
-}
-.well {
-	padding: 20px;
-	margin-bottom: 20px;
-	background: #eeeeee;
-}
-.clear {
-	clear: both;
-}
-
-ul.pager {
-	list-style: none;
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	clear: both;
-	
-	li {
-		display: inline-block;
-	}
-	.next {
-		float: right;
-	}
-	.previous {
-		float: left;
-	}
-	&::before, &::after {
-		display: table;
-		content: " ";
-	}
-	&::after {
-		clear: both;
 	}
 }
