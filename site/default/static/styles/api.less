@@ -9,7 +9,11 @@
 
 /**
 * @styles simple-tag Simple Tag
-
+*
+* @description
+* Simple tags are styles independently from parent containers and are different from the `ul.tags li` elements.
+*
+* @demo demos/api/simple-tag/demo.html
 **/
 .simple-tag {
   display: inline-block;
@@ -33,83 +37,100 @@
 *
 * @demo demos/api/title-section/demo.html
 **/
-.docs .title {
-  display: block;
-  border-bottom: 1px solid #eae9e9;
-  .heading {
-  	position: relative;
-  	margin: 0; 
-  	h1 {
-  	  margin: 0;
-  	  display: inline-block;
-      max-width: 550px;
-      word-wrap: break-word;
-  	}		  
-    .module {
-    	position: absolute;
-    	right: 0;
-    	display: inline-block;
-    	top: 10px;
-    }
-    ul.tags {
-      	margin-bottom: 0 !important;
-    	  text-align: left;
+.docs {
+  .title {
+    display: block;
+    border-bottom: 1px solid #eae9e9;
+    .heading {
+    	position: relative;
+    	margin: 0; 
+    	h1 {
+    	  margin: 0;
+    	  display: inline-block;
+        max-width: 550px;
+        word-wrap: break-word;
+    	}		  
+      .module {
+      	position: absolute;
+      	right: 0;
       	display: inline-block;
+      	top: 10px;
+      }
+      ul.tags {
+        	margin-bottom: 0 !important;
+      	  text-align: left;
+        	display: inline-block;
+      }
+    }
+    h2,h3 {
+    	display: inline-block;
+    }
+    h2 {
+    	margin: 0;
+    	code {
+    		background: none;
+    		color: #767676;
+    		font-size: 18px;
+    		font-weight: bold;
+    	}
+    }
+    .sub-heading, ul.links {
+    	float: left;
+    	display: block;
+    	width: 50%;
+    	box-sizing: border-box;
+    	margin: 0;
+    }
+    ul.links {
+    	margin-bottom: 16px;
+    }
+    .links, 
+    .tags {
+      list-style: none;
+      margin: 0;
+      text-align: right;
+      padding: 0;
+    }
+    .tags {
+      display: inline-block;
+      margin: 0;
+      position: relative;
+      top: -5px;
+          li {
+            .simple-tag();
+          }
+    }
+    .links li {
+      display: inline-block;
+      margin-top: 1px;
+      &:before {
+        content: '|';
+        padding-right: 5px;
+        padding-left: 3px;
+      }
+      &:first-child:before {
+        content: none;
+        padding: none;
+      }
     }
   }
-  h2,h3 {
-  	display: inline-block;
-  }
-  h2 {
-  	margin: 0;
-  	code {
-  		background: none;
-  		color: #767676;
-  		font-size: 18px;
-  		font-weight: bold;
-  	}
-  }
-  .sub-heading, ul.links {
-  	float: left;
-  	display: block;
-  	width: 50%;
-  	box-sizing: border-box;
-  	margin: 0;
-  }
-  ul.links {
-  	margin-bottom: 16px;
-  }
-  .links, 
-  .tags {
-    list-style: none;
+  h1 {
     margin: 0;
-    text-align: right;
-    padding: 0;
-  }
-  .tags {
     display: inline-block;
-    margin: 0;
-    position: relative;
-    top: -5px;
-        li {
-          .simple-tag();
-        }
   }
-  .links li {
-    display: inline-block;
-    margin-top: 1px;
-    &:before {
-      content: '|';
-      padding-right: 5px;
-      padding-left: 3px;
-    }
-    &:first-child:before {
-      content: none;
-      padding: none;
-    }
+  .module,  .inherits,  .title .links li {
+    font-size: 14px;
+    color: #999999;
+    font-weight: normal;
+    font-style: normal;
+  }
+  .inherits {
+    display: block;
   }
 }
 
+
+// Docs General Styles
 .docs {	
   .content.docs {
     width: 662px;
@@ -133,36 +154,61 @@
       border: 1px solid @brand-color-13;
     }
   }
+  .contents li {
+    line-height: 24px;
+    list-style-type: square;
+  }
   footer {
     margin-top: 20px;
   }
-  .signature-wrapper {
-  	padding: 10px 15px 0;
-  	border: 1px solid @brand-color-1;
-    border-radius: 0 0 5px 5px;
-  	&*:last-child {
-  		margin-bottom: 0;
-  	}
+}
+
+/**
+* @styles docs-warning Docs Warning
+*
+*
+* @demo demos/api/docs-warning/demo.html
+**/
+.docs {
+  .warning {
+    background-color: #f2dede;
+    h3 {
+      background-color: #d9534f;
+      color: #fff;
+      font-size: 18px;
+      line-height: 24px;
+      margin: 0;
+      -webkit-border-top-left-radius: 4px;
+      -webkit-border-top-right-radius: 4px;
+      -moz-border-radius-topleft: 4px;
+      -moz-border-radius-topright: 4px;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      padding: 3px 15px;
+    }
   }
 }
 
+
+// Styles the wrapper of the sidebar and content of the docs.
 .container.api {
 	display: table;
 	table-layout: fixed;
   border-bottom: 1px solid #d5d5d5;
 	padding-top: 20px;
-  border-radius:5px;
+  border-radius: 5px;
 }
 .container.api > * {
 	display: table-cell !important;
 	vertical-align: top;
 }
+
+
+// Search Styles. Currently search is not being shown.
 .search-wrapper {
-	position: relative;
-}
-.container.api > * {
-	display: table-cell !important;
-	vertical-align: top;
+  position: relative;
+  visibility: hidden;
+  display: none;
 }
 .search {
   display: block;
@@ -198,43 +244,21 @@
   }
 }
 
-.docs {
 
-  h1 {
-    margin: 0;
-    display: inline-block;
+/**
+* @styles signature Signature
+*
+* @demo demos/api/signature/demo.html
+**/
+.docs .signature-wrapper {
+  padding: 10px 15px 0;
+  border: 1px solid @brand-color-1;
+  border-radius: 0 0 5px 5px;
+  &*:last-child {
+    margin-bottom: 0;
   }
-  .module,  .inherits,  .title .links li {
-    font-size: 14px;
-    color: #999999;
-    font-weight: normal;
-    font-style: normal;
-  }
-  .inherits {
-    display: block;
-  }
-  .warning {
-    background-color: #f2dede;
-    
-    h3 {
-      background-color: #d9534f;
-      color: #fff;
-      font-size: 18px;
-      line-height: 24px;
-      margin: 0;
-      -webkit-border-top-left-radius: 4px;
-      -webkit-border-top-right-radius: 4px;
-      -moz-border-radius-topleft: 4px;
-      -moz-border-radius-topright: 4px;
-      border-top-left-radius: 4px;
-      border-top-right-radius: 4px;
-      padding: 3px 15px;
-    }
-  }
-  .contents li {
-    line-height: 24px;
-    list-style-type: square;
-  }
+}
+.docs {
   .signature.collapsed :not(h2) {
     display: none;
   }
@@ -252,7 +276,6 @@
     border-top-right-radius: 4px;
     padding: 3px 15px;
     .text-shadow;
-    
     span {
       font-size: 10px;
       font-weight: normal;
@@ -261,14 +284,63 @@
     }
     
     code {
-    	background-color: transparent;
-    	color: #fff;
+      background-color: transparent;
+      color: #fff;
     }
     a {
-    	color: #fff;
+      color: #fff;
     }
   }
+}
 
+/**
+* @styles small-signature Small Signature
+*
+* @demo demos/api/small-signature/demo.html
+**/
+.small-signature {
+  padding: 10px;
+  background-color: #fcfafa;
+  border: 1px solid #ece7e7;
+  margin-bottom: 10px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  
+  a.sig {
+    text-decoration: none;
+    color: #000;
+    display: block;
+    font-weight: bold;
+    code, code * {
+      background-color: none;
+      font-weight: bold;
+      background-color: transparent;
+    }
+    .pln {
+      color: black;
+    }
+  }
+  
+  p {
+    color: #666;
+    line-height: 15px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+
+/**
+* @styles parameters-returns Parameters and Returns
+*
+* @description 
+* Paramenters and returns are shown inside of `.signature` but their styles are not dependant of it.
+*
+* @demo demos/api/parameters-returns/demo.html
+**/
+.docs {
   .parameters, .returns {
     list-style-type: none;
     margin: 0 0 15px;
@@ -314,7 +386,8 @@
   .parameters .options {
     margin-right: 50px;
   }
-  .parameters .options .option, .returns .options .option {
+  .parameters .options .option, 
+  .returns .options .option {
     margin: 0 -10px 15px;
     list-style-type: none;
     border-top: 1px solid @brand-color-6;
@@ -325,6 +398,27 @@
     font-size: 8pt;
     line-height: 20px;
   }
+}
+.docs .parameters ul.options:last-child,
+.docs .returns ul.options:last-child {
+  margin-bottom: 0;
+}
+.docs .parameters .description,
+.docs .returns .description {
+  padding-bottom: 15px; 
+}
+.docs .returns .description {
+  margin-top: 15px;
+}
+.docs .parameters :last-child .description,
+.docs .returns :last-child .description {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+}
+
+
+// demo
+.docs {
   .demo {
     ul {
       list-style: none;
@@ -349,27 +443,10 @@
       border: 1px solid @brand-color-13;
     }
   }
-        body.style-demo {
-        background-color: @brand-color-7; 
-        padding: 10px;
-      }
-
-}
-.docs .parameters ul.options:last-child,
-.docs .returns ul.options:last-child {
-  margin-bottom: 0;
-}
-.docs .parameters .description,
-.docs .returns .description {
-  padding-bottom: 15px; 
-}
-.docs .returns .description {
-	margin-top: 15px;
-}
-.docs .parameters :last-child .description,
-.docs .returns :last-child .description {
-  margin-bottom: 0px;
-  padding-bottom: 0px;
+  body.style-demo {
+    background-color: @brand-color-7;
+    padding: 10px;
+  }
 }
 
 
@@ -384,35 +461,4 @@
   }
 }
 
-.small-signature {
-	padding: 10px;
-	background-color: #fcfafa;
-	border: 1px solid #ece7e7;
-	margin-bottom: 10px;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-	
-	a.sig {
-		text-decoration: none;
-		color: #000;
-		display: block;
-		font-weight: bold;
-		code, code * {
-		  background-color: none;
-		  font-weight: bold;
-		  background-color: transparent;
-		}
-		.pln {
-		  color: black;
-		}
-	}
-	
-	p {
-		color: #666;
-		line-height: 15px;
-		margin-bottom: 0px;
-		margin-left: 10px;
-		margin-right: 10px;
-	}
-}
+
