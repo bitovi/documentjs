@@ -1,3 +1,10 @@
+/**
+* @stylesheet code.less Code Rendering
+* @parent Styles.baseline-elements
+*
+* @description
+* Enables both the layout of code wells, and also the syntax highlighting of the specific code language. Syntax coloring provided by prettyprint with the <a href="https://github.com/chriskempson/tomorrow-theme">Tomorrow Theme</a>.
+**/
 code {
 	background-color: @colorCode;
   border-radius: 5px;
@@ -5,12 +12,12 @@ code {
 }
 pre, code, pre *, code * {
 	font-family: "Courier New", Courier, mono;
-    font-style: normal;
-    font-weight: 300; 
+  font-style: normal;
+  font-weight: 300; 
 }
 pre {
-  background-color: #fff;
-  border: 1px solid #d9d9d9;
+  background-color: @brand-color-7;
+  border: 1px solid @brand-color-19;
   border-radius: 5px;
   margin: 0;
   margin-bottom: 20px;
@@ -22,7 +29,7 @@ pre {
   	font-size: 14px;
   	line-height: 16px;
   	letter-spacing: 0px;
-  	background-color: rgba(0,0,0,0);
+  	background-color: transparent;
   }
   
   ol {
@@ -31,8 +38,8 @@ pre {
   	
   	li {
   		text-indent: 0;
-  		color: #333;
-  		background-color: #fff;
+  		color: @brand-color-20;
+  		background-color: @brand-color-7;
   		margin: 0;
   		list-style: decimal;
   	}
@@ -172,7 +179,7 @@ pre.prettyprint {
   font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
   font-size: 12px;
   line-height: 1.5;
-  border: 1px solid #d6d6d6;
+  border: 1px solid @brand-color-13;
   padding: 10px;
 }
 
