@@ -47,7 +47,13 @@ return can.Control.extend({
 			source = $.trim(source);
 
 			self.element.find('[data-for=html] > pre').html(self.prettify(html));
-			self.element.find('[data-for=js] > pre').html(self.prettify( source.replace(/\t/g,"  ") ));
+
+			var prettySource = self.prettify( source.replace(/\t/g,"  ") );
+			if(prettySource.length) {
+				self.element.find('[data-for=js] > pre').html(prettySource);
+				self.element.find('[data-tab=js]').show();
+			}
+
 
 			//prettyPrint();
 	

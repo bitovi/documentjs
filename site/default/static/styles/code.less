@@ -3,9 +3,50 @@
 * @parent Styles.baseline-elements
 *
 * @description
-* Enables both the layout of code wells, and also the syntax highlighting of the specific code language. Syntax coloring provided by prettyprint with the <a href="https://github.com/chriskempson/tomorrow-theme">Tomorrow Theme</a>.
+* Enables both the layout of code wells, and also the syntax highlighting of the specific code language. Syntax coloring provided by prettify.js with the <a href="https://github.com/chriskempson/tomorrow-theme">Tomorrow Theme</a>.
+* 
+* Code "wells" are styled based on the use of the `<pre>` and `<code>` tags around your desired code example.
 *
-* @demo demos/code/demo.html
+* Below are a few example in various languages. This is not an exhaustive list of supported languages. That is dependant on prettify.js' capabilities.
+*
+* ### HTML 
+* ```
+* <pre>
+    <code>
+      <div class="example"><!--with a comment -->
+        <h1>Example</h1>
+        <p>This is some example code that is being styled.</p>
+      </div>
+    </code>
+  </pre>
+*
+* ```
+* ### JavaScript
+*```
+var foo = require('f'),
+    bar = require('br'),
+    writeFile = f.denodify(br.writeFile),
+    path = require('path');
+    
+module.exports = function(littlePromise, options){
+   return littlePromise.then(function(little){
+     return writeFile(
+         path.join(options.dest,'little.json'), 
+         JSON.stringify(little) );
+   });
+};
+* ```
+* ### JSON
+*```
+{
+  "sites": {
+    "docs": {
+      "key" : "value"
+    }
+  }
+}
+* ```
+*
 **/
 code {
 	background-color: @colorCode;
