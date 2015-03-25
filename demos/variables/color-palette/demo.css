@@ -72,10 +72,11 @@
 /*Temp*/
 .swatches-list {
   list-style: none;
+  margin: 10px;
 }
 
 .swatches-list li {
-  width: 20%;
+  width: 23%;
   float: left;
   height: 100px;
   text-align: center;
