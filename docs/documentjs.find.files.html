@@ -43,17 +43,18 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../index.html">Home</a>
+        </li>
+        <li >
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li >
+        	<a href="/styles/index.html">Styles</a>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,9 +85,11 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="documentjs.find.html" data-search="find">
 				find
@@ -96,7 +99,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>methods</span>
 						
@@ -105,7 +107,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container active ">
 					<a class="function" href="documentjs.find.files.html" data-search="documentjs.find.files">
 						files
 					</a>
@@ -116,9 +118,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -126,7 +126,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>types</span>
 						
@@ -146,9 +145,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -156,12 +153,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -187,9 +183,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#master/find/files.js#L4">source</a></li>
 	
 	
 	
@@ -290,6 +286,12 @@ emits events for matched files.</p>
 		
 
 		
+		<section class="comment">
+			
+		</section>
+		
+		
+
 		
 
 		
@@ -307,7 +309,7 @@ emits events for matched files.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"function","name":"documentjs.find.files","parent":"documentjs.find.methods","src":"lib/find/files.js","line":4,"codeLine":34,"description":"","title":"","signatures":[{"code":".find.files(options)","description":"","params":[{"types":[{"type":"Object","options":[{"name":"glob","description":"<p>The glob\noption either specifies a <a href=\"https://github.com/isaacs/minimatch\">minmatch</a>\npattern like:</p>\n<pre><code>documentjs.find.files({glob: &quot;*.js&quot;})\n</code></pre>\n<p>Or a [documentjs.find.globObject GlobObject] that specifies the\na <a href=\"https://github.com/isaacs/minimatch\">minmatch</a> pattern and\nother options like:</p>\n<pre><code>documentjs.find.files({\n  glob: {\n    pattern: &quot;*.js&quot;,\n    cwd: __dirname  \n  }\n})\n</code></pre>\n","types":[{"type":"String"},{"type":"documentjs.find.globObject"}]}]}],"name":"options","description":"<p>Options that configure the behavior of the\nfiles that will be processed.</p>\n"}],"returns":{"types":[{"type":"documentjs.process.types.FileEventEmitter"}],"description":"<p>An event emitter that\nemits events for matched files.</p>\n"}}],"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"type":"function","name":"documentjs.find.files","parent":"documentjs.find.methods","src":"lib/find/files.js","line":4,"codeLine":34,"description":"","title":"","signatures":[{"code":".find.files(options)","description":"","params":[{"types":[{"type":"Object","options":[{"name":"glob","description":"The glob\noption either specifies a [minmatch](https://github.com/isaacs/minimatch) \npattern like:\n\n    documentjs.find.files({glob: \"*.js\"})\n\nOr a [documentjs.find.globObject GlobObject] that specifies the \na [minmatch](https://github.com/isaacs/minimatch) pattern and\nother options like:\n\n    documentjs.find.files({\n      glob: {\n        pattern: \"*.js\",\n        cwd: __dirname  \n      }\n    })","types":[{"type":"String"},{"type":"documentjs.find.globObject"}]}]}],"name":"options","description":"Options that configure the behavior of the\nfiles that will be processed."}],"returns":{"types":[{"type":"documentjs.process.types.FileEventEmitter"}],"description":"An event emitter that\nemits events for matched files."}}],"templates":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs"},"watch":true,"forceBuild":true,"dest":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
 	</script>
 	
 	
@@ -320,6 +322,7 @@ emits events for matched files.</p>
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

@@ -43,17 +43,18 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../index.html">Home</a>
+        </li>
+        <li >
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li >
+        	<a href="/styles/index.html">Styles</a>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,9 +85,11 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="documentjs.tags.html" data-search="tags">
 				tags
@@ -205,7 +208,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container active ">
 					<a class="constructor" href="documentjs.tags.function.html" data-search="@function">
 						@function
 					</a>
@@ -403,6 +406,18 @@
 			
 		
 			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.style.html" data-search="@stylesheet">
+						@stylesheet
+					</a>
+				</li>
+				
+			
+			
+		
+			
 		
 			
 		
@@ -432,12 +447,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -467,9 +481,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#master/tags/function.js">source</a></li>
 	
 	
 	
@@ -498,14 +512,6 @@
 					<h2 id="sig__function_NAME__TITLE_">@function [NAME] [TITLE]
 </h2>
 <div class="signature-wrapper">
-<pre><code class="language-javascript">/**
- * @function lib.Component.prototype.update update
- * @parent lib.Component
- */
-C.p.update = function(){
-     
-}
-</code></pre>
 
 
 	<h3>Parameters</h3>
@@ -558,18 +564,11 @@ following the comment.</p>
 		<section class="comment">
 			<h2>Code Matching</h2>
 <p>The <code>@function</code> type can be infered from code like the following:</p>
-<pre><code class="language-javascript">/**
- * The foo function exists
- */
-foo: function(){}
-/**
- * The bar function exists
- */
-bar = function(){}
-</code></pre>
 
 		</section>
 		
+		
+
 		
 
 		
@@ -587,7 +586,7 @@ bar = function(){}
 
 	
 		<script type="text/javascript">
-		var docObject = {"name":"documentjs.tags.function","type":"constructor","parent":"documentjs.tags","src":"lib/tags/function.js","line":13,"codeLine":56,"description":"<p>Specifies the comment is for a function. Use [documentjs.tags.param @param] to specify the arguments of a function.</p>\n","title":"@function","signatures":[{"code":"@function [NAME] [TITLE]","description":"<pre><code class=\"language-javascript\">/**\n * @function lib.Component.prototype.update update\n * @parent lib.Component\n */\nC.p.update = function(){\n     \n}\n</code></pre>\n","params":[{"types":[{"type":"String"}],"optional":true,"name":"NAME","description":"<p>The name of the function. It should\nbe supplied if it can not be determined from the code block\nfollowing the comment.</p>\n"},{"types":[{"type":"String"}],"optional":true,"name":"TITLE","description":"<p>The title to be used for display purposes.</p>\n"}]}],"comment":" ","templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"name":"documentjs.tags.function","type":"constructor","parent":"documentjs.tags","src":"lib/tags/function.js","line":13,"codeLine":56,"description":"Specifies the comment is for a function. Use [documentjs.tags.param @param] to specify the arguments of a function.","title":"@function","signatures":[{"code":"@function [NAME] [TITLE]","description":"","params":[{"types":[{"type":"String"}],"optional":true,"name":"NAME","description":"The name of the function. It should \nbe supplied if it can not be determined from the code block\nfollowing the comment."},{"types":[{"type":"String"}],"optional":true,"name":"TITLE","description":"The title to be used for display purposes."}]}],"comment":" ","templates":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs"},"watch":true,"forceBuild":true,"dest":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
 	</script>
 	
 	
@@ -600,6 +599,7 @@ bar = function(){}
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

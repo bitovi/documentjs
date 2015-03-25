@@ -43,17 +43,18 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../index.html">Home</a>
+        </li>
+        <li >
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li >
+        	<a href="/styles/index.html">Styles</a>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,9 +85,11 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="documentjs.tags.html" data-search="tags">
 				tags
@@ -403,6 +406,18 @@
 			
 		
 			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.style.html" data-search="@stylesheet">
+						@stylesheet
+					</a>
+				</li>
+				
+			
+			
+		
+			
 		
 			
 		
@@ -432,12 +447,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -467,9 +481,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#master/tags/image.js">source</a></li>
 	
 	
 	
@@ -530,13 +544,7 @@
 			<h4>HEIGHT
 				<code>{Number}</code><span class="pull-right optional">Optional</span></h4>
 			<div class="description">
-				<pre><code class="language-js">/**
- * @body
- * Check out this awesomeness:
- * @image site/images/page_type_example.png 640 480
- */
-</code></pre>
-
+				
 			</div>
 			
 			
@@ -560,6 +568,12 @@
 		
 
 		
+		<section class="comment">
+			
+		</section>
+		
+		
+
 		
 
 		
@@ -577,7 +591,7 @@
 
 	
 		<script type="text/javascript">
-		var docObject = {"name":"documentjs.tags.image","type":"constructor","parent":"documentjs.tags","src":"lib/tags/image.js","line":0,"codeLine":21,"description":"<p>Adds an image.</p>\n","title":"@image","hide":true,"signatures":[{"code":"@image SRC [WIDTH] [HEIGHT]","description":"","params":[{"types":[{"type":"String"}],"name":"SRC","description":""},{"types":[{"type":"Number"}],"optional":true,"name":"WIDTH","description":""},{"types":[{"type":"Number"}],"optional":true,"name":"HEIGHT","description":"<pre><code class=\"language-js\">/**\n * @body\n * Check out this awesomeness:\n * @image site/images/page_type_example.png 640 480\n */\n</code></pre>\n"}]}],"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"name":"documentjs.tags.image","type":"constructor","parent":"documentjs.tags","src":"lib/tags/image.js","line":0,"codeLine":21,"description":"Adds an image.","title":"@image","hide":true,"signatures":[{"code":"@image SRC [WIDTH] [HEIGHT]","description":"","params":[{"types":[{"type":"String"}],"name":"SRC","description":""},{"types":[{"type":"Number"}],"optional":true,"name":"WIDTH","description":""},{"types":[{"type":"Number"}],"optional":true,"name":"HEIGHT","description":""}]}],"templates":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs"},"watch":true,"forceBuild":true,"dest":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
 	</script>
 	
 	
@@ -590,6 +604,7 @@
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

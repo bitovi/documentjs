@@ -43,17 +43,18 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../index.html">Home</a>
+        </li>
+        <li >
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li >
+        	<a href="/styles/index.html">Styles</a>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,9 +85,11 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="documentjs.tags.html" data-search="tags">
 				tags
@@ -123,7 +126,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container active ">
 					<a class="constructor" href="documentjs.tags.add.html" data-search="@add ">
 						@add 
 					</a>
@@ -403,6 +406,18 @@
 			
 		
 			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.style.html" data-search="@stylesheet">
+						@stylesheet
+					</a>
+				</li>
+				
+			
+			
+		
+			
 		
 			
 		
@@ -432,12 +447,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -467,9 +481,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#master/tags/add.js">source</a></li>
 	
 	
 	
@@ -545,22 +559,11 @@ allowing comments to not have to write out a full name and <a href="documentjs.t
 <p>In the following example, a docObject named <code>lib.Component.prototype.plugin</code>
 and <code>lib.Component.prototype.draw</code> will be created, each with <code>lib.Component.prototype</code>
 as their parent.</p>
-<pre><code class="language-javascript">/** @add lib.Component.prototype */
-lib.extend(lib.Component.prototype,{
-  /**
-   * A plugin method on [lib.Component]
-   */
-  plugin: function(){},
-  /**
-   * @property draw
-   * A plugin method on [lib.Component]
-   */
-  draw: {}
-})
-</code></pre>
 
 		</section>
 		
+		
+
 		
 
 		
@@ -578,7 +581,7 @@ lib.extend(lib.Component.prototype,{
 
 	
 		<script type="text/javascript">
-		var docObject = {"name":"documentjs.tags.add","type":"constructor","parent":"documentjs.tags","src":"lib/tags/add.js","line":1,"codeLine":44,"description":"<p>Sets a [documentjs.process.docObject] as the\ncurrent scope.</p>\n","title":"@add ","signatures":[{"code":"@add NAME","description":"","params":[{"types":[{"type":"STRING"}],"name":"NAME","description":"<p>The name of [documentjs.process.docObject]\nto set as the scope.</p>\n"}]}],"comment":" ","templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"name":"documentjs.tags.add","type":"constructor","parent":"documentjs.tags","src":"lib/tags/add.js","line":1,"codeLine":44,"description":"Sets a [documentjs.process.docObject] as the \ncurrent scope.","title":"@add ","signatures":[{"code":"@add NAME","description":"","params":[{"types":[{"type":"STRING"}],"name":"NAME","description":"The name of [documentjs.process.docObject]\nto set as the scope."}]}],"comment":" ","templates":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs"},"watch":true,"forceBuild":true,"dest":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
 	</script>
 	
 	
@@ -591,6 +594,7 @@ lib.extend(lib.Component.prototype,{
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

@@ -43,17 +43,18 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../index.html">Home</a>
+        </li>
+        <li >
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li >
+        	<a href="/styles/index.html">Styles</a>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,9 +85,11 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="documentjs.find.html" data-search="find">
 				find
@@ -96,7 +99,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>methods</span>
 						
@@ -116,9 +118,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -126,7 +126,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>types</span>
 						
@@ -135,7 +134,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container active ">
 					<a class="typedef" href="documentjs.find.globObject.html" data-search="GlobObject">
 						GlobObject
 					</a>
@@ -146,9 +145,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -156,12 +153,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -193,9 +189,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#master/find/glob_object.md">source</a></li>
 	
 	
 	
@@ -299,6 +295,12 @@ pattern. The following matches all <code>.js</code> files:</p>
 		
 
 		
+		<section class="comment">
+			
+		</section>
+		
+		
+
 		
 
 		
@@ -316,7 +318,7 @@ pattern. The following matches all <code>.js</code> files:</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"typedef","name":"documentjs.find.globObject","src":"lib/find/glob_object.md","description":"<p>An options object that configures the behavior\nof [documentjs.find.files]. It supports all of the\noptions object of <a href=\"https://github.com/isaacs/node-glob\">node-glob</a>\nplus a pattern option that is used as <code>node-glob</code>'s first argument. Only the\nmost commonly used options are specified below:</p>\n","title":"GlobObject","types":[{"type":"Object","options":[{"name":"pattern","description":"<p>A <a href=\"https://github.com/isaacs/minimatch\">minmatch</a>\npattern. The following matches all <code>.js</code> files:</p>\n<pre><code>&quot;**/*.js&quot;\n</code></pre>\n","types":[{"type":"String"}]},{"name":"cwd","description":"<p>The current working directory in which to search. Defaults to process.cwd()</p>\n","types":[{"type":"String"}],"optional":true},{"name":"ignore","description":"<p>A pattern to ignore.  For example, to ignore everything in node_modules:</p>\n<pre><code>{\n  pattern: &quot;**/*.js&quot;,\n  ignore: &quot;node_modules/**/*&quot;\n}\n</code></pre>\n","types":[{"type":"String"}],"optional":true}]}],"parent":"documentjs.find.types","templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"type":"typedef","name":"documentjs.find.globObject","src":"lib/find/glob_object.md","description":"An options object that configures the behavior \nof [documentjs.find.files]. It supports all of the \noptions object of [node-glob](https://github.com/isaacs/node-glob)\nplus a pattern option that is used as `node-glob`'s first argument. Only the \nmost commonly used options are specified below:","title":"GlobObject","types":[{"type":"Object","options":[{"name":"pattern","description":"A [minmatch](https://github.com/isaacs/minimatch) \npattern. The following matches all `.js` files:\n\n    \"**/*.js\"","types":[{"type":"String"}]},{"name":"cwd","description":"The current working directory in which to search. Defaults to process.cwd()","types":[{"type":"String"}],"optional":true},{"name":"ignore","description":"A pattern to ignore.  For example, to ignore everything in node_modules:\n\n    {\n      pattern: \"**/*.js\",\n      ignore: \"node_modules/**/*\"\n    }","types":[{"type":"String"}],"optional":true}]}],"parent":"documentjs.find.types","templates":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs"},"watch":true,"forceBuild":true,"dest":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
 	</script>
 	
 	
@@ -329,6 +331,7 @@ pattern. The following matches all <code>.js</code> files:</p>
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

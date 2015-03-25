@@ -43,17 +43,18 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../index.html">Home</a>
+        </li>
+        <li >
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li >
+        	<a href="/styles/index.html">Styles</a>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,9 +85,11 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="documentjs.tags.html" data-search="tags">
 				tags
@@ -149,7 +152,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container active ">
 					<a class="constructor" href="documentjs.tags.body.html" data-search="@body">
 						@body
 					</a>
@@ -403,6 +406,18 @@
 			
 		
 			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.style.html" data-search="@stylesheet">
+						@stylesheet
+					</a>
+				</li>
+				
+			
+			
+		
+			
 		
 			
 		
@@ -432,12 +447,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -467,9 +481,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#master/tags/body.js">source</a></li>
 	
 	
 	
@@ -526,49 +540,16 @@ of an html page generated with
 the <a href="documentjs.generators.html.html">default html generator</a>.</p>
 <p>In the following example, <code>@body</code> stops content from being added to <a href="documentjs.tags.param.html">@param</a>,
 and instead makes content be added to the body property.</p>
-<pre><code class="language-javascript">/**
- * A component for lib.
- * 
- * @param {String} name The name of the
- * component.
- * 
- * @body
- * 
- * ## Use
- * 
- * ```
- * new lib.Component(&quot;name&quot;)
- * ```
- */
-lib.Component = function(name){}
-</code></pre>
 <p>By default
 the first paragraph of content that is not after a multi-line tag like <a href="documentjs.tags.signature.html">@signature</a>,
 <a href="documentjs.tags.param.html">@param</a>, etc, is set as the <a href="documentjs.tags.description.html">@description</a>.  All content
 after the first paragraph is set as the body content.</p>
 <p>You can see what is treated as description and body by default in the following example:</p>
-<pre><code class="language-javascript">/**
- * @function 
- * 
- * DESCRIPTION DESCRIPTION
- * DESCRIPTION DESCRIPTION
- * 
- * BODY BODY
- * BODY BODY
- * 
- * BODY BODY
- * 
- * @signature `.cols(cols)` SIGNATURE_DESCRIPTION
- * SIGNATURE_DESCRIPTION SIGNATURE_DESCRIPTION
- *
- * @body
- * BODY BODY
- */
-Graph.prototype.cols = function(cols){ ... }
-</code></pre>
 
 		</section>
 		
+		
+
 		
 
 		
@@ -586,7 +567,7 @@ Graph.prototype.cols = function(cols){ ... }
 
 	
 		<script type="text/javascript">
-		var docObject = {"name":"documentjs.tags.body","type":"constructor","parent":"documentjs.tags","src":"lib/tags/body.js","line":3,"codeLine":79,"description":"<p>Markdown content placed after all signature and API content.</p>\n","title":"@body","signatures":[{"code":"@body","description":"<p>Content after the <code>@body</code> tag appears after\nthe title, description, signature and API content.</p>\n<p><code>@body</code> tag content is treated as markdown and set as\nthe [documentjs.process.docObject]'s <code>body</code> property.</p>\n","params":[]}],"comment":" ","templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"name":"documentjs.tags.body","type":"constructor","parent":"documentjs.tags","src":"lib/tags/body.js","line":2,"codeLine":78,"description":"Markdown content placed after all signature and API content.","title":"@body","signatures":[{"code":"@body","description":"Content after the `@body` tag appears after \nthe title, description, signature and API content.\n\n`@body` tag content is treated as markdown and set as \nthe [documentjs.process.docObject]'s `body` property.","params":[]}],"comment":" ","templates":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs"},"watch":true,"forceBuild":true,"dest":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
 	</script>
 	
 	
@@ -599,6 +580,7 @@ Graph.prototype.cols = function(cols){ ... }
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

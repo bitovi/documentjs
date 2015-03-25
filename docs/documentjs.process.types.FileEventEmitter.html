@@ -43,17 +43,18 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../index.html">Home</a>
+        </li>
+        <li >
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li >
+        	<a href="/styles/index.html">Styles</a>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,9 +85,11 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="documentjs.process.html" data-search="process">
 				process
@@ -96,7 +99,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>methods</span>
 						
@@ -164,9 +166,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -174,7 +174,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>types</span>
 						
@@ -231,7 +230,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container active ">
 					<a class="typedef" href="documentjs.process.types.FileEventEmitter.html" data-search="fileEventEmitter">
 						fileEventEmitter
 					</a>
@@ -254,9 +253,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -266,12 +263,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -303,9 +299,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#master/process/file_event_emitter.md">source</a></li>
 	
 	
 	
@@ -412,6 +408,12 @@ that produces events that correlate to files that should be processed.</p>
 		
 
 		
+		<section class="comment">
+			
+		</section>
+		
+		
+
 		
 
 		
@@ -429,7 +431,7 @@ that produces events that correlate to files that should be processed.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"typedef","name":"documentjs.process.types.FileEventEmitter","src":"lib/process/file_event_emitter.md","description":"<p>A node <a href=\"http://nodejs.org/api/events.html#events_class_events_eventemitter\">event emitter</a>\nthat produces events that correlate to files that should be processed.</p>\n","title":"fileEventEmitter","types":[{"type":"Object","options":[{"name":"on","types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[{"name":"event"},{"name":"listener"}]}],"description":"<p>Registers an event listener.  File event emitters should dispatch:</p>\n<ul>\n<li><code>&quot;match&quot;</code> events that call listener with the matched path.</li>\n<li><code>&quot;end&quot;</code> events that call listener when there are no more matches.</li>\n</ul>\n"},{"name":"cwd","types":[{"type":"String"}],"description":"<p>The root directory where &quot;match&quot; events are relative to.</p>\n"}]}],"parent":"documentjs.process.types","templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"type":"typedef","name":"documentjs.process.types.FileEventEmitter","src":"lib/process/file_event_emitter.md","description":"A node [event emitter](http://nodejs.org/api/events.html#events_class_events_eventemitter)\nthat produces events that correlate to files that should be processed.","title":"fileEventEmitter","types":[{"type":"Object","options":[{"name":"on","types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[{"name":"event"},{"name":"listener"}]}],"description":"Registers an event listener.  File event emitters should dispatch:\n\n - `\"match\"` events that call listener with the matched path.\n - `\"end\"` events that call listener when there are no more matches."},{"name":"cwd","types":[{"type":"String"}],"description":"The root directory where \"match\" events are relative to."}]}],"parent":"documentjs.process.types","templates":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs"},"watch":true,"forceBuild":true,"dest":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
 	</script>
 	
 	
@@ -442,6 +444,7 @@ that produces events that correlate to files that should be processed.</p>
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	
