@@ -13,6 +13,10 @@
 body {
 	background: @pageBackground;
 }
+body.style-demo {
+  background: @brand-color-7; 
+  padding: 10px;
+}
 section {
 	margin-bottom: 15px;
 }
@@ -23,7 +27,7 @@ section {
 **/
 input,textarea{
 	font-size:1em;
-	padding:3px;
+	padding:5px;
 }
 input[type="submit"]{
 	cursor:pointer;
@@ -32,7 +36,12 @@ input[type="submit"]{
 	outline:none;
 }
 form label{
-	cursor:pointer;
+	display: block;
+	margin-bottom: 5px;
+}
+form input, form textarea, form select {
+	display: block;
+	margin-bottom: 10px;
 }
 option{
 	padding:1px 3px;
@@ -64,4 +73,7 @@ th{
 
 iframe {
 	margin-bottom: 20px;
+	body {
+		background-color: @brand-color-7;
+	}
 }

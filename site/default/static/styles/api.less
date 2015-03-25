@@ -1,71 +1,114 @@
+/**
+* @stylesheet api.less API
+* @parent Styles.docs
+
+* @description
+* Styles the docs and overwrites some of the theme default styles.
+**/
+
+
+/**
+* @styles simple-tag Simple Tag
+
+**/
 .simple-tag {
   display: inline-block;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
   background-color: @colorTags;
-  color: #fff;
+  color: @brand-color-7;
   font-size: 12px;
   margin-left: 5px;
   padding: 2px 8px;
 }
 
 
-.docs {
-	.title {
-	  display: block;
-	  border-bottom: 1px solid #eae9e9;
-	  //padding-bottom: 16px;
-	  
-	  .heading {
-	  	position: relative;
-	  	 margin: 0;
-	  	 
-	  	h1 {
-	  	  margin: 0;
-	  	  display: inline-block;
-        max-width: 550px;
-        word-wrap: break-word;
-	  	}		  
-	    .module {
-	    	position: absolute;
-	    	right: 0;
-	    	display: inline-block;
-	    	top: 10px;
-	    }
-	    ul.tags {
-	      	margin-bottom: 0 !important;
-	    	  text-align: left;
-	      	display: inline-block;
-	    }
-	  	
-	  }
-	  h2,h3 {
-	  	display: inline-block;
-	  }
-	  h2 {
-	  	margin: 0;
-	  	  	code {
-	  	  		background: none;
-	  	  		color: #767676;
-	  	  		font-size: 18px;
-	  	  		font-weight: bold;
-	  	  	}
-	  }
-	  .sub-heading, ul.links {
-	  	float: left;
-	  	display: block;
-	  	width: 50%;
-	  	box-sizing: border-box;
-	  	margin: 0;
-	  }
-	  ul.links {
-	  	margin-bottom: 16px;
-	  }
-	} //.title
-	
-	
-  
+/**
+* @styles docs-title Title Section
+
+* @description
+* Styles the title section that shows as the top of each document, and it's composed by
+* a `.heading`, `tags`, a `subheading`, and a list of `links`.
+**/
+.docs .title {
+  display: block;
+  border-bottom: 1px solid #eae9e9;
+  .heading {
+  	position: relative;
+  	margin: 0; 
+  	h1 {
+  	  margin: 0;
+  	  display: inline-block;
+      max-width: 550px;
+      word-wrap: break-word;
+  	}		  
+    .module {
+    	position: absolute;
+    	right: 0;
+    	display: inline-block;
+    	top: 10px;
+    }
+    ul.tags {
+      	margin-bottom: 0 !important;
+    	  text-align: left;
+      	display: inline-block;
+    }
+  }
+  h2,h3 {
+  	display: inline-block;
+  }
+  h2 {
+  	margin: 0;
+  	code {
+  		background: none;
+  		color: #767676;
+  		font-size: 18px;
+  		font-weight: bold;
+  	}
+  }
+  .sub-heading, ul.links {
+  	float: left;
+  	display: block;
+  	width: 50%;
+  	box-sizing: border-box;
+  	margin: 0;
+  }
+  ul.links {
+  	margin-bottom: 16px;
+  }
+  .links, 
+  .tags {
+    list-style: none;
+    margin: 0;
+    text-align: right;
+    padding: 0;
+  }
+  .tags {
+    display: inline-block;
+    margin: 0;
+    position: relative;
+    top: -5px;
+        li {
+          .simple-tag();
+        }
+  }
+  .links li {
+    display: inline-block;
+    margin-top: 1px;
+    &:before {
+      content: '|';
+      padding-right: 5px;
+      padding-left: 3px;
+    }
+    &:first-child:before {
+      content: none;
+      padding: none;
+    }
+  }
+}
+
+.docs {	
   .content.docs {
     width: 662px;
     margin-top: 20px;
@@ -85,6 +128,7 @@
 
     .iframe_wrapper iframe {
       width: 100%;
+      border: 1px solid @brand-color-13;
     }
   }
   footer {
@@ -99,6 +143,7 @@
   	}
   }
 }
+
 .container.api {
 	display: table;
 	table-layout: fixed;
@@ -151,11 +196,6 @@
   }
 }
 
-
-.title {
-  display: block;
-  border-bottom: 1px solid #eae9e9;
-}
 .docs {
 
   h1 {
@@ -167,36 +207,6 @@
     color: #999999;
     font-weight: normal;
     font-style: normal;
-  }
-  .title {
-  	.links, .tags {
-  	  list-style: none;
-  	  margin: 0;
-  	  text-align: right;
-  	  padding: 0;
-  	}
-  	.tags {
-  		display: inline-block;
-  		margin: 0;
-  		position: relative;
-  		top: -5px;
-  		  	li {
-  		  	  .simple-tag();
-  		  	}
-  	}
-  	.links li {
-  	  display: inline-block;
-  	  margin-top: 1px;
-  	  &:before {
-  	    content: '|';
-  	    padding-right: 5px;
-  	    padding-left: 3px;
-  	  }
-  	  &:first-child:before {
-  	    content: none;
-  	    padding: none;
-  	  }
-  	}
   }
   .inherits {
     display: block;
@@ -334,9 +344,13 @@
     }
     iframe {
       width: 100%;
-      border: 1px solid #d6d6d6;
+      border: 1px solid @brand-color-13;
     }
   }
+        body.style-demo {
+        background-color: @brand-color-7; 
+        padding: 10px;
+      }
 
 }
 .docs .parameters ul.options:last-child,
@@ -356,7 +370,6 @@
   padding-bottom: 0px;
 }
 
-.container {}
 
 #low {
 	.container;
