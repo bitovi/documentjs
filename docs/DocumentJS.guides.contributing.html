@@ -503,7 +503,7 @@ produce a site.</p></li>
 <h2>Website and Documentation</h2>
 <p>DocumentJS's <a href="https://github.com/bitovi/documentjs/tree/gh-pages">gh-pages branch</a> contains
 documentjs.com's code. It uses DocumentJS to produce the website. The best way to
-edit the docs it to:</p>
+edit the docs is to:</p>
 <ol>
 <li><p>Fork/Clone https://github.com/bitovi/documentjs/tree/gh-pages next to the version
 of <code>documentjs</code> you want to be documented:</p>
@@ -514,18 +514,18 @@ of <code>documentjs</code> you want to be documented:</p>
 <pre><code>&gt; cd documentjs.com
 documentjs.com&gt; npm install
 </code></pre></li>
-<li><p>Generate site the entire site with:</p>
+<li><p>Generate the entire site with:</p>
 <pre><code>documentjs.com&gt; npm run-script documentjs
 </code></pre></li>
 <li><p>Update the site with changes in your local <code>documentjs</code>. Change the version number <code>0.0.0</code> accordingly:</p>
 <pre><code>documentjs.com&gt; node node_modules/.bin/documentjs 0.0.0@../documentjs
 </code></pre></li>
 <li><p>Edit source in <code>documentjs</code>.</p></li>
-<li><p>Regenerate site and check changes</p>
+<li><p>Regenerate site and check changes:</p>
 <pre><code>documentjs.com&gt; node node_modules/.bin/documentjs 0.0.0@../documentjs
 </code></pre></li>
-<li><p>Checkin and push changes to documentjs.</p></li>
-<li><p>Checkin and push gh-pages branch changes.</p></li>
+<li><p>Check in and push changes to documentjs.</p></li>
+<li><p>Check in and push gh-pages branch changes.</p></li>
 </ol>
 
 		</section>
