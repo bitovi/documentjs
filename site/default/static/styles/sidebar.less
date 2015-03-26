@@ -67,7 +67,7 @@
   .api {
     .heading span {
       text-transform: uppercase;
-      color: @brand-color-1;
+      color: @darkSkies;
       line-height: 24px;
       display: block;
       font-weight: bold;
@@ -87,7 +87,7 @@
     }
     li li li li a {
       font-size: 13px;
-      color: #666;
+      color: @thunderStorm;
     }
     > li > ul {
       display: none;
@@ -115,7 +115,7 @@
     }
     a, a:hover {
       text-decoration: none;
-      color: @brand-color-1;
+      color: @darkSkies;
       font-style: normal;
     }
     li.active  {
@@ -125,13 +125,13 @@
       font-size: 17px;
       font-weight: normal;
       line-height: 40px;
-      color: #767676;
+      color: @thunderStorm;
       display: block;
       border: none;
     }
     > li > a:hover,
     > li > a:hover {
-      color: #000;
+      color: @night;
     }
     
     li li.parent {
@@ -194,7 +194,7 @@
       position: absolute;
       content: '';
       display: block;
-      border-left: 4px solid @brand-color-1;
+      border-left: 4px solid @darkSkies;
       width: 5px;
       height: 20px;
       left: 5px;
@@ -219,7 +219,7 @@
   .api {
     li.active > a.sidebar-title  {
       font-size: 24px;
-      background-color: @brand-color-1;
+      background-color: @darkSkies;
       border-radius: 5px 0 0 0;
       margin-bottom:20px;
     }
@@ -232,16 +232,16 @@
       margin:-20px 0 20px 0;      
     } 
     li.active:nth-child(2) > a.sidebar-title {
-      background: lighten(@brand-color-1, 10%);
+      background: lighten(@darkSkies, 10%);
     } 
     li.active:nth-child(3) > a.sidebar-title {
-      background: lighten(@brand-color-1, 20%);   
+      background: lighten(@darkSkies, 20%);   
     }
     li.active:nth-child(4) > a.sidebar-title {
-      background: lighten(@brand-color-1, 30%);   
+      background: lighten(@darkSkies, 30%);   
     }        
     li.active:nth-child(5) > a.sidebar-title {
-      background: lighten(@brand-color-1, 40%);   
+      background: lighten(@darkSkies, 40%);   
     }  
 
     &.cascading {
@@ -271,19 +271,19 @@
         height: 0; 
         border-left: 20px solid transparent;
         border-right: 20px solid transparent;
-        border-top: 20px solid @brand-color-1;
+        border-top: 20px solid @darkSkies;
       }
       > .active:nth-child(2):before {
-        border-top: 20px solid lighten(@brand-color-1, 10%);
+        border-top: 20px solid lighten(@darkSkies, 10%);
       }
       > .active:nth-child(3):before {
-        border-top: 20px solid lighten(@brand-color-1, 20%);
+        border-top: 20px solid lighten(@darkSkies, 20%);
       }   
       > .active:nth-child(4):before {
-        border-top: 20px solid lighten(@brand-color-1, 30%);
+        border-top: 20px solid lighten(@darkSkies, 30%);
       }
       > .active:nth-child(5):before {
-        border-top: 20px solid lighten(@brand-color-1, 40%);
+        border-top: 20px solid lighten(@darkSkies, 40%);
       }               
     } // cascading ends 
   } // api ends

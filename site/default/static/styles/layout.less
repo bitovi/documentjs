@@ -15,7 +15,7 @@
 header {
 	display: block;
 	background-color: @colorHeader;
-	color: @brand-color-7;
+	color: @clear;
 	position: relative;
 }
 
@@ -49,7 +49,7 @@ header .nav {
 			text-decoration: none;
 			font-weight: bold;
 			font-size: 12px;
-			color: @brand-color-7;
+			color: @clear;
 			.text-shadow;
 			padding: 5px 10px;
 			border: 1px solid transparent;
@@ -69,7 +69,7 @@ header .nav {
 			content : '';
 			height : 15px;
 			width: 15px;
-			background: @brand-color-7;
+			background: @clear;
 			-moz-transform : rotateZ(-45deg) skewY(5deg) skewX(5deg);
 			-o-transform : rotateZ(-45deg) skewY(5deg) skewX(5deg);
 			-webkit-transform : rotateZ(-45deg) skewY(5deg) skewX(5deg);
@@ -101,8 +101,8 @@ header {
 		visibility: collapse;
 		position: absolute;
 		left: 0;
-		background-color: @brand-color-7;
-		border: 1px solid #d5d5d5;
+		background-color: @clear;
+		border: 1px solid @haze;
 		border-top: none;
 		z-index: 5;
 		margin: 0;
@@ -113,15 +113,15 @@ header {
 		li a {
 			display: block;
 			text-decoration: none;
-			border-bottom: 1px solid #f5f5f5;
-			color: #676767;
+			border-bottom: 1px solid @fog;
+			color: @thunderStorm;
 			font-size: 14px;
 			line-height: 32px;
 			padding-left: 20px;
 			padding-right: 20px;
 			&:hover:after {
 				content: "\e000";
-				color: #dcdada;
+				color: @haze;
 				font: 20px/27px Bitstrap;
 				position: absolute;
 				right: 10px;
@@ -130,8 +130,8 @@ header {
 	}
 	.dropdown-menu li a:hover, 
 	.dropdown-menu li.active a {
-		background-color: #f5f5f5;
-		color: #000;
+		background-color: @fog;
+		color: @night;
 	}
 }
 
@@ -154,7 +154,7 @@ header {
 		}
 	}
 	.bitovi.icon-bits {
-		color: @brand-color-7;
+		color: @clear;
 		text-shadow: 0 -1px 0 rgba(0, 4, 159, 0.49);
 		display: block;
 		opacity: .2;
@@ -169,9 +169,9 @@ header {
 		}
 	}
 	.bitovi-menu:hover .bitovi.icon-bits {
-		background-color: @brand-color-7;
-		border-left: 1px solid #d5d5d5;
-		border-right: 1px solid #d5d5d5;
+		background-color: @clear;
+		border-left: 1px solid @haze;
+		border-right: 1px solid @haze;
 		color: @colorHeader;
 		text-shadow: none;
 		opacity: 1;
@@ -205,8 +205,8 @@ header {
 * @demo demos/layout/footer/demo.html
 **/
 footer {
-	background-color: @brand-color-6;
-	color: #bababa;
+	background-color: @haze;
+	color: @darkSkies;
 	padding-top: 0px;
 	padding-bottom: 0px;
 	position: relative;
