@@ -1,12 +1,13 @@
-@page lsg-quickstart Getting Started
+@page lsg-quickstart Standalone Live Style Guide
 @parent lsg.guides 0
-
-## Overview
+@group lsg-quickstart-group-intro 0 Intro
+@group lsg-quickstart-group-setup 1 Setup
+@group lsg-quickstart-group-writing 2 Writing
 
 This guide will:
 
-* Give a designer-friendly explanation of what DocumentJS does
-* Help you install DocumentJS
+* Give a [designer-friendly explanation](/docs/lsg-quickstart-designers) of what DocumentJS does
+* Help you [install DocumentJS](/docs/lsg-quickstart-)
 * Help you configure a Live Style Guide site
 * Explain how to use [tags](/docs/documentjs.tags.html) to write your Live Style Guide
 
@@ -17,13 +18,4 @@ You should start elsewhere if:
 * You want to set up DocumentJS for [API documentation](/docs/index.html), then [add a Live Style Guide](/docs/lsg-adding.html)
 * You [are totally lost](https://www.youtube.com/watch?v=I0Pow7Gi7Xw)
 
-## DocumentJS for Designers
-
-
-
-## Installing DocumentJS
-
-
-## Configuring your Live Style Guide Site
-
-## Writing your Live Style Guide Documentation
+[Next Page](/docs/lsg-quickstart-designers.html)
