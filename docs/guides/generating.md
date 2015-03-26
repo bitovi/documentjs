@@ -15,11 +15,11 @@ Otherwise, you run:
 
      > ./node_modules/.bin/documentjs
      
-You can specify a version or site to run like:
+You can specify a version or site to run with:
 
      > ./node_modules/.bin/documentjs 1.0.0
 
-You can also specify a local repository to find a version like:
+You can also specify a local repository to find a version with:
 
      > ./node_modules/.bin/documentjs 1.0.0@../documentjs
 
@@ -33,7 +33,7 @@ in [DocumentJS.docConfig], [DocumentJS.projectConfig], or [DocumentJS.siteConfig
  - __debug__ - turn on debug messages
  - __help__ - command line information
 
-You can turn on these options like:
+You can turn on these options with:
 
     > ./node_modules/.bin/documentjs --watch
    
@@ -53,8 +53,7 @@ add a `:NAME` where _NAME_ is the version or site name like:
 
     > grunt documentjs:2.0
 
-You can point a version to a local copy like:
-
+You can point a version to a local copy with:
 
     > grunt documentjs:2.0@../myproject
 

@@ -57,7 +57,7 @@ This runs mocha on `test.js` like:
 
 DocumentJS's [gh-pages branch](https://github.com/bitovi/documentjs/tree/gh-pages) contains 
 documentjs.com's code. It uses DocumentJS to produce the website. The best way to 
-edit the docs it to:
+edit the docs is to:
 
 1. Fork/Clone https://github.com/bitovi/documentjs/tree/gh-pages next to the version
 of `documentjs` you want to be documented:
@@ -70,7 +70,7 @@ of `documentjs` you want to be documented:
        > cd documentjs.com
        documentjs.com> npm install
 
-4. Generate site the entire site with:
+4. Generate the entire site with:
 
        documentjs.com> npm run-script documentjs
 
@@ -80,11 +80,11 @@ of `documentjs` you want to be documented:
 
 5. Edit source in `documentjs`.
 
-6. Regenerate site and check changes
+6. Regenerate site and check changes:
 
        documentjs.com> node node_modules/.bin/documentjs 0.0.0@../documentjs
 
-7. Checkin and push changes to documentjs.
+7. Check in and push changes to documentjs.
 
-8. Checkin and push gh-pages branch changes.
+8. Check in and push gh-pages branch changes.
 
