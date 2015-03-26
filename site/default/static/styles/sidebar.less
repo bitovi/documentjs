@@ -51,7 +51,7 @@
 }
 // Hack for chrome so we can change the size
 @media screen and (-webkit-min-device-pixel-ratio:0) {
- .sidebar #versions { border-color:#999;  }
+ .sidebar #versions { border-color: @cloud; }
 }
 
 
@@ -79,11 +79,11 @@
       position: relative;
       a {
         display: block;
-        border: 1px solid rgba(255, 255, 254, 0);
+        border: 1px solid @haze;
       }
     }
     ul ul li a:hover {
-      background: rgba(204, 204, 204, 0.2);
+      background: @haze;
     }
     li li li li a {
       font-size: 13px;
@@ -148,7 +148,7 @@
     }
     li.parent:before {
       content: "";
-      border-color: transparent #636363;
+      border-color: transparent @cloud;
       border-style: solid;
       border-width: 0.3em 0 0.3em 0.5em;
       display: block;
@@ -246,7 +246,7 @@
 
     &.cascading {
       > .active > a {
-        color: #fff;
+        color: @clear;
         background: @colorNav;
         border: none;
       }
