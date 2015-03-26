@@ -1,6 +1,6 @@
 /**
 * @stylesheet typography.less Typography
-* @parent Styles.baseline-elements
+* @parent Styles.baseline-elements 1
 *
 * @description 
 * Global style definitions for all typographic elements including headings, paragraphs, lists, and blockquotes.
@@ -10,9 +10,9 @@
 * @styles headings Headings
 *
 * @description
-* H tags defniiting a typographical heirarchy
+* H tags defining a typographical heirarchy
 *
-* @demo demos/typography/headings/demo.html
+* @iframe demos/typography/headings/demo.html
 **/
 h1,h2,h3,h4,h5,h6{
 	margin: 0;
@@ -162,4 +162,38 @@ del,s,strike{
 }
 object{
 	margin-bottom:21px;
+}
+
+/**
+* @styles special Special Type Styles
+*
+* @description
+* Text shadow mixins to be added to type styles as needed. They are usually applied to buttons and headings.
+*
+* @demo demos/typography/special/demo.html
+**/
+.text-shadow(@opacity: .5) {
+	text-shadow: 0 -1px 0 rgba(0,0,0,@opacity);
+}
+.text-shadow-light {
+	text-shadow: 0 1px 0 #ffffff;
+}
+
+/* For demo use only! */
+div.light {
+	border-radius: 3px;
+	padding: 10px;
+	background: @brand-color-21;
+	h3 {
+		.text-shadow-light;
+	}
+}
+div.dark {
+	border-radius: 3px;
+	padding: 10px;
+	background: @brand-color-23;
+	h3 {
+		color: @brand-color-16;
+		.text-shadow;
+	}
 }

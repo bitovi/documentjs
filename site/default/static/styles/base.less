@@ -1,6 +1,6 @@
 /**
 * @stylesheet base.less Base Styles
-* @parent Styles.baseline-elements
+* @parent Styles.baseline-elements 0
 *
 * @description 
 * Styles on base-level tags should live here, including table and form styles. Styles for specific elements or helper classes should go in their separate, respective, files. Typography is housed in its own typography file due to the typical complexity. Global styles, or styles on the body/html should live here.
@@ -20,6 +20,7 @@ body.style-demo {
 section {
 	margin-bottom: 15px;
 }
+
 /**
 * @styles forms Forms
 *
@@ -46,6 +47,7 @@ form input, form textarea, form select {
 option{
 	padding:1px 3px;
 }
+
 /**
 * @styles table Tables
 *
@@ -59,7 +61,7 @@ table {
 	border-top:1px solid @brand-color-6;
 	border-left:1px solid @brand-color-6;
 	background: @brand-color-7;
-	.border-radius(2px);
+	border-radius: 2px;
 }
 td,th{
 	padding:3px 6px;
