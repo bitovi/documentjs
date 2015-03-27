@@ -1,8 +1,6 @@
 @page live-style-guide Live Style Guides
 @parent DocumentJS.guides 99
-@group lsg.guides 0 Guides
-@group lsg.configuration 1 Configuration
-@group lsg.tags 2 Tags
+@group lsg.guides 0 How-to Guides
 
 DocumentJS can also be used to generate a Live Style Guide. With the style documentation features of DocumentJS, you can:
 
@@ -12,6 +10,6 @@ DocumentJS can also be used to generate a Live Style Guide. With the style docum
 * Include demos and examples
 
 
-If you're only using DocumentJS to create a Live Style guide, see [Getting Started](/docs/lsg-quickstart.html).
+If you're only using DocumentJS to create a Live Style guide, see [Standalone Live Style Guide](/docs/lsg-quickstart.html).
 
-If you're already using DocumentJS in your project, check out [Adding a Style Guide](/docs/lsg-adding.html).
+A guide on adding a Live Style Guide to an existing DocumentJS project is coming soon.

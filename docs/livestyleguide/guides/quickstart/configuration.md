@@ -12,18 +12,12 @@ Create a `documentjs.json` file in the top level of your project like this:
 
 ```json
 {
-    // configures one or more pages to be generated
-    "sites":
-        // SITE NAME
-        //  the name of your site
+    "sites": {
         "styles": {
-            // SOURCE FILES
-            //  the pattern that points to your documented files
             "glob": "styles/**/*.{css,less,md}",
-            // OUTPUT DIRECTORY
-            //  the directory where the page will be generated
-            "out": "styleguide"
+            "dest": "styleguide"
         }
+    }
 }
 ```
 
@@ -31,8 +25,6 @@ Create a `documentjs.json` file in the top level of your project like this:
 
 From `documentjs.json`:
 ```json
-        // SITE NAME
-        //  the name of your site
         "styles" : {
 ```
 
@@ -45,8 +37,6 @@ This is how DocumentJS knows where to look for comments and markdown files that 
 
 From `documentjs.json`:
 ```json
-            // SOURCE FILES
-            //  the pattern that points to your documented files
             "glob": "styles/**/*.{css,less,md}",
 ```
 
@@ -86,13 +76,11 @@ Altogether, `styles/**/*.{css,less,md}` means "look in all folders and subfolder
             "glob": "{styles,static/themes/css}/**/*.{css,scss,md}"
 ```
 
-### Output Directory
+### Destination Directory
 
 From `documentjs.json`:
 ```json
-            // OUTPUT DIRECTORY
-            //  the directory where the page will be generated
-            "out": "styleguide"
+            "dest": "styleguide"
 ```
 
 This is just the name of the folder where your site will be generated. Where you want this to be located will depend on the structure of your project.

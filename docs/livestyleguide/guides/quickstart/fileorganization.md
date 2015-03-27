@@ -1,8 +1,6 @@
 @page lsg-quickstart-file-organization File Organization
 @parent lsg-quickstart-group-setup 2
 
-## File Organization
-
 You'll write most of your documentation inline in your `css` or `less` files. You should add one file, `styleguide.md`, to your `styles` folder to write your landing page (and set up navigation).
 
 For demos and examples, you may want to create a separate folder to make it easy to link to them later. Make sure not to put anything into the `styleguide` directory as it is automatically generated.

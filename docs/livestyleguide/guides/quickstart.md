@@ -2,7 +2,9 @@
 @parent lsg.guides 0
 @group lsg-quickstart-group-intro 0 Intro
 @group lsg-quickstart-group-setup 1 Setup
-@group lsg-quickstart-group-writing 2 Writing
+@group lsg-quickstart-group-your-first-page 2 Your First Page
+@group lsg-quickstart-group-writing 3 Writing
+@group lsg-quickstart-group-customizing 4 Customizing
 
 This guide will:
 
