@@ -14,7 +14,7 @@
     "documentjs" : "./bin/documentjs"
   },
   "scripts": {
-    "test": "./node_modules/.bin/_mocha test.js --reporter spec"
+    "test": "./node_modules/.bin/mocha test.js --reporter spec"
   },
   "devDependencies": {
     "mocha": ">= 1.18.0",
