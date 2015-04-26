@@ -51,7 +51,7 @@ From `documentjs.json`:
         "styles" : {
 ```
 
-This name doesn't really matter unless you're configuring more than one site, which isn't covered in this guide.
+This name is important because you're setting up a second documentation site alongside existing docs.
 
 
 ### Source Files
