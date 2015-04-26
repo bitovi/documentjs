@@ -1,5 +1,5 @@
-@page lsg-quickstart-configuration Configuration
-@parent lsg-quickstart-group-setup 1
+@page lsg-adding-configuration Configuration
+@parent lsg-adding-group-setup 1
 
 ## Configuration
 
@@ -8,11 +8,34 @@ To generate a Live Style Guide, **you only need to configure two things**.
 1. What stylesheet files are being documented
 2. Where the Live Style Guide should be generated
 
-Create a `documentjs.json` file in the top level of your project like this:
+## Current Configuration
+
+Your project should already have a `documentjs.json` file.
+Inside it, you'll probably see something like this:
 
 ```json
 {
     "sites": {
+        "docs": {
+            "glob": "project/**/*.{js,md}"
+            "dest": "api"
+        }
+    }
+}
+```
+
+## Your Configuration
+
+Add configuration for your Live Style Guide to the 
+current configuration.
+
+```json
+{
+    "sites": {
+        "docs": {
+            "glob": "project/**/*.{js,md}"
+            "dest": "api"
+        },
         "styles": {
             "glob": "styles/**/*.{css,less,md}",
             "dest": "styleguide"
@@ -83,5 +106,4 @@ From `documentjs.json`:
 
 This is just the name of the folder where your site will be generated. Where you want this to be located will depend on the structure of your project.
 
-
-[Next Page](/docs/lsg-quickstart-file-organization.html)
+[Next Page](/docs/lsg-adding-file-organization.html)

@@ -8,8 +8,8 @@
 
 This guide will:
 
-* Give a [designer-friendly explanation](/docs/lsg-quickstart-designers) of what DocumentJS does
-* Help you [install DocumentJS](/docs/lsg-quickstart-)
+* Give a [designer-friendly explanation](/docs/lsg-quickstart-designers.html) of what DocumentJS does
+* Help you [install DocumentJS](/docs/lsg-quickstart-installation.html)
 * Help you configure a Live Style Guide site
 * Explain how to use [tags](/docs/documentjs.tags.html) to write your Live Style Guide
 
