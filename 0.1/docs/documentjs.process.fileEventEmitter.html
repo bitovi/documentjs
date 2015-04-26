@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../../index.html">Home</a>
+        </li>
+        <li >
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,9 +88,11 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="documentjs.process.html" data-search="process">
 				process
@@ -96,7 +102,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>methods</span>
 						
@@ -153,7 +158,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container active ">
 					<a class="function" href="documentjs.process.fileEventEmitter.html" data-search="documentjs.process.fileEventEmitter">
 						fileEventEmitter
 					</a>
@@ -164,9 +169,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -174,7 +177,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>types</span>
 						
@@ -254,9 +256,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -266,12 +266,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -297,9 +296,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c/process/file_event_emitter.js#L7">source</a></li>
 	
 	
 	
@@ -408,6 +407,12 @@ created from the matched files.</p>
 		
 
 		
+		<section class="comment">
+			
+		</section>
+		
+		
+
 		
 
 		
@@ -425,7 +430,7 @@ created from the matched files.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"function","name":"documentjs.process.fileEventEmitter","parent":"documentjs.process.methods","src":"lib/process/file_event_emitter.js","line":7,"codeLine":36,"description":"<p>Processes a file's source.  Adds created [documentjs.process.docObject docObjects] to docMap.</p>\n","title":"","signatures":[{"code":"documentjs.process.file(source, docMap, [filename])","description":"<p>Processes files &quot;matched&quot; from a file event emitter into a [documentjs.process.docMap docMap].</p>\n","params":[{"types":[{"type":"documentjs.process.types.FileEventEmitter"}],"name":"fileEventEmitter","description":"<p>An event emitter that dispatches events\nwith files to process.</p>\n"},{"types":[{"type":"Object","options":[{"name":"parent","description":"<p>The primary page which will be treated as the documentation's\nhomepage.  If one is not provided, one will be attempted to be found by:</p>\n<ul>\n<li>Looking for a docObject that is</li>\n</ul>\n","types":[{"type":"String"}],"optional":true}]}],"name":"options","description":"<p>An options object used to configure the behavior of documentjs.</p>\n"}],"returns":{"types":[{"type":"Promise","template":[{"types":[{"type":"documentjs.process.docMap"}]}]}],"description":"<p>A docMap that contains the docObjects\ncreated from the matched files.</p>\n"}}],"types":[],"comment":" ","templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/0.1/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
+		var docObject = {"type":"function","name":"documentjs.process.fileEventEmitter","parent":"documentjs.process.methods","src":"lib/process/file_event_emitter.js","line":7,"codeLine":36,"description":"Processes a file's source.  Adds created [documentjs.process.docObject docObjects] to docMap.","title":"","signatures":[{"code":"documentjs.process.file(source, docMap, [filename])","description":"Processes files \"matched\" from a file event emitter into a [documentjs.process.docMap docMap].","params":[{"types":[{"type":"documentjs.process.types.FileEventEmitter"}],"name":"fileEventEmitter","description":"An event emitter that dispatches events\nwith files to process."},{"types":[{"type":"Object","options":[{"name":"parent","description":"The primary page which will be treated as the documentation's \nhomepage.  If one is not provided, one will be attempted to be found by:\n\n- Looking for a docObject that is","types":[{"type":"String"}],"optional":true}]}],"name":"options","description":"An options object used to configure the behavior of documentjs."}],"returns":{"types":[{"type":"Promise","template":[{"types":[{"type":"documentjs.process.docMap"}]}]}],"description":"A docMap that contains the docObjects \ncreated from the matched files."}}],"types":[],"comment":" ","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/0.1/documentjs"},"dest":"/Users/Jan/Workspace/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
 	</script>
 	
 	
@@ -438,6 +443,7 @@ created from the matched files.</p>
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../../index.html">Home</a>
+        </li>
+        <li >
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,9 +88,11 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="documentjs.tags.html" data-search="tags">
 				tags
@@ -111,7 +117,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container active ">
 					<a class="constructor" href="documentjs.tags.add.html" data-search="@add ">
 						@add 
 					</a>
@@ -460,12 +466,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -495,9 +500,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c/tags/add.js">source</a></li>
 	
 	
 	
@@ -530,14 +535,6 @@ the scope to guess the name.</p>
 					<h2 id="sig__addNAME">@add NAME
 </h2>
 <div class="signature-wrapper">
-<pre><code class="language-js">/** @add lib.Component.prototype */
-lib.extend(lib.Component.prototype,{
-  /**
-   *  A plugin method on [lib.Component]
-   */
-  plugin: function(){}
-})
-</code></pre>
 
 
 	<h3>Parameters</h3>
@@ -574,6 +571,12 @@ to set as the scope.</p>
 		
 
 		
+		<section class="comment">
+			
+		</section>
+		
+		
+
 		
 
 		
@@ -591,7 +594,7 @@ to set as the scope.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"name":"documentjs.tags.add","type":"constructor","parent":"documentjs.tags","src":"lib/tags/add.js","line":1,"codeLine":33,"description":"<p>Sets a [documentjs/DocObject DocObject] as the\ncurrent scope. [DocumentJS.tags.function Functions]\nor [DocumentJS.tags.property properties] created\nwithout a name will use their code block and\nthe scope to guess the name.</p>\n","title":"@add ","signatures":[{"code":"@add NAME","description":"<pre><code class=\"language-js\">/** @add lib.Component.prototype */\nlib.extend(lib.Component.prototype,{\n  /**\n   *  A plugin method on [lib.Component]\n   */\n  plugin: function(){}\n})\n</code></pre>\n","params":[{"types":[{"type":"STRING"}],"name":"NAME","description":"<p>the name of [documentjs/DocObject DocObject]\nto set as the scope.</p>\n"}]}],"comment":" ","templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/0.1/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
+		var docObject = {"name":"documentjs.tags.add","type":"constructor","parent":"documentjs.tags","src":"lib/tags/add.js","line":1,"codeLine":33,"description":"Sets a [documentjs/DocObject DocObject] as the \ncurrent scope. [DocumentJS.tags.function Functions]\nor [DocumentJS.tags.property properties] created\nwithout a name will use their code block and\nthe scope to guess the name.","title":"@add ","signatures":[{"code":"@add NAME","description":"","params":[{"types":[{"type":"STRING"}],"name":"NAME","description":"the name of [documentjs/DocObject DocObject]\nto set as the scope."}]}],"comment":" ","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/0.1/documentjs"},"dest":"/Users/Jan/Workspace/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
 	</script>
 	
 	
@@ -604,6 +607,7 @@ to set as the scope.</p>
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

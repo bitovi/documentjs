@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../../index.html">Home</a>
+        </li>
+        <li >
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,9 +88,11 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="documentjs.tags.html" data-search="tags">
 				tags
@@ -460,12 +466,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -497,9 +502,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c/tags/tag.md">source</a></li>
 	
 	
 	
@@ -620,6 +625,12 @@ set this object as the new scope.</p>
 		
 
 		
+		<section class="comment">
+			
+		</section>
+		
+		
+
 		
 
 		
@@ -637,7 +648,7 @@ set this object as the new scope.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"typedef","name":"documentjs.Tag","src":"lib/tags/tag.md","description":"<p>An object that describes the behavior of\na tag.</p>\n","title":"Tag ","types":[{"type":"Object","options":[{"name":"codeMatch","description":"<p>Returns true\nif the code matches this tag.</p>\n","types":[{"type":"function","returns":{"types":[{"type":"Boolean"},{"type":"RegExp"}]},"params":[{"types":[{"type":"String"}],"name":"code"}]}]},{"name":"code","description":"<p>Takes</p>\n","types":[{"type":"function","returns":{"types":[{"type":"DocObject"}]},"params":[{"types":[{"type":"String"}],"name":"codeLine"}]}]},{"name":"codeScope","description":"<p>If <code>code(codeLine)</code> returns a DocObject,\nset this object as the new scope.</p>\n","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"false"}]}],"parent":"documentjs.tags","hide":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/0.1/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
+		var docObject = {"type":"typedef","name":"documentjs.Tag","src":"lib/tags/tag.md","description":"An object that describes the behavior of \na tag.","title":"Tag ","types":[{"type":"Object","options":[{"name":"codeMatch","description":"Returns true\nif the code matches this tag.","types":[{"type":"function","returns":{"types":[{"type":"Boolean"},{"type":"RegExp"}]},"params":[{"types":[{"type":"String"}],"name":"code"}]}]},{"name":"code","description":"Takes","types":[{"type":"function","returns":{"types":[{"type":"DocObject"}]},"params":[{"types":[{"type":"String"}],"name":"codeLine"}]}]},{"name":"codeScope","description":"If `code(codeLine)` returns a DocObject,\nset this object as the new scope.","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"false"}]}],"parent":"documentjs.tags","hide":true,"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/0.1/documentjs"},"dest":"/Users/Jan/Workspace/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
 	</script>
 	
 	
@@ -650,6 +661,7 @@ set this object as the new scope.</p>
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

@@ -46,11 +46,14 @@
 		  	<li >
         	<a href="../index.html">Home</a>
         </li>
-        <li >
+        <li class='active'>
           <a href="/docs/index.html">Api</a>
         </li>
-        <li >
-        	<a href="/styles/index.html">Styles</a>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
         </li>
         <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
 	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
@@ -309,7 +312,7 @@ emits events for matched files.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"function","name":"documentjs.find.files","parent":"documentjs.find.methods","src":"lib/find/files.js","line":4,"codeLine":34,"description":"","title":"","signatures":[{"code":".find.files(options)","description":"","params":[{"types":[{"type":"Object","options":[{"name":"glob","description":"The glob\noption either specifies a [minmatch](https://github.com/isaacs/minimatch) \npattern like:\n\n    documentjs.find.files({glob: \"*.js\"})\n\nOr a [documentjs.find.globObject GlobObject] that specifies the \na [minmatch](https://github.com/isaacs/minimatch) pattern and\nother options like:\n\n    documentjs.find.files({\n      glob: {\n        pattern: \"*.js\",\n        cwd: __dirname  \n      }\n    })","types":[{"type":"String"},{"type":"documentjs.find.globObject"}]}]}],"name":"options","description":"Options that configure the behavior of the\nfiles that will be processed."}],"returns":{"types":[{"type":"documentjs.process.types.FileEventEmitter"}],"description":"An event emitter that\nemits events for matched files."}}],"templates":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs"},"watch":true,"forceBuild":true,"dest":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"type":"function","name":"documentjs.find.files","parent":"documentjs.find.methods","src":"lib/find/files.js","line":4,"codeLine":34,"description":"","title":"","signatures":[{"code":".find.files(options)","description":"","params":[{"types":[{"type":"Object","options":[{"name":"glob","description":"The glob\noption either specifies a [minmatch](https://github.com/isaacs/minimatch) \npattern like:\n\n    documentjs.find.files({glob: \"*.js\"})\n\nOr a [documentjs.find.globObject GlobObject] that specifies the \na [minmatch](https://github.com/isaacs/minimatch) pattern and\nother options like:\n\n    documentjs.find.files({\n      glob: {\n        pattern: \"*.js\",\n        cwd: __dirname  \n      }\n    })","types":[{"type":"String"},{"type":"documentjs.find.globObject"}]}]}],"name":"options","description":"Options that configure the behavior of the\nfiles that will be processed."}],"returns":{"types":[{"type":"documentjs.process.types.FileEventEmitter"}],"description":"An event emitter that\nemits events for matched files."}}],"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
 	</script>
 	
 	

@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../../index.html">Home</a>
+        </li>
+        <li >
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,15 +88,18 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		<li class="search-container active parent">
 			<a class="sidebar-title" href="documentjs.generators.html.html" data-search="generators.html">
 				generators.html
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="documentjs.generators.html.write.html" data-search="documentjs.generators.html.write">
 				write
@@ -102,7 +109,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>methods</span>
 						
@@ -135,7 +141,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container active ">
 					<a class="function" href="documentjs.generators.html.write.staticDist.html" data-search="documentjs.generators.html.write.staticDist">
 						staticDist
 					</a>
@@ -146,9 +152,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -156,12 +160,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -187,9 +190,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c/generators/html/write/static_dist.js#L7">source</a></li>
 	
 	
 	
@@ -281,6 +284,12 @@ to a <em>static</em> folder in <code>options.dest</code>.</p>
 		
 
 		
+		<section class="comment">
+			
+		</section>
+		
+		
+
 		
 
 		
@@ -298,7 +307,7 @@ to a <em>static</em> folder in <code>options.dest</code>.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"function","name":"documentjs.generators.html.write.staticDist","parent":"documentjs.generators.html.write.methods","src":"lib/generators/html/write/static_dist.js","line":7,"codeLine":23,"description":"<p>Copies the [documentjs.generators.html.build.staticDist built distributable]\nto a <em>static</em> folder in <code>options.dest</code>.</p>\n","title":"","signatures":[{"code":".write.staticDist(options)","description":"","params":[{"types":[{"type":"Object","options":[{"name":"dest","description":"<p>The static distributable will be written to\n<code>options.dest + &quot;static&quot;</code>.</p>\n","types":[{"type":"String"}]}]}],"name":"options","description":"<p>Configuration options.</p>\n"}],"returns":{"types":[{"type":"Promise"}],"description":"<p>A promise that resolves when successfully copied over.</p>\n"}}],"types":[],"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/0.1/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
+		var docObject = {"type":"function","name":"documentjs.generators.html.write.staticDist","parent":"documentjs.generators.html.write.methods","src":"lib/generators/html/write/static_dist.js","line":7,"codeLine":23,"description":"Copies the [documentjs.generators.html.build.staticDist built distributable]\nto a _static_ folder in `options.dest`.","title":"","signatures":[{"code":".write.staticDist(options)","description":"","params":[{"types":[{"type":"Object","options":[{"name":"dest","description":"The static distributable will be written to \n`options.dest + \"static\"`.","types":[{"type":"String"}]}]}],"name":"options","description":"Configuration options."}],"returns":{"types":[{"type":"Promise"}],"description":"A promise that resolves when successfully copied over."}}],"types":[],"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/0.1/documentjs"},"dest":"/Users/Jan/Workspace/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
 	</script>
 	
 	
@@ -311,6 +320,7 @@ to a <em>static</em> folder in <code>options.dest</code>.</p>
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

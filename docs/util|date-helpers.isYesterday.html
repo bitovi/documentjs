@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../index.html">Home</a>
+        </li>
+        <li >
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,9 +88,11 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="util|date-helpers.html" data-search="util/date-helpers">
 				util/date-helpers
@@ -121,7 +127,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container active ">
 					<a class="function" href="util|date-helpers.isYesterday.html" data-search="util/date-helpers.isYesterday">
 						isYesterday
 					</a>
@@ -168,12 +174,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -199,9 +204,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#master/process/test/function_assumes_parent_name.js#L8">source</a></li>
 	
 	
 	
@@ -245,6 +250,8 @@
 		
 
 		
+
+		
 	
 	
 	</article>
@@ -259,7 +266,7 @@
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"function","name":"util/date-helpers.isYesterday","params":[],"parent":"util/date-helpers","src":"lib/process/test/function_assumes_parent_name.js","line":8,"codeLine":11,"description":"","templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"type":"function","name":"util/date-helpers.isYesterday","params":[],"parent":"util/date-helpers","src":"lib/process/test/function_assumes_parent_name.js","line":8,"codeLine":11,"description":"","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
 	</script>
 	
 	
@@ -272,6 +279,7 @@
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

@@ -46,11 +46,14 @@
 		  	<li >
         	<a href="../index.html">Home</a>
         </li>
-        <li >
+        <li class='active'>
           <a href="/docs/index.html">Api</a>
         </li>
-        <li >
-        	<a href="/styles/index.html">Styles</a>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
         </li>
         <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
 	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
@@ -389,7 +392,7 @@ no docObject is created, <code>newDoc</code> will be null.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"function","name":"documentjs.process.codeAndComment","parent":"documentjs.process.methods","src":"lib/process/code_and_comment.js","line":4,"codeLine":24,"description":"","title":"","signatures":[{"code":"documentjs.process.codeAndComment(options, callback)","description":"Processes a code suggestion and then a comment and produces a docObject.","params":[{"types":[{"type":"documentjs.process.processOptions"}],"name":"options","description":"An options object that contains\nthe code and comment to process."},{"types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[{"types":[{"type":"documentjs.process.docObject"}],"name":"newDoc","description":"the new documentation object"},{"types":[{"type":"documentjs.process.docObject"}],"name":"newScope","description":"the new scope"}]}],"name":"callback","description":"A function that is called back with a docObject created from the code and the scope\n`docObject`.  If\nno docObject is created, `newDoc` will be null."}]}],"templates":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs"},"watch":true,"forceBuild":true,"dest":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"type":"function","name":"documentjs.process.codeAndComment","parent":"documentjs.process.methods","src":"lib/process/code_and_comment.js","line":4,"codeLine":24,"description":"","title":"","signatures":[{"code":"documentjs.process.codeAndComment(options, callback)","description":"Processes a code suggestion and then a comment and produces a docObject.","params":[{"types":[{"type":"documentjs.process.processOptions"}],"name":"options","description":"An options object that contains\nthe code and comment to process."},{"types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[{"types":[{"type":"documentjs.process.docObject"}],"name":"newDoc","description":"the new documentation object"},{"types":[{"type":"documentjs.process.docObject"}],"name":"newScope","description":"the new scope"}]}],"name":"callback","description":"A function that is called back with a docObject created from the code and the scope\n`docObject`.  If\nno docObject is created, `newDoc` will be null."}]}],"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
 	</script>
 	
 	

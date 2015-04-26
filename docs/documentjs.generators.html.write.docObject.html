@@ -46,11 +46,14 @@
 		  	<li >
         	<a href="../index.html">Home</a>
         </li>
-        <li >
+        <li class='active'>
           <a href="/docs/index.html">Api</a>
         </li>
-        <li >
-        	<a href="/styles/index.html">Styles</a>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
         </li>
         <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
 	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
@@ -339,7 +342,7 @@ filename is determined from the docObject's name.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"function","name":"documentjs.generators.html.write.docObject","parent":"documentjs.generators.html.write.methods","src":"lib/generators/html/write/doc_object.js","line":7,"codeLine":29,"description":"Writes out a [documentjs.process.docObject docObject].","title":"","signatures":[{"code":".write.docObject(docObject, renderer, options, setCurrentDocObjectForHelpers)","description":"","params":[{"types":[{"type":"documentjs.process.docObject"}],"name":"docObject","description":"The doc object to be written out."},{"types":[{"type":"documentjs.generators.html.types.renderer"}],"name":"renderer","description":"A function that renders\nthe output."},{"types":[{"type":"Object","options":[{"name":"dest","description":"The folder name this file will be written to. The \nfilename is determined from the docObject's name.","types":[{"type":"String"}]}]}],"name":"options","description":"Configuration options."},{"types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[{"types":[{"type":"documentjs.process.docObject"}]}]}],"name":"setCurrentDocObjectForHelpers","description":""}],"returns":{"types":[{"type":"Promise"}],"description":"A promise that resolves when the file has been written out."}}],"types":[],"templates":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs"},"watch":true,"forceBuild":true,"dest":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"type":"function","name":"documentjs.generators.html.write.docObject","parent":"documentjs.generators.html.write.methods","src":"lib/generators/html/write/doc_object.js","line":7,"codeLine":29,"description":"Writes out a [documentjs.process.docObject docObject].","title":"","signatures":[{"code":".write.docObject(docObject, renderer, options, setCurrentDocObjectForHelpers)","description":"","params":[{"types":[{"type":"documentjs.process.docObject"}],"name":"docObject","description":"The doc object to be written out."},{"types":[{"type":"documentjs.generators.html.types.renderer"}],"name":"renderer","description":"A function that renders\nthe output."},{"types":[{"type":"Object","options":[{"name":"dest","description":"The folder name this file will be written to. The \nfilename is determined from the docObject's name.","types":[{"type":"String"}]}]}],"name":"options","description":"Configuration options."},{"types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[{"types":[{"type":"documentjs.process.docObject"}]}]}],"name":"setCurrentDocObjectForHelpers","description":""}],"returns":{"types":[{"type":"Promise"}],"description":"A promise that resolves when the file has been written out."}}],"types":[],"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
 	</script>
 	
 	

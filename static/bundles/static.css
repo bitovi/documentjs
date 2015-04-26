@@ -1,8 +1,11 @@
 /*styles/styles.less!$less*/
-.text-smoothing,
-.font-smoothing {
-  -webkit-font-smoothing: antialiased;
-}
+/**
+* @stylesheet reset.less Browser Resets
+* @parent Styles.other 0
+*
+* @description 
+* This file resolves discrepencies between browser defaults. It's not intended for any custom styling, simply to level the 'play fields' of browser support.
+**/
 body {
   margin: 0;
   padding: 0;
@@ -110,53 +113,117 @@ br {
   float: none;
   clear: both;
 }
-.border-box {
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  /* Firefox */
-  -webkit-box-sizing: border-box;
-  /* Safari */
-}
-.text-shadow-light {
-  text-shadow: 0 1px 0 #ffffff;
-}
+/**
+* @stylesheet variables.less Variables
+* @parent Styles.theme 0
+*
+* @description 
+* Variables hold all sorts of site-wide visual configurations. This site has color palettes, logo images, and font declarations set, which are demo'd throughout this live style guide.
+**/
+/**
+* @styles color-palette Color Palette
+* 
+* @description
+* Variables used to define the site's color palette.
+* @iframe demos/variables/color-palette/demo.html 630
+**/
+/**
+* @stylesheet base.less Base Styles
+* @parent Styles.baseline-elements 0
+*
+* @description 
+* Styles on base-level tags should live here, including table and form styles. Styles for specific elements or helper classes should go in their separate, respective, files. Typography is housed in its own typography file due to the typical complexity. Global styles, or styles on the body/html should live here.
+**/
 * {
-  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-family: "Helvetica Neue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 300;
-}
-html {
   -webkit-font-smoothing: antialiased;
 }
 body {
-  background: #f0f0f0;
+  background: #eae9e9;
 }
-.container {
-  width: 960px;
-  margin: 0 auto;
+body.style-demo {
+  background: #ffffff;
+  padding: 10px;
 }
 section {
   margin-bottom: 15px;
 }
-a {
-  text-decoration: underline;
-  color: #1f54c6;
+/**
+* @styles forms Forms
+*
+* @demo demos/base/forms/demo.html
+**/
+input,
+textarea {
+  font-size: 1em;
+  padding: 5px;
+}
+input[type="submit"] {
   cursor: pointer;
 }
-a:hover {
-  text-decoration: none;
+:focus {
+  outline: none;
 }
-.pull-right,
-.pullright,
-.float-right,
-.floatright {
-  float: right;
+form label {
+  display: block;
+  margin-bottom: 5px;
 }
-.pull-left,
-.pullleft,
-.float-left,
-.float-right {
-  float: left;
+form input,
+form textarea,
+form select {
+  display: block;
+  margin-bottom: 10px;
 }
+option {
+  padding: 1px 3px;
+}
+/**
+* @styles table Tables
+*
+* @demo demos/base/tables/demo.html
+**/
+table {
+  border-spacing: 0;
+  margin-bottom: 21px;
+  width: 100%;
+  border-collapse: separate;
+  border-top: 1px solid #cccccc;
+  border-left: 1px solid #cccccc;
+  background: #ffffff;
+  border-radius: 2px;
+}
+td,
+th {
+  padding: 3px 6px;
+  border-bottom: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
+  text-shadow: 0 1px 0 #ffffff;
+}
+th {
+  background: #eae9e9;
+}
+iframe {
+  margin-bottom: 20px;
+}
+iframe body {
+  background-color: #ffffff;
+}
+/**
+* @stylesheet typography.less Typography
+* @parent Styles.baseline-elements 1
+*
+* @description 
+* Global style definitions for all typographic elements including headings, paragraphs, lists, and blockquotes.
+**/
+/**
+* @styles headings Headings
+*
+* @description
+* H tags defining a typographical hierarchy.
+*
+* @iframe demos/typography/headings/demo.html
+**/
 h1,
 h2,
 h3,
@@ -184,12 +251,37 @@ h5 {
 h6 {
   font-size: .75em;
 }
+/**
+* @styles content Content Tags
+*
+* @description
+* Typography for paragraphs, links, lists, etc.
+*
+* @demo demos/typography/content/demo.html
+**/
 p,
 .p {
   font-size: 16px;
   line-height: 24px;
   margin-top: 0;
   margin-bottom: 15px;
+}
+a {
+  text-decoration: underline;
+  color: #1f54c6;
+  cursor: pointer;
+}
+a:hover {
+  text-decoration: none;
+}
+a img {
+  border: none;
+}
+hr {
+  height: 1px;
+  margin-bottom: 20px;
+  background: #cccccc;
+  border: none;
 }
 ol,
 ul {
@@ -231,9 +323,6 @@ dl dt {
 dl dd {
   margin: 6px 0 0 1.5em;
 }
-strong {
-  -webkit-font-smoothing: antialiased;
-}
 strong,
 b {
   font-weight: bolder;
@@ -251,7 +340,7 @@ abbr {
 }
 acronym {
   text-transform: uppercase;
-  border-bottom: 1px dashed #666;
+  border-bottom: 1px dashed #706f70;
   cursor: help;
 }
 big {
@@ -299,23 +388,16 @@ q:after {
   content: '';
   content: none;
 }
-a {
-  cursor: pointer;
-}
-a img {
-  border: none;
-}
-.content img {
-  background-color: #eee;
-  padding: 3px;
-  border: 1px solid #ccc;
-  margin-bottom: 10px;
+caption {
+  font-size: .9em;
+  font-style: italic;
+  text-align: right;
 }
 ins,
 dfn {
   font-style: italic;
   text-decoration: none;
-  border-bottom: 1px solid #666;
+  border-bottom: 1px solid #706f70;
 }
 del,
 s,
@@ -325,140 +407,73 @@ strike {
 object {
   margin-bottom: 21px;
 }
-input,
-textarea {
-  font-size: 1em;
-  padding: 3px;
-}
-input[type="submit"] {
-  cursor: pointer;
-}
-:focus {
-  outline: none;
-}
-form label {
-  cursor: pointer;
-}
-option {
-  padding: 1px 3px;
-}
-table {
-  border-spacing: 0;
-  margin-bottom: 21px;
-  width: 100%;
-  border-collapse: separate;
-  border-top: 1px solid #ccc;
-  border-left: 1px solid #ccc;
-  background: #fff;
-  border-radius: 2px;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-}
-caption {
-  font-size: .9em;
-  font-style: italic;
-  text-align: right;
-}
-td,
-th {
-  padding: 3px 6px;
-  border-bottom: 1px solid #ccc;
-  border-right: 1px solid #ccc;
+/**
+* @styles special Special Type Styles
+*
+* @description
+* Text shadow mixins to be added to type styles as needed. They are usually applied to buttons and headings.
+*
+* @demo demos/typography/special/demo.html
+**/
+.text-shadow-light {
   text-shadow: 0 1px 0 #ffffff;
 }
-th {
-  background: #eee;
+/* For demo use only! */
+div.light {
+  border-radius: 3px;
+  padding: 10px;
+  background: #cccccc;
 }
-hr {
-  height: 1px;
-  margin-bottom: 20px;
-  background: #ccc;
-  border: none;
+div.light h3 {
+  text-shadow: 0 1px 0 #ffffff;
 }
-iframe {
-  margin-bottom: 20px;
+div.dark {
+  border-radius: 3px;
+  padding: 10px;
+  background: #999999;
 }
-button,
-.button {
-  background-color: #1f54c6;
-  border: 1px solid #18419a;
-  color: #fff;
+div.dark h3 {
+  color: #cccccc;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
-  border-radius: 2px;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
-  padding: 5px 15px;
-  position: relative;
-  font-size: 14px;
-  line-height: 18px;
-  text-decoration: none;
 }
-button:hover,
-.button:hover,
-button.active,
-.button.active {
-  background-color: #18419a;
+/**
+* @stylesheet helper.less Helpers
+* @parent Styles.baseline-elements 2
+*
+* @description
+* Helper classes are layout-based classes that can be added to elements. Helper classes included here are `clear`, `center`, `pull-right`, and `pull-left`.
+*
+* @demo demos/helpers/demo.html
+**/
+.clear {
+  clear: both;
 }
 .center {
   margin-right: auto;
   margin-left: auto;
   text-align: center;
 }
-a.next {
-  text-transform: uppercase;
-  color: #7b7b7a;
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 14px;
-  text-decoration: none;
-}
-a.next:hover {
-  text-decoration: underline;
-}
-a.next:after {
-  content: '\e015';
-  text-decoration: inherit;
-  display: inline;
-  font: normal normal 18px/12px Bitstrap;
-}
-.well {
-  padding: 20px;
-  margin-bottom: 20px;
-  background: #eeeeee;
-}
-.clear {
-  clear: both;
-}
-ul.pager {
-  list-style: none;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  clear: both;
-}
-ul.pager li {
-  display: inline-block;
-}
-ul.pager .next {
+.pull-right,
+.pullright,
+.float-right,
+.floatright {
   float: right;
 }
-ul.pager .previous {
+.pull-left,
+.pullleft,
+.float-left,
+.float-right {
   float: left;
 }
-ul.pager::before,
-ul.pager::after {
-  display: table;
-  content: " ";
-}
-ul.pager::after {
-  clear: both;
-}
-@font-face {
-  font-family: 'Bitstrap';
-  src: url(../fonts/bitstrapregular.eot);
-  font-weight: normal;
-  font-style: normal;
-}
+/**
+* @stylesheet icons.less Icons
+* @parent Styles.theme
+*
+* @description
+* DocumentJS uses a custom icon font. Icons from this font, with their accompanying classes, are laid out below.
+* 
+* @demo demos/icons/demo.html
+**/
 @font-face {
   font-family: 'Bitstrap';
   src: url(../fonts/bitstrapregular.eot);
@@ -662,7 +677,7 @@ ul.pager::after {
 /* Default */
 .arrow:before {
   content: "";
-  border-color: #636363 transparent;
+  border-color: #706f70 transparent;
   border-style: solid;
   border-width: 0 5px 5px 5px;
   display: block;
@@ -671,36 +686,69 @@ ul.pager::after {
 }
 /* Left */
 .arrow.left:before {
-  border-color: transparent #636363 ;
+  border-color: transparent #706f70;
   border-width: 5px 5px 5px 0;
 }
 /* Right */
 .arrow.right:before {
-  border-color: transparent #636363 ;
+  border-color: transparent #706f70;
   border-width: 5px 0 5px 5px;
 }
 /* Up */
 .arrow.up:before {
-  border-color: #636363 transparent;
+  border-color: #706f70 transparent;
   border-width: 0 5px 5px 5px;
 }
 /* Down */
 .arrow.down:before {
-  border-color: #636363 transparent;
+  border-color: #706f70 transparent;
   border-width: 5px 5px 0 5px;
 }
+ul.demo-icons {
+  list-style-type: none;
+  margin: 0;
+  padding-left: 0;
+}
+ul.demo-icons li {
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 20px;
+  width: 24%;
+}
+ul.demo-icons span {
+  font-size: 3em;
+}
+ul.demo-icons code {
+  font-size: .8em;
+}
+/**
+* @stylesheet layout.less Layout
+* @parent Styles.baseline-elements 3
+
+* @description
+* Layout classes are used to structure the main parts of a page.
+**/
+/**
+* @styles header Header
+*
+* @demo demos/layout/header/demo.html
+**/
 header {
   display: block;
   background-color: #484848;
-  color: #fff;
+  color: #ffffff;
   position: relative;
-  z-index: 2;
 }
 header .container {
   position: relative;
   height: 54px;
   text-align: left;
 }
+/**
+* @styles header-nav Header Nav
+*
+* @demo demos/layout/header-nav/demo.html
+**/
 header .nav {
   list-style-type: none;
   padding: 0;
@@ -722,9 +770,19 @@ header .nav > li > a {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
   padding: 5px 10px;
-  border: 1px solid rgba(255, 255, 255, 0);
+  border: 1px solid transparent;
 }
-header .nav > li .dropdown-menu:before {
+header .nav > li:hover > a {
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 2px;
+}
+header .nav > li.active > a {
+  background-color: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(0, 0, 0, 0.6);
+  border-radius: 2px;
+}
+header .nav > li dropdown-menu:before {
   position: absolute;
   content: '';
   height: 15px;
@@ -735,7 +793,7 @@ header .nav > li .dropdown-menu:before {
   -webkit-transform: rotateZ(-45deg) skewY(5deg) skewX(5deg);
   -ms-transform: rotate(-45deg);
   transform: rotateZ(-45deg) skewY(5deg) skewX(5deg);
-  border: 1px solid #dedbdb;
+  border: 1px solid #cccccc;
   top: -8px;
   z-index: -1;
   display: block;
@@ -743,19 +801,66 @@ header .nav > li .dropdown-menu:before {
   border-left-style: none;
   border-bottom-style: none;
 }
-header .nav > li:hover > a {
-  background-color: rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 2px;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
+/**
+* @styles header-dropdown Header Dropdown Menu
+
+* @description
+* This dropdown shows when hovering the logo.
+*
+* @demo demos/layout/header-dropdown/demo.html
+**/
+header .dropdown-menu {
+  display: none;
+  visibility: collapse;
+  position: absolute;
+  left: 0;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-top: none;
+  z-index: 5;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  top: 54px;
+  width: 240px;
 }
-header .nav > li.active > a {
-  background-color: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(0, 0, 0, 0.6);
-  border-radius: 2px;
-  -moz-border-radius: 2px;
-  -webkit-border-radius: 2px;
+header .dropdown-menu li a {
+  display: block;
+  text-decoration: none;
+  border-bottom: 1px solid #eae9e9;
+  color: #706f70;
+  font-size: 14px;
+  line-height: 32px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+header .dropdown-menu li a:hover:after {
+  content: "\e000";
+  color: #cccccc;
+  font: 20px/27px Bitstrap;
+  position: absolute;
+  right: 10px;
+}
+header .dropdown-menu li a:hover,
+header .dropdown-menu li.active a {
+  background-color: #eae9e9;
+  color: #000000;
+}
+/**
+* @styles header-bitovi-menu Bitovi Menu
+*
+* @description
+* This dropdown menu shows when hovering the Bitovi bits icon.
+* Links placed on this menu link out the external Bitovi sites.
+*
+* @demo demos/layout/header-bitovi-menu/demo.html
+**/
+header .bitovi-menu {
+  display: inline-block;
+}
+header .bitovi-menu .dropdown-menu {
+  right: 0;
+  left: auto;
 }
 header .bitovi.icon-bits {
   color: #ffffff;
@@ -769,17 +874,13 @@ header .bitovi.icon-bits {
   height: 54px;
 }
 header .bitovi.icon-bits:before {
-  /*
-			right: 4px;
-			position: relative;
-			*/
   position: absolute;
   left: 13px;
 }
 header .bitovi-menu:hover .bitovi.icon-bits {
-  background-color: #fff;
-  border-left: 1px solid #d5d5d5;
-  border-right: 1px solid #d5d5d5;
+  background-color: #ffffff;
+  border-left: 1px solid #cccccc;
+  border-right: 1px solid #cccccc;
   color: #484848;
   text-shadow: none;
   opacity: 1;
@@ -788,64 +889,32 @@ header .logo-menu {
   position: relative;
   display: inline-block;
 }
-header .dropdown-menu {
-  display: none;
-  visibility: collapse;
-  position: absolute;
-  left: 0;
-  background-color: #fff;
-  border: 1px solid #d5d5d5;
-  border-top: none;
-  z-index: 5;
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-  top: 54px;
-  width: 240px;
-}
-header .dropdown-menu li a {
-  display: block;
-  text-decoration: none;
-  border-bottom: 1px solid #f5f5f5;
-  color: #676767;
-  font-size: 14px;
-  line-height: 32px;
-  padding-left: 20px;
-  padding-right: 20px;
-}
-header .dropdown-menu li a:hover,
-header .dropdown-menu li.active a {
-  background-color: #f5f5f5;
-  color: #000;
-}
-header .dropdown-menu li a:hover:after {
-  content: "\e000";
-  color: #dcdada;
-  font: 20px/27px Bitstrap;
-  position: absolute;
-  right: 10px;
+header .menu-container {
+  position: relative;
 }
 header .bitovi-menu:hover .dropdown-menu,
-header .logo-menu:hover .dropdown-menu {
+header .logo-menu:hover .dropdown-menu,
+header .menu-container:hover .dropdown-menu {
   display: block;
   visibility: visible;
-}
-header .bitovi-menu:hover .dropdown-menu {
-  right: 0;
-  left: auto;
 }
 header .pull-right {
   position: absolute;
   right: 0;
   top: 0;
 }
-header .bitovi-menu {
-  display: inline-block;
-}
-/* end */
+/**
+* @styles footer Footer
+*
+* @description
+* Styles for the footer used in the pages generated by the documentation. The footer is shown conditionally and 
+* currently is not used on documentjs.com
+*
+* @demo demos/layout/footer/demo.html
+**/
 footer {
-  background-color: #484848;
-  color: #bababa;
+  background-color: #cccccc;
+  color: #484848;
   padding-top: 0px;
   padding-bottom: 0px;
   position: relative;
@@ -883,6 +952,19 @@ footer ul {
 footer li {
   display: inline-block;
 }
+.container {
+  width: 960px;
+  margin: 0 auto;
+}
+/**
+* @stylesheet brand.less Brand
+* @parent Styles.theme
+*
+* @description
+* Logo treatments, watermarks etc. to represent the brand.
+
+* @iframe demos/brand/demo.html
+**/
 .brand {
   display: block;
   line-height: 54px;
@@ -898,6 +980,86 @@ footer .brand {
   margin-top: 13px;
   line-height: 47px;
 }
+/**
+* @stylesheet buttons.less Buttons
+* @parent Styles.baseline-elements
+*
+* @description
+* All defined button styles and states belong here, including any "helper class" button style options, like `default`, `primary` etc. DocumentJS only has one defined button, which does not need any additional classes. 
+*
+* The same button styles have been applied to a button class, for use on other html elements emulating a button.
+*
+* @demo demos/buttons/demo.html
+**/
+button,
+.button {
+  background-color: #1f54c6;
+  border: 1px solid #18419a;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+  border-radius: 2px;
+  padding: 5px 15px;
+  position: relative;
+  font-size: 14px;
+  line-height: 18px;
+  text-decoration: none;
+}
+button:hover,
+.button:hover,
+button.active,
+.button.active {
+  background-color: #18419a;
+}
+/**
+* @stylesheet code.less Code Rendering
+* @parent Styles.baseline-elements
+*
+* @description
+* Enables both the layout of code wells, and also the syntax highlighting of the specific code language. Syntax coloring provided by prettify.js with the <a href="https://github.com/chriskempson/tomorrow-theme">Tomorrow Theme</a>.
+* 
+* Code "wells" are styled based on the use of the `<pre>` and `<code>` tags around your desired code example.
+*
+* Below are a few examples in various languages. This is not an exhaustive list of supported languages. 
+*
+* ### HTML 
+* ```
+* <pre>
+    <code>
+      <div class="example"><!--with a comment -->
+        <h1>Example</h1>
+        <p>This is some example code that is being styled.</p>
+      </div>
+    </code>
+  </pre>
+*
+* ```
+* ### JavaScript
+*```
+var foo = require('f'),
+    bar = require('br'),
+    writeFile = f.denodify(br.writeFile),
+    path = require('path');
+    
+module.exports = function(littlePromise, options){
+   return littlePromise.then(function(little){
+     return writeFile(
+         path.join(options.dest,'little.json'), 
+         JSON.stringify(little) );
+   });
+};
+* ```
+* ### JSON
+*```
+{
+  "sites": {
+    "docs": {
+      "key" : "value"
+    }
+  }
+}
+* ```
+*
+**/
 code {
   background-color: #f7f8c3;
   border-radius: 5px;
@@ -912,8 +1074,8 @@ code * {
   font-weight: 300;
 }
 pre {
-  background-color: #fff;
-  border: 1px solid #d9d9d9;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
   border-radius: 5px;
   margin: 0;
   margin-bottom: 20px;
@@ -925,7 +1087,7 @@ pre code {
   font-size: 14px;
   line-height: 16px;
   letter-spacing: 0px;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
 }
 pre ol {
   margin: 0 0 0 40px;
@@ -933,8 +1095,8 @@ pre ol {
 }
 pre ol li {
   text-indent: 0;
-  color: #333;
-  background-color: #fff;
+  color: #484848;
+  background-color: #ffffff;
   margin: 0;
   list-style: decimal;
 }
@@ -947,7 +1109,7 @@ code.prettyprint {
   padding: 0 !Important;
 }
 .pln {
-  color: #4d4d4c;
+  color: #484848;
 }
 @media screen {
   /* string content */
@@ -1045,16 +1207,13 @@ code.prettyprint {
 }
 /* Style */
 pre.prettyprint {
-  background: #f0f0f0;
   font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
-  font-size: 12px;
-  line-height: 1.5;
-  border: 1px solid #d6d6d6;
+  font-size: 14px;
+  border: 1px solid #cccccc;
   padding: 10px;
 }
 pre.prettyprint ol {
-  font-size: 12px;
-  line-height: 1.5;
+  font-size: 14px;
   margin-bottom: 0px;
 }
 /* Specify class=linenums on a pre to get line numbering */
@@ -1083,17 +1242,41 @@ li.L7,
 li.L9 {
   /* */
 }
+/**
+* @stylesheet api.less API
+* @parent Styles.docs
+
+* @description
+* Styles the docs and overwrites some of the theme default styles.
+**/
+/**
+* @styles simple-tag Simple Tag
+*
+* @description
+* Simple tags are styled independently from parent containers, and are different from the `ul.tags li` elements.
+*
+* @demo demos/api/simple-tag/demo.html
+**/
 .simple-tag {
   display: inline-block;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  background-color: #3b3b3b;
-  color: #fff;
+  background-color: #484848;
+  color: #ffffff;
   font-size: 12px;
   margin-left: 5px;
   padding: 2px 8px;
 }
+/**
+* @styles docs-title Title Section
+
+* @description
+* Styles the title section that shows as the top of each document. It is composed by
+* a `.heading`, `tags`, a `subheading`, and a list of `links`.
+*
+* @demo demos/api/title-section/demo.html
+**/
 .docs .title {
   display: block;
   border-bottom: 1px solid #eae9e9;
@@ -1128,7 +1311,7 @@ li.L9 {
 }
 .docs .title h2 code {
   background: none;
-  color: #767676;
+  color: #706f70;
   font-size: 18px;
   font-weight: bold;
 }
@@ -1143,11 +1326,63 @@ li.L9 {
 .docs .title ul.links {
   margin-bottom: 16px;
 }
+.docs .title .links,
+.docs .title .tags {
+  list-style: none;
+  margin: 0;
+  text-align: right;
+  padding: 0;
+}
+.docs .title .tags {
+  display: inline-block;
+  margin: 0;
+  position: relative;
+  top: -5px;
+}
+.docs .title .tags li {
+  display: inline-block;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background-color: #484848;
+  color: #ffffff;
+  font-size: 12px;
+  margin-left: 5px;
+  padding: 2px 8px;
+}
+.docs .title .links li {
+  display: inline-block;
+  margin-top: 1px;
+}
+.docs .title .links li:before {
+  content: '|';
+  padding-right: 5px;
+  padding-left: 3px;
+}
+.docs .title .links li:first-child:before {
+  content: none;
+  padding: none;
+}
+.docs h1 {
+  margin: 0;
+  display: inline-block;
+}
+.docs .module,
+.docs .inherits,
+.docs .title .links li {
+  font-size: 14px;
+  color: #999999;
+  font-weight: normal;
+  font-style: normal;
+}
+.docs .inherits {
+  display: block;
+}
 .docs .content.docs {
   width: 662px;
   margin-top: 20px;
-  background-color: #fff;
-  border: 1px solid #d5d5d5;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
   padding: 20px;
   border-left-style: none;
   border-bottom-style: none;
@@ -1165,22 +1400,42 @@ li.L9 {
 }
 .docs .content.docs .iframe_wrapper iframe {
   width: 100%;
+  border: 1px solid #cccccc;
+}
+.docs .contents li {
+  line-height: 24px;
+  list-style-type: square;
 }
 .docs footer {
   margin-top: 20px;
 }
-.docs .signature-wrapper {
-  padding: 10px 15px 0;
-  border: 1px solid #484848;
-  border-radius: 0 0 5px 5px;
+/**
+* @styles docs-warning Docs Warning
+*
+*
+* @demo demos/api/docs-warning/demo.html
+**/
+.docs .warning {
+  background-color: rgba(217, 83, 79, 0.1);
 }
-.docs .signature-wrapper*:last-child {
-  margin-bottom: 0;
+.docs .warning h3 {
+  background-color: #d9534f;
+  color: #ffffff;
+  font-size: 18px;
+  line-height: 24px;
+  margin: 0;
+  -webkit-border-top-left-radius: 4px;
+  -webkit-border-top-right-radius: 4px;
+  -moz-border-radius-topleft: 4px;
+  -moz-border-radius-topright: 4px;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  padding: 3px 15px;
 }
 .container.api {
   display: table;
   table-layout: fixed;
-  border-bottom: 1px solid #d5d5d5;
+  border-bottom: 1px solid #cccccc;
   padding-top: 20px;
   border-radius: 5px;
 }
@@ -1190,14 +1445,12 @@ li.L9 {
 }
 .search-wrapper {
   position: relative;
-}
-.container.api > * {
-  display: table-cell !important;
-  vertical-align: top;
+  visibility: hidden;
+  display: none;
 }
 .search {
   display: block;
-  border: 1px solid #d5d5d5;
+  border: 1px solid #cccccc;
   padding: 3px 3px 3px 30px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -1224,85 +1477,24 @@ li.L9 {
   display: block;
   position: absolute;
   left: 17px;
-  color: #fff;
+  color: #ffffff;
   text-shadow: 0 0 3px rgba(0, 0, 0, 0.49);
 }
-.title {
-  display: block;
-  border-bottom: 1px solid #eae9e9;
+/**
+* @styles signature Signature
+*
+* @description
+* Used as a wrapper for parameters and returns. The signature has space for headings, code and additional plain-language explanations.
+*
+* @demo demos/api/signature/demo.html
+**/
+.docs .signature-wrapper {
+  padding: 10px 15px 0;
+  border: 1px solid #484848;
+  border-radius: 0 0 5px 5px;
 }
-.docs h1 {
-  margin: 0;
-  display: inline-block;
-}
-.docs .module,
-.docs .inherits,
-.docs .title .links li {
-  font-size: 14px;
-  color: #999999;
-  font-weight: normal;
-  font-style: normal;
-}
-.docs .title .links,
-.docs .title .tags {
-  list-style: none;
-  margin: 0;
-  text-align: right;
-  padding: 0;
-}
-.docs .title .tags {
-  display: inline-block;
-  margin: 0;
-  position: relative;
-  top: -5px;
-}
-.docs .title .tags li {
-  display: inline-block;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-  background-color: #3b3b3b;
-  color: #fff;
-  font-size: 12px;
-  margin-left: 5px;
-  padding: 2px 8px;
-}
-.docs .title .links li {
-  display: inline-block;
-  margin-top: 1px;
-}
-.docs .title .links li:before {
-  content: '|';
-  padding-right: 5px;
-  padding-left: 3px;
-}
-.docs .title .links li:first-child:before {
-  content: none;
-  padding: none;
-}
-.docs .inherits {
-  display: block;
-}
-.docs .warning {
-  background-color: #f2dede;
-}
-.docs .warning h3 {
-  background-color: #d9534f;
-  color: #fff;
-  font-size: 18px;
-  line-height: 24px;
-  margin: 0;
-  -webkit-border-top-left-radius: 4px;
-  -webkit-border-top-right-radius: 4px;
-  -moz-border-radius-topleft: 4px;
-  -moz-border-radius-topright: 4px;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
-  padding: 3px 15px;
-}
-.docs .contents li {
-  line-height: 24px;
-  list-style-type: square;
+.docs .signature-wrapper*:last-child {
+  margin-bottom: 0;
 }
 .docs .signature.collapsed :not(h2) {
   display: none;
@@ -1310,7 +1502,7 @@ li.L9 {
 .docs .signature h2,
 .docs .primary-options h2 {
   background-color: #484848;
-  color: #f0f0f0;
+  color: #eae9e9;
   font-size: 18px;
   line-height: 24px;
   margin: 0;
@@ -1333,18 +1525,62 @@ li.L9 {
 .docs .signature h2 code,
 .docs .primary-options h2 code {
   background-color: transparent;
-  color: #fff;
+  color: #ffffff;
 }
 .docs .signature h2 a,
 .docs .primary-options h2 a {
-  color: #fff;
+  color: #ffffff;
 }
+/**
+* @styles small-signature Small Signature
+*
+* @demo demos/api/small-signature/demo.html
+**/
+.small-signature {
+  padding: 10px;
+  background-color: #eae9e9;
+  border: 1px solid #cccccc;
+  margin-bottom: 10px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+}
+.small-signature a.sig {
+  text-decoration: none;
+  color: #000000;
+  display: block;
+  font-weight: bold;
+}
+.small-signature a.sig code,
+.small-signature a.sig code * {
+  background-color: none;
+  font-weight: bold;
+  background-color: transparent;
+}
+.small-signature a.sig .pln {
+  color: black;
+}
+.small-signature p {
+  color: #706f70;
+  line-height: 15px;
+  margin-bottom: 0px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+/**
+* @styles parameters-returns Parameters and Returns
+*
+* @description 
+* Parameters and returns are shown inside of `.signature` but their styles are not dependant on it.
+*
+* @demo demos/api/parameters-returns/demo.html
+**/
 .docs .parameters,
 .docs .returns {
   list-style-type: none;
   margin: 0 0 15px;
   border: 1px solid #cccccc;
-  background-color: #fcfafa;
+  background-color: #eae9e9;
   padding: 0px 15px 10px;
   border-radius: 5px;
 }
@@ -1352,7 +1588,7 @@ li.L9 {
 .docs .returns h4 {
   background-color: #484848;
   padding: 4px 15px;
-  color: #f0f0f0;
+  color: #eae9e9;
   margin: 0px -15px 5px;
 }
 .docs .parameters h4 .optional,
@@ -1362,7 +1598,7 @@ li.L9 {
 }
 .docs .parameters h4 a,
 .docs .returns h4 a {
-  color: #dddddd;
+  color: #cccccc;
   text-decoration: none;
 }
 .docs .parameters h4 a:hover,
@@ -1401,28 +1637,6 @@ li.L9 {
   font-size: 8pt;
   line-height: 20px;
 }
-.docs .demo ul {
-  list-style: none;
-  padding: 0;
-}
-.docs .demo li.tab {
-  display: block;
-  float: left;
-  padding: 4px 8px;
-}
-.docs .demo li.tab.active {
-  color: #fff;
-  font-weight: bold;
-  background-color: #165489;
-  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
-}
-.docs .demo div.tab-content {
-  clear: both;
-}
-.docs .demo iframe {
-  width: 100%;
-  border: 1px solid #d6d6d6;
-}
 .docs .parameters ul.options:last-child,
 .docs .returns ul.options:last-child {
   margin-bottom: 0;
@@ -1439,6 +1653,37 @@ li.L9 {
   margin-bottom: 0px;
   padding-bottom: 0px;
 }
+.docs .demo ul {
+  list-style: none;
+  padding: 0;
+}
+.docs .demo li.tab {
+  display: block;
+  float: left;
+  padding: 6px 10px;
+  border-radius: 4px 4px 0 0;
+}
+.docs .demo li.tab:first-of-type {
+  margin-left: 5px;
+}
+.docs .demo li.tab.active {
+  color: #ffffff;
+  font-weight: bold;
+  background-color: #165489;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.5);
+}
+.docs .demo div.tab-content {
+  clear: both;
+}
+.docs .demo iframe {
+  width: 100%;
+  border: 1px solid #cccccc;
+  border-radius: 6px;
+}
+.docs body.style-demo {
+  background-color: #ffffff;
+  padding: 10px;
+}
 #low {
   width: 960px;
   margin: 0 auto;
@@ -1448,43 +1693,13 @@ li.L9 {
 .api .group_0 {
   margin-bottom: 40px;
 }
-.small-signature {
-  padding: 10px;
-  background-color: #fcfafa;
-  border: 1px solid #ece7e7;
-  margin-bottom: 10px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  border-radius: 4px;
-}
-.small-signature a.sig {
-  text-decoration: none;
-  color: #000;
-  display: block;
-  font-weight: bold;
-}
-.small-signature a.sig code,
-.small-signature a.sig code * {
-  background-color: none;
-  font-weight: bold;
-  background-color: transparent;
-}
-.small-signature a.sig .pln {
-  color: black;
-}
-.small-signature p {
-  color: #666;
-  line-height: 15px;
-  margin-bottom: 0px;
-  margin-left: 10px;
-  margin-right: 10px;
-}
-/* Hack for chrome so we can change the size*/
-@media screen and (-webkit-min-device-pixel-ratio: 0) {
-  .sidebar #versions {
-    border-color: #999;
-  }
-}
+/**
+* @stylesheet sidebar.less Sidebar
+* @parent Styles.baseline-elements 4
+
+* @description
+* Styles the sidebar navigation.
+**/
 .sidebar {
   width: 255px;
   margin-top: 20px;
@@ -1494,16 +1709,58 @@ li.L9 {
   margin-bottom: 15px;
   border-radius: 5px 0 0 5px;
 }
-.sidebar li.active {
-  z-index: 20;
-}
 .sidebar ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
+.sidebar li.active {
+  z-index: 20;
+}
 .sidebar .primary-grouping {
   padding-bottom: 10px;
+}
+/**
+* @styles sidebar-versions Versions
+*
+* @description
+* Select menu used to display the documentation
+*
+* @demo demos/sidebar/versions/demo.html
+**/
+.sidebar .versions,
+.sidebar #versions {
+  position: absolute;
+  right: 5px;
+  top: 7px;
+  font-size: 15px;
+}
+.sidebar .versions option,
+.sidebar #versions option {
+  font-size: 15px;
+}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .sidebar #versions {
+    border-color: #999999;
+  }
+}
+/**
+* @styles sidebar-list List Items
+*
+* @description
+* Styles the groups of lists shown on the sidebar.
+*
+* @demo demos/sidebar/lists/demo.html
+**/
+.sidebar .api {
+  /* This is the caret/triangle that points out of the container to the page on active items */
+}
+.sidebar .api .heading span {
+  text-transform: uppercase;
+  color: #484848;
+  line-height: 24px;
+  display: block;
+  font-weight: bold;
 }
 .sidebar .api li {
   font-size: 15px;
@@ -1513,14 +1770,14 @@ li.L9 {
 }
 .sidebar .api li a {
   display: block;
-  border: 1px solid rgba(255, 255, 254, 0);
+  border: 1px solid #cccccc;
 }
 .sidebar .api ul ul li a:hover {
-  background: rgba(204, 204, 204, 0.2);
+  background: #cccccc;
 }
 .sidebar .api li li li li a {
   font-size: 13px;
-  color: #666;
+  color: #706f70;
 }
 .sidebar .api > li > ul {
   display: none;
@@ -1531,32 +1788,6 @@ li.L9 {
 }
 .sidebar .api > li.active > ul {
   display: block;
-}
-.sidebar .api li.active > a.sidebar-title {
-  font-size: 24px;
-  background-color: #484848;
-  border-radius: 5px 0 0 0;
-  margin-bottom: 20px;
-}
-.sidebar .api li.active:nth-child(2) > a.sidebar-title,
-.sidebar .api li.active:nth-child(3) > a.sidebar-title,
-.sidebar .api li.active:nth-child(4) > a.sidebar-title,
-.sidebar .api li.active:nth-child(5) > a.sidebar-title {
-  font-size: 18px;
-  border-radius: 0;
-  margin: -20px 0 20px 0;
-}
-.sidebar .api li.active:nth-child(2) > a.sidebar-title {
-  background: #626262;
-}
-.sidebar .api li.active:nth-child(3) > a.sidebar-title {
-  background: #7b7b7b;
-}
-.sidebar .api li.active:nth-child(4) > a.sidebar-title {
-  background: #949494;
-}
-.sidebar .api li.active:nth-child(5) > a.sidebar-title {
-  background: #aeaeae;
 }
 .sidebar .api li.active.collapsed > :not(a) {
   display: none;
@@ -1576,20 +1807,6 @@ li.L9 {
   color: #484848;
   font-style: normal;
 }
-.sidebar .versions,
-.sidebar #versions {
-  position: absolute;
-  right: 5px;
-  top: 7px;
-  font-size: 15px;
-}
-.sidebar .versions option,
-.sidebar #versions option {
-  font-size: 15px;
-}
-.sidebar .api {
-  /* This is the caret/triangle that points out of the container to the page on active items */
-}
 .sidebar .api li.active {
   z-index: 20;
 }
@@ -1597,20 +1814,13 @@ li.L9 {
   font-size: 17px;
   font-weight: normal;
   line-height: 40px;
-  color: #767676;
+  color: #706f70;
   display: block;
   border: none;
 }
 .sidebar .api > li > a:hover,
 .sidebar .api > li > a:hover {
-  color: #000;
-}
-.sidebar .api .heading span {
-  text-transform: uppercase;
-  color: #484848;
-  line-height: 24px;
-  display: block;
-  font-weight: bold;
+  color: #000000;
 }
 .sidebar .api li li.parent {
   text-indent: 30px;
@@ -1626,7 +1836,7 @@ li.L9 {
 }
 .sidebar .api li.parent:before {
   content: "";
-  border-color: transparent #636363;
+  border-color: transparent #999999;
   border-style: solid;
   border-width: 0.3em 0 0.3em 0.5em;
   display: block;
@@ -1681,11 +1891,45 @@ li.L9 {
 .sidebar .api li li li.active > a:before {
   left: 20px;
 }
+/**
+* @styles cascading-list Cascading List
+*
+* @description
+* Styles `.sidebar-title` as a child of the `.api` list, and up to 5 levels before inheriting the styles of level 1.
+*
+* @demo demos/sidebar/cascading-list/demo.html
+**/
+.sidebar .api li.active > a.sidebar-title {
+  font-size: 24px;
+  background-color: #484848;
+  border-radius: 5px 0 0 0;
+  margin-bottom: 20px;
+}
+.sidebar .api li.active:nth-child(2) > a.sidebar-title,
+.sidebar .api li.active:nth-child(3) > a.sidebar-title,
+.sidebar .api li.active:nth-child(4) > a.sidebar-title,
+.sidebar .api li.active:nth-child(5) > a.sidebar-title {
+  font-size: 18px;
+  border-radius: 0;
+  margin: -20px 0 20px 0;
+}
+.sidebar .api li.active:nth-child(2) > a.sidebar-title {
+  background: #626262;
+}
+.sidebar .api li.active:nth-child(3) > a.sidebar-title {
+  background: #7b7b7b;
+}
+.sidebar .api li.active:nth-child(4) > a.sidebar-title {
+  background: #949494;
+}
+.sidebar .api li.active:nth-child(5) > a.sidebar-title {
+  background: #aeaeae;
+}
 .sidebar .api.cascading {
   /* The caret that points down from an active parent element to the child below */
 }
 .sidebar .api.cascading > .active > a {
-  color: #fff;
+  color: #ffffff;
   background: #484848;
   border: none;
 }
@@ -1753,6 +1997,30 @@ li.L9 {
 .sidebar .api.cascading > li:nth-child(10) {
   z-index: 11;
 }
+/**
+* @stylesheet Swatches
+* @parent style.baseline-elements
+
+* @description
+* Styles used to lay out the grids of swatches for documentation purposes.
+**/
+.swatches-list {
+  list-style: none;
+  margin: 10px;
+}
+.swatches-list li {
+  width: 20%;
+  float: left;
+  height: 100px;
+  text-align: center;
+  margin: 1px;
+}
+.swatch-color {
+  width: 100%;
+  height: 50px;
+  display: block;
+  margin-bottom: 5px;
+}
 .guides .sidebar {
   width: 255px;
   margin-top: 20px;
@@ -1761,8 +2029,8 @@ li.L9 {
   margin-top: 20px;
   padding: 20px;
   width: 662px;
-  background-color: #fff;
-  border: 1px solid #d5d5d5;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
   border-left-style: none;
   border-bottom-style: none;
 }
@@ -1778,13 +2046,20 @@ li.L9 {
 .guides .container.api {
   margin-bottom: 20px;
 }
+/**
+* @stylesheet ie.less IE Corrections
+* @parent Styles.other
+*
+* @description
+* These styles are to correct the display differences specific to Internet Explorer.
+**/
 .ie .search:before {
   font-family: Bitstrap;
   content: "\e012";
   display: block;
   position: absolute;
   left: 17px;
-  color: #ccc;
+  color: #cccccc;
 }
 .ie .sidebar .api li li.active > a,
 .ie .sidebar .api li li.active > a:hover,
@@ -1796,11 +2071,6 @@ li.L9 {
 }
 .ie .sidebar .api li li.active > a:before,
 .ie .sidebar .api li li.active > a:before {
-  display: none;
-}
-.search-wrapper {
-  position: relative;
-  visibility: hidden;
   display: none;
 }
 

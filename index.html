@@ -46,11 +46,14 @@
 		  	<li class="active">
         	<a href="index.html">Home</a>
         </li>
-        <li>
-          <a href="docs/index.html">Api</a>
-        </li>
         <li >
-        	<a href="styles/index.html">Styles</a>
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
         </li>
         <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
 	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
@@ -152,6 +155,8 @@ module.exports = Graph;
 		
 
 		
+
+		
 	
 	
 	
@@ -162,7 +167,7 @@ module.exports = Graph;
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"page","name":"home","src":"_pages/index.md","description":"","hideSidebar":true,"hideTitle":true,"hideFooter":true,"hideContainer":true,"hideArticle":true,"comment":" ","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"_pages/*.md","ignore":"{node_modules,bower_components}/**/*","cwd":"/Users/Jan/Workspace/documentjs.com"},"dest":"/Users/Jan/Workspace/documentjs.com","forceBuild":true,"minifyBuild":false,"watch":true,"generators":["html"],"page":"index","docConfigDest":"documentjs.json","project":{}};
+		var docObject = {"type":"page","name":"home","src":"_pages/index.md","description":"","hideSidebar":true,"hideTitle":true,"hideFooter":true,"hideContainer":true,"hideArticle":true,"comment":" ","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"_pages/*.md","ignore":"{node_modules,bower_components}/**/*","cwd":"/Users/Jan/Workspace/documentjs.com"},"dest":"/Users/Jan/Workspace/documentjs.com","forceBuild":true,"minifyBuild":false,"generators":["html"],"page":"index","docConfigDest":"documentjs.json","project":{}};
 	</script>
 	
 	
@@ -175,6 +180,7 @@ module.exports = Graph;
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

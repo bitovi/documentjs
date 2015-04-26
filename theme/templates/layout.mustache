@@ -46,11 +46,14 @@
 		  	<li {{#ifCurrentFromConfig "index.html"}}class="active"{{/ifCurrentFromConfig}}>
         	<a href="{{urlFromConfig 'index.html'}}">Home</a>
         </li>
-        <li {{#ifEqual page "index"}}class='active'{{/ifEqual}}>
+        <li {{#ifEqual page "docs"}}class='active'{{/ifEqual}}>
           <a href="/docs/index.html">Api</a>
         </li>
-        <li {{#ifEqual page "styles"}}class='active'{{/ifEqual}}>
-        	<a href="/styles/index.html">Styles</a>
+        <li class='menu-container{{#ifEqual page "example"}} active{{/ifEqual}}'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
         </li>
         <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
 	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>

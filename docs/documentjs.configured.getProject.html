@@ -46,11 +46,14 @@
 		  	<li >
         	<a href="../index.html">Home</a>
         </li>
-        <li >
+        <li class='active'>
           <a href="/docs/index.html">Api</a>
         </li>
-        <li >
-        	<a href="/styles/index.html">Styles</a>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
         </li>
         <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
 	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
@@ -376,7 +379,7 @@ the resource.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"function","name":"documentjs.configured.getProject","parent":"documentjs.configured.methods","src":"lib/configured/get_project.js","line":12,"codeLine":56,"description":"Copies or downloads a project to `project.path`.","title":"","signatures":[{"code":"documentjs.configured.getProject( project )","description":"","params":[{"types":[{"type":"Object","options":[{"name":"source","description":"A path to a file, a url to a git repository, or a\n[npm install](https://www.npmjs.org/doc/cli/npm-install.html) target.","types":[{"type":"String"}]},{"name":"npmInstall","description":"Set to `true` to use npm to install\nthe resource.","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"false"},{"name":"path","description":"The path to install the project.","types":[{"type":"String"}]}]}],"name":"project","description":"A [documentjs.configured.projectConfig] object with the following properties:"}],"returns":{"types":[{"type":"Promise"}],"description":"A promise that resolves when the resource has been retrieved successfully."}}],"types":[],"comment":" ","templates":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs"},"watch":true,"forceBuild":true,"dest":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"type":"function","name":"documentjs.configured.getProject","parent":"documentjs.configured.methods","src":"lib/configured/get_project.js","line":12,"codeLine":56,"description":"Copies or downloads a project to `project.path`.","title":"","signatures":[{"code":"documentjs.configured.getProject( project )","description":"","params":[{"types":[{"type":"Object","options":[{"name":"source","description":"A path to a file, a url to a git repository, or a\n[npm install](https://www.npmjs.org/doc/cli/npm-install.html) target.","types":[{"type":"String"}]},{"name":"npmInstall","description":"Set to `true` to use npm to install\nthe resource.","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"false"},{"name":"path","description":"The path to install the project.","types":[{"type":"String"}]}]}],"name":"project","description":"A [documentjs.configured.projectConfig] object with the following properties:"}],"returns":{"types":[{"type":"Promise"}],"description":"A promise that resolves when the resource has been retrieved successfully."}}],"types":[],"comment":" ","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
 	</script>
 	
 	

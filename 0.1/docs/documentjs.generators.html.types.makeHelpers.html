@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../../index.html">Home</a>
+        </li>
+        <li >
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,15 +88,18 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		<li class="search-container active parent">
 			<a class="sidebar-title" href="documentjs.generators.html.html" data-search="generators.html">
 				generators.html
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="documentjs.generators.html.build.html" data-search="documentjs.generators.html.build">
 				build
@@ -102,7 +109,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>methods</span>
 						
@@ -158,9 +164,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -168,7 +172,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>types</span>
 						
@@ -189,7 +192,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container active ">
 					<a class="typedef" href="documentjs.generators.html.types.makeHelpers.html" data-search="makeHelpers">
 						makeHelpers
 					</a>
@@ -212,9 +215,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -222,12 +223,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -259,9 +259,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c/generators/html/build/make_helpers.md">source</a></li>
 	
 	
 	
@@ -386,6 +386,8 @@ the current page's name:</p>
 		
 
 		
+
+		
 	
 	
 	</article>
@@ -400,7 +402,7 @@ the current page's name:</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"typedef","name":"documentjs.generators.html.types.makeHelpers","src":"lib/generators/html/build/make_helpers.md","description":"","title":"makeHelpers","types":[{"type":"function","returns":{"types":[{"type":"Object","template":[{"types":[{"type":"String"}]},{"types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[]}]}]}],"description":"<p>A map of Handlebars function helpers\nthat will be registered.</p>\n"},"params":[{"types":[{"type":"documentjs.process.docMap"}],"name":"docMap","description":"<p>Contains\nevery [documentjs.process.docObject docObject] keyed by its name.</p>\n"},{"types":[{"type":"Object","options":[]}],"name":"options","description":"<p>The options passed to [documentjs.generate].</p>\n"},{"types":[{"type":"function","returns":{"types":[{"type":"documentjs.process.docObject"}]},"params":[]}],"name":"getCurrent","description":"<p>Returns the\ncurrent [documentjs.process.docObject docObject] being rendered.</p>\n"}]}],"parent":"documentjs.generators.html.build.types","comment":" ","templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/0.1/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
+		var docObject = {"type":"typedef","name":"documentjs.generators.html.types.makeHelpers","src":"lib/generators/html/build/make_helpers.md","description":"","title":"makeHelpers","types":[{"type":"function","returns":{"types":[{"type":"Object","template":[{"types":[{"type":"String"}]},{"types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[]}]}]}],"description":"A map of Handlebars function helpers \nthat will be registered."},"params":[{"types":[{"type":"documentjs.process.docMap"}],"name":"docMap","description":"Contains \nevery [documentjs.process.docObject docObject] keyed by its name."},{"types":[{"type":"Object","options":[]}],"name":"options","description":"The options passed to [documentjs.generate]."},{"types":[{"type":"function","returns":{"types":[{"type":"documentjs.process.docObject"}]},"params":[]}],"name":"getCurrent","description":"Returns the \ncurrent [documentjs.process.docObject docObject] being rendered."}]}],"parent":"documentjs.generators.html.build.types","comment":" ","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/0.1/documentjs"},"dest":"/Users/Jan/Workspace/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
 	</script>
 	
 	
@@ -413,6 +415,7 @@ the current page's name:</p>
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

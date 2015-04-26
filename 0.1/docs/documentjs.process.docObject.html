@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../../index.html">Home</a>
+        </li>
+        <li >
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,9 +88,11 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="documentjs.process.html" data-search="process">
 				process
@@ -96,7 +102,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>methods</span>
 						
@@ -164,9 +169,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -174,7 +177,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>types</span>
 						
@@ -195,7 +197,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container active ">
 					<a class="typedef" href="documentjs.process.docObject.html" data-search="docObject">
 						docObject
 					</a>
@@ -254,9 +256,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -266,12 +266,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -303,9 +302,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c/process/docObject.md">source</a></li>
 	
 	
 	
@@ -433,6 +432,8 @@ universal properties:</p>
 		
 
 		
+
+		
 	
 	
 	</article>
@@ -447,7 +448,7 @@ universal properties:</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"typedef","name":"documentjs.process.docObject","src":"lib/process/docObject.md","description":"<p>An object that represents something that is documented. Any\nproperty added to a docObject is available to the templates and the\nclient.</p>\n","title":"docObject","types":[{"type":"Object","options":[{"name":"name","description":"<p>The unique name of the object being documented.</p>\n","types":[{"type":"String"}]},{"name":"type","description":"<p>The type of the DocType. This typically represents\nthe type of the object being documented:</p>\n<ul>\n<li>constructor</li>\n<li>prototype</li>\n<li>static</li>\n<li>function</li>\n<li>property</li>\n<li>typedef</li>\n<li>module</li>\n</ul>\n","types":[{"type":"String"}]},{"name":"parent","description":"<p>The parent</p>\n","types":[{"type":"String"}]},{"name":"children","description":"<p>An array of children names. This typically gets\nadded by the system based on the <code>parent</code> property.</p>\n","types":[{"type":"Array","template":[{"types":[{"type":"String"}]}]}]}]}],"parent":"documentjs.process.types","comment":" ","templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/0.1/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
+		var docObject = {"type":"typedef","name":"documentjs.process.docObject","src":"lib/process/docObject.md","description":"An object that represents something that is documented. Any \nproperty added to a docObject is available to the templates and the\nclient.","title":"docObject","types":[{"type":"Object","options":[{"name":"name","description":"The unique name of the object being documented.","types":[{"type":"String"}]},{"name":"type","description":"The type of the DocType. This typically represents\nthe type of the object being documented:\n\n - constructor\n - prototype\n - static\n - function\n - property\n - typedef\n - module","types":[{"type":"String"}]},{"name":"parent","description":"The parent","types":[{"type":"String"}]},{"name":"children","description":"An array of children names. This typically gets\nadded by the system based on the `parent` property.","types":[{"type":"Array","template":[{"types":[{"type":"String"}]}]}]}]}],"parent":"documentjs.process.types","comment":" ","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/0.1/documentjs"},"dest":"/Users/Jan/Workspace/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
 	</script>
 	
 	
@@ -460,6 +461,7 @@ universal properties:</p>
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

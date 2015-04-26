@@ -46,11 +46,14 @@
 		  	<li >
         	<a href="../index.html">Home</a>
         </li>
-        <li >
+        <li class='active'>
           <a href="/docs/index.html">Api</a>
         </li>
-        <li >
-        	<a href="/styles/index.html">Styles</a>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
         </li>
         <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
 	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
@@ -626,7 +629,7 @@ automatically assumed to be a property.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"name":"documentjs.tags.property","type":"constructor","parent":"documentjs.tags","src":"lib/tags/property.js","line":3,"codeLine":34,"description":"Documents a property of a parent object.","title":"@property","signatures":[{"code":"@property {TYPE} NAME [TITLE]","description":"Documents a \nproperty named `NAME` of type `{TYPE}`.","params":[{"types":[{"type":"documentjs.typeExpression"}],"optional":true,"name":"TYPE","description":"An optional type like `{Object}`."},{"types":[{"type":"documentjs.nameExpression"}],"optional":true,"name":"NAME","description":"The name of the property. This maybe infered from the \ncode block immediately following the comment."},{"types":[{"type":"STRING"}],"optional":true,"name":"TITLE","description":"The display title of the property."}]},{"code":"[\"']?(\\w+)[\"']?\\s*[:=]\\s*","description":"If code matches the above regular expression and is not a function, it is \nautomatically assumed to be a property.","params":[]}],"templates":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs"},"watch":true,"forceBuild":true,"dest":"/Users/adrianadelacuadra/Documents/Bitovi/repos/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"name":"documentjs.tags.property","type":"constructor","parent":"documentjs.tags","src":"lib/tags/property.js","line":3,"codeLine":34,"description":"Documents a property of a parent object.","title":"@property","signatures":[{"code":"@property {TYPE} NAME [TITLE]","description":"Documents a \nproperty named `NAME` of type `{TYPE}`.","params":[{"types":[{"type":"documentjs.typeExpression"}],"optional":true,"name":"TYPE","description":"An optional type like `{Object}`."},{"types":[{"type":"documentjs.nameExpression"}],"optional":true,"name":"NAME","description":"The name of the property. This maybe infered from the \ncode block immediately following the comment."},{"types":[{"type":"STRING"}],"optional":true,"name":"TITLE","description":"The display title of the property."}]},{"code":"[\"']?(\\w+)[\"']?\\s*[:=]\\s*","description":"If code matches the above regular expression and is not a function, it is \nautomatically assumed to be a property.","params":[]}],"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
 	</script>
 	
 	
