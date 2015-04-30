@@ -1,32 +1,77 @@
-/* Hack for chrome so we can change the size*/
-@media screen and (-webkit-min-device-pixel-ratio:0) {
- .sidebar #versions { border-color:#999;  }
-}
+/**
+* @stylesheet sidebar.less Sidebar
+* @parent Styles.baseline-elements 4
 
+* @description
+* Styles the sidebar navigation.
+**/
+
+
+// Sidebar structure
 .sidebar {
-
   width:  255px;
   margin-top: 20px;
-  li.active {
-    z-index: 20;
-  }
-
   background-color: @sidebarBackground;
   position: relative;
   z-index: 1;
   margin-bottom: 15px;
   border-radius: 5px 0 0 5px;
-  
   ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
   }
+  li.active {
+    z-index: 20;
+  }
   .primary-grouping {
     padding-bottom: 10px;
   }
+}
+
+/**
+* @styles sidebar-versions Versions
+*
+* @description
+* Select menu used to display the documentation
+*
+* @demo demos/sidebar/versions/demo.html
+**/
+.sidebar {
+   .versions, 
+   #versions {
+    position: absolute;
+    right: 5px;
+    top: 7px;
+    font-size: 15px;
+    option {
+      font-size: 15px;
+    }
+  }
+}
+// Hack for chrome so we can change the size
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+ .sidebar #versions { border-color: @cloud; }
+}
+
+
+/**
+* @styles sidebar-list List Items
+*
+* @description
+* Styles the groups of lists shown on the sidebar.
+*
+* @demo demos/sidebar/lists/demo.html
+**/
+.sidebar {
   .api {
-    
+    .heading span {
+      text-transform: uppercase;
+      color: @darkSkies;
+      line-height: 24px;
+      display: block;
+      font-weight: bold;
+    }
     li {
       font-size: 15px;
       line-height: 24px;
@@ -34,15 +79,15 @@
       position: relative;
       a {
         display: block;
-        border: 1px solid rgba(255, 255, 254, 0);
+        border: 1px solid @haze;
       }
     }
     ul ul li a:hover {
-      background: rgba(204, 204, 204, 0.2);
+      background: @haze;
     }
     li li li li a {
       font-size: 13px;
-      color: #666;
+      color: @thunderStorm;
     }
     > li > ul {
       display: none;
@@ -55,34 +100,7 @@
         display: block;
       }
     }
-    li.active > a.sidebar-title  {
-      font-size: 24px;
-      background-color: @brand-color-1;
-      border-radius: 5px 0 0 0;
-      margin-bottom:20px;
-    }
-    li.active:nth-child(2) > a.sidebar-title,
-    li.active:nth-child(3) > a.sidebar-title,
-    li.active:nth-child(4) > a.sidebar-title,
-    li.active:nth-child(5) > a.sidebar-title {
-      font-size: 18px;
-      border-radius: 0;
-      margin:-20px 0 20px 0;      
-    } 
-    li.active:nth-child(2) > a.sidebar-title {
-      background: lighten(@brand-color-1, 10%);
-    } 
-    li.active:nth-child(3) > a.sidebar-title {
-      background: lighten(@brand-color-1, 20%);   
-    }
-    li.active:nth-child(4) > a.sidebar-title {
-      background: lighten(@brand-color-1, 30%);   
-    }        
-    li.active:nth-child(5) > a.sidebar-title {
-      background: lighten(@brand-color-1, 40%);   
-    }  
-
-
+    
     li.active.collapsed > :not(a) {
       display:none;
     }
@@ -97,21 +115,9 @@
     }
     a, a:hover {
       text-decoration: none;
-      color: @brand-color-1;
+      color: @darkSkies;
       font-style: normal;
     }
-    
-  }
-  .versions, #versions {
-    position: absolute;
-    right: 5px;
-    top: 7px;
-    font-size: 15px;
-    option {
-      font-size: 15px;
-    }
-  }
-  .api {
     li.active  {
       z-index: 20;
     }
@@ -119,21 +125,15 @@
       font-size: 17px;
       font-weight: normal;
       line-height: 40px;
-      color: #767676;
+      color: @thunderStorm;
       display: block;
       border: none;
     }
     > li > a:hover,
     > li > a:hover {
-      color: #000;
+      color: @night;
     }
-    .heading span {
-      text-transform: uppercase;
-      color: @brand-color-1;
-      line-height: 24px;
-      display: block;
-      font-weight: bold;
-    }
+    
     li li.parent {
       text-indent: 30px;
     }
@@ -148,7 +148,7 @@
     }
     li.parent:before {
       content: "";
-      border-color: transparent #636363;
+      border-color: transparent @cloud;
       border-style: solid;
       border-width: 0.3em 0 0.3em 0.5em;
       display: block;
@@ -194,7 +194,7 @@
       position: absolute;
       content: '';
       display: block;
-      border-left: 4px solid @brand-color-1;
+      border-left: 4px solid @darkSkies;
       width: 5px;
       height: 20px;
       left: 5px;
@@ -203,51 +203,91 @@
     li li li.active > a:before {
       left: 20px;
     }
-  }
-  .api.cascading {
-    > .active > a {
-      color: #fff;
-      background: @colorNav;
-      border: none;
+  } // api ends
+} // sidebar ends
+
+
+/**
+* @styles cascading-list Cascading List
+*
+* @description
+* Styles `.sidebar-title` as a child of the `.api` list, and up to 5 levels before inheriting the styles of level 1.
+*
+* @demo demos/sidebar/cascading-list/demo.html
+**/
+.sidebar {
+  .api {
+    li.active > a.sidebar-title  {
+      font-size: 24px;
+      background-color: @darkSkies;
+      border-radius: 5px 0 0 0;
+      margin-bottom:20px;
     }
-    > .parent {
-      z-index: 1;
-      text-indent: 15px;
-      margin-left: 0px;
-      margin-right: 0px;
+    li.active:nth-child(2) > a.sidebar-title,
+    li.active:nth-child(3) > a.sidebar-title,
+    li.active:nth-child(4) > a.sidebar-title,
+    li.active:nth-child(5) > a.sidebar-title {
+      font-size: 18px;
+      border-radius: 0;
+      margin:-20px 0 20px 0;      
+    } 
+    li.active:nth-child(2) > a.sidebar-title {
+      background: lighten(@darkSkies, 10%);
+    } 
+    li.active:nth-child(3) > a.sidebar-title {
+      background: lighten(@darkSkies, 20%);   
     }
-    /* The caret that points down from an active parent element to the child below */
-    > .active:before,
-    > .active:nth-child(2):before,
-    > .active:nth-child(3):before,
-    > .active:nth-child(4):before,
-    > .active:nth-child(5):before   {
-      position:absolute;
-      content : ' ';
-      left:10px;
-      top:30px;
-      z-index : -1;
-      width: 0; 
-      height: 0; 
-      border-left: 20px solid transparent;
-      border-right: 20px solid transparent;
-      border-top: 20px solid @brand-color-1;
-    }
-    > .active:nth-child(2):before {
-      border-top: 20px solid lighten(@brand-color-1, 10%);
-    }
-    > .active:nth-child(3):before {
-      border-top: 20px solid lighten(@brand-color-1, 20%);
-    }   
-    > .active:nth-child(4):before {
-      border-top: 20px solid lighten(@brand-color-1, 30%);
-    }
-    > .active:nth-child(5):before {
-      border-top: 20px solid lighten(@brand-color-1, 40%);
-    }               
-  }
-  
-}
+    li.active:nth-child(4) > a.sidebar-title {
+      background: lighten(@darkSkies, 30%);   
+    }        
+    li.active:nth-child(5) > a.sidebar-title {
+      background: lighten(@darkSkies, 40%);   
+    }  
+
+    &.cascading {
+      > .active > a {
+        color: @clear;
+        background: @colorNav;
+        border: none;
+      }
+      > .parent {
+        z-index: 1;
+        text-indent: 15px;
+        margin-left: 0px;
+        margin-right: 0px;
+      }
+      /* The caret that points down from an active parent element to the child below */
+      > .active:before,
+      > .active:nth-child(2):before,
+      > .active:nth-child(3):before,
+      > .active:nth-child(4):before,
+      > .active:nth-child(5):before   {
+        position:absolute;
+        content : ' ';
+        left:10px;
+        top:30px;
+        z-index : -1;
+        width: 0; 
+        height: 0; 
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-top: 20px solid @darkSkies;
+      }
+      > .active:nth-child(2):before {
+        border-top: 20px solid lighten(@darkSkies, 10%);
+      }
+      > .active:nth-child(3):before {
+        border-top: 20px solid lighten(@darkSkies, 20%);
+      }   
+      > .active:nth-child(4):before {
+        border-top: 20px solid lighten(@darkSkies, 30%);
+      }
+      > .active:nth-child(5):before {
+        border-top: 20px solid lighten(@darkSkies, 40%);
+      }               
+    } // cascading ends 
+  } // api ends
+} // sidebar ends
 
 
 .zIndexer(10);

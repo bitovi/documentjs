@@ -1,3 +1,53 @@
+/**
+* @stylesheet code.less Code Rendering
+* @parent Styles.baseline-elements
+*
+* @description
+* Enables both the layout of code wells, and also the syntax highlighting of the specific code language. Syntax coloring provided by prettify.js with the <a href="https://github.com/chriskempson/tomorrow-theme">Tomorrow Theme</a>.
+* 
+* Code "wells" are styled based on the use of the `<pre>` and `<code>` tags around your desired code example.
+*
+* Below are a few examples in various languages. This is not an exhaustive list of supported languages. 
+*
+* ### HTML 
+* ```
+* <pre>
+    <code>
+      <div class="example"><!--with a comment -->
+        <h1>Example</h1>
+        <p>This is some example code that is being styled.</p>
+      </div>
+    </code>
+  </pre>
+*
+* ```
+* ### JavaScript
+*```
+var foo = require('f'),
+    bar = require('br'),
+    writeFile = f.denodify(br.writeFile),
+    path = require('path');
+    
+module.exports = function(littlePromise, options){
+   return littlePromise.then(function(little){
+     return writeFile(
+         path.join(options.dest,'little.json'), 
+         JSON.stringify(little) );
+   });
+};
+* ```
+* ### JSON
+*```
+{
+  "sites": {
+    "docs": {
+      "key" : "value"
+    }
+  }
+}
+* ```
+*
+**/
 code {
 	background-color: @colorCode;
   border-radius: 5px;
@@ -5,12 +55,12 @@ code {
 }
 pre, code, pre *, code * {
 	font-family: "Courier New", Courier, mono;
-    font-style: normal;
-    font-weight: 300; 
+  font-style: normal;
+  font-weight: 300; 
 }
 pre {
-  background-color: #fff;
-  border: 1px solid #d9d9d9;
+  background-color: @clear;
+  border: 1px solid @haze;
   border-radius: 5px;
   margin: 0;
   margin-bottom: 20px;
@@ -22,7 +72,7 @@ pre {
   	font-size: 14px;
   	line-height: 16px;
   	letter-spacing: 0px;
-  	background-color: rgba(0,0,0,0);
+  	background-color: transparent;
   }
   
   ol {
@@ -31,8 +81,8 @@ pre {
   	
   	li {
   		text-indent: 0;
-  		color: #333;
-  		background-color: #fff;
+  		color: @darkSkies;
+  		background-color: @clear;
   		margin: 0;
   		list-style: decimal;
   	}
@@ -50,7 +100,7 @@ code.prettyprint {
 }
 
 .pln {
-  color: #4d4d4c;
+  color: @darkSkies;
 }
 
 @media screen {
@@ -168,17 +218,15 @@ code.prettyprint {
 }
   /* Style */
 pre.prettyprint {
-  background: @pp-bg;
+  //background: @pp-bg;
   font-family: Menlo, "Bitstream Vera Sans Mono", "DejaVu Sans Mono", Monaco, Consolas, monospace;
-  font-size: 12px;
-  line-height: 1.5;
-  border: 1px solid #d6d6d6;
+  font-size: 14px;
+  border: 1px solid @haze;
   padding: 10px;
 }
 
 pre.prettyprint ol {
-  font-size: 12px;
-  line-height: 1.5;
+  font-size: 14px;
   margin-bottom: 0px;
 }
 

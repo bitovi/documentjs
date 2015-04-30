@@ -1,76 +1,142 @@
+/**
+* @stylesheet api.less API
+* @parent Styles.docs
+
+* @description
+* Styles the docs and overwrites some of the theme default styles.
+**/
+
+
+/**
+* @styles simple-tag Simple Tag
+*
+* @description
+* Simple tags are styled independently from parent containers, and are different from the `ul.tags li` elements.
+*
+* @demo demos/api/simple-tag/demo.html
+**/
 .simple-tag {
   display: inline-block;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
   background-color: @colorTags;
-  color: #fff;
+  color: @clear;
   font-size: 12px;
   margin-left: 5px;
   padding: 2px 8px;
 }
 
 
+/**
+* @styles docs-title Title Section
+
+* @description
+* Styles the title section that shows as the top of each document. It is composed by
+* a `.heading`, `tags`, a `subheading`, and a list of `links`.
+*
+* @demo demos/api/title-section/demo.html
+**/
 .docs {
-	.title {
-	  display: block;
-	  border-bottom: 1px solid #eae9e9;
-	  //padding-bottom: 16px;
-	  
-	  .heading {
-	  	position: relative;
-	  	 margin: 0;
-	  	 
-	  	h1 {
-	  	  margin: 0;
-	  	  display: inline-block;
+  .title {
+    display: block;
+    border-bottom: 1px solid @fog;
+    .heading {
+    	position: relative;
+    	margin: 0; 
+    	h1 {
+    	  margin: 0;
+    	  display: inline-block;
         max-width: 550px;
         word-wrap: break-word;
-	  	}		  
-	    .module {
-	    	position: absolute;
-	    	right: 0;
-	    	display: inline-block;
-	    	top: 10px;
-	    }
-	    ul.tags {
-	      	margin-bottom: 0 !important;
-	    	  text-align: left;
-	      	display: inline-block;
-	    }
-	  	
-	  }
-	  h2,h3 {
-	  	display: inline-block;
-	  }
-	  h2 {
-	  	margin: 0;
-	  	  	code {
-	  	  		background: none;
-	  	  		color: #767676;
-	  	  		font-size: 18px;
-	  	  		font-weight: bold;
-	  	  	}
-	  }
-	  .sub-heading, ul.links {
-	  	float: left;
-	  	display: block;
-	  	width: 50%;
-	  	box-sizing: border-box;
-	  	margin: 0;
-	  }
-	  ul.links {
-	  	margin-bottom: 16px;
-	  }
-	} //.title
-	
-	
-  
+    	}		  
+      .module {
+      	position: absolute;
+      	right: 0;
+      	display: inline-block;
+      	top: 10px;
+      }
+      ul.tags {
+        	margin-bottom: 0 !important;
+      	  text-align: left;
+        	display: inline-block;
+      }
+    }
+    h2,h3 {
+    	display: inline-block;
+    }
+    h2 {
+    	margin: 0;
+    	code {
+    		background: none;
+    		color: @thunderStorm;
+    		font-size: 18px;
+    		font-weight: bold;
+    	}
+    }
+    .sub-heading, ul.links {
+    	float: left;
+    	display: block;
+    	width: 50%;
+    	box-sizing: border-box;
+    	margin: 0;
+    }
+    ul.links {
+    	margin-bottom: 16px;
+    }
+    .links, 
+    .tags {
+      list-style: none;
+      margin: 0;
+      text-align: right;
+      padding: 0;
+    }
+    .tags {
+      display: inline-block;
+      margin: 0;
+      position: relative;
+      top: -5px;
+          li {
+            .simple-tag();
+          }
+    }
+    .links li {
+      display: inline-block;
+      margin-top: 1px;
+      &:before {
+        content: '|';
+        padding-right: 5px;
+        padding-left: 3px;
+      }
+      &:first-child:before {
+        content: none;
+        padding: none;
+      }
+    }
+  }
+  h1 {
+    margin: 0;
+    display: inline-block;
+  }
+  .module,  .inherits,  .title .links li {
+    font-size: 14px;
+    color: @cloud;
+    font-weight: normal;
+    font-style: normal;
+  }
+  .inherits {
+    display: block;
+  }
+}
+
+
+// Docs General Styles
+.docs {	
   .content.docs {
     width: 662px;
     margin-top: 20px;
-    background-color: #fff;
-    border: 1px solid #d5d5d5;
+    background-color: @clear;
+    border: 1px solid @haze;
     padding: 20px;
     border-left-style: none;
     border-bottom-style: none;
@@ -85,41 +151,68 @@
 
     .iframe_wrapper iframe {
       width: 100%;
+      border: 1px solid @haze;
     }
+  }
+  .contents li {
+    line-height: 24px;
+    list-style-type: square;
   }
   footer {
     margin-top: 20px;
   }
-  .signature-wrapper {
-  	padding: 10px 15px 0;
-  	border: 1px solid @brand-color-1;
-    border-radius: 0 0 5px 5px;
-  	&*:last-child {
-  		margin-bottom: 0;
-  	}
+}
+
+/**
+* @styles docs-warning Docs Warning
+*
+*
+* @demo demos/api/docs-warning/demo.html
+**/
+.docs {
+  .warning {
+    background-color: fade(@sunset, 10%);
+    h3 {
+      background-color: @sunset;
+      color: @clear;
+      font-size: 18px;
+      line-height: 24px;
+      margin: 0;
+      -webkit-border-top-left-radius: 4px;
+      -webkit-border-top-right-radius: 4px;
+      -moz-border-radius-topleft: 4px;
+      -moz-border-radius-topright: 4px;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      padding: 3px 15px;
+    }
   }
 }
+
+
+// Styles the wrapper of the sidebar and content of the docs.
 .container.api {
 	display: table;
 	table-layout: fixed;
-  border-bottom: 1px solid #d5d5d5;
+  border-bottom: 1px solid @haze;
 	padding-top: 20px;
-  border-radius:5px;
+  border-radius: 5px;
 }
 .container.api > * {
 	display: table-cell !important;
 	vertical-align: top;
 }
+
+
+// Search Styles. Currently search is not being shown.
 .search-wrapper {
-	position: relative;
-}
-.container.api > * {
-	display: table-cell !important;
-	vertical-align: top;
+  position: relative;
+  visibility: hidden;
+  display: none;
 }
 .search {
   display: block;
-  border: 1px solid #d5d5d5;
+  border: 1px solid @haze;
   padding: 3px 3px 3px 30px;
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
@@ -146,89 +239,35 @@
     display: block;
     position: absolute;
     left: 17px;
-    color: #fff;
+    color: @clear;
     text-shadow: 0 0 3px rgba(0, 0, 0, 0.49);
   }
 }
 
 
-.title {
-  display: block;
-  border-bottom: 1px solid #eae9e9;
+/**
+* @styles signature Signature
+*
+* @description
+* Used as a wrapper for parameters and returns. The signature has space for headings, code and additional plain-language explanations.
+*
+* @demo demos/api/signature/demo.html
+**/
+.docs .signature-wrapper {
+  padding: 10px 15px 0;
+  border: 1px solid @darkSkies;
+  border-radius: 0 0 5px 5px;
+  &*:last-child {
+    margin-bottom: 0;
+  }
 }
 .docs {
-
-  h1 {
-    margin: 0;
-    display: inline-block;
-  }
-  .module,  .inherits,  .title .links li {
-    font-size: 14px;
-    color: #999999;
-    font-weight: normal;
-    font-style: normal;
-  }
-  .title {
-  	.links, .tags {
-  	  list-style: none;
-  	  margin: 0;
-  	  text-align: right;
-  	  padding: 0;
-  	}
-  	.tags {
-  		display: inline-block;
-  		margin: 0;
-  		position: relative;
-  		top: -5px;
-  		  	li {
-  		  	  .simple-tag();
-  		  	}
-  	}
-  	.links li {
-  	  display: inline-block;
-  	  margin-top: 1px;
-  	  &:before {
-  	    content: '|';
-  	    padding-right: 5px;
-  	    padding-left: 3px;
-  	  }
-  	  &:first-child:before {
-  	    content: none;
-  	    padding: none;
-  	  }
-  	}
-  }
-  .inherits {
-    display: block;
-  }
-  .warning {
-    background-color: #f2dede;
-    
-    h3 {
-      background-color: #d9534f;
-      color: #fff;
-      font-size: 18px;
-      line-height: 24px;
-      margin: 0;
-      -webkit-border-top-left-radius: 4px;
-      -webkit-border-top-right-radius: 4px;
-      -moz-border-radius-topleft: 4px;
-      -moz-border-radius-topright: 4px;
-      border-top-left-radius: 4px;
-      border-top-right-radius: 4px;
-      padding: 3px 15px;
-    }
-  }
-  .contents li {
-    line-height: 24px;
-    list-style-type: square;
-  }
   .signature.collapsed :not(h2) {
     display: none;
   }
   .signature h2, .primary-options h2 {
     background-color: @colorSignature;
-    color: @brand-color-3;
+    color: @fog;
     font-size: 18px;
     line-height: 24px;
     margin: 0;
@@ -240,7 +279,6 @@
     border-top-right-radius: 4px;
     padding: 3px 15px;
     .text-shadow;
-    
     span {
       font-size: 10px;
       font-weight: normal;
@@ -249,19 +287,68 @@
     }
     
     code {
-    	background-color: transparent;
-    	color: #fff;
+      background-color: transparent;
+      color: @clear;
     }
     a {
-    	color: #fff;
+      color: @clear;
     }
   }
+}
 
+/**
+* @styles small-signature Small Signature
+*
+* @demo demos/api/small-signature/demo.html
+**/
+.small-signature {
+  padding: 10px;
+  background-color: @fog;
+  border: 1px solid @haze;
+  margin-bottom: 10px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  
+  a.sig {
+    text-decoration: none;
+    color: @night;
+    display: block;
+    font-weight: bold;
+    code, code * {
+      background-color: none;
+      font-weight: bold;
+      background-color: transparent;
+    }
+    .pln {
+      color: black;
+    }
+  }
+  
+  p {
+    color: @thunderStorm;
+    line-height: 15px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+
+/**
+* @styles parameters-returns Parameters and Returns
+*
+* @description 
+* Parameters and returns are shown inside of `.signature` but their styles are not dependant on it.
+*
+* @demo demos/api/parameters-returns/demo.html
+**/
+.docs {
   .parameters, .returns {
     list-style-type: none;
     margin: 0 0 15px;
-    border: 1px solid @brand-color-6;
-    background-color: #fcfafa;
+    border: 1px solid @haze;
+    background-color: @fog;
     padding: 0px 15px 10px;
     border-radius: 5px;
   }
@@ -275,7 +362,7 @@
   		line-height: 19px;
     }
     a {
-      color: #dddddd;
+      color: @haze;
       text-decoration: none;
     }
     a:hover {
@@ -291,7 +378,7 @@
     font-size: 14px;
     font-weight: bold;
     margin: 0 0 5px;
-    color: @brand-color-1;
+    color: @darkSkies;
   }
   .parameters h4 code, .returns h4 code {
     font-style: italic;
@@ -302,10 +389,11 @@
   .parameters .options {
     margin-right: 50px;
   }
-  .parameters .options .option, .returns .options .option {
+  .parameters .options .option, 
+  .returns .options .option {
     margin: 0 -10px 15px;
     list-style-type: none;
-    border-top: 1px solid @brand-color-6;
+    border-top: 1px solid @haze;
     list-style-type: none;
     padding: 15px 25px 0 25px;
   }
@@ -313,31 +401,6 @@
     font-size: 8pt;
     line-height: 20px;
   }
-  .demo {
-    ul {
-      list-style: none;
-      padding: 0;
-    }
-    li.tab {
-      display: block;
-      float: left;
-      padding: 4px 8px;
-    }
-    li.tab.active {
-      color: #fff;
-      font-weight: bold;
-      background-color: #165489;
-      .text-shadow;
-    }
-    div.tab-content {
-      clear: both;
-    }
-    iframe {
-      width: 100%;
-      border: 1px solid #d6d6d6;
-    }
-  }
-
 }
 .docs .parameters ul.options:last-child,
 .docs .returns ul.options:last-child {
@@ -348,7 +411,7 @@
   padding-bottom: 15px; 
 }
 .docs .returns .description {
-	margin-top: 15px;
+  margin-top: 15px;
 }
 .docs .parameters :last-child .description,
 .docs .returns :last-child .description {
@@ -357,8 +420,42 @@
 }
 
 
-
-
+// demo
+.docs {
+  .demo {
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li.tab {
+      display: block;
+      float: left;
+      padding: 6px 10px;
+      border-radius: 4px 4px 0 0;
+      &:first-of-type {
+        margin-left: 5px;
+      } 
+    }
+    li.tab.active {
+      color: @clear;
+      font-weight: bold;
+      background-color: @nigthRain;
+      .text-shadow;
+    }
+    div.tab-content {
+      clear: both;
+    }
+    iframe {
+      width: 100%;
+      border: 1px solid @haze;
+      border-radius: 6px;
+    }
+  }
+  body.style-demo {
+    background-color: @clear;
+    padding: 10px;
+  }
+}
 
 
 #low {
@@ -372,35 +469,4 @@
   }
 }
 
-.small-signature {
-	padding: 10px;
-	background-color: #fcfafa;
-	border: 1px solid #ece7e7;
-	margin-bottom: 10px;
-	-webkit-border-radius: 4px;
-	-moz-border-radius: 4px;
-	border-radius: 4px;
-	
-	a.sig {
-		text-decoration: none;
-		color: #000;
-		display: block;
-		font-weight: bold;
-		code, code * {
-		  background-color: none;
-		  font-weight: bold;
-		  background-color: transparent;
-		}
-		.pln {
-		  color: black;
-		}
-	}
-	
-	p {
-		color: #666;
-		line-height: 15px;
-		margin-bottom: 0px;
-		margin-left: 10px;
-		margin-right: 10px;
-	}
-}
+

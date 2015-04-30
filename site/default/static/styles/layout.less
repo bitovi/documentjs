@@ -1,55 +1,81 @@
-@footerHeight: 80px;
-@headerHeight: 54px;
-@light: #fff;
+/**
+* @stylesheet layout.less Layout
+* @parent Styles.baseline-elements 3
+
+* @description
+* Layout classes are used to structure the main parts of a page.
+**/
 
 
+/**
+* @styles header Header
+*
+* @demo demos/layout/header/demo.html
+**/
 header {
 	display: block;
 	background-color: @colorHeader;
-	color: #fff;
+	color: @clear;
 	position: relative;
-	z-index: 2;
-	
+}
+
+header {
 	.container {
 		position: relative;
 		height: @headerHeight;
 		text-align: left;
 	}
-	.nav {
-		list-style-type: none;
-		padding: 0;
-		margin: 0 0 0 15px;
-		display: inline-block;
-		position: relative;
-		top: -2px;
-	}
-	.nav > li {
+}
+	
+
+/**
+* @styles header-nav Header Nav
+*
+* @demo demos/layout/header-nav/demo.html
+**/
+header .nav {
+	list-style-type: none;
+	padding: 0;
+	margin: 0 0 0 15px;
+	display: inline-block;
+	position: relative;
+	top: -2px;
+	> li {
 		display: inline-block;
 		line-height: @headerHeight;
 		position: relative;
-		
 		> a {
 			text-transform: uppercase;
 			text-decoration: none;
 			font-weight: bold;
 			font-size: 12px;
-			color: #ffffff;
+			color: @clear;
 			.text-shadow;
 			padding: 5px 10px;
-			border: 1px solid rgba(255, 255, 255, 0);
+			border: 1px solid transparent;
 		}
-		.dropdown-menu:before {
+		&:hover > a {
+			background-color: rgba(0, 0, 0, 0.1);
+			border: 1px solid rgba(0, 0, 0, 0.3);
+			border-radius: 2px;
+		}
+		&.active > a {
+			background-color: rgba(0, 0, 0, 0.35);
+			border: 1px solid rgba(0, 0, 0, 0.6);
+			border-radius: 2px;
+		}
+		dropdown-menu:before {
 			position:absolute;
 			content : '';
 			height : 15px;
 			width: 15px;
-			background: @light;
+			background: @clear;
 			-moz-transform : rotateZ(-45deg) skewY(5deg) skewX(5deg);
 			-o-transform : rotateZ(-45deg) skewY(5deg) skewX(5deg);
 			-webkit-transform : rotateZ(-45deg) skewY(5deg) skewX(5deg);
 			-ms-transform: rotate(-45deg);
 			transform : rotateZ(-45deg) skewY(5deg) skewX(5deg);
-			border: 1px solid #dedbdb;
+			border: 1px solid @haze;
 			top: -8px;
 			z-index: -1;
 			display: block;
@@ -58,19 +84,77 @@ header {
 			border-bottom-style: none;
 		}
 	}
-	
-	.nav > li:hover > a {
-		background-color: rgba(0, 0, 0, 0.1);
-		border: 1px solid rgba(0, 0, 0, 0.3);
-		.border-radius(2px);
+}	
+
+
+/**
+* @styles header-dropdown Header Dropdown Menu
+
+* @description
+* This dropdown shows when hovering the logo.
+*
+* @demo demos/layout/header-dropdown/demo.html
+**/
+header {
+	.dropdown-menu {
+		display: none;
+		visibility: collapse;
+		position: absolute;
+		left: 0;
+		background-color: @clear;
+		border: 1px solid @haze;
+		border-top: none;
+		z-index: 5;
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		top: @headerHeight;
+		width: 240px;
+		li a {
+			display: block;
+			text-decoration: none;
+			border-bottom: 1px solid @fog;
+			color: @thunderStorm;
+			font-size: 14px;
+			line-height: 32px;
+			padding-left: 20px;
+			padding-right: 20px;
+			&:hover:after {
+				content: "\e000";
+				color: @haze;
+				font: 20px/27px Bitstrap;
+				position: absolute;
+				right: 10px;
+			}
+		}
 	}
-	.nav > li.active > a {
-		background-color: rgba(0, 0, 0, 0.35);
-		border: 1px solid rgba(0, 0, 0, 0.6);
-		.border-radius(2px);
+	.dropdown-menu li a:hover, 
+	.dropdown-menu li.active a {
+		background-color: @fog;
+		color: @night;
+	}
+}
+
+
+/**
+* @styles header-bitovi-menu Bitovi Menu
+*
+* @description
+* This dropdown menu shows when hovering the Bitovi bits icon.
+* Links placed on this menu link out the external Bitovi sites.
+*
+* @demo demos/layout/header-bitovi-menu/demo.html
+**/
+header {
+	.bitovi-menu {
+		display: inline-block;
+		.dropdown-menu {
+			right: 0;
+			left: auto;
+		}
 	}
 	.bitovi.icon-bits {
-		color: #ffffff;
+		color: @clear;
 		text-shadow: 0 -1px 0 rgba(0, 4, 159, 0.49);
 		display: block;
 		opacity: .2;
@@ -79,20 +163,15 @@ header {
 		text-align: center;
 		width: 50px;
 		height: 54px;
-		
 		&:before {
-			/*
-			right: 4px;
-			position: relative;
-			*/
 			position: absolute;
 			left: 13px;
 		}
 	}
 	.bitovi-menu:hover .bitovi.icon-bits {
-		background-color: #fff;
-		border-left: 1px solid #d5d5d5;
-		border-right: 1px solid #d5d5d5;
+		background-color: @clear;
+		border-left: 1px solid @haze;
+		border-right: 1px solid @haze;
 		color: @colorHeader;
 		text-shadow: none;
 		opacity: 1;
@@ -101,66 +180,37 @@ header {
 		position: relative;
 		display: inline-block;
 	}
-	.dropdown-menu {
-		display: none;
-		visibility: collapse;
-		position: absolute;
-		left: 0;
-		background-color: #fff;
-		border: 1px solid #d5d5d5;
-		border-top: none;
-		z-index: 5;
-		margin: 0;
-		padding: 0;
-		list-style-type: none;
-		top: @headerHeight;
-		width: 240px;
-		
-		li a {
-			display: block;
-			text-decoration: none;
-			border-bottom: 1px solid #f5f5f5;
-			color: #676767;
-			font-size: 14px;
-			line-height: 32px;
-			padding-left: 20px;
-			padding-right: 20px;
-		}
+	.menu-container {
+		position: relative;
 	}
 
-	.dropdown-menu li a:hover, .dropdown-menu li.active a {
-		background-color: #f5f5f5;
-		color: #000;
-	}
-	.dropdown-menu li a:hover:after {
-		content: "\e000";
-		color: #dcdada;
-		font: 20px/27px Bitstrap;
-		position: absolute;
-		right: 10px;
-	}
-	.bitovi-menu:hover .dropdown-menu, .logo-menu:hover .dropdown-menu {
+	.bitovi-menu:hover .dropdown-menu, 
+	.logo-menu:hover .dropdown-menu,
+	.menu-container:hover .dropdown-menu {
 		display: block;
 		visibility: visible;
-	}
-	.bitovi-menu:hover .dropdown-menu {
-		right: 0;
-		left: auto;
 	}
 	.pull-right {
 		position: absolute;
 		right: 0;
 		top: 0;
 	}
-	.bitovi-menu {
-		display: inline-block;
-	}
+	
 }
-/* end */
 
+
+/**
+* @styles footer Footer
+*
+* @description
+* Styles for the footer used in the pages generated by the documentation. The footer is shown conditionally and 
+* currently is not used on documentjs.com
+*
+* @demo demos/layout/footer/demo.html
+**/
 footer {
-	background-color: @brand-color-1;
-	color: #bababa;
+	background-color: @haze;
+	color: @darkSkies;
 	padding-top: 0px;
 	padding-bottom: 0px;
 	position: relative;
@@ -199,4 +249,11 @@ footer {
 	li {
 		display: inline-block;
 	}
+}
+
+
+// Used to structure the main parts of a page, such as the header, the body, and the footer.
+.container {
+	width: 960px;
+	margin: 0 auto;
 }

@@ -1,9 +1,12 @@
-@font-face {
-  font-family: 'Bitstrap';
-  src: url("../fonts/bitstrapregular.eot");
-  font-weight: normal;
-  font-style: normal;
-}
+/**
+* @stylesheet icons.less Icons
+* @parent Styles.theme
+*
+* @description
+* DocumentJS uses a custom icon font. Icons from this font, with their accompanying classes, are laid out below.
+* 
+* @demo demos/icons/demo.html
+**/
 @font-face {
     font-family: 'Bitstrap';
     src: url('../fonts/bitstrapregular.eot');
@@ -12,8 +15,8 @@
          url("../fonts/Bitstrap-Regular.otf") format("otf");
     font-weight: normal;
     font-style: normal;
-
 }
+
 [class^="icon-"],
 [class*=" icon-"],
 .icon-font {
@@ -96,7 +99,7 @@
 /* Default */
 .arrow:before { 
     content: "";
-    border-color:  #636363 transparent;
+    border-color:  @thunderStorm transparent;
     border-style: solid;
     border-width: 0 5px 5px 5px;
     display: block;
@@ -105,22 +108,40 @@
 }
 /* Left */
 .arrow.left:before { 
-    border-color: transparent #636363 ;
+    border-color: transparent @thunderStorm ;
     border-width: 5px 5px 5px 0;
 }
 
 /* Right */
 .arrow.right:before { 
-    border-color: transparent #636363 ;
+    border-color: transparent @thunderStorm ;
     border-width: 5px 0 5px 5px;
 }
 /* Up */
 .arrow.up:before { 
-    border-color:  #636363 transparent;
+    border-color:  @thunderStorm transparent;
     border-width: 0 5px 5px 5px;
 }
 /* Down */
 .arrow.down:before { 
-    border-color:  #636363 transparent;
+    border-color:  @thunderStorm transparent;
     border-width: 5px 5px 0 5px;
+}
+
+ul.demo-icons {
+  list-style-type: none;
+  margin: 0;
+  padding-left: 0;
+  li {
+    display: inline-block;
+    text-align: center;
+    margin-bottom: 20px;
+    width: 24%;
+  }
+  span {
+    font-size: 3em;
+  }
+  code {
+    font-size: .8em;
+  }
 }

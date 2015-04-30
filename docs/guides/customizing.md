@@ -1,7 +1,7 @@
 @page DocumentJS.guides.customizing customizing
 @parent DocumentJS.guides 4
 
-Learn how to change the appearence and JavaScript behavior of your generated html documentation.
+Learn how to change the appearance and JavaScript behavior of your generated html documentation.
 
 @body
 
@@ -114,28 +114,31 @@ JS files used by the builder.
 _documentjs/site/default/static/styles_ contains the default styles. The styles are 
 broken down functionally:
 
- - _styles.less_ - Loads all other styles.
- - _config.less_ - Configuration of colors and image location variables.
+ - _styles.less_ - Loads all styles.
+ - _variables.less_ - Configuration of colors and image location variables.
+ - _icons.less_ - Classes set up for icon usage.
  - _api.less_ - Styles for the main content area.  
- - _base.less_ - Styles for html tags.
+ - _base.less_ - Styles for html tags, sans typography.
+ - _typography.less_ - Styles for all text.
  - _brand.less_ - Styles for the logo `.brand` class.
  - _code.less_ - Styles for code blocks.
- - _fonts.less_ - Sets fonts for the page.
  - _ie.less_- If internet explorer is used, this style is used.
  - _layout.less_ - Styles for the _layout.mustache_ template.
+ - _helper.less_ - Helper classes to control layout.
  - _reset.less_ - A css reset.
  - _sidebar.less_ - Styles for the sidebar.
+ - _buttons.less_ - Styles for the default button.
  
 To change the default styles, copy one of the `less` files above to your 
 `siteConfig.static`'s _styles_ folder and make changes.
 
 #### Changing Colors
 
-To change colors, copy _config.less_ and change the `@brand-color` options:
+To change colors, copy _variables.less_ and change the color palette options:
 
-     @@brand-color-1: #484848;
+     @@haze: ##cccccc;
      
-Below the `@@brand-color` definitions, you can see how they are mapped to
+Below the color palette definitions, you can see how they are mapped to
 parts of the application.
 
 #### Adding other styles

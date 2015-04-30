@@ -1,4 +1,4 @@
-@page DocumentJS
+@page DocumentJS DocumentJS
 @group DocumentJS.guides 0 guides
 @group DocumentJS.apis.config 2 Configuration APIS
 @group DocumentJS.apis.document 3 Document APIS

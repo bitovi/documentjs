@@ -27,7 +27,7 @@ In your node project's parent folder, run:
     > npm install documentjs --save-dev
 
 Node will copy documentjs's executable to `./node_modules/.bin/documentjs`. On linux/mac, you
-can run the [DocumentJS.apis.generate.documentjs documentjs command] like:
+can run the [DocumentJS.apis.generate.documentjs documentjs command] with:
 
     > ./node_modules/.bin/documentjs
 
@@ -59,4 +59,4 @@ configure the `documentjs` task with the [DocumentJS.docConfig]:
 
 ## Installing for Gulp
 
-comming soon
+coming soon

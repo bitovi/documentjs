@@ -1,164 +1,34 @@
-.container {
-	width: 960px;
-	margin: 0 auto;
+/**
+* @stylesheet base.less Base Styles
+* @parent Styles.baseline-elements 0
+*
+* @description 
+* Styles on base-level tags should live here, including table and form styles. Styles for specific elements or helper classes should go in their separate, respective, files. Typography is housed in its own typography file due to the typical complexity. Global styles, or styles on the body/html should live here.
+**/
+* {
+	font-family: @defaultFontFamily;
+	font-weight: @defaultFontWeight;
+	-webkit-font-smoothing: antialiased;
+}
+body {
+	background: @pageBackground;
+}
+body.style-demo {
+  background: @clear; 
+  padding: 10px;
 }
 section {
 	margin-bottom: 15px;
 }
-a {
-	text-decoration: underline;
-	color: @colorLinks;
-	&:hover {
-		text-decoration: none;
-	}
-	cursor: pointer;
-}
 
-.pull-right, .pullright, .float-right, .floatright {
-	float: right;
-}
-.pull-left, .pullleft, .float-left, .float-right {
-	float: left;
-}
-
-h1,h2,h3,h4,h5,h6{
-	margin: 0;
-	margin-bottom: 10px;
-}
-
-	h1 { font-size: 2.5em; }
-	h2 { font-size: 2em; }
-	h3 { font-size: 1.5em; }
-	h4 { font-size: 1.25em; }
-	h5 { font-size: 1em; }
-	h6 { font-size: .75em; }
-
-p, .p {
-	font-size: 16px;
-	line-height: 24px;
-	margin-top: 0;
-	margin-bottom: 15px;
-}
-ol,ul{
-	list-style:none;
-}
-ul{
-	list-style: square;
-	margin:0 0 21px 2.5em;
-}
-ol{
-	list-style-type:decimal;
-	margin:0 0 21px 3em;
-}
-ol ol{
-	list-style:upper-roman;
-}
-ol ol ol{
-	list-style:lower-roman;
-}
-ol ol ol ol{
-	list-style:upper-alpha;
-}
-ol ol ol ol ol{
-	list-style:lower-alpha;
-}
-ul ul,ol ol,ul ol,ol ul{
-	margin-bottom:0;
-}
-dl{
-	margin:0 0 18px 3px;
-}
-dl dt{
-	font-weight:bold;
-	margin:12px 0 0 0;
-}
-dl dd{
-	margin:6px 0 0 1.5em;
-}
-strong{
-	.text-smoothing;
-}
-strong, b {
-	font-weight:bolder;
-}
-em,cite{
-	font-style:italic;
-}
-em em,cite cite{
-	font-style:normal;
-}
-abbr{
-	cursor:help;
-}
-acronym{
-	text-transform:uppercase;
-	border-bottom:1px dashed #666;
-	cursor:help;
-}
-big{
-	font-size:120%;
-}
-small,sup,sub{
-	font-size:80%;
-}
-sup{
-	vertical-align:baseline;
-	position:relative;
-	bottom:0.3em;
-}
-sub{
-	vertical-align:baseline;
-	position:relative;
-	top:0.3em;
-}
-address{
-	font-style:italic;
-	margin:0 0 21px 0;
-}
-li address,dd address{
-margin:0;
-
-}
-blockquote{
-	margin:0 2.5em;
-	font-style:normal;
-}
-blockquote em,blockquote cite{
-	font-style:italic;
-}
-blockquote,q {
-	quotes:none;
-}
-blockquote:before,blockquote:after,q:before,q:after{
-	content:'';
-	content:none;
-}
-a {
-	cursor:pointer;
-}
-a img{
-	border:none;
-}
-.content img {
-	background-color: #eee;
-	padding: 3px;
-	border: 1px solid #ccc;
-	margin-bottom: 10px;
-}
-ins,dfn{
-	font-style:italic;
-	text-decoration:none;
-	border-bottom:1px solid #666;
-}
-del,s,strike{
-	text-decoration:line-through;
-}
-object{
-	margin-bottom:21px;
-}
+/**
+* @styles forms Forms
+*
+* @demo demos/base/forms/demo.html
+**/
 input,textarea{
 	font-size:1em;
-	padding:3px;
+	padding:5px;
 }
 input[type="submit"]{
 	cursor:pointer;
@@ -167,115 +37,45 @@ input[type="submit"]{
 	outline:none;
 }
 form label{
-	cursor:pointer;
+	display: block;
+	margin-bottom: 5px;
+}
+form input, form textarea, form select {
+	display: block;
+	margin-bottom: 10px;
 }
 option{
 	padding:1px 3px;
 }
+
+/**
+* @styles table Tables
+*
+* @demo demos/base/tables/demo.html
+**/
 table {
 	border-spacing:0;
 	margin-bottom:21px;
 	width:100%;
 	border-collapse:separate;
-	border-top:1px solid #ccc;
-	border-left:1px solid #ccc;
-	background: #fff;
-	.border-radius(2px);
-}
-caption{
-	font-size:.9em;
-	font-style:italic;
-	text-align:right;
+	border-top: 1px solid @haze;
+	border-left: 1px solid @haze;
+	background: @clear;
+	border-radius: 2px;
 }
 td,th{
 	padding:3px 6px;
-	border-bottom:1px solid #ccc;
-	border-right:1px solid #ccc;
+	border-bottom:1px solid @haze;
+	border-right:1px solid @haze;
 	.text-shadow-light;
 }
 th{
-	background:#eee;
+	background: @fog;
 }
 
-hr {
-	height:1px;
-	margin-bottom:20px;
-	background: #ccc;
-	border: none;
-}
 iframe {
 	margin-bottom: 20px;
-}
-
-button, .button {
-	background-color: @colorLinks;
-	border: 1px solid darken(@colorLinks, 10%);
-	color: #fff;
-	.text-shadow;
-	.border-radius(2px);
-	padding: 5px 15px;
-	position: relative;
-	font-size: 14px;
-	line-height: 18px;
-	text-decoration: none;
-	&:hover, &.active {
-		background-color: darken(@colorLinks, 10%);
-	}
-}
-.center {
-	margin-right: auto;
-	margin-left: auto;
-	text-align: center;
-}
-a.next {
-	text-transform: uppercase;
-	color: #7b7b7a;
-	font-weight: bold;
-	font-size: 12px;
-	line-height: 14px;
-	text-decoration: none;
-	
-	&:hover {
-		text-decoration: underline;
-	}
-	
-	&:after {
-		content: '\e015';
-		text-decoration: inherit;
-		display: inline;
-		font: normal normal 18px/12px Bitstrap;
-	}
-}
-.well {
-	padding: 20px;
-	margin-bottom: 20px;
-	background: #eeeeee;
-}
-.clear {
-	clear: both;
-}
-
-ul.pager {
-	list-style: none;
-	list-style-type: none;
-	margin: 0;
-	padding: 0;
-	clear: both;
-	
-	li {
-		display: inline-block;
-	}
-	.next {
-		float: right;
-	}
-	.previous {
-		float: left;
-	}
-	&::before, &::after {
-		display: table;
-		content: " ";
-	}
-	&::after {
-		clear: both;
+	body {
+		background-color: @clear;
 	}
 }
