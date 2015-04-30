@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../index.html">Home</a>
+        </li>
+        <li class='active'>
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,9 +88,11 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="documentjs.tags.html" data-search="tags">
 				tags
@@ -97,7 +103,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container active ">
 					<a class="typedef" href="documentjs.Tag.html" data-search="Tag ">
 						Tag 
 					</a>
@@ -403,6 +409,30 @@
 			
 		
 			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.styles.html" data-search="@styles">
+						@styles
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.stylesheet.html" data-search="@stylesheet">
+						@stylesheet
+					</a>
+				</li>
+				
+			
+			
+		
+			
 		
 			
 		
@@ -432,12 +462,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -469,9 +498,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538/tags/tag.md">source</a></li>
 	
 	
 	
@@ -800,6 +829,12 @@ until the closing tag, and have the compiled data &quot;popped&quot; to the pare
 		
 
 		
+		<section class="comment">
+			
+		</section>
+		
+		
+
 		
 
 		
@@ -817,7 +852,7 @@ until the closing tag, and have the compiled data &quot;popped&quot; to the pare
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"typedef","name":"documentjs.Tag","src":"lib/tags/tag.md","description":"<p>The interface that [documentjs.tags] implement for\n[documentjs.process.comment] and [documentjs.process.code] to\ncall. This is very likely to change to something better.</p>\n","title":"Tag ","types":[{"type":"Object","options":[{"name":"codeMatch","description":"<p>Returns <code>true</code>\nif this tag should process this line of code.</p>\n<p>[documentjs.process.code] passes the line of code after a comment block\nto each tag's <code>codeMatch</code> function.  The first tag whose <code>codeMatch</code> returns\ntrue will have its <code>code</code> method called with the same line.</p>\n","types":[{"type":"function","returns":{"types":[{"type":"Boolean"}]},"params":[{"types":[{"type":"String"}],"name":"codeLine"}]}]},{"name":"code","description":"<p>Returns\nproperties that should be set on the comment's docObject.</p>\n","types":[{"type":"function","returns":{"types":[{"type":"documentjs.process.docObject"}]},"params":[{"types":[{"type":"String"}],"name":"codeLine"},{"types":[{"type":"documentjs.process.docObject"}],"name":"scope"},{"types":[{"type":"documentjs.process.docMap"}],"name":"docMap"}]}]},{"name":"codeScope","description":"<p>If <code>code(codeLine)</code> returns a DocObject,\nset this object as the new scope.</p>\n","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"false"},{"name":"add","description":"<p><code>add</code> is called when a comment line starts with <code>@</code> followed by the tag name. This function can:</p>\n<ul>\n<li>add directly to the docObject</li>\n<li>push something onto the stack <code>['push', data]</code></li>\n<li>pop some data off the stack <code>['pop', String]</code></li>\n<li>change the default property lines are written to <code>['default',propName]</code></li>\n<li>add to docMap <code>['add', docObject]</code>.</li>\n<li>change the scope <code>['scope', scopeDocObject]</code> or the scope and the docObject being added to <code>['scope',scopeDocObject, docObject]</code></li>\n</ul>\n<p>The stack is used to handle tags that might be nested, for example\n<code>@codestart</code> and <code>@codeend</code>. It provides something to collect data\nuntil the closing tag, and have the compiled data &quot;popped&quot; to the parent.</p>\n","types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[{"types":[{"type":"String"}],"name":"line"},{"types":[{"type":"Object","options":[]}],"name":"curData"},{"types":[{"type":"documentjs.process.docObject"}],"name":"scope"},{"types":[{"type":"documentjs.process.docMap"}],"name":"docMap"},{"types":[{"type":"String"}],"name":"currentWrite"},{"types":[{"type":"DocumentJS.siteConfig"}],"name":"options"}],"context":{"types":[{"type":"documentjs.process.docObject"}]}}]},{"name":"addMore","description":"<p><code>addMore</code> is called if <code>add</code> returns an object.</p>\n","types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[{"types":[{"type":"String"}],"name":"line"},{"types":[{"type":"Object","options":[]}],"name":"curData"},{"types":[{"type":"documentjs.process.docObject"}],"name":"scope"},{"types":[{"type":"documentjs.process.docMap"}],"name":"docMap"}],"context":{"types":[{"type":"documentjs.process.docObject"}]}}]},{"name":"end","description":"<p><code>end</code> is called on a tag when the comment switches to another tag.</p>\n","types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[{"types":[{"type":"String"}],"name":"line"},{"types":[{"type":"Object","options":[]}],"name":"curData"},{"types":[{"type":"documentjs.process.docObject"}],"name":"scope"},{"types":[{"type":"documentjs.process.docMap"}],"name":"docMap"}],"context":{"types":[{"type":"documentjs.process.docObject"}]}}]}]}],"parent":"documentjs.tags","templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"type":"typedef","name":"documentjs.Tag","src":"lib/tags/tag.md","description":"The interface that [documentjs.tags] implement for\n[documentjs.process.comment] and [documentjs.process.code] to\ncall. This is very likely to change to something better.","title":"Tag ","types":[{"type":"Object","options":[{"name":"codeMatch","description":"Returns `true` \nif this tag should process this line of code.\n\n[documentjs.process.code] passes the line of code after a comment block \nto each tag's `codeMatch` function.  The first tag whose `codeMatch` returns\ntrue will have its `code` method called with the same line.","types":[{"type":"function","returns":{"types":[{"type":"Boolean"}]},"params":[{"types":[{"type":"String"}],"name":"codeLine"}]}]},{"name":"code","description":"Returns\nproperties that should be set on the comment's docObject.","types":[{"type":"function","returns":{"types":[{"type":"documentjs.process.docObject"}]},"params":[{"types":[{"type":"String"}],"name":"codeLine"},{"types":[{"type":"documentjs.process.docObject"}],"name":"scope"},{"types":[{"type":"documentjs.process.docMap"}],"name":"docMap"}]}]},{"name":"codeScope","description":"If `code(codeLine)` returns a DocObject,\nset this object as the new scope.","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"false"},{"name":"add","description":"`add` is called when a comment line starts with `@` followed by the tag name. This function can:\n\n - add directly to the docObject\n - push something onto the stack `['push', data]`\n - pop some data off the stack `['pop', String]`\n - change the default property lines are written to `['default',propName]`\n - add to docMap `['add', docObject]`. \n - change the scope `['scope', scopeDocObject]` or the scope and the docObject being added to `['scope',scopeDocObject, docObject]`\n\nThe stack is used to handle tags that might be nested, for example \n`@codestart` and `@codeend`. It provides something to collect data\nuntil the closing tag, and have the compiled data \"popped\" to the parent.","types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[{"types":[{"type":"String"}],"name":"line"},{"types":[{"type":"Object","options":[]}],"name":"curData"},{"types":[{"type":"documentjs.process.docObject"}],"name":"scope"},{"types":[{"type":"documentjs.process.docMap"}],"name":"docMap"},{"types":[{"type":"String"}],"name":"currentWrite"},{"types":[{"type":"DocumentJS.siteConfig"}],"name":"options"}],"context":{"types":[{"type":"documentjs.process.docObject"}]}}]},{"name":"addMore","description":"`addMore` is called if `add` returns an object.","types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[{"types":[{"type":"String"}],"name":"line"},{"types":[{"type":"Object","options":[]}],"name":"curData"},{"types":[{"type":"documentjs.process.docObject"}],"name":"scope"},{"types":[{"type":"documentjs.process.docMap"}],"name":"docMap"}],"context":{"types":[{"type":"documentjs.process.docObject"}]}}]},{"name":"end","description":"`end` is called on a tag when the comment switches to another tag.","types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[{"types":[{"type":"String"}],"name":"line"},{"types":[{"type":"Object","options":[]}],"name":"curData"},{"types":[{"type":"documentjs.process.docObject"}],"name":"scope"},{"types":[{"type":"documentjs.process.docMap"}],"name":"docMap"}],"context":{"types":[{"type":"documentjs.process.docObject"}]}}]}]}],"parent":"documentjs.tags","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538"}};
 	</script>
 	
 	
@@ -830,6 +865,7 @@ until the closing tag, and have the compiled data &quot;popped&quot; to the pare
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

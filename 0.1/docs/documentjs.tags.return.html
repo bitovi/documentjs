@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../../index.html">Home</a>
+        </li>
+        <li >
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,9 +88,11 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="documentjs.tags.html" data-search="tags">
 				tags
@@ -397,7 +403,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container active ">
 					<a class="constructor" href="documentjs.tags.return.html" data-search="@return">
 						@return
 					</a>
@@ -460,12 +466,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -495,9 +500,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c/tags/return.js">source</a></li>
 	
 	
 	
@@ -526,14 +531,6 @@
 					<h2 id="sig__return_TYPE_DESCRIPTION">@return {TYPE} DESCRIPTION
 </h2>
 <div class="signature-wrapper">
-<pre><code class="language-js">/**
- * Capitalizes a string
- * @param {String} s the string to be lowercased.
- * @return {String} a string with the first character capitalized, 
- * and everything else lowercased
- */
-capitalize: function( s ) { ... }
-</code></pre>
 
 
 	<h3>Parameters</h3>
@@ -583,6 +580,12 @@ return value.</p>
 		
 
 		
+		<section class="comment">
+			
+		</section>
+		
+		
+
 		
 
 		
@@ -600,7 +603,7 @@ return value.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"name":"documentjs.tags.return","type":"constructor","parent":"documentjs.tags","src":"lib/tags/return.js","line":2,"codeLine":26,"description":"<p>Describes a function's return value.</p>\n","title":"@return","signatures":[{"code":"@return {TYPE} DESCRIPTION","description":"<pre><code class=\"language-js\">/**\n * Capitalizes a string\n * @param {String} s the string to be lowercased.\n * @return {String} a string with the first character capitalized, \n * and everything else lowercased\n */\ncapitalize: function( s ) { ... }\n</code></pre>\n","params":[{"types":[{"type":"documentjs/type"}],"optional":true,"name":"TYPE","description":"<p>The type of\nreturn value.</p>\n"},{"types":[{"type":"String"}],"optional":true,"name":"DESCRIPTION","description":"<p>The description of the\nreturn value.</p>\n"}]}],"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/0.1/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
+		var docObject = {"name":"documentjs.tags.return","type":"constructor","parent":"documentjs.tags","src":"lib/tags/return.js","line":2,"codeLine":26,"description":"Describes a function's return value.","title":"@return","signatures":[{"code":"@return {TYPE} DESCRIPTION","description":"","params":[{"types":[{"type":"documentjs/type"}],"optional":true,"name":"TYPE","description":"The type of \nreturn value."},{"types":[{"type":"String"}],"optional":true,"name":"DESCRIPTION","description":"The description of the \nreturn value."}]}],"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/0.1/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
 	</script>
 	
 	
@@ -613,6 +616,7 @@ return value.</p>
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

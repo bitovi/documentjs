@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../index.html">Home</a>
+        </li>
+        <li >
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,9 +88,11 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="utils|math.html" data-search="utils/math">
 				utils/math
@@ -97,7 +103,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container active ">
 					<a class="property" href="utils|math.constants.html" data-search="utils/math.constants">
 						constants
 					</a>
@@ -120,12 +126,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -153,9 +158,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#42c4473a76a4e03ef8e8a3742250bc34028394e0/process/test/module_with_multiple_exports.js#L24">source</a></li>
 	
 	
 	
@@ -236,6 +241,12 @@ paragraph.</p>
 		
 
 		
+		<section class="comment">
+			
+		</section>
+		
+		
+
 		
 
 		
@@ -253,7 +264,7 @@ paragraph.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"name":"utils/math.constants","type":"property","parent":"utils/math","src":"lib/process/test/module_with_multiple_exports.js","line":24,"codeLine":34,"description":"<p>This function's description is the first\nparagraph.</p>\n","types":[{"type":"Object","options":[{"name":"pi","description":"<p>The description of pi.</p>\n","types":[{"type":"Number"}]},{"name":"e","description":"<p>The description of e.</p>\n","types":[{"type":"Number"}]}]}],"title":"","templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"name":"utils/math.constants","type":"property","parent":"utils/math","src":"lib/process/test/module_with_multiple_exports.js","line":24,"codeLine":34,"description":"This function's description is the first\nparagraph.","types":[{"type":"Object","options":[{"name":"pi","description":"The description of pi.","types":[{"type":"Number"}]},{"name":"e","description":"The description of e.","types":[{"type":"Number"}]}]}],"title":"","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#42c4473a76a4e03ef8e8a3742250bc34028394e0"}};
 	</script>
 	
 	
@@ -266,6 +277,7 @@ paragraph.</p>
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

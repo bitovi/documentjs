@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+
+<!--[if lt IE 7]>
+<html class="no-js ie lt-ie9 lt-ie8 lt-ie7" lang="en">
+<![endif]-->
+<!--[if IE 7]>
+<html class="no-js ie lt-ie9 lt-ie8" lang="en">
+<![endif]-->
+<!--[if IE 8]>
+<html class="no-js ie lt-ie9" lang="en">
+<![endif]-->
+<!--[if IE 9]>
+<html class="no-js ie ie9" lang="en">
+<![endif]-->
+<!--[if gt IE 9]><!-->
+<html class="no-js" lang="en">
+<!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>DocumentJS - customizing </title>
+	<meta name="description" content="">
+	<meta name="author" content="">
+
+	<link rel="stylesheet" type="text/css" href='./static/bundles/static.css'/>
+	<!--[if lt IE 9]>
+   <script type="text/javascript" src="./static/html5shiv.js"></script>
+    <!--<![endif]-->
+</head>
+
+<body class="docs">
+	<header>
+		<nav class="container">
+
+			<div class="logo-menu">
+				<a class="brand" href="../../index.html">DocumentJS</a>
+				<ul class="dropdown-menu">
+		          <li><a href="http://javascriptmvc.com">JavaScriptMVC</a></li>
+		          <li><a href="http://canjs.com">CanJS</a></li>
+		          <li><a href="http://jquerypp.com">jQuery++</a></li>
+		          <li><a href="http://stealjs.com">StealJS</a></li>
+		          <li><a href="http://funcunit.com">FuncUnit</a></li>
+		          <li><a href="http://documentjs.com" class="active">DocumentJS</a></li>
+		        </ul>
+			</div>
+			<ul class="nav">
+		  	<li >
+        	<a href="../../index.html">Home</a>
+        </li>
+        <li class='active'>
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
+			<div class="pull-right">
+				<div class="bitovi-menu">
+					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
+					<ul class="dropdown-menu">
+						<li><a href="http://bitovi.com">Bitovi.com</a></li>
+						<li><a href="http://bitovi.com/blog/">Blog</a></li>
+						<li><a href="http://bitovi.com/consulting/">Consulting</a></li>
+						<li><a href="http://bitovi.com/training/">Training</a></li>
+						<li><a href="http://bitovi.com/open-source/">Open Source</a></li>
+						<li><a href="http://bitovi.com/people/">People</a></li>
+						<li><a href="http://bitovi.com/contact/">Contact Us</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+
+	
+<div class="container api">
+
+	
+	<nav class="sidebar">
+		
+		<ul class="api cascading primary-grouping"> 
+	
+		
+		
+			
+			<li class="search-container active">
+			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
+				DocumentJS
+			</a>
+			
+	<ul>
+		
+			
+				
+					<li class="heading search-container">
+						<span>guides</span>
+						
+	<ul>
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="page" href="DocumentJS.guides.installing.html" data-search="installing">
+						installing
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="page" href="DocumentJS.guides.configuring.html" data-search="configuring">
+						configuring
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="page" href="DocumentJS.guides.documenting.html" data-search="documenting">
+						documenting
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="page" href="DocumentJS.guides.generating.html" data-search="generating">
+						generating
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container active ">
+					<a class="page" href="DocumentJS.guides.customizing.html" data-search="customizing">
+						customizing
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="page" href="DocumentJS.guides.contributing.html" data-search="contributing">
+						contributing
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="page" href="live-style-guide.html" data-search="Live Style Guides">
+						Live Style Guides
+					</a>
+				</li>
+				
+			
+			
+		
+	</ul>
+
+					</li>
+				
+				
+			
+			
+		
+			
+				
+					<li class="heading search-container">
+						<span>Configuration APIS</span>
+						
+	<ul>
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="typedef" href="DocumentJS.docConfig.html" data-search="docConfig">
+						docConfig
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="typedef" href="DocumentJS.projectConfig.html" data-search="projectConfig">
+						projectConfig
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="typedef" href="DocumentJS.siteConfig.html" data-search="siteConfig">
+						siteConfig
+					</a>
+				</li>
+				
+			
+			
+		
+	</ul>
+
+					</li>
+				
+				
+			
+			
+		
+			
+				
+					<li class="heading search-container">
+						<span>Document APIS</span>
+						
+	<ul>
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.tags.html" data-search="tags">
+						tags
+					</a>
+				</li>
+				
+			
+			
+		
+	</ul>
+
+					</li>
+				
+				
+			
+			
+		
+			
+				
+					<li class="heading search-container">
+						<span>Command Line APIS</span>
+						
+	<ul>
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="function" href="DocumentJS.apis.generate.documentjs.html" data-search="documentjs">
+						documentjs
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="function" href="DocumentJS.apis.generate.grunt.html" data-search="grunt">
+						grunt
+					</a>
+				</li>
+				
+			
+			
+		
+	</ul>
+
+					</li>
+				
+				
+			
+			
+		
+			
+				
+					<li class="heading search-container">
+						<span>Internal APIS</span>
+						
+	<ul>
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.configured.html" data-search="configured">
+						configured
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.find.html" data-search="find">
+						find
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="function" href="documentjs.generate.html" data-search="generate">
+						generate
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="typedef" href="documentjs.generator.html" data-search="generator">
+						generator
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.generators.html.html" data-search="generators.html">
+						generators.html
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="property" href="documentjs.process.html" data-search="process">
+						process
+					</a>
+				</li>
+				
+			
+			
+		
+	</ul>
+
+					</li>
+				
+				
+			
+			
+		
+	</ul>
+
+		</li>
+			
+		
+	
+</ul>
+	</nav>
+	
+	
+	
+	<article class="content docs">
+	
+	
+		
+		<section class="title">
+			<div class="heading">
+<h1>customizing</h1>
+	<ul class="tags">
+		<li>page</li>
+	</ul>
+	
+	
+</div>
+
+<div class="sub-heading">
+	
+	
+		<span class="module">DocumentJS.guides.customizing</span>
+	
+	
+	
+	<span class="inherits">&nbsp;</span>
+</div>
+
+<ul class="links">
+	
+	
+		<li><a href="git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538/guides/customizing.md">source</a></li>
+	
+	
+	
+</ul>
+<br />
+		</section>
+		
+		
+		
+		<section class="contents">
+		</section>
+		
+		
+		
+
+		
+		<section class="description">
+			<p>Learn how to change the appearance and JavaScript behavior of your generated html documentation.</p>
+
+		</section>
+		
+
+		
+			
+		
+		
+		
+		
+
+		
+		<section class="comment">
+			<p>The <a href="documentjs.generators.html.html">html generator</a> allows you to completely
+customize the look and behavior of the site. You can also supply your
+own generators to build other forms of documentation.</p>
+<h2>Customizing the default HTML generator</h2>
+<p>You can customize the templates and helpers
+used to render a <a href="documentjs.process.docObject.html">docObject</a> and customize
+the JavaScript and CSS used by the HTML pages.  This behavior
+is controlled mostly by the <a href="DocumentJS.siteConfig.html">siteConfig</a>'s
+<code>templates</code> and <code>static</code> options.  However, some tags like <a href="documentjs.tags.hide.html">@hide</a>
+allow you to alter the behavior slightly.</p>
+<h2>Changing the HTML</h2>
+<p>The <a href="documentjs.generators.html.html">html generator</a> uses
+<a href="http://handlebarsjs.com/">Handlebars</a> templates and helpers
+to render <a href="documentjs.process.docObject.html">docObjects</a>. Overwrite the
+default templates with the <a href="DocumentJS.siteConfig.html">siteConfig</a> <code>templates</code>
+option. If you are producing a multi-versioned site, and you want all versions
+to have the same template, your website's <a href="DocumentJS.docConfig.html">documentjs.json</a> might
+look like:</p>
+<pre><code>{
+  &quot;versions&quot;: { ... }
+  &quot;siteDefaults&quot;: {
+    &quot;templates&quot;: &quot;theme/templates&quot;
+  }
+} 
+</code></pre>
+<p>The <code>templates</code> path should be specified relative to the <code>documentjs.json</code> folder.</p>
+<p>This will use the templates (and helpers) in &quot;theme/templates&quot; to overwrite
+the default helpers and templates. The default templates can be found
+in <code>documentjs/site/default/templates</code>.</p>
+<p><code>documentjs/site/default/templates</code> has the following templates:</p>
+<ul>
+<li><em>layout.mustache</em> - Contains the outer most content that is the same on every page.
+The page's script tags are loaded here.</li>
+<li><em>content.mustache</em> - Rendered within <em>layout.mustache</em>. It calls out to all other templates as partials.</li>
+<li><em>menu.mustache</em> - The sidebar menu.</li>
+<li><em>active-menu.mustache</em> - The part of the sidebar menu that shows the children of the active item.</li>
+<li><em>signature.mustache</em> - Shows a &quot;signature&quot; block.  A signature block for a function has the signature of the function and the params listed within it.</li>
+<li><em>title.mustache</em> - The header of each rendered page.</li>
+<li><em>types.mustache</em> - Given a <a href="documentjs.process.valueData.html">valueData</a>, iterates through each of its <a href="documentjs.process.typeData.html">types</a> and creates a signature with it.</li>
+</ul>
+<p>For example, to make a change to the layout, copy <em>documentjs/site/default/templates/layout.mustache</em>
+to <em>theme/templates</em> and make changes in your copy.</p>
+<h4>Adding Helpers</h4>
+<p>You can add and use your own Handlebars helpers by creating a <code>.js</code> file in
+your templates directory.  For example, you can
+create <em>theme/templates/helpers.js</em>.  Any <code>.js</code> file will be required
+as a module with CommonJS.  The module is expect to export a
+<a href="documentjs.generators.html.types.makeHelpers.html">makeHelpers function</a> like:</p>
+<pre><code>// theme/templates/helpers.js
+module.exports = function(docMap, options, getCurrent){
+  return {
+    &quot;hello-world&quot; : function(){
+      return &quot;Hello World!&quot;
+    }
+  }
+};
+</code></pre>
+<p>This allows you to write <code>{{hello-world}}</code> and get back:</p>
+<pre><code>Hello World!
+</code></pre>
+<p>This behavior is provided by <a href="documentjs.generators.html.build.helpers.html">generators.html.build.helpers</a>.</p>
+<h2>Changing static resources: Styles, Images, and JavaScript</h2>
+<p>The html generator <a href="documentjs.generators.html.build.staticDist.html">builds a static distributable</a> that
+includes the CSS, Images, and JavaScript used by the site.  The default content
+used to build the site can be found within <em>documentjs/site/default/static</em>.</p>
+<p>You can overwrite the
+default static content with the <a href="DocumentJS.siteConfig.html">siteConfig</a> <code>static</code>
+option. If you are producing a multi-versioned site, and you want all versions
+to have the same static content, your website's <a href="DocumentJS.docConfig.html">documentjs.json</a> might
+look like:</p>
+<pre><code>{
+  &quot;versions&quot;: { ... }
+  &quot;siteDefaults&quot;: {
+    &quot;static&quot;: &quot;theme/static&quot;
+  }
+} 
+</code></pre>
+<p>After the default and static content have been combined, the <code>static/build.js</code> file
+is required with CommonJS and run. <code>static/build.js</code> is expected to export a
+<a href="documentjs.generators.html.types.builder.html">builder</a> function that builds the final static content
+and copies it to a distributable location.</p>
+<p>The default builder uses <a href="http://stealjs.com">StealJS</a> to build a <a href="http://canjs.com">CanJS</a> and
+<a href="http://lesscss.org">LESS</a> application.  It copies the minfied <code>css</code> and <code>js</code> bundles as well as
+all files in the <em>static/fonts</em>, <em>static/img</em>, and <em>static/templates</em> folder to the distributable location.</p>
+<p>It's likely you don't have to write a custom builder and can instead overwrite the default CSS, Image, and
+JS files used by the builder.</p>
+<h3>Changing Styles</h3>
+<p><em>documentjs/site/default/static/styles</em> contains the default styles. The styles are
+broken down functionally:</p>
+<ul>
+<li><em>styles.less</em> - Loads all styles.</li>
+<li><em>variables.less</em> - Configuration of colors and image location variables.</li>
+<li><em>icons.less</em> - Classes set up for icon usage.</li>
+<li><em>api.less</em> - Styles for the main content area.</li>
+<li><em>base.less</em> - Styles for html tags, sans typography.</li>
+<li><em>typography.less</em> - Styles for all text.</li>
+<li><em>brand.less</em> - Styles for the logo <code>.brand</code> class.</li>
+<li><em>code.less</em> - Styles for code blocks.</li>
+<li><em>ie.less</em>- If internet explorer is used, this style is used.</li>
+<li><em>layout.less</em> - Styles for the <em>layout.mustache</em> template.</li>
+<li><em>helper.less</em> - Helper classes to control layout.</li>
+<li><em>reset.less</em> - A css reset.</li>
+<li><em>sidebar.less</em> - Styles for the sidebar.</li>
+<li><em>buttons.less</em> - Styles for the default button.</li>
+</ul>
+<p>To change the default styles, copy one of the <code>less</code> files above to your
+<code>siteConfig.static</code>'s <em>styles</em> folder and make changes.</p>
+<h4>Changing Colors</h4>
+<p>To change colors, copy <em>variables.less</em> and change the color palette options:</p>
+<pre><code> @haze: ##cccccc;
+</code></pre>
+<p>Below the color palette definitions, you can see how they are mapped to
+parts of the application.</p>
+<h4>Adding other styles</h4>
+<p>To add another style, create the less or css file in
+your <code>siteConfig.static</code>'s <em>styles</em> folder. Then, copy <em>styles.less</em> and import your
+stylesheet:</p>
+<pre><code>@import 'ie.less';
+@import 'mystyles.less'
+</code></pre>
+<h3>Changing Images</h3>
+<p>To change the default images, add your replacement images
+to <code>siteConfig.static</code>'s <em>img</em> folder.  You probably want to create a:</p>
+<ul>
+<li><em>img/logo.svg</em> - Your project's logo.</li>
+<li><em>img/logo-grey.svg</em> Your project's logo in greyscale.</li>
+</ul>
+<h3>Changing JavaScript</h3>
+<p>The default builder loads and builds the <em>documentjs/site/default/static/static.js</em> file
+using <a href="http://stealjs.com">StealJS</a>. This imports various modules and initializes
+their behavior.  StealJS supports importing ES6, AMD, and CJS modules.  To add your own
+behavior:</p>
+<ol>
+<li><p>Add your JavaScript files to the <code>siteConfig.static</code> folder.</p></li>
+<li><p>Copy <em>documentjs/site/default/static/static.js</em> to <code>siteConfig.static</code> folder.</p></li>
+<li><p>Edit your copy of <code>static.js</code> to import and initialize your JavaScript code:</p>
+<pre><code> steal(
+   &quot;./your_module.js&quot;
+   &quot;./content_list.js&quot;,
+   &quot;./frame_helper.js&quot;,
+   &quot;./versions.js&quot;,
+   &quot;./styles/styles.less!&quot;,
+   &quot;./prettify&quot;,function(YourModule, ContentList, FrameHelper, ...){
+     // call your module
+     YourModule()
+     // leave the rest of the code
+     var codes = document.getElementsByTagName(&quot;code&quot;);
+     ...
+ });
+</code></pre></li>
+</ol>
+<h2>Writing your own generator</h2>
+<p>You can create your own <a href="documentjs.generator.html">generator</a> module which gives you
+complete control over how a <a href="documentjs.process.docMap.html">docMap</a> is converted to
+some output.</p>
+<p>If you do decide to create your own generator, the best place to do that is within
+its own project that is registered on npm.  To do that, create a github project with
+a <code>main.js</code> that exports a <a href="documentjs.generator.html">generator</a> function like:</p>
+<pre><code>var Q = require('q'),
+    fs = require('fs'),
+    writeFile = Q.denodify(fs.writeFile),
+    path = require('path');
+    
+module.exports = function(docMapPromise, options){
+   return docMapPromise.then(function(docMap){
+     return writeFile(
+         path.join(options.dest,'docMap.json'), 
+         JSON.stringify(docMap) );
+   });
+};
+</code></pre>
+<p>Publish this to npm. For this example, we'll assume it's published as &quot;doc-map-json&quot;.</p>
+<p>In a project that wants to use this generator, make sure it's listed
+as a devDependency in <em>package.json</em>:</p>
+<pre><code>{
+  ...
+  &quot;devDependencies&quot;: {
+    &quot;documentjs&quot; : &quot;&gt;0.0.0&quot;,
+    &quot;doc-map-json&quot;: &quot;&gt;0.0.0&quot;
+  }
+}
+</code></pre>
+<p>In <em>documentjs.json</em>, make sure to list that generator and any options it needs in
+your <a href="DocumentJS.siteConfig.html">siteConfigs</a>.</p>
+<pre><code>{
+  &quot;sites&quot;: {
+    &quot;api&quot;: {
+      &quot;generators&quot;: [&quot;html&quot;,&quot;doc-map-json&quot;],
+      &quot;dest&quot;: &quot;docs&quot;
+    }
+  }
+}
+</code></pre>
+
+		</section>
+		
+		
+
+		
+
+		
+	
+	
+	</article>
+	
+	
+
+</div>
+
+
+
+
+
+	
+		<script type="text/javascript">
+		var docObject = {"type":"page","name":"DocumentJS.guides.customizing","src":"docs/guides/customizing.md","description":"Learn how to change the appearance and JavaScript behavior of your generated html documentation.","title":"customizing","parent":"DocumentJS.guides","order":4,"comment":" ","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/0.3/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/0.3/docs","generators":["html"],"page":"docs","docConfigDest":"../../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538"}};
+	</script>
+	
+	
+		<script>
+		  steal = {
+		    instantiated: {
+		      "bundles/static.css!$css" : null
+		    }
+		  }
+		</script>
+		<script type='text/javascript' 
+				data-main="static"
+				data-config="./static/config.js"
+				src="./static/steal.production.js"
+		    		bundles-path="bundles"></script>
+	
+</body>
+
+</html>

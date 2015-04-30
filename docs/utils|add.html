@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../index.html">Home</a>
+        </li>
+        <li >
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,20 +88,21 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="utils|add.html" data-search="utils/add">
 				utils/add
 			</a>
 			
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -125,9 +130,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#42c4473a76a4e03ef8e8a3742250bc34028394e0/process/test/module_with_single_export_function.js">source</a></li>
 	
 	
 	
@@ -227,6 +232,8 @@
 		
 
 		
+
+		
 	
 	
 	</article>
@@ -241,7 +248,7 @@
 
 	
 		<script type="text/javascript">
-		var docObject = {"src":"lib/process/test/module_with_single_export_function.js","line":0,"codeLine":12,"type":"module","description":"<p>The module's description is the first paragraph.</p>\n","title":"","types":[{"type":"function","returns":{"types":[{"type":"Number"}],"description":"<p>This return value's description.</p>\n"},"params":[{"types":[{"type":"Number"}],"name":"first","description":"<p>This param's description.</p>\n"},{"types":[{"type":"Number"}],"name":"second","description":"<p>This param's description.</p>\n"}]}],"name":"utils/add","parent":"utils","templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"src":"lib/process/test/module_with_single_export_function.js","line":0,"codeLine":12,"type":"module","description":"The module's description is the first paragraph.","title":"","types":[{"type":"function","returns":{"types":[{"type":"Number"}],"description":"This return value's description."},"params":[{"types":[{"type":"Number"}],"name":"first","description":"This param's description."},{"types":[{"type":"Number"}],"name":"second","description":"This param's description."}]}],"name":"utils/add","parent":"utils","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#42c4473a76a4e03ef8e8a3742250bc34028394e0"}};
 	</script>
 	
 	
@@ -254,6 +261,7 @@
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

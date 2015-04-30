@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../index.html">Home</a>
+        </li>
+        <li class='active'>
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,9 +88,11 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="documentjs.process.html" data-search="process">
 				process
@@ -96,7 +102,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>methods</span>
 						
@@ -105,7 +110,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container active ">
 					<a class="function" href="documentjs.process.code.html" data-search="documentjs.process.code">
 						code
 					</a>
@@ -164,9 +169,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -174,7 +177,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>types</span>
 						
@@ -254,9 +256,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -266,12 +266,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -297,9 +296,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538/process/code.js#L1">source</a></li>
 	
 	
 	
@@ -395,6 +394,8 @@ no docObject is created, <code>newDoc</code> will be null.</p>
 		
 
 		
+
+		
 	
 	
 	</article>
@@ -409,7 +410,7 @@ no docObject is created, <code>newDoc</code> will be null.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"function","name":"documentjs.process.code","parent":"documentjs.process.methods","src":"lib/process/code.js","line":1,"codeLine":32,"description":"<p>Process a code hint into properties on a <code>docObject</code>.</p>\n","title":"","signatures":[{"code":"documentjs.process.code(options, callback)","description":"<p>Using the <code>options.code</code>, and <code>options.tags</code>, processes the code\ninto properties on a docObject.  The <code>callback</code> is called with the new docObject.</p>\n","params":[{"types":[{"type":"documentjs.process.processOptions"}],"name":"options","description":"<p>An options object that contains\nthe code to process.</p>\n"},{"types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[{"types":[{"type":"documentjs.process.docObject"}],"name":"newDoc"},{"types":[{"type":"documentjs.process.docObject"}],"name":"newScope"}]}],"name":"callback","description":"<p>A function that is called back with a docObject created from the code and the scope\n<code>docObject</code>.  If\nno docObject is created, <code>newDoc</code> will be null.</p>\n"}]}],"comment":" ","templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"type":"function","name":"documentjs.process.code","parent":"documentjs.process.methods","src":"lib/process/code.js","line":1,"codeLine":32,"description":"Process a code hint into properties on a `docObject`.","title":"","signatures":[{"code":"documentjs.process.code(options, callback)","description":"Using the `options.code`, and `options.tags`, processes the code\ninto properties on a docObject.  The `callback` is called with the new docObject.","params":[{"types":[{"type":"documentjs.process.processOptions"}],"name":"options","description":"An options object that contains\nthe code to process."},{"types":[{"type":"function","returns":{"types":[{"type":"undefined"}]},"params":[{"types":[{"type":"documentjs.process.docObject"}],"name":"newDoc"},{"types":[{"type":"documentjs.process.docObject"}],"name":"newScope"}]}],"name":"callback","description":"A function that is called back with a docObject created from the code and the scope\n`docObject`.  If\nno docObject is created, `newDoc` will be null."}]}],"comment":" ","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538"}};
 	</script>
 	
 	
@@ -422,6 +423,7 @@ no docObject is created, <code>newDoc</code> will be null.</p>
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

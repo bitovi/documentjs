@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../../index.html">Home</a>
+        </li>
+        <li >
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,9 +88,11 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="documentjs.tags.html" data-search="tags">
 				tags
@@ -460,12 +466,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -495,9 +500,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c/tags/codeend.js">source</a></li>
 	
 	
 	
@@ -517,38 +522,6 @@
 		<section class="description">
 			<p>Stops a code block.</p>
 <p>###Example:</p>
-<pre><code class="language-js">
- /* 
-  * @codestart
-  *  /* @class
-  *   * Person represents a human with a name.  Read about the 
-  *   * animal class [Animal | here].
-  *   * @constructor
-  *   * You must pass in a name.
-  *   * @param {String} name A person's name
-  *   */
-  *   Person = function(name){
-  *      this.name = name
-  *      Person.count ++;
-  *   }
-  *  /* @Static */
-  *  steal.Object.extend(Person, {
-  *      /* Number of People */
-  *      count: 0
-  *  })
-  *  /* @Prototype */
-  *  Person.prototype = {
-  *     /* Returns a formal name 
-  *      * @return {String} the name with &quot;Mrs.&quot; added
-  *      */
-  *      fancyName : function(){
-  *         return &quot;Mrs. &quot;+this.name;
-  *      }
-  *  }
-  * @codeend
-  */
-
-</code></pre>
 
 		</section>
 		
@@ -561,6 +534,8 @@
 		
 
 		
+		
+
 		
 
 		
@@ -578,7 +553,7 @@
 
 	
 		<script type="text/javascript">
-		var docObject = {"name":"documentjs.tags.codeend","type":"constructor","parent":"documentjs.tags","src":"lib/tags/codeend.js","line":0,"codeLine":46,"description":"<p>Stops a code block.</p>\n<p>###Example:</p>\n<pre><code class=\"language-js\">\n /* \n  * @codestart\n  *  /* @class\n  *   * Person represents a human with a name.  Read about the \n  *   * animal class [Animal | here].\n  *   * @constructor\n  *   * You must pass in a name.\n  *   * @param {String} name A person's name\n  *   */\n  *   Person = function(name){\n  *      this.name = name\n  *      Person.count ++;\n  *   }\n  *  /* @Static */\n  *  steal.Object.extend(Person, {\n  *      /* Number of People */\n  *      count: 0\n  *  })\n  *  /* @Prototype */\n  *  Person.prototype = {\n  *     /* Returns a formal name \n  *      * @return {String} the name with &quot;Mrs.&quot; added\n  *      */\n  *      fancyName : function(){\n  *         return &quot;Mrs. &quot;+this.name;\n  *      }\n  *  }\n  * @codeend\n  */\n\n</code></pre>\n","hide":true,"title":"@codeend","tags":["documentation"],"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/0.1/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
+		var docObject = {"name":"documentjs.tags.codeend","type":"constructor","parent":"documentjs.tags","src":"lib/tags/codeend.js","line":0,"codeLine":46,"description":"Stops a code block.\n\n###Example:","hide":true,"title":"@codeend","tags":["documentation"],"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/0.1/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
 	</script>
 	
 	
@@ -591,6 +566,7 @@
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

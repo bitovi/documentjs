@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../../index.html">Home</a>
+        </li>
+        <li >
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,9 +88,11 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="documentjs.tags.html" data-search="tags">
 				tags
@@ -299,7 +305,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container active ">
 					<a class="constructor" href="documentjs.tags.module.html" data-search="@module">
 						@module
 					</a>
@@ -460,12 +466,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -495,9 +500,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c/tags/module.js">source</a></li>
 	
 	
 	
@@ -526,12 +531,6 @@
 					<h2 id="sig__module_TYPE_NAME_TITLE_">@module {TYPE} NAME [TITLE]
 </h2>
 <div class="signature-wrapper">
-<pre><code class="language-js">/**
- * @module {{}} lib/componentProps props
- * @option {String} name The name of the component.
- * @option {String} title The title of the component.
- */
-</code></pre>
 
 
 	<h3>Parameters</h3>
@@ -592,6 +591,12 @@ is typically an object specified like: <code>{{}}</code> or a function like <cod
 		
 
 		
+		<section class="comment">
+			
+		</section>
+		
+		
+
 		
 
 		
@@ -609,7 +614,7 @@ is typically an object specified like: <code>{{}}</code> or a function like <cod
 
 	
 		<script type="text/javascript">
-		var docObject = {"name":"documentjs.tags.module","type":"constructor","parent":"documentjs.tags","src":"lib/tags/module.js","line":6,"codeLine":30,"description":"<p>Declares the export value for a module.</p>\n","title":"@module","tags":["documentation"],"signatures":[{"code":"@module {TYPE} NAME [TITLE]","description":"<pre><code class=\"language-js\">/**\n * @module {{}} lib/componentProps props\n * @option {String} name The name of the component.\n * @option {String} title The title of the component.\n */\n</code></pre>\n","params":[{"types":[{"type":"documentjs/type"}],"optional":true,"name":"TYPE","description":"<p>A [documentjs/type type expression]. This\nis typically an object specified like: <code>{{}}</code> or a function like <code>{function}</code>.</p>\n"},{"types":[{"type":"String"}],"name":"NAME","description":"<p>The name of the type.</p>\n"},{"types":[{"type":"String"}],"name":"TITLE","description":"<p>The title of the type used for display purposes.</p>\n"}]}],"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/0.1/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
+		var docObject = {"name":"documentjs.tags.module","type":"constructor","parent":"documentjs.tags","src":"lib/tags/module.js","line":6,"codeLine":30,"description":"Declares the export value for a module.","title":"@module","tags":["documentation"],"signatures":[{"code":"@module {TYPE} NAME [TITLE]","description":"","params":[{"types":[{"type":"documentjs/type"}],"optional":true,"name":"TYPE","description":"A [documentjs/type type expression]. This\nis typically an object specified like: `{{}}` or a function like `{function}`."},{"types":[{"type":"String"}],"name":"NAME","description":"The name of the type."},{"types":[{"type":"String"}],"name":"TITLE","description":"The title of the type used for display purposes."}]}],"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/0.1/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
 	</script>
 	
 	
@@ -622,6 +627,7 @@ is typically an object specified like: <code>{{}}</code> or a function like <cod
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

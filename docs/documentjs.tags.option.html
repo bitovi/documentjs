@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../index.html">Home</a>
+        </li>
+        <li class='active'>
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,9 +88,11 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="documentjs.tags.html" data-search="tags">
 				tags
@@ -293,7 +299,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container active ">
 					<a class="constructor" href="documentjs.tags.option.html" data-search="@option">
 						@option
 					</a>
@@ -403,6 +409,30 @@
 			
 		
 			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.styles.html" data-search="@styles">
+						@styles
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.stylesheet.html" data-search="@stylesheet">
+						@stylesheet
+					</a>
+				</li>
+				
+			
+			
+		
+			
 		
 			
 		
@@ -432,12 +462,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -467,9 +496,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538/tags/option.js">source</a></li>
 	
 	
 	
@@ -499,20 +528,6 @@ in a <a href="documentjs.tags.param.html">@param</a> tag.</p>
 					<h2 id="sig__option_TYPE_NAME_DESCRIPTION_">@option {TYPE} NAME [DESCRIPTION]
 </h2>
 <div class="signature-wrapper">
-<pre><code class="language-javascript">/**
- * Retrieves a list of orders.
- * 
- * @param {{}} params A parameter object with the following options:
- * @option {String} type Specifies the type of order.
- * @option {Number} [createdAt] Retrieves all orders after this 
- * timestamp. 
- *
- * @param {function(Orders.List)} [success(orders)] Filter order search 
- * by this date.
- * @option orders A list of [Orders] that match `params`.
- */
- find: function( params, success ) {
-</code></pre>
 
 
 	<h3>Parameters</h3>
@@ -528,16 +543,6 @@ in a <a href="documentjs.tags.param.html">@param</a> tag.</p>
 <code>{function(name)}</code> - type is a <code>function</code> that takes one <code>name</code> argument.</p>
 <p><code>TYPE</code> does not need to be specified for types that are already described in
 the option's corresponding function or object.  For example:</p>
-<pre><code class="language-js">/**
- * @param {{type: String}} params A parameter object 
- * with the following options:
- * @option type Specifies the type of order.
- *
- * @param {function(Orders.List)} [success(orders)] Callback 
- * function.
- * @option orders A list of [Orders] that match `params`.
- */
-</code></pre>
 
 			</div>
 			
@@ -589,6 +594,12 @@ the option's corresponding function or object.  For example:</p>
 		
 
 		
+		<section class="comment">
+			
+		</section>
+		
+		
+
 		
 
 		
@@ -606,7 +617,7 @@ the option's corresponding function or object.  For example:</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"name":"documentjs.tags.option","type":"constructor","parent":"documentjs.tags","src":"lib/tags/option.js","line":50,"codeLine":106,"description":"<p>Details the properties of an object or the arguments of a function\nin a [documentjs.tags.param] tag.</p>\n","title":"@option","tags":["documentation"],"signatures":[{"code":"@option {TYPE} NAME [DESCRIPTION]","description":"<pre><code class=\"language-javascript\">/**\n * Retrieves a list of orders.\n * \n * @param {{}} params A parameter object with the following options:\n * @option {String} type Specifies the type of order.\n * @option {Number} [createdAt] Retrieves all orders after this \n * timestamp. \n *\n * @param {function(Orders.List)} [success(orders)] Filter order search \n * by this date.\n * @option orders A list of [Orders] that match `params`.\n */\n find: function( params, success ) {\n</code></pre>\n","params":[{"types":[{"type":"documentjs.typeExpression"}],"optional":true,"name":"TYPE","description":"<p>A [documentjs.typeExpression type expression]. Examples:</p>\n<p><code>{String}</code> - type is a <code>String</code>.<br />\n<code>{function(name)}</code> - type is a <code>function</code> that takes one <code>name</code> argument.</p>\n<p><code>TYPE</code> does not need to be specified for types that are already described in\nthe option's corresponding function or object.  For example:</p>\n<pre><code class=\"language-js\">/**\n * @param {{type: String}} params A parameter object \n * with the following options:\n * @option type Specifies the type of order.\n *\n * @param {function(Orders.List)} [success(orders)] Callback \n * function.\n * @option orders A list of [Orders] that match `params`.\n */\n</code></pre>\n"},{"types":[{"type":"documentjs.nameExpression"}],"name":"NAME","description":"<p>A [documentjs.nameExpression name expression]. Examples:</p>\n<p><code>age</code> - age is item.<br />\n<code>[age]</code> - age is item, age is optional.<br />\n<code>[age=0]</code> - age defaults to 0.</p>\n"},{"types":[{"type":"Markdown"}],"optional":true,"name":"DESCRIPTION","description":"<p>Markdown content that continues for multiple lines.</p>\n"}]}],"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"name":"documentjs.tags.option","type":"constructor","parent":"documentjs.tags","src":"lib/tags/option.js","line":56,"codeLine":112,"description":"Details the properties of an object or the arguments of a function\nin a [documentjs.tags.param] tag.","title":"@option","tags":["documentation"],"signatures":[{"code":"@option {TYPE} NAME [DESCRIPTION]","description":"","params":[{"types":[{"type":"documentjs.typeExpression"}],"optional":true,"name":"TYPE","description":"A [documentjs.typeExpression type expression]. Examples:\n\n`{String}` - type is a `String`.  \n`{function(name)}` - type is a `function` that takes one `name` argument.  \n\n`TYPE` does not need to be specified for types that are already described in\nthe option's corresponding function or object.  For example:"},{"types":[{"type":"documentjs.nameExpression"}],"name":"NAME","description":"A [documentjs.nameExpression name expression]. Examples:\n\n`age` - age is item.  \n`[age]` - age is item, age is optional.  \n`[age=0]` - age defaults to 0."},{"types":[{"type":"Markdown"}],"optional":true,"name":"DESCRIPTION","description":"Markdown content that continues for multiple lines."}]}],"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538"}};
 	</script>
 	
 	
@@ -619,6 +630,7 @@ the option's corresponding function or object.  For example:</p>
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

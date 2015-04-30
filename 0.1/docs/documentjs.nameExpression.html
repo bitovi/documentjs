@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../../index.html">Home</a>
+        </li>
+        <li >
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,9 +88,11 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="documentjs.tags.html" data-search="tags">
 				tags
@@ -99,7 +105,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container active ">
 					<a class="typedef" href="documentjs.nameExpression.html" data-search="NAME-EXPRESSION">
 						NAME-EXPRESSION
 					</a>
@@ -460,12 +466,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -497,9 +502,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c/tags/helpers/namer.js#L4">source</a></li>
 	
 	
 	
@@ -595,10 +600,6 @@ be given 0 or more times.</p>
 			<div class="description">
 				<p><code>=default</code> provides
 the default value for the type. For example:</p>
-<pre><code class="language-js">/**
- * @param {Number} [age=0]
- */
-</code></pre>
 
 			</div>
 			
@@ -623,6 +624,12 @@ the default value for the type. For example:</p>
 		
 
 		
+		<section class="comment">
+			
+		</section>
+		
+		
+
 		
 
 		
@@ -640,7 +647,7 @@ the default value for the type. For example:</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"typedef","name":"documentjs.nameExpression","parent":"documentjs.tags","src":"lib/tags/helpers/namer.js","line":4,"codeLine":47,"description":"<p>Adds the <code>name</code> and other properties to [documentjs.process.valueData valueData] in\nusing the [documentjs.tags.param @param] or\n[documentjs.tags.param @option] tags.</p>\n","title":"NAME-EXPRESSION","types":[{"type":"STRING"}],"signatures":[{"code":"[name(args...)=default]","description":"<p>Example:</p>\n<pre><code>[success(item)=updater]\n</code></pre>\n","params":[{"types":[{"type":"String"}],"name":"name","description":"<p>Provides the name of the type.</p>\n"},{"types":[{"type":"String"}],"name":"[]","description":"<p>Indicates that the option or param is optional.</p>\n"},{"types":[{"type":"String"}],"name":"(args...)","description":"<p>If <code>name</code> is a function,\n<code>()</code> provides the names of each argument.</p>\n"},{"types":[{"type":"String"}],"name":"'...'","description":"<p>An argument is variable. The argument can\nbe given 0 or more times.</p>\n"},{"types":[{"type":"String"}],"name":"=default","description":"<p><code>=default</code> provides\nthe default value for the type. For example:</p>\n<pre><code class=\"language-js\">/**\n * @param {Number} [age=0]\n */\n</code></pre>\n"}]}],"comment":" ","templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/0.1/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
+		var docObject = {"type":"typedef","name":"documentjs.nameExpression","parent":"documentjs.tags","src":"lib/tags/helpers/namer.js","line":4,"codeLine":47,"description":"Adds the `name` and other properties to [documentjs.process.valueData valueData] in\nusing the [documentjs.tags.param @param] or \n[documentjs.tags.param @option] tags.","title":"NAME-EXPRESSION","types":[{"type":"STRING"}],"signatures":[{"code":"[name(args...)=default]","description":"Example:\n\n    [success(item)=updater]","params":[{"types":[{"type":"String"}],"name":"name","description":"Provides the name of the type."},{"types":[{"type":"String"}],"name":"[]","description":"Indicates that the option or param is optional."},{"types":[{"type":"String"}],"name":"(args...)","description":"If `name` is a function,\n`()` provides the names of each argument."},{"types":[{"type":"String"}],"name":"'...'","description":"An argument is variable. The argument can\nbe given 0 or more times."},{"types":[{"type":"String"}],"name":"=default","description":"`=default` provides\nthe default value for the type. For example:"}]}],"comment":" ","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/0.1/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
 	</script>
 	
 	
@@ -653,6 +660,7 @@ the default value for the type. For example:</p>
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

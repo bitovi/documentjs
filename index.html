@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li class="active">
-	            <a href="index.html">Home</a>
-              </li>
-              
-		          <li>
-		            <a href="docs/index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li class="active">
+        	<a href="index.html">Home</a>
+        </li>
+        <li >
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -151,6 +155,8 @@ module.exports = Graph;
 		
 
 		
+
+		
 	
 	
 	
@@ -161,7 +167,7 @@ module.exports = Graph;
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"page","name":"home","src":"_pages/index.md","description":"","hideSidebar":true,"hideTitle":true,"hideFooter":true,"hideContainer":true,"hideArticle":true,"comment":" ","templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"_pages/*.md","ignore":"{node_modules,bower_components}/**/*","cwd":"/Users/justin/dev/documentjs.com"},"dest":"/Users/justin/dev/documentjs.com","forceBuild":true,"minifyBuild":false,"generators":["html"],"page":"index","docConfigDest":"documentjs.json","project":{}};
+		var docObject = {"type":"page","name":"home","src":"_pages/index.md","description":"","hideSidebar":true,"hideTitle":true,"hideFooter":true,"hideContainer":true,"hideArticle":true,"comment":" ","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"_pages/*.md","ignore":"{node_modules,bower_components}/**/*","cwd":"/Users/Jan/Workspace/documentjs.com"},"dest":"/Users/Jan/Workspace/documentjs.com","forceBuild":true,"minifyBuild":false,"generators":["html"],"page":"index","docConfigDest":"documentjs.json","project":{}};
 	</script>
 	
 	
@@ -174,6 +180,7 @@ module.exports = Graph;
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

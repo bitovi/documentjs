@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../index.html">Home</a>
+        </li>
+        <li class='active'>
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -81,6 +85,7 @@
 	
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
@@ -90,7 +95,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>guides</span>
 						
@@ -168,11 +172,21 @@
 			
 			
 		
+			
+				
+				
+				<li class="search-container">
+					<a class="page" href="live-style-guide.html" data-search="Live Style Guides">
+						Live Style Guides
+					</a>
+				</li>
+				
+			
+			
+		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -180,7 +194,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>Configuration APIS</span>
 						
@@ -201,7 +214,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container active ">
 					<a class="typedef" href="DocumentJS.projectConfig.html" data-search="projectConfig">
 						projectConfig
 					</a>
@@ -224,9 +237,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -234,7 +245,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>Document APIS</span>
 						
@@ -254,9 +264,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -264,7 +272,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>Command Line APIS</span>
 						
@@ -296,9 +303,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -306,7 +311,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>Internal APIS</span>
 						
@@ -386,9 +390,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -396,12 +398,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -433,9 +434,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538/api/config/projectConfig.md">source</a></li>
 	
 	
 	
@@ -585,6 +586,8 @@ a &quot;sites&quot; object if the project being retrieved does not contain its o
 		
 
 		
+
+		
 	
 	
 	</article>
@@ -599,7 +602,7 @@ a &quot;sites&quot; object if the project being retrieved does not contain its o
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"typedef","name":"DocumentJS.projectConfig","src":"docs/api/config/projectConfig.md","description":"<p>The configuration options for a project to retrieve and document.</p>\n","title":"projectConfig","types":[{"type":"Object","options":[{"name":"source","description":"<p>The source location of the project.</p>\n","types":[{"type":"String"}]},{"name":"version","description":"<p>The version name of the project. The default value is\nthis project config's <code>versions</code> key.</p>\n","types":[{"type":"String"}],"optional":true},{"name":"path","description":"<p>The location of where the project should be\ninstalled. The default is to use [DocumentJS.docConfig]'s <code>versionDest</code>.</p>\n","types":[{"type":"String"}],"optional":true},{"name":"npmInstall","description":"<p>Use npm to install the resource.</p>\n","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"false"},{"name":"sites","description":"<p>The sites that should be created for the\nproject if the project does not contain its own <em>documentjs.json</em>.</p>\n","types":[{"type":"Object","template":[{"types":[{"type":"String"}]},{"types":[{"type":"DocumentJS.siteConfig"}]}]}],"optional":true}]}],"parent":"DocumentJS.apis.config","comment":" ","templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"type":"typedef","name":"DocumentJS.projectConfig","src":"docs/api/config/projectConfig.md","description":"The configuration options for a project to retrieve and document.","title":"projectConfig","types":[{"type":"Object","options":[{"name":"source","description":"The source location of the project.","types":[{"type":"String"}]},{"name":"version","description":"The version name of the project. The default value is\nthis project config's `versions` key.","types":[{"type":"String"}],"optional":true},{"name":"path","description":"The location of where the project should be \ninstalled. The default is to use [DocumentJS.docConfig]'s `versionDest`.","types":[{"type":"String"}],"optional":true},{"name":"npmInstall","description":"Use npm to install the resource.","types":[{"type":"Boolean"}],"optional":true,"defaultValue":"false"},{"name":"sites","description":"The sites that should be created for the\nproject if the project does not contain its own _documentjs.json_.","types":[{"type":"Object","template":[{"types":[{"type":"String"}]},{"types":[{"type":"DocumentJS.siteConfig"}]}]}],"optional":true}]}],"parent":"DocumentJS.apis.config","comment":" ","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538"}};
 	</script>
 	
 	
@@ -612,6 +615,7 @@ a &quot;sites&quot; object if the project being retrieved does not contain its o
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

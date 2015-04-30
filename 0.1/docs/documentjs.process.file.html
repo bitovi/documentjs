@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../../index.html">Home</a>
+        </li>
+        <li >
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,9 +88,11 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="documentjs.process.html" data-search="process">
 				process
@@ -96,7 +102,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>methods</span>
 						
@@ -141,7 +146,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container active ">
 					<a class="function" href="documentjs.process.file.html" data-search="documentjs.process.file">
 						file
 					</a>
@@ -164,9 +169,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -174,7 +177,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>types</span>
 						
@@ -254,9 +256,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -266,12 +266,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -297,9 +296,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c/process/file.js#L7">source</a></li>
 	
 	
 	
@@ -405,6 +404,8 @@ documentjs.process.file(&quot;import $ from 'jquery' ... &quot;,
 		
 
 		
+
+		
 	
 	
 	</article>
@@ -419,7 +420,7 @@ documentjs.process.file(&quot;import $ from 'jquery' ... &quot;,
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"function","name":"documentjs.process.file","parent":"documentjs.process.methods","src":"lib/process/file.js","line":7,"codeLine":37,"description":"<p>Processes a file's source.  Adds created [documentjs.process.docObject docObjects] to docMap.</p>\n","title":"","signatures":[{"code":"documentjs.process.file(source, docMap, [filename])","description":"<p>Processes a file's source and calls [documentjs.process.codeAndComment] accordingly. If\nthe file ends with <code>.js</code>, each comment will be processed individually.  Otherwise,\nit treats the entire source as one big comment.</p>\n","params":[{"types":[{"type":"String"}],"name":"source","description":"<p>A files source</p>\n"},{"types":[{"type":"documentjs.process.docMap"}],"name":"docMap","description":"<p>A map of the name of each DocObject to the DocObject</p>\n"},{"types":[{"type":"String"}],"optional":true,"name":"filename","description":"<p>The filename.  If a filename is not provided,\nthe entire file is treated as one big comment block.  If a filename is provided\nand is not a .md or .markdown file, it is assumed to be a source file.</p>\n"}]}],"comment":" ","templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/0.1/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
+		var docObject = {"type":"function","name":"documentjs.process.file","parent":"documentjs.process.methods","src":"lib/process/file.js","line":7,"codeLine":37,"description":"Processes a file's source.  Adds created [documentjs.process.docObject docObjects] to docMap.","title":"","signatures":[{"code":"documentjs.process.file(source, docMap, [filename])","description":"Processes a file's source and calls [documentjs.process.codeAndComment] accordingly. If\nthe file ends with `.js`, each comment will be processed individually.  Otherwise,\nit treats the entire source as one big comment.","params":[{"types":[{"type":"String"}],"name":"source","description":"A files source"},{"types":[{"type":"documentjs.process.docMap"}],"name":"docMap","description":"A map of the name of each DocObject to the DocObject"},{"types":[{"type":"String"}],"optional":true,"name":"filename","description":"The filename.  If a filename is not provided, \nthe entire file is treated as one big comment block.  If a filename is provided\nand is not a .md or .markdown file, it is assumed to be a source file."}]}],"comment":" ","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/0.1/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
 	</script>
 	
 	
@@ -432,6 +433,7 @@ documentjs.process.file(&quot;import $ from 'jquery' ... &quot;,
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

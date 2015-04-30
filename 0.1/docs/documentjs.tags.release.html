@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../../index.html">Home</a>
+        </li>
+        <li >
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,9 +88,11 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="documentjs.tags.html" data-search="tags">
 				tags
@@ -385,7 +391,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container active ">
 					<a class="constructor" href="documentjs.tags.release.html" data-search="@release">
 						@release
 					</a>
@@ -460,12 +466,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -495,9 +500,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c/tags/release.js">source</a></li>
 	
 	
 	
@@ -529,12 +534,6 @@
 					<h2 id="sig__releaseRELEASE">@release RELEASE
 </h2>
 <div class="signature-wrapper">
-<pre><code class="language-js">/**
- * Retrieves a list of orders.
- * @release 3.2
- */
- find: function( params, success ) {
-</code></pre>
 
 
 	<h3>Parameters</h3>
@@ -574,27 +573,14 @@
 			<h2>Release for a param</h2>
 <p>Put <code>@release</code> after <code>@param</code> to tag the param
 with a release number:</p>
-<pre><code class="language-js">/**
- * Retrieves a list of orders.
- * @param {{}} params Parameters to filter orders.
- * @release 3.2.1
- */
- find: function( params, success ) {
-</code></pre>
 <h2>Release for a signature</h2>
 <p>Put <code>@release</code> after <code>@signature</code> to tag the param
 with a release number:</p>
-<pre><code class="language-js">/**
- * Retrieves a list of orders.
- * @signature `Order.find(params, success)`
- * @release 3.2
- * @param {{}} params Parameters to filter orders.
- */
- find: function( params, success ) {
-</code></pre>
 
 		</section>
 		
+		
+
 		
 
 		
@@ -612,7 +598,7 @@ with a release number:</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"name":"documentjs.tags.release","type":"constructor","parent":"documentjs.tags","src":"lib/tags/release.js","line":0,"codeLine":55,"description":"<p>Specifies the release of a [DocumentJS.tags.param @param],\n[documentjs/tags/signature @signature],\n[documentjs/tags/function @function] or\n[documentjs/tags/property @property].</p>\n","title":"@release","release":"3.3","signatures":[{"code":"@release RELEASE","description":"<pre><code class=\"language-js\">/**\n * Retrieves a list of orders.\n * @release 3.2\n */\n find: function( params, success ) {\n</code></pre>\n","params":[{"types":[{"type":"String"}],"name":"RELASE","description":"<p>A release number like: <code>1.2.3</code>.</p>\n"}]}],"comment":" ","templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/0.1/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
+		var docObject = {"name":"documentjs.tags.release","type":"constructor","parent":"documentjs.tags","src":"lib/tags/release.js","line":0,"codeLine":55,"description":"Specifies the release of a [DocumentJS.tags.param @param],\n[documentjs/tags/signature @signature], \n[documentjs/tags/function @function] or\n[documentjs/tags/property @property].","title":"@release","release":"3.3","signatures":[{"code":"@release RELEASE","description":"","params":[{"types":[{"type":"String"}],"name":"RELASE","description":"A release number like: `1.2.3`."}]}],"comment":" ","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/0.1/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
 	</script>
 	
 	
@@ -625,6 +611,7 @@ with a release number:</p>
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

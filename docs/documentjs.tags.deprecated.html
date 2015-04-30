@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../index.html">Home</a>
+        </li>
+        <li class='active'>
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,9 +88,11 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="documentjs.tags.html" data-search="tags">
 				tags
@@ -179,7 +185,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container active ">
 					<a class="constructor" href="documentjs.tags.deprecated.html" data-search="@deprecated ">
 						@deprecated 
 					</a>
@@ -403,6 +409,30 @@
 			
 		
 			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.styles.html" data-search="@styles">
+						@styles
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.stylesheet.html" data-search="@stylesheet">
+						@stylesheet
+					</a>
+				</li>
+				
+			
+			
+		
+			
 		
 			
 		
@@ -432,12 +462,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -467,9 +496,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538/tags/deprecated.js">source</a></li>
 	
 	
 	
@@ -552,17 +581,11 @@ the deprecation.</p>
 		
 		<section class="comment">
 			<h2>Use</h2>
-<pre><code class="language-javascript">/**
- * @function
- * @deprecated {1.0} This method has been replaced 
- * by [can.Model.parseModel].
- *
- * @param {String} name
- */
-</code></pre>
 
 		</section>
 		
+		
+
 		
 
 		
@@ -580,7 +603,7 @@ the deprecation.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"name":"documentjs.tags.deprecated","type":"constructor","parent":"documentjs.tags","src":"lib/tags/deprecated.js","line":2,"codeLine":42,"description":"<p>Marks a comment as deprecated.</p>\n","title":"@deprecated ","signatures":[{"code":"@deprecated {VERSION} DESCRIPTION","description":"<p>Specifies a deprecation warning for a particular version.  Multiple\n<code>@deprecated</code> tags can be used on a single comment.</p>\n<p>This warnings add to the deprecated tag on [documentjs.process.docObject]s.</p>\n","params":[{"types":[{"type":"STRING"}],"name":"VERSION","description":"<p>The version the\ndeprecation occured within.</p>\n"},{"types":[{"type":"STRING"}],"name":"DESCRIPTION","description":"<p>Text describing\nthe deprecation.</p>\n"}]}],"comment":" ","templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"name":"documentjs.tags.deprecated","type":"constructor","parent":"documentjs.tags","src":"lib/tags/deprecated.js","line":2,"codeLine":42,"description":"Marks a comment as deprecated.","title":"@deprecated ","signatures":[{"code":"@deprecated {VERSION} DESCRIPTION","description":"Specifies a deprecation warning for a particular version.  Multiple\n`@deprecated` tags can be used on a single comment.\n\nThis warnings add to the deprecated tag on [documentjs.process.docObject]s.","params":[{"types":[{"type":"STRING"}],"name":"VERSION","description":"The version the \ndeprecation occured within."},{"types":[{"type":"STRING"}],"name":"DESCRIPTION","description":"Text describing\nthe deprecation."}]}],"comment":" ","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538"}};
 	</script>
 	
 	
@@ -593,6 +616,7 @@ the deprecation.</p>
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

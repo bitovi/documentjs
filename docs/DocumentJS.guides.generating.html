@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../index.html">Home</a>
+        </li>
+        <li class='active'>
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -81,6 +85,7 @@
 	
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
@@ -90,7 +95,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>guides</span>
 						
@@ -135,7 +139,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container active ">
 					<a class="page" href="DocumentJS.guides.generating.html" data-search="generating">
 						generating
 					</a>
@@ -168,11 +172,21 @@
 			
 			
 		
+			
+				
+				
+				<li class="search-container">
+					<a class="page" href="live-style-guide.html" data-search="Live Style Guides">
+						Live Style Guides
+					</a>
+				</li>
+				
+			
+			
+		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -180,7 +194,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>Configuration APIS</span>
 						
@@ -224,9 +237,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -234,7 +245,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>Document APIS</span>
 						
@@ -254,9 +264,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -264,7 +272,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>Command Line APIS</span>
 						
@@ -296,9 +303,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -306,7 +311,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>Internal APIS</span>
 						
@@ -386,9 +390,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -396,12 +398,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -431,9 +432,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538/guides/generating.md">source</a></li>
 	
 	
 	
@@ -472,10 +473,10 @@
 <p>Otherwise, you run:</p>
 <pre><code> &gt; ./node_modules/.bin/documentjs
 </code></pre>
-<p>You can specify a version or site to run like:</p>
+<p>You can specify a version or site to run with:</p>
 <pre><code> &gt; ./node_modules/.bin/documentjs 1.0.0
 </code></pre>
-<p>You can also specify a local repository to find a version like:</p>
+<p>You can also specify a local repository to find a version with:</p>
 <pre><code> &gt; ./node_modules/.bin/documentjs 1.0.0@../documentjs
 </code></pre>
 <h3>Command Line Options</h3>
@@ -487,7 +488,7 @@ in <a href="DocumentJS.docConfig.html">docConfig</a>, <a href="DocumentJS.projec
 <li><strong>debug</strong> - turn on debug messages</li>
 <li><strong>help</strong> - command line information</li>
 </ul>
-<p>You can turn on these options like:</p>
+<p>You can turn on these options with:</p>
 <pre><code>&gt; ./node_modules/.bin/documentjs --watch
 </code></pre>
 <p>They are aliased to single characters and groupable so you can turn on watch, forceBuild and
@@ -502,12 +503,14 @@ debug like:</p>
 add a <code>:NAME</code> where <em>NAME</em> is the version or site name like:</p>
 <pre><code>&gt; grunt documentjs:2.0
 </code></pre>
-<p>You can point a version to a local copy like:</p>
+<p>You can point a version to a local copy with:</p>
 <pre><code>&gt; grunt documentjs:2.0@../myproject
 </code></pre>
 
 		</section>
 		
+		
+
 		
 
 		
@@ -525,7 +528,7 @@ add a <code>:NAME</code> where <em>NAME</em> is the version or site name like:</
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"page","name":"DocumentJS.guides.generating","src":"docs/guides/generating.md","description":"<p>Learn how to generate your documentation.</p>\n","title":"generating","parent":"DocumentJS.guides","order":3,"comment":" ","templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"type":"page","name":"DocumentJS.guides.generating","src":"docs/guides/generating.md","description":"Learn how to generate your documentation.","title":"generating","parent":"DocumentJS.guides","order":3,"comment":" ","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538"}};
 	</script>
 	
 	
@@ -538,6 +541,7 @@ add a <code>:NAME</code> where <em>NAME</em> is the version or site name like:</
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

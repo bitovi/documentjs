@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../index.html">Home</a>
+        </li>
+        <li class='active'>
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -81,6 +85,7 @@
 	
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
@@ -90,7 +95,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>guides</span>
 						
@@ -159,7 +163,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container active ">
 					<a class="page" href="DocumentJS.guides.contributing.html" data-search="contributing">
 						contributing
 					</a>
@@ -168,11 +172,21 @@
 			
 			
 		
+			
+				
+				
+				<li class="search-container">
+					<a class="page" href="live-style-guide.html" data-search="Live Style Guides">
+						Live Style Guides
+					</a>
+				</li>
+				
+			
+			
+		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -180,7 +194,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>Configuration APIS</span>
 						
@@ -224,9 +237,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -234,7 +245,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>Document APIS</span>
 						
@@ -254,9 +264,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -264,7 +272,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>Command Line APIS</span>
 						
@@ -296,9 +303,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -306,7 +311,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>Internal APIS</span>
 						
@@ -386,9 +390,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -396,12 +398,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -431,9 +432,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538/guides/contributing.md">source</a></li>
 	
 	
 	
@@ -505,7 +506,7 @@ produce a site.</p></li>
 <h2>Website and Documentation</h2>
 <p>DocumentJS's <a href="https://github.com/bitovi/documentjs/tree/gh-pages">gh-pages branch</a> contains
 documentjs.com's code. It uses DocumentJS to produce the website. The best way to
-edit the docs it to:</p>
+edit the docs is to:</p>
 <ol>
 <li><p>Fork/Clone https://github.com/bitovi/documentjs/tree/gh-pages next to the version
 of <code>documentjs</code> you want to be documented:</p>
@@ -516,22 +517,24 @@ of <code>documentjs</code> you want to be documented:</p>
 <pre><code>&gt; cd documentjs.com
 documentjs.com&gt; npm install
 </code></pre></li>
-<li><p>Generate site the entire site with:</p>
+<li><p>Generate the entire site with:</p>
 <pre><code>documentjs.com&gt; npm run-script documentjs
 </code></pre></li>
 <li><p>Update the site with changes in your local <code>documentjs</code>. Change the version number <code>0.0.0</code> accordingly:</p>
 <pre><code>documentjs.com&gt; node node_modules/.bin/documentjs 0.0.0@../documentjs
 </code></pre></li>
 <li><p>Edit source in <code>documentjs</code>.</p></li>
-<li><p>Regenerate site and check changes</p>
+<li><p>Regenerate site and check changes:</p>
 <pre><code>documentjs.com&gt; node node_modules/.bin/documentjs 0.0.0@../documentjs
 </code></pre></li>
-<li><p>Checkin and push changes to documentjs.</p></li>
-<li><p>Checkin and push gh-pages branch changes.</p></li>
+<li><p>Check in and push changes to documentjs.</p></li>
+<li><p>Check in and push gh-pages branch changes.</p></li>
 </ol>
 
 		</section>
 		
+		
+
 		
 
 		
@@ -549,7 +552,7 @@ documentjs.com&gt; npm install
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"page","name":"DocumentJS.guides.contributing","src":"docs/guides/contributing.md","description":"<p>Learn how to contribute to DocumentJS.</p>\n","title":"contributing","parent":"DocumentJS.guides","order":5,"comment":" ","templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"type":"page","name":"DocumentJS.guides.contributing","src":"docs/guides/contributing.md","description":"Learn how to contribute to DocumentJS.","title":"contributing","parent":"DocumentJS.guides","order":5,"comment":" ","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538"}};
 	</script>
 	
 	
@@ -562,6 +565,7 @@ documentjs.com&gt; npm install
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

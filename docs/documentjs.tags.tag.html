@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../index.html">Home</a>
+        </li>
+        <li class='active'>
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,9 +88,11 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="documentjs.tags.html" data-search="tags">
 				tags
@@ -403,6 +409,30 @@
 			
 		
 			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.styles.html" data-search="@styles">
+						@styles
+					</a>
+				</li>
+				
+			
+			
+		
+			
+				
+				
+				<li class="search-container">
+					<a class="constructor" href="documentjs.tags.stylesheet.html" data-search="@stylesheet">
+						@stylesheet
+					</a>
+				</li>
+				
+			
+			
+		
+			
 		
 			
 		
@@ -432,12 +462,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -467,9 +496,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538/tags/tag.js">source</a></li>
 	
 	
 	
@@ -502,20 +531,13 @@
 		
 		<section class="comment">
 			<p>###Example:</p>
-<pre><code class="language-js">/**
- * @tag core
- * @plugin jquery/controller
- * @download jquery/dist/jquery.controller.js
- *`@test jquery/controller/qunit.html
- * ...
- */
- $.Class.extend(&quot;jQuery.Controller&quot;, 
-</code></pre>
 <p>###End Result:</p>
 <p><img class='image_tag' src='jmvc/images/tag_tag_example.png' /></p>
 
 		</section>
 		
+		
+
 		
 
 		
@@ -533,7 +555,7 @@
 
 	
 		<script type="text/javascript">
-		var docObject = {"name":"documentjs.tags.tag","type":"constructor","parent":"documentjs.tags","src":"lib/tags/tag.js","line":0,"codeLine":23,"description":"<p>Tags for searching.</p>\n","title":"@tag","hide":true,"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"name":"documentjs.tags.tag","type":"constructor","parent":"documentjs.tags","src":"lib/tags/tag.js","line":0,"codeLine":23,"description":"Tags for searching.","title":"@tag","hide":true,"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538"}};
 	</script>
 	
 	
@@ -546,6 +568,7 @@
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

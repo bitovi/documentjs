@@ -43,21 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li {{#ifCurrentFromConfig "index.html"}}class="active"{{/ifCurrentFromConfig}}>
-	            <a href="{{urlFromConfig 'index.html'}}">Home</a>
-              </li>
-              {{#ifEqual page "index"}}
-		          <li>
-		            <a href="docs/index.html">Api</a>
-		          </li>
-	          {{else}}
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          {{/ifEqual}}
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li {{#ifCurrentFromConfig "index.html"}}class="active"{{/ifCurrentFromConfig}}>
+        	<a href="{{urlFromConfig 'index.html'}}">Home</a>
+        </li>
+        <li {{#ifEqual page "docs"}}class='active'{{/ifEqual}}>
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container{{#ifEqual page "example"}} active{{/ifEqual}}'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -102,6 +102,7 @@
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	{{/if}}

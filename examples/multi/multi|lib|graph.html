@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../../index.html">Home</a>
+        </li>
+        <li >
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container active'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,9 +88,11 @@
 			<a class="sidebar-title" href="index.html" data-search="multi">
 				multi
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="multi|lib|graph.html" data-search="multi/lib/graph">
 				multi/lib/graph
@@ -96,7 +102,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>prototype</span>
 						
@@ -116,9 +121,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -126,7 +129,6 @@
 		
 			
 				
-					
 					<li class="heading search-container">
 						<span>types</span>
 						
@@ -146,9 +148,7 @@
 		
 	</ul>
 
-
 					</li>
-					
 				
 				
 			
@@ -156,12 +156,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -189,9 +188,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538/multi/lib/graph.js">source</a></li>
 	
 	
 	
@@ -273,6 +272,8 @@ graph = new Graph({data: [ ... ], columns: [...]})
 		
 
 		
+
+		
 	
 	
 	</article>
@@ -287,7 +288,7 @@ graph = new Graph({data: [ ... ], columns: [...]})
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"module","name":"multi/lib/graph","parent":"multi.modules","src":"examples/multi/lib/graph.js","line":0,"codeLine":19,"description":"","title":"","types":[{"type":"function","returns":{"types":[{"type":"multi/lib/graph"}]},"params":[]}],"signatures":[{"code":"new Graph(graphData)","description":"","params":[{"types":[{"type":"multi/lib/graph.graphData"}],"name":"graphData","description":"<p>The data used in the graph.</p>\n"}],"returns":{"types":[{"type":"multi/lib/graph"}],"description":"<p>A graph instance</p>\n"}}],"comment":" ","templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"examples/multi/**/*.{js,md}","ignore":"{node_modules,bower_components}/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/examples/multi","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"type":"module","name":"multi/lib/graph","parent":"multi.modules","src":"examples/multi/lib/graph.js","line":0,"codeLine":19,"description":"","title":"","types":[{"type":"function","returns":{"types":[{"type":"multi/lib/graph"}]},"params":[]}],"signatures":[{"code":"new Graph(graphData)","description":"","params":[{"types":[{"type":"multi/lib/graph.graphData"}],"name":"graphData","description":"The data used in the graph."}],"returns":{"types":[{"type":"multi/lib/graph"}],"description":"A graph instance"}}],"comment":" ","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"examples/multi/**/*.{js,md}","ignore":"{node_modules,bower_components}/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/examples/multi","generators":["html"],"page":"example","docConfigDest":"../../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538"}};
 	</script>
 	
 	
@@ -300,6 +301,7 @@ graph = new Graph({data: [ ... ], columns: [...]})
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

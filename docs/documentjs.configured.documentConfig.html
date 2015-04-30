@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../index.html">Home</a>
+        </li>
+        <li class='active'>
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,20 +88,21 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="documentjs.configured.documentConfig.html" data-search="documentConfig">
 				documentConfig
 			</a>
 			
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -127,9 +132,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538/configured/generate_project.js#L105">source</a></li>
 	
 	
 	
@@ -146,6 +151,11 @@
 		
 
 		
+		<section class="description">
+			<p>/*&quot;},</p>
+
+		</section>
+		
 
 		
 			
@@ -156,6 +166,7 @@
 				<h2 id="sig_">function(docConfig, project, parent, options, parentProject)
 </h2>
 <div class="signature-wrapper">
+<p>/*&quot;},</p>
 
 
 	<h3>Parameters</h3>
@@ -275,6 +286,23 @@ the most parent project being documented.</p>
 		
 
 		
+		<section class="comment">
+			<pre><code>                        debug: true
+                    }
+                }
+            },project, parent, options );
+        
+    });
+}
+</code></pre>
+<p>}
+module.exports = document;</p>
+<p>/**</p>
+
+		</section>
+		
+		
+
 		
 
 		
@@ -292,7 +320,7 @@ the most parent project being documented.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"function","name":"documentjs.configured.documentConfig","params":[{"types":[{"type":"Object","options":[]}],"name":"docConfig","description":"<p>A docConfig loaded from <code>{project.path}/documentjs.json</code>.</p>\n"},{"types":[{"type":"Object","options":[{"name":"path","description":"<p>The location of the project being documented.</p>\n","types":[{"type":"String"}]}]}],"name":"project","description":"<p>A [documentjs.configured.projectConfig] object with data about\nthe project being documented.</p>\n"},{"name":"parent","types":[{"type":"*"}]},{"types":[{"type":"Object","options":[]}],"name":"options","description":"<p>command line overwrites.</p>\n"},{"types":[{"type":"Object","options":[{"name":"path","description":"<p>The location of the most parent project being documented.</p>\n","types":[{"type":"String"}]},{"name":"The","description":"<p>docConfig loaded from that project.</p>\n","types":[{"type":"DocumentJS.docConfig"}]}]}],"name":"parentProject","description":"<p>A [documentjs.configured.projectConfig] object with data about\nthe most parent project being documented.</p>\n"}],"parent":"lib/configured/generate_project.js","src":"lib/configured/generate_project.js","line":114,"codeLine":133,"description":"","title":"documentConfig","hide":true,"types":[],"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/docs","generators":["html"],"docConfigDest":"../documentjs.json","project":{"version":"0.2","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"type":"function","name":"documentjs.configured.documentConfig","params":[{"types":[{"type":"Object","options":[]}],"name":"docConfig","description":"A docConfig loaded from `{project.path}/documentjs.json`."},{"types":[{"type":"Object","options":[{"name":"path","description":"The location of the project being documented.","types":[{"type":"String"}]}]}],"name":"project","description":"A [documentjs.configured.projectConfig] object with data about\nthe project being documented."},{"name":"parent","types":[{"type":"*"}]},{"types":[{"type":"Object","options":[]}],"name":"options","description":"command line overwrites."},{"types":[{"type":"Object","options":[{"name":"path","description":"The location of the most parent project being documented.","types":[{"type":"String"}]},{"name":"The","description":"docConfig loaded from that project.","types":[{"type":"DocumentJS.docConfig"}]}]}],"name":"parentProject","description":"A [documentjs.configured.projectConfig] object with data about\nthe most parent project being documented."}],"parent":"lib/configured/generate_project.js","src":"lib/configured/generate_project.js","line":105,"codeLine":138,"description":"/*\"},","title":"documentConfig","hide":true,"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538"}};
 	</script>
 	
 	
@@ -305,6 +333,7 @@ the most parent project being documented.</p>
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	

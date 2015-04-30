@@ -43,17 +43,21 @@
 		        </ul>
 			</div>
 			<ul class="nav">
-			  <li >
-	            <a href="../../index.html">Home</a>
-              </li>
-              
-	              <li class="active">
-		            <a href="index.html">Api</a>
-		          </li>
-	          
-	          <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
-		      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
-	        </ul>
+		  	<li >
+        	<a href="../../index.html">Home</a>
+        </li>
+        <li >
+          <a href="/docs/index.html">Api</a>
+        </li>
+        <li class='menu-container'>
+        	<a>Examples</a>
+        	<ul class="dropdown-menu">
+        		<li><a href="/examples/styles/index.html">Live Style Guide</a></li>
+        	</ul>
+        </li>
+        <li class=""><a href="https://twitter.com/documentjs">Twitter</a></li>
+	      <li class=""><a href="https://github.com/bitovi/documentjs">GitHub</a></li>
+	    </ul>
 			<div class="pull-right">
 				<div class="bitovi-menu">
 					<a href="http://bitovi.com" class="bitovi icon-bits">Bitovi</a>
@@ -84,9 +88,11 @@
 			<a class="sidebar-title" href="index.html" data-search="DocumentJS">
 				DocumentJS
 			</a>
+			
 		</li>
 		
 		
+			
 			<li class="search-container active">
 			<a class="sidebar-title" href="documentjs.tags.html" data-search="tags">
 				tags
@@ -261,7 +267,7 @@
 			
 				
 				
-				<li class="search-container active">
+				<li class="search-container active ">
 					<a class="constructor" href="documentjs.tags.iframe.html" data-search="@iframe">
 						@iframe
 					</a>
@@ -460,12 +466,11 @@
 		
 	</ul>
 
-
 		</li>
+			
 		
 	
 </ul>
-
 	</nav>
 	
 	
@@ -495,9 +500,9 @@
 </div>
 
 <ul class="links">
-    
 	
-		<li><a href="">source</a></li>
+	
+		<li><a href="git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c/tags/iframe.js">source</a></li>
 	
 	
 	
@@ -528,13 +533,6 @@ accept a description.</p>
 					<h2 id="sig__iframeSRC_HEIGHT_">@iframe SRC [HEIGHT]
 </h2>
 <div class="signature-wrapper">
-<pre><code class="language-js">/**
- * A component for lib.
- * @body
- * See it in action:
- * @iframe lib/component/component.html 300
- */
-</code></pre>
 
 
 	<h3>Parameters</h3>
@@ -584,6 +582,12 @@ the content of the body.</p>
 		
 
 		
+		<section class="comment">
+			
+		</section>
+		
+		
+
 		
 
 		
@@ -601,7 +605,7 @@ the content of the body.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"name":"documentjs.tags.iframe","type":"constructor","parent":"documentjs.tags","src":"lib/tags/iframe.js","line":0,"codeLine":23,"description":"<p>Adds an iframe to the page. It can be added to the\n[documentjs/tags/body @body] or any other tags that\naccept a description.</p>\n","title":"@iframe","signatures":[{"code":"@iframe SRC [HEIGHT]","description":"<pre><code class=\"language-js\">/**\n * A component for lib.\n * @body\n * See it in action:\n * @iframe lib/component/component.html 300\n */\n</code></pre>\n","params":[{"types":[{"type":"String"}],"name":"SRC","description":"<p>The source of the html page.</p>\n"},{"types":[{"type":"Number"}],"optional":true,"name":"HEIGHT","description":"<p>The height of the html page. If\na height is not provided, the height is determined as\nthe content of the body.</p>\n"}]}],"templates":"/Users/justin/dev/documentjs.com/theme/templates","glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/justin/dev/documentjs.com/0.1/documentjs"},"forceBuild":true,"dest":"/Users/justin/dev/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
+		var docObject = {"name":"documentjs.tags.iframe","type":"constructor","parent":"documentjs.tags","src":"lib/tags/iframe.js","line":0,"codeLine":23,"description":"Adds an iframe to the page. It can be added to the \n[documentjs/tags/body @body] or any other tags that\naccept a description.","title":"@iframe","signatures":[{"code":"@iframe SRC [HEIGHT]","description":"","params":[{"types":[{"type":"String"}],"name":"SRC","description":"The source of the html page."},{"types":[{"type":"Number"}],"optional":true,"name":"HEIGHT","description":"The height of the html page. If\na height is not provided, the height is determined as\nthe content of the body."}]}],"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/0.1/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
 	</script>
 	
 	
@@ -614,6 +618,7 @@ the content of the body.</p>
 		</script>
 		<script type='text/javascript' 
 				data-main="static"
+				data-config="./static/config.js"
 				src="./static/steal.production.js"
 		    		bundles-path="bundles"></script>
 	
