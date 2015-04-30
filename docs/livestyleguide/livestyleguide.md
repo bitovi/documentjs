@@ -10,6 +10,6 @@ DocumentJS can also be used to generate a Live Style Guide. With the style docum
 * Include demos and examples
 
 
-If you're only using DocumentJS to create a Live Style guide, see [Standalone Live Style Guide](/docs/lsg-quickstart.html).
+If you're only using DocumentJS to create a Live Style guide, see [Standalone Live Style Guide]({{urlTo lsg-quickstart}}).
 
 A guide on adding a Live Style Guide to an existing DocumentJS project is coming soon.
