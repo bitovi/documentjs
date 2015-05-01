@@ -13,7 +13,8 @@
 			"pageConfig": {"page":"example"},
 			"glob": {
 				"pattern": "{styles,site/default/static/styles}/**/*.{less,css,md}"
-			}
+		},
+			"static": "theme/static"
 		},
 		"examples/multi": {
 			"parent": "multi",
