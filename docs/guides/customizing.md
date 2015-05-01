@@ -183,6 +183,10 @@ behavior:
 	        ...
 	    });
 
+### Adding Additional Static Resources
+
+If you'd like to add additional static resources, simply create a `resources` directory in the `siteConfig.static` folder. The contents of the `resources` directory will be copied in its entirety without any additional processing.
+
 ## Writing your own generator
 
 You can create your own [documentjs.generator generator] module which gives you

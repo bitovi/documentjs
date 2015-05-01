@@ -50,7 +50,7 @@ module.exports = function(options, folders){
 				fsx.copy( path.join(folders.build,"html5shiv.js"), path.join(folders.dist,"html5shiv.js")),
 					
 				copyDir("fonts"),
-				
+				copyDir("resources"),
 				copyDir("img"),
 				copyDir("templates")
 			]);
