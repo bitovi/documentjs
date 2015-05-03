@@ -29,4 +29,4 @@ project/
         <!-- Automatically generated directory -->
 ```
 
-[Next Page](/docs/lsg-quickstart-writing.html)
+[Next Page](/docs/lsg-quickstart-creating-page.html)

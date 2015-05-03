@@ -8,10 +8,10 @@ If you're working on a project that is already using DocumentJS, it is being use
 * Include demos to display examples alongside sample markup
 * Organize pages into navigation groups like "Elements," "Themes," and "Components"
 
-To see an example of this in action, check out the DocumentJS.com [Live Style Guide](/examples/styles/index.html).
+To see an example of this in action, check out the [example Live Style Guide](/examples/styles/index.html).
 
 ### What DocumentJS Does
-<sup>*[Skip this section](/docs/lsg-quickstart-installation.html) if you're comfortable with magic and don't care how DocumentJS works.*</sup>
+<sup>*[Skip this section](/docs/lsg-adding-installation.html) if you're comfortable with magic and don't care how DocumentJS works.*</sup>
 
 DocumentJS is a [*static site generator*](https://staticsitegenerators.net/). This means it scans specially formatted input files and creates a website that remains unchanged until the generator runs again. Whereas in a content management system changes happen somewhat automatically, a static site generator usually needs to be **run manually** and then the generated files must be **uploaded**.
 
@@ -26,4 +26,4 @@ To build your Live Style Guide, DocumentJS does the following:
 
 
 
-[Next Page](/docs/lsg-quickstart-installation.html)
+[Next Page](/docs/lsg-adding-installation.html)

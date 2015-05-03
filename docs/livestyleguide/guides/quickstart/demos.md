@@ -34,9 +34,9 @@ In `base.less`:
  */
 ```
 
-On the "Base Styles" stylesheet page generated from `base.less`, there will now be a demo showing whatever page is at `demos/forms.html`. In the [Example Style Guide](/styles/base.less.html), that looks like this:
+On the "Base Styles" stylesheet page generated from `base.less`, there will now be a demo showing whatever page is at `demos/forms.html`. In the [Example Style Guide](/examples/styles/base.less.html), that looks like this:
 
-@demo demos/base/forms/demo.html
+@demo examples/demos/forms.html
 
 
 ### Arguments
@@ -69,9 +69,9 @@ In `typography.less`:
  */
 ```
 
-Similar to above, but without the "HTML" tab, there will be a demo. In the [Example Style Guide](/styles/typography.less.html), that looks like this:
+Similar to above, but without the "HTML" tab, there will be a demo. In the [Example Style Guide](/examples/styles/typography.less.html), that looks like this:
 
-@iframe demos/typography/headings/demo.html
+@iframe examples/demos/headings.html
 
 
 ### Arguments
@@ -81,3 +81,5 @@ Similar to above, but without the "HTML" tab, there will be a demo. In the [Exam
 ```
 
 Just like with the `@@demo` tag, the `FILEPATH` argument is a link to the location of the demo page.
+
+[Next Page](/docs/lsg-custom-styles.html)

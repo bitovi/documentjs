@@ -10,7 +10,7 @@ The [Standalone Guide](/docs/lsg-quickstart.html) is likely more precise when it
 There are a few ways to compensate for the ways this guide may differ from your specific project setup:
 
 * Go through this guide with a developer who understands how the API Documentation is set up in your project
-* Ask questions on [Gitter](https://gitter.im/bitovi/documentjs)
-* Open [an issue](https://github.com/bitovi/documentjs/issues/new) to let us know when something isn't clear
+* Ask questions on [Gitter](https://gitter.im/bitovi/documentcss)
+* Open [an issue](https://github.com/bitovi/documentcss/issues/new) to let us know when something isn't clear
 
 [Next Page](/docs/lsg-adding-designers.html)

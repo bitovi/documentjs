@@ -44,3 +44,5 @@ If you'd like DocumentJS to rebuild the site every time you make changes, you ca
 ```
 > documentjs -w
 ```
+
+[Next Page](/docs/lsg-quickstart-stylesheet.html)

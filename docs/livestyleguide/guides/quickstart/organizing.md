@@ -1,7 +1,7 @@
 @page lsg-quickstart-organizing Organizing your Style Guide
 @parent lsg-quickstart-group-writing 1
 
-After you've documented your first stylesheet, if you [generate the site](docs/lsg-quickstart-generate.html) you won't see your stylesheet page anywhere in the sidebar. Even though the page has been generated, it isn't linked up to the rest of the site because you need to tell DocumentJS where to put it.
+After you've documented your first stylesheet, if you [generate the site](/docs/lsg-quickstart-generate.html) you won't see your stylesheet page anywhere in the sidebar. Even though the page has been generated, it isn't linked up to the rest of the site because you need to tell DocumentJS where to put it.
 
 We have two more tags so you can organize your style guide:
 
@@ -74,3 +74,5 @@ Once you've specified groups in `stylesheet.md`, you just need to make those gro
 ```
 
 Notice that we are using the name we declared as a `@@group` as the parent.
+
+[Next Page](/docs/lsg-quickstart-demos.html)

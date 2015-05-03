@@ -2,7 +2,7 @@
 	"sites": {
 		"docs": {
 			"parent": "DocumentJS",
-			"pageConfig": {"page":"docs"},
+			"pageConfig": {"page":"docs", "site": "documentjs"},
 			"glob": {
 				"pattern": "{docs,tags,lib,tasks}/**/*.{js,md}",
 				"ignore": "lib/{configured,process,generate,find,generators/html}/test/**/*"

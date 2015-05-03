@@ -1,14 +1,14 @@
 @page lsg-quickstart-designers DocumentJS for Designers
 @parent lsg-quickstart-group-intro 0
 
-DocumentJS isn't just for JavaScript API Docs. As long as your project is using [npm](http://npmjs.org), you will be able to:
+Though you're documenting your styles, the tool you'll be using is DocumentJS. As long as your project is using [npm](http://npmjs.org), you will be able to:
 
 * Generate a living site that automatically updates as your project's design evolves
 * Write a style guide with inline comments in stylesheets or with individual markdown files
 * Include demos to display examples alongside sample markup
 * Organize pages into navigation groups like "Elements," "Themes," and "Components"
 
-To see an example of this, check out the DocumentJS.com [Live Style Guide](/examples/styles/index.html).
+To see an example of this, check out this site's example [Live Style Guide](/examples/styles/index.html).
 
 
 ### What DocumentJS Does

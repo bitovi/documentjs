@@ -37,4 +37,4 @@ project/
         <!-- Automatically generated directory -->
 ```
 
-[Next Page](/docs/lsg-adding-writing.html)
+[Next Page](/docs/lsg-adding-next-steps.html)
