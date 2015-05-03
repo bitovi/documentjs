@@ -498,7 +498,7 @@
 <ul class="links">
 	
 	
-		<li><a href="git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538/tags/add.js">source</a></li>
+		<li><a href="git://github.com/bitovi/documentjs#f31a81d5173217ed06ada8ed4f90c609f0c9c928/tags/add.js">source</a></li>
 	
 	
 	
@@ -574,6 +574,19 @@ allowing comments to not have to write out a full name and <a href="documentjs.t
 <p>In the following example, a docObject named <code>lib.Component.prototype.plugin</code>
 and <code>lib.Component.prototype.draw</code> will be created, each with <code>lib.Component.prototype</code>
 as their parent.</p>
+<pre><code class="language-javascript">/** @add lib.Component.prototype */
+lib.extend(lib.Component.prototype,{
+  /**
+   * A plugin method on [lib.Component]
+   */
+  plugin: function(){},
+  /**
+   * @property draw
+   * A plugin method on [lib.Component]
+   */
+  draw: {}
+})
+</code></pre>
 
 		</section>
 		
@@ -596,7 +609,7 @@ as their parent.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"name":"documentjs.tags.add","type":"constructor","parent":"documentjs.tags","src":"lib/tags/add.js","line":1,"codeLine":44,"description":"Sets a [documentjs.process.docObject] as the \ncurrent scope.","title":"@add ","signatures":[{"code":"@add NAME","description":"","params":[{"types":[{"type":"STRING"}],"name":"NAME","description":"The name of [documentjs.process.docObject]\nto set as the scope."}]}],"comment":" ","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538"}};
+		var docObject = {"name":"documentjs.tags.add","type":"constructor","parent":"documentjs.tags","src":"lib/tags/add.js","line":1,"codeLine":44,"description":"Sets a [documentjs.process.docObject] as the \ncurrent scope.","title":"@add ","signatures":[{"code":"@add NAME","description":"","params":[{"types":[{"type":"STRING"}],"name":"NAME","description":"The name of [documentjs.process.docObject]\nto set as the scope."}]}],"comment":" ","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#f31a81d5173217ed06ada8ed4f90c609f0c9c928"}};
 	</script>
 	
 	

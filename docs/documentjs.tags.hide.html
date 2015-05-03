@@ -498,7 +498,7 @@
 <ul class="links">
 	
 	
-		<li><a href="git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538/tags/hide.js">source</a></li>
+		<li><a href="git://github.com/bitovi/documentjs#f31a81d5173217ed06ada8ed4f90c609f0c9c928/tags/hide.js">source</a></li>
 	
 	
 	
@@ -527,6 +527,13 @@
 					<h2 id="sig__hide">@hide
 </h2>
 <div class="signature-wrapper">
+<pre><code class="language-javascript">/**
+ * Checks if there is a set_property value.  
+ * If it returns true, lets it handle; otherwise saves it.
+ * @hide
+ */
+ _setProperty: function( prop ) {
+</code></pre>
 
 
 
@@ -543,8 +550,14 @@
 </h2>
 <div class="signature-wrapper">
 <p>Hides some section of the generated output.  The default layout supports:</p>
-<p>This a <code>hideSection</code> property to <a href="documentjs.process.docObject.html">docObject</a> where <code>Section</code> is the
-capitalized <code>SECTION</code> name passed to <code>@hide</code>.</p>
+<pre><code class="language-javascript">/**
+ * @hide sidebar
+ * @hide title
+ * @hide footer
+ * @hide article
+ * @hide container
+ */
+</code></pre>
 
 
 
@@ -563,7 +576,9 @@ capitalized <code>SECTION</code> name passed to <code>@hide</code>.</p>
 
 		
 		<section class="comment">
-			
+			<p>This a <code>hideSection</code> property to <a href="documentjs.process.docObject.html">docObject</a> where <code>Section</code> is the
+capitalized <code>SECTION</code> name passed to <code>@hide</code>.</p>
+
 		</section>
 		
 		
@@ -585,7 +600,7 @@ capitalized <code>SECTION</code> name passed to <code>@hide</code>.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"name":"documentjs.tags.hide","type":"constructor","parent":"documentjs.tags","src":"lib/tags/hide.js","line":0,"codeLine":36,"description":"Hides the comment from the navigation.","title":"@hide","signatures":[{"code":"@hide","description":"","params":[]},{"code":"@hide SECTION","description":"Hides some section of the generated output.  The default layout supports:\n\n\nThis a `hideSection` property to [documentjs.process.docObject] where `Section` is the \ncapitalized `SECTION` name passed to `@hide`.","params":[]}],"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538"}};
+		var docObject = {"name":"documentjs.tags.hide","type":"constructor","parent":"documentjs.tags","src":"lib/tags/hide.js","line":0,"codeLine":36,"description":"Hides the comment from the navigation.","title":"@hide","signatures":[{"code":"@hide","description":"```javascript\n/**\n * Checks if there is a set_property value.  \n * If it returns true, lets it handle; otherwise saves it.\n * @hide\n */\n _setProperty: function( prop ) {\n```","params":[]},{"code":"@hide SECTION","description":"Hides some section of the generated output.  The default layout supports:\n\n```javascript\n/**\n * @hide sidebar\n * @hide title\n * @hide footer\n * @hide article\n * @hide container\n */\n```","params":[]}],"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#f31a81d5173217ed06ada8ed4f90c609f0c9c928"}};
 	</script>
 	
 	

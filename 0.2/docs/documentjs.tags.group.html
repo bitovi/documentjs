@@ -566,7 +566,13 @@ the current <code>docObject</code>.</p>
 		<section class="comment">
 			<h2>Use</h2>
 <p>For example, in <code>myapp.md</code>, the following will create a &quot;Guides&quot; grouping:</p>
+<pre><code class="language-js">@page MyApp
+@group MyApp.guides 0 Guides
+</code></pre>
 <p>And in <code>guides/installing.md</code>, the following will add an Installing page to the &quot;Guides&quot; grouping:</p>
+<pre><code class="language-js">@page Installing
+@parent MyApp.guides
+</code></pre>
 
 		</section>
 		

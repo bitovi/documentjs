@@ -532,6 +532,18 @@ in a [DocumentJS.tags.param @param] tag.</p>
 					<h2 id="sig__option_TYPE_NAME_DESCRIPTION_">@option {TYPE} NAME [DESCRIPTION]
 </h2>
 <div class="signature-wrapper">
+<pre><code class="language-js">/**
+ * Retrieves a list of orders.
+ * 
+ * @param {{}} params A parameter object with the following options:
+ * @option {String} type Specifies the type of order.
+ * @option {Number} [createdAt] Retrieves all orders after this timestamp. 
+ *
+ * @param {function(Orders.List)} [success(orders)] Filter order search by this date.
+ * @option orders A list of [Orders] that match `params`.
+ */
+ find: function( params, success ) {
+</code></pre>
 
 
 	<h3>Parameters</h3>
@@ -547,6 +559,14 @@ in a [DocumentJS.tags.param @param] tag.</p>
 <code>{function(name)}</code> - type is a <code>function</code> that takes one <code>name</code> argument.</p>
 <p><code>TYPE</code> does not need to be specified for types that are already described in
 the option's corresponding function or object.  For example:</p>
+<pre><code class="language-js">/**
+ * @param {{type: String}} params A parameter object with the following options:
+ * @option type Specifies the type of order.
+ *
+ * @param {function(Orders.List)} [success(orders)] Callback function.
+ * @option orders A list of [Orders] that match `params`.
+ */
+</code></pre>
 
 			</div>
 			
@@ -609,7 +629,7 @@ the option's corresponding function or object.  For example:</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"name":"documentjs.tags.option","type":"constructor","parent":"documentjs.tags","src":"lib/tags/option.js","line":49,"codeLine":101,"description":"Details the properties of an object or the arguments of a function\nin a [DocumentJS.tags.param @param] tag.","title":"@option","tags":["documentation"],"signatures":[{"code":"@option {TYPE} NAME [DESCRIPTION]","description":"","params":[{"types":[{"type":"documentjs/type"}],"optional":true,"name":"TYPE","description":"A [documentjs/type type expression]. Examples:\n\n`{String}` - type is a `String`.  \n`{function(name)}` - type is a `function` that takes one `name` argument.  \n\n`TYPE` does not need to be specified for types that are already described in\nthe option's corresponding function or object.  For example:"},{"types":[{"type":"documentjs/name"}],"name":"NAME","description":"A [documentjs/name name expression]. Examples:\n\n`age` - age is item.  \n`[age]` - age is item, age is optional.  \n`[age=0]` - age defaults to 0."}]}],"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/0.1/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
+		var docObject = {"name":"documentjs.tags.option","type":"constructor","parent":"documentjs.tags","src":"lib/tags/option.js","line":49,"codeLine":101,"description":"Details the properties of an object or the arguments of a function\nin a [DocumentJS.tags.param @param] tag.","title":"@option","tags":["documentation"],"signatures":[{"code":"@option {TYPE} NAME [DESCRIPTION]","description":"```js\n/**\n * Retrieves a list of orders.\n * \n * @param {{}} params A parameter object with the following options:\n * @option {String} type Specifies the type of order.\n * @option {Number} [createdAt] Retrieves all orders after this timestamp. \n *\n * @param {function(Orders.List)} [success(orders)] Filter order search by this date.\n * @option orders A list of [Orders] that match `params`.\n */\n find: function( params, success ) {\n```","params":[{"types":[{"type":"documentjs/type"}],"optional":true,"name":"TYPE","description":"A [documentjs/type type expression]. Examples:\n\n`{String}` - type is a `String`.  \n`{function(name)}` - type is a `function` that takes one `name` argument.  \n\n`TYPE` does not need to be specified for types that are already described in\nthe option's corresponding function or object.  For example:\n\n\n```js\n/**\n * @param {{type: String}} params A parameter object with the following options:\n * @option type Specifies the type of order.\n *\n * @param {function(Orders.List)} [success(orders)] Callback function.\n * @option orders A list of [Orders] that match `params`.\n */\n```"},{"types":[{"type":"documentjs/name"}],"name":"NAME","description":"A [documentjs/name name expression]. Examples:\n\n`age` - age is item.  \n`[age]` - age is item, age is optional.  \n`[age=0]` - age defaults to 0."}]}],"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/0.1/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
 	</script>
 	
 	

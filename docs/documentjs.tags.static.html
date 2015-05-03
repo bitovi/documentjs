@@ -498,7 +498,7 @@
 <ul class="links">
 	
 	
-		<li><a href="git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538/tags/static.js">source</a></li>
+		<li><a href="git://github.com/bitovi/documentjs#f31a81d5173217ed06ada8ed4f90c609f0c9c928/tags/static.js">source</a></li>
 	
 	
 	
@@ -529,6 +529,19 @@ to the preceeding [documentjs/tags/function @constructor].</p>
 					<h2 id="sig__prototype">@prototype
 </h2>
 <div class="signature-wrapper">
+<pre><code class="language-js">/**
+ * @constructor
+ * Creates an Animal
+ */
+Animal = function(){ ... }
+/** @prototype */
+Animal.prototype = {
+   /**
+    * Eats another animal.
+    */
+    eat: function(animal){ ... }
+}
+</code></pre>
 
 
 
@@ -569,7 +582,7 @@ to the preceeding [documentjs/tags/function @constructor].</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"name":"documentjs.tags.static","type":"constructor","parent":"documentjs.tags","src":"lib/tags/static.js","line":2,"codeLine":29,"description":"Declares that [documentjs/tags/property @property] and\n[documentjs/tags/function @function] tags belong\nto the preceeding [documentjs/tags/function @constructor].","title":"@static","hide":true,"signatures":[{"code":"@prototype","description":"","params":[]}],"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538"}};
+		var docObject = {"name":"documentjs.tags.static","type":"constructor","parent":"documentjs.tags","src":"lib/tags/static.js","line":2,"codeLine":29,"description":"Declares that [documentjs/tags/property @property] and\n[documentjs/tags/function @function] tags belong\nto the preceeding [documentjs/tags/function @constructor].","title":"@static","hide":true,"signatures":[{"code":"@prototype","description":"```js\n/**\n * @constructor\n * Creates an Animal\n */\nAnimal = function(){ ... }\n/** @prototype */\nAnimal.prototype = {\n   /**\n    * Eats another animal.\n    */\n    eat: function(animal){ ... }\n}\n```","params":[]}],"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#f31a81d5173217ed06ada8ed4f90c609f0c9c928"}};
 	</script>
 	
 	

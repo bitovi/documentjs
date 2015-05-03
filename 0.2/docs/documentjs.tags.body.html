@@ -531,11 +531,46 @@ of an html page generated with
 the <a href="documentjs.generators.html.html">default html generator</a>.</p>
 <p>In the following example, <code>@body</code> stops content from being added to <a href="documentjs.tags.param.html">@param</a>,
 and instead makes content be added to the body property.</p>
+<pre><code class="language-javascript">/**
+ * A component for lib.
+ * 
+ * @param {String} name The name of the
+ * component.
+ * 
+ * @body
+ * 
+ * ## Use
+ * 
+ * ```
+ * new lib.Component(&quot;name&quot;)
+ * ```
+ */
+lib.Component = function(name){}
+</code></pre>
 <p>By default
 the first paragraph of content that is not after a multi-line tag like <a href="documentjs.tags.signature.html">@signature</a>,
 <a href="documentjs.tags.param.html">@param</a>, etc, is set as the <a href="documentjs.tags.description.html">@description</a>.  All content
 after the first paragraph is set as the body content.</p>
 <p>You can see what is treated as description and body by default in the following example:</p>
+<pre><code class="language-javascript">/**
+ * @function 
+ * 
+ * DESCRIPTION DESCRIPTION
+ * DESCRIPTION DESCRIPTION
+ * 
+ * BODY BODY
+ * BODY BODY
+ * 
+ * BODY BODY
+ * 
+ * @signature `.cols(cols)` SIGNATURE_DESCRIPTION
+ * SIGNATURE_DESCRIPTION SIGNATURE_DESCRIPTION
+ *
+ * @body
+ * BODY BODY
+ */
+Graph.prototype.cols = function(cols){ ... }
+</code></pre>
 
 		</section>
 		

@@ -498,7 +498,7 @@
 <ul class="links">
 	
 	
-		<li><a href="git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538/tags/_default.js">source</a></li>
+		<li><a href="git://github.com/bitovi/documentjs#f31a81d5173217ed06ada8ed4f90c609f0c9c928/tags/_default.js">source</a></li>
 	
 	
 	
@@ -530,17 +530,10 @@ tag is defined for <code>TAG</code>.</p>
 <div class="signature-wrapper">
 <p>Sets a <code>TAG</code> property on the docObject to <code>&quot;NAME&quot;</code>.</p>
 <p>Example:</p>
-<p>This will make the docObject look like:</p>
-<pre><code>{memberof: &quot;_&quot;}
-</code></pre>
-<p>If <code>NAME</code> values are seperated by comma-space (<code>,</code>), the values will be set as an array. Example:</p>
-<p>This will make the docObject look like:</p>
-<pre><code>{memberof: [&quot;_&quot;, &quot;lodash&quot;]}
-</code></pre>
-<p>If multiple <code>@TAG NAME</code>s are found with the same <code>TAG</code>, an array with each
-<code>&quot;NAME&quot;</code> will be created. Example:</p>
-<p>This will make the docObject look like:</p>
-<pre><code>{memberof: [&quot;_&quot;, &quot;lodash&quot;]}
+<pre><code class="language-javascript">/**
+ * @memberOf _
+ */
+ findById: function( id, success ) {
 </code></pre>
 
 
@@ -576,7 +569,30 @@ tag is defined for <code>TAG</code>.</p>
 
 		
 		<section class="comment">
-			
+			<p>This will make the docObject look like:</p>
+<pre><code>{memberof: &quot;_&quot;}
+</code></pre>
+<p>If <code>NAME</code> values are seperated by comma-space (<code>,</code>), the values will be set as an array. Example:</p>
+<pre><code class="language-javascript">/**
+ * @memberOf _, lodash
+ */
+ findById: function( id, success ) {
+</code></pre>
+<p>This will make the docObject look like:</p>
+<pre><code>{memberof: [&quot;_&quot;, &quot;lodash&quot;]}
+</code></pre>
+<p>If multiple <code>@TAG NAME</code>s are found with the same <code>TAG</code>, an array with each
+<code>&quot;NAME&quot;</code> will be created. Example:</p>
+<pre><code class="language-javascript">/**
+ * @memberOf _
+ * @memberOf lodash
+ */
+ findById: function( id, success ) {
+</code></pre>
+<p>This will make the docObject look like:</p>
+<pre><code>{memberof: [&quot;_&quot;, &quot;lodash&quot;]}
+</code></pre>
+
 		</section>
 		
 		
@@ -598,7 +614,7 @@ tag is defined for <code>TAG</code>.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"name":"documentjs.tags._default","type":"constructor","parent":"documentjs.tags","src":"lib/tags/_default.js","line":8,"codeLine":78,"description":"The default tag behavior when `@TAG` begins a line, but no \ntag is defined for `TAG`.","title":"@_default","tags":["documentation"],"hide":true,"signatures":[{"code":"@TAG NAME[, ...]","description":"Sets a `TAG` property on the docObject to `\"NAME\"`.\n\nExample:\n\nThis will make the docObject look like:\n\n```\n{memberof: \"_\"}\n```\n\nIf `NAME` values are seperated by comma-space (`, `), the values will be set as an array. Example:\n\n\n\n\nThis will make the docObject look like:\n\n```\n{memberof: [\"_\", \"lodash\"]}\n```\n\nIf multiple `@TAG NAME`s are found with the same `TAG`, an array with each\n`\"NAME\"` will be created. Example:\n\n\nThis will make the docObject look like:\n\n```\n{memberof: [\"_\", \"lodash\"]}\n```","params":[]},{"code":"@TAG","description":"Sets a `TAG` property on the docObject to `true`.","params":[]}],"comment":" ","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538"}};
+		var docObject = {"name":"documentjs.tags._default","type":"constructor","parent":"documentjs.tags","src":"lib/tags/_default.js","line":8,"codeLine":78,"description":"The default tag behavior when `@TAG` begins a line, but no \ntag is defined for `TAG`.","title":"@_default","tags":["documentation"],"hide":true,"signatures":[{"code":"@TAG NAME[, ...]","description":"Sets a `TAG` property on the docObject to `\"NAME\"`.\n\nExample:\n```javascript\n/**\n * @memberOf _\n */\n findById: function( id, success ) {\n```","params":[]},{"code":"@TAG","description":"Sets a `TAG` property on the docObject to `true`.","params":[]}],"comment":" ","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#f31a81d5173217ed06ada8ed4f90c609f0c9c928"}};
 	</script>
 	
 	

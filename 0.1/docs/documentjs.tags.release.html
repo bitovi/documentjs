@@ -534,6 +534,12 @@
 					<h2 id="sig__releaseRELEASE">@release RELEASE
 </h2>
 <div class="signature-wrapper">
+<pre><code class="language-js">/**
+ * Retrieves a list of orders.
+ * @release 3.2
+ */
+ find: function( params, success ) {
+</code></pre>
 
 
 	<h3>Parameters</h3>
@@ -573,9 +579,24 @@
 			<h2>Release for a param</h2>
 <p>Put <code>@release</code> after <code>@param</code> to tag the param
 with a release number:</p>
+<pre><code class="language-js">/**
+ * Retrieves a list of orders.
+ * @param {{}} params Parameters to filter orders.
+ * @release 3.2.1
+ */
+ find: function( params, success ) {
+</code></pre>
 <h2>Release for a signature</h2>
 <p>Put <code>@release</code> after <code>@signature</code> to tag the param
 with a release number:</p>
+<pre><code class="language-js">/**
+ * Retrieves a list of orders.
+ * @signature `Order.find(params, success)`
+ * @release 3.2
+ * @param {{}} params Parameters to filter orders.
+ */
+ find: function( params, success ) {
+</code></pre>
 
 		</section>
 		
@@ -598,7 +619,7 @@ with a release number:</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"name":"documentjs.tags.release","type":"constructor","parent":"documentjs.tags","src":"lib/tags/release.js","line":0,"codeLine":55,"description":"Specifies the release of a [DocumentJS.tags.param @param],\n[documentjs/tags/signature @signature], \n[documentjs/tags/function @function] or\n[documentjs/tags/property @property].","title":"@release","release":"3.3","signatures":[{"code":"@release RELEASE","description":"","params":[{"types":[{"type":"String"}],"name":"RELASE","description":"A release number like: `1.2.3`."}]}],"comment":" ","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/0.1/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
+		var docObject = {"name":"documentjs.tags.release","type":"constructor","parent":"documentjs.tags","src":"lib/tags/release.js","line":0,"codeLine":55,"description":"Specifies the release of a [DocumentJS.tags.param @param],\n[documentjs/tags/signature @signature], \n[documentjs/tags/function @function] or\n[documentjs/tags/property @property].","title":"@release","release":"3.3","signatures":[{"code":"@release RELEASE","description":"```js\n/**\n * Retrieves a list of orders.\n * @release 3.2\n */\n find: function( params, success ) {\n```","params":[{"types":[{"type":"String"}],"name":"RELASE","description":"A release number like: `1.2.3`."}]}],"comment":" ","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/0.1/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
 	</script>
 	
 	

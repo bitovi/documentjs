@@ -498,7 +498,7 @@
 <ul class="links">
 	
 	
-		<li><a href="git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538/tags/codestart.js">source</a></li>
+		<li><a href="git://github.com/bitovi/documentjs#f31a81d5173217ed06ada8ed4f90c609f0c9c928/tags/codestart.js">source</a></li>
 	
 	
 	
@@ -534,6 +534,38 @@
 <p>Matches multiple lines.</p>
 <p>Must end with &quot;@codeend&quot;.</p>
 <p>###Example:</p>
+<pre><code class="language-js">
+ /* 
+  * @codestart
+  *  /* @class
+  *   * Person represents a human with a name.  Read about the 
+  *   * animal class [Animal | here].
+  *   * @constructor
+  *   * You must pass in a name.
+  *   * @param {String} name A person's name
+  *   */
+  *   Person = function(name){
+  *      this.name = name
+  *      Person.count ++;
+  *   }
+  *  /* @Static */
+  *  steal.Object.extend(Person, {
+  *      /* Number of People */
+  *      count: 0
+  *  })
+  *  /* @Prototype */
+  *  Person.prototype = {
+  *     /* Returns a formal name 
+  *      * @return {String} the name with &quot;Mrs.&quot; added
+  *      */
+  *      fancyName : function(){
+  *         return &quot;Mrs. &quot;+this.name;
+  *      }
+  *  }
+  * @codeend
+  */
+
+</code></pre>
 
 		</section>
 		
@@ -556,7 +588,7 @@
 
 	
 		<script type="text/javascript">
-		var docObject = {"name":"documentjs.tags.codestart","type":"constructor","parent":"documentjs.tags","src":"lib/tags/codestart.js","line":0,"codeLine":49,"description":"Starts a code block.","title":"@codestart","hide":true,"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538"}};
+		var docObject = {"name":"documentjs.tags.codestart","type":"constructor","parent":"documentjs.tags","src":"lib/tags/codestart.js","line":0,"codeLine":49,"description":"Starts a code block.","title":"@codestart","hide":true,"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#f31a81d5173217ed06ada8ed4f90c609f0c9c928"}};
 	</script>
 	
 	
