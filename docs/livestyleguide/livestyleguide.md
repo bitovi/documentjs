@@ -1,4 +1,4 @@
-@page live-style-guide Live Style Guides
+@page live-style-guide live style guides
 @parent DocumentJS.guides 99
 @group lsg.guides 0 How-to Guides
 
