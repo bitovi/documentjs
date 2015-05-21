@@ -29,7 +29,7 @@ h1,h2,h3,h4,h5,h6{
 
 ```
 
-As a result our styleguide will start to look like [this page](/styles/typography.less.html). Don't worry about the live demos just yet--we'll get to that soon.
+As a result our styleguide will start to look like [this page](/examples/styles/typography.less.html). Don't worry about the live demos just yet--we'll get to that soon.
 
 ## New Tag: `@@stylesheet`
 
@@ -58,7 +58,7 @@ The @@stylesheet tag behaves similarly to the @@page tag, so it has the same arg
 @@stylesheet NAME TITLE
 ```
 
-`NAME` is the unique name of the page for reference purposes (and will determine the name of the `html` file). It is often going to make sense to just make `NAME` the name of the file (on the [example Live Style Guide](/styles/typography.less.html) you will see file names listed under the titles for this reason).
+`NAME` is the unique name of the page for reference purposes (and will determine the name of the `html` file). It is often going to make sense to just make `NAME` the name of the file (on the [example Live Style Guide](/examples/styles/typography.less.html) you will see file names listed under the titles for this reason).
 
 `TITLE` is the title that will be displayed on the page.
 
@@ -93,3 +93,5 @@ h1,h2,h3,h4,h5,h6{
 ```
 
 `NAME` is the unique name of the page for reference purposes (but is less important in this case). `TITLE` is the title of the heading that will be displayed on the generated stylesheet page.
+
+[Next Page](/docs/lsg-quickstart-organizing.html)

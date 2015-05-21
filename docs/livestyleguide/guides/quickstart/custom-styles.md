@@ -41,6 +41,6 @@ Updated `documentjs.json`:
 
 ### Changing the Styles
 
-To see DocumentJS default styles, look in `node_modules/documentjs/site/default/static/styles`. See the documentation for these styles in the [DocumentJS.com Live Style Guide](/styles/variables.less.html). To change any of these styles for your style guide, simply copy one of the files over to `style-guide-theme/styles` and make your changes.
+To see DocumentJS default styles, look in `node_modules/documentjs/site/default/static/styles`. See the documentation for these styles in the [example Live Style Guide](/examples/styles/variables.less.html). To change any of these styles for your style guide, simply copy one of the files over to `style-guide-theme/styles` and make your changes.
 
 If you'd like to add a new LESS file, simply copy over `styles.less` (which imports all the stylesheets) and `@@import` your new file. DocumentJS will automatically resolve default file imports for any files you don't copy over so don't worry about fixing the file paths for the `@@import` statement.

@@ -2,7 +2,7 @@
 	"sites": {
 		"docs": {
 			"parent": "DocumentJS",
-			"pageConfig": {"page":"docs"},
+			"pageConfig": {"page":"docs", "site": "documentjs"},
 			"glob": {
 				"pattern": "{docs,tags,lib,tasks}/**/*.{js,md}",
 				"ignore": "lib/{configured,process,generate,find,generators/html}/test/**/*"
@@ -12,8 +12,16 @@
 			"parent": "Styles",
 			"pageConfig": {"page":"example"},
 			"glob": {
-				"pattern": "{styles,site/default/static/styles}/**/*.{less,css,md}"
+				"pattern": "{styles,site/default/static/styles}/**/*.{less,css,md}",
+				"ignore": "styles/demos/**/*"
 			}
+		},
+		"examples/demos": {
+			"parent": "demos",
+			"glob": {
+				"pattern": "styles/demos/demos/**/*.md"
+			},
+			"templates": "styles/demos/templates"
 		},
 		"examples/multi": {
 			"parent": "multi",
