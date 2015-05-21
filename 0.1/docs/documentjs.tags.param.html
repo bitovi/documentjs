@@ -533,8 +533,14 @@
 </h2>
 <div class="signature-wrapper">
 <p>Example:</p>
-<p>Use <code>@param</code> within a <a href="documentjs.tags.function.html">@function</a> comment block or after
-a <a href="documentjs.tags.signature.html">@signature</a> tag.</p>
+<pre><code class="language-js">/**
+ * Finds an order by id.
+ * @param {String} [id=0] Order identification number.
+ * @param {function(Order)} [success(order)] Filter 
+ * order search by this date.
+ */
+ findById: function( id, success ) {
+</code></pre>
 
 
 	<h3>Parameters</h3>
@@ -585,8 +591,17 @@ object's properties.</p>
 
 		
 		<section class="comment">
-			<h2>@param within a function comment</h2>
+			<p>Use <code>@param</code> within a <a href="documentjs.tags.function.html">@function</a> comment block or after
+a <a href="documentjs.tags.signature.html">@signature</a> tag.</p>
+<h2>@param within a function comment</h2>
 <p>If using a comment preceeds a function like ...</p>
+<pre><code class="language-js">/**
+ * Finds an order by id.
+ * @param {String} [id=0] Order identification number.
+ * @param {function(Order)} [success(order)] Filter order search by this date.
+ */
+ findById: function( id, success ) {
+</code></pre>
 <p>... DocumentJS will automatically
 make the comment's [documentjs/DocObject DocObject] type a function
 and create params with just names (in this case <code>id</code> and <code>success</code>).</p>
@@ -595,6 +610,16 @@ params that specifies a name that isn't present is added at the end of
 the arguments.</p>
 <h2>@param within a signature</h2>
 <p>Use <code>@param</code> to specify the params in a signature.</p>
+<pre><code class="language-js">/**
+ * Finds an order by id.
+ * 
+ * @signature `Order.findById(id=0,[success])`
+ * 
+ * @param {String} [id=0] Order identification number.
+ * @param {function(Order)} [success(order)] Filter order search by this date.
+ */
+findById: function( id, success ) {
+</code></pre>
 <p>When a <code>@signature</code> is used, any params automatically created from code
 are overwritten.</p>
 
@@ -619,7 +644,7 @@ are overwritten.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"name":"documentjs.tags.param","type":"constructor","parent":"documentjs.tags","src":"lib/tags/param.js","line":16,"codeLine":89,"description":"Adds parameter information to a [documentjs/tags/function @function] or\n[documentjs/tags/signature @signature].","title":"@param","tags":["documentation"],"signatures":[{"code":"@param {TYPE} NAME [DESCRIPTION]","description":"Example:\n\nUse `@param` within a [documentjs.tags.function @function] comment block or after \na [documentjs.tags.signature @signature] tag.","params":[{"types":[{"type":"documentjs.typeExpression"}],"name":"TYPE","description":"A [documentjs.typeExpression type expression]. \n\nUse [documentjs.tags.option @option] to detail a function's arguments or an\nobject's properties."},{"types":[{"type":"documentjs.nameExpression"}],"name":"NAME","description":"A [documentjs.nameExpression name expression]."}]}],"comment":" ","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/0.1/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
+		var docObject = {"name":"documentjs.tags.param","type":"constructor","parent":"documentjs.tags","src":"lib/tags/param.js","line":16,"codeLine":89,"description":"Adds parameter information to a [documentjs/tags/function @function] or\n[documentjs/tags/signature @signature].","title":"@param","tags":["documentation"],"signatures":[{"code":"@param {TYPE} NAME [DESCRIPTION]","description":"Example:\n```js\n/**\n * Finds an order by id.\n * @param {String} [id=0] Order identification number.\n * @param {function(Order)} [success(order)] Filter \n * order search by this date.\n */\n findById: function( id, success ) {\n```","params":[{"types":[{"type":"documentjs.typeExpression"}],"name":"TYPE","description":"A [documentjs.typeExpression type expression]. \n\nUse [documentjs.tags.option @option] to detail a function's arguments or an\nobject's properties."},{"types":[{"type":"documentjs.nameExpression"}],"name":"NAME","description":"A [documentjs.nameExpression name expression]."}]}],"comment":" ","templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/0.1/documentjs"},"dest":"/Users/Jan/Workspace/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
 	</script>
 	
 	

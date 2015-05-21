@@ -533,6 +533,14 @@
 <div class="signature-wrapper">
 <p>Documents a
 property named <code>NAME</code> of type <code>{TYPE}</code>.</p>
+<pre><code class="language-js">/**
+ * @property {Number} delay
+ * Sets the delay in milliseconds between an ajax request is made and
+ * the success and complete handlers are called.  This only sets
+ * functional fixtures.  By default, the delay is 200ms.
+ */
+$.fixture.delay = 200
+</code></pre>
 
 
 	<h3>Parameters</h3>
@@ -612,7 +620,7 @@ code block immediately following the comment.</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"name":"documentjs.tags.property","type":"constructor","parent":"documentjs.tags","src":"lib/tags/property.js","line":2,"codeLine":27,"description":"Documents a property of a parent object.","title":"@property","signatures":[{"code":"@property {TYPE} NAME [TITLE]","description":"Documents a \nproperty named `NAME` of type `{TYPE}`.","params":[{"types":[{"type":"documentjs/type"}],"optional":true,"name":"TYPE","description":"An optional type like `{Object}`."},{"types":[{"type":"documentjs/name"}],"optional":true,"name":"NAME","description":"The name of the property. This maybe infered from the \ncode block immediately following the comment."},{"types":[{"type":"STRING"}],"optional":true,"name":"TITLE","description":"The display title of the property."}]}],"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/0.1/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
+		var docObject = {"name":"documentjs.tags.property","type":"constructor","parent":"documentjs.tags","src":"lib/tags/property.js","line":2,"codeLine":27,"description":"Documents a property of a parent object.","title":"@property","signatures":[{"code":"@property {TYPE} NAME [TITLE]","description":"Documents a \nproperty named `NAME` of type `{TYPE}`. \n\n```js\n/**\n * @property {Number} delay\n * Sets the delay in milliseconds between an ajax request is made and\n * the success and complete handlers are called.  This only sets\n * functional fixtures.  By default, the delay is 200ms.\n */\n$.fixture.delay = 200\n```","params":[{"types":[{"type":"documentjs/type"}],"optional":true,"name":"TYPE","description":"An optional type like `{Object}`."},{"types":[{"type":"documentjs/name"}],"optional":true,"name":"NAME","description":"The name of the property. This maybe infered from the \ncode block immediately following the comment."},{"types":[{"type":"STRING"}],"optional":true,"name":"TITLE","description":"The display title of the property."}]}],"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/0.1/documentjs"},"dest":"/Users/Jan/Workspace/documentjs.com/0.1/docs","generators":["html"],"docConfigDest":"../../documentjs.json","project":{"version":"0.1","name":"documentjs","source":"git://github.com/bitovi/documentjs#19cc0a17aacc4bce884908609570805599fb482c"}};
 	</script>
 	
 	

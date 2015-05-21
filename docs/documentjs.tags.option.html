@@ -498,7 +498,7 @@
 <ul class="links">
 	
 	
-		<li><a href="git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538/tags/option.js">source</a></li>
+		<li><a href="git://github.com/bitovi/documentjs#master/tags/option.js">source</a></li>
 	
 	
 	
@@ -528,6 +528,20 @@ in a <a href="documentjs.tags.param.html">@param</a> tag.</p>
 					<h2 id="sig__option_TYPE_NAME_DESCRIPTION_">@option {TYPE} NAME [DESCRIPTION]
 </h2>
 <div class="signature-wrapper">
+<pre><code class="language-javascript">/**
+ * Retrieves a list of orders.
+ * 
+ * @param {{}} params A parameter object with the following options:
+ * @option {String} type Specifies the type of order.
+ * @option {Number} [createdAt] Retrieves all orders after this 
+ * timestamp. 
+ *
+ * @param {function(Orders.List)} [success(orders)] Filter order search 
+ * by this date.
+ * @option orders A list of [Orders] that match `params`.
+ */
+ find: function( params, success ) {
+</code></pre>
 
 
 	<h3>Parameters</h3>
@@ -543,6 +557,16 @@ in a <a href="documentjs.tags.param.html">@param</a> tag.</p>
 <code>{function(name)}</code> - type is a <code>function</code> that takes one <code>name</code> argument.</p>
 <p><code>TYPE</code> does not need to be specified for types that are already described in
 the option's corresponding function or object.  For example:</p>
+<pre><code class="language-js">/**
+ * @param {{type: String}} params A parameter object 
+ * with the following options:
+ * @option type Specifies the type of order.
+ *
+ * @param {function(Orders.List)} [success(orders)] Callback 
+ * function.
+ * @option orders A list of [Orders] that match `params`.
+ */
+</code></pre>
 
 			</div>
 			
@@ -617,7 +641,7 @@ the option's corresponding function or object.  For example:</p>
 
 	
 		<script type="text/javascript">
-		var docObject = {"name":"documentjs.tags.option","type":"constructor","parent":"documentjs.tags","src":"lib/tags/option.js","line":56,"codeLine":112,"description":"Details the properties of an object or the arguments of a function\nin a [documentjs.tags.param] tag.","title":"@option","tags":["documentation"],"signatures":[{"code":"@option {TYPE} NAME [DESCRIPTION]","description":"","params":[{"types":[{"type":"documentjs.typeExpression"}],"optional":true,"name":"TYPE","description":"A [documentjs.typeExpression type expression]. Examples:\n\n`{String}` - type is a `String`.  \n`{function(name)}` - type is a `function` that takes one `name` argument.  \n\n`TYPE` does not need to be specified for types that are already described in\nthe option's corresponding function or object.  For example:"},{"types":[{"type":"documentjs.nameExpression"}],"name":"NAME","description":"A [documentjs.nameExpression name expression]. Examples:\n\n`age` - age is item.  \n`[age]` - age is item, age is optional.  \n`[age=0]` - age defaults to 0."},{"types":[{"type":"Markdown"}],"optional":true,"name":"DESCRIPTION","description":"Markdown content that continues for multiple lines."}]}],"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"forceBuild":true,"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#eeb47970cbdb4bbf2f59ba165c6abf8675407538"}};
+		var docObject = {"name":"documentjs.tags.option","type":"constructor","parent":"documentjs.tags","src":"lib/tags/option.js","line":56,"codeLine":112,"description":"Details the properties of an object or the arguments of a function\nin a [documentjs.tags.param] tag.","title":"@option","tags":["documentation"],"signatures":[{"code":"@option {TYPE} NAME [DESCRIPTION]","description":"```javascript\n/**\n * Retrieves a list of orders.\n * \n * @param {{}} params A parameter object with the following options:\n * @option {String} type Specifies the type of order.\n * @option {Number} [createdAt] Retrieves all orders after this \n * timestamp. \n *\n * @param {function(Orders.List)} [success(orders)] Filter order search \n * by this date.\n * @option orders A list of [Orders] that match `params`.\n */\n find: function( params, success ) {\n```","params":[{"types":[{"type":"documentjs.typeExpression"}],"optional":true,"name":"TYPE","description":"A [documentjs.typeExpression type expression]. Examples:\n\n`{String}` - type is a `String`.  \n`{function(name)}` - type is a `function` that takes one `name` argument.  \n\n`TYPE` does not need to be specified for types that are already described in\nthe option's corresponding function or object.  For example:\n\n\n```js\n/**\n * @param {{type: String}} params A parameter object \n * with the following options:\n * @option type Specifies the type of order.\n *\n * @param {function(Orders.List)} [success(orders)] Callback \n * function.\n * @option orders A list of [Orders] that match `params`.\n */\n```"},{"types":[{"type":"documentjs.nameExpression"}],"name":"NAME","description":"A [documentjs.nameExpression name expression]. Examples:\n\n`age` - age is item.  \n`[age]` - age is item, age is optional.  \n`[age=0]` - age defaults to 0."},{"types":[{"type":"Markdown"}],"optional":true,"name":"DESCRIPTION","description":"Markdown content that continues for multiple lines."}]}],"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs"},"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","site":"documentjs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
 	</script>
 	
 	
