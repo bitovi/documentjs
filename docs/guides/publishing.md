@@ -1,9 +1,13 @@
 @page DocumentJS.guides.publishing publishing
 @parent DocumentJS.guides 5
 @group DocumentJS.guides.travis 0 Travis CI
-@group DocumentJS.guides.strider 1 Strider CI
 
 Learn how to publish your DocumentJS site.  This guide will walk you through the steps necessary to prepare your site for publishing.  Once you've completed the preparation steps, you can select a publish method in the left sidebar to perform the final steps.
+
+
+BEFORE YOU START THIS GUIDE YOU SHOULD HAVE A DOCUMENTED SITE READY.
+
+
 
 @body
 

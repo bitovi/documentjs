@@ -1,5 +1,5 @@
 @page DocumentJS.guides.publishing.strider Local Web Server
-@parent DocumentJS.guides.strider
+@parent DocumentJS.guides.publishing
 
 Set up the open-source Strider Continuous Integration server to automatically publish your site when changes are made to the repository.
 
