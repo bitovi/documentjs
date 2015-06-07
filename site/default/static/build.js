@@ -25,6 +25,9 @@ module.exports = function(options, folders){
 			fsx.copy("documentjs/node_modules/jquery", path.join(folders.dist,"jquery") )
 		]);
 	} else {
+		
+		var jQueryRelative = path.relative( __dirname, require.resolve("jquery") );
+		var canJSRelative = path.dirname( path.relative( __dirname, require.resolve("can") ) )+"/*.js";
 
 		// makes sure can is not added to the global so we can build nicely.
 		global.GLOBALCAN = false;
@@ -32,6 +35,10 @@ module.exports = function(options, folders){
 			main: "static",
 			config: __dirname+"/config.js",
 			bundlesPath: __dirname+"/bundles",
+			paths:  {
+				"jquery": jQueryRelative,
+				"can/*": canJSRelative
+			}
 		},{
 			minify: options.minifyBuild === false ? false : true,
 			quiet: options.debug ? false : true,

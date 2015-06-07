@@ -1,15 +1,12 @@
 (function () {
 	var isClient = typeof window !== "undefined";
-	System.config({
+	
+	var configData = {
 		map: {
 			"jquery/jquery": "jquery",
 			"can/util/util": "can/util/jquery/jquery",
 			"benchmark/benchmark": "benchmark",
 			"mustache": "can/view/mustache/system"
-		},
-		paths: {
-			"jquery": isClient ? "jquery/dist/jquery.js" : "../../../../node_modules/jquery/dist/jquery.js",
-			"can/*": isClient ? "can/*.js" : "../../../../node_modules/can/*.js"
 		},
 		meta: {
 			jquery: {
@@ -22,7 +19,17 @@
 			mustache: "can/view/mustache/system",
 			stache: "can/view/stache/system"
 		}
-	});
+	};
+	
+	if(isClient) {
+		// when not a client, these values are set by build.js.
+		configData.paths = {
+			"jquery": "jquery/dist/jquery.js",
+			"can/*": "can/*.js" 
+		};
+	}
+	
+	System.config(configData);
 })();
 
 System.buildConfig = {
