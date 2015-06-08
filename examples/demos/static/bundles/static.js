@@ -1,6 +1,6 @@
 /*[system-bundles-config]*/
-System.paths["bundles/*.css"] ="../../../../../../../../../site/static/build/d9b53bac530bbdf0a81f103897394b67/bundles/*css";
-System.paths["bundles/*"] = "../../../../../../../../../site/static/build/d9b53bac530bbdf0a81f103897394b67/bundles/*.js";
+System.paths["bundles/*.css"] ="../../../../../../../../../../documentjs/site/static/build/86a0b95e3d11450467d858afc45a7a45/bundles/*css";
+System.paths["bundles/*"] = "../../../../../../../../../../documentjs/site/static/build/86a0b95e3d11450467d858afc45a7a45/bundles/*.js";
 System.bundles = {"bundles/static.css!":["styles/styles.less!$less"]};
 /*config.js*/
 define("config.js",function(e,s,t){!function(){var e="undefined"!=typeof window;System.config({map:{"jquery/jquery":"jquery","can/util/util":"can/util/jquery/jquery","benchmark/benchmark":"benchmark",mustache:"can/view/mustache/system"},paths:{jquery:e?"jquery/dist/jquery.js":"../../../../node_modules/jquery/dist/jquery.js","can/*":e?"can/*.js":"../../../../node_modules/can/*.js"},meta:{jquery:{exports:"jQuery"},prettify:{format:"global"}},ext:{ejs:"can/view/ejs/system",mustache:"can/view/mustache/system",stache:"can/view/stache/system"}})}(),System.buildConfig={map:{"can/util/util":"can/util/domless/domless"}}});
