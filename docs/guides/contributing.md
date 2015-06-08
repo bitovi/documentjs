@@ -1,5 +1,5 @@
 @page DocumentJS.guides.contributing contributing
-@parent DocumentJS.guides 5
+@parent DocumentJS.guides 100
 
 Learn how to contribute to DocumentJS.
 

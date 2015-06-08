@@ -1,100 +1,67 @@
-@page DocumentJS.guides.publishing publishing
 @parent DocumentJS.guides 5
-@group DocumentJS.guides.travis 0 Travis CI
+@page DocumentJS.guides.publishing publishing
 
-Learn how to publish your DocumentJS site.  This guide will walk you through the steps necessary to prepare your site for publishing.  Once you've completed the preparation steps, you can select a publish method in the left sidebar to perform the final steps.
+@group DocumentJS.publishing.gh-pages 3 GitHub Pages
+@group DocumentJS.publishing.linode 4 Linode VPS
 
-
-BEFORE YOU START THIS GUIDE YOU SHOULD HAVE A DOCUMENTED SITE READY.
-
-
+@description Learn how to publish your DocumentJS site.
 
 @body
 
-## Prepare
-Before you publish your site, you'll probably want to customize the generated output.  To keep the custom template files and generated documentation separate from your master branch, you'll need to set up your project using a two-branch approach.  This guide will use the setup from the [configuring](http://documentjs.com/docs/DocumentJS.guides.configuring.html) guide with one exception: **to allow automated publishing, the a branch called `documentjs` will be used instead of `gh-pages`.**  Let's go over what each branch should contain.
+Now that you have [DocumentJS.guides.configuring configured] your project and [DocumentJS.guides.documenting documented] your master branch, you're ready to publish.  
 
-### Preparing the master branch.
-The `master` branch should look something like this:
-```
-.
-├── src   // or whatever your project's main folder is.
-│   └── my-js-lib.js
-│
-├── docs  // or wherever you're putting your docs.
-│   ├── setup-guide.md
-│   └── something-else-guide.md
-│
-├── documentjs.json
-├── package.json
-└── README.md
-```
+There are two methods available for publishing: 
+ - **Manual publishing**, where _you_ push to hosting options like [GitHub Pages](https://pages.github.com/).
+ - **Automated publishing**, which uses a continuous deployment tool to automatically perform the manual publishing steps for you.
+ 
+It is recommended that you first follow the steps on this page, which will show you how to manually publish and the basic prerequisites for publishing to any location.  After that, you'll be ready to select an "auto-publish" option from options available in the sidebar.
 
-The `documentjs.json` in master should look similar to what is below.  In this example, we're going to use all of the .js and .md files in the 'docs' and 'src' folders to build the docs.
+## Create a home page
+
+To prepare for adding a home page to your documentation branch, add a `sites` property to your `documentjs.json` as shown below.
+
 ```json
 {
-    "sites": {
-        "docs": {
-            "parent": "DocumentJS",
-            "pageConfig": {"page":"docs"},
-            "glob": "{docs,lib}/**/*.{js,md}"
-        }
-    }
-}
-```
-
-### Preparing the documentjs branch
-The `documentjs` branch (or any branch besides master) should look something like the example below.  You will be setting up the `_home` folder as the home page for the site. 
-```
-.
-├── _home           // Name these whatever you want.
-│   └── home.md
-│
-├── theme
-│   ├── static      
-│   │   ├──img      // contains custom logo and other images.
-│   │   └──styles   // for overriding the default styles.
-│   └── templates   // for changing the default HTML.
-│
-├── documentjs.json
-└── package.json     // with documentjs listed as a dependency.
-```
-
-Here is an example of what the `documentjs.json` in the documentjs branch should look like.  The most important part is that you have the "home" site (it can be called anything you like) set up to publish to the root folder.  This is done using `"dest": "."`.  You can read about the `siteDefaults` in the [customizing](http://documentjs.com/docs/DocumentJS.guides.customizing.html) guide.
-```js
-{
     "versions": {
-        "latest": "github.com/username/my-project#master"
+        "1.0.0": "git://github.com/org/project#master"
     },
-    "defaultVersion":"latest"
-    "siteDefaults":{
-        "static": "theme/static",
-        "templates": "theme/templates"
-    },
-    "sites": {
-        "home": {
-            "glob": "_home/**/*.{js,md}",
+    "defaultVersion": "1.0.0",
+    
+    // Add a "pages" site to your documentation branch's configuration:
+    "sites":{
+        "pages":{
+            "parent":"ProjectName",
+            "glob": "_pages/**/*.md",
             "dest": "."
         }
     }
 }
 ```
 
-With both branches fully setup, we are ready to build.
+The above configuration set up your project to have a "site" called `home`. The `glob` property tells DocumentJS to look for any markdown files in the `_pages` folder.  The `"dest": "."` sets it up to publish what it finds into the root folder of your documentation branch.  See all available option in the [DocumentJS.siteConfig siteConfig API].
 
-## Build
+Create a file called `home.md` in the `_home` folder.  At the top of the file, add a [documentjs.tags.page @page] tag to name your page.  This will be something like `@page ProjectName Welcome to My Project`.  Below that, put any markdown or HTML content you want as your home page.  You can use other [documentjs.tags tags], like [documentjs.tags.hide @hide] to further customize the look of your home page.
 
-Open a terminal window in the root of the `documentjs` branch and run documentjs with the following command. (You might need to run `npm install`, first.)
-```
+## Build your site
+
+In the console, run [DocumentJS.apis.generate.documentjs documentjs] to build the site.
+
+```console
 ./node_modules/.bin/documentjs
 ```
-This will fetch the data from the repository in the documentjs branch's documentjs.json file and output the docs into the current folder.
 
-In the current folder, you should now have an `index.html`, a `static` folder, and a folder for each "site" from the master branch.  Open the index.html file and make sure everything looks good. 
+Open the generated documentation to make sure everything looks ready for publishing.  If you open the main index.html, you'll see that the site has been built with the default template, which does not include a navigation menu in the top navbar.  To customize the way things look or add a custom navigation menu, see the [DocumentJS.guides.customizing customizing guide].
 
 ## Publish
-If the built documentation looks good then you are ready to publish your site.  If you're planning on manually deploying to GitHub pages, at this point all you have to do is push the contents of the `documentjs` branch to the `gh-pages` branch of your GitHub repository.  You can access your GitHub pages site at `http://<username>.github.io/<repository-name>/`.
 
-If you want to automate the process so that your published documentation is automatically updated when you change either the `master` branch or `documentjs` branch, follow one of the guides in the sidebar.
+Your site is ready for publishing.  If you're going to use GitHub pages, you can now push the generated documentation to the `gh-pages` branch on GitHub.
 
-While you're publishing your DocumentJS site, if you run into problems or have other questions about building, feel free to come chat with us [on Gitter](https://gitter.im/bitovi/documentjs).
+```console
+git add -A
+git commit -m "Deploy to Github Pages"
+git push origin gh-pages
+```
+
+#### **Learn to how to automatically publish.**
+
+At this point, you have learned everything you need to move on to automated publishing using a continuous deployment tool. To get started, choose a publishing destination from the sidebar.
