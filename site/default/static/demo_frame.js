@@ -64,7 +64,7 @@ return can.Control.extend({
 				// iFrame.height(0);
 				iFrame.height($(iFrame).contents().height());
 				setTimeout( arguments.callee, 1000 )
-			}
+			};
 			
 			resizeIframe()
 			
@@ -86,4 +86,4 @@ return can.Control.extend({
 	}
 });
 
-})
+});
