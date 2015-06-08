@@ -10,7 +10,7 @@
 <div style="border-right: 1px solid #ccc; padding-right:20px; margin-right:50px; float:left;">
 <img src="theme/docjs-landing-page-logo.png" alt="StealJS Logo" />
 </div>	
-<div style="float:left; width: 340px; padding-top: 36px;">
+<div style="float:left; width: 320px; padding-top: 36px;">
 <p style="-webkit-font-smoothing: antialiased; font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; font-weight: 300; ">Sophisticated JavaScript documentation engine. Create beautiful, articulate, multi-versioned documentation.
 <br><small>(new site coming soon)</small></p>
 </div>
