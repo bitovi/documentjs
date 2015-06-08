@@ -1,4 +1,16 @@
-steal("can/control","./content_list.mustache!","jquery","can/observe",function(Control, contentList, $){
+steal("can/control","jquery","can/observe",function(Control, $){
+
+	var contentList = function(sections, tag){
+		var text = "<"+tag+">";
+		$.each(sections, function(i, section){
+			text += "<li><a href='#"+section.id+"'>"+section.text+"</a></li>";
+			if(section.sections && section.sections.length) {
+				text += contentList(section.sections, tag);
+			}
+		});
+		text+="</"+tag+">";
+		return text;
+	};
 
 	return can.Control.extend({
 		init: function() {
@@ -10,18 +22,38 @@ steal("can/control","./content_list.mustache!","jquery","can/observe",function(C
 				//this.id = encodeURIComponent(h2.text());
 				sections.push({id: this.id, text: h2.text()});
 			});
-	
-			this.collectHeadings().each(function(ix) {
+			
+			var headingStack = [],
+				last = function(){
+					return headingStack[ headingStack.length -1 ]
+				};
+			
+			var ch = this.collectHeadings().each(function(ix) {
 				var el = $(this);
 				this.id = 'section_' + el.text().replace(/\s/g,"").replace(/[^\w]/g,"_");
-				//this.id = encodeURIComponent(el.text());
-				sections.push({id: this.id, text: el.text()});
+				var num = +this.nodeName.substr(1);
+				var section = {
+					id: this.id, 
+					text: el.text(),
+					num: num,
+					sections: []
+				};
+				
+				while(last() && (last().num >= num) ) {
+					headingStack.pop();
+				}
+				
+				if(!headingStack.length) {
+					sections.push(section);
+					headingStack.push(section);
+				} else {
+					last().sections.push(section);
+					headingStack.push(section);
+				}	
 			});
 	
-			this.element.html(contentList(
-				{sections: sections},
-				{encode: function() { return encodeURIComponent(this); }}
-			));
+			this.element.html( contentList(sections, 
+				( ( window.docObject.outline && window.docObject.outline.tag ) || "ul" ).toLowerCase() ) );
 	
 			if(window.location.hash.length) {
 				var id = window.location.hash.replace('#', ''),
@@ -39,8 +71,13 @@ steal("can/control","./content_list.mustache!","jquery","can/observe",function(C
 			return cloned;
 		},
 		collectHeadings: function() {
-			return $('.content .comment h2');
+			var depth = ( window.docObject.outline && window.docObject.outline.depth ) || 1;
+			var headings = [];
+			for(var i = 0; i  < depth; i++) {
+				headings.push("h"+(i+2));
+			}
+			return $('.content .comment').find(headings.join(","));
 		}
 	});
 
-})
+});
