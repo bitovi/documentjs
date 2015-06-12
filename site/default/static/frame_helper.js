@@ -11,11 +11,11 @@ steal('can/control','jquery','./demo_frame.js',function(Control, $,DemoFrame){
 			$('.iframe_wrapper', this.element).each(function() {
 				var wrapper = $(this),
 					iframe = $('<iframe src="../' + wrapper.data('iframeSrc') + '">');
-				
+
 				if(wrapper.data('iframeHeight')) {
 					iframe.height(wrapper.data('iframeHeight'));
 				}
-	
+
 				wrapper.append(iframe);
 			});
 		},
@@ -24,13 +24,12 @@ steal('can/control','jquery','./demo_frame.js',function(Control, $,DemoFrame){
 			// <div class="demo_wrapper" data-demo-src="can/control/control.html"></div>
 			$('.demo_wrapper', this.element).each(function() {
 				var wrapper = $(this);
-				new DemoFrame(wrapper);
-				
-				if(wrapper.data('demoHeight')) {
-					iframe.height(wrapper.data('demoHeight'));
-				}
+				new DemoFrame(wrapper, {
+					demoSrc: wrapper.data('demoSrc'),
+					demoHeight: wrapper.data('demoHeight'),
+					includeJsbinLink: wrapper.data('jsbinLink')
+				});
 			});
 		}
 	});
-
-})
+});

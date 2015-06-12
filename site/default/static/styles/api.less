@@ -43,13 +43,13 @@
     border-bottom: 1px solid @fog;
     .heading {
     	position: relative;
-    	margin: 0; 
+    	margin: 0;
     	h1 {
     	  margin: 0;
     	  display: inline-block;
         max-width: 550px;
         word-wrap: break-word;
-    	}		  
+    	}
       .module {
       	position: absolute;
       	right: 0;
@@ -84,7 +84,7 @@
     ul.links {
     	margin-bottom: 16px;
     }
-    .links, 
+    .links,
     .tags {
       list-style: none;
       margin: 0;
@@ -131,7 +131,7 @@
 
 
 // Docs General Styles
-.docs {	
+.docs {
   .content.docs {
     width: 662px;
     margin-top: 20px;
@@ -142,7 +142,7 @@
     border-bottom-style: none;
     font-family: Arial, Helvetica, Geneva, sans-serif;
     border-radius: 0 5px 5px 0;
-    
+
     ul, ol:not(.linenums) {
     	margin-left: 0;
     	.p;
@@ -287,7 +287,7 @@
       font-style: normal;
       float: right;
     }
-    
+
     code {
       background-color: transparent;
       color: @clear;
@@ -311,7 +311,7 @@
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
-  
+
   a.sig {
     text-decoration: none;
     color: @night;
@@ -326,7 +326,7 @@
       color: black;
     }
   }
-  
+
   p {
     color: @thunderStorm;
     line-height: 15px;
@@ -340,7 +340,7 @@
 /**
 * @styles parameters-returns Parameters and Returns
 *
-* @description 
+* @description
 * Parameters and returns are shown inside of `.signature` but their styles are not dependant on it.
 *
 * @demo demos/parameters-returns.html
@@ -391,7 +391,7 @@
   .parameters .options {
     margin-right: 50px;
   }
-  .parameters .options .option, 
+  .parameters .options .option,
   .returns .options .option {
     margin: 0 -10px 15px;
     list-style-type: none;
@@ -410,7 +410,7 @@
 }
 .docs .parameters .description,
 .docs .returns .description {
-  padding-bottom: 15px; 
+  padding-bottom: 15px;
 }
 .docs .returns .description {
   margin-top: 15px;
@@ -436,7 +436,7 @@
       border-radius: 4px 4px 0 0;
       &:first-of-type {
         margin-left: 5px;
-      } 
+      }
     }
     li.tab.active {
       color: @clear;
@@ -451,6 +451,16 @@
       width: 100%;
       border: 1px solid @haze;
       border-radius: 6px;
+    }
+    .jsbin_link_wrapper {
+    	.pull-right;
+    	font-size: 14px;
+    	margin-top: 10px;
+
+    	i {
+    		padding-right: 5px;
+    		text-decoration: none;
+    	}
     }
   }
   body.style-demo {

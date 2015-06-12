@@ -9,13 +9,13 @@ steal(
 		var jsbinBaseUrl = "http://jsbin.com/?html,js,output";
 
 		return can.Control.extend({
-			init: function() {
+			init: function(element, options) {
 				var docConfig = window.docConfig || {};
 				var demoSrcRoot = docConfig.demoSrcRoot || "..";
-				var demoSrc = demoSrcRoot + "/" + this.element.data("demoSrc");
+				var demoSrc = demoSrcRoot + "/" + options.demoSrc;
 
 				// Render out the demo container.
-				this.element.html(demoFrameMustache({demoSrc: demoSrc}));
+				this.element.html(demoFrameMustache({ demoSrc: demoSrc }));
 
 				// Start with the demo tab showing.
 				this.showTab("demo");
@@ -23,6 +23,11 @@ steal(
 				// When the iframe loads, grab the HTML and JS and fill in the other tabs.
 				var self = this;
 				var iFrame = this.element.find("iframe");
+
+				// set the iframe height if provided.
+				if (options.demoHeight) {
+					iFrame.height(options.demoHeight);
+				}
 
 				iFrame.load(function() {
 					var clonedBody;
@@ -63,8 +68,10 @@ steal(
 						self.element.find("[data-tab=js]").show();
 					}
 
-					clonedBody = $(this.contentDocument.body).clone();
-					self.appendJsbinLink(clonedBody, source);
+					if (options.includeJsbinLink) {
+						clonedBody = $(this.contentDocument.body).clone();
+						self.appendJsbinLink(clonedBody, source);
+					}
 
 					var resizeIframe = function(){
 						// The following was called to make it possible to shrink the size of the demo.
@@ -126,7 +133,7 @@ steal(
 
 				this.element.find(".jsbin_link_wrapper").html($("<a>", {
 					target: "_blank",
-					html: "Open in JS Bin.",
+					html: '<i class="icon-breakout"></i>Open in JS Bin',
 					href: jsbinBaseUrl + "&" + $.param({
 						js: source,
 						html: "<body>" + sanitizedHtml + "</body>"
