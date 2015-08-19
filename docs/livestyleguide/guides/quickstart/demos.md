@@ -58,9 +58,9 @@ In the following example, the live demo must be located located at `demos/headin
 In `typography.less`:
 ```css
 /**
-* @stylesheet typography.less Typography
-* @parent styleguide-baseline 1
-**/
+ * @@stylesheet typography.less Typography
+ * @@parent styleguide-baseline 1
+ */
 
 /**
  * @@styles headings Headings
