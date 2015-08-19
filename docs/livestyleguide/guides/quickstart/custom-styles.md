@@ -26,10 +26,10 @@ You'll need to tell DocumentJS to look for static resources in your theme folder
 Updated `documentjs.json`:
 ```json
 {
+    "siteDefaults": {
+      "static": "style-guide-theme"
+    },
     "sites": {
-        "siteDefaults": {
-            "static": "style-guide-theme"
-        },
         "styles": {
             "glob": "styles/**/*.{md,less,md}",
             "parent": "style-guide",
