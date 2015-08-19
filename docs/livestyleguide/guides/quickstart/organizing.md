@@ -42,23 +42,23 @@ The group tag is used on a parent page. In this case, you will want to specify g
 
 ```markdown
 @@page my-styleguide My Style Guide
-@@group styleguide-theme Theme 0
-@@group styleguide-baseline Baseline Elements 1
-@@group styleguide-docs API 2
-@@group styleguide-other Other 3
+@@group styleguide-theme 0 Theme
+@@group styleguide-baseline 1 Baseline Elements
+@@group styleguide-docs 2 API
+@@group styleguide-other 3 Other
 ```
 
 ### Arguments
 
 ```markdown
-@@group NAME TITLE ORDER
+@@group NAME ORDER TITLE 
 ```
 
 The `NAME` argument is the unique name. You'll use this as an argument for `@@parent` in pages or stylesheets that belong in this group.
 
-The `TITLE` is displayed as a heading in the sidebar.
-
 The `ORDER` specifies the order in which groups should appear in the sidebar. By default, they will be organized alphabetically.
+
+The `TITLE` is displayed as a heading in the sidebar.
 
 ## Putting Stylesheets into Groups
 
