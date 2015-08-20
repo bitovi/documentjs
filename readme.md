@@ -1,5 +1,7 @@
 # DocumentJS
 
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/bitovi/documentjs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 [![Build Status](https://travis-ci.org/bitovi/documentjs.svg?branch=master)](https://travis-ci.org/bitovi/documentjs)
 
 DocumentJS creates beautiful, articulate, multi-versioned documentation. With DocumentJS, you can:
