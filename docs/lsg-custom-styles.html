@@ -28,6 +28,7 @@
 </head>
 
 <body class="docs">
+	
 	<header>
 		<nav class="container">
 
@@ -74,6 +75,7 @@
 			</div>
 		</nav>
 	</header>
+	
 
 	
 <div class="container api">
@@ -389,10 +391,10 @@
 <p>You'll need to tell DocumentJS to look for static resources in your theme folder.</p>
 <p>Updated <code>documentjs.json</code>:</p>
 <pre><code class="language-json">{
+    &quot;siteDefaults&quot;: {
+      &quot;static&quot;: &quot;style-guide-theme&quot;
+    },
     &quot;sites&quot;: {
-        &quot;siteDefaults&quot;: {
-            &quot;static&quot;: &quot;style-guide-theme&quot;
-        },
         &quot;styles&quot;: {
             &quot;glob&quot;: &quot;styles/**/*.{md,less,md}&quot;,
             &quot;parent&quot;: &quot;style-guide&quot;,
@@ -426,7 +428,7 @@
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"page","name":"lsg-custom-styles","src":"docs/livestyleguide/guides/quickstart/custom-styles.md","description":"The default look and feel of your Live Style Guide is going to be similar to DocumentJS.com as it is using the default theme.","title":"Look and Feel","parent":"lsg-quickstart-group-customizing","order":0,"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","site":"documentjs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"type":"page","name":"lsg-custom-styles","src":"docs/livestyleguide/guides/quickstart/custom-styles.md","description":"The default look and feel of your Live Style Guide is going to be similar to DocumentJS.com as it is using the default theme.","title":"Look and Feel","parent":"lsg-quickstart-group-customizing","order":0,"templates":"/Users/Jan/Workspace/documentjs/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs/documentjs.com/documentjs"},"dest":"/Users/Jan/Workspace/documentjs/documentjs.com/docs","generators":["html"],"page":"docs","site":"documentjs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
 	</script>
 	
 	

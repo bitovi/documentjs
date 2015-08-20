@@ -1404,6 +1404,8 @@ li.L9 {
 }
 .docs .contents li {
   line-height: 24px;
+}
+.docs .contents ul li {
   list-style-type: square;
 }
 .docs footer {

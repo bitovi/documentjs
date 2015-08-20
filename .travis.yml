@@ -1,11 +1,11 @@
 language: node_js
 node_js:
-	- "0.10"
-	- "node"
-	- "iojs"
+  - "0.10"
+  - "node"
+  - "iojs"
 # whitelisting master because it is 
 # simpler than blacklisting everything 
 # branched off this one
 branches:
-	only:
-		- master
+  only:
+    - master
