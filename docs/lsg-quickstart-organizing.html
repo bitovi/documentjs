@@ -28,6 +28,7 @@
 </head>
 
 <body class="docs">
+	
 	<header>
 		<nav class="container">
 
@@ -74,6 +75,7 @@
 			</div>
 		</nav>
 	</header>
+	
 
 	
 <div class="container api">
@@ -395,17 +397,17 @@
 <h3>Example</h3>
 <p>The group tag is used on a parent page. In this case, you will want to specify groups in <code>stylesheet.md</code>:</p>
 <pre><code class="language-markdown">@page my-styleguide My Style Guide
-@group styleguide-theme Theme 0
-@group styleguide-baseline Baseline Elements 1
-@group styleguide-docs API 2
-@group styleguide-other Other 3
+@group styleguide-theme 0 Theme
+@group styleguide-baseline 1 Baseline Elements
+@group styleguide-docs 2 API
+@group styleguide-other 3 Other
 </code></pre>
 <h3>Arguments</h3>
-<pre><code class="language-markdown">@group NAME TITLE ORDER
+<pre><code class="language-markdown">@group NAME ORDER TITLE 
 </code></pre>
 <p>The <code>NAME</code> argument is the unique name. You'll use this as an argument for <code>@parent</code> in pages or stylesheets that belong in this group.</p>
-<p>The <code>TITLE</code> is displayed as a heading in the sidebar.</p>
 <p>The <code>ORDER</code> specifies the order in which groups should appear in the sidebar. By default, they will be organized alphabetically.</p>
+<p>The <code>TITLE</code> is displayed as a heading in the sidebar.</p>
 <h2>Putting Stylesheets into Groups</h2>
 <p>Once you've specified groups in <code>stylesheet.md</code>, you just need to make those groups the <code>@parent</code> of your stylesheets (instead of using the base page). If you want to make put your Typography stylesheet in the &quot;Baseline Elements&quot; group, put this in <code>typography.less</code></p>
 <pre><code>/**
@@ -439,7 +441,7 @@
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"page","name":"lsg-quickstart-organizing","src":"docs/livestyleguide/guides/quickstart/organizing.md","description":"After you've documented your first stylesheet, if you [generate the site](/docs/lsg-quickstart-generate.html) you won't see your stylesheet page anywhere in the sidebar. Even though the page has been generated, it isn't linked up to the rest of the site because you need to tell DocumentJS where to put it.","title":"Organizing your Style Guide","parent":"lsg-quickstart-group-writing","order":1,"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","site":"documentjs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"type":"page","name":"lsg-quickstart-organizing","src":"docs/livestyleguide/guides/quickstart/organizing.md","description":"After you've documented your first stylesheet, if you [generate the site](/docs/lsg-quickstart-generate.html) you won't see your stylesheet page anywhere in the sidebar. Even though the page has been generated, it isn't linked up to the rest of the site because you need to tell DocumentJS where to put it.","title":"Organizing your Style Guide","parent":"lsg-quickstart-group-writing","order":1,"templates":"/Users/Jan/Workspace/documentjs/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs/documentjs.com/documentjs"},"dest":"/Users/Jan/Workspace/documentjs/documentjs.com/docs","generators":["html"],"page":"docs","site":"documentjs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
 	</script>
 	
 	

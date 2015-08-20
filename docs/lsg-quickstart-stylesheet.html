@@ -28,6 +28,7 @@
 </head>
 
 <body class="docs">
+	
 	<header>
 		<nav class="container">
 
@@ -74,6 +75,7 @@
 			</div>
 		</nav>
 	</header>
+	
 
 	
 <div class="container api">
@@ -378,14 +380,15 @@
 <li><code>@styles</code> to document individual styles</li>
 </ul>
 <p>When all of these are put together, a documented stylesheet file (<code>css</code>, <code>less</code>, or <code>scss</code>) will look something like this:</p>
-<pre><code class="language-css">/*
+<pre><code class="language-css">/**
  *  @stylesheet typeography.less Typography
  *  
  *  Global style definitions for all typographic elements 
  *  including headings, paragraphs, lists, and blockquotes.
  */
 
-/* @styles headings Headings
+/**
+ * @styles headings Headings
  *
  * H tags defining a typographical heirarchy
  */
@@ -400,7 +403,7 @@ h1,h2,h3,h4,h5,h6{
 <p>The <code>@stylesheet</code> tag creates an individual page to document a stylesheet. Instead of creating a separate file, you'll use this tag.</p>
 <h3>Example</h3>
 <p>In a file like <code>typography.less</code>:</p>
-<pre><code class="language-css">/*
+<pre><code class="language-css">/**
  *  @stylesheet typeography.less Typography
  *  
  *  Global style definitions for all typographic elements 
@@ -421,7 +424,7 @@ h1,h2,h3,h4,h5,h6{
 </blockquote>
 <h3>Example</h3>
 <p>In a file like <code>typography.less</code> (that already has a <code>@stylesheet</code> tag at the start of the file):</p>
-<pre><code class="language-css">/*
+<pre><code class="language-css">/**
  * @styles headings Headings
  * 
  * H tags defining a typographical heirarchy
@@ -459,7 +462,7 @@ h1,h2,h3,h4,h5,h6{
 
 	
 		<script type="text/javascript">
-		var docObject = {"type":"page","name":"lsg-quickstart-stylesheet","src":"docs/livestyleguide/guides/quickstart/stylesheet.md","description":"*The next few pages will be very information-dense. If you're the kind of person who takes breaks, now would be a good time a good time.*","title":"Documenting a Stylesheet","parent":"lsg-quickstart-group-writing","order":0,"templates":"/Users/Jan/Workspace/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs.com/documentjs"},"dest":"/Users/Jan/Workspace/documentjs.com/docs","generators":["html"],"page":"docs","site":"documentjs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
+		var docObject = {"type":"page","name":"lsg-quickstart-stylesheet","src":"docs/livestyleguide/guides/quickstart/stylesheet.md","description":"*The next few pages will be very information-dense. If you're the kind of person who takes breaks, now would be a good time a good time.*","title":"Documenting a Stylesheet","parent":"lsg-quickstart-group-writing","order":0,"templates":"/Users/Jan/Workspace/documentjs/documentjs.com/theme/templates","ignoreTemplateRender":true,"glob":{"pattern":"{docs,tags,lib,tasks}/**/*.{js,md}","ignore":"lib/{configured,process,generate,find,generators/html}/test/**/*","cwd":"/Users/Jan/Workspace/documentjs/documentjs.com/documentjs"},"dest":"/Users/Jan/Workspace/documentjs/documentjs.com/docs","generators":["html"],"page":"docs","site":"documentjs","docConfigDest":"../documentjs.json","project":{"version":"0.3","name":"documentjs","source":"git://github.com/bitovi/documentjs#master"}};
 	</script>
 	
 	
