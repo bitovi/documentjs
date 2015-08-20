@@ -11,14 +11,15 @@ To document a stylesheet, we're going to need to use two more tags:
 When all of these are put together, a documented stylesheet file (`css`, `less`, or `scss`) will look something like this:
 
 ```css
-/*
+/**
  *  @@stylesheet typeography.less Typography
  *  
  *  Global style definitions for all typographic elements 
  *  including headings, paragraphs, lists, and blockquotes.
  */
 
-/* @@styles headings Headings
+/**
+ * @@styles headings Headings
  *
  * H tags defining a typographical heirarchy
  */
@@ -40,7 +41,7 @@ The `@@stylesheet` tag creates an individual page to document a stylesheet. Inst
 In a file like `typography.less`:
 
 ```css
-/*
+/**
  *  @@stylesheet typeography.less Typography
  *  
  *  Global style definitions for all typographic elements 
@@ -73,7 +74,7 @@ The `@@styles` tag allows you to define an individual set of styles.
 In a file like `typography.less` (that already has a `@@stylesheet` tag at the start of the file):
 
 ```css
-/*
+/**
  * @styles headings Headings
  * 
  * H tags defining a typographical heirarchy
