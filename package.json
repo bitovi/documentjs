@@ -21,15 +21,14 @@
     "qunit-mocha-ui": "*",
     "rimraf": "2.1",
     "connect": "^2.14.4",
-    "zombie": "~2.0.8",
-    "comparify": "git://github.com/bitovi/comparify#master"
+    "zombie": "~2.0.8"
   },
   "dependencies": {
     "MD5": "^1.2.1",
     "async": "~0.2.7",
     "can": "2.2.0-alpha.10",
     "chokidar": "^1.0.0-rc5",
-    "esprima": "git://github.com/ariya/esprima#master",
+    "esprima": "~2.5.0",
     "fs-extra": "^0.18.0",
     "github-download": "^0.3.0",
     "glob": "~4.0.3",
@@ -49,7 +48,7 @@
   "system": {
     "npmDependencies": []
   },
-  "homepage": "http://javascriptmvc.com",
+  "homepage": "http://documentjs.com",
   "repository": {
     "type": "git",
     "url": "git://github.com/bitovi/documentjs.git"
