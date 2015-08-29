@@ -20,9 +20,9 @@ module.exports = function(options, folders){
 		// copy everything and steal.js
 		return Q.all([
 			fsx.copy(path.join(folders.build), path.join(folders.dist) ),
-			fsx.copy("documentjs/node_modules/steal", path.join(folders.dist,"steal") ),
-			fsx.copy("documentjs/node_modules/can", path.join(folders.dist,"can") ),
-			fsx.copy("documentjs/node_modules/jquery", path.join(folders.dist,"jquery") )
+			fsx.copy("node_modules/steal", path.join(folders.dist,"steal") ),
+			fsx.copy("node_modules/can", path.join(folders.dist,"can") ),
+			fsx.copy("node_modules/jquery", path.join(folders.dist,"jquery") )
 		]);
 	} else {
 		
@@ -53,7 +53,7 @@ module.exports = function(options, folders){
 				fsx.mkdirs( path.join(folders.dist,"bundles") ).then(function(){
 					return fsx.copy(path.join(folders.build,"bundles"), path.join(folders.dist,"bundles") );
 				}),
-				fsx.copy("documentjs/node_modules/steal/steal.production.js", path.join(folders.dist,"steal.production.js") ),
+				fsx.copy("node_modules/steal/steal.production.js", path.join(folders.dist,"steal.production.js") ),
 				fsx.copy( path.join(folders.build,"html5shiv.js"), path.join(folders.dist,"html5shiv.js")),
 					
 				copyDir("fonts"),
