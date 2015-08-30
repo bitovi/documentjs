@@ -17,13 +17,14 @@ module.exports = function(options, folders){
 		});
 	};
 	if(options.devBuild) {
-		// copy everything and steal.js
-		return Q.all([
+		var promise = Q.all([
 			fsx.copy(path.join(folders.build), path.join(folders.dist) ),
-			fsx.copy("node_modules/steal", path.join(folders.dist,"steal") ),
-			fsx.copy("node_modules/can", path.join(folders.dist,"can") ),
-			fsx.copy("node_modules/jquery", path.join(folders.dist,"jquery") )
+			fsx.copy(path.join("node_modules","steal"), path.join(folders.dist,"steal") ),
+			fsx.copy(path.join("node_modules","can"), path.join(folders.dist,"can") ),
+			fsx.copy(path.join("node_modules","jquery"), path.join(folders.dist,"jquery") )
 		]);
+		// copy everything and steal.js
+		return promise;
 	} else {
 		
 		var jQueryRelative = path.relative( __dirname, require.resolve("jquery") );
