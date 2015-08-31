@@ -14,14 +14,14 @@
     "documentjs": "./bin/documentjs"
   },
   "scripts": {
-    "test": "mocha test.js --reporter spec"
+    "test": "mocha test.js --reporter spec",
+    "postinstall": "install-engine-dependencies"
   },
   "devDependencies": {
     "mocha": ">= 1.18.0",
     "qunit-mocha-ui": "*",
     "rimraf": "2.1",
-    "connect": "^2.14.4",
-    "zombie": "~2.0.8"
+    "connect": "^2.14.4"
   },
   "dependencies": {
     "MD5": "^1.2.1",
@@ -29,7 +29,7 @@
     "can": "2.2.0-alpha.10",
     "chokidar": "^1.0.0-rc5",
     "esprima": "~2.5.0",
-    "fs-extra": "^0.18.0",
+    "fs-extra": "^0.24.0",
     "github-download": "documentjs/node-github-download#master",
     "glob": "~4.0.3",
     "globule": "~0.1.0",
@@ -39,11 +39,33 @@
     "less": "^1.7.0",
     "lodash": "~2.4.1",
     "minimatch": "~1.0.0",
-    "npm": "^1.4.16",
+    "npm": "^2.14.1",
     "q": "~1.0.1",
     "steal": "0.10.X",
     "steal-tools": "0.10.X",
-    "yargs": "^1.3.1"
+    "yargs": "^1.3.1",
+    "engine-dependencies": "^0.2.0"
+  },
+  "engineDependencies": {
+    "node": {
+      "0.10.x": {
+        "devDependencies": {
+          "zombie": "^3.1.1"
+        }
+      },
+      "0.12.x": {
+        "devDependencies": {
+          "zombie": "^3.1.1"
+        }
+      }
+    },
+    "iojs": {
+      "^3.0.0": {
+        "devDependencies": {
+          "zombie": "^4.1.0"
+        }
+      }
+    }
   },
   "system": {
     "npmDependencies": []
