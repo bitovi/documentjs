@@ -1,15 +1,17 @@
 steal("can/control","jquery","can/observe",function(Control, $){
 
 	var contentList = function(sections, tag){
-		var text = "<"+tag+">";
+		var element = $("<"+tag+">");
 		$.each(sections, function(i, section){
-			text += "<li><a href='#"+section.id+"'>"+section.text+"</a></li>";
+			$li = $("<li>");
+			$a = $("<a>").attr("href","#"+section.id);
+			element.append( $li.append($a) );
+			
 			if(section.sections && section.sections.length) {
-				text += contentList(section.sections, tag);
+				$li.append( contentList(section.sections, tag) );
 			}
 		});
-		text+="</"+tag+">";
-		return text;
+		return element;
 	};
 
 	return can.Control.extend({
