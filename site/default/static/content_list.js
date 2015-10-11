@@ -4,7 +4,7 @@ steal("can/control","jquery","can/observe",function(Control, $){
 		var element = $("<"+tag+">");
 		$.each(sections, function(i, section){
 			$li = $("<li>");
-			$a = $("<a>").attr("href","#"+section.id);
+			$a = $("<a>").attr("href","#"+section.id).text(section.text);
 			element.append( $li.append($a) );
 			
 			if(section.sections && section.sections.length) {
