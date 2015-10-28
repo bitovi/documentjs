@@ -15,7 +15,12 @@
   },
   "scripts": {
     "test": "mocha test.js --reporter spec",
-    "postinstall": "install-engine-dependencies"
+    "postinstall": "install-engine-dependencies",
+    "publish": "git push origin && git push origin --tags",
+    "release:prerelease": "npm version prerelease && npm publish",
+    "release:patch": "npm version patch && npm publish",
+    "release:minor": "npm version minor && npm publish",
+    "release:major": "npm version major && npm publish"
   },
   "devDependencies": {
     "mocha": ">= 1.18.0",
