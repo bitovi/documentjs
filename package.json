@@ -1,7 +1,7 @@
 {
   "name": "documentjs",
   "description": "The sophisticated JavaScript documentation engine.",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "maintainers": [
     {
       "name": "Bitovi",
