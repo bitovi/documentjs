@@ -35,7 +35,7 @@
     "chokidar": "^1.0.0-rc5",
     "esprima": "~2.5.0",
     "fs-extra": "^0.24.0",
-    "github-download": "documentjs/node-github-download#master",
+    "documentjs-github-download": "^0.3.0",
     "glob": "~4.0.3",
     "globule": "~0.1.0",
     "handlebars": "1.0.10",
