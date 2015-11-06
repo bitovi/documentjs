@@ -1175,15 +1175,15 @@ code.prettyprint {
     color: #006600;
   }
   .kwd {
-    color: #000066;
+    color: #006;
     font-weight: bold;
   }
   .com {
-    color: #660000;
+    color: #600;
     font-style: italic;
   }
   .typ {
-    color: #440044;
+    color: #404;
     font-weight: bold;
   }
   .lit {
@@ -1195,7 +1195,7 @@ code.prettyprint {
     color: #444400;
   }
   .tag {
-    color: #000066;
+    color: #006;
     font-weight: bold;
   }
   .atn {
@@ -2075,4 +2075,3 @@ li.L9 {
 .ie .sidebar .api li li.active > a:before {
   display: none;
 }
-
