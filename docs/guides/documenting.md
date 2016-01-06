@@ -55,11 +55,11 @@ to document modules that return:
 and its [generated docs](../examples/multi/index.html).  It consists of:
 
  - An overview page with a grouping for modules and guides.
- - An example of a [constructor function](examples/multi/multi|lib|graph.html).
+ - An example of a [constructor function](../examples/multi/multi|lib|graph.html).
  - An example [typedef](../examples/multi/multi|lib|graph.graphData.html) used by the constructor function
    to document the constructor function's arguments.
  - An example [function](../examples/multi/multi|util|add.html) module.
- - An example [object](../multi/multi|util|date-helpers.html) module.
+ - An example [object](../examples/multi/multi|util|date-helpers.html) module.
 
 ## Linking
 
