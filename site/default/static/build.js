@@ -29,7 +29,7 @@ module.exports = function(options, folders){
 		
 		var jQueryRelative = path.relative( __dirname, require.resolve("jquery") );
 		var canJSRelative = path.dirname( path.relative( __dirname, require.resolve("can") ) )+"/*.js";
-
+		
 		// makes sure can is not added to the global so we can build nicely.
 		global.GLOBALCAN = false;
 		return stealTools.build({
@@ -54,7 +54,7 @@ module.exports = function(options, folders){
 				fsx.mkdirs( path.join(folders.dist,"bundles") ).then(function(){
 					return fsx.copy(path.join(folders.build,"bundles"), path.join(folders.dist,"bundles") );
 				}),
-				fsx.copy("node_modules/steal/steal.production.js", path.join(folders.dist,"steal.production.js") ),
+				fsx.copyFrom(path.join( require.resolve("steal"), "..", "steal.production.js"), path.join(folders.dist,"steal.production.js") ),
 				fsx.copy( path.join(folders.build,"html5shiv.js"), path.join(folders.dist,"html5shiv.js")),
 					
 				copyDir("fonts"),
