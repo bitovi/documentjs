@@ -10,6 +10,8 @@ require("./lib/generate/test/generate_test");
 
 require("./lib/configured/configured_test");
 
+require("./lib/configured/npm/npm_test");
+
 var assert = require("assert");
 var docjs = require("./main.js");
 
