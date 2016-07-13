@@ -6,7 +6,9 @@
 				{{makeTitle}}
 			</a>
 			{{#if ../active.hideChildrenInMenu}}
-				{{> active-menu.mustache}}
+				{{#ifIsLastItem ../../parents .}}
+					{{> active-menu.mustache}}
+				{{/ifIsLastItem}}
 			{{/if}}
 		</li>
 		{{/each}}
