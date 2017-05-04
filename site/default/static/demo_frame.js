@@ -1,13 +1,15 @@
-steal("can/control","./demo_frame.mustache!","jquery","can/observe","./prettify.js",function(Control,demoFrameMustache,$){
-	
-	
+var CanControl = require("can-control");
+var demoFrameTemplate = require("./demo_frame.stache!");
+var $ = require("jquery");
+require("can-map");
+require("./prettify");
 
-return can.Control.extend({
+module.exports = CanControl.extend({
 	init: function() {
-		
 		var docConfig = window.docConfig || {};
+		this.element = $(this.element);
 		// Render out the demo container.
-		this.element.html(demoFrameMustache( {demoSrc: (docConfig.demoSrcRoot || ".." )+'/' + this.element.data('demoSrc')}));
+		this.element.html(demoFrameTemplate( {demoSrc: (docConfig.demoSrcRoot || ".." )+'/' + this.element.data('demoSrc')}));
 
 		// Start with the demo tab showing.
 		this.showTab('demo');
@@ -84,6 +86,4 @@ return can.Control.extend({
 	prettify: function(unescaped) {
 		return prettyPrintOne(unescaped.replace(/</g, '&lt;'));
 	}
-});
-
 });

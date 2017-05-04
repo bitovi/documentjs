@@ -1,23 +1,17 @@
 (function () {
+	var map = require('./map');
 	var isClient = typeof window !== "undefined";
 	
 	var configData = {
-		map: {
-			"jquery/jquery": "jquery",
-			"can/util/util": "can/util/jquery/jquery",
-			"benchmark/benchmark": "benchmark",
-			"mustache": "can/view/mustache/system"
+		map: map,
+		ext: {
+			'stache': 'steal-stache'
 		},
 		meta: {
 			jquery: {
 				exports: "jQuery"
 			},
 			prettify: {format: "global"}
-		},
-		ext: {
-			ejs: "can/view/ejs/system",
-			mustache: "can/view/mustache/system",
-			stache: "can/view/stache/system"
 		}
 	};
 	
@@ -28,6 +22,7 @@
 			"can/*": "can/*.js" 
 		};
 	}
+	
 	
 	System.config(configData);
 })();

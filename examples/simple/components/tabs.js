@@ -1,4 +1,4 @@
-import can from 'can/';
+import CanComponent from 'can-component';
 import tabsStache from './tabs.stache!';
 /**
  * @module {function} components/tabs/ <tabs>
@@ -7,7 +7,7 @@ import tabsStache from './tabs.stache!';
  * @signature `<tabs>`
  * Creates a tabs component.
  */
-export default can.Component.extend({
+export default CanComponent.extend({
 	tag: "tabs",
 	template: tabsStache,
 	scope: { ... }
