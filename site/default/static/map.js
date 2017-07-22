@@ -1,34 +1,58 @@
-module.exports = {
-	'can-compute': {
-		'proto-compute': 'can-compute/proto-compute',
-	},
-	'can-map': {
-		'bubble': 'can-map/bubble',
-		'map-helpers': 'can-map/map-helpers',
-	},
-	'can-stache': {
-		'helpers/core': 'can-stache/helpers/core',
-		'helpers/converter': 'can-stache/helpers/converter',
-		'src/html_section': 'can-stache/src/html_section',
-		'src/intermediate_and_imports': 'can-stache/src/intermediate_and_imports',
-		'src/mustache_core': 'can-stache/src/mustache_core',
-		'src/text_section': 'can-stache/src/text_section',
-	},
-	'can-view-live': {
-		'lib/attr': 'can-view-live/lib/attr',
-		'lib/attrs': 'can-view-live/lib/attrs',
-		'lib/core': 'can-view-live/lib/core',
-		'lib/html': 'can-view-live/lib/html',
-		'lib/list': 'can-view-live/lib/list',
-		'lib/text': 'can-view-live/lib/text',
-	},
-	'can-view-scope': {
-		'compute_data': 'can-view-scope/compute_data',
-		'reference-map': 'can-view-scope/reference-map',
-	},
-	'steal-stache': {
-		'add-bundles': 'steal-stache/add-bundles',
-	},
-	"jquery/jquery": "jquery",
-	"benchmark/benchmark": "benchmark",
+var fs = require('fs');
+var path = require('path');
+
+// Helper for recursively getting all the JS files in a directory
+var getJSFiles = function(dir, filelist) {
+	var files = fs.readdirSync(dir);
+  filelist = filelist || [];
+  files.forEach(function(file) {
+		var fullPath = path.join(dir, file);
+    if (fs.statSync(fullPath).isDirectory()) {
+      filelist = getJSFiles(fullPath, filelist);
+    } else if (file.substr(-3) === '.js' && fullPath.lastIndexOf('node_modules') === 0) {
+      filelist.push(fullPath);
+    }
+  });
+  return filelist;
 };
+
+// Get all of the can-* and steal-* packages from node_modules
+var fileNames = fs.readdirSync('node_modules');
+var moduleNames = fileNames.filter(function(fileName) {
+	var isCanModule = fileName.substr(0, 4) === 'can-';
+	var isStealModule = fileName.substr(0, 6) === 'steal-';
+	return isCanModule || isStealModule;
+});
+
+// This map will be exported
+var modulesMap = {
+	"benchmark/benchmark": "benchmark",
+	"jquery/jquery": "jquery"
+};
+
+moduleNames.forEach(function(moduleName) {
+	var moduleMap = {};
+	var modulePath = path.join('node_modules', moduleName);
+	var jsFiles = getJSFiles(modulePath);
+
+	// Run through all the JS files in the module and create a map like
+	// "can-cid": {"build": "can-cid/build"}
+	jsFiles.forEach(function(jsFile) {
+		// jsFile looks like node_modules/can-cid/build.js
+
+		// …so pathWithModuleName looks like can-cid/build
+		var pathWithModuleName = jsFile.substr('node_modules'.length + 1).slice(0, -3);
+
+		// pathWithoutModuleName looks like build
+		var pathWithoutModuleName = pathWithModuleName.substr(moduleName.length + 1);
+
+		// don’t include the main file (e.g. can-cid/can-cid)
+		if (pathWithoutModuleName !== moduleName) {
+			moduleMap[pathWithoutModuleName]= pathWithModuleName;
+		}
+	});
+
+	modulesMap[moduleName] = moduleMap;
+});
+
+module.exports = modulesMap;
