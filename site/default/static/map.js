@@ -39,9 +39,13 @@ moduleNames.forEach(function(moduleName) {
 	// "can-cid": {"build": "can-cid/build"}
 	jsFiles.forEach(function(jsFile) {
 		// jsFile looks like node_modules/can-cid/build.js
+		// or node_modules\can-cid\build.js on Windows
+
+		// …normalize to use forward slashes for the module names
+		var jsFileModule = jsFile.replace(new RegExp('\\\\', 'g'), '/');
 
 		// …so pathWithModuleName looks like can-cid/build
-		var pathWithModuleName = jsFile.substr('node_modules'.length + 1).slice(0, -3);
+		var pathWithModuleName = jsFileModule.substr('node_modules'.length + 1).slice(0, -3);
 
 		// pathWithoutModuleName looks like build
 		var pathWithoutModuleName = pathWithModuleName.substr(moduleName.length + 1);
