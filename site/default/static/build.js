@@ -1,3 +1,4 @@
+var assign = require("can-util/js/assign/assign");
 var fs = require('fs');
 var map = require('./map');
 var stealTools = require("steal-tools"),
@@ -26,31 +27,43 @@ module.exports = function(options, folders){
 		return promise;
 	} else {
 		// manually configure Can/Steal packages for Steal build
+		var paths = {
+			'jquery': path.relative(__dirname, require.resolve('jquery'))
+		};
 
-		// root packages
-		var npmPackages = [];
-		for (var moduleName in map) {
-			if (map.hasOwnProperty(moduleName) && moduleName.indexOf('/') === -1) {
-				npmPackages.push(moduleName);
+		// generate the remaining paths
+		var mapCopy = {};
+		for (var packageName in map) {
+			if (map.hasOwnProperty(packageName)) {
+				// map[packageName] can either be just a string (e.g. jquery) or
+				// an object, so we want the path for the module, not an object
+				var resolvePath = (typeof map[packageName] === 'object') ? map[packageName][packageName] : map[packageName];
+				if (!resolvePath) {// Fall back to Node’s resolution for npm 3+
+					resolvePath = require.resolve(packageName);
+				}
+
+				// Get the path relative to the build folder
+				var moduleRelativePath = path.relative(__dirname, resolvePath);
+
+				// Update the paths object with the AMD configuration
+				paths[packageName + '/*'] = path.dirname(moduleRelativePath) + '/*.js';
+				paths[packageName] = moduleRelativePath;
+
+				// Make a copy of the object without the key
+				// that was used to locate the module
+				if (map[packageName][packageName]) {
+					mapCopy[packageName] = assign({}, map[packageName]);
+					delete mapCopy[packageName][packageName];
+				} else {
+					mapCopy[packageName] = map[packageName];
+				}
 			}
 		}
 
 		// conditional map
 		// write it out for the client to consume
-		var mapJSON = JSON.stringify(map);
+		var mapJSON = JSON.stringify(mapCopy);
 		fs.writeFileSync(path.join(__dirname, 'map.json'), mapJSON);
-
-		var paths = {
-			'jquery': path.relative(__dirname, require.resolve('jquery')),
-			'can-util/*': path.dirname(path.relative(__dirname, require.resolve('can-util'))) + '/*.js',
-			'steal-stache': path.relative(__dirname, require.resolve('steal-stache'))
-		};
-
-		// generate the remaining paths
-		npmPackages.forEach(function(pkg) {
-			paths[pkg + '/*'] = path.dirname(path.relative(__dirname, require.resolve(pkg))) + '/*.js';
-			paths[pkg] = path.relative(__dirname, require.resolve(pkg));
-		});
 
 		// makes sure can is not added to the global so we can build nicely.
 		global.GLOBALCAN = false;
@@ -59,7 +72,7 @@ module.exports = function(options, folders){
 			config: __dirname + "/config.js",
 			bundlesPath: __dirname+"/bundles",
 			paths: paths,
-			map: map,
+			map: mapCopy,
 			ext: {
 				'stache': 'steal-stache'
 			}
