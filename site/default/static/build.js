@@ -1,4 +1,6 @@
-
+var assign = require("can-util/js/assign/assign");
+var fs = require('fs');
+var map = require('./map');
 var stealTools = require("steal-tools"),
 	fsx = require('../../../../lib/fs_extras'),
 	Q = require('q'),
@@ -19,26 +21,60 @@ module.exports = function(options, folders){
 	if(options.devBuild) {
 		var promise = Q.all([
 			fsx.copy(path.join(folders.build), path.join(folders.dist) ),
-			fsx.copy(path.join("node_modules","steal"), path.join(folders.dist,"steal") ),
-			fsx.copy(path.join("node_modules","can"), path.join(folders.dist,"can") ),
-			fsx.copy(path.join("node_modules","jquery"), path.join(folders.dist,"jquery") )
+			fsx.copy(path.join("node_modules"), path.join(folders.dist) ),
 		]);
 		// copy everything and steal.js
 		return promise;
 	} else {
+		// manually configure Can/Steal packages for Steal build
+		var paths = {
+			'jquery': path.relative(__dirname, require.resolve('jquery'))
+		};
 
-		var jQueryRelative = path.relative( __dirname, require.resolve("jquery") );
-		var canJSRelative = path.dirname( path.relative( __dirname, require.resolve("can") ) )+"/*.js";
-		
+		// generate the remaining paths
+		var mapCopy = {};
+		for (var packageName in map) {
+			if (map.hasOwnProperty(packageName)) {
+				// map[packageName] can either be just a string (e.g. jquery) or
+				// an object, so we want the path for the module, not an object
+				var resolvePath = (typeof map[packageName] === 'object') ? map[packageName][packageName] : map[packageName];
+				if (!resolvePath) {// Fall back to Node’s resolution for npm 3+
+					resolvePath = require.resolve(packageName);
+				}
+
+				// Get the path relative to the build folder
+				var moduleRelativePath = path.relative(__dirname, resolvePath);
+
+				// Update the paths object with the AMD configuration
+				paths[packageName + '/*'] = path.dirname(moduleRelativePath) + '/*.js';
+				paths[packageName] = moduleRelativePath;
+
+				// Make a copy of the object without the key
+				// that was used to locate the module
+				if (map[packageName][packageName]) {
+					mapCopy[packageName] = assign({}, map[packageName]);
+					delete mapCopy[packageName][packageName];
+				} else {
+					mapCopy[packageName] = map[packageName];
+				}
+			}
+		}
+
+		// conditional map
+		// write it out for the client to consume
+		var mapJSON = JSON.stringify(mapCopy);
+		fs.writeFileSync(path.join(__dirname, 'map.json'), mapJSON);
+
 		// makes sure can is not added to the global so we can build nicely.
 		global.GLOBALCAN = false;
 		return stealTools.build({
 			main: "static",
-			config: __dirname+"/config.js",
+			config: __dirname + "/config.js",
 			bundlesPath: __dirname+"/bundles",
-			paths:  {
-				"jquery": jQueryRelative,
-				"can/*": canJSRelative
+			paths: paths,
+			map: mapCopy,
+			ext: {
+				'stache': 'steal-stache'
 			}
 		},{
 			minify: options.minifyBuild === false ? false : true,
@@ -65,7 +101,4 @@ module.exports = function(options, folders){
 
 		});
 	}
-
-
-
 };
