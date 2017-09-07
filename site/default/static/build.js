@@ -1,6 +1,7 @@
 var assign = require("can-util/js/assign/assign");
 var fs = require('fs');
 var map = require('./map');
+var resolve = require('resolve');
 var stealTools = require("steal-tools"),
 	fsx = require('../../../../lib/fs_extras'),
 	Q = require('q'),
@@ -38,8 +39,10 @@ module.exports = function(options, folders){
 				// map[packageName] can either be just a string (e.g. jquery) or
 				// an object, so we want the path for the module, not an object
 				var resolvePath = (typeof map[packageName] === 'object') ? map[packageName][packageName] : map[packageName];
-				if (!resolvePath) {// Fall back to Node’s resolution for npm 3+
-					resolvePath = require.resolve(packageName);
+				if (!resolvePath) {
+					// Fall back to Node’s resolution for npm 3+
+					// …or the “resolve” package’s resolution implementation
+					resolvePath = require.resolve(packageName) || resolve.sync(packageName, {basedir: process.cwd()});
 				}
 
 				// Get the path relative to the build folder
