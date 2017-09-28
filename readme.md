@@ -28,4 +28,3 @@ Go to [documentjs.com](http://documentjs.com) for guides and documentation.
  - Code and Src are available almost everywhere [commit](https://github.com/bitovi/documentjs/commit/d51f8fb09e06c58fe8e12bd8ea6b93c7197c5ae1).
  - Added `singlePage` [site config](http://documentjs.com/docs/DocumentJS.siteConfig.html). [commit](https://github.com/bitovi/documentjs/commit/0ccfbffbd5b84de0c433e2102c84c6e56059426d)
  
-
