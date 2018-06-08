@@ -49,12 +49,16 @@
     "q": "~1.0.1",
     "resolve": "^1.4.0",
     "steal": "^1.11.8",
+    "steal-less": "^1.3.1",
     "steal-stache": "^3.0.7",
     "steal-tools": "^1.11.9",
     "yargs": "^1.3.1"
   },
-  "system": {
-    "npmAlgorithm": "flat"
+  "steal": {
+    "npmAlgorithm": "flat",
+    "plugins": [
+      "steal-less"
+    ]
   },
   "homepage": "http://documentjs.com",
   "repository": {
