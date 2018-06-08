@@ -76,9 +76,10 @@ module.exports = function(options, folders){
 			dest: __dirname+"/bundles",
 			paths: paths,
 			map: mapCopy,
-			ext: {
-				'stache': 'steal-stache'
-			}
+			plugins: [
+				'steal-stache',
+				'steal-less'
+			]
 		},{
 			minify: options.minifyBuild === false ? false : true,
 			quiet: options.debug ? false : true,
