@@ -73,7 +73,7 @@ module.exports = function(options, folders){
 		return stealTools.build({
 			main: "static",
 			config: __dirname + "/config.js",
-			bundlesPath: __dirname+"/bundles",
+			dest: __dirname+"/bundles",
 			paths: paths,
 			map: mapCopy,
 			ext: {
