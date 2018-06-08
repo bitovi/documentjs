@@ -58,7 +58,8 @@
   "steal": {
     "npmAlgorithm": "flat",
     "plugins": [
-      "steal-less"
+      "steal-less",
+      "steal-css"
     ]
   },
   "homepage": "http://documentjs.com",

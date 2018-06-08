@@ -36,7 +36,8 @@ var moduleNames = getCanAndStealModules('');
 // This map will be exported
 var modulesMap = {
 	"benchmark/benchmark": "benchmark",
-	"jquery/jquery": "jquery"
+	"jquery/jquery": "jquery",
+	"$css": "steal-css"
 };
 
 // This function is used recursively to update the exported modulesMap
