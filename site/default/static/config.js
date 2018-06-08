@@ -4,6 +4,10 @@
 
 	var configData = {
 		map: map,
+		ext: {
+			stache: 'steal-stache',
+			less: 'steal-less'
+		},
 		plugins: [
 			'steal-stache',
 			'steal-less'
