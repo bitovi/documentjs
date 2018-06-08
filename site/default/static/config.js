@@ -4,9 +4,10 @@
 
 	var configData = {
 		map: map,
-		ext: {
-			'stache': 'steal-stache'
-		},
+		plugins: [
+			'steal-stache',
+			'steal-less'
+		],
 		meta: {
 			jquery: {
 				exports: "jQuery"
