@@ -29,7 +29,9 @@ module.exports = function(options, folders){
 	} else {
 		// manually configure Can/Steal packages for Steal build
 		var paths = {
-			'jquery': path.relative(__dirname, require.resolve('jquery'))
+			'jquery': path.relative(__dirname, require.resolve('jquery')),
+			//'less/dist/less': path.join(path.relative(__dirname, require.resolve('less')), 'dist/less.js')
+			'steal-less/less-engine': path.join(path.relative(__dirname, require.resolve('steal-less/less-engine-node')))
 		};
 
 		// generate the remaining paths
