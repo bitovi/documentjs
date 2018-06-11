@@ -41,15 +41,16 @@ var modulesMap = {
 };
 
 // This function is used recursively to update the exported modulesMap
-var updateMapWithModules = function(moduleNames, prefix) {
+var updateMapWithModules = function(moduleNames, firstLevelPrefix, prefix, _modulesMap) {
+	var isNested = _modulesMap !== modulesMap;
 	moduleNames.forEach(function(moduleName) {
 
 		// If the module has already been defined, skip it
-		if (modulesMap[moduleName]) {
+		if (_modulesMap[moduleName]) {
 			return;
 		}
 
-		var moduleMap = {};
+		var moduleMap = isNested ? _modulesMap : {};
 		var modulePath = path.join(prefix, 'node_modules', moduleName);
 
 		// Get all of the .js files in this module’s directory
@@ -65,14 +66,16 @@ var updateMapWithModules = function(moduleNames, prefix) {
 			var jsFileModule = jsFile.replace(new RegExp('\\\\', 'g'), '/');
 
 			// pathWithModuleName will look like “can-cid/build”
-			var pathWithModuleName = jsFileModule.substr((prefix.length ? prefix.length + 1 : 0) + 'node_modules'.length + 1).slice(0, -3);
+			var pathWithModuleName = jsFileModule.substr((firstLevelPrefix.length ? firstLevelPrefix.length + 1 : 0) + 'node_modules'.length + 1).slice(0, -3);
 
 			// pathWithoutModuleName will look like “build”
 			var pathWithoutModuleName = pathWithModuleName.substr(moduleName.length + 1);
 
 			// for the main file (e.g. can-cid/can-cid), include the full path;
 			// otherwise, used the short module name (e.g. can-cid/build)
-			if (pathWithoutModuleName === moduleName) {
+			if (isNested) {
+				moduleMap[pathWithoutModuleName]= jsFileModule.substr(0, jsFileModule.lastIndexOf('.'));
+			} else if (pathWithoutModuleName === moduleName) {
 				moduleMap[pathWithoutModuleName]= jsFileModule;
 			} else {
 				moduleMap[pathWithoutModuleName]= pathWithModuleName;
@@ -80,18 +83,24 @@ var updateMapWithModules = function(moduleNames, prefix) {
 		});
 
 		// Update the exported map
-		modulesMap[moduleName] = moduleMap;
+		if(!isNested) {
+			modulesMap[moduleName] = moduleMap;
+		}
 
 		// If this module has node_modules that are can-* or steal-*,
 		// then go through them recursively
 		var subModuleNames = getCanAndStealModules(modulePath);
 		if (subModuleNames) {
-			updateMapWithModules(subModuleNames, modulePath);
+			if(isNested) {
+				updateMapWithModules(subModuleNames, firstLevelPrefix, modulePath, _modulesMap);			
+			} else {
+				updateMapWithModules(subModuleNames, modulePath, modulePath, _modulesMap[moduleName]);			
+			}
 		}
 	});
 };
 
 // Start at the root folder
-updateMapWithModules(moduleNames, '');
+updateMapWithModules(moduleNames, '', '', modulesMap);
 
 module.exports = modulesMap;
