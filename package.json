@@ -14,7 +14,7 @@
     "documentjs": "./bin/documentjs"
   },
   "scripts": {
-    "test": "mocha test.js --reporter spec",
+    "test": "mocha test/test.js --reporter spec",
     "publish": "git push origin && git push origin --tags",
     "release:prerelease": "npm version prerelease && npm publish",
     "release:patch": "npm version patch && npm publish",
@@ -22,39 +22,37 @@
     "release:major": "npm version major && npm publish"
   },
   "devDependencies": {
-    "connect": "^2.14.4",
-    "mocha": ">= 1.18.0",
-    "qunit-mocha-ui": "*",
-    "rimraf": "2.1",
-    "zombie": "^4.2.1"
-  },
-  "dependencies": {
-    "async": "~0.2.7",
     "can-control": "^3.0.10",
     "can-map": "^3.0.7",
     "can-stache": "^3.0.24",
     "can-util": "^3.6.1",
+    "connect": "^2.14.4",
+    "jquery": "~1.11.0",
+    "mocha": "^5.2.0",
+    "qunit-mocha-ui": "*",
+    "rimraf": "2.1",
+    "steal": "0.16.X",
+    "steal-stache": "^3.0.7",
+    "steal-tools": "0.16.X",
+    "zombie": "^4.2.1"
+  },
+  "dependencies": {
+    "async": "~0.2.7",
     "chokidar": "^1.0.0-rc5",
+    "cross-spawn": "^6.0.5",
     "cross-spawn-async": "^2.1.9",
     "documentjs-github-download": "^0.3.0",
     "esprima": "~2.5.0",
-    "fs-extra": "^0.24.0",
+    "fs-extra": "^6.0.1",
     "glob": "~6.0.3",
     "handlebars": "1.0.10",
-    "jquery": "~1.11.0",
     "less": "^1.7.0",
     "lodash": "~2.4.1",
     "md5": "^2.0.0",
     "minimatch": "~1.0.0",
     "q": "~1.0.1",
     "resolve": "^1.4.0",
-    "steal": "0.16.X",
-    "steal-stache": "^3.0.7",
-    "steal-tools": "0.16.X",
     "yargs": "^1.3.1"
-  },
-  "system": {
-    "npmAlgorithm": "flat"
   },
   "homepage": "http://documentjs.com",
   "repository": {

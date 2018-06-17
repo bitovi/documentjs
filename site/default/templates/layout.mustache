@@ -22,11 +22,11 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	{{^devBuild}}
-	<link rel="stylesheet" type="text/css" href="./static/bundles/static.css">
+		<link rel="stylesheet" type="text/css" href="./static/bundles/static.css">
 	{{/devBuild}}
 	<!--[if lt IE 9]>
-   <script type="text/javascript" src="static/html5shiv.js"></script>
-    <!--<![endif]-->
+	<script type="text/javascript" src="static/html5shiv.js"></script>
+	<!--<![endif]-->
 </head>
 
 <body class="docs">
@@ -71,24 +71,24 @@
 	</script>
 	
 	{{#if devBuild}}
-		<script type='text/javascript' 
+		<script type="text/javascript"
 				data-main="static"
-				data-config="./static/config.js"
-				src="./static/steal/steal.js"></script>
+				src="./node_modules/steal/steal.js">
+		</script>
 	{{else}}
 		<script>
-		  steal = {
-		    instantiated: {
-		      "bundles/static.css!$css" : null
-		    }
-		  }
+			steal = {
+				instantiated: {
+					"bundles/static.css!$css" : null
+				}
+			};
 		</script>
-		<script type='text/javascript'
+		<script type="text/javascript"
 				data-main="static"
-				data-config="./config.js"
-				src="./static/steal.production.js"
-	    		bundles-path="static/bundles"></script>
+				data-config="package.json!npm"
+				data-bundles-path="./static/bundles"
+				src="./static/steal.production.js">
+		</script>
 	{{/if}}
 </body>
-
 </html>
