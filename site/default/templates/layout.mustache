@@ -22,7 +22,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	{{^devBuild}}
-		<link rel="stylesheet" type="text/css" href="./static/bundles/static.css">
+		<link rel="stylesheet" type="text/css" href="./static/bundles/bundles/static.css">
 	{{/devBuild}}
 	<!--[if lt IE 9]>
 	<script type="text/javascript" src="static/html5shiv.js"></script>
@@ -65,11 +65,11 @@
 		</nav>
 	</footer>
 	{{/hideFooter}}
-	
+
 	<script type="text/javascript">
 		var docObject = {{{docObjectString}}};
 	</script>
-	
+
 	{{#if devBuild}}
 		<script type="text/javascript"
 				data-main="static"
@@ -86,8 +86,8 @@
 		<script type="text/javascript"
 				data-main="static"
 				data-config="package.json!npm"
-				data-bundles-path="./static/bundles"
-				src="./static/steal.production.js">
+				data-bundles-path="./static/bundles/bundles"
+				src="./static/bundles/steal.production.js">
 		</script>
 	{{/if}}
 </body>

@@ -26,10 +26,10 @@ module.exports = function(options, folders) {
 			.build(
 				{
 					main: "static",
-					config: path.join(__dirname, "package.json!npm"),
-					bundlesPath: path.join(__dirname, "bundles")
+					config: path.join(__dirname, "package.json!npm")
 				},
 				{
+					dest: path.join(__dirname, "bundles"),
 					minify: options.minifyBuild === false ? false : true,
 					quiet: options.debug ? false : true,
 					debug: options.debug ? true : false
@@ -50,14 +50,6 @@ module.exports = function(options, folders) {
 								path.join(folders.dist, "bundles")
 							);
 						}),
-					fsExtras.copyFrom(
-						path.join(
-							require.resolve("steal"),
-							"..",
-							"steal.production.js"
-						),
-						path.join(folders.dist, "steal.production.js")
-					),
 					fsExtras.copy(
 						path.join(folders.build, "package.json"),
 						path.join(folders.dist, "package.json")
