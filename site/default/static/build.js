@@ -29,7 +29,6 @@ module.exports = function(options, folders) {
 					config: path.join(__dirname, "package.json!npm")
 				},
 				{
-					dest: path.join(__dirname, "bundles"),
 					minify: options.minifyBuild === false ? false : true,
 					quiet: options.debug ? false : true,
 					debug: options.debug ? true : false
@@ -42,14 +41,10 @@ module.exports = function(options, folders) {
 
 				// copy everything to DIST
 				return Q.all([
-					fsExtras
-						.mkdirs(path.join(folders.dist, "bundles"))
-						.then(function() {
-							return fsExtras.copy(
-								path.join(folders.build, "bundles"),
-								path.join(folders.dist, "bundles")
-							);
-						}),
+					fsExtras.copy(
+						path.join(folders.build, "dist"),
+						path.join(folders.dist, "dist")
+					),
 					fsExtras.copy(
 						path.join(folders.build, "package.json"),
 						path.join(folders.dist, "package.json")
