@@ -22,7 +22,7 @@
 	<meta name="description" content="">
 	<meta name="author" content="">
 	{{^devBuild}}
-		<link rel="stylesheet" type="text/css" href="./static/bundles/static.css">
+		<link rel="stylesheet" type="text/css" href="./dist/bundles/static.css">
 	{{/devBuild}}
 	<!--[if lt IE 9]>
 	<script type="text/javascript" src="static/html5shiv.js"></script>
@@ -85,9 +85,7 @@
 		</script>
 		<script type="text/javascript"
 				data-main="static"
-				data-config="package.json!npm"
-				data-bundles-path="./static/bundles"
-				src="./static/steal.production.js">
+				src="./dist/steal.production.js">
 		</script>
 	{{/if}}
 </body>

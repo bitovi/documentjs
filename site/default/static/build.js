@@ -26,8 +26,7 @@ module.exports = function(options, folders) {
 			.build(
 				{
 					main: "static",
-					config: path.join(__dirname, "package.json!npm"),
-					bundlesPath: path.join(__dirname, "bundles")
+					config: path.join(__dirname, "package.json!npm")
 				},
 				{
 					minify: options.minifyBuild === false ? false : true,
@@ -42,21 +41,9 @@ module.exports = function(options, folders) {
 
 				// copy everything to DIST
 				return Q.all([
-					fsExtras
-						.mkdirs(path.join(folders.dist, "bundles"))
-						.then(function() {
-							return fsExtras.copy(
-								path.join(folders.build, "bundles"),
-								path.join(folders.dist, "bundles")
-							);
-						}),
-					fsExtras.copyFrom(
-						path.join(
-							require.resolve("steal"),
-							"..",
-							"steal.production.js"
-						),
-						path.join(folders.dist, "steal.production.js")
+					fsExtras.copy(
+						path.join(folders.build, "dist"),
+						path.join(folders.dist, "dist")
 					),
 					fsExtras.copy(
 						path.join(folders.build, "package.json"),
