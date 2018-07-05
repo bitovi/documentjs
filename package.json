@@ -27,6 +27,7 @@
     "can-stache": "^3.0.24",
     "can-util": "^3.6.1",
     "connect": "^2.30.2",
+    "get-port": "^3.2.0",
     "jquery": "~1.11.0",
     "mocha": "^5.2.0",
     "qunit-mocha-ui": "*",
