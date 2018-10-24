@@ -29,9 +29,6 @@ module.exports = CanControl.extend({
 			var wrapper = $(this);
 			new DemoFrame(wrapper);
 			
-			if(wrapper.data('demoHeight')) {
-				iframe.height(wrapper.data('demoHeight'));
-			}
 		});
 	}
 });
