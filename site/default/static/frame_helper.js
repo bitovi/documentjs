@@ -1,5 +1,5 @@
-var CanControl = require("can-control");
 var $ = require("jquery");
+var CanControl = require("can-control");
 var DemoFrame = require("./demo_frame");
 
 module.exports = CanControl.extend({
@@ -26,9 +26,7 @@ module.exports = CanControl.extend({
 		// @demo can/control/control.html 400
 		// <div class="demo_wrapper" data-demo-src="can/control/control.html"></div>
 		$('.demo_wrapper', this.$element).each(function() {
-			var wrapper = $(this);
-			new DemoFrame(wrapper);
-			
+			new DemoFrame(this);
 		});
 	}
 });
