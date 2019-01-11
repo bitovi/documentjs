@@ -1,3 +1,4 @@
+var $ = require("jquery");
 var ContentList = require("./content_list");
 var FrameHelper = require("./frame_helper");
 var Versions = require("./versions");
